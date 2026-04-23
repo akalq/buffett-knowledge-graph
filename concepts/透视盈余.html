@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>透视盈余（Look-through Earnings） - 巴菲特致股东信知识库</title>
+    <style>
+        :root { --bg-color: #FFFEF9; --navy: #1B2A4A; --gold: #C9A227; --text: #2C3E50; --secondary: #5D6D7E; --border: #E5E0D8; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Noto Serif SC', 'Georgia', serif; background: var(--bg-color); color: var(--text); line-height: 1.8; }
+        .container { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
+        header { background: var(--navy); color: white; padding: 30px; margin-bottom: 40px; }
+        header h1 { font-size: 1.8em; margin-bottom: 10px; }
+        header .meta { color: var(--gold); font-size: 0.9em; margin-top: 10px; }
+        .nav { background: white; border: 1px solid var(--border); padding: 15px 20px; margin-bottom: 30px; border-radius: 8px; }
+        .nav a { color: var(--navy); text-decoration: none; margin: 0 10px; }
+        .nav a:hover { color: var(--gold); }
+        .content { background: white; border: 1px solid var(--border); border-radius: 12px; padding: 40px; }
+        .content h2 { color: var(--navy); font-size: 1.4em; margin: 30px 0 15px; padding-bottom: 8px; border-bottom: 2px solid var(--gold); }
+        .content h2:first-child { margin-top: 0; }
+        .content h3 { color: var(--navy); font-size: 1.2em; margin: 25px 0 12px; }
+        .content p { margin: 15px 0; text-align: justify; }
+        .quote { background: #1B2A4A; color: white; padding: 20px 25px; border-left: 4px solid var(--gold); margin: 20px 0; border-radius: 0 8px 8px 0; }
+        .quote p { margin: 0; }
+        .quote .source { color: var(--gold); margin-top: 10px; font-size: 0.9em; }
+        .related { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px; }
+        .related a { background: white; border: 1px solid var(--border); padding: 8px 15px; border-radius: 20px; text-decoration: none; color: var(--navy); font-size: 0.9em; transition: all 0.2s; }
+        .related a:hover { background: var(--gold); color: white; border-color: var(--gold); }
+        .timeline { border-left: 3px solid var(--gold); padding-left: 20px; margin: 20px 0; }
+        .timeline-item { margin-bottom: 20px; position: relative; }
+        .timeline-item::before { content: ''; position: absolute; left: -26px; top: 5px; width: 10px; height: 10px; background: var(--gold); border-radius: 50%; }
+        .timeline-date { color: var(--gold); font-weight: bold; margin-bottom: 5px; }
+        .case-study { background: #f8f6f1; padding: 20px; border-radius: 8px; margin: 20px 0; border-left: 4px solid var(--navy); }
+        .case-study h4 { color: var(--navy); margin-bottom: 10px; }
+        .formula { background: #f8f6f1; padding: 20px; border-radius: 8px; margin: 20px 0; text-align: center; font-size: 1.1em; }
+        .warning { background: #fff3cd; border: 1px solid #ffc107; padding: 15px; border-radius: 8px; margin: 15px 0; }
+        .warning::before { content: '⚠️ '; }
+        footer { text-align: center; padding: 40px 20px; color: var(--secondary); border-top: 1px solid var(--border); margin-top: 40px; }
+        footer a { color: var(--navy); }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>💡 透视盈余（Look-through Earnings）</h1>
+        <div class="meta">概念 · 被引用 38 次 · 真实衡量伯克希尔的业绩</div>
+    </header>
+    
+    <div class="container">
+        <nav class="nav">
+            <a href="../index.html">🏠 首页</a>
+            <a href="../index-pages/核心思想索引.html">💡 核心思想索引</a>
+            <a href="../index-pages/公司索引.html">🏢 公司索引</a>
+            <a href="../index-pages/人物索引.html">👤 人物索引</a>
+        </nav>
+        
+        <article class="content">
+            <h2>一、定义与起源</h2>
+            
+            <p><strong>透视盈余</strong>是巴菲特创造的概念，用于衡量伯克希尔的真实盈利能力。传统的GAAP会计报表只反映伯克希尔直接持股公司的利润，但对于那些参股但不控股的公司（如持有大量股权的可口可乐、美国运通等），其留存利润并不体现在伯克希尔的报表中。</p>
+            
+            <div class="quote">
+                <p>"透视盈余的概念很简单：我们持有大量股权但不控股的公司，其留存利润虽然没有出现在我们的会计报表中，但它们同样是我们财富的来源。这些留存利润最终会转化为我们持股公司的价值。"</p>
+                <div class="source">—— 1991 巴菲特致股东信</div>
+            </div>
+            
+            <p>巴菲特在1991年致股东信中首次系统阐述了这一概念。他指出，如果只关注GAAP净利润，投资者会严重低估伯克希尔的真实盈利能力，因为那些被投资公司留存下来的利润同样在为其创造价值。</p>
+            
+            <div class="formula">
+                <strong>透视盈余 = GAAP净利润 + 伯克希尔应占的未分配利润</strong>
+                <p style="font-size: 0.9em; margin-top: 10px; color: var(--secondary);">
+                    （来自持股但不控股的公司）
+                </p>
+            </div>
+            
+            <h2>二、核心要义</h2>
+            
+            <h3>① 留存利润也是利润</h3>
+            <p>当伯克希尔持股的公司（如可口可乐）将利润留存而不是分红时，这部分利润在可口可乐的资产负债表上增加了其内在价值。伯克希尔的透视盈余应该反映这部分"未领取的股息"，即使这些股息从未进入伯克希尔的银行账户。</p>
+            
+            <h3>② 透视盈余比GAAP净利润更重要</h3>
+            <p>巴菲特认为，对于伯克希尔这样的投资控股公司，透视盈余是衡量真实业绩的更好指标，因为它反映了公司全部经济活动的成果，而不仅仅是那些"分红"回来的部分。</p>
+            
+            <h3>③ 透视盈余是内在价值增长的前导指标</h3>
+            <p>如果一家公司的透视盈余长期增长，其内在价值大概率也会相应增长。通过观察透视盈余的变化趋势，可以更好地判断公司的真实价值创造能力。</p>
+            
+            <h2>三、实战案例</h2>
+            
+            <div class="case-study">
+                <h4>📌 案例1：可口可乐的透视盈余</h4>
+                <p>伯克希尔持有可口可乐约9%的股权。如果可口可乐每年赚100亿美元并留存50亿美元，伯克希尔理论上应占有4.5亿美元的"透视盈余"——即使这部分钱从未以股息形式到达伯克希尔。</p>
+                <p><strong>关键洞见：</strong></p>
+                <ul style="margin-left: 20px;">
+                    <li>如果只看伯克希尔收到的股息，会低估真实盈利能力</li>
+                    <li>可口可乐留存利润的投资回报也是伯克希尔的财富</li>
+                    <li>透视盈余反映了完整的经济图景</li>
+                </ul>
+            </div>
+            
+            <div class="case-study">
+                <h4>📌 案例2：美国运通的透视盈余</h4>
+                <p>与美国运通类似，伯克希尔持有美国运通大量股权。这部分股权带来的透视盈余，同样应该计入伯克希尔的真实盈利能力。</p>
+                <p>巴菲特在信中多次解释，即使这些公司不支付股息，它们的留存利润转化为公司价值增长，最终会反映在股价上涨中。</p>
+            </div>
+            
+            <div class="case-study">
+                <h4>📌 案例3：伯克希尔的透视盈余 vs GAAP净利润</h4>
+                <p>巴菲特经常在致股东信中同时展示两个数字，让股东了解"真实"业绩与"会计"业绩之间的差异。</p>
+                <p><strong>典型差异：</strong></p>
+                <ul style="margin-left: 20px;">
+                    <li>当被投资公司留存利润的回报率高于伯克希尔时，透视盈余 > GAAP净利润</li>
+                    <li>反之亦然</li>
+                    <li>长期来看，这个差异很重要</li>
+                </ul>
+            </div>
+            
+            <h2>四、常见误解</h2>
+            
+            <div class="warning">
+                <strong>误解1：没收到的股息就不是利润</strong>
+                <p>许多投资者只关注收到的股息，但留存利润同样是利润——只是还没有以股息形式发放。只要被投资公司能够将这些留存利润投资于高回报项目，它们对股东的价值贡献与股息是一样的。</p>
+            </div>
+            
+            <div class="warning">
+                <strong>误解2：透视盈余适用于所有公司</strong>
+                <p>透视盈余的概念主要适用于投资控股公司，如伯克希尔。对于普通运营公司，这个概念的意义不大。</p>
+            </div>
+            
+            <div class="warning">
+                <strong>误解3：透视盈余比GAAP净利润更"真实"</strong>
+                <p>两者都是合法的业绩衡量指标，只是侧重点不同。巴菲特同时使用两个数字，让投资者获得更完整的信息。</p>
+            </div>
+            
+            <h2>五、思想演变</h2>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">1980年代：概念萌芽</div>
+                    <p>巴菲特开始关注被投资公司留存利润的问题。他意识到，GAAP会计准则不能准确反映投资控股公司的真实业绩。</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">1991年：系统阐述</div>
+                    <p>巴菲特在1991年致股东信中首次系统阐述"透视盈余"概念，并开始在自己的报告中同时展示GAAP净利润和透视盈余。</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">1990年代至今：持续完善</div>
+                    <p>透视盈余成为巴菲特评估伯克希尔业绩的重要指标，并被广泛应用于对被投资公司价值贡献的评估中。</p>
+                </div>
+            </div>
+            
+            <h2>六、巴菲特原话精选</h2>
+            
+            <div class="quote">
+                <p>"透视盈余的概念很简单：我们持有大量股权但不控股的公司，其留存利润虽然没有出现在我们的会计报表中，但它们同样是我们财富的来源。这些留存利润最终会转化为我们持股公司的价值。"</p>
+                <div class="source">—— 1991 巴菲特致股东信</div>
+            </div>
+            
+            <div class="quote">
+                <p>"伯克希尔的透视盈余代表了公司真正的经济业绩，即使这个数字在会计准则中没有直接体现。对于投资者来说，理解这一点至关重要。"</p>
+                <div class="source">—— 1994 巴菲特致股东信</div>
+            </div>
+            
+            <div class="quote">
+                <p>"我们继续用透视盈余来评估我们的业绩，因为我们相信这能更准确地反映伯克希尔真实的盈利能力。"</p>
+                <div class="source">—— 2000 巴菲特致股东信</div>
+            </div>
+            
+            <h2>相关概念</h2>
+            <div class="related">
+                <a href="内在价值.html">内在价值</a>
+                <a href="账面价值.html">账面价值</a>
+                <a href="留存收益.html">留存收益</a>
+                <a href="商誉.html">商誉</a>
+                <a href="复利.html">复利</a>
+            </div>
+            
+            <h2>典型案例公司</h2>
+            <div class="related">
+                <a href="../companies/伯克希尔哈撒韦.html">伯克希尔哈撒韦</a>
+                <a href="../companies/可口可乐.html">可口可乐</a>
+                <a href="../companies/美国运通.html">美国运通</a>
+                <a href="../companies/苹果.html">苹果</a>
+            </div>
+            
+            <div class="back-links">
+                <h4>📎 链接到本页（38处）</h4>
+                <p style="color: var(--secondary);">1991 巴菲特致股东信（7次）、1994 巴菲特致股东信（8次）、2000 巴菲特致股东信（9次）、2010 巴菲特致股东信（6次）、2020 巴菲特致股东信（5次）等</p>
+            </div>
+        </article>
+        
+        <footer>
+            <p>📬 <a href="../index-pages/巴菲特致股东信总览.html">致股东信总览</a> | 
+            💡 <a href="../index-pages/核心思想索引.html">核心思想索引</a> | 
+            🏢 <a href="../index-pages/公司索引.html">公司索引</a></p>
+        </footer>
+    </div>
+</body>
+</html>

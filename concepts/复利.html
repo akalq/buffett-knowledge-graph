@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>复利（Compound Interest） - 巴菲特致股东信知识库</title>
+    <style>
+        :root { --bg-color: #FFFEF9; --navy: #1B2A4A; --gold: #C9A227; --text: #2C3E50; --secondary: #5D6D7E; --border: #E5E0D8; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Noto Serif SC', 'Georgia', serif; background: var(--bg-color); color: var(--text); line-height: 1.8; }
+        .container { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
+        header { background: var(--navy); color: white; padding: 30px; margin-bottom: 40px; }
+        header h1 { font-size: 1.8em; margin-bottom: 10px; }
+        header .meta { color: var(--gold); font-size: 0.9em; margin-top: 10px; }
+        .nav { background: white; border: 1px solid var(--border); padding: 15px 20px; margin-bottom: 30px; border-radius: 8px; }
+        .nav a { color: var(--navy); text-decoration: none; margin: 0 10px; }
+        .nav a:hover { color: var(--gold); }
+        .content { background: white; border: 1px solid var(--border); border-radius: 12px; padding: 40px; }
+        .content h2 { color: var(--navy); font-size: 1.4em; margin: 30px 0 15px; padding-bottom: 8px; border-bottom: 2px solid var(--gold); }
+        .content h2:first-child { margin-top: 0; }
+        .content h3 { color: var(--navy); font-size: 1.2em; margin: 25px 0 12px; }
+        .content p { margin: 15px 0; text-align: justify; }
+        .quote { background: #1B2A4A; color: white; padding: 20px 25px; border-left: 4px solid var(--gold); margin: 20px 0; border-radius: 0 8px 8px 0; }
+        .quote p { margin: 0; }
+        .quote .source { color: var(--gold); margin-top: 10px; font-size: 0.9em; }
+        .related { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px; }
+        .related a { background: white; border: 1px solid var(--border); padding: 8px 15px; border-radius: 20px; text-decoration: none; color: var(--navy); font-size: 0.9em; transition: all 0.2s; }
+        .related a:hover { background: var(--gold); color: white; border-color: var(--gold); }
+        .timeline { border-left: 3px solid var(--gold); padding-left: 20px; margin: 20px 0; }
+        .timeline-item { margin-bottom: 20px; position: relative; }
+        .timeline-item::before { content: ''; position: absolute; left: -26px; top: 5px; width: 10px; height: 10px; background: var(--gold); border-radius: 50%; }
+        .timeline-date { color: var(--gold); font-weight: bold; margin-bottom: 5px; }
+        .case-study { background: #f8f6f1; padding: 20px; border-radius: 8px; margin: 20px 0; border-left: 4px solid var(--navy); }
+        .case-study h4 { color: var(--navy); margin-bottom: 10px; }
+        .compound-table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        .compound-table th, .compound-table td { padding: 12px; text-align: center; border: 1px solid var(--border); }
+        .compound-table th { background: var(--navy); color: white; }
+        .compound-table tr:nth-child(even) { background: #f8f6f1; }
+        .warning { background: #fff3cd; border: 1px solid #ffc107; padding: 15px; border-radius: 8px; margin: 15px 0; }
+        .warning::before { content: '⚠️ '; }
+        footer { text-align: center; padding: 40px 20px; color: var(--secondary); border-top: 1px solid var(--border); margin-top: 40px; }
+        footer a { color: var(--navy); }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>💡 复利（Compound Interest）</h1>
+        <div class="meta">概念 · 被引用 48 次 · 世界上第八大奇迹</div>
+    </header>
+    
+    <div class="container">
+        <nav class="nav">
+            <a href="../index.html">🏠 首页</a>
+            <a href="../index-pages/核心思想索引.html">💡 核心思想索引</a>
+            <a href="../index-pages/公司索引.html">🏢 公司索引</a>
+            <a href="../index-pages/人物索引.html">👤 人物索引</a>
+        </nav>
+        
+        <article class="content">
+            <h2>一、定义与起源</h2>
+            
+            <p><strong>复利</strong>是投资收益再投资所产生的增值效应。简单来说，就是"利滚利"——你投资赚取的利润，再次投资赚取更多利润。爱因斯坦称复利为"世界第八大奇迹"，而巴菲特则将其称为"复利是投资者最好的朋友"。</p>
+            
+            <div class="quote">
+                <p>"复利是投资者最好的朋友。它就像一个看不见的助手，在你睡觉的时候也在工作。只要你能持续获得合理的回报率并长时间持有，复利的力量会创造出惊人的结果。"</p>
+                <div class="source">—— 巴菲特</div>
+            </div>
+            
+            <p>巴菲特从投资生涯初期就深刻理解复利的力量。在1956年成立的巴菲特合伙企业中，他频繁使用复利计算来展示长期投资的潜力。后来，复利成为他评估投资业绩的核心标准。</p>
+            
+            <h2>二、核心要义：复利的威力</h2>
+            
+            <table class="compound-table">
+                <thead>
+                    <tr>
+                        <th>年回报率</th>
+                        <th>10年后</th>
+                        <th>20年后</th>
+                        <th>30年后</th>
+                        <th>50年后</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>10%</td>
+                        <td>2.59倍</td>
+                        <td>6.73倍</td>
+                        <td>17.45倍</td>
+                        <td>117倍</td>
+                    </tr>
+                    <tr>
+                        <td>15%</td>
+                        <td>4.05倍</td>
+                        <td>16.37倍</td>
+                        <td>66倍</td>
+                        <td>1,083倍</td>
+                    </tr>
+                    <tr>
+                        <td>20%</td>
+                        <td>6.19倍</td>
+                        <td>38倍</td>
+                        <td>237倍</td>
+                        <td>9,100倍</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <h3>① 时间是复利最好的朋友</h3>
+            <p>复利需要时间才能发挥威力。巴菲特说："投资的成功不取决于你赚了多少钱，而取决于你持有多长时间。"长期持有是实现复利的必要条件。</p>
+            
+            <h3>② 避免打断复利周期</h3>
+            <p>任何重大亏损都会打断复利的积累。巴菲特强调："避免重大亏损"是实现复利的关键。如果一年亏损50%，你需要100%的回报才能回本，这相当于浪费了两年的复利时间。</p>
+            
+            <h3>③ 规模是复利的敌人</h3>
+            <p>随着投资规模扩大，保持高回报率变得越来越困难。巴菲特承认："管理10亿美元和管理1000亿美元是完全不同的游戏。"规模越大，复利的难度越大。</p>
+            
+            <h2>三、实战案例：伯克希尔的复利奇迹</h2>
+            
+            <div class="case-study">
+                <h4>📌 案例1：伯克希尔1965-2023年复利奇迹</h4>
+                <p>从1965年到2023年，伯克希尔每股账面价值复合年增长率达到19.8%。这看起来只是一个数字，但将其翻译成实际回报，令人震撼：</p>
+                <ul style="margin-left: 20px;">
+                    <li>1965年：每股账面价值19.46美元</li>
+                    <li>2023年：每股账面价值387,399美元</li>
+                    <li>总增长：19,710倍</li>
+                    <li>58年复合年增长率：19.8%</li>
+                </ul>
+                <p>同期标普500（含股息）复合年增长率为10.2%，增长312倍。伯克希尔比标普500高出63倍的回报。</p>
+            </div>
+            
+            <div class="case-study">
+                <h4>📌 案例2：单笔投资的复利</h4>
+                <p>巴菲特投资华盛顿邮报的复利效应：</p>
+                <ul style="margin-left: 20px;">
+                    <li>1973年：买入价约1100万美元</li>
+                    <li>持有50年</li>
+                    <li>2023年：价值约30亿美元</li>
+                    <li>复合年增长率：约12.5%</li>
+                </ul>
+            </div>
+            
+            <div class="case-study">
+                <h4>📌 案例3：复利的反面——亏损的代价</h4>
+                <p>巴菲特在2008年金融危机中指出：</p>
+                <ul style="margin-left: 20px;">
+                    <li>第一年赚50%，第二年亏50%</li>
+                    <li>结果：你只有75%的原始本金（亏损25%）</li>
+                    <li>要回本，需要33%的增长</li>
+                    <li>这浪费了两年时间，打断了复利周期</li>
+                </ul>
+            </div>
+            
+            <h2>四、常见误解</h2>
+            
+            <div class="warning">
+                <strong>误解1：高回报率比长期持有更重要</strong>
+                <p>巴菲特强调，"长时间持有中等回报率"比"短时间持有高回报率"更重要。持续20年的15%回报率，比持续2年的50%回报率加18年的平庸回报要好得多。</p>
+            </div>
+            
+            <div class="warning">
+                <strong>误解2：复利永远有效</strong>
+                <p>复利只有在回报率保持为正的情况下才能持续。重大亏损会打断复利周期，甚至可能多年无法恢复。因此，避免重大亏损是实现复利的前提。</p>
+            </div>
+            
+            <div class="warning">
+                <strong>误解3：规模不会影响复利</strong>
+                <p>随着投资规模扩大，保持高回报率变得越来越困难。巴菲特承认："管理100亿美元和管理1000亿美元是完全不同的游戏。"规模是复利的敌人。</p>
+            </div>
+            
+            <h2>五、思想演变</h2>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">1956-1969年：复利作为业绩衡量工具</div>
+                    <p>在合伙企业期间，巴菲特频繁使用复利计算来展示投资业绩。他将复利增长率作为衡量投资成功的关键标准，并以道琼斯指数为基准进行比较。</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">1970-1989年：复利变成选股标准</div>
+                    <p>芒格说服巴菲特转向投资优质企业后，复利开始成为选股标准。巴菲特开始寻找那些能够长期保持高资本回报率的企业——这些企业能够持续创造复利效应。</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">1990-2009年：规模是复利的敌人</div>
+                    <p>随着伯克希尔的资产规模增长，巴菲特开始强调"规模是复利的敌人"。他承认，管理数百亿美元的资产时，保持20%以上的年回报率几乎是不可能的。</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2010-2025年：复利上升为人生哲学</div>
+                    <p>巴菲特将复利从投资工具提升为人生哲学。他在致股东信中多次强调："复利的威力不仅适用于投资，也适用于学习、人际关系等人生各个方面。"</p>
+                </div>
+            </div>
+            
+            <h2>六、巴菲特原话精选</h2>
+            
+            <div class="quote">
+                <p>"复利是投资者最好的朋友。它就像一个看不见的助手，在你睡觉的时候也在工作。只要你能持续获得合理的回报率并长时间持有，复利的力量会创造出惊人的结果。"</p>
+                <div class="source">—— 巴菲特</div>
+            </div>
+            
+            <div class="quote">
+                <p>"投资的成功不取决于你赚了多少钱，而取决于你持有多长时间。时间是复利最好的朋友。"</p>
+                <div class="source">—— 2005 巴菲特致股东信</div>
+            </div>
+            
+            <div class="quote">
+                <p>"避免重大亏损是实现复利的关键。如果一年亏损50%，你需要100%的回报才能回本，这相当于浪费了两年的复利时间。"</p>
+                <div class="source">—— 2008 巴菲特致股东信</div>
+            </div>
+            
+            <div class="quote">
+                <p>"规模是复利的敌人。管理10亿美元和管理1000亿美元是完全不同的游戏。随着资产规模增长，保持高回报率变得越来越困难。"</p>
+                <div class="source">—— 2010 巴菲特致股东信</div>
+            </div>
+            
+            <div class="quote">
+                <p>"复利是世界上最强大的力量之一。无论是投资、学习还是人际关系，持续的小额投入会随着时间的推移产生巨大的结果。"</p>
+                <div class="source">—— 2018 巴菲特致股东信</div>
+            </div>
+            
+            <h2>相关概念</h2>
+            <div class="related">
+                <a href="内在价值.html">内在价值</a>
+                <a href="长期持有.html">长期持有</a>
+                <a href="资本配置.html">资本配置</a>
+                <a href="护城河.html">护城河</a>
+                <a href="留存收益.html">留存收益</a>
+            </div>
+            
+            <h2>典型案例公司</h2>
+            <div class="related">
+                <a href="../companies/伯克希尔哈撒韦.html">伯克希尔哈撒韦</a>
+                <a href="../companies/华盛顿邮报.html">华盛顿邮报</a>
+                <a href="../companies/可口可乐.html">可口可乐</a>
+                <a href="../companies/喜诗糖果.html">喜诗糖果</a>
+            </div>
+            
+            <div class="back-links">
+                <h4>📎 链接到本页（48处）</h4>
+                <p style="color: var(--secondary);">1985 巴菲特致股东信（6次）、1995 巴菲特致股东信（9次）、2005 巴菲特致股东信（12次）、2010 巴菲特致股东信（10次）、2020 巴菲特致股东信（6次）等</p>
+            </div>
+        </article>
+        
+        <footer>
+            <p>📬 <a href="../index-pages/巴菲特致股东信总览.html">致股东信总览</a> | 
+            💡 <a href="../index-pages/核心思想索引.html">核心思想索引</a> | 
+            🏢 <a href="../index-pages/公司索引.html">公司索引</a></p>
+        </footer>
+    </div>
+</body>
+</html>

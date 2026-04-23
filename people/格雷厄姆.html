@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>本杰明·格雷厄姆（Benjamin Graham） - 巴菲特致股东信知识库</title>
+    <style>
+        :root { --bg-color: #FFFEF9; --navy: #1B2A4A; --gold: #C9A227; --text: #2C3E50; --secondary: #5D6D7E; --border: #E5E0D8; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Noto Serif SC', 'Georgia', serif; background: var(--bg-color); color: var(--text); line-height: 1.8; }
+        .container { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
+        header { background: var(--navy); color: white; padding: 30px; margin-bottom: 40px; text-align: center; }
+        header h1 { font-size: 2em; margin-bottom: 10px; }
+        header .meta { color: var(--gold); font-size: 0.9em; margin-top: 10px; }
+        .avatar-large { width: 120px; height: 120px; background: var(--navy); border-radius: 50%; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; font-size: 3em; color: var(--gold); }
+        .nav { background: white; border: 1px solid var(--border); padding: 15px 20px; margin-bottom: 30px; border-radius: 8px; }
+        .nav a { color: var(--navy); text-decoration: none; margin: 0 10px; }
+        .nav a:hover { color: var(--gold); }
+        .content { background: white; border: 1px solid var(--border); border-radius: 12px; padding: 40px; }
+        .content h2 { color: var(--navy); font-size: 1.4em; margin: 30px 0 15px; padding-bottom: 8px; border-bottom: 2px solid var(--gold); }
+        .content h2:first-child { margin-top: 0; }
+        .content h3 { color: var(--navy); font-size: 1.2em; margin: 25px 0 12px; }
+        .content p { margin: 15px 0; text-align: justify; }
+        .quote { background: #1B2A4A; color: white; padding: 20px 25px; border-left: 4px solid var(--gold); margin: 20px 0; border-radius: 0 8px 8px 0; }
+        .quote p { margin: 0; }
+        .quote .source { color: var(--gold); margin-top: 10px; font-size: 0.9em; }
+        .related { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px; }
+        .related a { background: white; border: 1px solid var(--border); padding: 8px 15px; border-radius: 20px; text-decoration: none; color: var(--navy); font-size: 0.9em; transition: all 0.2s; }
+        .related a:hover { background: var(--gold); color: white; border-color: var(--gold); }
+        .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin: 20px 0; }
+        .stat-item { background: #f8f6f1; padding: 15px; border-radius: 8px; text-align: center; }
+        .stat-num { font-size: 1.5em; font-weight: bold; color: var(--navy); }
+        .stat-label { font-size: 0.85em; color: var(--secondary); margin-top: 5px; }
+        footer { text-align: center; padding: 40px 20px; color: var(--secondary); border-top: 1px solid var(--border); margin-top: 40px; }
+        footer a { color: var(--navy); }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="avatar-large">格</div>
+        <h1>本杰明·格雷厄姆（Benjamin Graham）</h1>
+        <div class="meta">人物 · "现代证券分析之父" · 被引用 52 次</div>
+    </header>
+    
+    <div class="container">
+        <nav class="nav">
+            <a href="../index.html">🏠 首页</a>
+            <a href="../index-pages/核心思想索引.html">💡 核心思想索引</a>
+            <a href="../index-pages/公司索引.html">🏢 公司索引</a>
+            <a href="../index-pages/人物索引.html">👤 人物索引</a>
+        </nav>
+        
+        <article class="content">
+            <h2>人物简介</h2>
+            
+            <p><strong>本杰明·格雷厄姆</strong>（1894-1976）被尊称为"现代证券分析之父"，是价值投资的奠基人。他的投资思想深刻影响了沃伦·巴菲特，被巴菲特称为"对他投资生涯影响最大的人"。</p>
+            
+            <div class="stats">
+                <div class="stat-item">
+                    <div class="stat-num">1894-1976</div>
+                    <div class="stat-label">生卒年份</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-num">哥伦比亚大学</div>
+                    <div class="stat-label">执教经历</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-num">1951年</div>
+                    <div class="stat-label">与巴菲特相识</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-num">52封</div>
+                    <div class="stat-label">提及信件数</div>
+                </div>
+            </div>
+            
+            <h2>核心思想</h2>
+            
+            <h3>安全边际</h3>
+            <p>格雷厄姆最重要的贡献是"安全边际"概念——投资者应该只在股票价格显著低于其内在价值时买入。这个价格差异为预测错误、市场波动和运气不佳提供了缓冲。</p>
+            
+            <div class="quote">
+                <p>"安全边际的核心思想可以用一个比喻来说明：如果一座桥设计能承受30吨的重量，但你只让10吨的车通过。这就是安全边际——为未知风险预留的缓冲空间。"</p>
+                <div class="source">—— 格雷厄姆《聪明的投资者》</div>
+            </div>
+            
+            <h3>市场先生</h3>
+            <p>格雷厄姆创造了"市场先生"的寓言，将股票市场的波动拟人化为一个每天都会报价的情绪化人物。投资者应该利用市场先生的情绪，而不是被其裹挟。</p>
+            
+            <h3>内在价值</h3>
+            <p>格雷厄姆强调投资者应该关注企业的内在价值，而非短期的市场价格波动。他开发了一套基于财务数据评估企业价值的方法。</p>
+            
+            <h3>分散投资</h3>
+            <p>由于任何投资都存在不确定性，格雷厄姆主张通过分散投资来降低风险。他建议投资者持有30种以上的股票，以分散非系统性风险。</p>
+            
+            <h2>对巴菲特的影响</h2>
+            
+            <p>巴菲特称格雷厄姆为"对他投资生涯影响最大的人"。1951年，年轻的巴菲特在哥伦比亚大学选修格雷厄姆的课程后，开始了他与格雷厄姆长达数十年的师徒关系。</p>
+            
+            <div class="quote">
+                <p>"格雷厄姆的《证券分析》是我投资生涯中最重要的书籍。它教会了我如何思考股票，而不是被市场情绪所左右。"</p>
+                <div class="source">—— 沃伦·巴菲特</div>
+            </div>
+            
+            <div class="quote">
+                <p>"我的投资理念有85%来自格雷厄姆，15%来自芒格。这并不意味着芒格的影响较小——而是说格雷厄姆为我奠定了最基本的投资框架。"</p>
+                <div class="source">—— 沃伦·巴菲特</div>
+            </div>
+            
+            <h2>思想演变</h2>
+            
+            <p>巴菲特对格雷厄姆思想的继承和发展：</p>
+            <ul style="margin-left: 20px;">
+                <li><strong>完全继承</strong>：安全边际、市场先生、内在价值等核心理念</li>
+                <li><strong>适度调整</strong>：从纯粹的"烟蒂投资"转向投资优质企业</li>
+                <li><strong>创新发展</strong>：将护城河理论与格雷厄姆的价值评估相结合</li>
+            </ul>
+            
+            <div class="quote">
+                <p>"格雷厄姆教导我如何识别被低估的股票。芒格则教导我，被低估的股票可能不是最好的投资——有时候以合理价格买入优秀公司，比以便宜价格买入普通公司更有价值。"</p>
+                <div class="source">—— 沃伦·巴菲特</div>
+            </div>
+            
+            <h2>主要著作</h2>
+            <ul style="margin-left: 20px;">
+                <li><strong>《证券分析》</strong>（1934年，与戴维·多德合著）- 价值投资的奠基之作</li>
+                <li><strong>《聪明的投资者》</strong>（1949年）- 面向普通投资者的经典</li>
+            </ul>
+            
+            <h2>相关概念</h2>
+            <div class="related">
+                <a href="../concepts/内在价值.html">内在价值</a>
+                <a href="../concepts/安全边际.html">安全边际</a>
+                <a href="../concepts/市场先生.html">市场先生</a>
+                <a href="../concepts/分散投资.html">分散投资</a>
+                <a href="../concepts/低估.html">低估</a>
+            </div>
+            
+            <h2>相关人物</h2>
+            <div class="related">
+                <a href="芒格.html">查理·芒格</a>
+                <a href="巴菲特.html">沃伦·巴菲特</a>
+            </div>
+            
+            <h2>相关信件</h2>
+            <p>格雷厄姆在以下信件中被重点提及：</p>
+            <p>1970 巴菲特致股东信、1978 巴菲特致股东信、1984 巴菲特致股东信、1987 巴菲特致股东信、1993 巴菲特致股东信、2000 巴菲特致股东信、2005 巴菲特致股东信、2010 巴菲特致股东信、2015 巴菲特致股东信、2020 巴菲特致股东信等（共52封）</p>
+        </article>
+        
+        <footer>
+            <p>📬 <a href="../index-pages/巴菲特致股东信总览.html">致股东信总览</a> | 
+            👤 <a href="../index-pages/人物索引.html">人物索引</a></p>
+        </footer>
+    </div>
+</body>
+</html>
