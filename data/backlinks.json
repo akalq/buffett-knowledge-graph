@@ -1,0 +1,3678 @@
+{
+  "concepts": {
+    "concepts/保险业": [
+      {
+        "source": "letters/berkshire/1977",
+        "year": 1977
+      },
+      {
+        "source": "letters/berkshire/1978",
+        "year": 1978
+      },
+      {
+        "source": "letters/berkshire/1979",
+        "year": 1979
+      },
+      {
+        "source": "letters/berkshire/1980",
+        "year": 1980
+      },
+      {
+        "source": "letters/berkshire/1981",
+        "year": 1981
+      },
+      {
+        "source": "letters/berkshire/1982",
+        "year": 1982
+      },
+      {
+        "source": "letters/berkshire/1983",
+        "year": 1983
+      },
+      {
+        "source": "letters/berkshire/1984",
+        "year": 1984
+      },
+      {
+        "source": "letters/berkshire/1985",
+        "year": 1985
+      },
+      {
+        "source": "letters/berkshire/1986",
+        "year": 1986
+      },
+      {
+        "source": "letters/berkshire/1987",
+        "year": 1987
+      },
+      {
+        "source": "letters/berkshire/1988",
+        "year": 1988
+      },
+      {
+        "source": "letters/berkshire/1989",
+        "year": 1989
+      },
+      {
+        "source": "letters/berkshire/1990",
+        "year": 1990
+      },
+      {
+        "source": "letters/berkshire/1992",
+        "year": 1992
+      },
+      {
+        "source": "letters/berkshire/1993",
+        "year": 1993
+      },
+      {
+        "source": "letters/berkshire/1994",
+        "year": 1994
+      },
+      {
+        "source": "letters/berkshire/1995",
+        "year": 1995
+      },
+      {
+        "source": "letters/berkshire/1996",
+        "year": 1996
+      },
+      {
+        "source": "letters/berkshire/1997",
+        "year": 1997
+      },
+      {
+        "source": "letters/berkshire/1998",
+        "year": 1998
+      },
+      {
+        "source": "letters/berkshire/1999",
+        "year": 1999
+      },
+      {
+        "source": "letters/berkshire/2000",
+        "year": 2000
+      },
+      {
+        "source": "letters/berkshire/2001",
+        "year": 2001
+      },
+      {
+        "source": "letters/berkshire/2002",
+        "year": 2002
+      },
+      {
+        "source": "letters/berkshire/2003",
+        "year": 2003
+      },
+      {
+        "source": "letters/berkshire/2004",
+        "year": 2004
+      },
+      {
+        "source": "letters/berkshire/2005",
+        "year": 2005
+      },
+      {
+        "source": "letters/berkshire/2006",
+        "year": 2006
+      },
+      {
+        "source": "letters/berkshire/2007",
+        "year": 2007
+      }
+    ],
+    "concepts/复利": [
+      {
+        "source": "letters/berkshire/1977",
+        "year": 1977
+      },
+      {
+        "source": "letters/berkshire/1978",
+        "year": 1978
+      },
+      {
+        "source": "letters/berkshire/1985",
+        "year": 1985
+      },
+      {
+        "source": "letters/berkshire/1988",
+        "year": 1988
+      },
+      {
+        "source": "letters/berkshire/1989",
+        "year": 1989
+      },
+      {
+        "source": "letters/berkshire/1996",
+        "year": 1996
+      },
+      {
+        "source": "letters/berkshire/1999",
+        "year": 1999
+      },
+      {
+        "source": "letters/berkshire/2000",
+        "year": 2000
+      },
+      {
+        "source": "letters/berkshire/2005",
+        "year": 2005
+      },
+      {
+        "source": "letters/berkshire/2006",
+        "year": 2006
+      }
+    ],
+    "concepts/市值": [
+      {
+        "source": "letters/berkshire/1977",
+        "year": 1977
+      },
+      {
+        "source": "letters/berkshire/1978",
+        "year": 1978
+      },
+      {
+        "source": "letters/berkshire/1979",
+        "year": 1979
+      },
+      {
+        "source": "letters/berkshire/1980",
+        "year": 1980
+      },
+      {
+        "source": "letters/berkshire/1981",
+        "year": 1981
+      },
+      {
+        "source": "letters/berkshire/1982",
+        "year": 1982
+      },
+      {
+        "source": "letters/berkshire/1983",
+        "year": 1983
+      },
+      {
+        "source": "letters/berkshire/1984",
+        "year": 1984
+      },
+      {
+        "source": "letters/berkshire/1985",
+        "year": 1985
+      },
+      {
+        "source": "letters/berkshire/1986",
+        "year": 1986
+      },
+      {
+        "source": "letters/berkshire/1987",
+        "year": 1987
+      },
+      {
+        "source": "letters/berkshire/1988",
+        "year": 1988
+      },
+      {
+        "source": "letters/berkshire/1989",
+        "year": 1989
+      },
+      {
+        "source": "letters/berkshire/1990",
+        "year": 1990
+      },
+      {
+        "source": "letters/berkshire/1991",
+        "year": 1991
+      },
+      {
+        "source": "letters/berkshire/1993",
+        "year": 1993
+      },
+      {
+        "source": "letters/berkshire/1995",
+        "year": 1995
+      },
+      {
+        "source": "letters/berkshire/1997",
+        "year": 1997
+      },
+      {
+        "source": "letters/berkshire/1998",
+        "year": 1998
+      },
+      {
+        "source": "letters/berkshire/1999",
+        "year": 1999
+      },
+      {
+        "source": "letters/berkshire/2000",
+        "year": 2000
+      },
+      {
+        "source": "letters/berkshire/2003",
+        "year": 2003
+      },
+      {
+        "source": "letters/berkshire/2005",
+        "year": 2005
+      },
+      {
+        "source": "letters/berkshire/2006",
+        "year": 2006
+      },
+      {
+        "source": "letters/berkshire/2007",
+        "year": 2007
+      }
+    ],
+    "concepts/股东权益报酬率": [
+      {
+        "source": "letters/berkshire/1977",
+        "year": 1977
+      },
+      {
+        "source": "letters/berkshire/1978",
+        "year": 1978
+      },
+      {
+        "source": "letters/berkshire/1979",
+        "year": 1979
+      },
+      {
+        "source": "letters/berkshire/1980",
+        "year": 1980
+      },
+      {
+        "source": "letters/berkshire/1981",
+        "year": 1981
+      },
+      {
+        "source": "letters/berkshire/1982",
+        "year": 1982
+      },
+      {
+        "source": "letters/berkshire/1983",
+        "year": 1983
+      },
+      {
+        "source": "letters/berkshire/1984",
+        "year": 1984
+      },
+      {
+        "source": "letters/berkshire/1987",
+        "year": 1987
+      },
+      {
+        "source": "letters/berkshire/1988",
+        "year": 1988
+      },
+      {
+        "source": "letters/berkshire/1990",
+        "year": 1990
+      },
+      {
+        "source": "letters/berkshire/1994",
+        "year": 1994
+      },
+      {
+        "source": "letters/berkshire/1997",
+        "year": 1997
+      },
+      {
+        "source": "letters/berkshire/2004",
+        "year": 2004
+      }
+    ],
+    "concepts/通货膨胀": [
+      {
+        "source": "letters/berkshire/1977",
+        "year": 1977
+      },
+      {
+        "source": "letters/berkshire/1978",
+        "year": 1978
+      },
+      {
+        "source": "letters/berkshire/1979",
+        "year": 1979
+      },
+      {
+        "source": "letters/berkshire/1981",
+        "year": 1981
+      },
+      {
+        "source": "letters/berkshire/1983",
+        "year": 1983
+      },
+      {
+        "source": "letters/berkshire/1984",
+        "year": 1984
+      },
+      {
+        "source": "letters/berkshire/1985",
+        "year": 1985
+      },
+      {
+        "source": "letters/berkshire/1986",
+        "year": 1986
+      },
+      {
+        "source": "letters/berkshire/1987",
+        "year": 1987
+      },
+      {
+        "source": "letters/berkshire/1988",
+        "year": 1988
+      },
+      {
+        "source": "letters/berkshire/1989",
+        "year": 1989
+      },
+      {
+        "source": "letters/berkshire/1990",
+        "year": 1990
+      },
+      {
+        "source": "letters/berkshire/1993",
+        "year": 1993
+      },
+      {
+        "source": "letters/berkshire/1995",
+        "year": 1995
+      },
+      {
+        "source": "letters/berkshire/2007",
+        "year": 2007
+      }
+    ],
+    "concepts/长期持有": [
+      {
+        "source": "letters/berkshire/1978",
+        "year": 1978
+      },
+      {
+        "source": "letters/berkshire/1980",
+        "year": 1980
+      },
+      {
+        "source": "letters/berkshire/1983",
+        "year": 1983
+      },
+      {
+        "source": "letters/berkshire/1984",
+        "year": 1984
+      },
+      {
+        "source": "letters/berkshire/1985",
+        "year": 1985
+      },
+      {
+        "source": "letters/berkshire/1987",
+        "year": 1987
+      },
+      {
+        "source": "letters/berkshire/1988",
+        "year": 1988
+      },
+      {
+        "source": "letters/berkshire/1989",
+        "year": 1989
+      },
+      {
+        "source": "letters/berkshire/1990",
+        "year": 1990
+      },
+      {
+        "source": "letters/berkshire/1992",
+        "year": 1992
+      },
+      {
+        "source": "letters/berkshire/1993",
+        "year": 1993
+      },
+      {
+        "source": "letters/berkshire/1994",
+        "year": 1994
+      },
+      {
+        "source": "letters/berkshire/1995",
+        "year": 1995
+      },
+      {
+        "source": "letters/berkshire/2000",
+        "year": 2000
+      },
+      {
+        "source": "letters/berkshire/2006",
+        "year": 2006
+      }
+    ],
+    "concepts/控股公司": [
+      {
+        "source": "letters/berkshire/1979",
+        "year": 1979
+      },
+      {
+        "source": "letters/berkshire/1980",
+        "year": 1980
+      },
+      {
+        "source": "letters/berkshire/1985",
+        "year": 1985
+      },
+      {
+        "source": "letters/berkshire/1987",
+        "year": 1987
+      },
+      {
+        "source": "letters/berkshire/1995",
+        "year": 1995
+      },
+      {
+        "source": "letters/berkshire/1997",
+        "year": 1997
+      },
+      {
+        "source": "letters/berkshire/1998",
+        "year": 1998
+      },
+      {
+        "source": "letters/berkshire/1999",
+        "year": 1999
+      },
+      {
+        "source": "letters/berkshire/2002",
+        "year": 2002
+      },
+      {
+        "source": "letters/berkshire/2003",
+        "year": 2003
+      },
+      {
+        "source": "letters/berkshire/2004",
+        "year": 2004
+      },
+      {
+        "source": "letters/berkshire/2005",
+        "year": 2005
+      },
+      {
+        "source": "letters/berkshire/2006",
+        "year": 2006
+      },
+      {
+        "source": "letters/berkshire/2007",
+        "year": 2007
+      }
+    ],
+    "concepts/现金流": [
+      {
+        "source": "letters/berkshire/1979",
+        "year": 1979
+      },
+      {
+        "source": "letters/berkshire/1983",
+        "year": 1983
+      },
+      {
+        "source": "letters/berkshire/1989",
+        "year": 1989
+      },
+      {
+        "source": "letters/berkshire/1992",
+        "year": 1992
+      },
+      {
+        "source": "letters/berkshire/1993",
+        "year": 1993
+      },
+      {
+        "source": "letters/berkshire/1994",
+        "year": 1994
+      },
+      {
+        "source": "letters/berkshire/1995",
+        "year": 1995
+      },
+      {
+        "source": "letters/berkshire/1999",
+        "year": 1999
+      },
+      {
+        "source": "letters/berkshire/2000",
+        "year": 2000
+      },
+      {
+        "source": "letters/berkshire/2005",
+        "year": 2005
+      },
+      {
+        "source": "letters/berkshire/2006",
+        "year": 2006
+      }
+    ],
+    "concepts/竞争优势": [
+      {
+        "source": "letters/berkshire/1980",
+        "year": 1980
+      },
+      {
+        "source": "letters/berkshire/1983",
+        "year": 1983
+      },
+      {
+        "source": "letters/berkshire/1984",
+        "year": 1984
+      },
+      {
+        "source": "letters/berkshire/1985",
+        "year": 1985
+      },
+      {
+        "source": "letters/berkshire/1986",
+        "year": 1986
+      },
+      {
+        "source": "letters/berkshire/1990",
+        "year": 1990
+      },
+      {
+        "source": "letters/berkshire/1993",
+        "year": 1993
+      },
+      {
+        "source": "letters/berkshire/1994",
+        "year": 1994
+      },
+      {
+        "source": "letters/berkshire/1995",
+        "year": 1995
+      },
+      {
+        "source": "letters/berkshire/1997",
+        "year": 1997
+      },
+      {
+        "source": "letters/berkshire/1998",
+        "year": 1998
+      },
+      {
+        "source": "letters/berkshire/1999",
+        "year": 1999
+      },
+      {
+        "source": "letters/berkshire/2000",
+        "year": 2000
+      },
+      {
+        "source": "letters/berkshire/2001",
+        "year": 2001
+      },
+      {
+        "source": "letters/berkshire/2002",
+        "year": 2002
+      },
+      {
+        "source": "letters/berkshire/2003",
+        "year": 2003
+      },
+      {
+        "source": "letters/berkshire/2004",
+        "year": 2004
+      },
+      {
+        "source": "letters/berkshire/2007",
+        "year": 2007
+      }
+    ],
+    "concepts/可转债": [
+      {
+        "source": "letters/berkshire/1982",
+        "year": 1982
+      }
+    ],
+    "concepts/经济商誉": [
+      {
+        "source": "letters/berkshire/1983",
+        "year": 1983
+      },
+      {
+        "source": "letters/berkshire/1984",
+        "year": 1984
+      },
+      {
+        "source": "letters/berkshire/1995",
+        "year": 1995
+      }
+    ],
+    "concepts/内在价值": [
+      {
+        "source": "letters/berkshire/1984",
+        "year": 1984
+      },
+      {
+        "source": "letters/berkshire/1985",
+        "year": 1985
+      },
+      {
+        "source": "letters/berkshire/1986",
+        "year": 1986
+      },
+      {
+        "source": "letters/berkshire/1987",
+        "year": 1987
+      },
+      {
+        "source": "letters/berkshire/1990",
+        "year": 1990
+      },
+      {
+        "source": "letters/berkshire/1995",
+        "year": 1995
+      },
+      {
+        "source": "letters/berkshire/1996",
+        "year": 1996
+      },
+      {
+        "source": "letters/berkshire/1999",
+        "year": 1999
+      },
+      {
+        "source": "letters/berkshire/2000",
+        "year": 2000
+      },
+      {
+        "source": "letters/berkshire/2005",
+        "year": 2005
+      },
+      {
+        "source": "letters/berkshire/2006",
+        "year": 2006
+      },
+      {
+        "source": "letters/berkshire/2007",
+        "year": 2007
+      }
+    ],
+    "concepts/分散投资": [
+      {
+        "source": "letters/berkshire/1984",
+        "year": 1984
+      },
+      {
+        "source": "letters/berkshire/1996",
+        "year": 1996
+      },
+      {
+        "source": "letters/berkshire/1999",
+        "year": 1999
+      }
+    ],
+    "concepts/并购": [
+      {
+        "source": "letters/berkshire/1984",
+        "year": 1984
+      },
+      {
+        "source": "letters/berkshire/1985",
+        "year": 1985
+      },
+      {
+        "source": "letters/berkshire/1986",
+        "year": 1986
+      },
+      {
+        "source": "letters/berkshire/1995",
+        "year": 1995
+      },
+      {
+        "source": "letters/berkshire/1996",
+        "year": 1996
+      },
+      {
+        "source": "letters/berkshire/1997",
+        "year": 1997
+      },
+      {
+        "source": "letters/berkshire/1999",
+        "year": 1999
+      },
+      {
+        "source": "letters/berkshire/2000",
+        "year": 2000
+      },
+      {
+        "source": "letters/berkshire/2005",
+        "year": 2005
+      },
+      {
+        "source": "letters/berkshire/2007",
+        "year": 2007
+      }
+    ],
+    "concepts/股票回购": [
+      {
+        "source": "letters/berkshire/1984",
+        "year": 1984
+      },
+      {
+        "source": "letters/berkshire/1995",
+        "year": 1995
+      },
+      {
+        "source": "letters/berkshire/1996",
+        "year": 1996
+      },
+      {
+        "source": "letters/berkshire/1999",
+        "year": 1999
+      },
+      {
+        "source": "letters/berkshire/2006",
+        "year": 2006
+      }
+    ],
+    "concepts/账面价值": [
+      {
+        "source": "letters/berkshire/1984",
+        "year": 1984
+      },
+      {
+        "source": "letters/berkshire/1985",
+        "year": 1985
+      },
+      {
+        "source": "letters/berkshire/1986",
+        "year": 1986
+      },
+      {
+        "source": "letters/berkshire/1987",
+        "year": 1987
+      },
+      {
+        "source": "letters/berkshire/1988",
+        "year": 1988
+      },
+      {
+        "source": "letters/berkshire/1989",
+        "year": 1989
+      },
+      {
+        "source": "letters/berkshire/1990",
+        "year": 1990
+      },
+      {
+        "source": "letters/berkshire/1991",
+        "year": 1991
+      },
+      {
+        "source": "letters/berkshire/1992",
+        "year": 1992
+      },
+      {
+        "source": "letters/berkshire/1994",
+        "year": 1994
+      },
+      {
+        "source": "letters/berkshire/1995",
+        "year": 1995
+      },
+      {
+        "source": "letters/berkshire/1996",
+        "year": 1996
+      },
+      {
+        "source": "letters/berkshire/1997",
+        "year": 1997
+      },
+      {
+        "source": "letters/berkshire/1999",
+        "year": 1999
+      },
+      {
+        "source": "letters/berkshire/2000",
+        "year": 2000
+      },
+      {
+        "source": "letters/berkshire/2002",
+        "year": 2002
+      },
+      {
+        "source": "letters/berkshire/2005",
+        "year": 2005
+      },
+      {
+        "source": "letters/berkshire/2007",
+        "year": 2007
+      }
+    ],
+    "concepts/集中投资": [
+      {
+        "source": "letters/berkshire/1984",
+        "year": 1984
+      },
+      {
+        "source": "letters/berkshire/1996",
+        "year": 1996
+      },
+      {
+        "source": "letters/berkshire/1999",
+        "year": 1999
+      }
+    ],
+    "concepts/期权": [
+      {
+        "source": "letters/berkshire/1985",
+        "year": 1985
+      },
+      {
+        "source": "letters/berkshire/1995",
+        "year": 1995
+      },
+      {
+        "source": "letters/berkshire/1999",
+        "year": 1999
+      },
+      {
+        "source": "letters/berkshire/2000",
+        "year": 2000
+      },
+      {
+        "source": "letters/berkshire/2002",
+        "year": 2002
+      },
+      {
+        "source": "letters/berkshire/2005",
+        "year": 2005
+      },
+      {
+        "source": "letters/berkshire/2007",
+        "year": 2007
+      }
+    ],
+    "concepts/EPS": [
+      {
+        "source": "letters/berkshire/1986",
+        "year": 1986
+      },
+      {
+        "source": "letters/berkshire/1987",
+        "year": 1987
+      },
+      {
+        "source": "letters/berkshire/1989",
+        "year": 1989
+      }
+    ],
+    "concepts/float": [
+      {
+        "source": "letters/berkshire/1986",
+        "year": 1986
+      },
+      {
+        "source": "letters/berkshire/1987",
+        "year": 1987
+      },
+      {
+        "source": "letters/berkshire/1988",
+        "year": 1988
+      },
+      {
+        "source": "letters/berkshire/1989",
+        "year": 1989
+      },
+      {
+        "source": "letters/berkshire/1990",
+        "year": 1990
+      },
+      {
+        "source": "letters/berkshire/1991",
+        "year": 1991
+      },
+      {
+        "source": "letters/berkshire/1999",
+        "year": 1999
+      },
+      {
+        "source": "letters/berkshire/2005",
+        "year": 2005
+      }
+    ],
+    "concepts/会计商誉": [
+      {
+        "source": "letters/berkshire/1986",
+        "year": 1986
+      }
+    ],
+    "concepts/护城河": [
+      {
+        "source": "letters/berkshire/1986",
+        "year": 1986
+      },
+      {
+        "source": "letters/berkshire/1993",
+        "year": 1993
+      },
+      {
+        "source": "letters/berkshire/1995",
+        "year": 1995
+      },
+      {
+        "source": "letters/berkshire/2005",
+        "year": 2005
+      },
+      {
+        "source": "letters/berkshire/2007",
+        "year": 2007
+      }
+    ],
+    "concepts/保险浮存金": [
+      {
+        "source": "letters/berkshire/1986",
+        "year": 1986
+      },
+      {
+        "source": "letters/berkshire/1987",
+        "year": 1987
+      },
+      {
+        "source": "letters/berkshire/1988",
+        "year": 1988
+      },
+      {
+        "source": "letters/berkshire/1989",
+        "year": 1989
+      },
+      {
+        "source": "letters/berkshire/1990",
+        "year": 1990
+      },
+      {
+        "source": "letters/berkshire/1992",
+        "year": 1992
+      },
+      {
+        "source": "letters/berkshire/1993",
+        "year": 1993
+      },
+      {
+        "source": "letters/berkshire/1994",
+        "year": 1994
+      },
+      {
+        "source": "letters/berkshire/1995",
+        "year": 1995
+      },
+      {
+        "source": "letters/berkshire/1997",
+        "year": 1997
+      },
+      {
+        "source": "letters/berkshire/1998",
+        "year": 1998
+      },
+      {
+        "source": "letters/berkshire/1999",
+        "year": 1999
+      },
+      {
+        "source": "letters/berkshire/2000",
+        "year": 2000
+      },
+      {
+        "source": "letters/berkshire/2001",
+        "year": 2001
+      },
+      {
+        "source": "letters/berkshire/2002",
+        "year": 2002
+      },
+      {
+        "source": "letters/berkshire/2003",
+        "year": 2003
+      },
+      {
+        "source": "letters/berkshire/2004",
+        "year": 2004
+      },
+      {
+        "source": "letters/berkshire/2005",
+        "year": 2005
+      },
+      {
+        "source": "letters/berkshire/2006",
+        "year": 2006
+      },
+      {
+        "source": "letters/berkshire/2007",
+        "year": 2007
+      }
+    ],
+    "concepts/营业利润": [
+      {
+        "source": "letters/berkshire/1986",
+        "year": 1986
+      },
+      {
+        "source": "letters/berkshire/1990",
+        "year": 1990
+      },
+      {
+        "source": "letters/berkshire/2003",
+        "year": 2003
+      }
+    ],
+    "concepts/市场先生": [
+      {
+        "source": "letters/berkshire/1987",
+        "year": 1987
+      },
+      {
+        "source": "letters/berkshire/1993",
+        "year": 1993
+      }
+    ],
+    "concepts/价值投资": [
+      {
+        "source": "letters/berkshire/1988",
+        "year": 1988
+      },
+      {
+        "source": "letters/berkshire/1992",
+        "year": 1992
+      },
+      {
+        "source": "letters/berkshire/1995",
+        "year": 1995
+      },
+      {
+        "source": "letters/berkshire/1999",
+        "year": 1999
+      },
+      {
+        "source": "letters/berkshire/2000",
+        "year": 2000
+      },
+      {
+        "source": "letters/berkshire/2004",
+        "year": 2004
+      }
+    ],
+    "concepts/安全边际": [
+      {
+        "source": "letters/berkshire/1992",
+        "year": 1992
+      },
+      {
+        "source": "letters/berkshire/1995",
+        "year": 1995
+      },
+      {
+        "source": "letters/berkshire/1997",
+        "year": 1997
+      }
+    ],
+    "concepts/能力圈": [
+      {
+        "source": "letters/berkshire/1992",
+        "year": 1992
+      },
+      {
+        "source": "letters/berkshire/1999",
+        "year": 1999
+      }
+    ],
+    "concepts/优先股": [
+      {
+        "source": "letters/berkshire/1995",
+        "year": 1995
+      },
+      {
+        "source": "letters/berkshire/1999",
+        "year": 1999
+      },
+      {
+        "source": "letters/berkshire/2005",
+        "year": 2005
+      },
+      {
+        "source": "letters/berkshire/2007",
+        "year": 2007
+      }
+    ],
+    "concepts/净利润": [
+      {
+        "source": "letters/berkshire/1995",
+        "year": 1995
+      },
+      {
+        "source": "letters/berkshire/1999",
+        "year": 1999
+      },
+      {
+        "source": "letters/berkshire/2005",
+        "year": 2005
+      }
+    ],
+    "concepts/股息": [
+      {
+        "source": "letters/berkshire/1995",
+        "year": 1995
+      },
+      {
+        "source": "letters/berkshire/1997",
+        "year": 1997
+      },
+      {
+        "source": "letters/berkshire/1998",
+        "year": 1998
+      },
+      {
+        "source": "letters/berkshire/2002",
+        "year": 2002
+      },
+      {
+        "source": "letters/berkshire/2005",
+        "year": 2005
+      },
+      {
+        "source": "letters/berkshire/2007",
+        "year": 2007
+      }
+    ],
+    "concepts/每股收益": [
+      {
+        "source": "letters/berkshire/1996",
+        "year": 1996
+      },
+      {
+        "source": "letters/berkshire/2005",
+        "year": 2005
+      },
+      {
+        "source": "letters/berkshire/2007",
+        "year": 2007
+      }
+    ],
+    "concepts/EBITDA": [
+      {
+        "source": "letters/berkshire/2000",
+        "year": 2000
+      },
+      {
+        "source": "letters/berkshire/2001",
+        "year": 2001
+      }
+    ],
+    "concepts/雪球效应": [
+      {
+        "source": "letters/berkshire/2000",
+        "year": 2000
+      }
+    ],
+    "concepts/税前利润": [
+      {
+        "source": "letters/berkshire/2003",
+        "year": 2003
+      },
+      {
+        "source": "letters/berkshire/2005",
+        "year": 2005
+      },
+      {
+        "source": "letters/berkshire/2007",
+        "year": 2007
+      }
+    ],
+    "concepts/金融企业": [
+      {
+        "source": "letters/berkshire/2005",
+        "year": 2005
+      }
+    ],
+    "concepts/指数投资": [
+      {
+        "source": "letters/berkshire/2007",
+        "year": 2007
+      }
+    ]
+  },
+  "companies": {
+    "companies/塔吉特": [
+      {
+        "source": "letters/berkshire/1965",
+        "year": 1965
+      },
+      {
+        "source": "letters/berkshire/1966",
+        "year": 1966
+      },
+      {
+        "source": "letters/berkshire/1967",
+        "year": 1967
+      },
+      {
+        "source": "letters/berkshire/1968",
+        "year": 1968
+      },
+      {
+        "source": "letters/berkshire/1969",
+        "year": 1969
+      },
+      {
+        "source": "letters/berkshire/1970",
+        "year": 1970
+      },
+      {
+        "source": "letters/berkshire/1971",
+        "year": 1971
+      },
+      {
+        "source": "letters/berkshire/1972",
+        "year": 1972
+      },
+      {
+        "source": "letters/berkshire/1973",
+        "year": 1973
+      },
+      {
+        "source": "letters/berkshire/1974",
+        "year": 1974
+      },
+      {
+        "source": "letters/berkshire/1975",
+        "year": 1975
+      },
+      {
+        "source": "letters/berkshire/1976",
+        "year": 1976
+      },
+      {
+        "source": "letters/berkshire/1987",
+        "year": 1987
+      },
+      {
+        "source": "letters/berkshire/1988",
+        "year": 1988
+      },
+      {
+        "source": "letters/berkshire/1990",
+        "year": 1990
+      },
+      {
+        "source": "letters/berkshire/2003",
+        "year": 2003
+      },
+      {
+        "source": "letters/berkshire/2008",
+        "year": 2008
+      },
+      {
+        "source": "letters/berkshire/2009",
+        "year": 2009
+      },
+      {
+        "source": "letters/berkshire/2010",
+        "year": 2010
+      },
+      {
+        "source": "letters/berkshire/2011",
+        "year": 2011
+      },
+      {
+        "source": "letters/berkshire/2012",
+        "year": 2012
+      },
+      {
+        "source": "letters/berkshire/2013",
+        "year": 2013
+      },
+      {
+        "source": "letters/berkshire/2014",
+        "year": 2014
+      },
+      {
+        "source": "letters/berkshire/2015",
+        "year": 2015
+      },
+      {
+        "source": "letters/berkshire/2016",
+        "year": 2016
+      },
+      {
+        "source": "letters/berkshire/2017",
+        "year": 2017
+      },
+      {
+        "source": "letters/berkshire/2018",
+        "year": 2018
+      },
+      {
+        "source": "letters/berkshire/2019",
+        "year": 2019
+      },
+      {
+        "source": "letters/berkshire/2020",
+        "year": 2020
+      },
+      {
+        "source": "letters/berkshire/2021",
+        "year": 2021
+      },
+      {
+        "source": "letters/berkshire/2022",
+        "year": 2022
+      },
+      {
+        "source": "letters/berkshire/2023",
+        "year": 2023
+      },
+      {
+        "source": "letters/berkshire/2024",
+        "year": 2024
+      }
+    ],
+    "companies/伯克希尔哈撒韦": [
+      {
+        "source": "letters/berkshire/1965",
+        "year": 1965
+      },
+      {
+        "source": "letters/berkshire/1966",
+        "year": 1966
+      },
+      {
+        "source": "letters/berkshire/1967",
+        "year": 1967
+      },
+      {
+        "source": "letters/berkshire/1968",
+        "year": 1968
+      },
+      {
+        "source": "letters/berkshire/1969",
+        "year": 1969
+      },
+      {
+        "source": "letters/berkshire/1970",
+        "year": 1970
+      },
+      {
+        "source": "letters/berkshire/1971",
+        "year": 1971
+      },
+      {
+        "source": "letters/berkshire/1972",
+        "year": 1972
+      },
+      {
+        "source": "letters/berkshire/1973",
+        "year": 1973
+      },
+      {
+        "source": "letters/berkshire/1974",
+        "year": 1974
+      },
+      {
+        "source": "letters/berkshire/1975",
+        "year": 1975
+      },
+      {
+        "source": "letters/berkshire/1976",
+        "year": 1976
+      },
+      {
+        "source": "letters/berkshire/1977",
+        "year": 1977
+      },
+      {
+        "source": "letters/berkshire/1978",
+        "year": 1978
+      },
+      {
+        "source": "letters/berkshire/1978",
+        "year": 1978
+      },
+      {
+        "source": "letters/berkshire/1979",
+        "year": 1979
+      },
+      {
+        "source": "letters/berkshire/1980",
+        "year": 1980
+      },
+      {
+        "source": "letters/berkshire/1981",
+        "year": 1981
+      },
+      {
+        "source": "letters/berkshire/1982",
+        "year": 1982
+      },
+      {
+        "source": "letters/berkshire/1983",
+        "year": 1983
+      },
+      {
+        "source": "letters/berkshire/1984",
+        "year": 1984
+      },
+      {
+        "source": "letters/berkshire/1985",
+        "year": 1985
+      },
+      {
+        "source": "letters/berkshire/1986",
+        "year": 1986
+      },
+      {
+        "source": "letters/berkshire/1986",
+        "year": 1986
+      },
+      {
+        "source": "letters/berkshire/1987",
+        "year": 1987
+      },
+      {
+        "source": "letters/berkshire/1987",
+        "year": 1987
+      },
+      {
+        "source": "letters/berkshire/1988",
+        "year": 1988
+      },
+      {
+        "source": "letters/berkshire/1988",
+        "year": 1988
+      },
+      {
+        "source": "letters/berkshire/1989",
+        "year": 1989
+      },
+      {
+        "source": "letters/berkshire/1989",
+        "year": 1989
+      },
+      {
+        "source": "letters/berkshire/1990",
+        "year": 1990
+      },
+      {
+        "source": "letters/berkshire/1990",
+        "year": 1990
+      },
+      {
+        "source": "letters/berkshire/1991",
+        "year": 1991
+      },
+      {
+        "source": "letters/berkshire/1991",
+        "year": 1991
+      },
+      {
+        "source": "letters/berkshire/1992",
+        "year": 1992
+      },
+      {
+        "source": "letters/berkshire/1993",
+        "year": 1993
+      },
+      {
+        "source": "letters/berkshire/1994",
+        "year": 1994
+      },
+      {
+        "source": "letters/berkshire/1995",
+        "year": 1995
+      },
+      {
+        "source": "letters/berkshire/1996",
+        "year": 1996
+      },
+      {
+        "source": "letters/berkshire/1996",
+        "year": 1996
+      },
+      {
+        "source": "letters/berkshire/1997",
+        "year": 1997
+      },
+      {
+        "source": "letters/berkshire/1998",
+        "year": 1998
+      },
+      {
+        "source": "letters/berkshire/1999",
+        "year": 1999
+      },
+      {
+        "source": "letters/berkshire/1999",
+        "year": 1999
+      },
+      {
+        "source": "letters/berkshire/2000",
+        "year": 2000
+      },
+      {
+        "source": "letters/berkshire/2001",
+        "year": 2001
+      },
+      {
+        "source": "letters/berkshire/2002",
+        "year": 2002
+      },
+      {
+        "source": "letters/berkshire/2003",
+        "year": 2003
+      },
+      {
+        "source": "letters/berkshire/2004",
+        "year": 2004
+      },
+      {
+        "source": "letters/berkshire/2005",
+        "year": 2005
+      },
+      {
+        "source": "letters/berkshire/2006",
+        "year": 2006
+      },
+      {
+        "source": "letters/berkshire/2007",
+        "year": 2007
+      },
+      {
+        "source": "letters/berkshire/2008",
+        "year": 2008
+      },
+      {
+        "source": "letters/berkshire/2009",
+        "year": 2009
+      },
+      {
+        "source": "letters/berkshire/2010",
+        "year": 2010
+      },
+      {
+        "source": "letters/berkshire/2011",
+        "year": 2011
+      },
+      {
+        "source": "letters/berkshire/2012",
+        "year": 2012
+      },
+      {
+        "source": "letters/berkshire/2013",
+        "year": 2013
+      },
+      {
+        "source": "letters/berkshire/2014",
+        "year": 2014
+      },
+      {
+        "source": "letters/berkshire/2015",
+        "year": 2015
+      },
+      {
+        "source": "letters/berkshire/2016",
+        "year": 2016
+      },
+      {
+        "source": "letters/berkshire/2017",
+        "year": 2017
+      },
+      {
+        "source": "letters/berkshire/2018",
+        "year": 2018
+      },
+      {
+        "source": "letters/berkshire/2019",
+        "year": 2019
+      },
+      {
+        "source": "letters/berkshire/2020",
+        "year": 2020
+      },
+      {
+        "source": "letters/berkshire/2021",
+        "year": 2021
+      },
+      {
+        "source": "letters/berkshire/2022",
+        "year": 2022
+      },
+      {
+        "source": "letters/berkshire/2023",
+        "year": 2023
+      },
+      {
+        "source": "letters/berkshire/2024",
+        "year": 2024
+      }
+    ],
+    "companies/IBM": [
+      {
+        "source": "letters/berkshire/1977",
+        "year": 1977
+      },
+      {
+        "source": "letters/berkshire/1984",
+        "year": 1984
+      },
+      {
+        "source": "letters/berkshire/1990",
+        "year": 1990
+      },
+      {
+        "source": "letters/berkshire/2006",
+        "year": 2006
+      }
+    ],
+    "companies/华盛顿邮报": [
+      {
+        "source": "letters/berkshire/1978",
+        "year": 1978
+      },
+      {
+        "source": "letters/berkshire/1981",
+        "year": 1981
+      },
+      {
+        "source": "letters/berkshire/1982",
+        "year": 1982
+      },
+      {
+        "source": "letters/berkshire/1984",
+        "year": 1984
+      },
+      {
+        "source": "letters/berkshire/1985",
+        "year": 1985
+      },
+      {
+        "source": "letters/berkshire/1986",
+        "year": 1986
+      },
+      {
+        "source": "letters/berkshire/1986",
+        "year": 1986
+      },
+      {
+        "source": "letters/berkshire/1987",
+        "year": 1987
+      },
+      {
+        "source": "letters/berkshire/1987",
+        "year": 1987
+      },
+      {
+        "source": "letters/berkshire/1988",
+        "year": 1988
+      },
+      {
+        "source": "letters/berkshire/1988",
+        "year": 1988
+      },
+      {
+        "source": "letters/berkshire/1989",
+        "year": 1989
+      },
+      {
+        "source": "letters/berkshire/1990",
+        "year": 1990
+      },
+      {
+        "source": "letters/berkshire/1990",
+        "year": 1990
+      },
+      {
+        "source": "letters/berkshire/1991",
+        "year": 1991
+      },
+      {
+        "source": "letters/berkshire/1993",
+        "year": 1993
+      },
+      {
+        "source": "letters/berkshire/1994",
+        "year": 1994
+      },
+      {
+        "source": "letters/berkshire/1995",
+        "year": 1995
+      },
+      {
+        "source": "letters/berkshire/1997",
+        "year": 1997
+      },
+      {
+        "source": "letters/berkshire/2000",
+        "year": 2000
+      },
+      {
+        "source": "letters/berkshire/2001",
+        "year": 2001
+      },
+      {
+        "source": "letters/berkshire/2003",
+        "year": 2003
+      },
+      {
+        "source": "letters/berkshire/2004",
+        "year": 2004
+      },
+      {
+        "source": "letters/berkshire/2004",
+        "year": 2004
+      }
+    ],
+    "companies/盖可保险": [
+      {
+        "source": "letters/berkshire/1979",
+        "year": 1979
+      },
+      {
+        "source": "letters/berkshire/1980",
+        "year": 1980
+      },
+      {
+        "source": "letters/berkshire/1981",
+        "year": 1981
+      },
+      {
+        "source": "letters/berkshire/1982",
+        "year": 1982
+      },
+      {
+        "source": "letters/berkshire/1983",
+        "year": 1983
+      },
+      {
+        "source": "letters/berkshire/1986",
+        "year": 1986
+      },
+      {
+        "source": "letters/berkshire/1987",
+        "year": 1987
+      },
+      {
+        "source": "letters/berkshire/1988",
+        "year": 1988
+      },
+      {
+        "source": "letters/berkshire/1989",
+        "year": 1989
+      },
+      {
+        "source": "letters/berkshire/1990",
+        "year": 1990
+      },
+      {
+        "source": "letters/berkshire/1991",
+        "year": 1991
+      },
+      {
+        "source": "letters/berkshire/1995",
+        "year": 1995
+      },
+      {
+        "source": "letters/berkshire/1996",
+        "year": 1996
+      },
+      {
+        "source": "letters/berkshire/1997",
+        "year": 1997
+      },
+      {
+        "source": "letters/berkshire/1998",
+        "year": 1998
+      },
+      {
+        "source": "letters/berkshire/1999",
+        "year": 1999
+      },
+      {
+        "source": "letters/berkshire/2000",
+        "year": 2000
+      },
+      {
+        "source": "letters/berkshire/2002",
+        "year": 2002
+      },
+      {
+        "source": "letters/berkshire/2003",
+        "year": 2003
+      },
+      {
+        "source": "letters/berkshire/2005",
+        "year": 2005
+      }
+    ],
+    "companies/美国运通": [
+      {
+        "source": "letters/berkshire/1980",
+        "year": 1980
+      },
+      {
+        "source": "letters/berkshire/1989",
+        "year": 1989
+      },
+      {
+        "source": "letters/berkshire/1989",
+        "year": 1989
+      },
+      {
+        "source": "letters/berkshire/1991",
+        "year": 1991
+      },
+      {
+        "source": "letters/berkshire/1994",
+        "year": 1994
+      },
+      {
+        "source": "letters/berkshire/1995",
+        "year": 1995
+      },
+      {
+        "source": "letters/berkshire/1997",
+        "year": 1997
+      },
+      {
+        "source": "letters/berkshire/1998",
+        "year": 1998
+      },
+      {
+        "source": "letters/berkshire/1999",
+        "year": 1999
+      },
+      {
+        "source": "letters/berkshire/2000",
+        "year": 2000
+      },
+      {
+        "source": "letters/berkshire/2001",
+        "year": 2001
+      },
+      {
+        "source": "letters/berkshire/2003",
+        "year": 2003
+      },
+      {
+        "source": "letters/berkshire/2004",
+        "year": 2004
+      },
+      {
+        "source": "letters/berkshire/2005",
+        "year": 2005
+      },
+      {
+        "source": "letters/berkshire/2006",
+        "year": 2006
+      },
+      {
+        "source": "letters/berkshire/2007",
+        "year": 2007
+      }
+    ],
+    "companies/Buffalo News": [
+      {
+        "source": "letters/berkshire/1982",
+        "year": 1982
+      },
+      {
+        "source": "letters/berkshire/1986",
+        "year": 1986
+      },
+      {
+        "source": "letters/berkshire/1987",
+        "year": 1987
+      },
+      {
+        "source": "letters/berkshire/1988",
+        "year": 1988
+      },
+      {
+        "source": "letters/berkshire/1989",
+        "year": 1989
+      },
+      {
+        "source": "letters/berkshire/1990",
+        "year": 1990
+      },
+      {
+        "source": "letters/berkshire/1991",
+        "year": 1991
+      }
+    ],
+    "companies/喜诗糖果": [
+      {
+        "source": "letters/berkshire/1982",
+        "year": 1982
+      },
+      {
+        "source": "letters/berkshire/1984",
+        "year": 1984
+      },
+      {
+        "source": "letters/berkshire/1985",
+        "year": 1985
+      },
+      {
+        "source": "letters/berkshire/1986",
+        "year": 1986
+      },
+      {
+        "source": "letters/berkshire/1987",
+        "year": 1987
+      },
+      {
+        "source": "letters/berkshire/1987",
+        "year": 1987
+      },
+      {
+        "source": "letters/berkshire/1988",
+        "year": 1988
+      },
+      {
+        "source": "letters/berkshire/1989",
+        "year": 1989
+      },
+      {
+        "source": "letters/berkshire/1989",
+        "year": 1989
+      },
+      {
+        "source": "letters/berkshire/1990",
+        "year": 1990
+      },
+      {
+        "source": "letters/berkshire/1990",
+        "year": 1990
+      },
+      {
+        "source": "letters/berkshire/1991",
+        "year": 1991
+      },
+      {
+        "source": "letters/berkshire/1991",
+        "year": 1991
+      },
+      {
+        "source": "letters/berkshire/1992",
+        "year": 1992
+      },
+      {
+        "source": "letters/berkshire/1993",
+        "year": 1993
+      },
+      {
+        "source": "letters/berkshire/1994",
+        "year": 1994
+      },
+      {
+        "source": "letters/berkshire/1995",
+        "year": 1995
+      },
+      {
+        "source": "letters/berkshire/1997",
+        "year": 1997
+      },
+      {
+        "source": "letters/berkshire/2001",
+        "year": 2001
+      },
+      {
+        "source": "letters/berkshire/2003",
+        "year": 2003
+      },
+      {
+        "source": "letters/berkshire/2005",
+        "year": 2005
+      },
+      {
+        "source": "letters/berkshire/2007",
+        "year": 2007
+      }
+    ],
+    "companies/Nebraska Furniture Mart": [
+      {
+        "source": "letters/berkshire/1983",
+        "year": 1983
+      },
+      {
+        "source": "letters/berkshire/1986",
+        "year": 1986
+      },
+      {
+        "source": "letters/berkshire/1987",
+        "year": 1987
+      },
+      {
+        "source": "letters/berkshire/1988",
+        "year": 1988
+      },
+      {
+        "source": "letters/berkshire/1989",
+        "year": 1989
+      },
+      {
+        "source": "letters/berkshire/1990",
+        "year": 1990
+      },
+      {
+        "source": "letters/berkshire/1991",
+        "year": 1991
+      },
+      {
+        "source": "letters/berkshire/2002",
+        "year": 2002
+      }
+    ],
+    "companies/可口可乐": [
+      {
+        "source": "letters/berkshire/1983",
+        "year": 1983
+      },
+      {
+        "source": "letters/berkshire/1985",
+        "year": 1985
+      },
+      {
+        "source": "letters/berkshire/1988",
+        "year": 1988
+      },
+      {
+        "source": "letters/berkshire/1988",
+        "year": 1988
+      },
+      {
+        "source": "letters/berkshire/1989",
+        "year": 1989
+      },
+      {
+        "source": "letters/berkshire/1989",
+        "year": 1989
+      },
+      {
+        "source": "letters/berkshire/1990",
+        "year": 1990
+      },
+      {
+        "source": "letters/berkshire/1990",
+        "year": 1990
+      },
+      {
+        "source": "letters/berkshire/1991",
+        "year": 1991
+      },
+      {
+        "source": "letters/berkshire/1991",
+        "year": 1991
+      },
+      {
+        "source": "letters/berkshire/1993",
+        "year": 1993
+      },
+      {
+        "source": "letters/berkshire/1994",
+        "year": 1994
+      },
+      {
+        "source": "letters/berkshire/1995",
+        "year": 1995
+      },
+      {
+        "source": "letters/berkshire/1996",
+        "year": 1996
+      },
+      {
+        "source": "letters/berkshire/1997",
+        "year": 1997
+      },
+      {
+        "source": "letters/berkshire/1999",
+        "year": 1999
+      },
+      {
+        "source": "letters/berkshire/2003",
+        "year": 2003
+      },
+      {
+        "source": "letters/berkshire/2004",
+        "year": 2004
+      },
+      {
+        "source": "letters/berkshire/2005",
+        "year": 2005
+      },
+      {
+        "source": "letters/berkshire/2006",
+        "year": 2006
+      },
+      {
+        "source": "letters/berkshire/2007",
+        "year": 2007
+      }
+    ],
+    "companies/NFM": [
+      {
+        "source": "letters/berkshire/1984",
+        "year": 1984
+      },
+      {
+        "source": "letters/berkshire/1986",
+        "year": 1986
+      },
+      {
+        "source": "letters/berkshire/1987",
+        "year": 1987
+      },
+      {
+        "source": "letters/berkshire/1988",
+        "year": 1988
+      },
+      {
+        "source": "letters/berkshire/1989",
+        "year": 1989
+      },
+      {
+        "source": "letters/berkshire/1990",
+        "year": 1990
+      },
+      {
+        "source": "letters/berkshire/1992",
+        "year": 1992
+      },
+      {
+        "source": "letters/berkshire/1994",
+        "year": 1994
+      },
+      {
+        "source": "letters/berkshire/1995",
+        "year": 1995
+      },
+      {
+        "source": "letters/berkshire/1997",
+        "year": 1997
+      },
+      {
+        "source": "letters/berkshire/1998",
+        "year": 1998
+      },
+      {
+        "source": "letters/berkshire/2000",
+        "year": 2000
+      },
+      {
+        "source": "letters/berkshire/2001",
+        "year": 2001
+      },
+      {
+        "source": "letters/berkshire/2003",
+        "year": 2003
+      },
+      {
+        "source": "letters/berkshire/2004",
+        "year": 2004
+      },
+      {
+        "source": "letters/berkshire/2005",
+        "year": 2005
+      },
+      {
+        "source": "letters/berkshire/2007",
+        "year": 2007
+      }
+    ],
+    "companies/吉列": [
+      {
+        "source": "letters/berkshire/1985",
+        "year": 1985
+      },
+      {
+        "source": "letters/berkshire/1989",
+        "year": 1989
+      },
+      {
+        "source": "letters/berkshire/1989",
+        "year": 1989
+      },
+      {
+        "source": "letters/berkshire/1990",
+        "year": 1990
+      },
+      {
+        "source": "letters/berkshire/1990",
+        "year": 1990
+      },
+      {
+        "source": "letters/berkshire/1991",
+        "year": 1991
+      },
+      {
+        "source": "letters/berkshire/1991",
+        "year": 1991
+      },
+      {
+        "source": "letters/berkshire/1992",
+        "year": 1992
+      },
+      {
+        "source": "letters/berkshire/1993",
+        "year": 1993
+      },
+      {
+        "source": "letters/berkshire/1994",
+        "year": 1994
+      },
+      {
+        "source": "letters/berkshire/1995",
+        "year": 1995
+      },
+      {
+        "source": "letters/berkshire/1997",
+        "year": 1997
+      },
+      {
+        "source": "letters/berkshire/2003",
+        "year": 2003
+      },
+      {
+        "source": "letters/berkshire/2004",
+        "year": 2004
+      },
+      {
+        "source": "letters/berkshire/2005",
+        "year": 2005
+      }
+    ],
+    "companies/Scott Fetzer": [
+      {
+        "source": "letters/berkshire/1986",
+        "year": 1986
+      },
+      {
+        "source": "letters/berkshire/1987",
+        "year": 1987
+      },
+      {
+        "source": "letters/berkshire/1988",
+        "year": 1988
+      },
+      {
+        "source": "letters/berkshire/1989",
+        "year": 1989
+      },
+      {
+        "source": "letters/berkshire/1990",
+        "year": 1990
+      },
+      {
+        "source": "letters/berkshire/1991",
+        "year": 1991
+      },
+      {
+        "source": "letters/berkshire/2002",
+        "year": 2002
+      }
+    ],
+    "companies/富国银行": [
+      {
+        "source": "letters/berkshire/1990",
+        "year": 1990
+      },
+      {
+        "source": "letters/berkshire/1990",
+        "year": 1990
+      },
+      {
+        "source": "letters/berkshire/1991",
+        "year": 1991
+      },
+      {
+        "source": "letters/berkshire/1991",
+        "year": 1991
+      },
+      {
+        "source": "letters/berkshire/1992",
+        "year": 1992
+      },
+      {
+        "source": "letters/berkshire/1994",
+        "year": 1994
+      },
+      {
+        "source": "letters/berkshire/1995",
+        "year": 1995
+      },
+      {
+        "source": "letters/berkshire/1997",
+        "year": 1997
+      },
+      {
+        "source": "letters/berkshire/2003",
+        "year": 2003
+      },
+      {
+        "source": "letters/berkshire/2004",
+        "year": 2004
+      },
+      {
+        "source": "letters/berkshire/2005",
+        "year": 2005
+      },
+      {
+        "source": "letters/berkshire/2006",
+        "year": 2006
+      },
+      {
+        "source": "letters/berkshire/2007",
+        "year": 2007
+      }
+    ],
+    "companies/沃尔玛": [
+      {
+        "source": "letters/berkshire/1992",
+        "year": 1992
+      },
+      {
+        "source": "letters/berkshire/2004",
+        "year": 2004
+      },
+      {
+        "source": "letters/berkshire/2005",
+        "year": 2005
+      }
+    ],
+    "companies/中美能源": [
+      {
+        "source": "letters/berkshire/1995",
+        "year": 1995
+      },
+      {
+        "source": "letters/berkshire/1999",
+        "year": 1999
+      },
+      {
+        "source": "letters/berkshire/2000",
+        "year": 2000
+      },
+      {
+        "source": "letters/berkshire/2001",
+        "year": 2001
+      },
+      {
+        "source": "letters/berkshire/2002",
+        "year": 2002
+      },
+      {
+        "source": "letters/berkshire/2003",
+        "year": 2003
+      },
+      {
+        "source": "letters/berkshire/2004",
+        "year": 2004
+      },
+      {
+        "source": "letters/berkshire/2005",
+        "year": 2005
+      },
+      {
+        "source": "letters/berkshire/2006",
+        "year": 2006
+      }
+    ],
+    "companies/冰雪皇后": [
+      {
+        "source": "letters/berkshire/1995",
+        "year": 1995
+      }
+    ],
+    "companies/布法罗新闻": [
+      {
+        "source": "letters/berkshire/1995",
+        "year": 1995
+      }
+    ],
+    "companies/通用再保险": [
+      {
+        "source": "letters/berkshire/1995",
+        "year": 1995
+      },
+      {
+        "source": "letters/berkshire/1999",
+        "year": 1999
+      },
+      {
+        "source": "letters/berkshire/2000",
+        "year": 2000
+      },
+      {
+        "source": "letters/berkshire/2006",
+        "year": 2006
+      },
+      {
+        "source": "letters/berkshire/2007",
+        "year": 2007
+      }
+    ],
+    "companies/General Re": [
+      {
+        "source": "letters/berkshire/2002",
+        "year": 2002
+      }
+    ],
+    "companies/宝洁": [
+      {
+        "source": "letters/berkshire/2005",
+        "year": 2005
+      },
+      {
+        "source": "letters/berkshire/2006",
+        "year": 2006
+      },
+      {
+        "source": "letters/berkshire/2007",
+        "year": 2007
+      }
+    ]
+  },
+  "people": {
+    "people/巴菲特": [
+      {
+        "source": "letters/berkshire/1965",
+        "year": 1965
+      },
+      {
+        "source": "letters/berkshire/1966",
+        "year": 1966
+      },
+      {
+        "source": "letters/berkshire/1967",
+        "year": 1967
+      },
+      {
+        "source": "letters/berkshire/1968",
+        "year": 1968
+      },
+      {
+        "source": "letters/berkshire/1969",
+        "year": 1969
+      },
+      {
+        "source": "letters/berkshire/1970",
+        "year": 1970
+      },
+      {
+        "source": "letters/berkshire/1971",
+        "year": 1971
+      },
+      {
+        "source": "letters/berkshire/1972",
+        "year": 1972
+      },
+      {
+        "source": "letters/berkshire/1973",
+        "year": 1973
+      },
+      {
+        "source": "letters/berkshire/1974",
+        "year": 1974
+      },
+      {
+        "source": "letters/berkshire/1975",
+        "year": 1975
+      },
+      {
+        "source": "letters/berkshire/1976",
+        "year": 1976
+      },
+      {
+        "source": "letters/berkshire/1977",
+        "year": 1977
+      },
+      {
+        "source": "letters/berkshire/1977",
+        "year": 1977
+      },
+      {
+        "source": "letters/berkshire/1978",
+        "year": 1978
+      },
+      {
+        "source": "letters/berkshire/1978",
+        "year": 1978
+      },
+      {
+        "source": "letters/berkshire/1978",
+        "year": 1978
+      },
+      {
+        "source": "letters/berkshire/1979",
+        "year": 1979
+      },
+      {
+        "source": "letters/berkshire/1979",
+        "year": 1979
+      },
+      {
+        "source": "letters/berkshire/1980",
+        "year": 1980
+      },
+      {
+        "source": "letters/berkshire/1980",
+        "year": 1980
+      },
+      {
+        "source": "letters/berkshire/1981",
+        "year": 1981
+      },
+      {
+        "source": "letters/berkshire/1981",
+        "year": 1981
+      },
+      {
+        "source": "letters/berkshire/1982",
+        "year": 1982
+      },
+      {
+        "source": "letters/berkshire/1982",
+        "year": 1982
+      },
+      {
+        "source": "letters/berkshire/1983",
+        "year": 1983
+      },
+      {
+        "source": "letters/berkshire/1983",
+        "year": 1983
+      },
+      {
+        "source": "letters/berkshire/1984",
+        "year": 1984
+      },
+      {
+        "source": "letters/berkshire/1985",
+        "year": 1985
+      },
+      {
+        "source": "letters/berkshire/1986",
+        "year": 1986
+      },
+      {
+        "source": "letters/berkshire/1986",
+        "year": 1986
+      },
+      {
+        "source": "letters/berkshire/1987",
+        "year": 1987
+      },
+      {
+        "source": "letters/berkshire/1987",
+        "year": 1987
+      },
+      {
+        "source": "letters/berkshire/1988",
+        "year": 1988
+      },
+      {
+        "source": "letters/berkshire/1988",
+        "year": 1988
+      },
+      {
+        "source": "letters/berkshire/1989",
+        "year": 1989
+      },
+      {
+        "source": "letters/berkshire/1989",
+        "year": 1989
+      },
+      {
+        "source": "letters/berkshire/1990",
+        "year": 1990
+      },
+      {
+        "source": "letters/berkshire/1990",
+        "year": 1990
+      },
+      {
+        "source": "letters/berkshire/1990",
+        "year": 1990
+      },
+      {
+        "source": "letters/berkshire/1991",
+        "year": 1991
+      },
+      {
+        "source": "letters/berkshire/1991",
+        "year": 1991
+      },
+      {
+        "source": "letters/berkshire/1992",
+        "year": 1992
+      },
+      {
+        "source": "letters/berkshire/1993",
+        "year": 1993
+      },
+      {
+        "source": "letters/berkshire/1994",
+        "year": 1994
+      },
+      {
+        "source": "letters/berkshire/1995",
+        "year": 1995
+      },
+      {
+        "source": "letters/berkshire/1996",
+        "year": 1996
+      },
+      {
+        "source": "letters/berkshire/1997",
+        "year": 1997
+      },
+      {
+        "source": "letters/berkshire/1998",
+        "year": 1998
+      },
+      {
+        "source": "letters/berkshire/1998",
+        "year": 1998
+      },
+      {
+        "source": "letters/berkshire/1999",
+        "year": 1999
+      },
+      {
+        "source": "letters/berkshire/1999",
+        "year": 1999
+      },
+      {
+        "source": "letters/berkshire/1999",
+        "year": 1999
+      },
+      {
+        "source": "letters/berkshire/1999",
+        "year": 1999
+      },
+      {
+        "source": "letters/berkshire/2000",
+        "year": 2000
+      },
+      {
+        "source": "letters/berkshire/2001",
+        "year": 2001
+      },
+      {
+        "source": "letters/berkshire/2002",
+        "year": 2002
+      },
+      {
+        "source": "letters/berkshire/2002",
+        "year": 2002
+      },
+      {
+        "source": "letters/berkshire/2003",
+        "year": 2003
+      },
+      {
+        "source": "letters/berkshire/2004",
+        "year": 2004
+      },
+      {
+        "source": "letters/berkshire/2004",
+        "year": 2004
+      },
+      {
+        "source": "letters/berkshire/2005",
+        "year": 2005
+      },
+      {
+        "source": "letters/berkshire/2005",
+        "year": 2005
+      },
+      {
+        "source": "letters/berkshire/2006",
+        "year": 2006
+      },
+      {
+        "source": "letters/berkshire/2007",
+        "year": 2007
+      },
+      {
+        "source": "letters/berkshire/2008",
+        "year": 2008
+      },
+      {
+        "source": "letters/berkshire/2009",
+        "year": 2009
+      },
+      {
+        "source": "letters/berkshire/2010",
+        "year": 2010
+      },
+      {
+        "source": "letters/berkshire/2011",
+        "year": 2011
+      },
+      {
+        "source": "letters/berkshire/2012",
+        "year": 2012
+      },
+      {
+        "source": "letters/berkshire/2013",
+        "year": 2013
+      },
+      {
+        "source": "letters/berkshire/2014",
+        "year": 2014
+      },
+      {
+        "source": "letters/berkshire/2015",
+        "year": 2015
+      },
+      {
+        "source": "letters/berkshire/2016",
+        "year": 2016
+      },
+      {
+        "source": "letters/berkshire/2017",
+        "year": 2017
+      },
+      {
+        "source": "letters/berkshire/2018",
+        "year": 2018
+      },
+      {
+        "source": "letters/berkshire/2019",
+        "year": 2019
+      },
+      {
+        "source": "letters/berkshire/2020",
+        "year": 2020
+      },
+      {
+        "source": "letters/berkshire/2021",
+        "year": 2021
+      },
+      {
+        "source": "letters/berkshire/2022",
+        "year": 2022
+      },
+      {
+        "source": "letters/berkshire/2023",
+        "year": 2023
+      },
+      {
+        "source": "letters/berkshire/2024",
+        "year": 2024
+      }
+    ],
+    "people/吉恩·阿贝格": [
+      {
+        "source": "letters/berkshire/1977",
+        "year": 1977
+      },
+      {
+        "source": "letters/berkshire/1977",
+        "year": 1977
+      },
+      {
+        "source": "letters/berkshire/1978",
+        "year": 1978
+      },
+      {
+        "source": "letters/berkshire/1978",
+        "year": 1978
+      },
+      {
+        "source": "letters/berkshire/1979",
+        "year": 1979
+      },
+      {
+        "source": "letters/berkshire/1979",
+        "year": 1979
+      },
+      {
+        "source": "letters/berkshire/1980",
+        "year": 1980
+      },
+      {
+        "source": "letters/berkshire/1980",
+        "year": 1980
+      }
+    ],
+    "people/肯·蔡斯": [
+      {
+        "source": "letters/berkshire/1977",
+        "year": 1977
+      },
+      {
+        "source": "letters/berkshire/1977",
+        "year": 1977
+      },
+      {
+        "source": "letters/berkshire/1990",
+        "year": 1990
+      },
+      {
+        "source": "letters/berkshire/1990",
+        "year": 1990
+      },
+      {
+        "source": "letters/berkshire/1991",
+        "year": 1991
+      }
+    ],
+    "people/查克·哈金斯": [
+      {
+        "source": "letters/berkshire/1977",
+        "year": 1977
+      },
+      {
+        "source": "letters/berkshire/1977",
+        "year": 1977
+      },
+      {
+        "source": "letters/berkshire/1984",
+        "year": 1984
+      },
+      {
+        "source": "letters/berkshire/1984",
+        "year": 1984
+      },
+      {
+        "source": "letters/berkshire/1986",
+        "year": 1986
+      },
+      {
+        "source": "letters/berkshire/1986",
+        "year": 1986
+      },
+      {
+        "source": "letters/berkshire/1987",
+        "year": 1987
+      },
+      {
+        "source": "letters/berkshire/1987",
+        "year": 1987
+      },
+      {
+        "source": "letters/berkshire/1988",
+        "year": 1988
+      },
+      {
+        "source": "letters/berkshire/1988",
+        "year": 1988
+      },
+      {
+        "source": "letters/berkshire/1989",
+        "year": 1989
+      },
+      {
+        "source": "letters/berkshire/1989",
+        "year": 1989
+      },
+      {
+        "source": "letters/berkshire/1990",
+        "year": 1990
+      },
+      {
+        "source": "letters/berkshire/1990",
+        "year": 1990
+      },
+      {
+        "source": "letters/berkshire/1991",
+        "year": 1991
+      },
+      {
+        "source": "letters/berkshire/1991",
+        "year": 1991
+      },
+      {
+        "source": "letters/berkshire/1995",
+        "year": 1995
+      },
+      {
+        "source": "letters/berkshire/1995",
+        "year": 1995
+      },
+      {
+        "source": "letters/berkshire/2005",
+        "year": 2005
+      },
+      {
+        "source": "letters/berkshire/2005",
+        "year": 2005
+      },
+      {
+        "source": "letters/berkshire/2007",
+        "year": 2007
+      },
+      {
+        "source": "letters/berkshire/2007",
+        "year": 2007
+      }
+    ],
+    "people/菲尔·利舍": [
+      {
+        "source": "letters/berkshire/1977",
+        "year": 1977
+      },
+      {
+        "source": "letters/berkshire/1977",
+        "year": 1977
+      },
+      {
+        "source": "letters/berkshire/1978",
+        "year": 1978
+      },
+      {
+        "source": "letters/berkshire/1978",
+        "year": 1978
+      },
+      {
+        "source": "letters/berkshire/1979",
+        "year": 1979
+      },
+      {
+        "source": "letters/berkshire/1979",
+        "year": 1979
+      },
+      {
+        "source": "letters/berkshire/1980",
+        "year": 1980
+      },
+      {
+        "source": "letters/berkshire/1980",
+        "year": 1980
+      },
+      {
+        "source": "letters/berkshire/1982",
+        "year": 1982
+      },
+      {
+        "source": "letters/berkshire/1982",
+        "year": 1982
+      }
+    ],
+    "people/芒格": [
+      {
+        "source": "letters/berkshire/1980",
+        "year": 1980
+      },
+      {
+        "source": "letters/berkshire/1980",
+        "year": 1980
+      },
+      {
+        "source": "letters/berkshire/1982",
+        "year": 1982
+      },
+      {
+        "source": "letters/berkshire/1982",
+        "year": 1982
+      },
+      {
+        "source": "letters/berkshire/1983",
+        "year": 1983
+      },
+      {
+        "source": "letters/berkshire/1983",
+        "year": 1983
+      },
+      {
+        "source": "letters/berkshire/1984",
+        "year": 1984
+      },
+      {
+        "source": "letters/berkshire/1985",
+        "year": 1985
+      },
+      {
+        "source": "letters/berkshire/1986",
+        "year": 1986
+      },
+      {
+        "source": "letters/berkshire/1986",
+        "year": 1986
+      },
+      {
+        "source": "letters/berkshire/1986",
+        "year": 1986
+      },
+      {
+        "source": "letters/berkshire/1987",
+        "year": 1987
+      },
+      {
+        "source": "letters/berkshire/1987",
+        "year": 1987
+      },
+      {
+        "source": "letters/berkshire/1987",
+        "year": 1987
+      },
+      {
+        "source": "letters/berkshire/1988",
+        "year": 1988
+      },
+      {
+        "source": "letters/berkshire/1988",
+        "year": 1988
+      },
+      {
+        "source": "letters/berkshire/1988",
+        "year": 1988
+      },
+      {
+        "source": "letters/berkshire/1989",
+        "year": 1989
+      },
+      {
+        "source": "letters/berkshire/1989",
+        "year": 1989
+      },
+      {
+        "source": "letters/berkshire/1989",
+        "year": 1989
+      },
+      {
+        "source": "letters/berkshire/1990",
+        "year": 1990
+      },
+      {
+        "source": "letters/berkshire/1990",
+        "year": 1990
+      },
+      {
+        "source": "letters/berkshire/1990",
+        "year": 1990
+      },
+      {
+        "source": "letters/berkshire/1991",
+        "year": 1991
+      },
+      {
+        "source": "letters/berkshire/1991",
+        "year": 1991
+      },
+      {
+        "source": "letters/berkshire/1991",
+        "year": 1991
+      },
+      {
+        "source": "letters/berkshire/1992",
+        "year": 1992
+      },
+      {
+        "source": "letters/berkshire/1992",
+        "year": 1992
+      },
+      {
+        "source": "letters/berkshire/1993",
+        "year": 1993
+      },
+      {
+        "source": "letters/berkshire/1994",
+        "year": 1994
+      },
+      {
+        "source": "letters/berkshire/1995",
+        "year": 1995
+      },
+      {
+        "source": "letters/berkshire/1996",
+        "year": 1996
+      },
+      {
+        "source": "letters/berkshire/1996",
+        "year": 1996
+      },
+      {
+        "source": "letters/berkshire/1996",
+        "year": 1996
+      },
+      {
+        "source": "letters/berkshire/1997",
+        "year": 1997
+      },
+      {
+        "source": "letters/berkshire/1999",
+        "year": 1999
+      },
+      {
+        "source": "letters/berkshire/1999",
+        "year": 1999
+      },
+      {
+        "source": "letters/berkshire/1999",
+        "year": 1999
+      },
+      {
+        "source": "letters/berkshire/2000",
+        "year": 2000
+      },
+      {
+        "source": "letters/berkshire/2001",
+        "year": 2001
+      },
+      {
+        "source": "letters/berkshire/2002",
+        "year": 2002
+      },
+      {
+        "source": "letters/berkshire/2002",
+        "year": 2002
+      },
+      {
+        "source": "letters/berkshire/2003",
+        "year": 2003
+      },
+      {
+        "source": "letters/berkshire/2004",
+        "year": 2004
+      },
+      {
+        "source": "letters/berkshire/2005",
+        "year": 2005
+      },
+      {
+        "source": "letters/berkshire/2006",
+        "year": 2006
+      },
+      {
+        "source": "letters/berkshire/2007",
+        "year": 2007
+      }
+    ],
+    "people/汤姆·墨菲": [
+      {
+        "source": "letters/berkshire/1981",
+        "year": 1981
+      },
+      {
+        "source": "letters/berkshire/1981",
+        "year": 1981
+      },
+      {
+        "source": "letters/berkshire/1984",
+        "year": 1984
+      },
+      {
+        "source": "letters/berkshire/1984",
+        "year": 1984
+      },
+      {
+        "source": "letters/berkshire/1987",
+        "year": 1987
+      },
+      {
+        "source": "letters/berkshire/1987",
+        "year": 1987
+      },
+      {
+        "source": "letters/berkshire/1988",
+        "year": 1988
+      },
+      {
+        "source": "letters/berkshire/1988",
+        "year": 1988
+      },
+      {
+        "source": "letters/berkshire/1990",
+        "year": 1990
+      },
+      {
+        "source": "letters/berkshire/1990",
+        "year": 1990
+      },
+      {
+        "source": "letters/berkshire/1995",
+        "year": 1995
+      },
+      {
+        "source": "letters/berkshire/2003",
+        "year": 2003
+      },
+      {
+        "source": "letters/berkshire/2003",
+        "year": 2003
+      }
+    ],
+    "people/路易·辛普森": [
+      {
+        "source": "letters/berkshire/1982",
+        "year": 1982
+      },
+      {
+        "source": "letters/berkshire/1982",
+        "year": 1982
+      },
+      {
+        "source": "letters/berkshire/1983",
+        "year": 1983
+      },
+      {
+        "source": "letters/berkshire/1983",
+        "year": 1983
+      },
+      {
+        "source": "letters/berkshire/1984",
+        "year": 1984
+      },
+      {
+        "source": "letters/berkshire/1984",
+        "year": 1984
+      },
+      {
+        "source": "letters/berkshire/1986",
+        "year": 1986
+      },
+      {
+        "source": "letters/berkshire/1986",
+        "year": 1986
+      },
+      {
+        "source": "letters/berkshire/1987",
+        "year": 1987
+      },
+      {
+        "source": "letters/berkshire/1987",
+        "year": 1987
+      },
+      {
+        "source": "letters/berkshire/1988",
+        "year": 1988
+      },
+      {
+        "source": "letters/berkshire/1988",
+        "year": 1988
+      },
+      {
+        "source": "letters/berkshire/1995",
+        "year": 1995
+      },
+      {
+        "source": "letters/berkshire/1995",
+        "year": 1995
+      },
+      {
+        "source": "letters/berkshire/1997",
+        "year": 1997
+      },
+      {
+        "source": "letters/berkshire/1997",
+        "year": 1997
+      },
+      {
+        "source": "letters/berkshire/1999",
+        "year": 1999
+      },
+      {
+        "source": "letters/berkshire/1999",
+        "year": 1999
+      },
+      {
+        "source": "letters/berkshire/2001",
+        "year": 2001
+      },
+      {
+        "source": "letters/berkshire/2001",
+        "year": 2001
+      },
+      {
+        "source": "letters/berkshire/2002",
+        "year": 2002
+      },
+      {
+        "source": "letters/berkshire/2002",
+        "year": 2002
+      },
+      {
+        "source": "letters/berkshire/2004",
+        "year": 2004
+      },
+      {
+        "source": "letters/berkshire/2004",
+        "year": 2004
+      }
+    ],
+    "people/格雷厄姆": [
+      {
+        "source": "letters/berkshire/1984",
+        "year": 1984
+      },
+      {
+        "source": "letters/berkshire/1985",
+        "year": 1985
+      },
+      {
+        "source": "letters/berkshire/1987",
+        "year": 1987
+      },
+      {
+        "source": "letters/berkshire/1987",
+        "year": 1987
+      },
+      {
+        "source": "letters/berkshire/1988",
+        "year": 1988
+      },
+      {
+        "source": "letters/berkshire/1990",
+        "year": 1990
+      },
+      {
+        "source": "letters/berkshire/1994",
+        "year": 1994
+      },
+      {
+        "source": "letters/berkshire/1995",
+        "year": 1995
+      },
+      {
+        "source": "letters/berkshire/1999",
+        "year": 1999
+      },
+      {
+        "source": "letters/berkshire/2004",
+        "year": 2004
+      }
+    ],
+    "people/Ralph": [
+      {
+        "source": "letters/berkshire/1985",
+        "year": 1985
+      },
+      {
+        "source": "letters/berkshire/1986",
+        "year": 1986
+      },
+      {
+        "source": "letters/berkshire/1987",
+        "year": 1987
+      },
+      {
+        "source": "letters/berkshire/1988",
+        "year": 1988
+      },
+      {
+        "source": "letters/berkshire/1989",
+        "year": 1989
+      },
+      {
+        "source": "letters/berkshire/1990",
+        "year": 1990
+      },
+      {
+        "source": "letters/berkshire/1991",
+        "year": 1991
+      },
+      {
+        "source": "letters/berkshire/1992",
+        "year": 1992
+      },
+      {
+        "source": "letters/berkshire/1994",
+        "year": 1994
+      },
+      {
+        "source": "letters/berkshire/1995",
+        "year": 1995
+      },
+      {
+        "source": "letters/berkshire/1998",
+        "year": 1998
+      },
+      {
+        "source": "letters/berkshire/2000",
+        "year": 2000
+      }
+    ],
+    "people/Ralph Schey": [
+      {
+        "source": "letters/berkshire/1985",
+        "year": 1985
+      },
+      {
+        "source": "letters/berkshire/1986",
+        "year": 1986
+      },
+      {
+        "source": "letters/berkshire/1987",
+        "year": 1987
+      },
+      {
+        "source": "letters/berkshire/1988",
+        "year": 1988
+      },
+      {
+        "source": "letters/berkshire/1989",
+        "year": 1989
+      },
+      {
+        "source": "letters/berkshire/1990",
+        "year": 1990
+      },
+      {
+        "source": "letters/berkshire/1991",
+        "year": 1991
+      },
+      {
+        "source": "letters/berkshire/1992",
+        "year": 1992
+      },
+      {
+        "source": "letters/berkshire/1994",
+        "year": 1994
+      },
+      {
+        "source": "letters/berkshire/1995",
+        "year": 1995
+      },
+      {
+        "source": "letters/berkshire/2000",
+        "year": 2000
+      }
+    ],
+    "people/阿吉特·贾恩": [
+      {
+        "source": "letters/berkshire/1988",
+        "year": 1988
+      },
+      {
+        "source": "letters/berkshire/1988",
+        "year": 1988
+      },
+      {
+        "source": "letters/berkshire/1989",
+        "year": 1989
+      },
+      {
+        "source": "letters/berkshire/1989",
+        "year": 1989
+      },
+      {
+        "source": "letters/berkshire/1990",
+        "year": 1990
+      },
+      {
+        "source": "letters/berkshire/1990",
+        "year": 1990
+      },
+      {
+        "source": "letters/berkshire/1992",
+        "year": 1992
+      },
+      {
+        "source": "letters/berkshire/1992",
+        "year": 1992
+      },
+      {
+        "source": "letters/berkshire/1993",
+        "year": 1993
+      },
+      {
+        "source": "letters/berkshire/1993",
+        "year": 1993
+      },
+      {
+        "source": "letters/berkshire/1994",
+        "year": 1994
+      },
+      {
+        "source": "letters/berkshire/1994",
+        "year": 1994
+      },
+      {
+        "source": "letters/berkshire/1995",
+        "year": 1995
+      },
+      {
+        "source": "letters/berkshire/1995",
+        "year": 1995
+      },
+      {
+        "source": "letters/berkshire/1997",
+        "year": 1997
+      },
+      {
+        "source": "letters/berkshire/1997",
+        "year": 1997
+      },
+      {
+        "source": "letters/berkshire/1998",
+        "year": 1998
+      },
+      {
+        "source": "letters/berkshire/1999",
+        "year": 1999
+      },
+      {
+        "source": "letters/berkshire/1999",
+        "year": 1999
+      },
+      {
+        "source": "letters/berkshire/2000",
+        "year": 2000
+      },
+      {
+        "source": "letters/berkshire/2000",
+        "year": 2000
+      },
+      {
+        "source": "letters/berkshire/2001",
+        "year": 2001
+      },
+      {
+        "source": "letters/berkshire/2001",
+        "year": 2001
+      },
+      {
+        "source": "letters/berkshire/2002",
+        "year": 2002
+      },
+      {
+        "source": "letters/berkshire/2002",
+        "year": 2002
+      },
+      {
+        "source": "letters/berkshire/2003",
+        "year": 2003
+      },
+      {
+        "source": "letters/berkshire/2003",
+        "year": 2003
+      },
+      {
+        "source": "letters/berkshire/2004",
+        "year": 2004
+      },
+      {
+        "source": "letters/berkshire/2004",
+        "year": 2004
+      },
+      {
+        "source": "letters/berkshire/2005",
+        "year": 2005
+      },
+      {
+        "source": "letters/berkshire/2005",
+        "year": 2005
+      },
+      {
+        "source": "letters/berkshire/2006",
+        "year": 2006
+      },
+      {
+        "source": "letters/berkshire/2006",
+        "year": 2006
+      },
+      {
+        "source": "letters/berkshire/2007",
+        "year": 2007
+      },
+      {
+        "source": "letters/berkshire/2007",
+        "year": 2007
+      }
+    ],
+    "people/Lynch": [
+      {
+        "source": "letters/berkshire/1988",
+        "year": 1988
+      }
+    ],
+    "people/Peter Lynch": [
+      {
+        "source": "letters/berkshire/1988",
+        "year": 1988
+      }
+    ],
+    "people/Tony Nicely": [
+      {
+        "source": "letters/berkshire/1995",
+        "year": 1995
+      },
+      {
+        "source": "letters/berkshire/1997",
+        "year": 1997
+      },
+      {
+        "source": "letters/berkshire/2000",
+        "year": 2000
+      },
+      {
+        "source": "letters/berkshire/2001",
+        "year": 2001
+      },
+      {
+        "source": "letters/berkshire/2002",
+        "year": 2002
+      },
+      {
+        "source": "letters/berkshire/2003",
+        "year": 2003
+      },
+      {
+        "source": "letters/berkshire/2004",
+        "year": 2004
+      },
+      {
+        "source": "letters/berkshire/2005",
+        "year": 2005
+      },
+      {
+        "source": "letters/berkshire/2006",
+        "year": 2006
+      },
+      {
+        "source": "letters/berkshire/2007",
+        "year": 2007
+      }
+    ]
+  }
+}
