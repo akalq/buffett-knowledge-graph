@@ -5,36 +5,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>内在价值 - 巴菲特知识库</title>
     <style>
-        :root { --bg-color: #FFFEF9; --navy: #1B2A4A; --gold: #C9A227; --text: #2C3E50; --secondary: #5D6D7E; --border: #E5E0D8; }
+        :root { --bg-color: #FFFEF9; --navy: #1B2A4A; --gold: #C9A227; --text: #2C3E50; --secondary: #5D6D7E; --border: #E5E0D8; --light-gold: #F5ECD7; }
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: 'Noto Serif SC', Georgia, serif; background: var(--bg-color); color: var(--text); line-height: 1.8; }
-        .container { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
-        header { background: var(--navy); color: white; padding: 40px 30px; text-align: center; }
-        header h1 { font-size: 1.8em; margin-bottom: 10px; }
-        header .meta { color: var(--gold); font-size: 0.95em; margin-top: 10px; }
-        .nav { background: white; border: 1px solid var(--border); padding: 15px 20px; margin-bottom: 30px; border-radius: 8px; text-align: center; }
-        .nav a { color: var(--navy); text-decoration: none; margin: 0 12px; font-size: 0.95em; }
-        .nav a:hover { color: var(--gold); }
-        .content { background: white; border: 1px solid var(--border); border-radius: 12px; padding: 40px; }
-        .content h2 { color: var(--navy); font-size: 1.4em; margin: 35px 0 15px; padding-bottom: 8px; border-bottom: 2px solid var(--gold); }
-        .content h2:first-child { margin-top: 0; }
-        .content h3 { color: var(--navy); font-size: 1.15em; margin: 25px 0 12px; }
+        body { font-family: 'Noto Serif SC', Georgia, serif; background: var(--bg-color); color: var(--text); line-height: 1.9; }
+        .container { max-width: 1000px; margin: 0 auto; padding: 40px 20px; }
+        header { background: linear-gradient(135deg, var(--navy) 0%, #2a3f6a 100%); color: white; padding: 50px 30px; text-align: center; position: relative; overflow: hidden; }
+        header::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); }
+        header h1 { font-size: 2.2em; margin-bottom: 10px; position: relative; }
+        header h1::before { content: '💡'; margin-right: 15px; }
+        header .meta { color: var(--gold); font-size: 1em; margin-top: 15px; position: relative; }
+        header .meta span { background: rgba(201, 162, 39, 0.2); padding: 5px 15px; border-radius: 20px; }
+        .nav { background: white; border: 1px solid var(--border); padding: 15px 25px; margin-bottom: 30px; border-radius: 10px; text-align: center; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        .nav a { color: var(--navy); text-decoration: none; margin: 0 15px; font-size: 0.95em; padding: 8px 15px; border-radius: 5px; transition: all 0.2s; }
+        .nav a:hover { background: var(--gold); color: white; }
+        .content { background: white; border: 1px solid var(--border); border-radius: 15px; padding: 45px; box-shadow: 0 5px 30px rgba(0,0,0,0.05); }
+        .section { margin-bottom: 40px; padding-bottom: 40px; border-bottom: 1px solid var(--border); }
+        .section:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+        .content h2 { color: var(--navy); font-size: 1.5em; margin: 0 0 20px; padding-bottom: 12px; border-bottom: 3px solid var(--gold); display: inline-block; }
+        .content h3 { color: var(--navy); font-size: 1.2em; margin: 25px 0 15px; padding-left: 15px; border-left: 4px solid var(--gold); }
         .content p { margin: 15px 0; text-align: justify; }
-        .quote { background: var(--navy); color: white; padding: 20px 25px; border-left: 4px solid var(--gold); margin: 25px 0; border-radius: 0 8px 8px 0; }
-        .quote p { margin: 0; font-style: italic; }
-        .quote .source { color: var(--gold); margin-top: 12px; font-size: 0.9em; }
-        .related { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px; }
-        .related a { background: white; border: 1px solid var(--border); padding: 8px 15px; border-radius: 20px; text-decoration: none; color: var(--navy); font-size: 0.9em; transition: all 0.2s; }
-        .related a:hover { background: var(--gold); color: white; border-color: var(--gold); }
+        .intro-box { background: linear-gradient(135deg, var(--light-gold) 0%, #fff9e6 100%); padding: 25px 30px; border-radius: 10px; margin: 20px 0; border-left: 5px solid var(--gold); }
+        .intro-box p { margin: 0; font-size: 1.05em; }
+        .quote { background: var(--navy); color: white; padding: 25px 30px; border-left: 5px solid var(--gold); margin: 25px 0; border-radius: 0 12px 12px 0; position: relative; }
+        .quote::before { content: '"'; position: absolute; top: 10px; left: 15px; font-size: 4em; color: var(--gold); opacity: 0.3; font-family: Georgia, serif; }
+        .quote p { margin: 0; font-style: italic; font-size: 1.05em; padding-left: 30px; }
+        .quote .source { color: var(--gold); margin-top: 15px; font-size: 0.9em; padding-left: 30px; font-style: normal; }
+        .timeline { position: relative; padding-left: 30px; margin: 20px 0; }
+        .timeline::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--gold); }
+        .timeline-item { position: relative; margin-bottom: 25px; }
+        .timeline-item::before { content: ''; position: absolute; left: -34px; top: 5px; width: 12px; height: 12px; background: var(--gold); border-radius: 50%; border: 3px solid white; box-shadow: 0 0 0 3px var(--gold); }
+        .timeline-year { font-weight: bold; color: var(--navy); font-size: 1.1em; }
+        .timeline-content { color: var(--text); margin-top: 5px; }
+        .misconception { background: #fff5f5; padding: 20px 25px; border-radius: 10px; margin: 15px 0; border-left: 4px solid #e74c3c; }
+        .misconception h4 { color: #c0392b; margin-bottom: 10px; font-size: 1.1em; }
+        .related { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 20px; }
+        .related a { background: white; border: 2px solid var(--border); padding: 10px 20px; border-radius: 25px; text-decoration: none; color: var(--navy); font-size: 0.95em; transition: all 0.3s; }
+        .related a:hover { background: var(--gold); color: white; border-color: var(--gold); transform: translateY(-2px); }
         footer { text-align: center; padding: 40px 20px; color: var(--secondary); border-top: 1px solid var(--border); margin-top: 40px; }
         footer a { color: var(--navy); text-decoration: none; }
+        @media (max-width: 768px) { .container { padding: 20px 15px; } header { padding: 30px 20px; } header h1 { font-size: 1.6em; } .content { padding: 25px 20px; } .nav a { margin: 5px 8px; display: inline-block; } }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
-        <h1>💡 内在价值</h1>
-        <div class="meta">概念 · 被引用 83 次</div>
+        <h1>内在价值</h1>
+        <div class="meta"><span>核心投资概念</span></div>
     </header>
     
     <div class="container">
@@ -46,26 +62,116 @@
         </nav>
         
         <article class="content">
-            <h2>概念解析</h2>
-            <p>内在价值是巴菲特整个投资体系的基石，代表企业在剩余存续期间预期产生的现金流的折现值。</p>
-            
-            <h2>巴菲特原话</h2>
+            <div class="section">
+                <h2>定义与起源</h2>
+                <div class="intro-box">
+                    <p>内在价值是巴菲特整个投资体系的基石，代表企业在剩余存续期间预期产生的现金流的折现值。它是唯一能够评价投资决策是否合理的方法。内在价值是一个估计值而非精确数字，不同的投资者对同一企业可能得出不同的内在价值估计。</p>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>核心要义</h2>
+                <p><b>估计而非精确：</b>内在价值是估计值，不同分析师可能得出不同结果，这本身就体现了投资的艺术性。</p><p><b>现金流为核心：</b>企业的价值取决于其能够产生的自由现金流，而非会计利润。</p><p><b>时间因素：</b>企业的存续期越长、增长越快，其内在价值越高。</p><p><b>折现率：</b>使用无风险利率作为折现率，风险越高的企业应该要求更高的回报。</p>
+            </div>
+
+            <div class="section">
+                <h2>实践应用</h2>
+                <div class="intro-box"><p>巴菲特使用内在价值来评估所有投资决策。当市场价格低于内在价值时买入，当价格大幅高于内在价值时卖出。他强调宁可模糊正确也不要精确错误，因为内在价值的估计本身就存在主观性。</p></div>
+            </div>
+
+            <div class="section">
+                <h2>常见误区</h2>
+                
+        <div class="misconception">
+            <h4>误区一：追求精确</h4>
+            <p>内在价值无法精确计算，追求精确是错误的。重要的是理解企业商业模式并得出一个大致范围。</p>
+        </div>
+        
+        <div class="misconception">
+            <h4>误区二：忽视护城河</h4>
+            <p>低估了企业竞争优势的持久性，导致低估长期现金流。</p>
+        </div>
+        
+        <div class="misconception">
+            <h4>误区三：只看账面值</h4>
+            <p>账面价值只是内在价值的保守代理，某些情况下可能严重低估真实价值。</p>
+        </div>
+        
+            </div>
+
+            <div class="section">
+                <h2>原话精选</h2>
+                
             <div class="quote">
-                <p>"理解'内在价值'这个概念对于理解伯克希尔的投资哲学至关重要。"</p>
-                <div class="source">—— 巴菲特致股东信</div>
+                <p>因此对伯克希尔而言，对盈余的认定并非取决于持股比例是100%、50%、20%、5% 或是1%，盈余的真正价值在于其将来再投资所能产生的效益，这与是否由我们自己或是专业经理人来决定并不相关，也与我们认列或不认列利益不相关(重要的是剧本而不是演员)。假设我们公司拥有一片山林，即使财务报表无法反映这些树木的成长，也无法掩盖我们拥有这片成长中的山林这项事实。</p>
+                <div class="source">—— 巴菲特致股东信 1980年</div>
             </div>
             
-            <h2>相关概念</h2>
-            <div class="related">
-                <a href="内在价值.html">内在价值</a>
-                <a href="护城河.html">护城河</a>
-                <a href="安全边际.html">安全边际</a>
+            <div class="quote">
+                <p>(讲到这理，忍不住休息一下顺便来段广告，若被投资公司将其所赚的盈余用于买回自家的股票，我们通常会报以热烈的掌声，理由很简单：若一家好公司其股票价格远低于其实质价值，那么还有什么投资会比前者来的更稳当、更有赚头、更能促进原有股东权益的呢?企业购并的竞争性通常使得购并整家公司的实际价格远高于取得企业的实际价值，另一方面股票市场的拍卖特质，往往可以让我们以相对低廉的价格取得一家公司的部份股权。）</p>
+                <div class="source">—— 巴菲特致股东信 1980年</div>
+            </div>
+            
+            <div class="quote">
+                <p>当然认不认列损益对伯克希尔及其股东而言，并不影响其实质的经济利益，这些盈余的实际价值将取决于运用它们的 GEIGO经营阶层能力的高低。</p>
+                <div class="source">—— 巴菲特致股东信 1980年</div>
+            </div>
+            
+            <div class="quote">
+                <p>取舍之间的因素考量在投资公司间可以很容易的计算，假设投资公司甲其市价仅为其真正价值的一半，并打算购并投资公司乙，又假设投资公司甲决定发行相当市值的股份以换取投资公司乙全部的资产，在这种情况下等于是投资公司甲以二块钱的内含价值换取一块钱的内含价值，而马上会接到甲公司股东与证管会的异议，强调投资公司合并的公平性，所以这样的交易一定不被允许。然而对制造、服务、金融等公司而言，价值却不像投资公司那么容易计算，但我们也曾见过有些购并案像前面所提案例一样明显伤害原有股东的权益，而如果公司经营阶层能注重公平性，愿意用同样的标准来评估两家企业的话，这样的伤害便绝对不会发生。</p>
+                <div class="source">—— 巴菲特致股东信 1982年</div>
+            </div>
+            
+            <div class="quote">
+                <p>我们有一个目标是希望伯克夏的股价能与其本身拥有的内含价值成正相关(请注意是合理的正相关而非完全一致，因为如果一般绩优公司的股价远低于其真正价值的话，伯克夏也很难免除在外)，而一个公司要维持合理的股价跟其所背后的股东有很大关系，若公司的股东与潜在的买家主要都是基于非理性或情绪性的投资该公司股票，则公司股票便会不时出现很离谱的价格，躁郁的人格会导致躁郁的价格，这种性格甚至有助于我们买卖其它公司的股票，但我们尽量避免这种情况跟伯克夏沾上边将会对身为股东的你我有利。</p>
+                <div class="source">—— 巴菲特致股东信 1983年</div>
+            </div>
+            
+            </div>
+
+            <div class="section">
+                <h2>时间线演变</h2>
+                <div class="timeline">
+                    
+        <div class="timeline-item">
+            <div class="timeline-year">1965</div>
+            <div class="timeline-content">首次提出内在价值概念，强调这是评估投资机会的唯一合理方式</div>
+        </div>
+        
+        <div class="timeline-item">
+            <div class="timeline-year">1970s</div>
+            <div class="timeline-content">系统阐述内在价值与账面价值的区别，认为账面价值是内在价值的下限</div>
+        </div>
+        
+        <div class="timeline-item">
+            <div class="timeline-year">1980s</div>
+            <div class="timeline-content">在评估喜诗糖果等收购时应用内在价值分析</div>
+        </div>
+        
+        <div class="timeline-item">
+            <div class="timeline-year">1990s</div>
+            <div class="timeline-content">强调内在价值计算中使用长期国债利率作为折现标准</div>
+        </div>
+        
+        <div class="timeline-item">
+            <div class="timeline-year">2000s</div>
+            <div class="timeline-content">继续强调内在价值是伯克希尔投资决策的核心标准</div>
+        </div>
+        
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>相关概念</h2>
+                <div class="related">
+                    
+                </div>
             </div>
         </article>
     </div>
     
     <footer>
-        <p><a href="../index.html">巴菲特知识库</a> | 数据来源：Berkshire Hathaway Letters</p>
+        <p><a href="../index.html">巴菲特知识库</a> | 数据来源：巴菲特致股东信 (1977-2007)</p>
     </footer>
 </body>
 </html>

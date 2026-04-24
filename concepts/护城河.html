@@ -5,36 +5,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>护城河 - 巴菲特知识库</title>
     <style>
-        :root { --bg-color: #FFFEF9; --navy: #1B2A4A; --gold: #C9A227; --text: #2C3E50; --secondary: #5D6D7E; --border: #E5E0D8; }
+        :root { --bg-color: #FFFEF9; --navy: #1B2A4A; --gold: #C9A227; --text: #2C3E50; --secondary: #5D6D7E; --border: #E5E0D8; --light-gold: #F5ECD7; }
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: 'Noto Serif SC', Georgia, serif; background: var(--bg-color); color: var(--text); line-height: 1.8; }
-        .container { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
-        header { background: var(--navy); color: white; padding: 40px 30px; text-align: center; }
-        header h1 { font-size: 1.8em; margin-bottom: 10px; }
-        header .meta { color: var(--gold); font-size: 0.95em; margin-top: 10px; }
-        .nav { background: white; border: 1px solid var(--border); padding: 15px 20px; margin-bottom: 30px; border-radius: 8px; text-align: center; }
-        .nav a { color: var(--navy); text-decoration: none; margin: 0 12px; font-size: 0.95em; }
-        .nav a:hover { color: var(--gold); }
-        .content { background: white; border: 1px solid var(--border); border-radius: 12px; padding: 40px; }
-        .content h2 { color: var(--navy); font-size: 1.4em; margin: 35px 0 15px; padding-bottom: 8px; border-bottom: 2px solid var(--gold); }
-        .content h2:first-child { margin-top: 0; }
-        .content h3 { color: var(--navy); font-size: 1.15em; margin: 25px 0 12px; }
+        body { font-family: 'Noto Serif SC', Georgia, serif; background: var(--bg-color); color: var(--text); line-height: 1.9; }
+        .container { max-width: 1000px; margin: 0 auto; padding: 40px 20px; }
+        header { background: linear-gradient(135deg, var(--navy) 0%, #2a3f6a 100%); color: white; padding: 50px 30px; text-align: center; position: relative; overflow: hidden; }
+        header::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); }
+        header h1 { font-size: 2.2em; margin-bottom: 10px; position: relative; }
+        header h1::before { content: '💡'; margin-right: 15px; }
+        header .meta { color: var(--gold); font-size: 1em; margin-top: 15px; position: relative; }
+        header .meta span { background: rgba(201, 162, 39, 0.2); padding: 5px 15px; border-radius: 20px; }
+        .nav { background: white; border: 1px solid var(--border); padding: 15px 25px; margin-bottom: 30px; border-radius: 10px; text-align: center; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        .nav a { color: var(--navy); text-decoration: none; margin: 0 15px; font-size: 0.95em; padding: 8px 15px; border-radius: 5px; transition: all 0.2s; }
+        .nav a:hover { background: var(--gold); color: white; }
+        .content { background: white; border: 1px solid var(--border); border-radius: 15px; padding: 45px; box-shadow: 0 5px 30px rgba(0,0,0,0.05); }
+        .section { margin-bottom: 40px; padding-bottom: 40px; border-bottom: 1px solid var(--border); }
+        .section:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+        .content h2 { color: var(--navy); font-size: 1.5em; margin: 0 0 20px; padding-bottom: 12px; border-bottom: 3px solid var(--gold); display: inline-block; }
+        .content h3 { color: var(--navy); font-size: 1.2em; margin: 25px 0 15px; padding-left: 15px; border-left: 4px solid var(--gold); }
         .content p { margin: 15px 0; text-align: justify; }
-        .quote { background: var(--navy); color: white; padding: 20px 25px; border-left: 4px solid var(--gold); margin: 25px 0; border-radius: 0 8px 8px 0; }
-        .quote p { margin: 0; font-style: italic; }
-        .quote .source { color: var(--gold); margin-top: 12px; font-size: 0.9em; }
-        .related { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px; }
-        .related a { background: white; border: 1px solid var(--border); padding: 8px 15px; border-radius: 20px; text-decoration: none; color: var(--navy); font-size: 0.9em; transition: all 0.2s; }
-        .related a:hover { background: var(--gold); color: white; border-color: var(--gold); }
+        .intro-box { background: linear-gradient(135deg, var(--light-gold) 0%, #fff9e6 100%); padding: 25px 30px; border-radius: 10px; margin: 20px 0; border-left: 5px solid var(--gold); }
+        .intro-box p { margin: 0; font-size: 1.05em; }
+        .quote { background: var(--navy); color: white; padding: 25px 30px; border-left: 5px solid var(--gold); margin: 25px 0; border-radius: 0 12px 12px 0; position: relative; }
+        .quote::before { content: '"'; position: absolute; top: 10px; left: 15px; font-size: 4em; color: var(--gold); opacity: 0.3; font-family: Georgia, serif; }
+        .quote p { margin: 0; font-style: italic; font-size: 1.05em; padding-left: 30px; }
+        .quote .source { color: var(--gold); margin-top: 15px; font-size: 0.9em; padding-left: 30px; font-style: normal; }
+        .timeline { position: relative; padding-left: 30px; margin: 20px 0; }
+        .timeline::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--gold); }
+        .timeline-item { position: relative; margin-bottom: 25px; }
+        .timeline-item::before { content: ''; position: absolute; left: -34px; top: 5px; width: 12px; height: 12px; background: var(--gold); border-radius: 50%; border: 3px solid white; box-shadow: 0 0 0 3px var(--gold); }
+        .timeline-year { font-weight: bold; color: var(--navy); font-size: 1.1em; }
+        .timeline-content { color: var(--text); margin-top: 5px; }
+        .misconception { background: #fff5f5; padding: 20px 25px; border-radius: 10px; margin: 15px 0; border-left: 4px solid #e74c3c; }
+        .misconception h4 { color: #c0392b; margin-bottom: 10px; font-size: 1.1em; }
+        .related { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 20px; }
+        .related a { background: white; border: 2px solid var(--border); padding: 10px 20px; border-radius: 25px; text-decoration: none; color: var(--navy); font-size: 0.95em; transition: all 0.3s; }
+        .related a:hover { background: var(--gold); color: white; border-color: var(--gold); transform: translateY(-2px); }
         footer { text-align: center; padding: 40px 20px; color: var(--secondary); border-top: 1px solid var(--border); margin-top: 40px; }
         footer a { color: var(--navy); text-decoration: none; }
+        @media (max-width: 768px) { .container { padding: 20px 15px; } header { padding: 30px 20px; } header h1 { font-size: 1.6em; } .content { padding: 25px 20px; } .nav a { margin: 5px 8px; display: inline-block; } }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
-        <h1>💡 护城河</h1>
-        <div class="meta">概念 · 被引用 65 次</div>
+        <h1>护城河</h1>
+        <div class="meta"><span>核心投资概念</span></div>
     </header>
     
     <div class="container">
@@ -46,26 +62,111 @@
         </nav>
         
         <article class="content">
-            <h2>概念解析</h2>
-            <p>护城河指企业拥有的持久竞争优势，如品牌、专利、网络效应等，能阻止竞争对手的侵蚀。</p>
-            
-            <h2>巴菲特原话</h2>
+            <div class="section">
+                <h2>定义与起源</h2>
+                <div class="intro-box">
+                    <p>护城河是指企业拥有的持久性竞争优势，能够阻止竞争对手复制或侵蚀其市场份额。巴菲特用这个比喻来形容企业抵御竞争的能力。真正的护城河来自品牌、网络效应、成本优势或法规保护等结构性因素。</p>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>核心要义</h2>
+                <p><b>持久性：</b>护城河必须是持久的，而非短暂的竞争优势。</p><p><b>结构性优势：</b>来自地理位置、品牌、网络效应、成本优势等难以复制因素。</p><p><b>定价权：</b>拥有护城河的企业能够提价而不失去客户。</p><p><b>资本回报：</b>护城河导致高资本回报率，是内在价值的来源。</p>
+            </div>
+
+            <div class="section">
+                <h2>实践应用</h2>
+                <div class="intro-box"><p>巴菲特偏好拥有宽阔护城河的企业。他花费大量时间评估企业是否拥有持久性竞争优势。在护城河强大的企业中，即使管理层平庸也能生存；在护城河薄弱的企业中，即使优秀管理层也难以持续盈利。</p></div>
+            </div>
+
+            <div class="section">
+                <h2>常见误区</h2>
+                
+        <div class="misconception">
+            <h4>误区一：技术创新是护城河</h4>
+            <p>技术创新可能反而侵蚀现有护城河，科技变化快的行业护城河难以持久。</p>
+        </div>
+        
+        <div class="misconception">
+            <h4>误区二：规模就是护城河</h4>
+            <p>大企业不一定有护城河，规模优势只有在能转化为成本或网络优势时才有效。</p>
+        </div>
+        
+        <div class="misconception">
+            <h4>误区三：护城河永不消失</h4>
+            <p>护城河需要持续维护，忽视竞争威胁会导致护城河被侵蚀。</p>
+        </div>
+        
+            </div>
+
+            <div class="section">
+                <h2>原话精选</h2>
+                
             <div class="quote">
-                <p>"理解'护城河'这个概念对于理解伯克希尔的投资哲学至关重要。"</p>
-                <div class="source">—— 巴菲特致股东信</div>
+                <p>身处于广大市场中(汽车保险)，不同于大部份行销组织僵化的同业，一直以来 GEIGO 将自己定位为低营运成本的公司，所以能够在为客户创造价值的同时，也为自己赚进大把钞票，几十年来都是如此，而即使它在七0年代中期发生危机，也从未减损其在此方面的经济竞争优势。</p>
+                <div class="source">—— 巴菲特致股东信 1980年</div>
             </div>
             
-            <h2>相关概念</h2>
-            <div class="related">
-                <a href="内在价值.html">内在价值</a>
-                <a href="护城河.html">护城河</a>
-                <a href="安全边际.html">安全边际</a>
+            <div class="quote">
+                <p>至于我们本身采取的立场就相当令人安心，我们相信自己的净值相对于保费收入水准，依所有业者债券采摊销成本制，是所有大型产险业者中最强的，甚至当债券价值以市价计时，我们的竞争优势更加明显，(当然在吹嘘自夸的同时，我们还是必须提醒自己资产与负债部位的到期日仍不相称，而且本人也因为无法剑及履及的执行，而使得我们在债券方面的投资损失了不少钱)。</p>
+                <div class="source">—— 巴菲特致股东信 1980年</div>
+            </div>
+            
+            <div class="quote">
+                <p>除了销量的问题，喜斯具有多项且重要的竞争优势，在我们主要的销售地区-西部，我们的糖果为消费者所偏爱，他们甚至愿意用多花二三倍的价钱来享受(糖果就如同股票一样，价格与价值乃有所不同，价格是指你所付出的，而价值却是指你所得到的)，我们全美直营店服务的品质跟我们的产品一样好，亲切贴心的服务人员就跟包装上的商标一样，以一家雇用二千名季节性员工的企业来说，可是不容易办到的，这都要归功于Chuck与所有同仁的努力。而由于我们在1984年仅微幅调整价格，所以预期明年度的获利只与今年相当。</p>
+                <div class="source">—— 巴菲特致股东信 1983年</div>
+            </div>
+            
+            <div class="quote">
+                <p>最近我们靠前三大持股-盖可、通用食品与华盛顿邮报大量买回自家股票(埃克森-我们的第四大持股也积极买回股票，只是因为我们是最近才建仓，所以影响不大)，而大发利市，我们对于投资这种具竞争优势同时又真正注重股东权益的管理阶层感到相当安心。</p>
+                <div class="source">—— 巴菲特致股东信 1984年</div>
+            </div>
+            
+            <div class="quote">
+                <p>所有的伯克希尔股东皆由于盖可的经营团队，包括Jack Byrne、Bill Snyder与Lou Simpson而获益良多，在他们的核心事业-低成本的汽车与房屋住宅保险，盖可拥有显著且持续的竞争优势，这在一般业界并不多见，可谓投资人的稀世珍宝(盖可本身正说明的这一点，优秀的经营团队将所有的重心放在核心事业以维持高获利能力)，盖可核心事业所产生的资金大部分皆交由Lou Simpson来投资，Lou是一个情绪与理性兼具的罕见人才，这项人格特色使其在长期投资方面有杰出表现，即使承受的较低的风险，其投资报酬却较同业表现要好的许多，我对以上三位杰出经理人表达赞赏与感谢之意。</p>
+                <div class="source">—— 巴菲特致股东信 1984年</div>
+            </div>
+            
+            </div>
+
+            <div class="section">
+                <h2>时间线演变</h2>
+                <div class="timeline">
+                    
+        <div class="timeline-item">
+            <div class="timeline-year">1970s</div>
+            <div class="timeline-content">首次在股东信中用护城河比喻形容企业竞争优势</div>
+        </div>
+        
+        <div class="timeline-item">
+            <div class="timeline-year">1986</div>
+            <div class="timeline-content">在谈论GEICO时明确使用护城河概念，描述其成本优势</div>
+        </div>
+        
+        <div class="timeline-item">
+            <div class="timeline-year">1990s</div>
+            <div class="timeline-content">系统阐述护城河评估框架，包括品牌、成本、网络效应等</div>
+        </div>
+        
+        <div class="timeline-item">
+            <div class="timeline-year">2000s</div>
+            <div class="timeline-content">强调护城河是选择投资标的的首要标准</div>
+        </div>
+        
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>相关概念</h2>
+                <div class="related">
+                    
+                </div>
             </div>
         </article>
     </div>
     
     <footer>
-        <p><a href="../index.html">巴菲特知识库</a> | 数据来源：Berkshire Hathaway Letters</p>
+        <p><a href="../index.html">巴菲特知识库</a> | 数据来源：巴菲特致股东信 (1977-2007)</p>
     </footer>
 </body>
 </html>

@@ -5,36 +5,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>管理层 - 巴菲特知识库</title>
     <style>
-        :root { --bg-color: #FFFEF9; --navy: #1B2A4A; --gold: #C9A227; --text: #2C3E50; --secondary: #5D6D7E; --border: #E5E0D8; }
+        :root { --bg-color: #FFFEF9; --navy: #1B2A4A; --gold: #C9A227; --text: #2C3E50; --secondary: #5D6D7E; --border: #E5E0D8; --light-gold: #F5ECD7; }
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: 'Noto Serif SC', Georgia, serif; background: var(--bg-color); color: var(--text); line-height: 1.8; }
-        .container { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
-        header { background: var(--navy); color: white; padding: 40px 30px; text-align: center; }
-        header h1 { font-size: 1.8em; margin-bottom: 10px; }
-        header .meta { color: var(--gold); font-size: 0.95em; margin-top: 10px; }
-        .nav { background: white; border: 1px solid var(--border); padding: 15px 20px; margin-bottom: 30px; border-radius: 8px; text-align: center; }
-        .nav a { color: var(--navy); text-decoration: none; margin: 0 12px; font-size: 0.95em; }
-        .nav a:hover { color: var(--gold); }
-        .content { background: white; border: 1px solid var(--border); border-radius: 12px; padding: 40px; }
-        .content h2 { color: var(--navy); font-size: 1.4em; margin: 35px 0 15px; padding-bottom: 8px; border-bottom: 2px solid var(--gold); }
-        .content h2:first-child { margin-top: 0; }
-        .content h3 { color: var(--navy); font-size: 1.15em; margin: 25px 0 12px; }
+        body { font-family: 'Noto Serif SC', Georgia, serif; background: var(--bg-color); color: var(--text); line-height: 1.9; }
+        .container { max-width: 1000px; margin: 0 auto; padding: 40px 20px; }
+        header { background: linear-gradient(135deg, var(--navy) 0%, #2a3f6a 100%); color: white; padding: 50px 30px; text-align: center; position: relative; overflow: hidden; }
+        header::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); }
+        header h1 { font-size: 2.2em; margin-bottom: 10px; position: relative; }
+        header h1::before { content: '💡'; margin-right: 15px; }
+        header .meta { color: var(--gold); font-size: 1em; margin-top: 15px; position: relative; }
+        header .meta span { background: rgba(201, 162, 39, 0.2); padding: 5px 15px; border-radius: 20px; }
+        .nav { background: white; border: 1px solid var(--border); padding: 15px 25px; margin-bottom: 30px; border-radius: 10px; text-align: center; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        .nav a { color: var(--navy); text-decoration: none; margin: 0 15px; font-size: 0.95em; padding: 8px 15px; border-radius: 5px; transition: all 0.2s; }
+        .nav a:hover { background: var(--gold); color: white; }
+        .content { background: white; border: 1px solid var(--border); border-radius: 15px; padding: 45px; box-shadow: 0 5px 30px rgba(0,0,0,0.05); }
+        .section { margin-bottom: 40px; padding-bottom: 40px; border-bottom: 1px solid var(--border); }
+        .section:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+        .content h2 { color: var(--navy); font-size: 1.5em; margin: 0 0 20px; padding-bottom: 12px; border-bottom: 3px solid var(--gold); display: inline-block; }
+        .content h3 { color: var(--navy); font-size: 1.2em; margin: 25px 0 15px; padding-left: 15px; border-left: 4px solid var(--gold); }
         .content p { margin: 15px 0; text-align: justify; }
-        .quote { background: var(--navy); color: white; padding: 20px 25px; border-left: 4px solid var(--gold); margin: 25px 0; border-radius: 0 8px 8px 0; }
-        .quote p { margin: 0; font-style: italic; }
-        .quote .source { color: var(--gold); margin-top: 12px; font-size: 0.9em; }
-        .related { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px; }
-        .related a { background: white; border: 1px solid var(--border); padding: 8px 15px; border-radius: 20px; text-decoration: none; color: var(--navy); font-size: 0.9em; transition: all 0.2s; }
-        .related a:hover { background: var(--gold); color: white; border-color: var(--gold); }
+        .intro-box { background: linear-gradient(135deg, var(--light-gold) 0%, #fff9e6 100%); padding: 25px 30px; border-radius: 10px; margin: 20px 0; border-left: 5px solid var(--gold); }
+        .intro-box p { margin: 0; font-size: 1.05em; }
+        .quote { background: var(--navy); color: white; padding: 25px 30px; border-left: 5px solid var(--gold); margin: 25px 0; border-radius: 0 12px 12px 0; position: relative; }
+        .quote::before { content: '"'; position: absolute; top: 10px; left: 15px; font-size: 4em; color: var(--gold); opacity: 0.3; font-family: Georgia, serif; }
+        .quote p { margin: 0; font-style: italic; font-size: 1.05em; padding-left: 30px; }
+        .quote .source { color: var(--gold); margin-top: 15px; font-size: 0.9em; padding-left: 30px; font-style: normal; }
+        .timeline { position: relative; padding-left: 30px; margin: 20px 0; }
+        .timeline::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--gold); }
+        .timeline-item { position: relative; margin-bottom: 25px; }
+        .timeline-item::before { content: ''; position: absolute; left: -34px; top: 5px; width: 12px; height: 12px; background: var(--gold); border-radius: 50%; border: 3px solid white; box-shadow: 0 0 0 3px var(--gold); }
+        .timeline-year { font-weight: bold; color: var(--navy); font-size: 1.1em; }
+        .timeline-content { color: var(--text); margin-top: 5px; }
+        .misconception { background: #fff5f5; padding: 20px 25px; border-radius: 10px; margin: 15px 0; border-left: 4px solid #e74c3c; }
+        .misconception h4 { color: #c0392b; margin-bottom: 10px; font-size: 1.1em; }
+        .related { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 20px; }
+        .related a { background: white; border: 2px solid var(--border); padding: 10px 20px; border-radius: 25px; text-decoration: none; color: var(--navy); font-size: 0.95em; transition: all 0.3s; }
+        .related a:hover { background: var(--gold); color: white; border-color: var(--gold); transform: translateY(-2px); }
         footer { text-align: center; padding: 40px 20px; color: var(--secondary); border-top: 1px solid var(--border); margin-top: 40px; }
         footer a { color: var(--navy); text-decoration: none; }
+        @media (max-width: 768px) { .container { padding: 20px 15px; } header { padding: 30px 20px; } header h1 { font-size: 1.6em; } .content { padding: 25px 20px; } .nav a { margin: 5px 8px; display: inline-block; } }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
-        <h1>💡 管理层</h1>
-        <div class="meta">概念 · 被引用 80 次</div>
+        <h1>管理层</h1>
+        <div class="meta"><span>核心投资概念</span></div>
     </header>
     
     <div class="container">
@@ -46,26 +62,111 @@
         </nav>
         
         <article class="content">
-            <h2>概念解析</h2>
-            <p>优秀的管理层是巴菲特投资决策的重要因素，他特别注重管理者的诚信、能力和股东导向。</p>
-            
-            <h2>巴菲特原话</h2>
+            <div class="section">
+                <h2>定义与起源</h2>
+                <div class="intro-box">
+                    <p>优秀的管理层是巴菲特评估投资标的的重要因素。他寻找既有能力又诚信的管理者。巴菲特定义了优秀管理层的特质：理性、坦诚、独立思考、对股东忠诚。管理层品质直接影响企业的资本配置效率和长期价值创造。</p>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>核心要义</h2>
+                <p><b>理性：</b>管理层应该像所有者一样思考，理性配置资本。</p><p><b>坦诚：</b>能够坦率地报告业绩，包括失败。</p><p><b>独立性：</b>不被从众心理驱动，独立做决策。</p><p><b>对股东忠诚：</b>把股东当作合伙人，而非资源来源。</p>
+            </div>
+
+            <div class="section">
+                <h2>实践应用</h2>
+                <div class="intro-box"><p>巴菲特选择与优秀管理层合作，如喜诗糖果的Chuck Huggins、华盛顿邮报的凯瑟琳·格雷厄姆。他很少更换管理层，而是让他们自主经营。他特别看重管理层如何对待股东和如何配置资本。</p></div>
+            </div>
+
+            <div class="section">
+                <h2>常见误区</h2>
+                
+        <div class="misconception">
+            <h4>误区一：明星CEO</h4>
+            <p>大明星CEO不等于优秀管理层，有时反而是负面信号。</p>
+        </div>
+        
+        <div class="misconception">
+            <h4>误区二：频繁更换</h4>
+            <p>伯克希尔很少更换管理层，因为稳定的领导力更有价值。</p>
+        </div>
+        
+        <div class="misconception">
+            <h4>误区三：只看短期业绩</h4>
+            <p>优秀管理层会做长期正确的事，即使短期业绩受影响。</p>
+        </div>
+        
+            </div>
+
+            <div class="section">
+                <h2>原话精选</h2>
+                
             <div class="quote">
-                <p>"理解'管理层'这个概念对于理解伯克希尔的投资哲学至关重要。"</p>
-                <div class="source">—— 巴菲特致股东信</div>
+                <p>部份股东开始质疑我们是否应该继续留在纺织产业，虽然就长期而言其投资报酬率明显低于其它的投资，但我们的理由有以下几个：(1)我们在纽贝福及Manchester的工厂都是当地最大的聘雇业者，员工的年龄偏高，缺乏转换工作的能力，同时我们的员工及其公会也已经尽其所能地与经营阶层配合努力改善成本结构及产品组合，以使我们的经营得以维持下去(2)管理阶层也相当努力同时坦承面对产业的问题，尤其是在1965年经营权易主后，Ken Chace依然尽力尽力地协助我们把纺织部门产生稳定的资金流入转到获利更加的保险事业投资与购并之上(3)努力工作加上对制造与行销组合的乐观预期，我们的纺织事业在未来看起来应该可以维持一个起码的利润空间。</p>
+                <div class="source">—— 巴菲特致股东信 1977年</div>
             </div>
             
-            <h2>相关概念</h2>
-            <div class="related">
-                <a href="内在价值.html">内在价值</a>
-                <a href="护城河.html">护城河</a>
-                <a href="安全边际.html">安全边际</a>
+            <div class="quote">
+                <p>保险公司提供的制式保单很容易为其它同业所模仿，他们唯一的产品就是承诺，保险执照不难取得，而费率也是公开的，这行业商标、专利、地点、企业年资、原物料等都不重要，消费者对于产品也很难产生特别的偏好，在企业的年报中，常常看到有人强调自己不同于其它同业的特殊之处，有时这样的说法有道理，有时没什么道理，但不可否认的是，保险事业的本质使得经理人的表现，对于公司绩效的影响具有举足轻重的地位，很幸运的是与我们共事的是一群优秀的经理人。</p>
+                <div class="source">—— 巴菲特致股东信 1977年</div>
+            </div>
+            
+            <div class="quote">
+                <p>蓝筹邮票及Wesco都是公开发行公司，各自都必须对外公开报告，在年报的后段附有这两家公司主要经理人关于公司1978年现况的书面报告，他们运用的部份数字可能无法与我们的报告丝毫不差，这又是因为会计与税务一些细节规定所致，但我认为他们的见解将有助于各位了解这些旗下重要事业的经营现况，若有需要伯克希尔的股东可向Mr. Robert(地址：加州洛杉矶5801 South Eastern Avenue)索取蓝筹邮票的年报或向Mrs. Bette(地址：加州Pasadena 315 East Colorado Boulevard)索取Wesco的年报。</p>
+                <div class="source">—— 巴菲特致股东信 1978年</div>
+            </div>
+            
+            <div class="quote">
+                <p>只有当以下条件都符合时，我们才会想要将保险公司大部分的资金投入到股票投资之上：(1)我们可以了解的行业(2)具有长期竞争力(3)由才德兼具的人士所经营(4)吸引人的价格，我们常常可以找到一些符合(1)(2)(3)项条件的投资标的，但第(4)项往往让我们止步，举例来说，1971年伯克希尔所有股票的投资成本累计为1,070万美元，市价则为1,170万美元，市场上确实有不少好股票，只是他们的价格通常也不便宜，(讲到这里，我不得不补充，1971年全体退休基金经理人将可运用资金的122%投资在高价股票之上，甚至还嫌不够，但到了1974年，当股市大幅回档时，他们投资在股票的比例却降到21%的历史新低点)</p>
+                <div class="source">—— 巴菲特致股东信 1978年</div>
+            </div>
+            
+            <div class="quote">
+                <p>这种以划算的价格取得部份所有权(即股票)的计划，虽然不像透过谈判购并整家公司那么有趣，但我们相当清楚，以目前的市场情况，很多公司因为透过协议谈判的方式，犯了明显的错误，相较之下，我们以划算的价格买进不少公司的部份所有权，反而赚了不少钱，(第二次补充，1978年许多退休基金经理人，原本最应该采取长期投资做法的一群人，平均只将9%的资金摆在股票之上，创下比1974年更低的比例)。</p>
+                <div class="source">—— 巴菲特致股东信 1978年</div>
+            </div>
+            
+            </div>
+
+            <div class="section">
+                <h2>时间线演变</h2>
+                <div class="timeline">
+                    
+        <div class="timeline-item">
+            <div class="timeline-year">1970s</div>
+            <div class="timeline-content">开始系统评估管理层质量作为投资决策因素</div>
+        </div>
+        
+        <div class="timeline-item">
+            <div class="timeline-year">1980s</div>
+            <div class="timeline-content">提出优秀管理层的特质框架</div>
+        </div>
+        
+        <div class="timeline-item">
+            <div class="timeline-year">1990s</div>
+            <div class="timeline-content">强调管理层对股东的信托责任</div>
+        </div>
+        
+        <div class="timeline-item">
+            <div class="timeline-year">2000s</div>
+            <div class="timeline-content">继续强调管理层品质是伯克希尔投资标准之一</div>
+        </div>
+        
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>相关概念</h2>
+                <div class="related">
+                    
+                </div>
             </div>
         </article>
     </div>
     
     <footer>
-        <p><a href="../index.html">巴菲特知识库</a> | 数据来源：Berkshire Hathaway Letters</p>
+        <p><a href="../index.html">巴菲特知识库</a> | 数据来源：巴菲特致股东信 (1977-2007)</p>
     </footer>
 </body>
 </html>

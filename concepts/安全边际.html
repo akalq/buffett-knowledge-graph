@@ -5,36 +5,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>安全边际 - 巴菲特知识库</title>
     <style>
-        :root { --bg-color: #FFFEF9; --navy: #1B2A4A; --gold: #C9A227; --text: #2C3E50; --secondary: #5D6D7E; --border: #E5E0D8; }
+        :root { --bg-color: #FFFEF9; --navy: #1B2A4A; --gold: #C9A227; --text: #2C3E50; --secondary: #5D6D7E; --border: #E5E0D8; --light-gold: #F5ECD7; }
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: 'Noto Serif SC', Georgia, serif; background: var(--bg-color); color: var(--text); line-height: 1.8; }
-        .container { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
-        header { background: var(--navy); color: white; padding: 40px 30px; text-align: center; }
-        header h1 { font-size: 1.8em; margin-bottom: 10px; }
-        header .meta { color: var(--gold); font-size: 0.95em; margin-top: 10px; }
-        .nav { background: white; border: 1px solid var(--border); padding: 15px 20px; margin-bottom: 30px; border-radius: 8px; text-align: center; }
-        .nav a { color: var(--navy); text-decoration: none; margin: 0 12px; font-size: 0.95em; }
-        .nav a:hover { color: var(--gold); }
-        .content { background: white; border: 1px solid var(--border); border-radius: 12px; padding: 40px; }
-        .content h2 { color: var(--navy); font-size: 1.4em; margin: 35px 0 15px; padding-bottom: 8px; border-bottom: 2px solid var(--gold); }
-        .content h2:first-child { margin-top: 0; }
-        .content h3 { color: var(--navy); font-size: 1.15em; margin: 25px 0 12px; }
+        body { font-family: 'Noto Serif SC', Georgia, serif; background: var(--bg-color); color: var(--text); line-height: 1.9; }
+        .container { max-width: 1000px; margin: 0 auto; padding: 40px 20px; }
+        header { background: linear-gradient(135deg, var(--navy) 0%, #2a3f6a 100%); color: white; padding: 50px 30px; text-align: center; position: relative; overflow: hidden; }
+        header::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); }
+        header h1 { font-size: 2.2em; margin-bottom: 10px; position: relative; }
+        header h1::before { content: '💡'; margin-right: 15px; }
+        header .meta { color: var(--gold); font-size: 1em; margin-top: 15px; position: relative; }
+        header .meta span { background: rgba(201, 162, 39, 0.2); padding: 5px 15px; border-radius: 20px; }
+        .nav { background: white; border: 1px solid var(--border); padding: 15px 25px; margin-bottom: 30px; border-radius: 10px; text-align: center; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        .nav a { color: var(--navy); text-decoration: none; margin: 0 15px; font-size: 0.95em; padding: 8px 15px; border-radius: 5px; transition: all 0.2s; }
+        .nav a:hover { background: var(--gold); color: white; }
+        .content { background: white; border: 1px solid var(--border); border-radius: 15px; padding: 45px; box-shadow: 0 5px 30px rgba(0,0,0,0.05); }
+        .section { margin-bottom: 40px; padding-bottom: 40px; border-bottom: 1px solid var(--border); }
+        .section:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+        .content h2 { color: var(--navy); font-size: 1.5em; margin: 0 0 20px; padding-bottom: 12px; border-bottom: 3px solid var(--gold); display: inline-block; }
+        .content h3 { color: var(--navy); font-size: 1.2em; margin: 25px 0 15px; padding-left: 15px; border-left: 4px solid var(--gold); }
         .content p { margin: 15px 0; text-align: justify; }
-        .quote { background: var(--navy); color: white; padding: 20px 25px; border-left: 4px solid var(--gold); margin: 25px 0; border-radius: 0 8px 8px 0; }
-        .quote p { margin: 0; font-style: italic; }
-        .quote .source { color: var(--gold); margin-top: 12px; font-size: 0.9em; }
-        .related { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px; }
-        .related a { background: white; border: 1px solid var(--border); padding: 8px 15px; border-radius: 20px; text-decoration: none; color: var(--navy); font-size: 0.9em; transition: all 0.2s; }
-        .related a:hover { background: var(--gold); color: white; border-color: var(--gold); }
+        .intro-box { background: linear-gradient(135deg, var(--light-gold) 0%, #fff9e6 100%); padding: 25px 30px; border-radius: 10px; margin: 20px 0; border-left: 5px solid var(--gold); }
+        .intro-box p { margin: 0; font-size: 1.05em; }
+        .quote { background: var(--navy); color: white; padding: 25px 30px; border-left: 5px solid var(--gold); margin: 25px 0; border-radius: 0 12px 12px 0; position: relative; }
+        .quote::before { content: '"'; position: absolute; top: 10px; left: 15px; font-size: 4em; color: var(--gold); opacity: 0.3; font-family: Georgia, serif; }
+        .quote p { margin: 0; font-style: italic; font-size: 1.05em; padding-left: 30px; }
+        .quote .source { color: var(--gold); margin-top: 15px; font-size: 0.9em; padding-left: 30px; font-style: normal; }
+        .timeline { position: relative; padding-left: 30px; margin: 20px 0; }
+        .timeline::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--gold); }
+        .timeline-item { position: relative; margin-bottom: 25px; }
+        .timeline-item::before { content: ''; position: absolute; left: -34px; top: 5px; width: 12px; height: 12px; background: var(--gold); border-radius: 50%; border: 3px solid white; box-shadow: 0 0 0 3px var(--gold); }
+        .timeline-year { font-weight: bold; color: var(--navy); font-size: 1.1em; }
+        .timeline-content { color: var(--text); margin-top: 5px; }
+        .misconception { background: #fff5f5; padding: 20px 25px; border-radius: 10px; margin: 15px 0; border-left: 4px solid #e74c3c; }
+        .misconception h4 { color: #c0392b; margin-bottom: 10px; font-size: 1.1em; }
+        .related { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 20px; }
+        .related a { background: white; border: 2px solid var(--border); padding: 10px 20px; border-radius: 25px; text-decoration: none; color: var(--navy); font-size: 0.95em; transition: all 0.3s; }
+        .related a:hover { background: var(--gold); color: white; border-color: var(--gold); transform: translateY(-2px); }
         footer { text-align: center; padding: 40px 20px; color: var(--secondary); border-top: 1px solid var(--border); margin-top: 40px; }
         footer a { color: var(--navy); text-decoration: none; }
+        @media (max-width: 768px) { .container { padding: 20px 15px; } header { padding: 30px 20px; } header h1 { font-size: 1.6em; } .content { padding: 25px 20px; } .nav a { margin: 5px 8px; display: inline-block; } }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
-        <h1>💡 安全边际</h1>
-        <div class="meta">概念 · 被引用 62 次</div>
+        <h1>安全边际</h1>
+        <div class="meta"><span>核心投资概念</span></div>
     </header>
     
     <div class="container">
@@ -46,26 +62,111 @@
         </nav>
         
         <article class="content">
-            <h2>概念解析</h2>
-            <p>安全边际是格雷厄姆投资哲学的核心，指股票价格与内在价值之间的缓冲空间。</p>
-            
-            <h2>巴菲特原话</h2>
+            <div class="section">
+                <h2>定义与起源</h2>
+                <div class="intro-box">
+                    <p>安全边际是指投资时股价低于内在价值的幅度。它是格雷厄姆价值投资理论的核心概念，为投资提供容错空间。安全边际确保即使判断有误，投资者也能获得合理的回报。</p>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>核心要义</h2>
+                <p><b>容错空间：</b>即使对企业内在价值的估计有偏差，安全边际也能提供保护。</p><p><b>回报放大器：</b>当价格低于价值时买入，不仅降低了风险，也提高了潜在回报。</p><p><b>不需要精确：</b>只要价格足够低，即使对内在价值的估计不够精确也能盈利。</p><p><b>机会成本：</b>高安全边际意味着资金的机会成本更低。</p>
+            </div>
+
+            <div class="section">
+                <h2>实践应用</h2>
+                <div class="intro-box"><p>巴菲特只在价格提供足够安全边际时才买入。他强调不需要知道企业的精确内在价值，只需要确认价格足够低。在市场恐慌时安全边际往往最大，这正是逆向投资的机会。</p></div>
+            </div>
+
+            <div class="section">
+                <h2>常见误区</h2>
+                
+        <div class="misconception">
+            <h4>误区一：越低越好</h4>
+            <p>安全边际不是越低越好，过度追求低价格可能错失优质机会。</p>
+        </div>
+        
+        <div class="misconception">
+            <h4>误区二：忽视企业质量</h4>
+            <p>低价格买入劣质公司不是安全边际，而是在捡烟蒂。</p>
+        </div>
+        
+        <div class="misconception">
+            <h4>误区三：短期视角</h4>
+            <p>安全边际需要时间来体现价值，短期价格波动不代表安全边际消失。</p>
+        </div>
+        
+            </div>
+
+            <div class="section">
+                <h2>原话精选</h2>
+                
             <div class="quote">
-                <p>"理解'安全边际'这个概念对于理解伯克希尔的投资哲学至关重要。"</p>
-                <div class="source">—— 巴菲特致股东信</div>
+                <p>SAFECO的保险事业营运绩效远优于我们(虽然我们相信自己旗下部份公司的表现优于其平均)，比起我们自己可以发展的还要好，同时也远优于我们可以透过协议买下具控制权的任何一家公司，然而我们仍然可以用远低于其帐面价值的价格买到这些股票，我们以折扣的方式买进这家最优良公司的部份股权，相较之下，你可能必须以溢价的方式才能买到一整家表现平庸的公司，更何况先不考量不确定性，没有人可以用打折的方式自行成立一家新事业。</p>
+                <div class="source">—— 巴菲特致股东信 1978年</div>
             </div>
             
-            <h2>相关概念</h2>
-            <div class="related">
-                <a href="内在价值.html">内在价值</a>
-                <a href="护城河.html">护城河</a>
-                <a href="安全边际.html">安全边际</a>
+            <div class="quote">
+                <p>无论如何，我们皆希望能够保持适当的流动性，负债比例与结构适当并保留充裕的资本实力，虽然这种保守的态度将使得我们的投资报酬率因此打了点折扣，但这也是惟一能让我们感到安心的一种方式。</p>
+                <div class="source">—— 巴菲特致股东信 1980年</div>
+            </div>
+            
+            <div class="quote">
+                <p>我们很少大幅举债，而当我们真得如此做时，我们倾向把它们定在长期固定利率的基础之上，我们宁愿避免资产负债表过度融资而放弃许多吸引人的投资机会，虽然如此保守的作法有时使我们的绩效打了点折扣，但考量到对保户、存款人、借款人与全体股东将大部份财产托付给我们的责任时，这也是惟一令我们感到安心的作法。</p>
+                <div class="source">—— 巴菲特致股东信 1983年</div>
+            </div>
+            
+            <div class="quote">
+                <p>Omaha的零售商在发现到B太太可以给顾客更低的价格时，便联手向家具及地毯工厂施压不要供货给B太太，但靠着各种不同的方法，她还是取得货源并大幅降价，甚至因而被告到法院违反公平交易法，但最后不但赢得所有官司更大大打开了知名度，其中有一个案件，在法庭中为了证明即使以现行市价打一个大折扣后，她仍有所获利，结果她卖了一条地毯给法官。</p>
+                <div class="source">—— 巴菲特致股东信 1983年</div>
+            </div>
+            
+            <div class="quote">
+                <p>喜诗糖果的销售受到季节因素的影响越来越大，在圣诞节到来的前四周，其业绩与获利分别占全年的四成与七成五，此外复活节与情人节期间的业绩也特别好，至于平时的生意表现便平平，不过也因为如此使得管理部门与员工在忙季特别辛苦，需要特别的耐性来处理大量的订单。而即使如此服务态度与产品品质却一点也没有打折扣，至于其它同业我就不管保证，事实上有的为了降低成本增加保存期限而添加防腐剂或将成品加以冷冻，我们宁愿大家辛苦一点而拒绝这样的做法。</p>
+                <div class="source">—— 巴菲特致股东信 1984年</div>
+            </div>
+            
+            </div>
+
+            <div class="section">
+                <h2>时间线演变</h2>
+                <div class="timeline">
+                    
+        <div class="timeline-item">
+            <div class="timeline-year">1934</div>
+            <div class="timeline-content">格雷厄姆在《证券分析》中首次系统阐述安全边际概念</div>
+        </div>
+        
+        <div class="timeline-item">
+            <div class="timeline-year">1965</div>
+            <div class="timeline-content">巴菲特将此概念引入伯克希尔的投资实践</div>
+        </div>
+        
+        <div class="timeline-item">
+            <div class="timeline-year">1980s</div>
+            <div class="timeline-content">在收购喜诗糖果时强调支付价格的安全边际</div>
+        </div>
+        
+        <div class="timeline-item">
+            <div class="timeline-year">2008</div>
+            <div class="timeline-content">金融危机期间强调持有现金等待安全边际机会的重要性</div>
+        </div>
+        
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>相关概念</h2>
+                <div class="related">
+                    
+                </div>
             </div>
         </article>
     </div>
     
     <footer>
-        <p><a href="../index.html">巴菲特知识库</a> | 数据来源：Berkshire Hathaway Letters</p>
+        <p><a href="../index.html">巴菲特知识库</a> | 数据来源：巴菲特致股东信 (1977-2007)</p>
     </footer>
 </body>
 </html>

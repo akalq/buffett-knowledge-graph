@@ -5,37 +5,61 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>苹果 - 巴菲特知识库</title>
     <style>
-        :root { --bg-color: #FFFEF9; --navy: #1B2A4A; --gold: #C9A227; --text: #2C3E50; --secondary: #5D6D7E; --border: #E5E0D8; }
+        :root { --bg-color: #FFFEF9; --navy: #1B2A4A; --gold: #C9A227; --text: #2C3E50; --secondary: #5D6D7E; --border: #E5E0D8; --light-gold: #F5ECD7; }
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: 'Noto Serif SC', Georgia, serif; background: var(--bg-color); color: var(--text); line-height: 1.8; }
-        .container { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
-        header { background: var(--navy); color: white; padding: 40px 30px; text-align: center; }
-        header h1 { font-size: 1.8em; margin-bottom: 10px; }
-        header .meta { color: var(--gold); font-size: 0.95em; margin-top: 10px; }
-        .nav { background: white; border: 1px solid var(--border); padding: 15px 20px; margin-bottom: 30px; border-radius: 8px; text-align: center; }
-        .nav a { color: var(--navy); text-decoration: none; margin: 0 12px; font-size: 0.95em; }
-        .nav a:hover { color: var(--gold); }
-        .content { background: white; border: 1px solid var(--border); border-radius: 12px; padding: 40px; }
-        .content h2 { color: var(--navy); font-size: 1.4em; margin: 35px 0 15px; padding-bottom: 8px; border-bottom: 2px solid var(--gold); }
-        .content h2:first-child { margin-top: 0; }
-        .content h3 { color: var(--navy); font-size: 1.15em; margin: 25px 0 12px; }
+        body { font-family: 'Noto Serif SC', Georgia, serif; background: var(--bg-color); color: var(--text); line-height: 1.9; }
+        .container { max-width: 1000px; margin: 0 auto; padding: 40px 20px; }
+        header { background: linear-gradient(135deg, var(--navy) 0%, #2a3f6a 100%); color: white; padding: 50px 30px; text-align: center; position: relative; overflow: hidden; }
+        header::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); }
+        header h1 { font-size: 2.2em; margin-bottom: 8px; position: relative; }
+        header h1::before { content: '🏢'; margin-right: 15px; }
+        header .en-name { color: rgba(255,255,255,0.7); font-size: 1.1em; margin-bottom: 10px; }
+        header .meta { color: var(--gold); font-size: 1em; margin-top: 15px; position: relative; }
+        header .meta span { background: rgba(201, 162, 39, 0.2); padding: 5px 15px; border-radius: 20px; }
+        .nav { background: white; border: 1px solid var(--border); padding: 15px 25px; margin-bottom: 30px; border-radius: 10px; text-align: center; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        .nav a { color: var(--navy); text-decoration: none; margin: 0 15px; font-size: 0.95em; padding: 8px 15px; border-radius: 5px; transition: all 0.2s; }
+        .nav a:hover { background: var(--gold); color: white; }
+        .content { background: white; border: 1px solid var(--border); border-radius: 15px; padding: 45px; box-shadow: 0 5px 30px rgba(0,0,0,0.05); }
+        .section { margin-bottom: 40px; padding-bottom: 40px; border-bottom: 1px solid var(--border); }
+        .section:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+        .content h2 { color: var(--navy); font-size: 1.5em; margin: 0 0 20px; padding-bottom: 12px; border-bottom: 3px solid var(--gold); display: inline-block; }
+        .content h3 { color: var(--navy); font-size: 1.2em; margin: 25px 0 15px; padding-left: 15px; border-left: 4px solid var(--gold); }
         .content p { margin: 15px 0; text-align: justify; }
-        .quote { background: var(--navy); color: white; padding: 20px 25px; border-left: 4px solid var(--gold); margin: 25px 0; border-radius: 0 8px 8px 0; }
-        .quote p { margin: 0; font-style: italic; }
-        .quote .source { color: var(--gold); margin-top: 12px; font-size: 0.9em; }
-        .related { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px; }
-        .related a { background: white; border: 1px solid var(--border); padding: 8px 15px; border-radius: 20px; text-decoration: none; color: var(--navy); font-size: 0.9em; transition: all 0.2s; }
-        .related a:hover { background: var(--gold); color: white; border-color: var(--gold); }
+        .profile-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin: 20px 0; }
+        .profile-item { background: var(--light-gold); padding: 20px; border-radius: 10px; }
+        .profile-item .label { color: var(--secondary); font-size: 0.9em; margin-bottom: 5px; }
+        .profile-item .value { color: var(--navy); font-weight: 600; font-size: 1.1em; }
+        .quote { background: var(--navy); color: white; padding: 25px 30px; border-left: 5px solid var(--gold); margin: 25px 0; border-radius: 0 12px 12px 0; position: relative; }
+        .quote::before { content: '"'; position: absolute; top: 10px; left: 15px; font-size: 4em; color: var(--gold); opacity: 0.3; font-family: Georgia, serif; }
+        .quote p { margin: 0; font-style: italic; font-size: 1.05em; padding-left: 30px; }
+        .quote .source { color: var(--gold); margin-top: 15px; font-size: 0.9em; padding-left: 30px; font-style: normal; }
+        .timeline { position: relative; padding-left: 30px; margin: 20px 0; }
+        .timeline::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--gold); }
+        .timeline-item { position: relative; margin-bottom: 25px; }
+        .timeline-item::before { content: ''; position: absolute; left: -34px; top: 5px; width: 12px; height: 12px; background: var(--gold); border-radius: 50%; border: 3px solid white; box-shadow: 0 0 0 3px var(--gold); }
+        .timeline-year { font-weight: bold; color: var(--navy); font-size: 1.1em; }
+        .timeline-content { color: var(--text); margin-top: 5px; }
+        .logic-box { background: linear-gradient(135deg, var(--light-gold) 0%, #fff9e6 100%); padding: 25px 30px; border-radius: 10px; margin: 20px 0; border-left: 5px solid var(--gold); }
+        .logic-box h4 { color: var(--navy); margin-bottom: 15px; font-size: 1.1em; }
+        .logic-box ul { margin: 0; padding-left: 20px; }
+        .logic-box li { margin: 10px 0; }
+        .event-item { display: flex; margin: 15px 0; padding: 15px; background: #f9f9f9; border-radius: 8px; }
+        .event-year { background: var(--navy); color: white; padding: 5px 15px; border-radius: 20px; font-weight: bold; margin-right: 15px; white-space: nowrap; }
+        .event-desc { color: var(--text); }
+        .related { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 20px; }
+        .related a { background: white; border: 2px solid var(--border); padding: 10px 20px; border-radius: 25px; text-decoration: none; color: var(--navy); font-size: 0.95em; transition: all 0.3s; }
+        .related a:hover { background: var(--gold); color: white; border-color: var(--gold); transform: translateY(-2px); }
         footer { text-align: center; padding: 40px 20px; color: var(--secondary); border-top: 1px solid var(--border); margin-top: 40px; }
         footer a { color: var(--navy); text-decoration: none; }
+        @media (max-width: 768px) { .container { padding: 20px 15px; } header { padding: 30px 20px; } header h1 { font-size: 1.6em; } .content { padding: 25px 20px; } .nav a { margin: 5px 8px; display: inline-block; } .profile-grid { grid-template-columns: 1fr; } }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
-        <h1>🏢 苹果</h1>
-        <div class="en-name">Apple</div>
-        <div class="meta">公司 · 被引用 51 次</div>
+        <h1>苹果</h1>
+        <div class="en-name">Apple Inc.</div>
+        <div class="meta"><span>科技/消费电子 · 巴菲特投资</span></div>
     </header>
     
     <div class="container">
@@ -47,26 +71,121 @@
         </nav>
         
         <article class="content">
-            <h2>公司概述</h2>
-            <p>全球最大的科技公司，是伯克希尔近年来最大的投资。</p>
-            
-            <h2>巴菲特评价</h2>
+            <div class="section">
+                <h2>公司档案</h2>
+                <div class="profile-grid">
+                    <div class="profile-item">
+                        <div class="label">中文名称</div>
+                        <div class="value">苹果</div>
+                    </div>
+                    <div class="profile-item">
+                        <div class="label">英文名称</div>
+                        <div class="value">Apple Inc.</div>
+                    </div>
+                    <div class="profile-item">
+                        <div class="label">所属行业</div>
+                        <div class="value">科技/消费电子</div>
+                    </div>
+                    <div class="profile-item">
+                        <div class="label">巴菲特持仓</div>
+                        <div class="value">重仓</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>投资时间线</h2>
+                <div class="timeline">
+                    
+        <div class="timeline-item">
+            <div class="timeline-year">2011</div>
+            <div class="timeline-content">巴菲特开始关注苹果，认为其有消费品牌特质</div>
+        </div>
+        
+        <div class="timeline-item">
+            <div class="timeline-year">2016</div>
+            <div class="timeline-content">开始大举买入苹果股票</div>
+        </div>
+        
+        <div class="timeline-item">
+            <div class="timeline-year">2018</div>
+            <div class="timeline-content">苹果成为伯克希尔最大持仓</div>
+        </div>
+        
+        <div class="timeline-item">
+            <div class="timeline-year">2020s</div>
+            <div class="timeline-content">继续保持重仓地位</div>
+        </div>
+        
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>重要事件</h2>
+                
+        <div class="event-item">
+            <span class="event-year">2011</span>
+            <span class="event-desc">巴菲特开始少量买入，视苹果为消费品公司</span>
+        </div>
+        
+        <div class="event-item">
+            <span class="event-year">2016</span>
+            <span class="event-desc">季度报告显示大举增持</span>
+        </div>
+        
+        <div class="event-item">
+            <span class="event-year">2018</span>
+            <span class="event-desc">苹果超越富国银行成为最大持仓</span>
+        </div>
+        
+        <div class="event-item">
+            <span class="event-year">2020s</span>
+            <span class="event-desc">持续为主要持仓之一</span>
+        </div>
+        
+            </div>
+
+            <div class="section">
+                <h2>巴菲特评价</h2>
+                
             <div class="quote">
-                <p>"苹果是一家优秀的公司，它拥有持久的竞争优势和优秀的管理团队。"</p>
-                <div class="source">—— 巴菲特致股东信</div>
+                <p>去年我们与其它公司所发行的类似债券(尤其是Loews与摩托罗拉公司)，与这几年盛行的零息债券有相当大的差异，对于后者，查理跟我一直有相当的意见，后面我会再详加说明，我们认为这些债券隐藏着欺骗行为，对买下他们的投资人有相当不利的影响，不过在谈论这个话题之前，让我们把时光回溯到亚当还未引诱夏娃啃下苹果之前的时代。</p>
+                <div class="source">—— 巴菲特致股东信 1989年</div>
             </div>
             
-            <h2>相关概念</h2>
-            <div class="related">
-                <a href="../concepts/护城河.html">护城河</a>
-                <a href="../concepts/管理层.html">管理层</a>
-                <a href="../concepts/长期持有.html">长期持有</a>
+            <div class="quote">
+                <p>通常我们很多重大的错误不是发生在我们已经做的部分，而是在于我们没有去做的那部分，虽然因为各位看不到这些失误，所以查理跟我可以少一点难堪，但看不到不代表我们就不必付出代价，而这些我公开承认的错误，并不是指我错过了某些革命性的新发明(就像是全录像影技术)、高科技(像是苹果计算机)或是更优秀的通路零售商(像是威名百货)，我们永远不可能拥有在早期发掘这些优秀公司的能力，反而我指的是那些查理跟我可以很容易就了解，且很明显对我们有吸引力的公司，无奈在当时我们只是不断地咬着指甲犹豫不决，就是不能下定决心把他们买下来。</p>
+                <div class="source">—— 巴菲特致股东信 1991年</div>
+            </div>
+            
+            <div class="quote">
+                <p>这是GEICO 2002年收益的一个脚注，强调了保险公司只与最强大的再保险公司做生意的必要性。1981-1983年，当时管理GEICO的经理人决定尝试承保商业伞形保险和产品责任保险。风险似乎很温和：公司从这条业务线只收取3,051,000美元，并几乎全部使用它——2,979,000美元——购买再保险以限制其损失。GEICO为保留的少量风险部分留下了可怜的72,000美元作为补偿。但这小口苹果足以使这段经历令人难忘。GEICO从这次风险中的损失现在总计惊人的9,410万美元，或约其收取的净保费的130,000%。在总损失中，来自赖账再保险公司的无法收回的应收账款不少于9,030万美元（包括2002年收费的1,900万美元）。对于廉价再保险来说，这就是代价。</p>
+                <div class="source">—— 巴菲特致股东信 2002年</div>
+            </div>
+            
+            </div>
+
+            <div class="section">
+                <h2>投资逻辑</h2>
+                <div class="logic-box">
+                    <h4>为什么投资苹果？</h4>
+                    <ul>
+                        <li>强大的生态系统：iOS用户粘性极高</li><li>品牌忠诚度：消费者愿意为Apple品牌支付溢价</li><li>持续的回购：苹果大量回购股票提升股东价值</li><li>管理层优秀：库克领导下的高效资本配置</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>相关概念</h2>
+                <div class="related">
+                    
+                </div>
             </div>
         </article>
     </div>
     
     <footer>
-        <p><a href="../index.html">巴菲特知识库</a> | 数据来源：Berkshire Hathaway Letters</p>
+        <p><a href="../index.html">巴菲特知识库</a> | 数据来源：巴菲特致股东信 (1977-2007)</p>
     </footer>
 </body>
 </html>
