@@ -570,52 +570,85 @@ footer a:hover {
 }
 
 
-/* 中英文对照样式 */
-.letter-body .section-group {
+/* 中英文对照样式 - 方案C */
+.letter-body .section-block {
     margin-bottom: 3em;
+    padding: 1.5em 0;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.letter-body .section-block:last-child {
+    border-bottom: none;
 }
 
 .letter-body .section-title {
-    font-size: 1.2em;
+    font-size: 1.3em;
     color: #1B2A4A;
-    margin-top: 2em;
-    margin-bottom: 1em;
-    border-bottom: 2px solid #C9A227;
+    margin-bottom: 1.5em;
     padding-bottom: 0.5em;
+    border-bottom: 2px solid #C9A227;
 }
 
-.letter-body .paragraph-en,
-.letter-body .paragraph-cn {
+.letter-body .lang-block {
     margin-bottom: 1.5em;
 }
 
+.letter-body .lang-block.lang-en {
+    background: #f8f9fa;
+    padding: 1.5em;
+    border-radius: 8px;
+    margin-bottom: 1.5em;
+}
+
+.letter-body .lang-block.lang-cn {
+    background: #FFFEF9;
+    padding: 1.5em;
+    border-left: 4px solid #C9A227;
+    border-radius: 0 8px 8px 0;
+}
+
 .letter-body .lang-label {
-    font-size: 0.85em;
+    font-size: 0.9em;
     font-weight: 600;
     color: #C9A227;
-    margin-bottom: 0.5em;
+    margin-bottom: 1em;
     display: inline-block;
     background: #F5E6C8;
-    padding: 2px 10px;
-    border-radius: 3px;
+    padding: 4px 12px;
+    border-radius: 4px;
 }
 
-.letter-body .paragraph-en p {
-    color: #444;
-    line-height: 1.8;
-    margin-bottom: 0.8em;
+.letter-body .lang-block.lang-en p {
+    color: #333;
+    line-height: 1.9;
+    margin-bottom: 1em;
     font-family: 'Georgia', 'Times New Roman', serif;
+    font-size: 1.05em;
+    text-align: justify;
 }
 
-.letter-body .paragraph-cn p {
+.letter-body .lang-block.lang-cn p {
     color: #1B2A4A;
-    line-height: 1.8;
-    margin-bottom: 0.8em;
+    line-height: 2;
+    margin-bottom: 1em;
+    text-align: justify;
 }
 
-.letter-body .paragraph-cn {
-    background: #FFFEF9;
-    padding: 1em;
-    border-left: 3px solid #C9A227;
-    margin-left: 1em;
+/* 纯中文格式样式 */
+.letter-body .chinese-section {
+    margin-bottom: 2em;
+}
+
+.letter-body .chinese-section h4 {
+    font-size: 1.1em;
+    color: #1B2A4A;
+    margin: 1.5em 0 1em;
+    padding-bottom: 0.3em;
+    border-bottom: 1px solid #C9A227;
+}
+
+.letter-body .chinese-section p {
+    line-height: 2;
+    margin-bottom: 1em;
+    text-align: justify;
 }
