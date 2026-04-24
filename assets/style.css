@@ -652,3 +652,144 @@ footer a:hover {
     margin-bottom: 1em;
     text-align: justify;
 }
+/* ============================================
+   实体链接与引用统计面板样式
+   ============================================ */
+
+/* 引用统计面板容器 */
+.reference-stats {
+    margin-top: 40px;
+    padding-top: 30px;
+    border-top: 2px dashed var(--border);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+/* 统计面板 */
+.entity-stats-panel {
+    background: #f8f9fa;
+    border-radius: 10px;
+    padding: 20px;
+    border: 1px solid var(--border);
+}
+
+.entity-stats-panel h3 {
+    font-size: 1em;
+    color: var(--navy);
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* 统计标签 */
+.stats-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.stat-tag {
+    display: inline-block;
+    background: var(--light-gold);
+    color: var(--navy);
+    padding: 5px 12px;
+    border-radius: 15px;
+    font-size: 0.85em;
+    font-weight: 500;
+    transition: all 0.2s;
+    cursor: default;
+}
+
+.stat-tag:hover {
+    background: var(--gold);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 2px 8px rgba(201, 162, 39, 0.3);
+}
+
+/* 公司标签变体 */
+.stat-tag.stat-company {
+    background: #E8F4FD;
+    color: #1B5E7A;
+}
+
+.stat-tag.stat-company:hover {
+    background: #1B5E7A;
+    color: white;
+}
+
+/* 人物标签变体 */
+.stat-tag.stat-person {
+    background: #F3E8FD;
+    color: #6B3FA0;
+}
+
+.stat-tag.stat-person:hover {
+    background: #6B3FA0;
+    color: white;
+}
+
+/* 实体链接样式 */
+.entity-link {
+    color: var(--navy);
+    text-decoration: none;
+    border-bottom: 1px dashed var(--gold);
+    transition: all 0.2s;
+    padding: 0 2px;
+}
+
+.entity-link:hover {
+    color: var(--gold);
+    border-bottom-style: solid;
+    background: var(--light-gold);
+    border-radius: 2px;
+}
+
+/* 概念链接 */
+.entity-link.entity-concept {
+    border-bottom-color: #3498db;
+}
+
+.entity-link.entity-concept:hover {
+    background: #E8F4FD;
+    border-bottom-color: #3498db;
+    color: #2980b9;
+}
+
+/* 公司链接 */
+.entity-link.entity-company {
+    border-bottom-color: #27ae60;
+}
+
+.entity-link.entity-company:hover {
+    background: #E8F8F0;
+    border-bottom-color: #27ae60;
+    color: #229954;
+}
+
+/* 人物链接 */
+.entity-link.entity-person {
+    border-bottom-color: #9b59b6;
+}
+
+.entity-link.entity-person:hover {
+    background: #F5EEF8;
+    border-bottom-color: #9b59b6;
+    color: #7D3C98;
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+    .reference-stats {
+        grid-template-columns: 1fr;
+    }
+    
+    .stat-tag {
+        font-size: 0.8em;
+        padding: 4px 10px;
+    }
+}
