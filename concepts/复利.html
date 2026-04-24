@@ -44,6 +44,48 @@
         footer { text-align: center; padding: 40px 20px; color: var(--secondary); border-top: 1px solid var(--border); margin-top: 40px; }
         footer a { color: var(--navy); text-decoration: none; }
         @media (max-width: 768px) { .container { padding: 20px 15px; } header { padding: 30px 20px; } header h1 { font-size: 1.6em; } .content { padding: 25px 20px; } .nav a { margin: 5px 8px; display: inline-block; } }
+    
+        /* 反向链接样式 */
+        .backlinks {
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 2px dashed var(--gold);
+        }
+        .backlinks h2 {
+            color: var(--navy);
+            font-size: 1.3em;
+            margin-bottom: 15px;
+        }
+        .backlinks-intro {
+            color: var(--secondary);
+            margin-bottom: 15px;
+        }
+        .backlinks-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .backlinks-list a {
+            background: linear-gradient(135deg, var(--light-gold) 0%, #fff9e6 100%);
+            border: 1px solid var(--gold);
+            padding: 8px 16px;
+            border-radius: 20px;
+            text-decoration: none;
+            color: var(--navy);
+            font-size: 0.9em;
+            transition: all 0.3s;
+        }
+        .backlinks-list a:hover {
+            background: var(--gold);
+            color: white;
+            transform: translateY(-2px);
+        }
+        .backlinks-count {
+            margin-top: 15px;
+            color: var(--secondary);
+            font-size: 0.9em;
+        }
+
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
@@ -162,6 +204,26 @@
                     
                 </div>
             </div>
+        
+        <!-- 反向链接部分 -->
+        <div class="backlinks">
+            <h2>📚 相关概念</h2>
+            <p class="backlinks-intro">此概念在以下信件中被提及：</p>
+            <div class="backlinks-list">
+            <a href="../letters/berkshire/2006.html">2006年致股东信</a>
+            <a href="../letters/berkshire/2005.html">2005年致股东信</a>
+            <a href="../letters/berkshire/2000.html">2000年致股东信</a>
+            <a href="../letters/berkshire/1999.html">1999年致股东信</a>
+            <a href="../letters/berkshire/1996.html">1996年致股东信</a>
+            <a href="../letters/berkshire/1989.html">1989年致股东信</a>
+            <a href="../letters/berkshire/1988.html">1988年致股东信</a>
+            <a href="../letters/berkshire/1985.html">1985年致股东信</a>
+            <a href="../letters/berkshire/1978.html">1978年致股东信</a>
+            <a href="../letters/berkshire/1977.html">1977年致股东信</a>
+            </div>
+            <p class="backlinks-count">共被提及 10 次</p>
+        </div>
+    
         </article>
     </div>
     
