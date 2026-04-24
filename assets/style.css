@@ -1,0 +1,561 @@
+/* 巴菲特知识库 - 统一样式文件 */
+
+/* 基础变量 */
+:root {
+    --bg-color: #FFFEF9;
+    --navy: #1B2A4A;
+    --gold: #C9A227;
+    --text: #2C3E50;
+    --secondary: #5D6D7E;
+    --border: #E5E0D8;
+    --card-bg: #FFFFFF;
+    --light-gold: #F5E6C8;
+}
+
+/* 重置样式 */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* 页面基础 */
+body {
+    font-family: 'Noto Serif SC', Georgia, 'Times New Roman', serif;
+    background: var(--bg-color);
+    color: var(--text);
+    line-height: 1.8;
+    font-size: 16px;
+}
+
+/* 容器 */
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+/* 头部导航 */
+.site-header {
+    background: var(--navy);
+    color: white;
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.site-header .header-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.site-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--gold);
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+.site-logo:hover {
+    opacity: 0.9;
+}
+
+.logo-icon {
+    width: 32px;
+    height: 32px;
+}
+
+.site-nav {
+    display: flex;
+    gap: 20px;
+}
+
+.nav-link {
+    color: white;
+    text-decoration: none;
+    font-size: 0.95em;
+    opacity: 0.85;
+    transition: all 0.2s;
+    padding: 5px 10px;
+    border-radius: 4px;
+}
+
+.nav-link:hover {
+    opacity: 1;
+    color: var(--gold);
+}
+
+.nav-link.active {
+    background: rgba(255,255,255,0.1);
+    color: var(--gold);
+}
+
+/* 主内容区 */
+.main-content {
+    min-height: calc(100vh - 200px);
+}
+
+/* 信件页面样式 */
+.letter-content {
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 40px 50px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    margin: 20px 0;
+}
+
+.letter-header {
+    text-align: center;
+    margin-bottom: 40px;
+    padding-bottom: 30px;
+    border-bottom: 2px solid var(--border);
+}
+
+.letter-year {
+    font-size: 2.5em;
+    font-weight: bold;
+    color: var(--navy);
+    margin-bottom: 10px;
+}
+
+.letter-subtitle {
+    font-size: 1.1em;
+    color: var(--secondary);
+}
+
+.letter-body {
+    font-size: 1.05em;
+    line-height: 2;
+    color: var(--text);
+}
+
+.letter-body p {
+    margin-bottom: 1.5em;
+    text-align: justify;
+}
+
+.letter-body h2 {
+    font-size: 1.5em;
+    color: var(--navy);
+    margin: 2.5em 0 1em;
+    padding-bottom: 0.5em;
+    border-bottom: 2px solid var(--gold);
+    display: inline-block;
+}
+
+.letter-body h3 {
+    font-size: 1.2em;
+    color: var(--navy);
+    margin: 2em 0 1em;
+}
+
+.letter-body ul, .letter-body ol {
+    margin: 1em 0 1.5em 2em;
+}
+
+.letter-body li {
+    margin-bottom: 0.5em;
+}
+
+.letter-body blockquote {
+    background: var(--light-gold);
+    border-left: 4px solid var(--gold);
+    padding: 1em 1.5em;
+    margin: 1.5em 0;
+    font-style: italic;
+    color: var(--secondary);
+}
+
+.letter-body table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5em 0;
+}
+
+.letter-body th, .letter-body td {
+    border: 1px solid var(--border);
+    padding: 12px 15px;
+    text-align: left;
+}
+
+.letter-body th {
+    background: var(--navy);
+    color: white;
+    font-weight: 600;
+}
+
+.letter-body tr:nth-child(even) {
+    background: #f8f9fa;
+}
+
+.letter-body a {
+    color: var(--navy);
+    text-decoration: underline;
+    text-decoration-color: var(--gold);
+    transition: color 0.2s;
+}
+
+.letter-body a:hover {
+    color: var(--gold);
+}
+
+/* 信件导航 */
+.letter-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 50px;
+    padding-top: 30px;
+    border-top: 1px solid var(--border);
+}
+
+.letter-nav a {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--navy);
+    text-decoration: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    transition: all 0.2s;
+    font-size: 0.95em;
+}
+
+.letter-nav a:hover {
+    background: var(--navy);
+    color: white;
+    border-color: var(--navy);
+}
+
+.letter-nav .disabled {
+    opacity: 0.4;
+    pointer-events: none;
+}
+
+/* 概念页面样式 */
+.concept-page {
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 40px 50px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+}
+
+.concept-page h1 {
+    font-size: 2em;
+    color: var(--navy);
+    margin-bottom: 10px;
+}
+
+.concept-page .meta {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border);
+}
+
+.concept-page .tag {
+    background: var(--light-gold);
+    color: var(--navy);
+    padding: 5px 12px;
+    border-radius: 15px;
+    font-size: 0.85em;
+    font-weight: 500;
+}
+
+.concept-page .count {
+    color: var(--secondary);
+    font-size: 0.9em;
+}
+
+.concept-page h2 {
+    font-size: 1.4em;
+    color: var(--navy);
+    margin: 2em 0 1em;
+    padding-bottom: 0.5em;
+    border-bottom: 2px solid var(--gold);
+    display: inline-block;
+}
+
+.concept-page h3 {
+    font-size: 1.2em;
+    color: var(--navy);
+    margin: 1.5em 0 0.8em;
+}
+
+.concept-page p {
+    margin-bottom: 1em;
+    line-height: 1.8;
+}
+
+.concept-page ul {
+    margin: 1em 0 1em 1.5em;
+}
+
+.concept-page li {
+    margin-bottom: 0.5em;
+}
+
+/* 时间线 */
+.timeline {
+    position: relative;
+    padding-left: 30px;
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 25px;
+    padding-bottom: 25px;
+    border-bottom: 1px solid var(--border);
+}
+
+.timeline-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -30px;
+    top: 5px;
+    width: 12px;
+    height: 12px;
+    background: var(--gold);
+    border-radius: 50%;
+}
+
+.timeline-item .period {
+    font-weight: bold;
+    color: var(--navy);
+    display: block;
+    margin-bottom: 5px;
+}
+
+.timeline-item .description {
+    color: var(--text);
+    line-height: 1.6;
+}
+
+/* 引用区域 */
+.quotes-section blockquote {
+    background: var(--light-gold);
+    border-left: 4px solid var(--gold);
+    padding: 1.2em 1.5em;
+    margin: 1em 0;
+    border-radius: 0 8px 8px 0;
+}
+
+.quotes-section cite {
+    display: block;
+    margin-top: 0.8em;
+    font-size: 0.9em;
+    color: var(--secondary);
+}
+
+.quotes-section cite a {
+    color: var(--navy);
+    text-decoration: none;
+}
+
+.quotes-section cite a:hover {
+    color: var(--gold);
+}
+
+/* 反向链接 */
+.backlinks-section {
+    margin-top: 40px;
+    padding-top: 30px;
+    border-top: 2px solid var(--border);
+}
+
+.backlinks-section h2 {
+    margin-bottom: 1.5em;
+}
+
+.backlink-year {
+    margin-bottom: 25px;
+}
+
+.backlink-year h3 {
+    color: var(--navy);
+    margin-bottom: 15px;
+    font-size: 1.1em;
+}
+
+.backlink-item {
+    background: #f8f9fa;
+    padding: 1.2em 1.5em;
+    margin-bottom: 12px;
+    border-radius: 8px;
+    border-left: 3px solid var(--gold);
+}
+
+.backlink-item blockquote {
+    margin: 0;
+    padding: 0;
+    border: none;
+    background: none;
+    font-style: normal;
+    color: var(--text);
+    line-height: 1.7;
+}
+
+.backlink-item .source-link {
+    display: inline-block;
+    margin-top: 10px;
+    color: var(--navy);
+    text-decoration: none;
+    font-size: 0.9em;
+}
+
+.backlink-item .source-link:hover {
+    color: var(--gold);
+}
+
+/* 相关概念 */
+.related-section {
+    margin-top: 30px;
+    padding: 25px;
+    background: #f8f9fa;
+    border-radius: 8px;
+}
+
+.related-section ul {
+    list-style: none;
+    margin: 0;
+}
+
+.related-section li {
+    margin-bottom: 10px;
+}
+
+.related-section li::before {
+    content: '→ ';
+    color: var(--gold);
+}
+
+.related-section a {
+    color: var(--navy);
+    text-decoration: none;
+}
+
+.related-section a:hover {
+    color: var(--gold);
+}
+
+/* 公司卡片 */
+.company-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.company-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+    text-decoration: none;
+    color: var(--text);
+    transition: all 0.2s;
+}
+
+.company-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    border-color: var(--gold);
+}
+
+.company-card h3 {
+    color: var(--navy);
+    margin-bottom: 5px;
+    font-size: 1.1em;
+}
+
+.company-card p {
+    font-size: 0.9em;
+    color: var(--secondary);
+    margin: 0;
+}
+
+/* 页脚 */
+footer {
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--secondary);
+    border-top: 1px solid var(--border);
+    margin-top: 40px;
+    font-size: 0.9em;
+}
+
+footer a {
+    color: var(--navy);
+    text-decoration: none;
+}
+
+footer a:hover {
+    color: var(--gold);
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px 15px;
+    }
+    
+    .letter-content, .concept-page {
+        padding: 25px 20px;
+    }
+    
+    .letter-year {
+        font-size: 2em;
+    }
+    
+    .site-header .header-inner {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .site-nav {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .letter-nav {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .letter-nav a {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .company-cards {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* 打印样式 */
+@media print {
+    .site-header, .letter-nav, footer {
+        display: none;
+    }
+    
+    .letter-content {
+        box-shadow: none;
+        padding: 0;
+    }
+}
