@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>人物索引 | 巴菲特知识库</title>
+    <style>
+        :root { --bg-color: #FFFEF9; --navy: #1B2A4A; --gold: #C9A227; --text: #2C3E50; --secondary: #5D6D7E; --border: #E5E0D8; --card-bg: #FFFFFF; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Noto Serif SC', Georgia, serif; background: var(--bg-color); color: var(--text); line-height: 1.8; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 40px 20px; }
+        header { background: var(--navy); color: white; padding: 15px 0; position: sticky; top: 0; z-index: 100; }
+        header .container { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.1em; font-weight: bold; color: var(--gold); text-decoration: none; }
+        nav a { color: white; text-decoration: none; margin-left: 20px; font-size: 0.9em; opacity: 0.9; }
+        nav a:hover { opacity: 1; color: var(--gold); }
+        h1 { text-align: center; font-size: 2em; color: var(--navy); margin-bottom: 10px; }
+        .subtitle { text-align: center; color: var(--secondary); margin-bottom: 40px; }
+        .people-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 25px; }
+        .people-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; padding: 30px; text-decoration: none; color: var(--text); transition: all 0.3s ease; }
+        .people-card:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(27,42,74,0.12); border-color: var(--gold); }
+        .people-header { display: flex; align-items: center; gap: 15px; margin-bottom: 15px; }
+        .people-avatar { font-size: 3em; }
+        .people-info h3 { font-size: 1.3em; color: var(--navy); margin-bottom: 5px; }
+        .people-info .en-name { font-size: 0.9em; color: var(--secondary); }
+        .people-role { color: var(--gold); font-size: 0.95em; margin-bottom: 10px; }
+        .people-desc { font-size: 0.9em; color: var(--secondary); line-height: 1.6; }
+        .people-count { margin-top: 15px; padding-top: 15px; border-top: 1px solid var(--border); font-size: 0.9em; color: var(--gold); }
+        .back-link { display: inline-block; margin-bottom: 20px; color: var(--navy); text-decoration: none; }
+        .back-link:hover { color: var(--gold); }
+        footer { text-align: center; padding: 40px 20px; color: var(--secondary); border-top: 1px solid var(--border); margin-top: 40px; }
+        footer a { color: var(--navy); text-decoration: none; }
+        @media (max-width: 600px) { .people-grid { grid-template-columns: 1fr; } }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="../index.html" class="logo">📚 巴菲特知识库</a>
+            <nav>
+                <a href="巴菲特致股东信总览.html">📝 信件</a>
+                <a href="核心思想索引.html">💡 思想</a>
+                <a href="公司索引.html">🏢 公司</a>
+                <a href="../index.html">🏠 首页</a>
+            </nav>
+        </div>
+    </header>
+    
+    <div class="container">
+        <a href="../index.html" class="back-link">← 返回首页</a>
+        <h1>👤 关键人物索引</h1>
+        <p class="subtitle">7 位在巴菲特投资生涯中具有重要影响力的人物</p>
+        
+        <div class="people-grid">
+            <a href="../people/芒格.html" class="people-card">
+                <div class="people-header">
+                    <span class="people-avatar">👨‍⚖️</span>
+                    <div class="people-info">
+                        <h3>查理·芒格</h3>
+                        <span class="en-name">Charlie Munger (1924-2023)</span>
+                    </div>
+                </div>
+                <div class="people-role">伯克希尔副董事长 · 巴菲特的终身伙伴</div>
+                <p class="people-desc">芒格是巴菲特最亲密的投资伙伴，两人相识于1959年，此后共同将伯克希尔打造成全球最大的投资集团之一。芒格以其跨学科思维模型和价值投资哲学闻名。</p>
+                <div class="people-count">📈 51 次被提及</div>
+            </a>
+            
+            <a href="../people/阿吉特·贾恩.html" class="people-card">
+                <div class="people-header">
+                    <span class="people-avatar">🏢</span>
+                    <div class="people-info">
+                        <h3>阿吉特·贾恩</h3>
+                        <span class="en-name">Ajit Jain</span>
+                    </div>
+                </div>
+                <div class="people-role">伯克希尔保险业务负责人</div>
+                <p class="people-desc">阿吉特·贾恩于1985年加入伯克希尔，负责保险业务的运营管理。他被誉为"印度裔美国保险奇才"，在巨灾保险和再保险领域展现出非凡的能力。</p>
+                <div class="people-count">📈 40 次被提及</div>
+            </a>
+            
+            <a href="../people/格雷厄姆.html" class="people-card">
+                <div class="people-header">
+                    <span class="people-avatar">📚</span>
+                    <div class="people-info">
+                        <h3>本杰明·格雷厄姆</h3>
+                        <span class="en-name">Benjamin Graham (1894-1976)</span>
+                    </div>
+                </div>
+                <div class="people-role">巴菲特的导师 · 价值投资之父</div>
+                <p class="people-desc">格雷厄姆是巴菲特的老师，他的著作《证券分析》和《聪明的投资者》奠定了现代价值投资的基础。巴菲特称其为"现代证券分析之父"。</p>
+                <div class="people-count">📈 37 次被提及</div>
+            </a>
+            
+            <a href="../people/格雷格·阿贝尔.html" class="people-card">
+                <div class="people-header">
+                    <span class="people-avatar">⚡</span>
+                    <div class="people-info">
+                        <h3>格雷格·阿贝尔</h3>
+                        <span class="en-name">Greg Abel</span>
+                    </div>
+                </div>
+                <div class="people-role">伯克希尔能源业务负责人 · 潜在接班人</div>
+                <p class="people-desc">格雷格·阿贝尔于2000年随中美能源加入伯克希尔，现负责伯克希尔旗下所有非保险业务的运营。他被认为是巴菲特的潜在接班人之一。</p>
+                <div class="people-count">📈 28 次被提及</div>
+            </a>
+            
+            <a href="../people/B夫人.html" class="people-card">
+                <div class="people-header">
+                    <span class="people-avatar">👩‍💼</span>
+                    <div class="people-info">
+                        <h3>B夫人（罗斯·布鲁姆金）</h3>
+                        <span class="en-name">Mrs. B (Rose Blumkin, 1893-1998)</span>
+                    </div>
+                </div>
+                <div class="people-role">内布拉斯加家具店创始人</div>
+                <p class="people-desc">B夫人是一位传奇的女企业家，她从俄罗斯移民到美国后，凭借卓越的商业才能将内布拉斯加家具店打造成全美最大的家具零售商之一。</p>
+                <div class="people-count">📈 22 次被提及</div>
+            </a>
+            
+            <a href="../people/泰德·韦施勒.html" class="people-card">
+                <div class="people-header">
+                    <span class="people-avatar">📊</span>
+                    <div class="people-info">
+                        <h3>泰德·韦施勒</h3>
+                        <span class="en-name">Ted Weschler</span>
+                    </div>
+                </div>
+                <div class="people-role">伯克希尔投资经理</div>
+                <p class="people-desc">泰德·韦施勒是一位出色的对冲基金经理，2011年和2012年分别以慈善午餐竞拍的方式与巴菲特共进午餐，随后被伯克希尔聘用为投资经理。</p>
+                <div class="people-count">📈 15 次被提及</div>
+            </a>
+            
+            <a href="../people/托德·库姆斯.html" class="people-card">
+                <div class="people-header">
+                    <span class="people-avatar">💼</span>
+                    <div class="people-info">
+                        <h3>托德·库姆斯</h3>
+                        <span class="en-name">Todd Combs</span>
+                    </div>
+                </div>
+                <div class="people-role">伯克希尔投资经理</div>
+                <p class="people-desc">托德·库姆斯于2010年加入伯克希尔，担任投资经理。他与泰德·韦施勒一起管理着伯克希尔部分投资组合，是巴菲特信任的投资骨干。</p>
+                <div class="people-count">📈 12 次被提及</div>
+            </a>
+        </div>
+    </div>
+    
+    <footer>
+        <p><a href="../index.html">巴菲特知识库</a> | 数据来源：Berkshire Hathaway Letters</p>
+    </footer>
+</body>
+</html>

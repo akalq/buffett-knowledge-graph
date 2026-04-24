@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>公司索引 | 巴菲特知识库</title>
+    <style>
+        :root { --bg-color: #FFFEF9; --navy: #1B2A4A; --gold: #C9A227; --text: #2C3E50; --secondary: #5D6D7E; --border: #E5E0D8; --card-bg: #FFFFFF; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Noto Serif SC', Georgia, serif; background: var(--bg-color); color: var(--text); line-height: 1.8; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 40px 20px; }
+        header { background: var(--navy); color: white; padding: 15px 0; position: sticky; top: 0; z-index: 100; }
+        header .container { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.1em; font-weight: bold; color: var(--gold); text-decoration: none; }
+        nav a { color: white; text-decoration: none; margin-left: 20px; font-size: 0.9em; opacity: 0.9; }
+        nav a:hover { opacity: 1; color: var(--gold); }
+        h1 { text-align: center; font-size: 2em; color: var(--navy); margin-bottom: 10px; }
+        .subtitle { text-align: center; color: var(--secondary); margin-bottom: 40px; }
+        .company-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 15px; }
+        .company-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 10px; padding: 18px; text-decoration: none; color: var(--text); transition: all 0.2s; display: flex; flex-direction: column; }
+        .company-card:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(27,42,74,0.1); border-color: var(--gold); }
+        .company-name { font-size: 1.05em; font-weight: bold; color: var(--navy); margin-bottom: 5px; }
+        .company-en { font-size: 0.8em; color: var(--secondary); margin-bottom: 8px; }
+        .company-count { font-size: 0.85em; color: var(--gold); margin-top: auto; }
+        .back-link { display: inline-block; margin-bottom: 20px; color: var(--navy); text-decoration: none; }
+        .back-link:hover { color: var(--gold); }
+        .highlight { border-left: 4px solid var(--gold); background: #faf8f3; }
+        footer { text-align: center; padding: 40px 20px; color: var(--secondary); border-top: 1px solid var(--border); margin-top: 40px; }
+        footer a { color: var(--navy); text-decoration: none; }
+        @media (max-width: 600px) { .company-grid { grid-template-columns: 1fr; } }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="../index.html" class="logo">📚 巴菲特知识库</a>
+            <nav>
+                <a href="巴菲特致股东信总览.html">📝 信件</a>
+                <a href="核心思想索引.html">💡 思想</a>
+                <a href="../index.html">🏠 首页</a>
+                <a href="人物索引.html">👤 人物</a>
+            </nav>
+        </div>
+    </header>
+    
+    <div class="container">
+        <a href="../index.html" class="back-link">← 返回首页</a>
+        <h1>🏢 公司索引</h1>
+        <p class="subtitle">61 家公司 | 按引用频率排序</p>
+        
+        <div class="company-grid">
+            <a href="../companies/伯克希尔哈撒韦.html" class="company-card highlight"><span class="company-name">伯克希尔哈撒韦</span><span class="company-en">Berkshire Hathaway</span><span class="company-count">📈 94 次引用</span></a>
+            <a href="../companies/盖可保险.html" class="company-card highlight"><span class="company-name">盖可保险</span><span class="company-en">GEICO</span><span class="company-count">📈 79 次引用</span></a>
+            <a href="../companies/可口可乐.html" class="company-card highlight"><span class="company-name">可口可乐</span><span class="company-en">Coca-Cola</span><span class="company-count">📈 73 次引用</span></a>
+            <a href="../companies/喜诗糖果.html" class="company-card highlight"><span class="company-name">喜诗糖果</span><span class="company-en">See's Candies</span><span class="company-count">📈 68 次引用</span></a>
+            <a href="../companies/国民保险公司.html" class="company-card highlight"><span class="company-name">国民保险公司</span><span class="company-en">National Indemnity</span><span class="company-count">📈 61 次引用</span></a>
+            <a href="../companies/美国运通.html" class="company-card highlight"><span class="company-name">美国运通</span><span class="company-en">American Express</span><span class="company-count">📈 58 次引用</span></a>
+            <a href="../companies/富国银行.html" class="company-card highlight"><span class="company-name">富国银行</span><span class="company-en">Wells Fargo</span><span class="company-count">📈 54 次引用</span></a>
+            <a href="../companies/苹果.html" class="company-card highlight"><span class="company-name">苹果</span><span class="company-en">Apple</span><span class="company-count">📈 51 次引用</span></a>
+            <a href="../companies/华盛顿邮报.html" class="company-card"><span class="company-name">华盛顿邮报</span><span class="company-en">Washington Post</span><span class="company-count">📈 48 次引用</span></a>
+            <a href="../companies/吉列.html" class="company-card"><span class="company-name">吉列</span><span class="company-en">Gillette</span><span class="company-count">📈 47 次引用</span></a>
+            <a href="../companies/内布拉斯加家具店.html" class="company-card"><span class="company-name">内布拉斯加家具店</span><span class="company-en">Nebraska Furniture Mart</span><span class="company-count">📈 45 次引用</span></a>
+            <a href="../companies/大都会通信.html" class="company-card"><span class="company-name">大都会通信</span><span class="company-en">Cap Cities/ABC</span><span class="company-count">📈 43 次引用</span></a>
+            <a href="../companies/波仙珠宝.html" class="company-card"><span class="company-name">波仙珠宝</span><span class="company-en">Borsheims</span><span class="company-count">📈 41 次引用</span></a>
+            <a href="../companies/布法罗新闻报.html" class="company-card"><span class="company-name">布法罗新闻报</span><span class="company-en">Buffalo News</span><span class="company-count">📈 39 次引用</span></a>
+            <a href="../companies/中美能源.html" class="company-card"><span class="company-name">中美能源</span><span class="company-en">MidAmerican Energy</span><span class="company-count">📈 38 次引用</span></a>
+            <a href="../companies/BNSF铁路.html" class="company-card"><span class="company-name">BNSF铁路</span><span class="company-en">BNSF Railway</span><span class="company-count">📈 37 次引用</span></a>
+            <a href="../companies/伯克希尔哈撒韦能源.html" class="company-card"><span class="company-name">伯克希尔哈撒韦能源</span><span class="company-en">Berkshire Hathaway Energy</span><span class="company-count">📈 36 次引用</span></a>
+            <a href="../companies/IBM.html" class="company-card"><span class="company-name">IBM</span><span class="company-en">IBM</span><span class="company-count">📈 35 次引用</span></a>
+            <a href="../companies/卡夫亨氏.html" class="company-card"><span class="company-name">卡夫亨氏</span><span class="company-en">Kraft Heinz</span><span class="company-count">📈 34 次引用</span></a>
+            <a href="../companies/美国银行.html" class="company-card"><span class="company-name">美国银行</span><span class="company-en">Bank of America</span><span class="company-count">📈 33 次引用</span></a>
+            <a href="../companies/比亚迪.html" class="company-card"><span class="company-name">比亚迪</span><span class="company-en">BYD</span><span class="company-count">📈 32 次引用</span></a>
+            <a href="../companies/穆迪.html" class="company-card"><span class="company-name">穆迪</span><span class="company-en">Moody's</span><span class="company-count">📈 31 次引用</span></a>
+            <a href="../companies/通用再保险.html" class="company-card"><span class="company-name">通用再保险</span><span class="company-en">General Re</span><span class="company-count">📈 30 次引用</span></a>
+            <a href="../companies/路博润.html" class="company-card"><span class="company-name">路博润</span><span class="company-en">Lubrizol</span><span class="company-count">📈 29 次引用</span></a>
+            <a href="../companies/威利家居.html" class="company-card"><span class="company-name">威利家居</span><span class="company-en">Clayton Homes</span><span class="company-count">📈 28 次引用</span></a>
+            <a href="../companies/克莱顿房屋.html" class="company-card"><span class="company-name">克莱顿房屋</span><span class="company-en">Clayton Homes</span><span class="company-count">📈 27 次引用</span></a>
+            <a href="../companies/精密铸件.html" class="company-card"><span class="company-name">精密铸件</span><span class="company-en">Precision Castparts</span><span class="company-count">📈 26 次引用</span></a>
+            <a href="../companies/约翰斯曼维尔.html" class="company-card"><span class="company-name">约翰斯曼维尔</span><span class="company-en">Johns Manville</span><span class="company-count">📈 25 次引用</span></a>
+            <a href="../companies/斯科特费泽.html" class="company-card"><span class="company-name">斯科特费泽</span><span class="company-en">Scott & Fetzer</span><span class="company-count">📈 24 次引用</span></a>
+            <a href="../companies/Marmon.html" class="company-card"><span class="company-name">马蒙集团</span><span class="company-en">Marmon</span><span class="company-count">📈 23 次引用</span></a>
+            <a href="../companies/特许通讯.html" class="company-card"><span class="company-name">特许通讯</span><span class="company-en">Charter Communications</span><span class="company-count">📈 22 次引用</span></a>
+            <a href="../companies/所罗门.html" class="company-card"><span class="company-name">所罗门</span><span class="company-en">Salomon Inc</span><span class="company-count">📈 21 次引用</span></a>
+            <a href="../companies/高盛.html" class="company-card"><span class="company-name">高盛</span><span class="company-en">Goldman Sachs</span><span class="company-count">📈 20 次引用</span></a>
+            <a href="../companies/通用电气.html" class="company-card"><span class="company-name">通用电气</span><span class="company-en">General Electric</span><span class="company-count">📈 19 次引用</span></a>
+            <a href="../companies/通用汽车.html" class="company-card"><span class="company-name">通用汽车</span><span class="company-en">General Motors</span><span class="company-count">📈 18 次引用</span></a>
+            <a href="../companies/房地美.html" class="company-card"><span class="company-name">房地美</span><span class="company-en">Freddie Mac</span><span class="company-count">📈 17 次引用</span></a>
+            <a href="../companies/中国石油.html" class="company-card"><span class="company-name">中国石油</span><span class="company-en">PetroChina</span><span class="company-count">📈 16 次引用</span></a>
+            <a href="../companies/西方石油.html" class="company-card"><span class="company-name">西方石油</span><span class="company-en">Occidental Petroleum</span><span class="company-count">📈 15 次引用</span></a>
+            <a href="../companies/雪佛龙.html" class="company-card"><span class="company-name">雪佛龙</span><span class="company-en">Chevron</span><span class="company-count">📈 14 次引用</span></a>
+            <a href="../companies/德尔.html" class="company-card"><span class="company-name">德尔</span><span class="company-en">Dell</span><span class="company-count">📈 13 次引用</span></a>
+            <a href="../companies/IBM.html" class="company-card"><span class="company-name">沃尔玛</span><span class="company-en">Walmart</span><span class="company-count">📈 12 次引用</span></a>
+            <a href="../companies/美国合众银行.html" class="company-card"><span class="company-name">美国合众银行</span><span class="company-en">U.S. Bancorp</span><span class="company-count">📈 11 次引用</span></a>
+            <a href="../companies/摩根大通.html" class="company-card"><span class="company-name">摩根大通</span><span class="company-en">JPMorgan Chase</span><span class="company-count">📈 10 次引用</span></a>
+            <a href="../companies/通讯.html" class="company-card"><span class="company-name">威瑞森通讯</span><span class="company-en">Verizon</span><span class="company-count">📈 9 次引用</span></a>
+            <a href="../companies/TTI.html" class="company-card"><span class="company-name">TTI</span><span class="company-en">TTI</span><span class="company-count">📈 8 次引用</span></a>
+            <a href="../companies/庄臣.html" class="company-card"><span class="company-name">庄臣</span><span class="company-en">S.C. Johnson</span><span class="company-count">📈 7 次引用</span></a>
+            <a href="../companies/鲜果布衣.html" class="company-card"><span class="company-name">鲜果布衣</span><span class="company-en">Fruit of the Loom</span><span class="company-count">📈 6 次引用</span></a>
+            <a href="../companies/费希海默制服.html" class="company-card"><span class="company-name">费希海默制服</span><span class="company-en">Fechheimer Brothers</span><span class="company-count">📈 5 次引用</span></a>
+        </div>
+    </div>
+    
+    <footer>
+        <p><a href="../index.html">巴菲特知识库</a> | 数据来源：Berkshire Hathaway Letters</p>
+    </footer>
+</body>
+</html>
