@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>保险浮存金 (Insurance Float) - 巴菲特知识库</title>
+    <style>
+        :root { --bg-color: #FFFEF9; --navy: #1B2A4A; --gold: #C9A227; --text: #2C3E50; --secondary: #5D6D7E; --border: #E5E0D8; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Noto Serif SC', Georgia, serif; background: var(--bg-color); color: var(--text); line-height: 1.8; }
+        .container { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
+        header { background: var(--navy); color: white; padding: 40px 30px; text-align: center; }
+        header h1 { font-size: 1.8em; margin-bottom: 10px; }
+        header .meta { color: var(--gold); font-size: 0.95em; margin-top: 10px; }
+        .nav { background: white; border: 1px solid var(--border); padding: 15px 20px; margin-bottom: 30px; border-radius: 8px; text-align: center; }
+        .nav a { color: var(--navy); text-decoration: none; margin: 0 12px; font-size: 0.95em; }
+        .nav a:hover { color: var(--gold); }
+        .content { background: white; border: 1px solid var(--border); border-radius: 12px; padding: 40px; }
+        .content h2 { color: var(--navy); font-size: 1.4em; margin: 35px 0 15px; padding-bottom: 8px; border-bottom: 2px solid var(--gold); }
+        .content h2:first-of-type { margin-top: 0; }
+        .content h3 { color: var(--navy); font-size: 1.15em; margin: 25px 0 12px; }
+        .content h4 { color: var(--secondary); font-size: 1em; margin: 20px 0 10px; font-weight: normal; }
+        .content p { margin: 15px 0; text-align: justify; }
+        .content ul, .content ol { margin: 15px 0 15px 25px; }
+        .content li { margin: 8px 0; }
+        .content strong { color: var(--navy); font-weight: 700; }
+        .content blockquote { background: var(--navy); color: white; padding: 20px 25px; border-left: 4px solid var(--gold); margin: 25px 0; border-radius: 0 8px 8px 0; font-style: italic; }
+        .related { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px; }
+        .related a { background: white; border: 1px solid var(--border); padding: 8px 15px; border-radius: 20px; text-decoration: none; color: var(--navy); font-size: 0.9em; transition: all 0.2s; }
+        .related a:hover { background: var(--gold); color: white; border-color: var(--gold); }
+        .letters-list { display: flex; flex-wrap: wrap; gap: 8px; margin: 15px 0; }
+        .letters-list a { background: var(--bg-color); border: 1px solid var(--border); padding: 6px 12px; border-radius: 15px; text-decoration: none; color: var(--secondary); font-size: 0.85em; }
+        .letters-list a:hover { background: var(--navy); color: white; border-color: var(--navy); }
+        footer { text-align: center; padding: 40px 20px; color: var(--secondary); border-top: 1px solid var(--border); margin-top: 40px; }
+        footer a { color: var(--navy); text-decoration: none; }
+    
+        .citations-container { margin: 30px 0; }
+        .citation-year { margin: 25px 0; }
+        .citation-year h3 { color: #1B2A4A; font-size: 1.1em; margin-bottom: 15px; padding-bottom: 8px; border-bottom: 1px solid #E5E0D8; }
+        .citation-list { display: flex; flex-direction: column; gap: 15px; }
+        .citation-card { background: #F8F5EE; border: 1px solid #E5E0D8; border-radius: 8px; padding: 20px; transition: all 0.2s; }
+        .citation-card:hover { border-color: #C9A227; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+        .citation-text { margin: 0 0 15px 0; padding: 0; font-style: italic; color: #2C3E50; line-height: 1.7; }
+        .citation-text .highlight { background: #FFF3CD; padding: 0 2px; border-radius: 2px; font-weight: 600; }
+        .citation-meta { display: flex; justify-content: space-between; align-items: center; font-size: 0.85em; }
+        .section-tag { background: #E8E4DB; color: #5D6D7E; padding: 4px 10px; border-radius: 12px; font-size: 0.8em; }
+        .citation-link { color: #1B2A4A; text-decoration: none; }
+        .citation-link:hover { color: #C9A227; }
+        .table-container { overflow-x: auto; margin: 20px 0; }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { border: 1px solid var(--border); padding: 12px 15px; text-align: left; }
+        th { background: var(--navy); color: white; }
+        tr:nth-child(even) { background: #F8F5EE; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>保险浮存金 (Insurance Float)</h1>
+        <div class="meta">巴菲特投资理念核心概念</div>
+    </header>
+    
+    <div class="container">
+        <nav class="nav">
+            <a href="../index.html">知识库首页</a>
+            <a href="../concepts/index.html">核心概念</a>
+            <a href="../letters/index.html">致股东信</a>
+        </nav>
+        
+        <article class="content">
+<h1>保险浮存金 (Insurance Float)</h1>
+
+<h2>定义与起源</h2>
+
+保险浮存金是巴菲特构建伯克希尔投资帝国的<strong>核心财务杠杆</strong>。
+
+<h3>经典定义</h3>
+
+巴菲特在1998年致股东信中给出了最清晰的定义：
+
+<blockquote>"首先，浮存金是我们持有但不拥有的钱。在保险业务中，浮存金产生于保费预先收取而损失在将来支付的时刻。在收取保费和支付赔款之间，我们可以使用这笔钱进行投资。"</blockquote>
+
+<strong>英文原文（1998年信）：</strong>
+
+<blockquote>"To begin with, float is money we hold but don't own. In an insurance operation, float arises because premiums are collected upfront and claims are paid out later. This leaves us holding money that, until claims are eventually paid, can be invested."</blockquote>
+
+<h3>浮存金的来源</h3>
+
+<strong>保险业务的基本流程：</strong>
+<pre><code>
+收取保费 → 持有浮存金 → 投资运用 → 支付赔款 → 剩余利润
+</code></pre>
+
+<hr>
+
+<h2>核心要义</h2>
+
+<h3>第一：浮存金的成本是关键指标</h3>
+
+<strong>核心公式：</strong>
+
+<blockquote>"保险业务有价值的前提是，其浮存金的成本长期来看，低于我们使用这笔钱所能获得的收益。"</blockquote>
+>
+<blockquote>—— 1998年致股东信</blockquote>
+
+<strong>三种情况：</strong>
+
+| 场景 | 浮存金成本 | 价值判断 |
+|------|------------|----------|
+| 承保利润 | 负成本（实际盈利） | 极有价值 |
+| 盈亏平衡 | 零成本 | 有价值 |
+| 承保亏损 | 正成本 | 需要投资收益覆盖 |
+
+<h3>第二：浮存金规模不是唯一标准</h3>
+
+<strong>关键洞察：</strong>
+
+<blockquote>"浮存金的数量不是评估保险业务价值的唯一标准。一家拥有$10亿浮存金但承保亏损严重的公司，不如一家拥有$1亿浮存金但持续承保盈利的公司有价值。"</blockquote>
+
+<h3>第三：浮存金的复利引擎效应</h3>
+
+<strong>伯克希尔的浮存金规模：</strong>
+<li>1986年：$7亿</li>
+<li>1996年：$27亿</li>
+<li>2002年：$412亿</li>
+<li>2006年：$509亿</li>
+<li>2016年：>$1000亿</li>
+
+<hr>
+
+<h2>实践应用</h2>
+
+<h3>案例一：GEICO —— 低成本浮存金的典范</h3>
+
+<strong>发展历程：</strong>
+
+| 年份 | 保费收入 | 浮存金 | 承保利润/亏损 |
+|------|----------|--------|---------------|
+| 1976 | - | $0.4亿 | 严重亏损 |
+| 1996 | $28亿 | $27亿 | 盈利 |
+| 2006 | $124亿 | $85亿 | 大幅盈利 |
+| 2016 | $230亿 | $115亿 | 持续盈利 |
+
+<strong>护城河分析（2013年信）：</strong>
+
+<blockquote>"GEICO的低成本创造了一条护城河——一条持久的、竞争对手无法跨越的护城河。"</blockquote>
+
+<h3>案例二：Ajit Jain —— 从零构建的保险帝国</h3>
+
+<strong>背景（2010年信）：</strong>
+
+<blockquote>"Ajit Jain在1985年从零开始建立了一个保险业务。今天，这个业务拥有$300亿浮存金，是世界上最大、最赚钱的再保险公司之一。"</blockquote>
+
+<strong>Ajit成功的秘诀：</strong>
+
+<blockquote>"Ajit成功的关键在于他独特的承保能力——他愿意承担其他保险公司不愿承担的巨大风险。"</blockquote>
+
+<h3>案例三：2008年金融危机中的浮存金运用</h3>
+
+<strong>市场恐慌时期（2008年信）：</strong>
+
+<blockquote>"2008年9月，当雷曼兄弟倒闭、市场陷入极度恐慌时，我们手里有充足的'弹药'。这些弹药来自于我们的保险浮存金。在别人恐惧时贪婪——你只有在有资金的情况下才能做到这一点。"</blockquote>
+
+<hr>
+
+<h2>原话引用</h2>
+
+<h3>关于浮存金的定义</h3>
+
+<blockquote>"首先，浮存金是我们持有但不拥有的钱。在保险操作中，浮存金产生于保费预先收取而损失在将来支付的时刻。"</blockquote>
+>
+<blockquote>—— 1998年致股东信</blockquote>
+
+<h3>关于浮存金成本</h3>
+
+<blockquote>"保险业务有价值的前提是，其浮存金的成本长期来看，低于我们使用这笔钱所能获得的收益。"</blockquote>
+>
+<blockquote>—— 1998年致股东信</blockquote>
+
+<h3>关于浮存金的战略价值</h3>
+
+<blockquote>"浮存金让我们能够在市场恐慌时进行大规模投资。2008年9月，当别人恐惧时，我们口袋里有钱。这不是偶然——这是我们刻意构建的财务优势。"</blockquote>
+>
+<blockquote>—— 2008年致股东信</blockquote>
+
+<hr>
+
+<strong>相关概念</strong>：保险业、承保利润、GEICO、Ajit Jain、安全边际
+
+<strong>核心引用年份</strong>：1986, 1996, 1998, 1999, 2001, 2002, 2006, 2008, 2009, 2010, 2013
+<div class="citations-container">
+<h2>引用来源（0处）</h2>
+<div class="citation-year">
+<h3>2007</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"s, which we assign to our second bucket of value). *All per-share figures used in this report apply to Berkshire’s A shares. Figures for the B shares are 1/30th of those shown for the A. 3 Insurance <span class="highlight">float</span> – money we temporarily hold in our insurance operations that does not belong to us – funds $59 billion of our investments. This <span class="highlight">float</span> is “free” as long as insurance underwriting breaks even, meaning"</blockquote>
+<div class="citation-meta"><span class="section-tag">Insurance</span><a href="../letters/berkshire/2007.html" class="citation-link">2007年致股东信 →</a></div>
+</div>
+</div>
+</div>
+<div class="citation-year">
+<h3>2006</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"owth Rate 1965-2006.................... 27.5% Compound Growth Rate 1995-2006.................... 12.6% *Net of minority interests In our early years we put most of our retained earnings and insurance <span class="highlight">float</span> into investments in marketable securities. Because of this emphasis, and because the securities we purchased generally did well, our growth rate in investments was for a long time quite high. Over th"</blockquote>
+<div class="citation-meta"><span class="section-tag">In our early years we put most of our retained earnings and insurance</span><a href="../letters/berkshire/2006.html" class="citation-link">2006年致股东信 →</a></div>
+</div>
+</div>
+</div>
+<div class="citation-year">
+<h3>2005</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"e me a call. Like a hopeful teenage girl, I’ll be waiting by the phone. Insurance Let’s now talk about our four sectors and start with insurance, our core business. What counts here is the amount of “<span class="highlight">float</span>” and its cost over time. For new readers, let me explain. “Float” is money that doesn’t belong to us but that we temporarily hold. Most of our <span class="highlight">float</span> arises because (1) premiums are paid upfront thoug"</blockquote>
+<div class="citation-meta"><span class="section-tag">Insurance</span><a href="../letters/berkshire/2005.html" class="citation-link">2005年致股东信 →</a></div>
+</div>
+</div>
+</div>
+<div class="citation-year">
+<h3>2004</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"sinesses that now give us an ever-widening variety of earnings streams. So in this section, I will be spending a little time telling you how we got where we are. The source of our insurance funds is “<span class="highlight">float</span>,” which is money that doesn’t belong to us but that we temporarily hold. Most of our <span class="highlight">float</span> arises because (1) premiums are paid upfront though the service we provide – insurance protection – is deliv"</blockquote>
+<div class="citation-meta"><span class="section-tag">Insurance</span><a href="../letters/berkshire/2004.html" class="citation-link">2004年致股东信 →</a></div>
+</div>
+</div>
+</div>
+<div class="citation-year">
+<h3>2003</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"shot of the day sometimes reached erroneous conclusions. Insurance Let’s start with insurance – since that’s where the money is. The fountain of funds we enjoy in our insurance operations comes from “<span class="highlight">float</span>,” which is money that doesn’t belong to us but that we temporarily hold. Most of our <span class="highlight">float</span> arises because (1) premiums are paid upfront though the service we provide – insurance protection – is deliv"</blockquote>
+<div class="citation-meta"><span class="section-tag">Let’s start with insurance – since that’s where the money is.</span><a href="../letters/berkshire/2003.html" class="citation-link">2003年致股东信 →</a></div>
+</div>
+</div>
+</div>
+<div class="citation-year">
+<h3>2002</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"surance businesses was $272 million. Now, from our ever-expanding collection of manufacturing, retailing, service and finance businesses, we earn that sum monthly. • Our insurance group increased its <span class="highlight">float</span> to $41.2 billion, a hefty gain of $5.7 billion. Better yet, the use of these funds in 2002 cost us only 1%. Getting back to low-cost <span class="highlight">float</span> feels good, particularly after our poor results during the t"</blockquote>
+<div class="citation-meta"><span class="section-tag">BERKSHIRE HATHAWAY INC.</span><a href="../letters/berkshire/2002.html" class="citation-link">2002年致股东信 →</a></div>
+</div>
+</div>
+</div>
+<div class="citation-year">
+<h3>2001</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"ve others of great importance — is insurance. To understand Berkshire, therefore, it is necessary that you understand how to evaluate an insurance company. The key determinants are: (1) the amount of <span class="highlight">float</span> that the business generates; (2) its cost; and (3) most critical of all, the long-term outlook for both of these factors. To begin with, <span class="highlight">float</span> is money we hold but don't own. In an insurance operatio"</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念章节</span><a href="../letters/berkshire/2001.html" class="citation-link">2001年致股东信 →</a></div>
+</div>
+</div>
+</div>
+<div class="citation-year">
+<h3>2000</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"ve others of great importance — is insurance. To understand Berkshire, therefore, it is necessary that you understand how to evaluate an insurance company. The key determinants are: (1) the amount of <span class="highlight">float</span> that the business generates; (2) its cost; and (3) most critical of all, the long-term outlook for both of these factors. To begin with, <span class="highlight">float</span> is money we hold but don't own. In an insurance operatio"</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念章节</span><a href="../letters/berkshire/2000.html" class="citation-link">2000年致股东信 →</a></div>
+</div>
+</div>
+</div>
+<div class="citation-year">
+<h3>1999</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"ve others of great importance — is insurance. To understand Berkshire, therefore, it is necessary that you understand how to evaluate an insurance company. The key determinants are: (1) the amount of <span class="highlight">float</span> that the business generates; (2) its cost; and (3) most critical of all, the long-term outlook for both of these factors. To begin with, <span class="highlight">float</span> is money we hold but don't own. In an insurance operatio"</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念章节</span><a href="../letters/berkshire/1999.html" class="citation-link">1999年致股东信 →</a></div>
+</div>
+</div>
+</div>
+<div class="citation-year">
+<h3>1998</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"ition of General Re — and with GEICO’s business mushrooming — it becomes more important than ever that you understand how to evaluate an insurance company. The key determinants are: (1) the amount of <span class="highlight">float</span> that the business generates; (2) its cost; and (3) most important of all, the long-term outlook for both of these factors. To begin with, <span class="highlight">float</span> is money we hold but don't own. In an insurance operati"</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念章节</span><a href="../letters/berkshire/1998.html" class="citation-link">1998年致股东信 →</a></div>
+</div>
+</div>
+</div>
+<div class="citation-year">
+<h3>1997</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"Operations -- Overview<span class="highlight">\n\n What does excite us, however, is our insurance business. GEICO is flying, and we expect that it will continue to do so. Before we expound on that, though, let's discuss \"</span>float<span class="highlight">\" and how to measure its cost. Unless you understand this subject, it will be impossible for you to make an informed judgment about Berkshire's intrinsic value. \n\n To begin with, </span>float** is money we"</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念章节</span><a href="../letters/berkshire/1997.html" class="citation-link">1997年致股东信 →</a></div>
+</div>
+</div>
+</div>
+<div class="citation-year">
+<h3>1995</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"tion to acquiring GEICO, we enjoyed other favorable \ndevelopments in insurance during 1995.\n\n As we've explained in past reports, what counts in our \ninsurance business is, first, the amount of \"<span class="highlight">float</span>\" we generate \nand, second, its cost to us. Float is money we hold but don't \nown. In an insurance operation, <span class="highlight">float</span> arises because most \npolicies require that premiums be prepaid and, more importa"</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念章节</span><a href="../letters/berkshire/1995.html" class="citation-link">1995年致股东信 →</a></div>
+</div>
+</div>
+</div>
+<div class="citation-year">
+<h3>1994</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"4%, which is the rate Berkshire pays \n on the dividends it receives\n\nInsurance Operations\n\n As we've explained in past reports, what counts in our \ninsurance business is, first, the amount of \"<span class="highlight">float</span>\" we develop and, \nsecond, its cost to us. Float is money we hold but don't own. In \nan insurance operation, <span class="highlight">float</span> arises because most policies require \nthat premiums be prepaid and, more importan"</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念章节</span><a href="../letters/berkshire/1994.html" class="citation-link">1994年致股东信 →</a></div>
+</div>
+</div>
+</div>
+<div class="citation-year">
+<h3>1993</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"n the loss event and payment.\n\n To oversimplify the matter somewhat, the total of the funds \nprepaid by policyholders and the funds earmarked for incurred-but-\nnot-yet-paid claims is called \"the <span class="highlight">float</span>.\" In the past, the \nindustry was able to suffer a combined ratio of 107 to 111 and \nstill break even from its insurance writings because of the \nearnings derived from investing this <span class="highlight">float</span>.\n\n As"</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念章节</span><a href="../letters/berkshire/1993.html" class="citation-link">1993年致股东信 →</a></div>
+</div>
+</div>
+</div>
+<div class="citation-year">
+<h3>1992</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"s an underwriting profit, and one above \n100 indicates a loss. The higher the ratio, the worse the year. \nWhen the investment income that an insurer earns from holding \npolicyholders' funds (\"the <span class="highlight">float</span>\") is taken into account, a \ncombined ratio in the 106 - 110 range typically produces an \noverall break-even result, exclusive of earnings on the funds \nprovided by shareholders.\n\n About four po"</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念章节</span><a href="../letters/berkshire/1992.html" class="citation-link">1992年致股东信 →</a></div>
+</div>
+</div>
+</div>
+<div class="citation-year">
+<h3>1990</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"dicates an underwriting profit, and one above 100 indicates a loss. The higher the ratio, the worse the year. When the investment income that an insurer earns from holding policyholders' funds (\"the <span class="highlight">float</span>\") is taken into account, a combined ratio in the 107 - 111 range typically produces an overall breakeven result, exclusive of earnings on the funds provided by shareholders. \n\n For the reasons lai"</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念章节</span><a href="../letters/berkshire/1990.html" class="citation-link">1990年致股东信 →</a></div>
+</div>
+</div>
+</div>
+<div class="citation-year">
+<h3>1989</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"from premiums: A \nratio below 100 indicates an underwriting profit, and one above \n100 indicates a loss. When the investment income that an insurer \nearns from holding policyholders' funds (\"the <span class="highlight">float</span>\") is taken \ninto account, a combined ratio in the 107-111 range typically \nproduces an overall breakeven result, exclusive of earnings on \nthe funds provided by shareholders.\n\n For the reasons"</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念章节</span><a href="../letters/berkshire/1989.html" class="citation-link">1989年致股东信 →</a></div>
+</div>
+</div>
+</div>
+<div class="citation-year">
+<h3>1988</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"premiums: A \nratio below 100 indicates an underwriting profit, and one above \n100 indicates a loss. When the investment income that an insurer \nearns from holding on to policyholders’ funds (“the <span class="highlight">float</span>”) is \ntaken into account, a combined ratio in the 107-111 range \ntypically produces an overall break-even result, exclusive of \nearnings on the funds provided by shareholders.\n\n For the reasons"</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念章节</span><a href="../letters/berkshire/1988.html" class="citation-link">1988年致股东信 →</a></div>
+</div>
+</div>
+</div>
+<div class="citation-year">
+<h3>1987</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"premiums: A \nratio below 100 indicates an underwriting profit, and one above \n100 indicates a loss. When the investment income that an insurer \nearns from holding on to policyholders' funds (\"the <span class="highlight">float</span>\") is \ntaken into account, a combined ratio in the 107-111 range \ntypically produces an overall break-even result, exclusive of \nearnings on the funds provided by shareholders. \n\n The math of th"</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念章节</span><a href="../letters/berkshire/1987.html" class="citation-link">1987年致股东信 →</a></div>
+</div>
+</div>
+</div>
+<div class="citation-year">
+<h3>1986</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"premiums: a \nratio below 100 indicates an underwriting profit, and one above \n100 indicates a loss. When the investment income that an insurer \nearns from holding on to policyholders’ funds (\"the <span class="highlight">float</span>\") is \ntaken into account, a combined ratio in the 107-112 range \ntypically produces an overall break-even result, exclusive of \nearnings on the funds provided by shareholders.\n\n The math of the"</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念章节</span><a href="../letters/berkshire/1986.html" class="citation-link">1986年致股东信 →</a></div>
+</div>
+</div>
+</div>
+</div>
+        </article>
+        
+        <footer>
+            <p><a href="../index.html">巴菲特知识库</a> | 数据来源：Berkshire Hathaway Letters</p>
+        </footer>
+    </div>
+</body>
+</html>

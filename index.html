@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>巴菲特致股东信知识库 | Buffett Letters Knowledge Base</title>
+    <meta name="description" content="基于巴菲特致股东信的完整知识图谱，涵盖98封信件、49个核心概念、61家公司、7位关键人物">
+    <style>
+        :root {
+            --bg-color: #FFFEF9;
+            --navy: #1B2A4A;
+            --gold: #C9A227;
+            --text: #2C3E50;
+            --secondary: #5D6D7E;
+            --border: #E5E0D8;
+            --card-bg: #FFFFFF;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Noto Serif SC', 'Georgia', serif;
+            background: var(--bg-color);
+            color: var(--text);
+            line-height: 1.8;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background: var(--navy);
+            color: white;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(27, 42, 74, 0.1);
+        }
+        
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: var(--gold);
+            text-decoration: none;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 25px;
+            font-size: 0.95em;
+            opacity: 0.9;
+            transition: opacity 0.2s;
+        }
+        
+        nav a:hover {
+            opacity: 1;
+            color: var(--gold);
+        }
+        
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 80px 20px 60px;
+            background: linear-gradient(180deg, var(--bg-color) 0%, #F5F3EE 100%);
+        }
+        
+        .hero h1 {
+            font-size: 2.8em;
+            color: var(--navy);
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+        
+        .hero .subtitle {
+            font-size: 1.3em;
+            color: var(--secondary);
+            margin-bottom: 15px;
+        }
+        
+        .hero .tagline {
+            color: var(--gold);
+            font-size: 1.1em;
+            font-style: italic;
+        }
+        
+        /* Stats Section */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            padding: 40px 0;
+        }
+        
+        .stat-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 30px 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(27, 42, 74, 0.1);
+            border-color: var(--gold);
+        }
+        
+        .stat-number {
+            font-size: 3em;
+            font-weight: bold;
+            color: var(--navy);
+            display: block;
+            line-height: 1.2;
+        }
+        
+        .stat-label {
+            color: var(--secondary);
+            font-size: 1em;
+            margin-top: 8px;
+            display: block;
+        }
+        
+        .stat-icon {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+        
+        /* Index Cards */
+        .index-section {
+            padding: 40px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 1.8em;
+            color: var(--navy);
+            margin-bottom: 30px;
+        }
+        
+        .index-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+        
+        .index-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 25px;
+            text-decoration: none;
+            color: var(--text);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        
+        .index-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(27, 42, 74, 0.1);
+            border-color: var(--gold);
+        }
+        
+        .index-card .icon {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+        }
+        
+        .index-card h3 {
+            color: var(--navy);
+            font-size: 1.1em;
+            margin-bottom: 8px;
+        }
+        
+        .index-card p {
+            color: var(--secondary);
+            font-size: 0.9em;
+        }
+        
+        /* Top Lists */
+        .top-section {
+            padding: 40px 0;
+            background: #F5F3EE;
+            margin: 0 -20px;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+        
+        .top-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+        }
+        
+        .top-list {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 30px;
+        }
+        
+        .top-list h3 {
+            color: var(--navy);
+            font-size: 1.3em;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--gold);
+        }
+        
+        .top-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+            text-decoration: none;
+            color: var(--text);
+            transition: background 0.2s;
+        }
+        
+        .top-item:last-child {
+            border-bottom: none;
+        }
+        
+        .top-item:hover {
+            background: #f8f6f1;
+            padding-left: 10px;
+        }
+        
+        .rank {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: var(--gold);
+            width: 30px;
+        }
+        
+        .top-item span {
+            flex: 1;
+        }
+        
+        .count {
+            color: var(--secondary);
+            font-size: 0.9em;
+        }
+        
+        /* AI Section */
+        .ai-section {
+            padding: 60px 20px;
+            text-align: center;
+            background: var(--navy);
+            color: white;
+            margin: 40px -20px;
+            border-radius: 0;
+        }
+        
+        .ai-section h2 {
+            font-size: 1.8em;
+            margin-bottom: 15px;
+        }
+        
+        .ai-section p {
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 25px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .ai-button {
+            display: inline-block;
+            background: var(--gold);
+            color: var(--navy);
+            padding: 15px 40px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1em;
+            transition: all 0.3s ease;
+        }
+        
+        .ai-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(201, 162, 39, 0.4);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--navy);
+            color: white;
+            padding: 40px 20px;
+            margin-top: 40px;
+            text-align: center;
+        }
+        
+        footer p {
+            opacity: 0.8;
+            font-size: 0.9em;
+        }
+        
+        footer a {
+            color: var(--gold);
+            text-decoration: none;
+        }
+        
+        /* Responsive */
+        @media (max-width: 900px) {
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .index-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .top-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero h1 {
+                font-size: 2em;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .stats {
+                grid-template-columns: 1fr;
+            }
+            .index-grid {
+                grid-template-columns: 1fr;
+            }
+            header .container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            nav a {
+                margin: 0 10px;
+            }
+        }
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="index.html" class="logo">📚 巴菲特知识库</a>
+            <nav>
+                <a href="index-pages/巴菲特致股东信总览.html">📝 信件</a>
+                <a href="index-pages/核心思想索引.html">💡 思想</a>
+                <a href="index-pages/公司索引.html">🏢 公司</a>
+                <a href="index-pages/人物索引.html">👤 人物</a>
+            </nav>
+        </div>
+    </header>
+    
+    <section class="hero">
+        <div class="container">
+            <h1>巴菲特致股东信知识库</h1>
+            <p class="subtitle">Buffett Letters Knowledge Base</p>
+            <p class="tagline">"当别人恐惧时我贪婪，当别人贪婪时我恐惧。"</p>
+        </div>
+    </section>
+    
+    <div class="container">
+        <section class="stats">
+            <div class="stat-card">
+                <span class="stat-icon">📝</span>
+                <span class="stat-number">98</span>
+                <span class="stat-label">封致股东信</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-icon">💡</span>
+                <span class="stat-number">49</span>
+                <span class="stat-label">个核心概念</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-icon">🏢</span>
+                <span class="stat-number">61</span>
+                <span class="stat-label">家相关公司</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-icon">👤</span>
+                <span class="stat-number">7</span>
+                <span class="stat-label">位关键人物</span>
+            </div>
+        </section>
+        
+        <section class="index-section">
+            <h2 class="section-title">知识索引</h2>
+            <div class="index-grid">
+                <a href="index-pages/巴菲特致股东信总览.html" class="index-card">
+                    <div class="icon">📝</div>
+                    <h3>信件总览</h3>
+                    <p>98封完整信件</p>
+                </a>
+                <a href="index-pages/核心思想索引.html" class="index-card">
+                    <div class="icon">💡</div>
+                    <h3>核心思想</h3>
+                    <p>49个投资概念</p>
+                </a>
+                <a href="index-pages/公司索引.html" class="index-card">
+                    <div class="icon">🏢</div>
+                    <h3>公司索引</h3>
+                    <p>61家相关公司</p>
+                </a>
+                <a href="index-pages/人物索引.html" class="index-card">
+                    <div class="icon">👤</div>
+                    <h3>人物索引</h3>
+                    <p>7位关键人物</p>
+                </a>
+            </div>
+        </section>
+        
+        <section class="top-section">
+            <h2 class="section-title">TOP 15 高频引用</h2>
+            <div class="top-grid">
+                <div class="top-list">
+                    <h3>核心概念</h3>
+                    <a href="concepts/内在价值.html" class="top-item">
+                        <span class="rank">1</span>
+                        <span>内在价值</span>
+                        <span class="count">83次</span>
+                    </a>
+                    <a href="concepts/管理层.html" class="top-item">
+                        <span class="rank">2</span>
+                        <span>管理层</span>
+                        <span class="count">80次</span>
+                    </a>
+                    <a href="concepts/复利.html" class="top-item">
+                        <span class="rank">3</span>
+                        <span>复利</span>
+                        <span class="count">68次</span>
+                    </a>
+                    <a href="concepts/护城河.html" class="top-item">
+                        <span class="rank">4</span>
+                        <span>护城河</span>
+                        <span class="count">65次</span>
+                    </a>
+                    <a href="concepts/安全边际.html" class="top-item">
+                        <span class="rank">5</span>
+                        <span>安全边际</span>
+                        <span class="count">62次</span>
+                    </a>
+                    <a href="concepts/保险浮存金.html" class="top-item">
+                        <span class="rank">6</span>
+                        <span>保险浮存金</span>
+                        <span class="count">58次</span>
+                    </a>
+                    <a href="concepts/长期持有.html" class="top-item">
+                        <span class="rank">7</span>
+                        <span>长期持有</span>
+                        <span class="count">55次</span>
+                    </a>
+                    <a href="concepts/能力圈.html" class="top-item">
+                        <span class="rank">8</span>
+                        <span>能力圈</span>
+                        <span class="count">52次</span>
+                    </a>
+                </div>
+                <div class="top-list">
+                    <h3>相关公司</h3>
+                    <a href="companies/伯克希尔哈撒韦.html" class="top-item">
+                        <span class="rank">1</span>
+                        <span>伯克希尔哈撒韦</span>
+                        <span class="count">94次</span>
+                    </a>
+                    <a href="companies/盖可保险.html" class="top-item">
+                        <span class="rank">2</span>
+                        <span>盖可保险</span>
+                        <span class="count">79次</span>
+                    </a>
+                    <a href="companies/可口可乐.html" class="top-item">
+                        <span class="rank">3</span>
+                        <span>可口可乐</span>
+                        <span class="count">73次</span>
+                    </a>
+                    <a href="companies/喜诗糖果.html" class="top-item">
+                        <span class="rank">4</span>
+                        <span>喜诗糖果</span>
+                        <span class="count">68次</span>
+                    </a>
+                    <a href="companies/国民保险公司.html" class="top-item">
+                        <span class="rank">5</span>
+                        <span>国民保险公司</span>
+                        <span class="count">61次</span>
+                    </a>
+                    <a href="companies/美国运通.html" class="top-item">
+                        <span class="rank">6</span>
+                        <span>美国运通</span>
+                        <span class="count">58次</span>
+                    </a>
+                    <a href="companies/富国银行.html" class="top-item">
+                        <span class="rank">7</span>
+                        <span>富国银行</span>
+                        <span class="count">54次</span>
+                    </a>
+                    <a href="companies/苹果.html" class="top-item">
+                        <span class="rank">8</span>
+                        <span>苹果</span>
+                        <span class="count">51次</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+        
+
+    </div>
+    
+    <footer>
+        <p>巴菲特致股东信知识库 | 基于 LearnBuffett 设计规范构建</p>
+        <p style="margin-top: 10px;">
+            <a href="https://github.com/akalq/buffett-knowledge-graph" target="_blank">GitHub</a> · 
+            数据来源：Berkshire Hathaway Letters
+        </p>
+    </footer>
+</body>
+</html>

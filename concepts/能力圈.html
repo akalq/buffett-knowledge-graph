@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>能力圈 - 巴菲特知识库</title>
+    <style>
+        :root { --bg-color: #FFFEF9; --navy: #1B2A4A; --gold: #C9A227; --text: #2C3E50; --secondary: #5D6D7E; --border: #E5E0D8; --light-gold: #F5ECD7; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Noto Serif SC', Georgia, serif; background: var(--bg-color); color: var(--text); line-height: 1.9; }
+        .container { max-width: 1000px; margin: 0 auto; padding: 40px 20px; }
+        header { background: linear-gradient(135deg, var(--navy) 0%, #2a3f6a 100%); color: white; padding: 50px 30px; text-align: center; position: relative; overflow: hidden; }
+        header::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); }
+        header h1 { font-size: 2.2em; margin-bottom: 10px; position: relative; }
+        header h1::before { content: '💡'; margin-right: 15px; }
+        header .meta { color: var(--gold); font-size: 1em; margin-top: 15px; position: relative; }
+        header .meta span { background: rgba(201, 162, 39, 0.2); padding: 5px 15px; border-radius: 20px; }
+        .nav { background: white; border: 1px solid var(--border); padding: 15px 25px; margin-bottom: 30px; border-radius: 10px; text-align: center; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        .nav a { color: var(--navy); text-decoration: none; margin: 0 15px; font-size: 0.95em; padding: 8px 15px; border-radius: 5px; transition: all 0.2s; }
+        .nav a:hover { background: var(--gold); color: white; }
+        .content { background: white; border: 1px solid var(--border); border-radius: 15px; padding: 45px; box-shadow: 0 5px 30px rgba(0,0,0,0.05); }
+        .section { margin-bottom: 40px; padding-bottom: 40px; border-bottom: 1px solid var(--border); }
+        .section:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+        .content h2 { color: var(--navy); font-size: 1.5em; margin: 0 0 20px; padding-bottom: 12px; border-bottom: 3px solid var(--gold); display: inline-block; }
+        .content h3 { color: var(--navy); font-size: 1.2em; margin: 25px 0 15px; padding-left: 15px; border-left: 4px solid var(--gold); }
+        .content p { margin: 15px 0; text-align: justify; }
+        .intro-box { background: linear-gradient(135deg, var(--light-gold) 0%, #fff9e6 100%); padding: 25px 30px; border-radius: 10px; margin: 20px 0; border-left: 5px solid var(--gold); }
+        .intro-box p { margin: 0; font-size: 1.05em; }
+        .quote { background: var(--navy); color: white; padding: 25px 30px; border-left: 5px solid var(--gold); margin: 25px 0; border-radius: 0 12px 12px 0; position: relative; }
+        .quote::before { content: '"'; position: absolute; top: 10px; left: 15px; font-size: 4em; color: var(--gold); opacity: 0.3; font-family: Georgia, serif; }
+        .quote p { margin: 0; font-style: italic; font-size: 1.05em; padding-left: 30px; }
+        .quote .source { color: var(--gold); margin-top: 15px; font-size: 0.9em; padding-left: 30px; font-style: normal; }
+        .timeline { position: relative; padding-left: 30px; margin: 20px 0; }
+        .timeline::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--gold); }
+        .timeline-item { position: relative; margin-bottom: 25px; }
+        .timeline-item::before { content: ''; position: absolute; left: -34px; top: 5px; width: 12px; height: 12px; background: var(--gold); border-radius: 50%; border: 3px solid white; box-shadow: 0 0 0 3px var(--gold); }
+        .timeline-year { font-weight: bold; color: var(--navy); font-size: 1.1em; }
+        .timeline-content { color: var(--text); margin-top: 5px; }
+        .misconception { background: #fff5f5; padding: 20px 25px; border-radius: 10px; margin: 15px 0; border-left: 4px solid #e74c3c; }
+        .misconception h4 { color: #c0392b; margin-bottom: 10px; font-size: 1.1em; }
+        .related { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 20px; }
+        .related a { background: white; border: 2px solid var(--border); padding: 10px 20px; border-radius: 25px; text-decoration: none; color: var(--navy); font-size: 0.95em; transition: all 0.3s; }
+        .related a:hover { background: var(--gold); color: white; border-color: var(--gold); transform: translateY(-2px); }
+        footer { text-align: center; padding: 40px 20px; color: var(--secondary); border-top: 1px solid var(--border); margin-top: 40px; }
+        footer a { color: var(--navy); text-decoration: none; }
+        @media (max-width: 768px) { .container { padding: 20px 15px; } header { padding: 30px 20px; } header h1 { font-size: 1.6em; } .content { padding: 25px 20px; } .nav a { margin: 5px 8px; display: inline-block; } }
+    
+        /* 反向链接样式 */
+        .backlinks {
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 2px dashed var(--gold);
+        }
+        .backlinks h2 {
+            color: var(--navy);
+            font-size: 1.3em;
+            margin-bottom: 15px;
+        }
+        .backlinks-intro {
+            color: var(--secondary);
+            margin-bottom: 15px;
+        }
+        .backlinks-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .backlinks-list a {
+            background: linear-gradient(135deg, var(--light-gold) 0%, #fff9e6 100%);
+            border: 1px solid var(--gold);
+            padding: 8px 16px;
+            border-radius: 20px;
+            text-decoration: none;
+            color: var(--navy);
+            font-size: 0.9em;
+            transition: all 0.3s;
+        }
+        .backlinks-list a:hover {
+            background: var(--gold);
+            color: white;
+            transform: translateY(-2px);
+        }
+        .backlinks-count {
+            margin-top: 15px;
+            color: var(--secondary);
+            font-size: 0.9em;
+        }
+
+    
+        .citations-container {
+            margin: 30px 0;
+        }
+        .citation-year {
+            margin: 25px 0;
+        }
+        .citation-year h3 {
+            color: #1B2A4A;
+            font-size: 1.1em;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #E5E0D8;
+        }
+        .citation-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .citation-card {
+            background: #F8F5EE;
+            border: 1px solid #E5E0D8;
+            border-radius: 8px;
+            padding: 20px;
+            transition: all 0.2s;
+        }
+        .citation-card:hover {
+            border-color: #C9A227;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .citation-text {
+            margin: 0 0 15px 0;
+            padding: 0;
+            font-style: italic;
+            color: #2C3E50;
+            line-height: 1.7;
+        }
+        .citation-text .highlight {
+            background: #FFF3CD;
+            padding: 0 2px;
+            border-radius: 2px;
+            font-weight: 600;
+        }
+        .citation-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85em;
+        }
+        .section-tag {
+            background: #E8E4DB;
+            color: #5D6D7E;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.8em;
+        }
+        .citation-link {
+            color: #1B2A4A;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .citation-link:hover {
+            color: #C9A227;
+        }
+        .citation-more {
+            text-align: center;
+            padding: 10px;
+            background: #F8F5EE;
+            border-radius: 8px;
+        }
+        .citation-more a {
+            color: #5D6D7E;
+            text-decoration: none;
+            font-size: 0.9em;
+        }
+        .citation-more a:hover {
+            color: #C9A227;
+        }
+    
+        </style>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>能力圈</h1>
+        <div class="meta"><span>核心投资概念</span></div>
+    </header>
+    
+    <div class="container">
+        <nav class="nav">
+            <a href="../index.html">🏠 首页</a>
+            <a href="../index-pages/核心思想索引.html">💡 核心思想索引</a>
+            <a href="../index-pages/公司索引.html">🏢 公司索引</a>
+            <a href="../index-pages/人物索引.html">👤 人物索引</a>
+        </nav>
+        
+        <article class="content">
+            <div class="section">
+                <h2>定义与起源</h2>
+                <div class="intro-box">
+                    <p>能力圈原则要求投资者只投资自己真正理解的行业和企业。这意味着了解企业的运营模式、竞争优势、风险因素和内在价值。能力圈不是固定的，需要不断扩展但要谨慎。</p>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>核心要义</h2>
+                <p><b>懂就是懂：</b>对自己能力圈内的企业有深刻的理解和信心。</p><p><b>诚实面对：</b>承认不懂的领域，不盲目跟风投资热门股。</p><p><b>竞争优势：</b>对行业的理解有助于识别真正的竞争优势。</p><p><b>集中投资：</b>能力圈越小，越应该集中投资。</p>
+            </div>
+
+            <div class="section">
+                <h2>实践应用</h2>
+                <div class="intro-box"><p>巴菲特避开科技股多年，因为那不在他的能力圈内。直到他理解了苹果的商业模式——它实际上是一家消费品公司——才开始投资。他强调知道自己的能力边界在哪里，是走向成功的最重要一步。</p></div>
+            </div>
+
+            <div class="section">
+                <h2>常见误区</h2>
+                
+        <div class="misconception">
+            <h4>误区一：能力圈越小越好</h4>
+            <p>能力圈应该随着学习和理解不断扩大。</p>
+        </div>
+        
+        <div class="misconception">
+            <h4>误区二：不懂不买</h4>
+            <p>不是完全不懂不买，而是在能力圈内寻找机会。</p>
+        </div>
+        
+        <div class="misconception">
+            <h4>误区三：只投传统行业</h4>
+            <p>能力圈不是关于行业，而是关于理解的程度。</p>
+        </div>
+        
+            </div>
+
+            <div class="section">
+                <h2>原话精选</h2>
+                
+            <div class="quote">
+                <p>我们投资股票的选择方式与买进整家企业的模式很相近，我们想要的企业必须是(1)我们可以了解的行业(2)具有长期竞争力(3)由才德兼具的人士所经营(4)吸引人的价格，我们从来不试着去买进一些短期股价预期有所表现的股票，事实上，如果其企业的表现符合我们的预期，我们反而希望他们的股价不要太高，如此我们才有机会以更理想的价格买进更多的股权。</p>
+                <div class="source">—— 巴菲特致股东信 1977年</div>
+            </div>
+            
+            <div class="quote">
+                <p>只有当以下条件都符合时，我们才会想要将保险公司大部分的资金投入到股票投资之上：(1)我们可以了解的行业(2)具有长期竞争力(3)由才德兼具的人士所经营(4)吸引人的价格，我们常常可以找到一些符合(1)(2)(3)项条件的投资标的，但第(4)项往往让我们止步，举例来说，1971年伯克希尔所有股票的投资成本累计为1,070万美元，市价则为1,170万美元，市场上确实有不少好股票，只是他们的价格通常也不便宜，(讲到这里，我不得不补充，1971年全体退休基金经理人将可运用资金的122%投资在高价股票之上，甚至还嫌不够，但到了1974年，当股市大幅回档时，他们投资在股票的比例却降到21%的历史新低点)</p>
+                <div class="source">—— 巴菲特致股东信 1978年</div>
+            </div>
+            
+            </div>
+
+            <div class="section">
+                <h2>时间线演变</h2>
+                <div class="timeline">
+                    
+        <div class="timeline-item">
+            <div class="timeline-year">1960s</div>
+            <div class="timeline-content">巴菲特开始强调只投资理解的行业</div>
+        </div>
+        
+        <div class="timeline-item">
+            <div class="timeline-year">1990s</div>
+            <div class="timeline-content">多次解释为何避开科技股，因为不在能力圈内</div>
+        </div>
+        
+        <div class="timeline-item">
+            <div class="timeline-year">2011</div>
+            <div class="timeline-content">开始投资苹果，解释其已转入能力圈</div>
+        </div>
+        
+        <div class="timeline-item">
+            <div class="timeline-year">2020s</div>
+            <div class="timeline-content">继续强调能力圈原则，但承认会持续学习新领域</div>
+        </div>
+        
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>相关概念</h2>
+                <div class="related">
+                    
+                </div>
+            </div>
+        
+        <!-- 反向链接部分 -->
+        <div class="backlinks">
+            <h2>📚 相关概念</h2>
+            <p class="backlinks-intro">此概念在以下信件中被提及：</p>
+            <div class="backlinks-list">
+            <a href="../letters/berkshire/1999.html">1999年致股东信</a>
+            <a href="../letters/berkshire/1992.html">1992年致股东信</a>
+            </div>
+            <p class="backlinks-count">共被提及 2 次</p>
+        </div>
+    
+        <div class="citations-container">
+<div class="citation-year">
+<h3>1999年</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"...ospects. So we simply don’t get into judgments in those fields. 15 If we have a strength, it is in recognizing when we are operating well within our <span class="highlight">circle of <span class="highlight">competence</span></span> and when we are approaching the perimeter. Predicting the long-term economics of companies that operate in fast-changing industries is simply far bey..."</blockquote>
+<div class="citation-meta"><span class="section-tag">Insurance Group:</span><a href="../letters/berkshire/1999.html" class="citation-link">1999年致股东信 →</a></div>
+</div>
+<div class="citation-card">
+<blockquote class="citation-text">"...o we simply don’t get into judgments in those fields. 15 If we have a strength, it is in recognizing when we are operating well within our <span class="highlight">circle of <span class="highlight">competence</span></span> and when we are approaching the perimeter. Predicting the long-term economics of companies that operate in fast-changing industries is simply far bey..."</blockquote>
+<div class="citation-meta"><span class="section-tag">Insurance Group:</span><a href="../letters/berkshire/1999.html" class="citation-link">1999年致股东信 →</a></div>
+</div>
+</div>
+</div>
+</div>
+
+        
+    </article>
+<footer>
+        <p><a href="../index.html">巴菲特知识库</a> | 数据来源：巴菲特致股东信 (1977-2007)</p>
+    </footer>
+</body>
+</html><div class="citations-container">
+<div class="citation-year">
+<h3>1999年</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"...ospects. So we simply don’t get into judgments in those fields. 15 If we have a strength, it is in recognizing when we are operating well within our <span class="highlight">circle of <span class="highlight">competence</span></span> and when we are approaching the perimeter. Predicting the long-term economics of companies that operate in fast-changing industries is simply far bey..."</blockquote>
+<div class="citation-meta"><span class="section-tag">Insurance Group:</span><a href="../letters/berkshire/1999.html" class="citation-link">1999年致股东信 →</a></div>
+</div>
+<div class="citation-card">
+<blockquote class="citation-text">"...o we simply don’t get into judgments in those fields. 15 If we have a strength, it is in recognizing when we are operating well within our <span class="highlight">circle of <span class="highlight">competence</span></span> and when we are approaching the perimeter. Predicting the long-term economics of companies that operate in fast-changing industries is simply far bey..."</blockquote>
+<div class="citation-meta"><span class="section-tag">Insurance Group:</span><a href="../letters/berkshire/1999.html" class="citation-link">1999年致股东信 →</a></div>
+</div>
+</div>
+</div>
+</div>
+
+        
+    </article>
+<footer>
+        <p><a href="../index.html">巴菲特知识库</a> | 数据来源：巴菲特致股东信 (1977-2007)</p>
+    </footer>
+</body>
+</html><div class="citations-container">
+<div class="citation-year">
+<h3>1999年</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"...ospects. So we simply don’t get into judgments in those fields. 15 If we have a strength, it is in recognizing when we are operating well within our <span class="highlight">circle of <span class="highlight">competence</span></span> and when we are approaching the perimeter. Predicting the long-term economics of companies that operate in fast-changing industries is simply far bey..."</blockquote>
+<div class="citation-meta"><span class="section-tag">Insurance Group:</span><a href="../letters/berkshire/1999.html" class="citation-link">1999年致股东信 →</a></div>
+</div>
+<div class="citation-card">
+<blockquote class="citation-text">"...o we simply don’t get into judgments in those fields. 15 If we have a strength, it is in recognizing when we are operating well within our <span class="highlight">circle of <span class="highlight">competence</span></span> and when we are approaching the perimeter. Predicting the long-term economics of companies that operate in fast-changing industries is simply far bey..."</blockquote>
+<div class="citation-meta"><span class="section-tag">Insurance Group:</span><a href="../letters/berkshire/1999.html" class="citation-link">1999年致股东信 →</a></div>
+</div>
+</div>
+</div>
+</div>
+
+        <h2>引用来源（2处）</h2>
+<div class="citations-container">
+<div class="citation-year">
+<h3>1999年</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"...ospects. So we simply don’t get into judgments in those fields. 15 If we have a strength, it is in recognizing when we are operating well within our <span class="highlight">circle of <span class="highlight">competence</span></span> and when we are approaching the perimeter. Predicting the long-term economics of companies that operate in fast-changing industries is simply far bey..."</blockquote>
+<div class="citation-meta"><span class="section-tag">Insurance Group:</span><a href="../letters/berkshire/1999.html" class="citation-link">1999年致股东信 →</a></div>
+</div>
+<div class="citation-card">
+<blockquote class="citation-text">"...o we simply don’t get into judgments in those fields. 15 If we have a strength, it is in recognizing when we are operating well within our <span class="highlight">circle of <span class="highlight">competence</span></span> and when we are approaching the perimeter. Predicting the long-term economics of companies that operate in fast-changing industries is simply far bey..."</blockquote>
+<div class="citation-meta"><span class="section-tag">Insurance Group:</span><a href="../letters/berkshire/1999.html" class="citation-link">1999年致股东信 →</a></div>
+</div>
+</div>
+</div>
+</div>
+
+        </article>
+    </div>
+    <h2>引用来源（2处）</h2>
+<div class="citations-container">
+<div class="citation-year">
+<h3>1999年</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"...ospects. So we simply don’t get into judgments in those fields. 15 If we have a strength, it is in recognizing when we are operating well within our <span class="highlight">circle of <span class="highlight">competence</span></span> and when we are approaching the perimeter. Predicting the long-term economics of companies that operate in fast-changing industries is simply far bey..."</blockquote>
+<div class="citation-meta"><span class="section-tag">Insurance Group:</span><a href="../letters/berkshire/1999.html" class="citation-link">1999年致股东信 →</a></div>
+</div>
+<div class="citation-card">
+<blockquote class="citation-text">"...o we simply don’t get into judgments in those fields. 15 If we have a strength, it is in recognizing when we are operating well within our <span class="highlight">circle of <span class="highlight">competence</span></span> and when we are approaching the perimeter. Predicting the long-term economics of companies that operate in fast-changing industries is simply far bey..."</blockquote>
+<div class="citation-meta"><span class="section-tag">Insurance Group:</span><a href="../letters/berkshire/1999.html" class="citation-link">1999年致股东信 →</a></div>
+</div>
+</div>
+</div>
+</div>
+
+        </article>
+
+    </div>
+    
+    <footer>
+        <p><a href="../index.html">巴菲特知识库</a> | 数据来源：巴菲特致股东信 (1977-2007)</p>
+    </footer>
+</body>
+</html><div class="citations-container">
+<div class="citation-year">
+<h3>1999年</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"...ospects. So we simply don’t get into judgments in those fields. 15 If we have a strength, it is in recognizing when we are operating well within our <span class="highlight">circle of <span class="highlight">competence</span></span> and when we are approaching the perimeter. Predicting the long-term economics of companies that operate in fast-changing industries is simply far bey..."</blockquote>
+<div class="citation-meta"><span class="section-tag">Insurance Group:</span><a href="../letters/berkshire/1999.html" class="citation-link">1999年致股东信 →</a></div>
+</div>
+<div class="citation-card">
+<blockquote class="citation-text">"...o we simply don’t get into judgments in those fields. 15 If we have a strength, it is in recognizing when we are operating well within our <span class="highlight">circle of <span class="highlight">competence</span></span> and when we are approaching the perimeter. Predicting the long-term economics of companies that operate in fast-changing industries is simply far bey..."</blockquote>
+<div class="citation-meta"><span class="section-tag">Insurance Group:</span><a href="../letters/berkshire/1999.html" class="citation-link">1999年致股东信 →</a></div>
+</div>
+</div>
+</div>
+</div>
+
+        <h2>引用来源（2处）</h2>
+<div class="citations-container">
+<div class="citation-year">
+<h3>1999年</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"...ospects. So we simply don’t get into judgments in those fields. 15 If we have a strength, it is in recognizing when we are operating well within our <span class="highlight">circle of <span class="highlight">competence</span></span> and when we are approaching the perimeter. Predicting the long-term economics of companies that operate in fast-changing industries is simply far bey..."</blockquote>
+<div class="citation-meta"><span class="section-tag">Insurance Group:</span><a href="../letters/berkshire/1999.html" class="citation-link">1999年致股东信 →</a></div>
+</div>
+<div class="citation-card">
+<blockquote class="citation-text">"...o we simply don’t get into judgments in those fields. 15 If we have a strength, it is in recognizing when we are operating well within our <span class="highlight">circle of <span class="highlight">competence</span></span> and when we are approaching the perimeter. Predicting the long-term economics of companies that operate in fast-changing industries is simply far bey..."</blockquote>
+<div class="citation-meta"><span class="section-tag">Insurance Group:</span><a href="../letters/berkshire/1999.html" class="citation-link">1999年致股东信 →</a></div>
+</div>
+</div>
+</div>
+</div>
+
+        </article>
+    </div>
+    <h2>引用来源（2处）</h2>
+<div class="citations-container">
+<div class="citation-year">
+<h3>1999年</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"...ospects. So we simply don’t get into judgments in those fields. 15 If we have a strength, it is in recognizing when we are operating well within our <span class="highlight">circle of <span class="highlight">competence</span></span> and when we are approaching the perimeter. Predicting the long-term economics of companies that operate in fast-changing industries is simply far bey..."</blockquote>
+<div class="citation-meta"><span class="section-tag">Insurance Group:</span><a href="../letters/berkshire/1999.html" class="citation-link">1999年致股东信 →</a></div>
+</div>
+<div class="citation-card">
+<blockquote class="citation-text">"...o we simply don’t get into judgments in those fields. 15 If we have a strength, it is in recognizing when we are operating well within our <span class="highlight">circle of <span class="highlight">competence</span></span> and when we are approaching the perimeter. Predicting the long-term economics of companies that operate in fast-changing industries is simply far bey..."</blockquote>
+<div class="citation-meta"><span class="section-tag">Insurance Group:</span><a href="../letters/berkshire/1999.html" class="citation-link">1999年致股东信 →</a></div>
+</div>
+</div>
+</div>
+</div>
+
+        </article>
+
+    </div>
+    <h2>引用来源（2处）</h2>
+<div class="citations-container">
+<div class="citation-year">
+<h3>1999年</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"...ospects. So we simply don’t get into judgments in those fields. 15 If we have a strength, it is in recognizing when we are operating well within our <span class="highlight">circle of <span class="highlight">competence</span></span> and when we are approaching the perimeter. Predicting the long-term economics of companies that operate in fast-changing industries is simply far bey..."</blockquote>
+<div class="citation-meta"><span class="section-tag">Insurance Group:</span><a href="../letters/berkshire/1999.html" class="citation-link">1999年致股东信 →</a></div>
+</div>
+<div class="citation-card">
+<blockquote class="citation-text">"...o we simply don’t get into judgments in those fields. 15 If we have a strength, it is in recognizing when we are operating well within our <span class="highlight">circle of <span class="highlight">competence</span></span> and when we are approaching the perimeter. Predicting the long-term economics of companies that operate in fast-changing industries is simply far bey..."</blockquote>
+<div class="citation-meta"><span class="section-tag">Insurance Group:</span><a href="../letters/berkshire/1999.html" class="citation-link">1999年致股东信 →</a></div>
+</div>
+</div>
+</div>
+</div>
+
+        </article>
+<footer>
+        <p><a href="../index.html">巴菲特知识库</a> | 数据来源：巴菲特致股东信 (1977-2007)</p>
+    </footer>
+</body>
+</html><div class="citations-container">
+<div class="citation-year">
+<h3>1999年</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"...ospects. So we simply don’t get into judgments in those fields. 15 If we have a strength, it is in recognizing when we are operating well within our <span class="highlight">circle of <span class="highlight">competence</span></span> and when we are approaching the perimeter. Predicting the long-term economics of companies that operate in fast-changing industries is simply far bey..."</blockquote>
+<div class="citation-meta"><span class="section-tag">Insurance Group:</span><a href="../letters/berkshire/1999.html" class="citation-link">1999年致股东信 →</a></div>
+</div>
+<div class="citation-card">
+<blockquote class="citation-text">"...o we simply don’t get into judgments in those fields. 15 If we have a strength, it is in recognizing when we are operating well within our <span class="highlight">circle of <span class="highlight">competence</span></span> and when we are approaching the perimeter. Predicting the long-term economics of companies that operate in fast-changing industries is simply far bey..."</blockquote>
+<div class="citation-meta"><span class="section-tag">Insurance Group:</span><a href="../letters/berkshire/1999.html" class="citation-link">1999年致股东信 →</a></div>
+</div>
+</div>
+</div>
+</div>
+
+        <h2>引用来源（2处）</h2>
+<div class="citations-container">
+<div class="citation-year">
+<h3>1999年</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"...ospects. So we simply don’t get into judgments in those fields. 15 If we have a strength, it is in recognizing when we are operating well within our <span class="highlight">circle of <span class="highlight">competence</span></span> and when we are approaching the perimeter. Predicting the long-term economics of companies that operate in fast-changing industries is simply far bey..."</blockquote>
+<div class="citation-meta"><span class="section-tag">Insurance Group:</span><a href="../letters/berkshire/1999.html" class="citation-link">1999年致股东信 →</a></div>
+</div>
+<div class="citation-card">
+<blockquote class="citation-text">"...o we simply don’t get into judgments in those fields. 15 If we have a strength, it is in recognizing when we are operating well within our <span class="highlight">circle of <span class="highlight">competence</span></span> and when we are approaching the perimeter. Predicting the long-term economics of companies that operate in fast-changing industries is simply far bey..."</blockquote>
+<div class="citation-meta"><span class="section-tag">Insurance Group:</span><a href="../letters/berkshire/1999.html" class="citation-link">1999年致股东信 →</a></div>
+</div>
+</div>
+</div>
+</div>
+
+        </article>
+    </div>
+    <h2>引用来源（2处）</h2>
+<div class="citations-container">
+<div class="citation-year">
+<h3>1999年</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"...ospects. So we simply don’t get into judgments in those fields. 15 If we have a strength, it is in recognizing when we are operating well within our <span class="highlight">circle of <span class="highlight">competence</span></span> and when we are approaching the perimeter. Predicting the long-term economics of companies that operate in fast-changing industries is simply far bey..."</blockquote>
+<div class="citation-meta"><span class="section-tag">Insurance Group:</span><a href="../letters/berkshire/1999.html" class="citation-link">1999年致股东信 →</a></div>
+</div>
+<div class="citation-card">
+<blockquote class="citation-text">"...o we simply don’t get into judgments in those fields. 15 If we have a strength, it is in recognizing when we are operating well within our <span class="highlight">circle of <span class="highlight">competence</span></span> and when we are approaching the perimeter. Predicting the long-term economics of companies that operate in fast-changing industries is simply far bey..."</blockquote>
+<div class="citation-meta"><span class="section-tag">Insurance Group:</span><a href="../letters/berkshire/1999.html" class="citation-link">1999年致股东信 →</a></div>
+</div>
+</div>
+</div>
+</div>
+
+        </article>
+
+    </div>
+    
+    <footer>
+        <p><a href="../index.html">巴菲特知识库</a> | 数据来源：巴菲特致股东信 (1977-2007)</p>
+    </footer>
+</body>
+</html>

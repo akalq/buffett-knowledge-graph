@@ -1,0 +1,1943 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>股东权益报酬率 - 巴菲特知识库</title>
+    <style>
+        :root { --bg-color: #FFFEF9; --navy: #1B2A4A; --gold: #C9A227; --text: #2C3E50; --secondary: #5D6D7E; --border: #E5E0D8; --light-gold: #F5ECD7; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Noto Serif SC', Georgia, serif; background: var(--bg-color); color: var(--text); line-height: 1.9; }
+        .container { max-width: 1000px; margin: 0 auto; padding: 40px 20px; }
+        header { background: linear-gradient(135deg, var(--navy) 0%, #2a3f6a 100%); color: white; padding: 50px 30px; text-align: center; position: relative; overflow: hidden; }
+        header::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); }
+        header h1 { font-size: 2.2em; margin-bottom: 10px; position: relative; }
+        header h1::before { content: '💡'; margin-right: 15px; }
+        header .meta { color: var(--gold); font-size: 1em; margin-top: 15px; position: relative; }
+        header .meta span { background: rgba(201, 162, 39, 0.2); padding: 5px 15px; border-radius: 20px; }
+        .nav { background: white; border: 1px solid var(--border); padding: 15px 25px; margin-bottom: 30px; border-radius: 10px; text-align: center; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        .nav a { color: var(--navy); text-decoration: none; margin: 0 15px; font-size: 0.95em; padding: 8px 15px; border-radius: 5px; transition: all 0.2s; }
+        .nav a:hover { background: var(--gold); color: white; }
+        .content { background: white; border: 1px solid var(--border); border-radius: 15px; padding: 45px; box-shadow: 0 5px 30px rgba(0,0,0,0.05); }
+        .section { margin-bottom: 40px; padding-bottom: 40px; border-bottom: 1px solid var(--border); }
+        .section:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+        .content h2 { color: var(--navy); font-size: 1.5em; margin: 0 0 20px; padding-bottom: 12px; border-bottom: 3px solid var(--gold); display: inline-block; }
+        .content h3 { color: var(--navy); font-size: 1.2em; margin: 25px 0 15px; padding-left: 15px; border-left: 4px solid var(--gold); }
+        .content p { margin: 15px 0; text-align: justify; }
+        .intro-box { background: linear-gradient(135deg, var(--light-gold) 0%, #fff9e6 100%); padding: 25px 30px; border-radius: 10px; margin: 20px 0; border-left: 5px solid var(--gold); }
+        .intro-box p { margin: 0; font-size: 1.05em; }
+        .quote { background: var(--navy); color: white; padding: 25px 30px; border-left: 5px solid var(--gold); margin: 25px 0; border-radius: 0 12px 12px 0; position: relative; }
+        .quote::before { content: '"'; position: absolute; top: 10px; left: 15px; font-size: 4em; color: var(--gold); opacity: 0.3; font-family: Georgia, serif; }
+        .quote p { margin: 0; font-style: italic; font-size: 1.05em; padding-left: 30px; }
+        .quote .source { color: var(--gold); margin-top: 15px; font-size: 0.9em; padding-left: 30px; font-style: normal; }
+        .timeline { position: relative; padding-left: 30px; margin: 20px 0; }
+        .timeline::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--gold); }
+        .timeline-item { position: relative; margin-bottom: 25px; }
+        .timeline-item::before { content: ''; position: absolute; left: -34px; top: 5px; width: 12px; height: 12px; background: var(--gold); border-radius: 50%; border: 3px solid white; box-shadow: 0 0 0 3px var(--gold); }
+        .timeline-year { font-weight: bold; color: var(--navy); font-size: 1.1em; }
+        .timeline-content { color: var(--text); margin-top: 5px; }
+        .misconception { background: #fff5f5; padding: 20px 25px; border-radius: 10px; margin: 15px 0; border-left: 4px solid #e74c3c; }
+        .misconception h4 { color: #c0392b; margin-bottom: 10px; font-size: 1.1em; }
+        .related { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 20px; }
+        .related a { background: white; border: 2px solid var(--border); padding: 10px 20px; border-radius: 25px; text-decoration: none; color: var(--navy); font-size: 0.95em; transition: all 0.3s; }
+        .related a:hover { background: var(--gold); color: white; border-color: var(--gold); transform: translateY(-2px); }
+        footer { text-align: center; padding: 40px 20px; color: var(--secondary); border-top: 1px solid var(--border); margin-top: 40px; }
+        footer a { color: var(--navy); text-decoration: none; }
+        @media (max-width: 768px) { .container { padding: 20px 15px; } header { padding: 30px 20px; } header h1 { font-size: 1.6em; } .content { padding: 25px 20px; } .nav a { margin: 5px 8px; display: inline-block; } }
+    
+        /* 反向链接样式 */
+        .backlinks {
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 2px dashed var(--gold);
+        }
+        .backlinks h2 {
+            color: var(--navy);
+            font-size: 1.3em;
+            margin-bottom: 15px;
+        }
+        .backlinks-intro {
+            color: var(--secondary);
+            margin-bottom: 15px;
+        }
+        .backlinks-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .backlinks-list a {
+            background: linear-gradient(135deg, var(--light-gold) 0%, #fff9e6 100%);
+            border: 1px solid var(--gold);
+            padding: 8px 16px;
+            border-radius: 20px;
+            text-decoration: none;
+            color: var(--navy);
+            font-size: 0.9em;
+            transition: all 0.3s;
+        }
+        .backlinks-list a:hover {
+            background: var(--gold);
+            color: white;
+            transform: translateY(-2px);
+        }
+        .backlinks-count {
+            margin-top: 15px;
+            color: var(--secondary);
+            font-size: 0.9em;
+        }
+
+    
+        .citations-container {
+            margin: 30px 0;
+        }
+        .citation-year {
+            margin: 25px 0;
+        }
+        .citation-year h3 {
+            color: #1B2A4A;
+            font-size: 1.1em;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #E5E0D8;
+        }
+        .citation-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .citation-card {
+            background: #F8F5EE;
+            border: 1px solid #E5E0D8;
+            border-radius: 8px;
+            padding: 20px;
+            transition: all 0.2s;
+        }
+        .citation-card:hover {
+            border-color: #C9A227;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .citation-text {
+            margin: 0 0 15px 0;
+            padding: 0;
+            font-style: italic;
+            color: #2C3E50;
+            line-height: 1.7;
+        }
+        .citation-text .highlight {
+            background: #FFF3CD;
+            padding: 0 2px;
+            border-radius: 2px;
+            font-weight: 600;
+        }
+        .citation-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85em;
+        }
+        .section-tag {
+            background: #E8E4DB;
+            color: #5D6D7E;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.8em;
+        }
+        .citation-link {
+            color: #1B2A4A;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .citation-link:hover {
+            color: #C9A227;
+        }
+        .citation-more {
+            text-align: center;
+            padding: 10px;
+            background: #F8F5EE;
+            border-radius: 8px;
+        }
+        .citation-more a {
+            color: #5D6D7E;
+            text-decoration: none;
+            font-size: 0.9em;
+        }
+        .citation-more a:hover {
+            color: #C9A227;
+        }
+    
+        </style>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>股东权益报酬率</h1>
+        <div class="meta"><span>核心投资概念</span></div>
+    </header>
+    
+    <div class="container">
+        <nav class="nav">
+            <a href="../index.html">🏠 首页</a>
+            <a href="../index-pages/核心思想索引.html">💡 核心思想索引</a>
+            <a href="../index-pages/公司索引.html">🏢 公司索引</a>
+            <a href="../index-pages/人物索引.html">👤 人物索引</a>
+        </nav>
+        
+        <article class="content">
+            <div class="section">
+                <h2>定义与起源</h2>
+                <div class="intro-box">
+                    <p>股东权益报酬率（ROE）是衡量企业盈利能力的核心指标。巴菲特偏好长期保持高ROE的企业，因为高ROE意味着管理层能够有效利用股东资本创造价值。ROE也是评估管理层资本配置能力的关键指标。</p>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>核心要义</h2>
+                <p><b>资本效率：</b>高ROE表示每一美元股东资本创造了更多利润。</p><p><b>持续性：</b>重要的是长期ROE，而非短期波动。</p><p><b>去杠杆：</b>应该用运营利润计算，排除财务杠杆影响。</p><p><b>与护城河相关：</b>高ROE通常来自持久的竞争优势。</p>
+            </div>
+
+            <div class="section">
+                <h2>实践应用</h2>
+                <div class="intro-box"><p>巴菲特使用ROE筛选投资标的，寻找能够长期保持高ROE的企业。他特别关注ROE的趋势变化，因为这可能预示着竞争优势的改变或恶化。伯克希尔本身也以高ROE著称。</p></div>
+            </div>
+
+            <div class="section">
+                <h2>常见误区</h2>
+                
+        <div class="misconception">
+            <h4>误区一：只看单一年度</h4>
+            <p>应该关注长期ROE趋势，而非某一年的数字。</p>
+        </div>
+        
+        <div class="misconception">
+            <h4>误区二：忽视负债</h4>
+            <p>高ROE可能来自高负债，需要检查负债水平。</p>
+        </div>
+        
+        <div class="misconception">
+            <h4>误区三：高ROE就是好</h4>
+            <p>高ROE可能来自一次性因素，需要分析可持续性。</p>
+        </div>
+        
+            </div>
+
+            <div class="section">
+                <h2>原话精选</h2>
+                
+            <div class="quote">
+                <p>除非是特殊的情况(比如说负债比例特别高或是帐上持有重大资产未予重估)，否则我们认为“股东权益报酬率”应该是衡量管理当局表现比较合理的指针，1997年我们期初股东权益的报酬率约为19%，这比去年同期稍微好一点，但远高于本身过去长期以及当年美国企业整体的平均数，所以虽然我们每股的盈余成长了37%，但由于期初的资本也增加了34%，这使得我们实际的表现并没有想象中那么好。</p>
+                <div class="source">—— 巴菲特致股东信 1977年</div>
+            </div>
+            
+            <div class="quote">
+                <p>1978年的盈余达到130万美元，较1977年有所改进，但相较于投入的1,700万资本来说，报酬率还是很低，目前纺织厂房及设备帐列的价值远低于未来重置所需的成本，虽然这些设备都已相当老旧，但大部分的功能与目前同业所采用的全新设备差异并不大，但尽管固定资产的投入不须太大，但销售所须负担的应收帐款及存货周转资金却是相当沉重的担子，纺织业低资产周转率与低毛利无可避免地造成低落的股东权益报酬率，可能的改善方式包括产品差异化、使用新设备降低制造成本或妥善运用人力、朝高附加价值的纺织品转型等，我们的管理阶层正致力达到以上目标，当然真正的问题在于这也正是我们的竞争同业正在努力做的。</p>
+                <div class="source">—— 巴菲特致股东信 1978年</div>
+            </div>
+            
+            <div class="quote">
+                <p>所以我们判断一家公司经营好坏的主要依据，取决于其股东权益报酬率(排除不当的财务杠杆或会计作帐)，而非每股盈余的成长与否，我们认为如果管理当局及证券分析师能修正其对每股盈余的关注，则股东及一般投资大众将会对这些公司的营运情况有更深入的了解。</p>
+                <div class="source">—— 巴菲特致股东信 1979年</div>
+            </div>
+            
+            <div class="quote">
+                <p>去年我曾说过公司的盈余会成长但股东权益报酬率可能会下降，结果正如我所预期，展望1980年亦是如此，而若我预测错误，那表示可能会更惨。换句话说，我们几乎可以肯定的说，公司营业利益除以期初股东权益2.36亿美元(股票投资以原始成本计)所得的报酬率将会比1979年的18.6%下滑，甚至营业利益本身也有可能会比去年减少，其结果取决于何时正式处份银行、保险业核保获利的好坏以及储贷业亏损的严重性。</p>
+                <div class="source">—— 巴菲特致股东信 1979年</div>
+            </div>
+            
+            <div class="quote">
+                <p>1980年本公司的营业利益为4,190万美元，较1979年的3,600万美元成长，但期初股东权益报酬率(持有股票投资以原始成本计)却从去年的18.6%滑落至17.8%。我们认为这个比率最能够作为衡量公司管理当局单一年度经营绩效的指针。当然要运用这项指针，还必须对包含会计原则、资产取得历史成本、财务杠杆与产业状况等在内的主要因素有一定程度的了解才行。</p>
+                <div class="source">—— 巴菲特致股东信 1980年</div>
+            </div>
+            
+            </div>
+
+            <div class="section">
+                <h2>时间线演变</h2>
+                <div class="timeline">
+                    
+        <div class="timeline-item">
+            <div class="timeline-year">1970s</div>
+            <div class="timeline-content">开始使用ROE作为评估管理层绩效的关键指标</div>
+        </div>
+        
+        <div class="timeline-item">
+            <div class="timeline-year">1980s</div>
+            <div class="timeline-content">强调长期高ROE是企业竞争优势的体现</div>
+        </div>
+        
+        <div class="timeline-item">
+            <div class="timeline-year">1990s</div>
+            <div class="timeline-content">在筛选投资标的时优先考虑高ROE企业</div>
+        </div>
+        
+        <div class="timeline-item">
+            <div class="timeline-year">2000s</div>
+            <div class="timeline-content">继续强调ROE是理解企业价值创造能力的关键</div>
+        </div>
+        
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>相关概念</h2>
+                <div class="related">
+                    
+                </div>
+            </div>
+        
+        <!-- 反向链接部分 -->
+        <div class="backlinks">
+            <h2>📚 相关概念</h2>
+            <p class="backlinks-intro">此概念在以下信件中被提及：</p>
+            <div class="backlinks-list">
+            <a href="../letters/berkshire/2004.html">2004年致股东信</a>
+            <a href="../letters/berkshire/1997.html">1997年致股东信</a>
+            <a href="../letters/berkshire/1994.html">1994年致股东信</a>
+            <a href="../letters/berkshire/1990.html">1990年致股东信</a>
+            <a href="../letters/berkshire/1988.html">1988年致股东信</a>
+            <a href="../letters/berkshire/1987.html">1987年致股东信</a>
+            <a href="../letters/berkshire/1984.html">1984年致股东信</a>
+            <a href="../letters/berkshire/1983.html">1983年致股东信</a>
+            <a href="../letters/berkshire/1982.html">1982年致股东信</a>
+            <a href="../letters/berkshire/1981.html">1981年致股东信</a>
+            <a href="../letters/berkshire/1980.html">1980年致股东信</a>
+            <a href="../letters/berkshire/1979.html">1979年致股东信</a>
+            <a href="../letters/berkshire/1978.html">1978年致股东信</a>
+            <a href="../letters/berkshire/1977.html">1977年致股东信</a>
+            </div>
+            <p class="backlinks-count">共被提及 14 次</p>
+        </div>
+    
+        <div class="citations-container">
+<div class="citation-year">
+<h3>1994年</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"...n As you can see, Scott Fetzer's earnings have increased nsteadily since we bought it, but book value has not grown ncommensurately. Consequently, <span class="highlight">return on equity</span>, which was nexceptional at the time of our purchase, has now become truly nextraordinary. Just how extraordinary is illustrated by ncomparing Scot..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1994.html" class="citation-link">1994年致股东信 →</a></div>
+</div>
+<div class="citation-card">
+<blockquote class="citation-text">"...qualify for if it were a stand-alone company.nn Had Scott Fetzer been on the 1993 500 list - the latest navailable for inspection - the company's <span class="highlight">return on equity</span> would nhave ranked 4th. But that is far from the whole story. The top nthree companies in <span class="highlight">return on equity</span> were Insilco, LTV and Gaylord nContaine..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1994.html" class="citation-link">1994年致股东信 →</a></div>
+</div>
+<div class="citation-card">
+<blockquote class="citation-text">"...available for inspection - the company's <span class="highlight">return on equity</span> would nhave ranked 4th. But that is far from the whole story. The top nthree companies in <span class="highlight">return on equity</span> were Insilco, LTV and Gaylord nContainer, each of which emerged from bankruptcy in 1993 and none nof which achieved meaningful earnings that year e..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1994.html" class="citation-link">1994年致股东信 →</a></div>
+</div>
+<div class="citation-more">
+<a href="../letters/berkshire/1994.html">+ 还有2处引用</a>
+</div>
+</div>
+</div>
+<div class="citation-year">
+<h3>1990年</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"...record $12.2 million pre-tax in 1990. nn Were Scott Fetzer an independent company, it would rank close to the top of the Fortune 500 in terms of <span class="highlight">return on equity</span>, although it is not in businesses that one would expect to be economic champs. The superior results are directly attributable to Ralph. nn At World..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1990.html" class="citation-link">1990年致股东信 →</a></div>
+</div>
+</div>
+</div>
+<div class="citation-year">
+<h3>1988年</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"...o longer needed, paying 80 pounds of beans for each share. nn For several weeks I busily bought shares, sold beans, and nmade periodic stops at Schroeder Trust to exchange stock ncertificates for warehouse receipts. The profits were good and nmy only expense was subway tokens.nn The architect of..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1988.html" class="citation-link">1988年致股东信 →</a></div>
+</div>
+</div>
+</div>
+<div class="citation-year">
+<h3>1987年</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"...cuu003eFortuneu003c/uu003e reported nthat among the 500 largest industrial companies and 500 largest nservice companies, only six had averaged a <span class="highlight">return on equity</span> of nover 30% during the previous decade. The best performer among nthe 1000 was Commerce Clearing House at 40.2%. nn Of course, the returns that..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1987.html" class="citation-link">1987年致股东信 →</a></div>
+</div>
+<div class="citation-card">
+<blockquote class="citation-text">"...rk with. n(If, to become a shareholder and part owner of Commerce Clearing nHouse, you pay, say, six times book value, that does not change nCCH's <span class="highlight">return on equity</span>.) nn Three important inferences can be drawn from the figures I nhave cited. First, the current business value of these seven nunits is far above..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1987.html" class="citation-link">1987年致股东信 →</a></div>
+</div>
+<div class="citation-card">
+<blockquote class="citation-text">"...rtuneu003c/uu003e study I mentioned earlier supports our view. nOnly 25 of the 1,000 companies met two tests of economic nexcellence - an average <span class="highlight">return on equity</span> of over 20% in the ten nyears, 1977 through 1986, and no year worse than 15%. These nbusiness superstars were also stock market superstars: During..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1987.html" class="citation-link">1987年致股东信 →</a></div>
+</div>
+<div class="citation-more">
+<a href="../letters/berkshire/1987.html">+ 还有2处引用</a>
+</div>
+</div>
+</div>
+<div class="citation-year">
+<h3>1981年</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"...ll total well over $35 million in 1982. The naccounting rules that entirely ignore these undistributed nearnings diminish the utility of our annual <span class="highlight">return on equity</span> ncalculation, or any other single year measure of economic nperformance.nnLong-Term Corporate Performancenn In measuring long-term economic per..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1981.html" class="citation-link">1981年致股东信 →</a></div>
+</div>
+<div class="citation-card">
+<blockquote class="citation-text">"..., it is “entitled” to higher nreturns. A “value-added” bonus from equity capital seems natural nand certain.nn But is it? Several decades back, a <span class="highlight">return on equity</span> of as nlittle as 10% enabled a corporation to be classified as a “good” nbusiness - i.e., one in which a dollar reinvested in the business nlogica..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1981.html" class="citation-link">1981年致股东信 →</a></div>
+</div>
+<div class="citation-card">
+<blockquote class="citation-text">"...come nreturn to the investor will be equivalent to that from a 7% tax-nexempt bond. And, if conditions persist - if all earnings are npaid out and <span class="highlight">return on equity</span> stays at 14% - the 7% tax-exempt nequivalent to the higher-bracket individual investor is just as nfrozen as is the coupon on a tax-exempt bond. Su..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1981.html" class="citation-link">1981年致股东信 →</a></div>
+</div>
+<div class="citation-more">
+<a href="../letters/berkshire/1981.html">+ 还有2处引用</a>
+</div>
+</div>
+</div>
+<div class="citation-year">
+<h3>1980年</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"...r long-term yardstick nof performance, however, includes all capital gains or losses, nrealized or unrealized. We continue to achieve a long-term nreturn on equity that considerably exceeds the average of our nyearly returns. The major factor causing this pleasant result is na simple one: the retained earnings..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1980.html" class="citation-link">1980年致股东信 →</a></div>
+</div>
+<div class="citation-card">
+<blockquote class="citation-text">"...nmuch corporate investment unwise - at least if measured by the ncriterion of a positive real investment return to owners. This n“hurdle rate” the <span class="highlight">return on equity</span> that must be achieved by a ncorporation in order to produce any real return for its nindividual owners - has increased dramatically in recent years..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1980.html" class="citation-link">1980年致股东信 →</a></div>
+</div>
+<div class="citation-card">
+<blockquote class="citation-text">"...average American ncorporation, even though these individuals reinvest the entire nafter-tax proceeds from all dividends they receive. The average nreturn on equity of corporations is fully offset by the ncombination of the implicit tax on capital levied by inflation nand the explicit taxes levied both on divid..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1980.html" class="citation-link">1980年致股东信 →</a></div>
+</div>
+<div class="citation-more">
+<a href="../letters/berkshire/1980.html">+ 还有4处引用</a>
+</div>
+</div>
+</div>
+<div class="citation-year">
+<h3>1979年</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"...even though he consumes nothing at all. We have nno corporate solution to this problem; high inflation rates will nnot help us earn higher rates of <span class="highlight">return on equity</span>.nn One friendly but sharp-eyed commentator on Berkshire has npointed out that our book value at the end of 1964 would have nbought about one-half..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1979.html" class="citation-link">1979年致股东信 →</a></div>
+</div>
+<div class="citation-card">
+<blockquote class="citation-text">"...ons. And we hope to deliver on those expectations.nnProspectsnn Last year we said that we expected operating earnings in ndollars to improve but <span class="highlight">return on equity</span> to decrease. This turned nout to be correct. Our forecast for 1980 is the same. If we are nwrong, it will be on the downside. In other words, we ar..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1979.html" class="citation-link">1979年致股东信 →</a></div>
+</div>
+</div>
+</div>
+<div class="citation-year">
+<h3>1978年</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"...ng earnings in 1978 is sustainable. The insurance ncycle has turned downward in 1979, and it is almost certain that noperating earnings measured by <span class="highlight">return on equity</span> will fall this nyear. However, operating earnings measured in dollars are likely nto increase on the much larger shareholders’ equity now employed..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1978.html" class="citation-link">1978年致股东信 →</a></div>
+</div>
+</div>
+</div>
+<div class="citation-year">
+<h3>1977年</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"...h important assets carried nat unrealistic balance sheet values), we believe a more nappropriate measure of managerial economic performance to be nreturn on equity capital. In 1977 our operating earnings on nbeginning equity capital amounted to 19%, slightly better than nlast year and above both our own long-t..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1977.html" class="citation-link">1977年致股东信 →</a></div>
+</div>
+</div>
+</div>
+</div>
+
+        
+    </article>
+<footer>
+        <p><a href="../index.html">巴菲特知识库</a> | 数据来源：巴菲特致股东信 (1977-2007)</p>
+    </footer>
+</body>
+</html><div class="citations-container">
+<div class="citation-year">
+<h3>1994年</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"...n As you can see, Scott Fetzer's earnings have increased nsteadily since we bought it, but book value has not grown ncommensurately. Consequently, <span class="highlight">return on equity</span>, which was nexceptional at the time of our purchase, has now become truly nextraordinary. Just how extraordinary is illustrated by ncomparing Scot..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1994.html" class="citation-link">1994年致股东信 →</a></div>
+</div>
+<div class="citation-card">
+<blockquote class="citation-text">"...qualify for if it were a stand-alone company.nn Had Scott Fetzer been on the 1993 500 list - the latest navailable for inspection - the company's <span class="highlight">return on equity</span> would nhave ranked 4th. But that is far from the whole story. The top nthree companies in <span class="highlight">return on equity</span> were Insilco, LTV and Gaylord nContaine..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1994.html" class="citation-link">1994年致股东信 →</a></div>
+</div>
+<div class="citation-card">
+<blockquote class="citation-text">"...available for inspection - the company's <span class="highlight">return on equity</span> would nhave ranked 4th. But that is far from the whole story. The top nthree companies in <span class="highlight">return on equity</span> were Insilco, LTV and Gaylord nContainer, each of which emerged from bankruptcy in 1993 and none nof which achieved meaningful earnings that year e..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1994.html" class="citation-link">1994年致股东信 →</a></div>
+</div>
+<div class="citation-more">
+<a href="../letters/berkshire/1994.html">+ 还有2处引用</a>
+</div>
+</div>
+</div>
+<div class="citation-year">
+<h3>1990年</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"...record $12.2 million pre-tax in 1990. nn Were Scott Fetzer an independent company, it would rank close to the top of the Fortune 500 in terms of <span class="highlight">return on equity</span>, although it is not in businesses that one would expect to be economic champs. The superior results are directly attributable to Ralph. nn At World..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1990.html" class="citation-link">1990年致股东信 →</a></div>
+</div>
+</div>
+</div>
+<div class="citation-year">
+<h3>1988年</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"...o longer needed, paying 80 pounds of beans for each share. nn For several weeks I busily bought shares, sold beans, and nmade periodic stops at Schroeder Trust to exchange stock ncertificates for warehouse receipts. The profits were good and nmy only expense was subway tokens.nn The architect of..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1988.html" class="citation-link">1988年致股东信 →</a></div>
+</div>
+</div>
+</div>
+<div class="citation-year">
+<h3>1987年</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"...cuu003eFortuneu003c/uu003e reported nthat among the 500 largest industrial companies and 500 largest nservice companies, only six had averaged a <span class="highlight">return on equity</span> of nover 30% during the previous decade. The best performer among nthe 1000 was Commerce Clearing House at 40.2%. nn Of course, the returns that..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1987.html" class="citation-link">1987年致股东信 →</a></div>
+</div>
+<div class="citation-card">
+<blockquote class="citation-text">"...rk with. n(If, to become a shareholder and part owner of Commerce Clearing nHouse, you pay, say, six times book value, that does not change nCCH's <span class="highlight">return on equity</span>.) nn Three important inferences can be drawn from the figures I nhave cited. First, the current business value of these seven nunits is far above..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1987.html" class="citation-link">1987年致股东信 →</a></div>
+</div>
+<div class="citation-card">
+<blockquote class="citation-text">"...rtuneu003c/uu003e study I mentioned earlier supports our view. nOnly 25 of the 1,000 companies met two tests of economic nexcellence - an average <span class="highlight">return on equity</span> of over 20% in the ten nyears, 1977 through 1986, and no year worse than 15%. These nbusiness superstars were also stock market superstars: During..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1987.html" class="citation-link">1987年致股东信 →</a></div>
+</div>
+<div class="citation-more">
+<a href="../letters/berkshire/1987.html">+ 还有2处引用</a>
+</div>
+</div>
+</div>
+<div class="citation-year">
+<h3>1981年</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"...ll total well over $35 million in 1982. The naccounting rules that entirely ignore these undistributed nearnings diminish the utility of our annual <span class="highlight">return on equity</span> ncalculation, or any other single year measure of economic nperformance.nnLong-Term Corporate Performancenn In measuring long-term economic per..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1981.html" class="citation-link">1981年致股东信 →</a></div>
+</div>
+<div class="citation-card">
+<blockquote class="citation-text">"..., it is “entitled” to higher nreturns. A “value-added” bonus from equity capital seems natural nand certain.nn But is it? Several decades back, a <span class="highlight">return on equity</span> of as nlittle as 10% enabled a corporation to be classified as a “good” nbusiness - i.e., one in which a dollar reinvested in the business nlogica..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1981.html" class="citation-link">1981年致股东信 →</a></div>
+</div>
+<div class="citation-card">
+<blockquote class="citation-text">"...come nreturn to the investor will be equivalent to that from a 7% tax-nexempt bond. And, if conditions persist - if all earnings are npaid out and <span class="highlight">return on equity</span> stays at 14% - the 7% tax-exempt nequivalent to the higher-bracket individual investor is just as nfrozen as is the coupon on a tax-exempt bond. Su..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1981.html" class="citation-link">1981年致股东信 →</a></div>
+</div>
+<div class="citation-more">
+<a href="../letters/berkshire/1981.html">+ 还有2处引用</a>
+</div>
+</div>
+</div>
+<div class="citation-year">
+<h3>1980年</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"...r long-term yardstick nof performance, however, includes all capital gains or losses, nrealized or unrealized. We continue to achieve a long-term nreturn on equity that considerably exceeds the average of our nyearly returns. The major factor causing this pleasant result is na simple one: the retained earnings..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1980.html" class="citation-link">1980年致股东信 →</a></div>
+</div>
+<div class="citation-card">
+<blockquote class="citation-text">"...nmuch corporate investment unwise - at least if measured by the ncriterion of a positive real investment return to owners. This n“hurdle rate” the <span class="highlight">return on equity</span> that must be achieved by a ncorporation in order to produce any real return for its nindividual owners - has increased dramatically in recent years..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1980.html" class="citation-link">1980年致股东信 →</a></div>
+</div>
+<div class="citation-card">
+<blockquote class="citation-text">"...average American ncorporation, even though these individuals reinvest the entire nafter-tax proceeds from all dividends they receive. The average nreturn on equity of corporations is fully offset by the ncombination of the implicit tax on capital levied by inflation nand the explicit taxes levied both on divid..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1980.html" class="citation-link">1980年致股东信 →</a></div>
+</div>
+<div class="citation-more">
+<a href="../letters/berkshire/1980.html">+ 还有4处引用</a>
+</div>
+</div>
+</div>
+<div class="citation-year">
+<h3>1979年</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"...even though he consumes nothing at all. We have nno corporate solution to this problem; high inflation rates will nnot help us earn higher rates of <span class="highlight">return on equity</span>.nn One friendly but sharp-eyed commentator on Berkshire has npointed out that our book value at the end of 1964 would have nbought about one-half..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1979.html" class="citation-link">1979年致股东信 →</a></div>
+</div>
+<div class="citation-card">
+<blockquote class="citation-text">"...ons. And we hope to deliver on those expectations.nnProspectsnn Last year we said that we expected operating earnings in ndollars to improve but <span class="highlight">return on equity</span> to decrease. This turned nout to be correct. Our forecast for 1980 is the same. If we are nwrong, it will be on the downside. In other words, we ar..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1979.html" class="citation-link">1979年致股东信 →</a></div>
+</div>
+</div>
+</div>
+<div class="citation-year">
+<h3>1978年</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"...ng earnings in 1978 is sustainable. The insurance ncycle has turned downward in 1979, and it is almost certain that noperating earnings measured by <span class="highlight">return on equity</span> will fall this nyear. However, operating earnings measured in dollars are likely nto increase on the much larger shareholders’ equity now employed..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1978.html" class="citation-link">1978年致股东信 →</a></div>
+</div>
+</div>
+</div>
+<div class="citation-year">
+<h3>1977年</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"...h important assets carried nat unrealistic balance sheet values), we believe a more nappropriate measure of managerial economic performance to be nreturn on equity capital. In 1977 our operating earnings on nbeginning equity capital amounted to 19%, slightly better than nlast year and above both our own long-t..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1977.html" class="citation-link">1977年致股东信 →</a></div>
+</div>
+</div>
+</div>
+</div>
+
+        
+    </article>
+<footer>
+        <p><a href="../index.html">巴菲特知识库</a> | 数据来源：巴菲特致股东信 (1977-2007)</p>
+    </footer>
+</body>
+</html><div class="citations-container">
+<div class="citation-year">
+<h3>1994年</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"...n As you can see, Scott Fetzer's earnings have increased nsteadily since we bought it, but book value has not grown ncommensurately. Consequently, <span class="highlight">return on equity</span>, which was nexceptional at the time of our purchase, has now become truly nextraordinary. Just how extraordinary is illustrated by ncomparing Scot..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1994.html" class="citation-link">1994年致股东信 →</a></div>
+</div>
+<div class="citation-card">
+<blockquote class="citation-text">"...qualify for if it were a stand-alone company.nn Had Scott Fetzer been on the 1993 500 list - the latest navailable for inspection - the company's <span class="highlight">return on equity</span> would nhave ranked 4th. But that is far from the whole story. The top nthree companies in <span class="highlight">return on equity</span> were Insilco, LTV and Gaylord nContaine..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1994.html" class="citation-link">1994年致股东信 →</a></div>
+</div>
+<div class="citation-card">
+<blockquote class="citation-text">"...available for inspection - the company's <span class="highlight">return on equity</span> would nhave ranked 4th. But that is far from the whole story. The top nthree companies in <span class="highlight">return on equity</span> were Insilco, LTV and Gaylord nContainer, each of which emerged from bankruptcy in 1993 and none nof which achieved meaningful earnings that year e..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1994.html" class="citation-link">1994年致股东信 →</a></div>
+</div>
+<div class="citation-more">
+<a href="../letters/berkshire/1994.html">+ 还有2处引用</a>
+</div>
+</div>
+</div>
+<div class="citation-year">
+<h3>1990年</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"...record $12.2 million pre-tax in 1990. nn Were Scott Fetzer an independent company, it would rank close to the top of the Fortune 500 in terms of <span class="highlight">return on equity</span>, although it is not in businesses that one would expect to be economic champs. The superior results are directly attributable to Ralph. nn At World..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1990.html" class="citation-link">1990年致股东信 →</a></div>
+</div>
+</div>
+</div>
+<div class="citation-year">
+<h3>1988年</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"...o longer needed, paying 80 pounds of beans for each share. nn For several weeks I busily bought shares, sold beans, and nmade periodic stops at Schroeder Trust to exchange stock ncertificates for warehouse receipts. The profits were good and nmy only expense was subway tokens.nn The architect of..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1988.html" class="citation-link">1988年致股东信 →</a></div>
+</div>
+</div>
+</div>
+<div class="citation-year">
+<h3>1987年</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"...cuu003eFortuneu003c/uu003e reported nthat among the 500 largest industrial companies and 500 largest nservice companies, only six had averaged a <span class="highlight">return on equity</span> of nover 30% during the previous decade. The best performer among nthe 1000 was Commerce Clearing House at 40.2%. nn Of course, the returns that..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1987.html" class="citation-link">1987年致股东信 →</a></div>
+</div>
+<div class="citation-card">
+<blockquote class="citation-text">"...rk with. n(If, to become a shareholder and part owner of Commerce Clearing nHouse, you pay, say, six times book value, that does not change nCCH's <span class="highlight">return on equity</span>.) nn Three important inferences can be drawn from the figures I nhave cited. First, the current business value of these seven nunits is far above..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1987.html" class="citation-link">1987年致股东信 →</a></div>
+</div>
+<div class="citation-card">
+<blockquote class="citation-text">"...rtuneu003c/uu003e study I mentioned earlier supports our view. nOnly 25 of the 1,000 companies met two tests of economic nexcellence - an average <span class="highlight">return on equity</span> of over 20% in the ten nyears, 1977 through 1986, and no year worse than 15%. These nbusiness superstars were also stock market superstars: During..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1987.html" class="citation-link">1987年致股东信 →</a></div>
+</div>
+<div class="citation-more">
+<a href="../letters/berkshire/1987.html">+ 还有2处引用</a>
+</div>
+</div>
+</div>
+<div class="citation-year">
+<h3>1981年</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"...ll total well over $35 million in 1982. The naccounting rules that entirely ignore these undistributed nearnings diminish the utility of our annual <span class="highlight">return on equity</span> ncalculation, or any other single year measure of economic nperformance.nnLong-Term Corporate Performancenn In measuring long-term economic per..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1981.html" class="citation-link">1981年致股东信 →</a></div>
+</div>
+<div class="citation-card">
+<blockquote class="citation-text">"..., it is “entitled” to higher nreturns. A “value-added” bonus from equity capital seems natural nand certain.nn But is it? Several decades back, a <span class="highlight">return on equity</span> of as nlittle as 10% enabled a corporation to be classified as a “good” nbusiness - i.e., one in which a dollar reinvested in the business nlogica..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1981.html" class="citation-link">1981年致股东信 →</a></div>
+</div>
+<div class="citation-card">
+<blockquote class="citation-text">"...come nreturn to the investor will be equivalent to that from a 7% tax-nexempt bond. And, if conditions persist - if all earnings are npaid out and <span class="highlight">return on equity</span> stays at 14% - the 7% tax-exempt nequivalent to the higher-bracket individual investor is just as nfrozen as is the coupon on a tax-exempt bond. Su..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1981.html" class="citation-link">1981年致股东信 →</a></div>
+</div>
+<div class="citation-more">
+<a href="../letters/berkshire/1981.html">+ 还有2处引用</a>
+</div>
+</div>
+</div>
+<div class="citation-year">
+<h3>1980年</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"...r long-term yardstick nof performance, however, includes all capital gains or losses, nrealized or unrealized. We continue to achieve a long-term nreturn on equity that considerably exceeds the average of our nyearly returns. The major factor causing this pleasant result is na simple one: the retained earnings..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1980.html" class="citation-link">1980年致股东信 →</a></div>
+</div>
+<div class="citation-card">
+<blockquote class="citation-text">"...nmuch corporate investment unwise - at least if measured by the ncriterion of a positive real investment return to owners. This n“hurdle rate” the <span class="highlight">return on equity</span> that must be achieved by a ncorporation in order to produce any real return for its nindividual owners - has increased dramatically in recent years..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1980.html" class="citation-link">1980年致股东信 →</a></div>
+</div>
+<div class="citation-card">
+<blockquote class="citation-text">"...average American ncorporation, even though these individuals reinvest the entire nafter-tax proceeds from all dividends they receive. The average nreturn on equity of corporations is fully offset by the ncombination of the implicit tax on capital levied by inflation nand the explicit taxes levied both on divid..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1980.html" class="citation-link">1980年致股东信 →</a></div>
+</div>
+<div class="citation-more">
+<a href="../letters/berkshire/1980.html">+ 还有4处引用</a>
+</div>
+</div>
+</div>
+<div class="citation-year">
+<h3>1979年</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"...even though he consumes nothing at all. We have nno corporate solution to this problem; high inflation rates will nnot help us earn higher rates of <span class="highlight">return on equity</span>.nn One friendly but sharp-eyed commentator on Berkshire has npointed out that our book value at the end of 1964 would have nbought about one-half..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1979.html" class="citation-link">1979年致股东信 →</a></div>
+</div>
+<div class="citation-card">
+<blockquote class="citation-text">"...ons. And we hope to deliver on those expectations.nnProspectsnn Last year we said that we expected operating earnings in ndollars to improve but <span class="highlight">return on equity</span> to decrease. This turned nout to be correct. Our forecast for 1980 is the same. If we are nwrong, it will be on the downside. In other words, we ar..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1979.html" class="citation-link">1979年致股东信 →</a></div>
+</div>
+</div>
+</div>
+<div class="citation-year">
+<h3>1978年</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"...ng earnings in 1978 is sustainable. The insurance ncycle has turned downward in 1979, and it is almost certain that noperating earnings measured by <span class="highlight">return on equity</span> will fall this nyear. However, operating earnings measured in dollars are likely nto increase on the much larger shareholders’ equity now employed..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1978.html" class="citation-link">1978年致股东信 →</a></div>
+</div>
+</div>
+</div>
+<div class="citation-year">
+<h3>1977年</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"...h important assets carried nat unrealistic balance sheet values), we believe a more nappropriate measure of managerial economic performance to be nreturn on equity capital. In 1977 our operating earnings on nbeginning equity capital amounted to 19%, slightly better than nlast year and above both our own long-t..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1977.html" class="citation-link">1977年致股东信 →</a></div>
+</div>
+</div>
+</div>
+</div>
+
+        <h2>引用来源（28处）</h2>
+<div class="citations-container">
+<div class="citation-year">
+<h3>1994年</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"...n As you can see, Scott Fetzer's earnings have increased nsteadily since we bought it, but book value has not grown ncommensurately. Consequently, <span class="highlight">return on equity</span>, which was nexceptional at the time of our purchase, has now become truly nextraordinary. Just how extraordinary is illustrated by ncomparing Scot..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1994.html" class="citation-link">1994年致股东信 →</a></div>
+</div>
+<div class="citation-card">
+<blockquote class="citation-text">"...qualify for if it were a stand-alone company.nn Had Scott Fetzer been on the 1993 500 list - the latest navailable for inspection - the company's <span class="highlight">return on equity</span> would nhave ranked 4th. But that is far from the whole story. The top nthree companies in <span class="highlight">return on equity</span> were Insilco, LTV and Gaylord nContaine..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1994.html" class="citation-link">1994年致股东信 →</a></div>
+</div>
+<div class="citation-card">
+<blockquote class="citation-text">"...available for inspection - the company's <span class="highlight">return on equity</span> would nhave ranked 4th. But that is far from the whole story. The top nthree companies in <span class="highlight">return on equity</span> were Insilco, LTV and Gaylord nContainer, each of which emerged from bankruptcy in 1993 and none nof which achieved meaningful earnings that year e..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1994.html" class="citation-link">1994年致股东信 →</a></div>
+</div>
+<div class="citation-more">
+<a href="../letters/berkshire/1994.html">+ 还有2处引用</a>
+</div>
+</div>
+</div>
+<div class="citation-year">
+<h3>1990年</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"...record $12.2 million pre-tax in 1990. nn Were Scott Fetzer an independent company, it would rank close to the top of the Fortune 500 in terms of <span class="highlight">return on equity</span>, although it is not in businesses that one would expect to be economic champs. The superior results are directly attributable to Ralph. nn At World..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1990.html" class="citation-link">1990年致股东信 →</a></div>
+</div>
+</div>
+</div>
+<div class="citation-year">
+<h3>1988年</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"...o longer needed, paying 80 pounds of beans for each share. nn For several weeks I busily bought shares, sold beans, and nmade periodic stops at Schroeder Trust to exchange stock ncertificates for warehouse receipts. The profits were good and nmy only expense was subway tokens.nn The architect of..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1988.html" class="citation-link">1988年致股东信 →</a></div>
+</div>
+</div>
+</div>
+<div class="citation-year">
+<h3>1987年</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"...cuu003eFortuneu003c/uu003e reported nthat among the 500 largest industrial companies and 500 largest nservice companies, only six had averaged a <span class="highlight">return on equity</span> of nover 30% during the previous decade. The best performer among nthe 1000 was Commerce Clearing House at 40.2%. nn Of course, the returns that..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1987.html" class="citation-link">1987年致股东信 →</a></div>
+</div>
+<div class="citation-card">
+<blockquote class="citation-text">"...rk with. n(If, to become a shareholder and part owner of Commerce Clearing nHouse, you pay, say, six times book value, that does not change nCCH's <span class="highlight">return on equity</span>.) nn Three important inferences can be drawn from the figures I nhave cited. First, the current business value of these seven nunits is far above..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1987.html" class="citation-link">1987年致股东信 →</a></div>
+</div>
+<div class="citation-card">
+<blockquote class="citation-text">"...rtuneu003c/uu003e study I mentioned earlier supports our view. nOnly 25 of the 1,000 companies met two tests of economic nexcellence - an average <span class="highlight">return on equity</span> of over 20% in the ten nyears, 1977 through 1986, and no year worse than 15%. These nbusiness superstars were also stock market superstars: During..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1987.html" class="citation-link">1987年致股东信 →</a></div>
+</div>
+<div class="citation-more">
+<a href="../letters/berkshire/1987.html">+ 还有2处引用</a>
+</div>
+</div>
+</div>
+<div class="citation-year">
+<h3>1981年</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"...ll total well over $35 million in 1982. The naccounting rules that entirely ignore these undistributed nearnings diminish the utility of our annual <span class="highlight">return on equity</span> ncalculation, or any other single year measure of economic nperformance.nnLong-Term Corporate Performancenn In measuring long-term economic per..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1981.html" class="citation-link">1981年致股东信 →</a></div>
+</div>
+<div class="citation-card">
+<blockquote class="citation-text">"..., it is “entitled” to higher nreturns. A “value-added” bonus from equity capital seems natural nand certain.nn But is it? Several decades back, a <span class="highlight">return on equity</span> of as nlittle as 10% enabled a corporation to be classified as a “good” nbusiness - i.e., one in which a dollar reinvested in the business nlogica..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1981.html" class="citation-link">1981年致股东信 →</a></div>
+</div>
+<div class="citation-card">
+<blockquote class="citation-text">"...come nreturn to the investor will be equivalent to that from a 7% tax-nexempt bond. And, if conditions persist - if all earnings are npaid out and <span class="highlight">return on equity</span> stays at 14% - the 7% tax-exempt nequivalent to the higher-bracket individual investor is just as nfrozen as is the coupon on a tax-exempt bond. Su..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1981.html" class="citation-link">1981年致股东信 →</a></div>
+</div>
+<div class="citation-more">
+<a href="../letters/berkshire/1981.html">+ 还有2处引用</a>
+</div>
+</div>
+</div>
+<div class="citation-year">
+<h3>1980年</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"...r long-term yardstick nof performance, however, includes all capital gains or losses, nrealized or unrealized. We continue to achieve a long-term nreturn on equity that considerably exceeds the average of our nyearly returns. The major factor causing this pleasant result is na simple one: the retained earnings..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1980.html" class="citation-link">1980年致股东信 →</a></div>
+</div>
+<div class="citation-card">
+<blockquote class="citation-text">"...nmuch corporate investment unwise - at least if measured by the ncriterion of a positive real investment return to owners. This n“hurdle rate” the <span class="highlight">return on equity</span> that must be achieved by a ncorporation in order to produce any real return for its nindividual owners - has increased dramatically in recent years..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1980.html" class="citation-link">1980年致股东信 →</a></div>
+</div>
+<div class="citation-card">
+<blockquote class="citation-text">"...average American ncorporation, even though these individuals reinvest the entire nafter-tax proceeds from all dividends they receive. The average nreturn on equity of corporations is fully offset by the ncombination of the implicit tax on capital levied by inflation nand the explicit taxes levied both on divid..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1980.html" class="citation-link">1980年致股东信 →</a></div>
+</div>
+<div class="citation-more">
+<a href="../letters/berkshire/1980.html">+ 还有4处引用</a>
+</div>
+</div>
+</div>
+<div class="citation-year">
+<h3>1979年</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"...even though he consumes nothing at all. We have nno corporate solution to this problem; high inflation rates will nnot help us earn higher rates of <span class="highlight">return on equity</span>.nn One friendly but sharp-eyed commentator on Berkshire has npointed out that our book value at the end of 1964 would have nbought about one-half..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1979.html" class="citation-link">1979年致股东信 →</a></div>
+</div>
+<div class="citation-card">
+<blockquote class="citation-text">"...ons. And we hope to deliver on those expectations.nnProspectsnn Last year we said that we expected operating earnings in ndollars to improve but <span class="highlight">return on equity</span> to decrease. This turned nout to be correct. Our forecast for 1980 is the same. If we are nwrong, it will be on the downside. In other words, we ar..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1979.html" class="citation-link">1979年致股东信 →</a></div>
+</div>
+</div>
+</div>
+<div class="citation-year">
+<h3>1978年</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"...ng earnings in 1978 is sustainable. The insurance ncycle has turned downward in 1979, and it is almost certain that noperating earnings measured by <span class="highlight">return on equity</span> will fall this nyear. However, operating earnings measured in dollars are likely nto increase on the much larger shareholders’ equity now employed..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1978.html" class="citation-link">1978年致股东信 →</a></div>
+</div>
+</div>
+</div>
+<div class="citation-year">
+<h3>1977年</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"...h important assets carried nat unrealistic balance sheet values), we believe a more nappropriate measure of managerial economic performance to be nreturn on equity capital. In 1977 our operating earnings on nbeginning equity capital amounted to 19%, slightly better than nlast year and above both our own long-t..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1977.html" class="citation-link">1977年致股东信 →</a></div>
+</div>
+</div>
+</div>
+</div>
+
+        </article>
+    </div>
+    <h2>引用来源（28处）</h2>
+<div class="citations-container">
+<div class="citation-year">
+<h3>1994年</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"...n As you can see, Scott Fetzer's earnings have increased nsteadily since we bought it, but book value has not grown ncommensurately. Consequently, <span class="highlight">return on equity</span>, which was nexceptional at the time of our purchase, has now become truly nextraordinary. Just how extraordinary is illustrated by ncomparing Scot..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1994.html" class="citation-link">1994年致股东信 →</a></div>
+</div>
+<div class="citation-card">
+<blockquote class="citation-text">"...qualify for if it were a stand-alone company.nn Had Scott Fetzer been on the 1993 500 list - the latest navailable for inspection - the company's <span class="highlight">return on equity</span> would nhave ranked 4th. But that is far from the whole story. The top nthree companies in <span class="highlight">return on equity</span> were Insilco, LTV and Gaylord nContaine..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1994.html" class="citation-link">1994年致股东信 →</a></div>
+</div>
+<div class="citation-card">
+<blockquote class="citation-text">"...available for inspection - the company's <span class="highlight">return on equity</span> would nhave ranked 4th. But that is far from the whole story. The top nthree companies in <span class="highlight">return on equity</span> were Insilco, LTV and Gaylord nContainer, each of which emerged from bankruptcy in 1993 and none nof which achieved meaningful earnings that year e..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1994.html" class="citation-link">1994年致股东信 →</a></div>
+</div>
+<div class="citation-more">
+<a href="../letters/berkshire/1994.html">+ 还有2处引用</a>
+</div>
+</div>
+</div>
+<div class="citation-year">
+<h3>1990年</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"...record $12.2 million pre-tax in 1990. nn Were Scott Fetzer an independent company, it would rank close to the top of the Fortune 500 in terms of <span class="highlight">return on equity</span>, although it is not in businesses that one would expect to be economic champs. The superior results are directly attributable to Ralph. nn At World..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1990.html" class="citation-link">1990年致股东信 →</a></div>
+</div>
+</div>
+</div>
+<div class="citation-year">
+<h3>1988年</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"...o longer needed, paying 80 pounds of beans for each share. nn For several weeks I busily bought shares, sold beans, and nmade periodic stops at Schroeder Trust to exchange stock ncertificates for warehouse receipts. The profits were good and nmy only expense was subway tokens.nn The architect of..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1988.html" class="citation-link">1988年致股东信 →</a></div>
+</div>
+</div>
+</div>
+<div class="citation-year">
+<h3>1987年</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"...cuu003eFortuneu003c/uu003e reported nthat among the 500 largest industrial companies and 500 largest nservice companies, only six had averaged a <span class="highlight">return on equity</span> of nover 30% during the previous decade. The best performer among nthe 1000 was Commerce Clearing House at 40.2%. nn Of course, the returns that..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1987.html" class="citation-link">1987年致股东信 →</a></div>
+</div>
+<div class="citation-card">
+<blockquote class="citation-text">"...rk with. n(If, to become a shareholder and part owner of Commerce Clearing nHouse, you pay, say, six times book value, that does not change nCCH's <span class="highlight">return on equity</span>.) nn Three important inferences can be drawn from the figures I nhave cited. First, the current business value of these seven nunits is far above..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1987.html" class="citation-link">1987年致股东信 →</a></div>
+</div>
+<div class="citation-card">
+<blockquote class="citation-text">"...rtuneu003c/uu003e study I mentioned earlier supports our view. nOnly 25 of the 1,000 companies met two tests of economic nexcellence - an average <span class="highlight">return on equity</span> of over 20% in the ten nyears, 1977 through 1986, and no year worse than 15%. These nbusiness superstars were also stock market superstars: During..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1987.html" class="citation-link">1987年致股东信 →</a></div>
+</div>
+<div class="citation-more">
+<a href="../letters/berkshire/1987.html">+ 还有2处引用</a>
+</div>
+</div>
+</div>
+<div class="citation-year">
+<h3>1981年</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"...ll total well over $35 million in 1982. The naccounting rules that entirely ignore these undistributed nearnings diminish the utility of our annual <span class="highlight">return on equity</span> ncalculation, or any other single year measure of economic nperformance.nnLong-Term Corporate Performancenn In measuring long-term economic per..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1981.html" class="citation-link">1981年致股东信 →</a></div>
+</div>
+<div class="citation-card">
+<blockquote class="citation-text">"..., it is “entitled” to higher nreturns. A “value-added” bonus from equity capital seems natural nand certain.nn But is it? Several decades back, a <span class="highlight">return on equity</span> of as nlittle as 10% enabled a corporation to be classified as a “good” nbusiness - i.e., one in which a dollar reinvested in the business nlogica..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1981.html" class="citation-link">1981年致股东信 →</a></div>
+</div>
+<div class="citation-card">
+<blockquote class="citation-text">"...come nreturn to the investor will be equivalent to that from a 7% tax-nexempt bond. And, if conditions persist - if all earnings are npaid out and <span class="highlight">return on equity</span> stays at 14% - the 7% tax-exempt nequivalent to the higher-bracket individual investor is just as nfrozen as is the coupon on a tax-exempt bond. Su..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1981.html" class="citation-link">1981年致股东信 →</a></div>
+</div>
+<div class="citation-more">
+<a href="../letters/berkshire/1981.html">+ 还有2处引用</a>
+</div>
+</div>
+</div>
+<div class="citation-year">
+<h3>1980年</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"...r long-term yardstick nof performance, however, includes all capital gains or losses, nrealized or unrealized. We continue to achieve a long-term nreturn on equity that considerably exceeds the average of our nyearly returns. The major factor causing this pleasant result is na simple one: the retained earnings..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1980.html" class="citation-link">1980年致股东信 →</a></div>
+</div>
+<div class="citation-card">
+<blockquote class="citation-text">"...nmuch corporate investment unwise - at least if measured by the ncriterion of a positive real investment return to owners. This n“hurdle rate” the <span class="highlight">return on equity</span> that must be achieved by a ncorporation in order to produce any real return for its nindividual owners - has increased dramatically in recent years..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1980.html" class="citation-link">1980年致股东信 →</a></div>
+</div>
+<div class="citation-card">
+<blockquote class="citation-text">"...average American ncorporation, even though these individuals reinvest the entire nafter-tax proceeds from all dividends they receive. The average nreturn on equity of corporations is fully offset by the ncombination of the implicit tax on capital levied by inflation nand the explicit taxes levied both on divid..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1980.html" class="citation-link">1980年致股东信 →</a></div>
+</div>
+<div class="citation-more">
+<a href="../letters/berkshire/1980.html">+ 还有4处引用</a>
+</div>
+</div>
+</div>
+<div class="citation-year">
+<h3>1979年</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"...even though he consumes nothing at all. We have nno corporate solution to this problem; high inflation rates will nnot help us earn higher rates of <span class="highlight">return on equity</span>.nn One friendly but sharp-eyed commentator on Berkshire has npointed out that our book value at the end of 1964 would have nbought about one-half..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1979.html" class="citation-link">1979年致股东信 →</a></div>
+</div>
+<div class="citation-card">
+<blockquote class="citation-text">"...ons. And we hope to deliver on those expectations.nnProspectsnn Last year we said that we expected operating earnings in ndollars to improve but <span class="highlight">return on equity</span> to decrease. This turned nout to be correct. Our forecast for 1980 is the same. If we are nwrong, it will be on the downside. In other words, we ar..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1979.html" class="citation-link">1979年致股东信 →</a></div>
+</div>
+</div>
+</div>
+<div class="citation-year">
+<h3>1978年</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"...ng earnings in 1978 is sustainable. The insurance ncycle has turned downward in 1979, and it is almost certain that noperating earnings measured by <span class="highlight">return on equity</span> will fall this nyear. However, operating earnings measured in dollars are likely nto increase on the much larger shareholders’ equity now employed..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1978.html" class="citation-link">1978年致股东信 →</a></div>
+</div>
+</div>
+</div>
+<div class="citation-year">
+<h3>1977年</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"...h important assets carried nat unrealistic balance sheet values), we believe a more nappropriate measure of managerial economic performance to be nreturn on equity capital. In 1977 our operating earnings on nbeginning equity capital amounted to 19%, slightly better than nlast year and above both our own long-t..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1977.html" class="citation-link">1977年致股东信 →</a></div>
+</div>
+</div>
+</div>
+</div>
+
+        </article>
+
+    </div>
+    
+    <footer>
+        <p><a href="../index.html">巴菲特知识库</a> | 数据来源：巴菲特致股东信 (1977-2007)</p>
+    </footer>
+</body>
+</html><div class="citations-container">
+<div class="citation-year">
+<h3>1994年</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"...n As you can see, Scott Fetzer's earnings have increased nsteadily since we bought it, but book value has not grown ncommensurately. Consequently, <span class="highlight">return on equity</span>, which was nexceptional at the time of our purchase, has now become truly nextraordinary. Just how extraordinary is illustrated by ncomparing Scot..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1994.html" class="citation-link">1994年致股东信 →</a></div>
+</div>
+<div class="citation-card">
+<blockquote class="citation-text">"...qualify for if it were a stand-alone company.nn Had Scott Fetzer been on the 1993 500 list - the latest navailable for inspection - the company's <span class="highlight">return on equity</span> would nhave ranked 4th. But that is far from the whole story. The top nthree companies in <span class="highlight">return on equity</span> were Insilco, LTV and Gaylord nContaine..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1994.html" class="citation-link">1994年致股东信 →</a></div>
+</div>
+<div class="citation-card">
+<blockquote class="citation-text">"...available for inspection - the company's <span class="highlight">return on equity</span> would nhave ranked 4th. But that is far from the whole story. The top nthree companies in <span class="highlight">return on equity</span> were Insilco, LTV and Gaylord nContainer, each of which emerged from bankruptcy in 1993 and none nof which achieved meaningful earnings that year e..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1994.html" class="citation-link">1994年致股东信 →</a></div>
+</div>
+<div class="citation-more">
+<a href="../letters/berkshire/1994.html">+ 还有2处引用</a>
+</div>
+</div>
+</div>
+<div class="citation-year">
+<h3>1990年</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"...record $12.2 million pre-tax in 1990. nn Were Scott Fetzer an independent company, it would rank close to the top of the Fortune 500 in terms of <span class="highlight">return on equity</span>, although it is not in businesses that one would expect to be economic champs. The superior results are directly attributable to Ralph. nn At World..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1990.html" class="citation-link">1990年致股东信 →</a></div>
+</div>
+</div>
+</div>
+<div class="citation-year">
+<h3>1988年</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"...o longer needed, paying 80 pounds of beans for each share. nn For several weeks I busily bought shares, sold beans, and nmade periodic stops at Schroeder Trust to exchange stock ncertificates for warehouse receipts. The profits were good and nmy only expense was subway tokens.nn The architect of..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1988.html" class="citation-link">1988年致股东信 →</a></div>
+</div>
+</div>
+</div>
+<div class="citation-year">
+<h3>1987年</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"...cuu003eFortuneu003c/uu003e reported nthat among the 500 largest industrial companies and 500 largest nservice companies, only six had averaged a <span class="highlight">return on equity</span> of nover 30% during the previous decade. The best performer among nthe 1000 was Commerce Clearing House at 40.2%. nn Of course, the returns that..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1987.html" class="citation-link">1987年致股东信 →</a></div>
+</div>
+<div class="citation-card">
+<blockquote class="citation-text">"...rk with. n(If, to become a shareholder and part owner of Commerce Clearing nHouse, you pay, say, six times book value, that does not change nCCH's <span class="highlight">return on equity</span>.) nn Three important inferences can be drawn from the figures I nhave cited. First, the current business value of these seven nunits is far above..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1987.html" class="citation-link">1987年致股东信 →</a></div>
+</div>
+<div class="citation-card">
+<blockquote class="citation-text">"...rtuneu003c/uu003e study I mentioned earlier supports our view. nOnly 25 of the 1,000 companies met two tests of economic nexcellence - an average <span class="highlight">return on equity</span> of over 20% in the ten nyears, 1977 through 1986, and no year worse than 15%. These nbusiness superstars were also stock market superstars: During..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1987.html" class="citation-link">1987年致股东信 →</a></div>
+</div>
+<div class="citation-more">
+<a href="../letters/berkshire/1987.html">+ 还有2处引用</a>
+</div>
+</div>
+</div>
+<div class="citation-year">
+<h3>1981年</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"...ll total well over $35 million in 1982. The naccounting rules that entirely ignore these undistributed nearnings diminish the utility of our annual <span class="highlight">return on equity</span> ncalculation, or any other single year measure of economic nperformance.nnLong-Term Corporate Performancenn In measuring long-term economic per..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1981.html" class="citation-link">1981年致股东信 →</a></div>
+</div>
+<div class="citation-card">
+<blockquote class="citation-text">"..., it is “entitled” to higher nreturns. A “value-added” bonus from equity capital seems natural nand certain.nn But is it? Several decades back, a <span class="highlight">return on equity</span> of as nlittle as 10% enabled a corporation to be classified as a “good” nbusiness - i.e., one in which a dollar reinvested in the business nlogica..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1981.html" class="citation-link">1981年致股东信 →</a></div>
+</div>
+<div class="citation-card">
+<blockquote class="citation-text">"...come nreturn to the investor will be equivalent to that from a 7% tax-nexempt bond. And, if conditions persist - if all earnings are npaid out and <span class="highlight">return on equity</span> stays at 14% - the 7% tax-exempt nequivalent to the higher-bracket individual investor is just as nfrozen as is the coupon on a tax-exempt bond. Su..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1981.html" class="citation-link">1981年致股东信 →</a></div>
+</div>
+<div class="citation-more">
+<a href="../letters/berkshire/1981.html">+ 还有2处引用</a>
+</div>
+</div>
+</div>
+<div class="citation-year">
+<h3>1980年</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"...r long-term yardstick nof performance, however, includes all capital gains or losses, nrealized or unrealized. We continue to achieve a long-term nreturn on equity that considerably exceeds the average of our nyearly returns. The major factor causing this pleasant result is na simple one: the retained earnings..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1980.html" class="citation-link">1980年致股东信 →</a></div>
+</div>
+<div class="citation-card">
+<blockquote class="citation-text">"...nmuch corporate investment unwise - at least if measured by the ncriterion of a positive real investment return to owners. This n“hurdle rate” the <span class="highlight">return on equity</span> that must be achieved by a ncorporation in order to produce any real return for its nindividual owners - has increased dramatically in recent years..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1980.html" class="citation-link">1980年致股东信 →</a></div>
+</div>
+<div class="citation-card">
+<blockquote class="citation-text">"...average American ncorporation, even though these individuals reinvest the entire nafter-tax proceeds from all dividends they receive. The average nreturn on equity of corporations is fully offset by the ncombination of the implicit tax on capital levied by inflation nand the explicit taxes levied both on divid..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1980.html" class="citation-link">1980年致股东信 →</a></div>
+</div>
+<div class="citation-more">
+<a href="../letters/berkshire/1980.html">+ 还有4处引用</a>
+</div>
+</div>
+</div>
+<div class="citation-year">
+<h3>1979年</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"...even though he consumes nothing at all. We have nno corporate solution to this problem; high inflation rates will nnot help us earn higher rates of <span class="highlight">return on equity</span>.nn One friendly but sharp-eyed commentator on Berkshire has npointed out that our book value at the end of 1964 would have nbought about one-half..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1979.html" class="citation-link">1979年致股东信 →</a></div>
+</div>
+<div class="citation-card">
+<blockquote class="citation-text">"...ons. And we hope to deliver on those expectations.nnProspectsnn Last year we said that we expected operating earnings in ndollars to improve but <span class="highlight">return on equity</span> to decrease. This turned nout to be correct. Our forecast for 1980 is the same. If we are nwrong, it will be on the downside. In other words, we ar..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1979.html" class="citation-link">1979年致股东信 →</a></div>
+</div>
+</div>
+</div>
+<div class="citation-year">
+<h3>1978年</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"...ng earnings in 1978 is sustainable. The insurance ncycle has turned downward in 1979, and it is almost certain that noperating earnings measured by <span class="highlight">return on equity</span> will fall this nyear. However, operating earnings measured in dollars are likely nto increase on the much larger shareholders’ equity now employed..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1978.html" class="citation-link">1978年致股东信 →</a></div>
+</div>
+</div>
+</div>
+<div class="citation-year">
+<h3>1977年</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"...h important assets carried nat unrealistic balance sheet values), we believe a more nappropriate measure of managerial economic performance to be nreturn on equity capital. In 1977 our operating earnings on nbeginning equity capital amounted to 19%, slightly better than nlast year and above both our own long-t..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1977.html" class="citation-link">1977年致股东信 →</a></div>
+</div>
+</div>
+</div>
+</div>
+
+        <h2>引用来源（28处）</h2>
+<div class="citations-container">
+<div class="citation-year">
+<h3>1994年</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"...n As you can see, Scott Fetzer's earnings have increased nsteadily since we bought it, but book value has not grown ncommensurately. Consequently, <span class="highlight">return on equity</span>, which was nexceptional at the time of our purchase, has now become truly nextraordinary. Just how extraordinary is illustrated by ncomparing Scot..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1994.html" class="citation-link">1994年致股东信 →</a></div>
+</div>
+<div class="citation-card">
+<blockquote class="citation-text">"...qualify for if it were a stand-alone company.nn Had Scott Fetzer been on the 1993 500 list - the latest navailable for inspection - the company's <span class="highlight">return on equity</span> would nhave ranked 4th. But that is far from the whole story. The top nthree companies in <span class="highlight">return on equity</span> were Insilco, LTV and Gaylord nContaine..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1994.html" class="citation-link">1994年致股东信 →</a></div>
+</div>
+<div class="citation-card">
+<blockquote class="citation-text">"...available for inspection - the company's <span class="highlight">return on equity</span> would nhave ranked 4th. But that is far from the whole story. The top nthree companies in <span class="highlight">return on equity</span> were Insilco, LTV and Gaylord nContainer, each of which emerged from bankruptcy in 1993 and none nof which achieved meaningful earnings that year e..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1994.html" class="citation-link">1994年致股东信 →</a></div>
+</div>
+<div class="citation-more">
+<a href="../letters/berkshire/1994.html">+ 还有2处引用</a>
+</div>
+</div>
+</div>
+<div class="citation-year">
+<h3>1990年</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"...record $12.2 million pre-tax in 1990. nn Were Scott Fetzer an independent company, it would rank close to the top of the Fortune 500 in terms of <span class="highlight">return on equity</span>, although it is not in businesses that one would expect to be economic champs. The superior results are directly attributable to Ralph. nn At World..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1990.html" class="citation-link">1990年致股东信 →</a></div>
+</div>
+</div>
+</div>
+<div class="citation-year">
+<h3>1988年</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"...o longer needed, paying 80 pounds of beans for each share. nn For several weeks I busily bought shares, sold beans, and nmade periodic stops at Schroeder Trust to exchange stock ncertificates for warehouse receipts. The profits were good and nmy only expense was subway tokens.nn The architect of..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1988.html" class="citation-link">1988年致股东信 →</a></div>
+</div>
+</div>
+</div>
+<div class="citation-year">
+<h3>1987年</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"...cuu003eFortuneu003c/uu003e reported nthat among the 500 largest industrial companies and 500 largest nservice companies, only six had averaged a <span class="highlight">return on equity</span> of nover 30% during the previous decade. The best performer among nthe 1000 was Commerce Clearing House at 40.2%. nn Of course, the returns that..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1987.html" class="citation-link">1987年致股东信 →</a></div>
+</div>
+<div class="citation-card">
+<blockquote class="citation-text">"...rk with. n(If, to become a shareholder and part owner of Commerce Clearing nHouse, you pay, say, six times book value, that does not change nCCH's <span class="highlight">return on equity</span>.) nn Three important inferences can be drawn from the figures I nhave cited. First, the current business value of these seven nunits is far above..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1987.html" class="citation-link">1987年致股东信 →</a></div>
+</div>
+<div class="citation-card">
+<blockquote class="citation-text">"...rtuneu003c/uu003e study I mentioned earlier supports our view. nOnly 25 of the 1,000 companies met two tests of economic nexcellence - an average <span class="highlight">return on equity</span> of over 20% in the ten nyears, 1977 through 1986, and no year worse than 15%. These nbusiness superstars were also stock market superstars: During..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1987.html" class="citation-link">1987年致股东信 →</a></div>
+</div>
+<div class="citation-more">
+<a href="../letters/berkshire/1987.html">+ 还有2处引用</a>
+</div>
+</div>
+</div>
+<div class="citation-year">
+<h3>1981年</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"...ll total well over $35 million in 1982. The naccounting rules that entirely ignore these undistributed nearnings diminish the utility of our annual <span class="highlight">return on equity</span> ncalculation, or any other single year measure of economic nperformance.nnLong-Term Corporate Performancenn In measuring long-term economic per..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1981.html" class="citation-link">1981年致股东信 →</a></div>
+</div>
+<div class="citation-card">
+<blockquote class="citation-text">"..., it is “entitled” to higher nreturns. A “value-added” bonus from equity capital seems natural nand certain.nn But is it? Several decades back, a <span class="highlight">return on equity</span> of as nlittle as 10% enabled a corporation to be classified as a “good” nbusiness - i.e., one in which a dollar reinvested in the business nlogica..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1981.html" class="citation-link">1981年致股东信 →</a></div>
+</div>
+<div class="citation-card">
+<blockquote class="citation-text">"...come nreturn to the investor will be equivalent to that from a 7% tax-nexempt bond. And, if conditions persist - if all earnings are npaid out and <span class="highlight">return on equity</span> stays at 14% - the 7% tax-exempt nequivalent to the higher-bracket individual investor is just as nfrozen as is the coupon on a tax-exempt bond. Su..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1981.html" class="citation-link">1981年致股东信 →</a></div>
+</div>
+<div class="citation-more">
+<a href="../letters/berkshire/1981.html">+ 还有2处引用</a>
+</div>
+</div>
+</div>
+<div class="citation-year">
+<h3>1980年</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"...r long-term yardstick nof performance, however, includes all capital gains or losses, nrealized or unrealized. We continue to achieve a long-term nreturn on equity that considerably exceeds the average of our nyearly returns. The major factor causing this pleasant result is na simple one: the retained earnings..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1980.html" class="citation-link">1980年致股东信 →</a></div>
+</div>
+<div class="citation-card">
+<blockquote class="citation-text">"...nmuch corporate investment unwise - at least if measured by the ncriterion of a positive real investment return to owners. This n“hurdle rate” the <span class="highlight">return on equity</span> that must be achieved by a ncorporation in order to produce any real return for its nindividual owners - has increased dramatically in recent years..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1980.html" class="citation-link">1980年致股东信 →</a></div>
+</div>
+<div class="citation-card">
+<blockquote class="citation-text">"...average American ncorporation, even though these individuals reinvest the entire nafter-tax proceeds from all dividends they receive. The average nreturn on equity of corporations is fully offset by the ncombination of the implicit tax on capital levied by inflation nand the explicit taxes levied both on divid..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1980.html" class="citation-link">1980年致股东信 →</a></div>
+</div>
+<div class="citation-more">
+<a href="../letters/berkshire/1980.html">+ 还有4处引用</a>
+</div>
+</div>
+</div>
+<div class="citation-year">
+<h3>1979年</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"...even though he consumes nothing at all. We have nno corporate solution to this problem; high inflation rates will nnot help us earn higher rates of <span class="highlight">return on equity</span>.nn One friendly but sharp-eyed commentator on Berkshire has npointed out that our book value at the end of 1964 would have nbought about one-half..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1979.html" class="citation-link">1979年致股东信 →</a></div>
+</div>
+<div class="citation-card">
+<blockquote class="citation-text">"...ons. And we hope to deliver on those expectations.nnProspectsnn Last year we said that we expected operating earnings in ndollars to improve but <span class="highlight">return on equity</span> to decrease. This turned nout to be correct. Our forecast for 1980 is the same. If we are nwrong, it will be on the downside. In other words, we ar..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1979.html" class="citation-link">1979年致股东信 →</a></div>
+</div>
+</div>
+</div>
+<div class="citation-year">
+<h3>1978年</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"...ng earnings in 1978 is sustainable. The insurance ncycle has turned downward in 1979, and it is almost certain that noperating earnings measured by <span class="highlight">return on equity</span> will fall this nyear. However, operating earnings measured in dollars are likely nto increase on the much larger shareholders’ equity now employed..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1978.html" class="citation-link">1978年致股东信 →</a></div>
+</div>
+</div>
+</div>
+<div class="citation-year">
+<h3>1977年</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"...h important assets carried nat unrealistic balance sheet values), we believe a more nappropriate measure of managerial economic performance to be nreturn on equity capital. In 1977 our operating earnings on nbeginning equity capital amounted to 19%, slightly better than nlast year and above both our own long-t..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1977.html" class="citation-link">1977年致股东信 →</a></div>
+</div>
+</div>
+</div>
+</div>
+
+        </article>
+    </div>
+    <h2>引用来源（28处）</h2>
+<div class="citations-container">
+<div class="citation-year">
+<h3>1994年</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"...n As you can see, Scott Fetzer's earnings have increased nsteadily since we bought it, but book value has not grown ncommensurately. Consequently, <span class="highlight">return on equity</span>, which was nexceptional at the time of our purchase, has now become truly nextraordinary. Just how extraordinary is illustrated by ncomparing Scot..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1994.html" class="citation-link">1994年致股东信 →</a></div>
+</div>
+<div class="citation-card">
+<blockquote class="citation-text">"...qualify for if it were a stand-alone company.nn Had Scott Fetzer been on the 1993 500 list - the latest navailable for inspection - the company's <span class="highlight">return on equity</span> would nhave ranked 4th. But that is far from the whole story. The top nthree companies in <span class="highlight">return on equity</span> were Insilco, LTV and Gaylord nContaine..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1994.html" class="citation-link">1994年致股东信 →</a></div>
+</div>
+<div class="citation-card">
+<blockquote class="citation-text">"...available for inspection - the company's <span class="highlight">return on equity</span> would nhave ranked 4th. But that is far from the whole story. The top nthree companies in <span class="highlight">return on equity</span> were Insilco, LTV and Gaylord nContainer, each of which emerged from bankruptcy in 1993 and none nof which achieved meaningful earnings that year e..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1994.html" class="citation-link">1994年致股东信 →</a></div>
+</div>
+<div class="citation-more">
+<a href="../letters/berkshire/1994.html">+ 还有2处引用</a>
+</div>
+</div>
+</div>
+<div class="citation-year">
+<h3>1990年</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"...record $12.2 million pre-tax in 1990. nn Were Scott Fetzer an independent company, it would rank close to the top of the Fortune 500 in terms of <span class="highlight">return on equity</span>, although it is not in businesses that one would expect to be economic champs. The superior results are directly attributable to Ralph. nn At World..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1990.html" class="citation-link">1990年致股东信 →</a></div>
+</div>
+</div>
+</div>
+<div class="citation-year">
+<h3>1988年</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"...o longer needed, paying 80 pounds of beans for each share. nn For several weeks I busily bought shares, sold beans, and nmade periodic stops at Schroeder Trust to exchange stock ncertificates for warehouse receipts. The profits were good and nmy only expense was subway tokens.nn The architect of..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1988.html" class="citation-link">1988年致股东信 →</a></div>
+</div>
+</div>
+</div>
+<div class="citation-year">
+<h3>1987年</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"...cuu003eFortuneu003c/uu003e reported nthat among the 500 largest industrial companies and 500 largest nservice companies, only six had averaged a <span class="highlight">return on equity</span> of nover 30% during the previous decade. The best performer among nthe 1000 was Commerce Clearing House at 40.2%. nn Of course, the returns that..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1987.html" class="citation-link">1987年致股东信 →</a></div>
+</div>
+<div class="citation-card">
+<blockquote class="citation-text">"...rk with. n(If, to become a shareholder and part owner of Commerce Clearing nHouse, you pay, say, six times book value, that does not change nCCH's <span class="highlight">return on equity</span>.) nn Three important inferences can be drawn from the figures I nhave cited. First, the current business value of these seven nunits is far above..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1987.html" class="citation-link">1987年致股东信 →</a></div>
+</div>
+<div class="citation-card">
+<blockquote class="citation-text">"...rtuneu003c/uu003e study I mentioned earlier supports our view. nOnly 25 of the 1,000 companies met two tests of economic nexcellence - an average <span class="highlight">return on equity</span> of over 20% in the ten nyears, 1977 through 1986, and no year worse than 15%. These nbusiness superstars were also stock market superstars: During..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1987.html" class="citation-link">1987年致股东信 →</a></div>
+</div>
+<div class="citation-more">
+<a href="../letters/berkshire/1987.html">+ 还有2处引用</a>
+</div>
+</div>
+</div>
+<div class="citation-year">
+<h3>1981年</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"...ll total well over $35 million in 1982. The naccounting rules that entirely ignore these undistributed nearnings diminish the utility of our annual <span class="highlight">return on equity</span> ncalculation, or any other single year measure of economic nperformance.nnLong-Term Corporate Performancenn In measuring long-term economic per..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1981.html" class="citation-link">1981年致股东信 →</a></div>
+</div>
+<div class="citation-card">
+<blockquote class="citation-text">"..., it is “entitled” to higher nreturns. A “value-added” bonus from equity capital seems natural nand certain.nn But is it? Several decades back, a <span class="highlight">return on equity</span> of as nlittle as 10% enabled a corporation to be classified as a “good” nbusiness - i.e., one in which a dollar reinvested in the business nlogica..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1981.html" class="citation-link">1981年致股东信 →</a></div>
+</div>
+<div class="citation-card">
+<blockquote class="citation-text">"...come nreturn to the investor will be equivalent to that from a 7% tax-nexempt bond. And, if conditions persist - if all earnings are npaid out and <span class="highlight">return on equity</span> stays at 14% - the 7% tax-exempt nequivalent to the higher-bracket individual investor is just as nfrozen as is the coupon on a tax-exempt bond. Su..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1981.html" class="citation-link">1981年致股东信 →</a></div>
+</div>
+<div class="citation-more">
+<a href="../letters/berkshire/1981.html">+ 还有2处引用</a>
+</div>
+</div>
+</div>
+<div class="citation-year">
+<h3>1980年</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"...r long-term yardstick nof performance, however, includes all capital gains or losses, nrealized or unrealized. We continue to achieve a long-term nreturn on equity that considerably exceeds the average of our nyearly returns. The major factor causing this pleasant result is na simple one: the retained earnings..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1980.html" class="citation-link">1980年致股东信 →</a></div>
+</div>
+<div class="citation-card">
+<blockquote class="citation-text">"...nmuch corporate investment unwise - at least if measured by the ncriterion of a positive real investment return to owners. This n“hurdle rate” the <span class="highlight">return on equity</span> that must be achieved by a ncorporation in order to produce any real return for its nindividual owners - has increased dramatically in recent years..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1980.html" class="citation-link">1980年致股东信 →</a></div>
+</div>
+<div class="citation-card">
+<blockquote class="citation-text">"...average American ncorporation, even though these individuals reinvest the entire nafter-tax proceeds from all dividends they receive. The average nreturn on equity of corporations is fully offset by the ncombination of the implicit tax on capital levied by inflation nand the explicit taxes levied both on divid..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1980.html" class="citation-link">1980年致股东信 →</a></div>
+</div>
+<div class="citation-more">
+<a href="../letters/berkshire/1980.html">+ 还有4处引用</a>
+</div>
+</div>
+</div>
+<div class="citation-year">
+<h3>1979年</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"...even though he consumes nothing at all. We have nno corporate solution to this problem; high inflation rates will nnot help us earn higher rates of <span class="highlight">return on equity</span>.nn One friendly but sharp-eyed commentator on Berkshire has npointed out that our book value at the end of 1964 would have nbought about one-half..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1979.html" class="citation-link">1979年致股东信 →</a></div>
+</div>
+<div class="citation-card">
+<blockquote class="citation-text">"...ons. And we hope to deliver on those expectations.nnProspectsnn Last year we said that we expected operating earnings in ndollars to improve but <span class="highlight">return on equity</span> to decrease. This turned nout to be correct. Our forecast for 1980 is the same. If we are nwrong, it will be on the downside. In other words, we ar..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1979.html" class="citation-link">1979年致股东信 →</a></div>
+</div>
+</div>
+</div>
+<div class="citation-year">
+<h3>1978年</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"...ng earnings in 1978 is sustainable. The insurance ncycle has turned downward in 1979, and it is almost certain that noperating earnings measured by <span class="highlight">return on equity</span> will fall this nyear. However, operating earnings measured in dollars are likely nto increase on the much larger shareholders’ equity now employed..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1978.html" class="citation-link">1978年致股东信 →</a></div>
+</div>
+</div>
+</div>
+<div class="citation-year">
+<h3>1977年</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"...h important assets carried nat unrealistic balance sheet values), we believe a more nappropriate measure of managerial economic performance to be nreturn on equity capital. In 1977 our operating earnings on nbeginning equity capital amounted to 19%, slightly better than nlast year and above both our own long-t..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1977.html" class="citation-link">1977年致股东信 →</a></div>
+</div>
+</div>
+</div>
+</div>
+
+        </article>
+
+    </div>
+    <h2>引用来源（28处）</h2>
+<div class="citations-container">
+<div class="citation-year">
+<h3>1994年</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"...n As you can see, Scott Fetzer's earnings have increased nsteadily since we bought it, but book value has not grown ncommensurately. Consequently, <span class="highlight">return on equity</span>, which was nexceptional at the time of our purchase, has now become truly nextraordinary. Just how extraordinary is illustrated by ncomparing Scot..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1994.html" class="citation-link">1994年致股东信 →</a></div>
+</div>
+<div class="citation-card">
+<blockquote class="citation-text">"...qualify for if it were a stand-alone company.nn Had Scott Fetzer been on the 1993 500 list - the latest navailable for inspection - the company's <span class="highlight">return on equity</span> would nhave ranked 4th. But that is far from the whole story. The top nthree companies in <span class="highlight">return on equity</span> were Insilco, LTV and Gaylord nContaine..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1994.html" class="citation-link">1994年致股东信 →</a></div>
+</div>
+<div class="citation-card">
+<blockquote class="citation-text">"...available for inspection - the company's <span class="highlight">return on equity</span> would nhave ranked 4th. But that is far from the whole story. The top nthree companies in <span class="highlight">return on equity</span> were Insilco, LTV and Gaylord nContainer, each of which emerged from bankruptcy in 1993 and none nof which achieved meaningful earnings that year e..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1994.html" class="citation-link">1994年致股东信 →</a></div>
+</div>
+<div class="citation-more">
+<a href="../letters/berkshire/1994.html">+ 还有2处引用</a>
+</div>
+</div>
+</div>
+<div class="citation-year">
+<h3>1990年</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"...record $12.2 million pre-tax in 1990. nn Were Scott Fetzer an independent company, it would rank close to the top of the Fortune 500 in terms of <span class="highlight">return on equity</span>, although it is not in businesses that one would expect to be economic champs. The superior results are directly attributable to Ralph. nn At World..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1990.html" class="citation-link">1990年致股东信 →</a></div>
+</div>
+</div>
+</div>
+<div class="citation-year">
+<h3>1988年</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"...o longer needed, paying 80 pounds of beans for each share. nn For several weeks I busily bought shares, sold beans, and nmade periodic stops at Schroeder Trust to exchange stock ncertificates for warehouse receipts. The profits were good and nmy only expense was subway tokens.nn The architect of..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1988.html" class="citation-link">1988年致股东信 →</a></div>
+</div>
+</div>
+</div>
+<div class="citation-year">
+<h3>1987年</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"...cuu003eFortuneu003c/uu003e reported nthat among the 500 largest industrial companies and 500 largest nservice companies, only six had averaged a <span class="highlight">return on equity</span> of nover 30% during the previous decade. The best performer among nthe 1000 was Commerce Clearing House at 40.2%. nn Of course, the returns that..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1987.html" class="citation-link">1987年致股东信 →</a></div>
+</div>
+<div class="citation-card">
+<blockquote class="citation-text">"...rk with. n(If, to become a shareholder and part owner of Commerce Clearing nHouse, you pay, say, six times book value, that does not change nCCH's <span class="highlight">return on equity</span>.) nn Three important inferences can be drawn from the figures I nhave cited. First, the current business value of these seven nunits is far above..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1987.html" class="citation-link">1987年致股东信 →</a></div>
+</div>
+<div class="citation-card">
+<blockquote class="citation-text">"...rtuneu003c/uu003e study I mentioned earlier supports our view. nOnly 25 of the 1,000 companies met two tests of economic nexcellence - an average <span class="highlight">return on equity</span> of over 20% in the ten nyears, 1977 through 1986, and no year worse than 15%. These nbusiness superstars were also stock market superstars: During..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1987.html" class="citation-link">1987年致股东信 →</a></div>
+</div>
+<div class="citation-more">
+<a href="../letters/berkshire/1987.html">+ 还有2处引用</a>
+</div>
+</div>
+</div>
+<div class="citation-year">
+<h3>1981年</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"...ll total well over $35 million in 1982. The naccounting rules that entirely ignore these undistributed nearnings diminish the utility of our annual <span class="highlight">return on equity</span> ncalculation, or any other single year measure of economic nperformance.nnLong-Term Corporate Performancenn In measuring long-term economic per..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1981.html" class="citation-link">1981年致股东信 →</a></div>
+</div>
+<div class="citation-card">
+<blockquote class="citation-text">"..., it is “entitled” to higher nreturns. A “value-added” bonus from equity capital seems natural nand certain.nn But is it? Several decades back, a <span class="highlight">return on equity</span> of as nlittle as 10% enabled a corporation to be classified as a “good” nbusiness - i.e., one in which a dollar reinvested in the business nlogica..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1981.html" class="citation-link">1981年致股东信 →</a></div>
+</div>
+<div class="citation-card">
+<blockquote class="citation-text">"...come nreturn to the investor will be equivalent to that from a 7% tax-nexempt bond. And, if conditions persist - if all earnings are npaid out and <span class="highlight">return on equity</span> stays at 14% - the 7% tax-exempt nequivalent to the higher-bracket individual investor is just as nfrozen as is the coupon on a tax-exempt bond. Su..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1981.html" class="citation-link">1981年致股东信 →</a></div>
+</div>
+<div class="citation-more">
+<a href="../letters/berkshire/1981.html">+ 还有2处引用</a>
+</div>
+</div>
+</div>
+<div class="citation-year">
+<h3>1980年</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"...r long-term yardstick nof performance, however, includes all capital gains or losses, nrealized or unrealized. We continue to achieve a long-term nreturn on equity that considerably exceeds the average of our nyearly returns. The major factor causing this pleasant result is na simple one: the retained earnings..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1980.html" class="citation-link">1980年致股东信 →</a></div>
+</div>
+<div class="citation-card">
+<blockquote class="citation-text">"...nmuch corporate investment unwise - at least if measured by the ncriterion of a positive real investment return to owners. This n“hurdle rate” the <span class="highlight">return on equity</span> that must be achieved by a ncorporation in order to produce any real return for its nindividual owners - has increased dramatically in recent years..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1980.html" class="citation-link">1980年致股东信 →</a></div>
+</div>
+<div class="citation-card">
+<blockquote class="citation-text">"...average American ncorporation, even though these individuals reinvest the entire nafter-tax proceeds from all dividends they receive. The average nreturn on equity of corporations is fully offset by the ncombination of the implicit tax on capital levied by inflation nand the explicit taxes levied both on divid..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1980.html" class="citation-link">1980年致股东信 →</a></div>
+</div>
+<div class="citation-more">
+<a href="../letters/berkshire/1980.html">+ 还有4处引用</a>
+</div>
+</div>
+</div>
+<div class="citation-year">
+<h3>1979年</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"...even though he consumes nothing at all. We have nno corporate solution to this problem; high inflation rates will nnot help us earn higher rates of <span class="highlight">return on equity</span>.nn One friendly but sharp-eyed commentator on Berkshire has npointed out that our book value at the end of 1964 would have nbought about one-half..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1979.html" class="citation-link">1979年致股东信 →</a></div>
+</div>
+<div class="citation-card">
+<blockquote class="citation-text">"...ons. And we hope to deliver on those expectations.nnProspectsnn Last year we said that we expected operating earnings in ndollars to improve but <span class="highlight">return on equity</span> to decrease. This turned nout to be correct. Our forecast for 1980 is the same. If we are nwrong, it will be on the downside. In other words, we ar..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1979.html" class="citation-link">1979年致股东信 →</a></div>
+</div>
+</div>
+</div>
+<div class="citation-year">
+<h3>1978年</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"...ng earnings in 1978 is sustainable. The insurance ncycle has turned downward in 1979, and it is almost certain that noperating earnings measured by <span class="highlight">return on equity</span> will fall this nyear. However, operating earnings measured in dollars are likely nto increase on the much larger shareholders’ equity now employed..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1978.html" class="citation-link">1978年致股东信 →</a></div>
+</div>
+</div>
+</div>
+<div class="citation-year">
+<h3>1977年</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"...h important assets carried nat unrealistic balance sheet values), we believe a more nappropriate measure of managerial economic performance to be nreturn on equity capital. In 1977 our operating earnings on nbeginning equity capital amounted to 19%, slightly better than nlast year and above both our own long-t..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1977.html" class="citation-link">1977年致股东信 →</a></div>
+</div>
+</div>
+</div>
+</div>
+
+        </article>
+<footer>
+        <p><a href="../index.html">巴菲特知识库</a> | 数据来源：巴菲特致股东信 (1977-2007)</p>
+    </footer>
+</body>
+</html><div class="citations-container">
+<div class="citation-year">
+<h3>1994年</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"...n As you can see, Scott Fetzer's earnings have increased nsteadily since we bought it, but book value has not grown ncommensurately. Consequently, <span class="highlight">return on equity</span>, which was nexceptional at the time of our purchase, has now become truly nextraordinary. Just how extraordinary is illustrated by ncomparing Scot..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1994.html" class="citation-link">1994年致股东信 →</a></div>
+</div>
+<div class="citation-card">
+<blockquote class="citation-text">"...qualify for if it were a stand-alone company.nn Had Scott Fetzer been on the 1993 500 list - the latest navailable for inspection - the company's <span class="highlight">return on equity</span> would nhave ranked 4th. But that is far from the whole story. The top nthree companies in <span class="highlight">return on equity</span> were Insilco, LTV and Gaylord nContaine..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1994.html" class="citation-link">1994年致股东信 →</a></div>
+</div>
+<div class="citation-card">
+<blockquote class="citation-text">"...available for inspection - the company's <span class="highlight">return on equity</span> would nhave ranked 4th. But that is far from the whole story. The top nthree companies in <span class="highlight">return on equity</span> were Insilco, LTV and Gaylord nContainer, each of which emerged from bankruptcy in 1993 and none nof which achieved meaningful earnings that year e..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1994.html" class="citation-link">1994年致股东信 →</a></div>
+</div>
+<div class="citation-more">
+<a href="../letters/berkshire/1994.html">+ 还有2处引用</a>
+</div>
+</div>
+</div>
+<div class="citation-year">
+<h3>1990年</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"...record $12.2 million pre-tax in 1990. nn Were Scott Fetzer an independent company, it would rank close to the top of the Fortune 500 in terms of <span class="highlight">return on equity</span>, although it is not in businesses that one would expect to be economic champs. The superior results are directly attributable to Ralph. nn At World..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1990.html" class="citation-link">1990年致股东信 →</a></div>
+</div>
+</div>
+</div>
+<div class="citation-year">
+<h3>1988年</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"...o longer needed, paying 80 pounds of beans for each share. nn For several weeks I busily bought shares, sold beans, and nmade periodic stops at Schroeder Trust to exchange stock ncertificates for warehouse receipts. The profits were good and nmy only expense was subway tokens.nn The architect of..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1988.html" class="citation-link">1988年致股东信 →</a></div>
+</div>
+</div>
+</div>
+<div class="citation-year">
+<h3>1987年</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"...cuu003eFortuneu003c/uu003e reported nthat among the 500 largest industrial companies and 500 largest nservice companies, only six had averaged a <span class="highlight">return on equity</span> of nover 30% during the previous decade. The best performer among nthe 1000 was Commerce Clearing House at 40.2%. nn Of course, the returns that..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1987.html" class="citation-link">1987年致股东信 →</a></div>
+</div>
+<div class="citation-card">
+<blockquote class="citation-text">"...rk with. n(If, to become a shareholder and part owner of Commerce Clearing nHouse, you pay, say, six times book value, that does not change nCCH's <span class="highlight">return on equity</span>.) nn Three important inferences can be drawn from the figures I nhave cited. First, the current business value of these seven nunits is far above..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1987.html" class="citation-link">1987年致股东信 →</a></div>
+</div>
+<div class="citation-card">
+<blockquote class="citation-text">"...rtuneu003c/uu003e study I mentioned earlier supports our view. nOnly 25 of the 1,000 companies met two tests of economic nexcellence - an average <span class="highlight">return on equity</span> of over 20% in the ten nyears, 1977 through 1986, and no year worse than 15%. These nbusiness superstars were also stock market superstars: During..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1987.html" class="citation-link">1987年致股东信 →</a></div>
+</div>
+<div class="citation-more">
+<a href="../letters/berkshire/1987.html">+ 还有2处引用</a>
+</div>
+</div>
+</div>
+<div class="citation-year">
+<h3>1981年</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"...ll total well over $35 million in 1982. The naccounting rules that entirely ignore these undistributed nearnings diminish the utility of our annual <span class="highlight">return on equity</span> ncalculation, or any other single year measure of economic nperformance.nnLong-Term Corporate Performancenn In measuring long-term economic per..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1981.html" class="citation-link">1981年致股东信 →</a></div>
+</div>
+<div class="citation-card">
+<blockquote class="citation-text">"..., it is “entitled” to higher nreturns. A “value-added” bonus from equity capital seems natural nand certain.nn But is it? Several decades back, a <span class="highlight">return on equity</span> of as nlittle as 10% enabled a corporation to be classified as a “good” nbusiness - i.e., one in which a dollar reinvested in the business nlogica..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1981.html" class="citation-link">1981年致股东信 →</a></div>
+</div>
+<div class="citation-card">
+<blockquote class="citation-text">"...come nreturn to the investor will be equivalent to that from a 7% tax-nexempt bond. And, if conditions persist - if all earnings are npaid out and <span class="highlight">return on equity</span> stays at 14% - the 7% tax-exempt nequivalent to the higher-bracket individual investor is just as nfrozen as is the coupon on a tax-exempt bond. Su..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1981.html" class="citation-link">1981年致股东信 →</a></div>
+</div>
+<div class="citation-more">
+<a href="../letters/berkshire/1981.html">+ 还有2处引用</a>
+</div>
+</div>
+</div>
+<div class="citation-year">
+<h3>1980年</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"...r long-term yardstick nof performance, however, includes all capital gains or losses, nrealized or unrealized. We continue to achieve a long-term nreturn on equity that considerably exceeds the average of our nyearly returns. The major factor causing this pleasant result is na simple one: the retained earnings..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1980.html" class="citation-link">1980年致股东信 →</a></div>
+</div>
+<div class="citation-card">
+<blockquote class="citation-text">"...nmuch corporate investment unwise - at least if measured by the ncriterion of a positive real investment return to owners. This n“hurdle rate” the <span class="highlight">return on equity</span> that must be achieved by a ncorporation in order to produce any real return for its nindividual owners - has increased dramatically in recent years..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1980.html" class="citation-link">1980年致股东信 →</a></div>
+</div>
+<div class="citation-card">
+<blockquote class="citation-text">"...average American ncorporation, even though these individuals reinvest the entire nafter-tax proceeds from all dividends they receive. The average nreturn on equity of corporations is fully offset by the ncombination of the implicit tax on capital levied by inflation nand the explicit taxes levied both on divid..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1980.html" class="citation-link">1980年致股东信 →</a></div>
+</div>
+<div class="citation-more">
+<a href="../letters/berkshire/1980.html">+ 还有4处引用</a>
+</div>
+</div>
+</div>
+<div class="citation-year">
+<h3>1979年</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"...even though he consumes nothing at all. We have nno corporate solution to this problem; high inflation rates will nnot help us earn higher rates of <span class="highlight">return on equity</span>.nn One friendly but sharp-eyed commentator on Berkshire has npointed out that our book value at the end of 1964 would have nbought about one-half..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1979.html" class="citation-link">1979年致股东信 →</a></div>
+</div>
+<div class="citation-card">
+<blockquote class="citation-text">"...ons. And we hope to deliver on those expectations.nnProspectsnn Last year we said that we expected operating earnings in ndollars to improve but <span class="highlight">return on equity</span> to decrease. This turned nout to be correct. Our forecast for 1980 is the same. If we are nwrong, it will be on the downside. In other words, we ar..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1979.html" class="citation-link">1979年致股东信 →</a></div>
+</div>
+</div>
+</div>
+<div class="citation-year">
+<h3>1978年</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"...ng earnings in 1978 is sustainable. The insurance ncycle has turned downward in 1979, and it is almost certain that noperating earnings measured by <span class="highlight">return on equity</span> will fall this nyear. However, operating earnings measured in dollars are likely nto increase on the much larger shareholders’ equity now employed..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1978.html" class="citation-link">1978年致股东信 →</a></div>
+</div>
+</div>
+</div>
+<div class="citation-year">
+<h3>1977年</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"...h important assets carried nat unrealistic balance sheet values), we believe a more nappropriate measure of managerial economic performance to be nreturn on equity capital. In 1977 our operating earnings on nbeginning equity capital amounted to 19%, slightly better than nlast year and above both our own long-t..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1977.html" class="citation-link">1977年致股东信 →</a></div>
+</div>
+</div>
+</div>
+</div>
+
+        <h2>引用来源（28处）</h2>
+<div class="citations-container">
+<div class="citation-year">
+<h3>1994年</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"...n As you can see, Scott Fetzer's earnings have increased nsteadily since we bought it, but book value has not grown ncommensurately. Consequently, <span class="highlight">return on equity</span>, which was nexceptional at the time of our purchase, has now become truly nextraordinary. Just how extraordinary is illustrated by ncomparing Scot..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1994.html" class="citation-link">1994年致股东信 →</a></div>
+</div>
+<div class="citation-card">
+<blockquote class="citation-text">"...qualify for if it were a stand-alone company.nn Had Scott Fetzer been on the 1993 500 list - the latest navailable for inspection - the company's <span class="highlight">return on equity</span> would nhave ranked 4th. But that is far from the whole story. The top nthree companies in <span class="highlight">return on equity</span> were Insilco, LTV and Gaylord nContaine..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1994.html" class="citation-link">1994年致股东信 →</a></div>
+</div>
+<div class="citation-card">
+<blockquote class="citation-text">"...available for inspection - the company's <span class="highlight">return on equity</span> would nhave ranked 4th. But that is far from the whole story. The top nthree companies in <span class="highlight">return on equity</span> were Insilco, LTV and Gaylord nContainer, each of which emerged from bankruptcy in 1993 and none nof which achieved meaningful earnings that year e..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1994.html" class="citation-link">1994年致股东信 →</a></div>
+</div>
+<div class="citation-more">
+<a href="../letters/berkshire/1994.html">+ 还有2处引用</a>
+</div>
+</div>
+</div>
+<div class="citation-year">
+<h3>1990年</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"...record $12.2 million pre-tax in 1990. nn Were Scott Fetzer an independent company, it would rank close to the top of the Fortune 500 in terms of <span class="highlight">return on equity</span>, although it is not in businesses that one would expect to be economic champs. The superior results are directly attributable to Ralph. nn At World..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1990.html" class="citation-link">1990年致股东信 →</a></div>
+</div>
+</div>
+</div>
+<div class="citation-year">
+<h3>1988年</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"...o longer needed, paying 80 pounds of beans for each share. nn For several weeks I busily bought shares, sold beans, and nmade periodic stops at Schroeder Trust to exchange stock ncertificates for warehouse receipts. The profits were good and nmy only expense was subway tokens.nn The architect of..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1988.html" class="citation-link">1988年致股东信 →</a></div>
+</div>
+</div>
+</div>
+<div class="citation-year">
+<h3>1987年</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"...cuu003eFortuneu003c/uu003e reported nthat among the 500 largest industrial companies and 500 largest nservice companies, only six had averaged a <span class="highlight">return on equity</span> of nover 30% during the previous decade. The best performer among nthe 1000 was Commerce Clearing House at 40.2%. nn Of course, the returns that..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1987.html" class="citation-link">1987年致股东信 →</a></div>
+</div>
+<div class="citation-card">
+<blockquote class="citation-text">"...rk with. n(If, to become a shareholder and part owner of Commerce Clearing nHouse, you pay, say, six times book value, that does not change nCCH's <span class="highlight">return on equity</span>.) nn Three important inferences can be drawn from the figures I nhave cited. First, the current business value of these seven nunits is far above..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1987.html" class="citation-link">1987年致股东信 →</a></div>
+</div>
+<div class="citation-card">
+<blockquote class="citation-text">"...rtuneu003c/uu003e study I mentioned earlier supports our view. nOnly 25 of the 1,000 companies met two tests of economic nexcellence - an average <span class="highlight">return on equity</span> of over 20% in the ten nyears, 1977 through 1986, and no year worse than 15%. These nbusiness superstars were also stock market superstars: During..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1987.html" class="citation-link">1987年致股东信 →</a></div>
+</div>
+<div class="citation-more">
+<a href="../letters/berkshire/1987.html">+ 还有2处引用</a>
+</div>
+</div>
+</div>
+<div class="citation-year">
+<h3>1981年</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"...ll total well over $35 million in 1982. The naccounting rules that entirely ignore these undistributed nearnings diminish the utility of our annual <span class="highlight">return on equity</span> ncalculation, or any other single year measure of economic nperformance.nnLong-Term Corporate Performancenn In measuring long-term economic per..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1981.html" class="citation-link">1981年致股东信 →</a></div>
+</div>
+<div class="citation-card">
+<blockquote class="citation-text">"..., it is “entitled” to higher nreturns. A “value-added” bonus from equity capital seems natural nand certain.nn But is it? Several decades back, a <span class="highlight">return on equity</span> of as nlittle as 10% enabled a corporation to be classified as a “good” nbusiness - i.e., one in which a dollar reinvested in the business nlogica..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1981.html" class="citation-link">1981年致股东信 →</a></div>
+</div>
+<div class="citation-card">
+<blockquote class="citation-text">"...come nreturn to the investor will be equivalent to that from a 7% tax-nexempt bond. And, if conditions persist - if all earnings are npaid out and <span class="highlight">return on equity</span> stays at 14% - the 7% tax-exempt nequivalent to the higher-bracket individual investor is just as nfrozen as is the coupon on a tax-exempt bond. Su..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1981.html" class="citation-link">1981年致股东信 →</a></div>
+</div>
+<div class="citation-more">
+<a href="../letters/berkshire/1981.html">+ 还有2处引用</a>
+</div>
+</div>
+</div>
+<div class="citation-year">
+<h3>1980年</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"...r long-term yardstick nof performance, however, includes all capital gains or losses, nrealized or unrealized. We continue to achieve a long-term nreturn on equity that considerably exceeds the average of our nyearly returns. The major factor causing this pleasant result is na simple one: the retained earnings..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1980.html" class="citation-link">1980年致股东信 →</a></div>
+</div>
+<div class="citation-card">
+<blockquote class="citation-text">"...nmuch corporate investment unwise - at least if measured by the ncriterion of a positive real investment return to owners. This n“hurdle rate” the <span class="highlight">return on equity</span> that must be achieved by a ncorporation in order to produce any real return for its nindividual owners - has increased dramatically in recent years..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1980.html" class="citation-link">1980年致股东信 →</a></div>
+</div>
+<div class="citation-card">
+<blockquote class="citation-text">"...average American ncorporation, even though these individuals reinvest the entire nafter-tax proceeds from all dividends they receive. The average nreturn on equity of corporations is fully offset by the ncombination of the implicit tax on capital levied by inflation nand the explicit taxes levied both on divid..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1980.html" class="citation-link">1980年致股东信 →</a></div>
+</div>
+<div class="citation-more">
+<a href="../letters/berkshire/1980.html">+ 还有4处引用</a>
+</div>
+</div>
+</div>
+<div class="citation-year">
+<h3>1979年</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"...even though he consumes nothing at all. We have nno corporate solution to this problem; high inflation rates will nnot help us earn higher rates of <span class="highlight">return on equity</span>.nn One friendly but sharp-eyed commentator on Berkshire has npointed out that our book value at the end of 1964 would have nbought about one-half..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1979.html" class="citation-link">1979年致股东信 →</a></div>
+</div>
+<div class="citation-card">
+<blockquote class="citation-text">"...ons. And we hope to deliver on those expectations.nnProspectsnn Last year we said that we expected operating earnings in ndollars to improve but <span class="highlight">return on equity</span> to decrease. This turned nout to be correct. Our forecast for 1980 is the same. If we are nwrong, it will be on the downside. In other words, we ar..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1979.html" class="citation-link">1979年致股东信 →</a></div>
+</div>
+</div>
+</div>
+<div class="citation-year">
+<h3>1978年</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"...ng earnings in 1978 is sustainable. The insurance ncycle has turned downward in 1979, and it is almost certain that noperating earnings measured by <span class="highlight">return on equity</span> will fall this nyear. However, operating earnings measured in dollars are likely nto increase on the much larger shareholders’ equity now employed..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1978.html" class="citation-link">1978年致股东信 →</a></div>
+</div>
+</div>
+</div>
+<div class="citation-year">
+<h3>1977年</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"...h important assets carried nat unrealistic balance sheet values), we believe a more nappropriate measure of managerial economic performance to be nreturn on equity capital. In 1977 our operating earnings on nbeginning equity capital amounted to 19%, slightly better than nlast year and above both our own long-t..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1977.html" class="citation-link">1977年致股东信 →</a></div>
+</div>
+</div>
+</div>
+</div>
+
+        </article>
+    </div>
+    <h2>引用来源（28处）</h2>
+<div class="citations-container">
+<div class="citation-year">
+<h3>1994年</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"...n As you can see, Scott Fetzer's earnings have increased nsteadily since we bought it, but book value has not grown ncommensurately. Consequently, <span class="highlight">return on equity</span>, which was nexceptional at the time of our purchase, has now become truly nextraordinary. Just how extraordinary is illustrated by ncomparing Scot..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1994.html" class="citation-link">1994年致股东信 →</a></div>
+</div>
+<div class="citation-card">
+<blockquote class="citation-text">"...qualify for if it were a stand-alone company.nn Had Scott Fetzer been on the 1993 500 list - the latest navailable for inspection - the company's <span class="highlight">return on equity</span> would nhave ranked 4th. But that is far from the whole story. The top nthree companies in <span class="highlight">return on equity</span> were Insilco, LTV and Gaylord nContaine..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1994.html" class="citation-link">1994年致股东信 →</a></div>
+</div>
+<div class="citation-card">
+<blockquote class="citation-text">"...available for inspection - the company's <span class="highlight">return on equity</span> would nhave ranked 4th. But that is far from the whole story. The top nthree companies in <span class="highlight">return on equity</span> were Insilco, LTV and Gaylord nContainer, each of which emerged from bankruptcy in 1993 and none nof which achieved meaningful earnings that year e..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1994.html" class="citation-link">1994年致股东信 →</a></div>
+</div>
+<div class="citation-more">
+<a href="../letters/berkshire/1994.html">+ 还有2处引用</a>
+</div>
+</div>
+</div>
+<div class="citation-year">
+<h3>1990年</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"...record $12.2 million pre-tax in 1990. nn Were Scott Fetzer an independent company, it would rank close to the top of the Fortune 500 in terms of <span class="highlight">return on equity</span>, although it is not in businesses that one would expect to be economic champs. The superior results are directly attributable to Ralph. nn At World..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1990.html" class="citation-link">1990年致股东信 →</a></div>
+</div>
+</div>
+</div>
+<div class="citation-year">
+<h3>1988年</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"...o longer needed, paying 80 pounds of beans for each share. nn For several weeks I busily bought shares, sold beans, and nmade periodic stops at Schroeder Trust to exchange stock ncertificates for warehouse receipts. The profits were good and nmy only expense was subway tokens.nn The architect of..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1988.html" class="citation-link">1988年致股东信 →</a></div>
+</div>
+</div>
+</div>
+<div class="citation-year">
+<h3>1987年</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"...cuu003eFortuneu003c/uu003e reported nthat among the 500 largest industrial companies and 500 largest nservice companies, only six had averaged a <span class="highlight">return on equity</span> of nover 30% during the previous decade. The best performer among nthe 1000 was Commerce Clearing House at 40.2%. nn Of course, the returns that..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1987.html" class="citation-link">1987年致股东信 →</a></div>
+</div>
+<div class="citation-card">
+<blockquote class="citation-text">"...rk with. n(If, to become a shareholder and part owner of Commerce Clearing nHouse, you pay, say, six times book value, that does not change nCCH's <span class="highlight">return on equity</span>.) nn Three important inferences can be drawn from the figures I nhave cited. First, the current business value of these seven nunits is far above..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1987.html" class="citation-link">1987年致股东信 →</a></div>
+</div>
+<div class="citation-card">
+<blockquote class="citation-text">"...rtuneu003c/uu003e study I mentioned earlier supports our view. nOnly 25 of the 1,000 companies met two tests of economic nexcellence - an average <span class="highlight">return on equity</span> of over 20% in the ten nyears, 1977 through 1986, and no year worse than 15%. These nbusiness superstars were also stock market superstars: During..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1987.html" class="citation-link">1987年致股东信 →</a></div>
+</div>
+<div class="citation-more">
+<a href="../letters/berkshire/1987.html">+ 还有2处引用</a>
+</div>
+</div>
+</div>
+<div class="citation-year">
+<h3>1981年</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"...ll total well over $35 million in 1982. The naccounting rules that entirely ignore these undistributed nearnings diminish the utility of our annual <span class="highlight">return on equity</span> ncalculation, or any other single year measure of economic nperformance.nnLong-Term Corporate Performancenn In measuring long-term economic per..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1981.html" class="citation-link">1981年致股东信 →</a></div>
+</div>
+<div class="citation-card">
+<blockquote class="citation-text">"..., it is “entitled” to higher nreturns. A “value-added” bonus from equity capital seems natural nand certain.nn But is it? Several decades back, a <span class="highlight">return on equity</span> of as nlittle as 10% enabled a corporation to be classified as a “good” nbusiness - i.e., one in which a dollar reinvested in the business nlogica..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1981.html" class="citation-link">1981年致股东信 →</a></div>
+</div>
+<div class="citation-card">
+<blockquote class="citation-text">"...come nreturn to the investor will be equivalent to that from a 7% tax-nexempt bond. And, if conditions persist - if all earnings are npaid out and <span class="highlight">return on equity</span> stays at 14% - the 7% tax-exempt nequivalent to the higher-bracket individual investor is just as nfrozen as is the coupon on a tax-exempt bond. Su..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1981.html" class="citation-link">1981年致股东信 →</a></div>
+</div>
+<div class="citation-more">
+<a href="../letters/berkshire/1981.html">+ 还有2处引用</a>
+</div>
+</div>
+</div>
+<div class="citation-year">
+<h3>1980年</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"...r long-term yardstick nof performance, however, includes all capital gains or losses, nrealized or unrealized. We continue to achieve a long-term nreturn on equity that considerably exceeds the average of our nyearly returns. The major factor causing this pleasant result is na simple one: the retained earnings..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1980.html" class="citation-link">1980年致股东信 →</a></div>
+</div>
+<div class="citation-card">
+<blockquote class="citation-text">"...nmuch corporate investment unwise - at least if measured by the ncriterion of a positive real investment return to owners. This n“hurdle rate” the <span class="highlight">return on equity</span> that must be achieved by a ncorporation in order to produce any real return for its nindividual owners - has increased dramatically in recent years..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1980.html" class="citation-link">1980年致股东信 →</a></div>
+</div>
+<div class="citation-card">
+<blockquote class="citation-text">"...average American ncorporation, even though these individuals reinvest the entire nafter-tax proceeds from all dividends they receive. The average nreturn on equity of corporations is fully offset by the ncombination of the implicit tax on capital levied by inflation nand the explicit taxes levied both on divid..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1980.html" class="citation-link">1980年致股东信 →</a></div>
+</div>
+<div class="citation-more">
+<a href="../letters/berkshire/1980.html">+ 还有4处引用</a>
+</div>
+</div>
+</div>
+<div class="citation-year">
+<h3>1979年</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"...even though he consumes nothing at all. We have nno corporate solution to this problem; high inflation rates will nnot help us earn higher rates of <span class="highlight">return on equity</span>.nn One friendly but sharp-eyed commentator on Berkshire has npointed out that our book value at the end of 1964 would have nbought about one-half..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1979.html" class="citation-link">1979年致股东信 →</a></div>
+</div>
+<div class="citation-card">
+<blockquote class="citation-text">"...ons. And we hope to deliver on those expectations.nnProspectsnn Last year we said that we expected operating earnings in ndollars to improve but <span class="highlight">return on equity</span> to decrease. This turned nout to be correct. Our forecast for 1980 is the same. If we are nwrong, it will be on the downside. In other words, we ar..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1979.html" class="citation-link">1979年致股东信 →</a></div>
+</div>
+</div>
+</div>
+<div class="citation-year">
+<h3>1978年</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"...ng earnings in 1978 is sustainable. The insurance ncycle has turned downward in 1979, and it is almost certain that noperating earnings measured by <span class="highlight">return on equity</span> will fall this nyear. However, operating earnings measured in dollars are likely nto increase on the much larger shareholders’ equity now employed..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1978.html" class="citation-link">1978年致股东信 →</a></div>
+</div>
+</div>
+</div>
+<div class="citation-year">
+<h3>1977年</h3>
+<div class="citation-list">
+<div class="citation-card">
+<blockquote class="citation-text">"...h important assets carried nat unrealistic balance sheet values), we believe a more nappropriate measure of managerial economic performance to be nreturn on equity capital. In 1977 our operating earnings on nbeginning equity capital amounted to 19%, slightly better than nlast year and above both our own long-t..."</blockquote>
+<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1977.html" class="citation-link">1977年致股东信 →</a></div>
+</div>
+</div>
+</div>
+</div>
+
+        </article>
+
+    </div>
+    
+    <footer>
+        <p><a href="../index.html">巴菲特知识库</a> | 数据来源：巴菲特致股东信 (1977-2007)</p>
+    </footer>
+</body>
+</html>
