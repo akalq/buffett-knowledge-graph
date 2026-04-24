@@ -154,8 +154,17 @@ body {
 
 .letter-body h3 {
     font-size: 1.2em;
-    color: var(--navy);
-    margin: 2em 0 1em;
+    color: #1B2A4A;
+    margin-top: 2em;
+    margin-bottom: 1em;
+    border-bottom: 2px solid #C9A227;
+    padding-bottom: 0.5em;
+}
+
+.section-divider {
+    margin: 2em 0;
+    border: none;
+    border-top: 1px solid #e0e0e0;
 }
 
 .letter-body ul, .letter-body ol {
