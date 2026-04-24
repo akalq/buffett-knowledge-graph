@@ -568,3 +568,54 @@ footer a:hover {
         padding: 0;
     }
 }
+
+
+/* 中英文对照样式 */
+.letter-body .section-group {
+    margin-bottom: 3em;
+}
+
+.letter-body .section-title {
+    font-size: 1.2em;
+    color: #1B2A4A;
+    margin-top: 2em;
+    margin-bottom: 1em;
+    border-bottom: 2px solid #C9A227;
+    padding-bottom: 0.5em;
+}
+
+.letter-body .paragraph-en,
+.letter-body .paragraph-cn {
+    margin-bottom: 1.5em;
+}
+
+.letter-body .lang-label {
+    font-size: 0.85em;
+    font-weight: 600;
+    color: #C9A227;
+    margin-bottom: 0.5em;
+    display: inline-block;
+    background: #F5E6C8;
+    padding: 2px 10px;
+    border-radius: 3px;
+}
+
+.letter-body .paragraph-en p {
+    color: #444;
+    line-height: 1.8;
+    margin-bottom: 0.8em;
+    font-family: 'Georgia', 'Times New Roman', serif;
+}
+
+.letter-body .paragraph-cn p {
+    color: #1B2A4A;
+    line-height: 1.8;
+    margin-bottom: 0.8em;
+}
+
+.letter-body .paragraph-cn {
+    background: #FFFEF9;
+    padding: 1em;
+    border-left: 3px solid #C9A227;
+    margin-left: 1em;
+}
