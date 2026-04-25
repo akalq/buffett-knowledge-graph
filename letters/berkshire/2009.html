@@ -3,586 +3,858 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2009年巴菲特致股东信 | 伯克希尔·哈撒韦</title>
+    <title>2009年巴菲特致股东信 - 巴菲特知识库</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
-        body { font-family: "PingFang SC", "Microsoft YaHei", Arial, sans-serif; line-height: 1.8; max-width: 900px; margin: 0 auto; padding: 20px; background: #fafafa; }
-        h1 { color: #1a365d; border-bottom: 3px solid #2f855a; padding-bottom: 10px; }
-        h2 { color: #2d3748; margin-top: 40px; }
-        .lang-block { margin: 20px 0; padding: 15px; border-radius: 8px; }
-        .lang-en { background: #ebf8ff; border-left: 4px solid #3182ce; }
-        .lang-cn { background: #fffaf0; border-left: 4px solid #dd6b20; }
-        .lang-label { font-weight: bold; display: block; margin-bottom: 8px; color: #4a5568; }
-        blockquote { margin: 0; padding-left: 15px; border-left: 2px solid #cbd5e0; font-size: 15px; }
-        .year-badge { background: #2f855a; color: white; padding: 5px 15px; border-radius: 20px; display: inline-block; margin-bottom: 20px; }
-        table { width: 100%; border-collapse: collapse; margin: 15px 0; font-size: 14px; }
-        th, td { border: 1px solid #e2e8f0; padding: 8px; text-align: center; }
-        th { background: #2d3748; color: white; }
-        tr:nth-child(even) { background: #f7fafc; }
+        :root {
+            --bg-color: #FFFEF9;
+            --navy: #1B2A4A;
+            --gold: #C9A227;
+            --text: #2C3E50;
+            --secondary: #5D6D7E;
+            --border: #E5E0D8;
+            --en-bg: #F8FAFC;
+            --cn-bg: #FFFBEB;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Noto Serif SC', Georgia, serif;
+            background: var(--bg-color);
+            color: var(--text);
+            line-height: 1.9;
+            min-height: 100vh;
+        }
+        .container { max-width: 1000px; margin: 0 auto; padding: 0 24px; }
+        
+        /* Header */
+        header {
+            background: var(--navy);
+            color: white;
+            padding: 16px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 12px rgba(27, 42, 74, 0.15);
+        }
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--gold);
+            text-decoration: none;
+            font-size: 1.15em;
+            font-weight: 600;
+        }
+        .logo svg { width: 32px; height: 32px; }
+        nav { display: flex; gap: 28px; }
+        nav a {
+            color: rgba(255,255,255,0.85);
+            text-decoration: none;
+            font-size: 0.9em;
+            font-family: 'Noto Sans SC', sans-serif;
+            transition: color 0.2s;
+        }
+        nav a:hover { color: var(--gold); }
+        
+        /* Main Content */
+        main { padding: 48px 0 80px; }
+        
+        .letter-header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--border);
+        }
+        .letter-year {
+            font-size: 4.5em;
+            font-weight: 700;
+            color: var(--navy);
+            line-height: 1;
+            margin-bottom: 12px;
+            letter-spacing: -2px;
+        }
+        .letter-subtitle {
+            font-size: 1.1em;
+            color: var(--secondary);
+            font-family: 'Noto Sans SC', sans-serif;
+        }
+        
+        /* Bilingual Blocks */
+        .bilingual-block {
+            margin-bottom: 32px;
+            display: grid;
+            gap: 16px;
+        }
+        .lang-block {
+            padding: 20px 24px;
+            border-radius: 8px;
+            font-size: 15px;
+        }
+        .lang-en {
+            background: var(--en-bg);
+            border-left: 4px solid var(--navy);
+        }
+        .lang-cn {
+            background: var(--cn-bg);
+            border-left: 4px solid var(--gold);
+        }
+        .lang-label {
+            display: inline-block;
+            padding: 3px 12px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 600;
+            font-family: 'Noto Sans SC', sans-serif;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .lang-en .lang-label { background: var(--navy); color: white; }
+        .lang-cn .lang-label { background: var(--gold); color: white; }
+        .lang-block blockquote {
+            margin: 0;
+            font-style: normal;
+            line-height: 1.85;
+        }
+        .lang-cn blockquote {
+            border-top: 1px dashed var(--border);
+            padding-top: 16px;
+            margin-top: 8px;
+        }
+        
+        /* Section Titles */
+        .section-title {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: var(--navy);
+            margin: 48px 0 24px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--gold);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--navy);
+            color: rgba(255,255,255,0.7);
+            padding: 32px 0;
+            text-align: center;
+            font-size: 0.85em;
+            font-family: 'Noto Sans SC', sans-serif;
+        }
+        footer a { color: var(--gold); text-decoration: none; }
+        
+        /* Navigation */
+        .letter-nav {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 48px;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+        }
+        .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 20px;
+            background: var(--navy);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-family: 'Noto Sans SC', sans-serif;
+            font-size: 0.9em;
+            transition: background 0.2s;
+        }
+        .nav-link:hover { background: var(--gold); }
+        .nav-link.disabled { opacity: 0.4; pointer-events: none; }
+        
+        @media (min-width: 768px) {
+            .bilingual-block {
+                grid-template-columns: 1fr 1fr;
+                gap: 20px;
+            }
+            .lang-cn blockquote {
+                border-top: none;
+                padding-top: 0;
+                margin-top: 0;
+            }
+        }
     </style>
 </head>
 <body>
-    <h1><span class="year-badge">2009</span> 巴菲特致股东信</h1>
-    <p><strong>伯克希尔·哈撒韦公司致全体股东：</strong></p>
-
-<div class="lang-block lang-en">
-    <span class="lang-label">English</span>
-    <blockquote>
+    <header>
+        <div class="container">
+            <a href="../../index.html" class="logo">
+                <svg viewBox="0 0 40 40" fill="none">
+                    <rect width="40" height="40" rx="8" fill="#C9A227"/>
+                    <path d="M10 28V12h4v12h6v4H10z" fill="#1B2A4A"/>
+                    <circle cx="26" cy="20" r="6" fill="#FFFEF9" stroke="#1B2A4A" stroke-width="2"/>
+                </svg>
+                <span>巴菲特知识库</span>
+            </a>
+            <nav>
+                <a href="../../index.html">首页</a>
+                <a href="../../index-pages/巴菲特致股东信总览.html">信件</a>
+                <a href="../../concepts/内在价值.html">概念</a>
+                <a href="../../companies/伯克希尔哈撒韦.html">公司</a>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <div class="container">
+            <div class="letter-header">
+                <div class="letter-year">2009</div>
+                <div class="letter-subtitle">巴菲特致伯克希尔·哈撒韦公司股东信</div>
+            </div>
+            <article class="letter-content">
+            <div class="bilingual-block">
+                <div class="lang-block lang-en">
+                    <span class="lang-label">English</span>
+                    <blockquote>
 Our gain in net worth during 2009 was $21.8 billion, which increased the per-share book value of both our Class A and Class B stock by 19.8%. Over the last 45 years (that is, since present management took over) book value has grown from $19 to $84,487, a rate of 20.3% compounded annually.
     </blockquote>
-</div>
-<div class="lang-block lang-cn">
-    <span class="lang-label">中文翻译</span>
-    <blockquote>
+                </div>
+                <div class="lang-block lang-cn">
+                    <span class="lang-label">中文翻译</span>
+                    <blockquote>
 2009年我们的净资产增长了218亿美元，使A股和B股的每股账面价值增长了19.8%。在过去45年里（即现任管理层接手以来），账面价值从19美元增长到84,487美元，年复合增长率为20.3%。
     </blockquote>
-</div>
+                </div>
+            </div>
 
-<div class="lang-block lang-en">
-    <span class="lang-label">English</span>
-    <blockquote>
+            <div class="bilingual-block">
+                <div class="lang-block lang-en">
+                    <span class="lang-label">English</span>
+                    <blockquote>
 Berkshire's recent acquisition of Burlington Northern Santa Fe (BNSF) has added at least 65,000 shareholders to the 500,000 or so already on our books. It's important to Charlie Munger, my long-time partner, and me that all of our owners understand Berkshire's operations, goals, limitations and culture. In each annual report, consequently, we restate the economic principles that guide us. This year these principles appear on pages 89-94 and I urge all of you – but particularly our new shareholders – to read them. Berkshire has adhered to these principles for decades and will continue to do so long after I'm gone.
     </blockquote>
-</div>
-<div class="lang-block lang-cn">
-    <span class="lang-label">中文翻译</span>
-    <blockquote>
+                </div>
+                <div class="lang-block lang-cn">
+                    <span class="lang-label">中文翻译</span>
+                    <blockquote>
 伯克希尔近期收购的伯灵顿北方圣太菲铁路（BNSF）为我们增加了至少65,000名股东，使股东总数达到约50万。我和我的长期合作伙伴查理·芒格（Charlie Munger）认为，所有股东理解伯克希尔的经营、目标、限制和文化是非常重要的。因此，在每年的年度报告中，我们都会重述指导我们的经济原则。今年这些原则出现在第89-94页，我敦促所有人——尤其是我们的新股东——阅读它们。伯克希尔几十年来一直坚持这些原则，在我离开后很久也将继续坚持。
     </blockquote>
-</div>
+                </div>
+            </div>
 
-<div class="lang-block lang-en">
-    <span class="lang-label">English</span>
-    <blockquote>
+            <div class="bilingual-block">
+                <div class="lang-block lang-en">
+                    <span class="lang-label">English</span>
+                    <blockquote>
 Our metrics for evaluating our managerial performance are displayed on the facing page. From the start, Charlie and I have believed in having a rational and unbending standard for measuring what we have – or have not – accomplished. That keeps us from the temptation of seeing where the arrow of performance lands and then painting the bull's eye around it.
     </blockquote>
-</div>
-<div class="lang-block lang-cn">
-    <span class="lang-label">中文翻译</span>
-    <blockquote>
+                </div>
+                <div class="lang-block lang-cn">
+                    <span class="lang-label">中文翻译</span>
+                    <blockquote>
 我们评估管理业绩的指标显示在对页上。从一开始，查理和我就相信要有一个理性且不变的标准来衡量我们所取得的——或未能取得的——成就。这使我们免于受到诱惑，即看到业绩之箭落在哪里，然后在落点周围画上靶心。
     </blockquote>
-</div>
+                </div>
+            </div>
 
-<div class="lang-block lang-en">
-    <span class="lang-label">English</span>
-    <blockquote>
+            <div class="bilingual-block">
+                <div class="lang-block lang-en">
+                    <span class="lang-label">English</span>
+                    <blockquote>
 Selecting the S&P 500 as our bogey was an easy choice because our shareholders, at virtually no cost, can match its performance by holding an index fund. Why should they pay us merely for duplicating that result?
     </blockquote>
-</div>
-<div class="lang-block lang-cn">
-    <span class="lang-label">中文翻译</span>
-    <blockquote>
+                </div>
+                <div class="lang-block lang-cn">
+                    <span class="lang-label">中文翻译</span>
+                    <blockquote>
 选择标准普尔500指数作为我们的基准是一个简单的选择，因为我们的股东实际上可以零成本地通过持有指数基金来复制该指数的表现。为什么他们要仅仅为了复制这一结果而付钱给我们？
     </blockquote>
-</div>
+                </div>
+            </div>
 
-<div class="lang-block lang-en">
-    <span class="lang-label">English</span>
-    <blockquote>
+            <div class="bilingual-block">
+                <div class="lang-block lang-en">
+                    <span class="lang-label">English</span>
+                    <blockquote>
 The ideal standard for measuring our yearly progress would be the change in Berkshire's per-share intrinsic value. Alas, that value cannot be calculated with anything close to precision, so we instead use a crude proxy for it: per-share book value. Relying on this yardstick has its shortcomings, which we discuss on pages 92 and 93. Additionally, book value at most companies understates intrinsic value, and that is certainly the case at Berkshire.
     </blockquote>
-</div>
-<div class="lang-block lang-cn">
-    <span class="lang-label">中文翻译</span>
-    <blockquote>
+                </div>
+                <div class="lang-block lang-cn">
+                    <span class="lang-label">中文翻译</span>
+                    <blockquote>
 衡量我们年度进展的理想标准应该是伯克希尔每股内在价值的变化。可惜，这一价值无法以任何接近精确的方式计算，所以我们转而使用一个粗略的替代指标：每股账面价值。使用这一标准有其缺点，我们在第92和93页进行了讨论。此外，大多数公司的账面价值低估了内在价值，伯克希尔肯定也是如此。
     </blockquote>
-</div>
+                </div>
+            </div>
 
-<div class="lang-block lang-en">
-    <span class="lang-label">English</span>
-    <blockquote>
+            <div class="bilingual-block">
+                <div class="lang-block lang-en">
+                    <span class="lang-label">English</span>
+                    <blockquote>
 Summed up, the table on page 2 conveys three messages, two positive and one hugely negative. First, we have never had any five-year period beginning with 1965-69 and ending with 2005-09 – and there have been 41 of these – during which our gain in book value did not exceed the S&P's gain. Second, though we have lagged the S&P in some years that were positive for the market, we have consistently done better than the S&P in the eleven years during which it delivered negative results. In other words, our defense has been better than our offense, and that's likely to continue.
     </blockquote>
-</div>
-<div class="lang-block lang-cn">
-    <span class="lang-label">中文翻译</span>
-    <blockquote>
+                </div>
+                <div class="lang-block lang-cn">
+                    <span class="lang-label">中文翻译</span>
+                    <blockquote>
 总而言之，第2页的表格传达了三个信息，两个积极和一个非常消极。首先，从1965-1969年开始到2005-2009年结束的每一个五年期——共有41个这样的时期——我们的账面价值增长从未落后于标准普尔指数的增长。其次，尽管在市场表现正面的某些年份我们落后于标准普尔，但在该指数出现负收益的11个年份里，我们始终表现优于标准普尔。换句话说，我们的防守优于进攻，这可能会继续下去。
     </blockquote>
-</div>
+                </div>
+            </div>
 
-<div class="lang-block lang-en">
-    <span class="lang-label">English</span>
-    <blockquote>
+            <div class="bilingual-block">
+                <div class="lang-block lang-en">
+                    <span class="lang-label">English</span>
+                    <blockquote>
 The big minus is that our performance advantage has shrunk dramatically as our size has grown, an unpleasant trend that is certain to continue. To be sure, Berkshire has many outstanding businesses and a cadre of truly great managers, operating within an unusual corporate culture that lets them maximize their talents. Charlie and I believe these factors will continue to produce better-than-average results over time. But huge sums forge their own anchor and our future advantage, if any, will be a small fraction of our historical edge.
     </blockquote>
-</div>
-<div class="lang-block lang-cn">
-    <span class="lang-label">中文翻译</span>
-    <blockquote>
+                </div>
+                <div class="lang-block lang-cn">
+                    <span class="lang-label">中文翻译</span>
+                    <blockquote>
 最大的负面因素是，随着我们规模的扩大，我们的业绩优势已大幅缩小，这一令人不快的趋势必将持续。可以肯定的是，伯克希尔拥有许多优秀企业和一批真正伟大的管理者，在一种让他们能够充分发挥才能的非同寻常的企业文化中运营。查理和我相信这些因素将继续在长期内产生高于平均水平的业绩。但巨额资金会产生自己的锚，如果我们有任何未来优势，那也只是我们历史优势的一小部分。
     </blockquote>
-</div>
+                </div>
+            </div>
 
-<h2>我们不做什么</h2>
-
-<div class="lang-block lang-en">
-    <span class="lang-label">English</span>
-    <blockquote>
+            <div class="bilingual-block">
+                <div class="lang-block lang-en">
+                    <span class="lang-label">English</span>
+                    <blockquote>
 Long ago, Charlie laid out his strongest ambition: "All I want to know is where I'm going to die, so I'll never go there." That bit of wisdom was inspired by Jacobi, the great Prussian mathematician, who counseled "Invert, always invert" as an aid to solving difficult problems.
     </blockquote>
-</div>
-<div class="lang-block lang-cn">
-    <span class="lang-label">中文翻译</span>
-    <blockquote>
+                </div>
+                <div class="lang-block lang-cn">
+                    <span class="lang-label">中文翻译</span>
+                    <blockquote>
 很久以前，查理表达了他最强烈的愿望："我只想知道我会死在哪里，这样我就永远不会去那里。"这句智慧的箴言是受伟大的普鲁士数学家雅可比启发的，他建议"反过来想，总是反过来想"作为解决难题的辅助方法。
     </blockquote>
-</div>
+                </div>
+            </div>
 
-<div class="lang-block lang-en">
-    <span class="lang-label">English</span>
-    <blockquote>
+            <div class="bilingual-block">
+                <div class="lang-block lang-en">
+                    <span class="lang-label">English</span>
+                    <blockquote>
 Charlie and I avoid businesses whose futures we can't evaluate, no matter how exciting their products may be. In the past, it required no brilliance for people to foresee the fabulous growth that awaited such industries as autos (in 1910), aircraft (in 1930) and television sets (in 1950). But the future then also included competitive dynamics that would decimate almost all of the companies entering those industries. Even the survivors tended to come away bleeding.
     </blockquote>
-</div>
-<div class="lang-block lang-cn">
-    <span class="lang-label">中文翻译</span>
-    <blockquote>
+                </div>
+                <div class="lang-block lang-cn">
+                    <span class="lang-label">中文翻译</span>
+                    <blockquote>
 查理和我避免投资那些我们无法评估其未来的企业，无论它们的产品可能多么令人兴奋。过去，人们要预见汽车行业（1910年）、航空业（1930年）和电视机行业（1950年）所等待的巨大增长并不需要什么过人智慧。但那些未来也包括了竞争动态，会消灭几乎所有进入这些行业的企业。即使是幸存者也往往是伤痕累累。
     </blockquote>
-</div>
+                </div>
+            </div>
 
-<div class="lang-block lang-en">
-    <span class="lang-label">English</span>
-    <blockquote>
+            <div class="bilingual-block">
+                <div class="lang-block lang-en">
+                    <span class="lang-label">English</span>
+                    <blockquote>
 We will never become dependent on the kindness of strangers. Too-big-to-fail is not a fallback position at Berkshire. Instead, we will always arrange our affairs so that any requirements for cash we may conceivably have will be dwarfed by our own liquidity. Moreover, that liquidity will be constantly refreshed by a gusher of earnings from our many and diverse businesses.
     </blockquote>
-</div>
-<div class="lang-block lang-cn">
-    <span class="lang-label">中文翻译</span>
-    <blockquote>
+                </div>
+                <div class="lang-block lang-cn">
+                    <span class="lang-label">中文翻译</span>
+                    <blockquote>
 我们永远不会依赖陌生人的善意。"大到不能倒"不是伯克希尔的退路。相反，我们将始终安排我们的事务，使我们可能遇到的任何现金需求与我们自己的流动性相比都相形见绌。此外，流动性将通过我们众多且多元化业务的大量收益不断得到补充。
     </blockquote>
-</div>
+                </div>
+            </div>
 
-<div class="lang-block lang-en">
-    <span class="lang-label">English</span>
-    <blockquote>
+            <div class="bilingual-block">
+                <div class="lang-block lang-en">
+                    <span class="lang-label">English</span>
+                    <blockquote>
 When the financial system went into cardiac arrest in September 2008, Berkshire was a supplier of liquidity and capital to the system, not a supplicant. At the very peak of the crisis, we poured $15.5 billion into a business world that could otherwise look only to the federal government for help. Of that, $9 billion went to bolster capital at three highly-regarded and previously-secure American businesses that needed – without delay – our tangible vote of confidence. The remaining $6.5 billion satisfied our commitment to help fund the purchase of Wrigley, a deal that was completed without pause while, elsewhere, panic reigned.
     </blockquote>
-</div>
-<div class="lang-block lang-cn">
-    <span class="lang-label">中文翻译</span>
-    <blockquote>
+                </div>
+                <div class="lang-block lang-cn">
+                    <span class="lang-label">中文翻译</span>
+                    <blockquote>
 当金融体系在2008年9月陷入心脏骤停时，伯克希尔是体系的流动性和资本供应者，而非乞求者。在危机的最高潮，我们向商业世界投入了155亿美元，否则他们只能向联邦政府寻求帮助。其中，90亿美元用于支持三家备受推崇且原本稳定可靠的美国企业的资本，这些企业迫切需要——不能耽搁——我们实实在在的信任票。剩余的65亿美元履行了我们帮助资助收购吉列（Wrigley）的承诺，这笔交易在恐慌蔓延其他地方时顺利完成而未有任何停顿。
     </blockquote>
-</div>
+                </div>
+            </div>
 
-<div class="lang-block lang-en">
-    <span class="lang-label">English</span>
-    <blockquote>
+            <div class="bilingual-block">
+                <div class="lang-block lang-en">
+                    <span class="lang-label">English</span>
+                    <blockquote>
 We pay a steep price to maintain our premier financial strength. The $20 billion-plus of cash-equivalent assets that we customarily hold is earning a pittance at present. But we sleep well.
     </blockquote>
-</div>
-<div class="lang-block lang-cn">
-    <span class="lang-label">中文翻译</span>
-    <blockquote>
+                </div>
+                <div class="lang-block lang-cn">
+                    <span class="lang-label">中文翻译</span>
+                    <blockquote>
 我们为保持首要的财务实力付出了高昂的代价。我们通常持有的超过200亿美元的现金类资产目前只产生微薄的收益。但我们睡得很安稳。
     </blockquote>
-</div>
+                </div>
+            </div>
 
-<div class="lang-block lang-en">
-    <span class="lang-label">English</span>
-    <blockquote>
+            <div class="bilingual-block">
+                <div class="lang-block lang-en">
+                    <span class="lang-label">English</span>
+                    <blockquote>
 We tend to let our many subsidiaries operate on their own, without our supervising and monitoring them to any degree. That means we are sometimes late in spotting management problems and that both operating and capital decisions are occasionally made with which Charlie and I would have disagreed had we been consulted. Most of our managers, however, use the independence we grant them magnificently, rewarding our confidence by maintaining an owner-oriented attitude that is invaluable and too seldom found in huge organizations. We would rather suffer the visible costs of a few bad decisions than incur the many invisible costs that come from decisions made too slowly – or not at all – because of a stifling bureaucracy.
     </blockquote>
-</div>
-<div class="lang-block lang-cn">
-    <span class="lang-label">中文翻译</span>
-    <blockquote>
+                </div>
+                <div class="lang-block lang-cn">
+                    <span class="lang-label">中文翻译</span>
+                    <blockquote>
 我们倾向于让众多子公司自主经营，不对他们进行任何程度的监督和监控。这意味着我们有时在发现管理问题时会比较迟缓，而且经营和资本决策偶尔会在我们若被咨询时会不同意的情形下做出。然而，我们的大多数管理者出色地利用了我们给予他们的自主权，通过保持以所有者为导向的态度来回报我们的信任，这种态度是无价的，在大型组织中太少见了。我们宁愿承受少数糟糕决策的可见成本，也不愿承受因令人窒息的官僚主义而决策过慢——或根本不做决策——带来的许多隐性成本。
     </blockquote>
-</div>
+                </div>
+            </div>
 
-<div class="lang-block lang-en">
-    <span class="lang-label">English</span>
-    <blockquote>
+            <div class="bilingual-block">
+                <div class="lang-block lang-en">
+                    <span class="lang-label">English</span>
+                    <blockquote>
 With our acquisition of BNSF, we now have about 257,000 employees and literally hundreds of different operating units. We hope to have many more of each. But we will never allow Berkshire to become some monolith that is overrun with committees, budget presentations and multiple layers of management. Instead, we plan to operate as a collection of separately-managed medium-sized and large businesses, most of whose decision-making occurs at the operating level. Charlie and I will limit ourselves to allocating capital, controlling enterprise risk, choosing managers and setting their compensation.
     </blockquote>
-</div>
-<div class="lang-block lang-cn">
-    <span class="lang-label">中文翻译</span>
-    <blockquote>
+                </div>
+                <div class="lang-block lang-cn">
+                    <span class="lang-label">中文翻译</span>
+                    <blockquote>
 随着收购BNSF，我们现在拥有约257,000名员工和数百个不同的运营单位。我们希望两者都有更多。但我们永远不会让伯克希尔变成一个被委员会、预算报告和多层管理所充斥的庞然大物。相反，我们计划将其作为一组独立管理的中型和大型企业的集合来运营，其中大部分决策发生在运营层面。查理和我将把自己限制在资本配置、企业风险控制、选择管理者和设定薪酬的范围内。
     </blockquote>
-</div>
+                </div>
+            </div>
 
-<div class="lang-block lang-en">
-    <span class="lang-label">English</span>
-    <blockquote>
+            <div class="bilingual-block">
+                <div class="lang-block lang-en">
+                    <span class="lang-label">English</span>
+                    <blockquote>
 We make no attempt to woo Wall Street. Investors who buy and sell based upon media or analyst commentary are not for us. Instead we want partners who join us at Berkshire because they wish to make a long-term investment in a business they themselves understand and because it's one that follows policies with which they concur. If Charlie and I were to go into a small venture with a few partners, we would seek individuals in sync with us, knowing that common goals and a shared destiny make for a happy business "marriage" between owners and managers. Scaling up to giant sized doesn't change that truth.
     </blockquote>
-</div>
-<div class="lang-block lang-cn">
-    <span class="lang-label">中文翻译</span>
-    <blockquote>
+                </div>
+                <div class="lang-block lang-cn">
+                    <span class="lang-label">中文翻译</span>
+                    <blockquote>
 我们不试图讨好华尔街。基于媒体或分析师评论进行买卖的投资者不适合我们。相反，我们希望合伙人加入伯克希尔，因为他们希望对自己理解的业务进行长期投资，而且该业务遵循他们认同的政策。如果查理和我要与几个合作伙伴开展一个小企业，我们会寻找与我们志同道合的个人，知道共同目标和共同命运会造就业主与管理者之间幸福的商业"婚姻"。扩大到巨型规模不会改变这一真理。
     </blockquote>
-</div>
+                </div>
+            </div>
 
-<h2>保险业务</h2>
-
-<div class="lang-block lang-en">
-    <span class="lang-label">English</span>
-    <blockquote>
+            <div class="bilingual-block">
+                <div class="lang-block lang-en">
+                    <span class="lang-label">English</span>
+                    <blockquote>
 Our property-casualty (P/C) insurance business has been the engine behind Berkshire's growth and will continue to be. It has worked wonders for us. We carry our P/C companies on our books at $15.5 billion more than their net tangible assets, an amount lodged in our "Goodwill" account. These companies, however, are worth far more than their carrying value – and the following look at the economic model of the P/C industry will tell you why.
     </blockquote>
-</div>
-<div class="lang-block lang-cn">
-    <span class="lang-label">中文翻译</span>
-    <blockquote>
+                </div>
+                <div class="lang-block lang-cn">
+                    <span class="lang-label">中文翻译</span>
+                    <blockquote>
 我们的财产意外险（P/C）保险业务一直是推动伯克希尔增长的引擎，并将继续如此。它为我们创造了奇迹。我们在账面上将P/C公司的价值计为比其有形净资产多出155亿美元，这一金额计入我们的"商誉"账户。然而，这些公司的价值远高于其账面价值——而以下对P/C行业经济模式的分析将告诉你原因。
     </blockquote>
-</div>
+                </div>
+            </div>
 
-<div class="lang-block lang-en">
-    <span class="lang-label">English</span>
-    <blockquote>
+            <div class="bilingual-block">
+                <div class="lang-block lang-en">
+                    <span class="lang-label">English</span>
+                    <blockquote>
 Insurers receive premiums upfront and pay claims later. In extreme cases, such as those arising from certain workers' compensation accidents, payments can stretch over decades. This collect-now, pay-later model leaves us holding large sums – money we call "float" – that will eventually go to others. Meanwhile, we get to invest this float for Berkshire's benefit.
     </blockquote>
-</div>
-<div class="lang-block lang-cn">
-    <span class="lang-label">中文翻译</span>
-    <blockquote>
+                </div>
+                <div class="lang-block lang-cn">
+                    <span class="lang-label">中文翻译</span>
+                    <blockquote>
 保险公司预先收取保费，稍后支付赔款。在极端情况下，比如某些工伤赔偿事故，付款可以延续数十年。这种"现在收取，以后支付"的模式使我们持有大量资金——我们称之为"浮存金"——这些钱最终将流向他人。与此同时，我们代表伯克希尔的利益投资这些浮存金。
     </blockquote>
-</div>
+                </div>
+            </div>
 
-<div class="lang-block lang-en">
-    <span class="lang-label">English</span>
-    <blockquote>
+            <div class="bilingual-block">
+                <div class="lang-block lang-en">
+                    <span class="lang-label">English</span>
+                    <blockquote>
 If premiums exceed the total of expenses and eventual losses, we register an underwriting profit that adds to the investment income produced from the float. This combination allows us to enjoy the use of free money – and, better yet, get paid for holding it. Alas, the hope of this happy result attracts intense competition, so vigorous in most years as to cause the P/C industry as a whole to operate at a significant underwriting loss. This loss, in effect, is what the industry pays to hold its float.
     </blockquote>
-</div>
-<div class="lang-block lang-cn">
-    <span class="lang-label">中文翻译</span>
-    <blockquote>
+                </div>
+                <div class="lang-block lang-cn">
+                    <span class="lang-label">中文翻译</span>
+                    <blockquote>
 如果保费超过费用和最终损失的总和，我们就获得承保利润，这会增加浮存金产生的投资收益。这种组合让我们能够享受免费资金的使用——而且更好的是，还能因持有它而获得报酬。可惜，这一美好结果的希望吸引了激烈的竞争，在大多数年份都非常激烈，以至于导致整个P/C行业承受重大承保亏损。实际上，这一亏损就是行业为持有浮存金所付出的代价。
     </blockquote>
-</div>
+                </div>
+            </div>
 
-<div class="lang-block lang-en">
-    <span class="lang-label">English</span>
-    <blockquote>
+            <div class="bilingual-block">
+                <div class="lang-block lang-en">
+                    <span class="lang-label">English</span>
+                    <blockquote>
 In my perhaps biased view, Berkshire has the best large insurance operation in the world. And I will absolutely state that we have the best managers. Our float has grown from $16 million in 1967, when we entered the business, to $62 billion at the end of 2009. Moreover, we have now operated at an underwriting profit for seven consecutive years. I believe it likely that we will continue to underwrite profitably in most – though certainly not all – future years. If we do so, our float will be cost-free, much as if someone deposited $62 billion with us that we could invest for our own benefit without the payment of interest.
     </blockquote>
-</div>
-<div class="lang-block lang-cn">
-    <span class="lang-label">中文翻译</span>
-    <blockquote>
+                </div>
+                <div class="lang-block lang-cn">
+                    <span class="lang-label">中文翻译</span>
+                    <blockquote>
 以我可能带有偏见的观点，伯克希尔拥有世界上最好的大型保险业务。我会绝对地说我们拥有最好的管理者。我们的浮存金从1967年进入该业务时的1,600万美元增长到2009年底的620亿美元。此外，我们已经连续七年实现承保盈利。我相信我们很可能在大多数——虽然肯定不是所有——未来年份继续实现盈利承保。如果我们做到了，我们的浮存金将是免费的，就好像有人在我们这里存了620亿美元，我们可以为自己的利益进行投资而无需支付利息。
     </blockquote>
-</div>
+                </div>
+            </div>
 
-<div class="lang-block lang-en">
-    <span class="lang-label">English</span>
-    <blockquote>
+            <div class="bilingual-block">
+                <div class="lang-block lang-en">
+                    <span class="lang-label">English</span>
+                    <blockquote>
 Let's start at GEICO, which is known to all of you because of its $800 million annual advertising budget (close to twice that of the runner-up advertiser in the auto insurance field). GEICO is managed by Tony Nicely, who joined the company at 18. Now 66, Tony still tap-dances to the office every day, just as I do at 79. We both feel lucky to work at a business we love.
     </blockquote>
-</div>
-<div class="lang-block lang-cn">
-    <span class="lang-label">中文翻译</span>
-    <blockquote>
+                </div>
+                <div class="lang-block lang-cn">
+                    <span class="lang-label">中文翻译</span>
+                    <blockquote>
 让我们从GEICO开始，大家都知道它每年8亿美元的广告预算（在汽车保险领域几乎是最接近的竞争对手的两倍）。GEICO由托尼·尼塞利（Tony Nicely）管理，他18岁加入公司。现在66岁的托尼每天仍然跳着踢踏舞去上班，就像我79岁一样。我们都幸运能在我们热爱的企业中工作。
     </blockquote>
-</div>
+                </div>
+            </div>
 
-<div class="lang-block lang-en">
-    <span class="lang-label">English</span>
-    <blockquote>
+            <div class="bilingual-block">
+                <div class="lang-block lang-en">
+                    <span class="lang-label">English</span>
+                    <blockquote>
 GEICO's customers have warm feelings toward the company as well. Here's proof: Since Berkshire acquired control of GEICO in 1996, its market share has increased from 2.5% to 8.1%, a gain reflecting the net addition of seven million policyholders. Perhaps they contacted us because they thought our gecko was cute, but they bought from us to save important money. And they've stayed with us because they like our service as well as our price.
     </blockquote>
-</div>
-<div class="lang-block lang-cn">
-    <span class="lang-label">中文翻译</span>
-    <blockquote>
+                </div>
+                <div class="lang-block lang-cn">
+                    <span class="lang-label">中文翻译</span>
+                    <blockquote>
 GEICO的客户也对公司怀有温暖的感情。证据如下：自1996年伯克希尔收购GEICO的控制权以来，其市场份额从2.5%增长到8.1%，相当于净增700万名保单持有人。也许他们联系我们是因为觉得我们的壁虎很可爱，但他们购买我们的产品是为了节省可观的钱。而且他们留在我们这里是因为他们既喜欢我们的服务也喜欢我们的价格。
     </blockquote>
-</div>
+                </div>
+            </div>
 
-<div class="lang-block lang-en">
-    <span class="lang-label">English</span>
-    <blockquote>
+            <div class="bilingual-block">
+                <div class="lang-block lang-en">
+                    <span class="lang-label">English</span>
+                    <blockquote>
 GEICO's growth may slow in 2010. U.S. vehicle registrations are actually down because of slumping auto sales. Moreover, high unemployment is causing a growing number of drivers to go uninsured. (That's illegal almost everywhere, but if you've lost your job and still want to drive . . .) Our "low-cost producer" status, however, is sure to give us significant gains in the future. In 1995, GEICO was the country's sixth largest auto insurer; now we are number three.
     </blockquote>
-</div>
-<div class="lang-block lang-cn">
-    <span class="lang-label">中文翻译</span>
-    <blockquote>
+                </div>
+                <div class="lang-block lang-cn">
+                    <span class="lang-label">中文翻译</span>
+                    <blockquote>
 GEICO的增长可能在2010年放缓。由于汽车销量下滑，美国车辆登记数量实际上在下降。此外，高失业率导致越来越多的驾车者没有保险。（这几乎在所有地方都是违法的，但如果你失业了却仍想开车……）然而，我们的"低成本生产商"地位肯定会让我们在未来获得显著增长。1995年，GEICO是美国第六大汽车保险公司；现在我们排名第三。
     </blockquote>
-</div>
+                </div>
+            </div>
 
-<div class="lang-block lang-en">
-    <span class="lang-label">English</span>
-    <blockquote>
+            <div class="bilingual-block">
+                <div class="lang-block lang-en">
+                    <span class="lang-label">English</span>
+                    <blockquote>
 A hugely important event in Berkshire's history occurred on a Saturday in 1985. Ajit Jain came into our office in Omaha – and I immediately knew we had found a superstar. (He had been discovered by Mike Goldberg, now elevated to St. Mike.) We immediately put Ajit in charge of National Indemnity's small and struggling reinsurance operation. Over the years, he has built this business into a one-of-a-kind giant in the insurance world.
     </blockquote>
-</div>
-<div class="lang-block lang-cn">
-    <span class="lang-label">中文翻译</span>
-    <blockquote>
+                </div>
+                <div class="lang-block lang-cn">
+                    <span class="lang-label">中文翻译</span>
+                    <blockquote>
 伯克希尔历史上一个极其重要的事件发生在1985年的一个星期六。阿吉特·贾恩（Ajit Jain）来到我们在奥马哈的办公室——我立刻意识到我们发现了一位超级巨星。（他被迈克·戈德堡发现，现在已被尊称为圣迈克。）我们立即让阿吉特负责国家赔偿公司（National Indemnity）规模小且苦苦挣扎的再保险业务。多年来，他已将这项业务发展成为保险界独一无二的巨头。
     </blockquote>
-</div>
+                </div>
+            </div>
 
-<div class="lang-block lang-en">
-    <span class="lang-label">English</span>
-    <blockquote>
+            <div class="bilingual-block">
+                <div class="lang-block lang-en">
+                    <span class="lang-label">English</span>
+                    <blockquote>
 Staffed today by only 30 people, Ajit's operation has set records for transaction size in several areas of insurance. Ajit writes billion-dollar limits – and then keeps every dime of the risk instead of laying it off with other insurers. Three years ago, he took over huge liabilities from Lloyds, allowing it to clean up its relationship with 27,972 participants ("names") who had written problem-ridden policies that at one point threatened the survival of this 322-year-old institution. The premium for that single contract was $7.1 billion.
     </blockquote>
-</div>
-<div class="lang-block lang-cn">
-    <span class="lang-label">中文翻译</span>
-    <blockquote>
+                </div>
+                <div class="lang-block lang-cn">
+                    <span class="lang-label">中文翻译</span>
+                    <blockquote>
 阿吉特的部门目前仅有30名员工，却在多个保险领域创下了交易规模的记录。阿吉特签发十亿美元级别的限额保单——然后自己保留每一分钱的风险，而不是将风险转移给其他保险公司。三年前，他接管了劳埃德社（Lloyds）的巨额负债，使其能够理顺与27,972名"匿名社员"的关系，这些社员签发的有问题保单曾一度威胁到这家有322年历史的机构的生存。那一份合同的保费就高达71亿美元。
     </blockquote>
-</div>
+                </div>
+            </div>
 
-<div class="lang-block lang-en">
-    <span class="lang-label">English</span>
-    <blockquote>
+            <div class="bilingual-block">
+                <div class="lang-block lang-en">
+                    <span class="lang-label">English</span>
+                    <blockquote>
 If Charlie, I and Ajit are ever in a sinking boat – and you can only save one of us – swim to Ajit.
     </blockquote>
-</div>
-<div class="lang-block lang-cn">
-    <span class="lang-label">中文翻译</span>
-    <blockquote>
+                </div>
+                <div class="lang-block lang-cn">
+                    <span class="lang-label">中文翻译</span>
+                    <blockquote>
 如果查理、我和阿吉特同时落水——而你只能救一个人——游向阿吉特。
     </blockquote>
-</div>
+                </div>
+            </div>
 
-<div class="lang-block lang-en">
-    <span class="lang-label">English</span>
-    <blockquote>
+            <div class="bilingual-block">
+                <div class="lang-block lang-en">
+                    <span class="lang-label">English</span>
+                    <blockquote>
 Our third insurance powerhouse is General Re. Some years back this operation was troubled; now it is a gleaming jewel in our insurance crown. Under the leadership of Tad Montross, General Re had an outstanding underwriting year in 2009, while also delivering us unusually large amounts of float per dollar of premium volume. Alongside General Re's P/C business, Tad and his associates have developed a major life reinsurance operation that has grown increasingly valuable.
     </blockquote>
-</div>
-<div class="lang-block lang-cn">
-    <span class="lang-label">中文翻译</span>
-    <blockquote>
+                </div>
+                <div class="lang-block lang-cn">
+                    <span class="lang-label">中文翻译</span>
+                    <blockquote>
 我们的第三个保险巨头是通用再保险（General Re）。几年前这个业务曾陷入困境；现在它是我们保险皇冠上的一颗闪亮宝石。在泰德·蒙托罗斯（Tad Montross）的领导下，通用再保险在2009年取得了出色的承保业绩，同时每美元保费提供给我们异常大量的浮存金。除了通用再保险的P/C业务外，泰德和他的同事们还开发了一项越来越有价值的大型人寿再保险业务。
     </blockquote>
-</div>
+                </div>
+            </div>
 
-<h2>公用事业</h2>
-
-<div class="lang-block lang-en">
-    <span class="lang-label">English</span>
-    <blockquote>
+            <div class="bilingual-block">
+                <div class="lang-block lang-en">
+                    <span class="lang-label">English</span>
+                    <blockquote>
 Berkshire has an 89.5% interest in MidAmerican Energy Holdings, which owns a wide variety of utility operations. The largest of these are (1) Yorkshire Electricity and Northern Electric, whose 3.8 million end users make it the U.K.'s third largest distributor of electricity; (2) MidAmerican Energy, which serves 725,000 electric customers, primarily in Iowa; (3) Pacific Power and Rocky Mountain Power, serving about 1.7 million electric customers in six western states; and (4) Kern River and Northern Natural pipelines, which carry about 8% of the natural gas consumed in the U.S.
     </blockquote>
-</div>
-<div class="lang-block lang-cn">
-    <span class="lang-label">中文翻译</span>
-    <blockquote>
+                </div>
+                <div class="lang-block lang-cn">
+                    <span class="lang-label">中文翻译</span>
+                    <blockquote>
 伯克希尔持有中美能源控股公司（MidAmerican Energy Holdings）89.5%的权益，该公司拥有多种公用事业业务。其中最大的是：（1）约克郡电力和北方电气（Yorkshire Electricity and Northern Electric），拥有380万终端用户，是英国第三大电力分销商；（2）中美能源（MidAmerican Energy），主要为爱荷华州提供电力服务，拥有72.5万电力用户；（3）太平洋电力和落基山电力（Pacific Power and Rocky Mountain Power），在六个西部州为约170万电力用户提供服务；（4）肯河和北方天然气管道（Kern River and Northern Natural），运输美国消费天然气的大约8%。
     </blockquote>
-</div>
+                </div>
+            </div>
 
-<div class="lang-block lang-en">
-    <span class="lang-label">English</span>
-    <blockquote>
+            <div class="bilingual-block">
+                <div class="lang-block lang-en">
+                    <span class="lang-label">English</span>
+                    <blockquote>
 MidAmerican has two terrific managers, Dave Sokol and Greg Abel. In addition, my long-time friend, Walter Scott, along with his family, has a major ownership position in the company. Walter brings extraordinary business savvy to any operation. Ten years of working with Dave, Greg and Walter have reinforced my original belief: Berkshire couldn't have better partners. They are truly a dream team.
     </blockquote>
-</div>
-<div class="lang-block lang-cn">
-    <span class="lang-label">中文翻译</span>
-    <blockquote>
+                </div>
+                <div class="lang-block lang-cn">
+                    <span class="lang-label">中文翻译</span>
+                    <blockquote>
 中美能源有两位出色的管理者戴夫·索科尔（Dave Sokol）和格雷格·阿贝尔（Greg Abel）。此外，我的长期朋友沃尔特·斯科特（Walter Scott）及其家族持有该公司的大量股权。沃尔特为任何业务带来非凡的商业智慧。与戴夫、格雷格和沃尔特十年的合作加强了我最初的信念：伯克希尔不可能有更好的合作伙伴了。他们真是一支梦之队。
     </blockquote>
-</div>
+                </div>
+            </div>
 
-<div class="lang-block lang-en">
-    <span class="lang-label">English</span>
-    <blockquote>
+            <div class="bilingual-block">
+                <div class="lang-block lang-en">
+                    <span class="lang-label">English</span>
+                    <blockquote>
 Our regulated electric utilities, offering monopoly service in most cases, operate in a symbiotic manner with the customers in their service areas, with those users depending on us to provide first-class service and invest for their future needs. Permitting and construction periods for generation and major transmission facilities stretch way out, so it is incumbent on us to be far-sighted. We, in turn, look to our utilities' regulators (acting on behalf of our customers) to allow us an appropriate return on the huge amounts of capital we must deploy to meet future needs.
     </blockquote>
-</div>
-<div class="lang-block lang-cn">
-    <span class="lang-label">中文翻译</span>
-    <blockquote>
+                </div>
+                <div class="lang-block lang-cn">
+                    <span class="lang-label">中文翻译</span>
+                    <blockquote>
 我们的受监管电力公用事业，在大多数情况下提供垄断服务，与服务区域内的客户以共生的方式运营，这些用户依赖我们提供一流服务并为他们的未来需求进行投资。发电和主要输电设施的许可和建设周期很长，所以我们有责任保持远见。反过来，我们希望我们的公用事业监管机构（代表我们的客户行事）允许我们对我们必须投入的大量资本获得适当的回报。
     </blockquote>
-</div>
+                </div>
+            </div>
 
-<div class="lang-block lang-en">
-    <span class="lang-label">English</span>
-    <blockquote>
+            <div class="bilingual-block">
+                <div class="lang-block lang-en">
+                    <span class="lang-label">English</span>
+                    <blockquote>
 Moreover, we continue to pour huge sums of money into our operations so as to not only prepare for the future but also make these operations more environmentally friendly. Since we purchased MidAmerican ten years ago, it has never paid a dividend. We have instead used earnings to improve and expand our properties in each of the territories we serve. As one dramatic example, in the last three years our Iowa and Western utilities have earned $2.5 billion, while in this same period spending $3 billion on wind generation facilities.
     </blockquote>
-</div>
-<div class="lang-block lang-cn">
-    <span class="lang-label">中文翻译</span>
-    <blockquote>
+                </div>
+                <div class="lang-block lang-cn">
+                    <span class="lang-label">中文翻译</span>
+                    <blockquote>
 此外，我们继续向业务投入大量资金，不仅为未来做准备，而且使这些业务更加环保。自我们十年前收购中美能源以来，它从未支付股息。我们转而用收益来改善和扩展我们在每个服务区域的资产。作为一个显著的例子，在过去三年中，我们的爱荷华州和西部公用事业赚了25亿美元，而同期在风力发电设施上投入了30亿美元。
     </blockquote>
-</div>
+                </div>
+            </div>
 
-<h2>制造、服务和零售业务</h2>
-
-<div class="lang-block lang-en">
-    <span class="lang-label">English</span>
-    <blockquote>
+            <div class="bilingual-block">
+                <div class="lang-block lang-en">
+                    <span class="lang-label">English</span>
+                    <blockquote>
 Almost all of the many and widely-diverse operations in this sector suffered to one degree or another from 2009's severe recession. The major exception was McLane, our distributor of groceries, confections and non-food items to thousands of retail outlets, the largest by far Wal-Mart.
     </blockquote>
-</div>
-<div class="lang-block lang-cn">
-    <span class="lang-label">中文翻译</span>
-    <blockquote>
+                </div>
+                <div class="lang-block lang-cn">
+                    <span class="lang-label">中文翻译</span>
+                    <blockquote>
 该领域几乎所有众多且多元化的业务都不同程度地受到2009年严重衰退的影响。主要例外是麦克莱恩（McLane），我们向数千家零售店分销食品、糖果和非食品，沃尔玛是其迄今为止最大的客户。
     </blockquote>
-</div>
+                </div>
+            </div>
 
-<div class="lang-block lang-en">
-    <span class="lang-label">English</span>
-    <blockquote>
+            <div class="bilingual-block">
+                <div class="lang-block lang-en">
+                    <span class="lang-label">English</span>
+                    <blockquote>
 Grady Rosier led McLane to record pre-tax earnings of $344 million, which even so amounted to only slightly more than one cent per dollar on its huge sales of $31.2 billion. McLane employs a vast array of physical assets – practically all of which it owns – including 3,242 trailers, 2,309 tractors and 55 distribution centers with 15.2 million square feet of space. McLane's prime asset, however, is Grady.
     </blockquote>
-</div>
-<div class="lang-block lang-cn">
-    <span class="lang-label">中文翻译</span>
-    <blockquote>
+                </div>
+                <div class="lang-block lang-cn">
+                    <span class="lang-label">中文翻译</span>
+                    <blockquote>
 格雷迪·罗齐尔（Grady Rosier）带领麦克莱恩取得了创纪录的3.44亿美元税前利润，但这在其312亿美元的巨额销售额中每美元仅略超一分钱。麦克莱恩拥有大量实物资产——几乎全部自有——包括3,242辆拖车、2,309辆牵引车和55个配送中心，拥有1520万平方英尺的空间。然而，麦克莱恩最重要的资产是格雷迪。
     </blockquote>
-</div>
+                </div>
+            </div>
 
-<div class="lang-block lang-en">
-    <span class="lang-label">English</span>
-    <blockquote>
+            <div class="bilingual-block">
+                <div class="lang-block lang-en">
+                    <span class="lang-label">English</span>
+                    <blockquote>
 Among the businesses we own that have major exposure to the depressed industrial sector, both Marmon and Iscar turned in relatively strong performances. Frank Ptak's Marmon delivered a 13.5% pre-tax profit margin, a record high. Though the company's sales were down 27%, Frank's cost-conscious management mitigated the decline in earnings.
     </blockquote>
-</div>
-<div class="lang-block lang-cn">
-    <span class="lang-label">中文翻译</span>
-    <blockquote>
+                </div>
+                <div class="lang-block lang-cn">
+                    <span class="lang-label">中文翻译</span>
+                    <blockquote>
 在我们拥有且对低迷工业领域有重大敞口的企业中，马尔蒙（Marmon）和伊斯卡（Iscar）都表现出了相对强劲的业绩。弗兰克·普塔克（Frank Ptak）的马尔蒙实现了13.5%的税前利润率，创下历史新高。尽管公司销售额下降了27%，但弗兰克注重成本的管理减轻了收益的下降。
     </blockquote>
-</div>
+                </div>
+            </div>
 
-<div class="lang-block lang-en">
-    <span class="lang-label">English</span>
-    <blockquote>
+            <div class="bilingual-block">
+                <div class="lang-block lang-en">
+                    <span class="lang-label">English</span>
+                    <blockquote>
 Nothing stops Israel-based Iscar – not wars, recessions or competitors. The world's two other leading suppliers of small cutting tools both had very difficult years, each operating at a loss throughout much of the year. Though Iscar's results were down significantly from 2008, the company regularly reported profits, even while it was integrating and rationalizing Tungaloy, the large Japanese acquisition that we told you about last year. When manufacturing rebounds, Iscar will set new records. Its incredible managerial team of Eitan Wertheimer, Jacob Harpaz and Danny Goldman will see to that.
     </blockquote>
-</div>
-<div class="lang-block lang-cn">
-    <span class="lang-label">中文翻译</span>
-    <blockquote>
+                </div>
+                <div class="lang-block lang-cn">
+                    <span class="lang-label">中文翻译</span>
+                    <blockquote>
 没有什么能阻止总部位于以色列的伊斯卡——无论是战争、经济衰退还是竞争对手。世界上其他两家领先的小型刀具供应商今年都经历了非常困难的时期，大部分时间都在亏损。尽管伊斯卡的业绩比2008年大幅下降，但公司仍然定期报告盈利，即使在整合和优化我们去年告诉你们的日本大型收购对象Tungaloy时也是如此。当制造业反弹时，伊斯卡将创造新纪录。其令人难以置信的管理团队——艾坦·沃特海默（Eitan Wertheimer）、雅各布·哈帕兹（Jacob Harpaz）和丹尼·高德曼（Danny Goldman）将确保这一点。
     </blockquote>
-</div>
+                </div>
+            </div>
 
-<div class="lang-block lang-en">
-    <span class="lang-label">English</span>
-    <blockquote>
+            <div class="bilingual-block">
+                <div class="lang-block lang-en">
+                    <span class="lang-label">English</span>
+                    <blockquote>
 Every business we own that is connected to residential and commercial construction suffered severely in 2009. Combined pre-tax earnings of Shaw, Johns Manville, Acme Brick, and MiTek were $227 million, an 82.5% decline from $1.295 billion in 2006, when construction activity was booming. These businesses continue to bump along the bottom, though their competitive positions remain undented.
     </blockquote>
-</div>
-<div class="lang-block lang-cn">
-    <span class="lang-label">中文翻译</span>
-    <blockquote>
+                </div>
+                <div class="lang-block lang-cn">
+                    <span class="lang-label">中文翻译</span>
+                    <blockquote>
 我们拥有的每一个与住宅和商业建筑相关的业务在2009年都遭受了严重打击。肖氏（Shaw）、约翰斯·曼维尔（Johns Manville）、阿科姆砖业（Acme Brick）和米泰克（MiTek）的合并税前利润为2.27亿美元，较2006年建筑活动繁荣时期的13亿美元下降了82.5%。这些企业继续在底部徘徊，尽管它们的竞争地位仍未受损。
     </blockquote>
-</div>
+                </div>
+            </div>
 
-<div class="lang-block lang-en">
-    <span class="lang-label">English</span>
-    <blockquote>
+            <div class="bilingual-block">
+                <div class="lang-block lang-en">
+                    <span class="lang-label">English</span>
+                    <blockquote>
 The major problem for Berkshire last year was NetJets, an aviation operation that offers fractional ownership of jets. Over the years, it has been enormously successful in establishing itself as the premier company in its industry, with the value of its fleet far exceeding that of its three major competitors combined. Overall, our dominance in the field remains unchallenged.
     </blockquote>
-</div>
-<div class="lang-block lang-cn">
-    <span class="lang-label">中文翻译</span>
-    <blockquote>
+                </div>
+                <div class="lang-block lang-cn">
+                    <span class="lang-label">中文翻译</span>
+                    <blockquote>
 伯克希尔去年主要的问题是NetJets，这家提供喷气式飞机部分所有权业务的航空公司在这些年中非常成功地确立了自己在其行业的领先地位，其机队价值远超三大竞争对手的总和。总体而言，我们在该领域的主导地位仍未受到挑战。
     </blockquote>
-</div>
+                </div>
+            </div>
 
-<div class="lang-block lang-en">
-    <span class="lang-label">English</span>
-    <blockquote>
+            <div class="bilingual-block">
+                <div class="lang-block lang-en">
+                    <span class="lang-label">English</span>
+                    <blockquote>
 NetJets' business operation, however, has been another story. In the eleven years that we have owned the company, it has recorded an aggregate pre-tax loss of $157 million. Moreover, the company's debt has soared from $102 million at the time of purchase to $1.9 billion in April of last year. Without Berkshire's guarantee of this debt, NetJets would have been out of business. It's clear that I failed you in letting NetJets descend into this condition. But, luckily, I have been bailed out.
     </blockquote>
-</div>
-<div class="lang-block lang-cn">
-    <span class="lang-label">中文翻译</span>
-    <blockquote>
+                </div>
+                <div class="lang-block lang-cn">
+                    <span class="lang-label">中文翻译</span>
+                    <blockquote>
 然而，NetJets的商业运营是另一回事。在我们拥有该公司的11年里，它累计录得1.57亿美元的税前亏损。此外，公司债务从收购时的1.02亿美元飙升至去年4月的19亿美元。如果没有伯克希尔的债务担保，NetJets早就会倒闭。很显然，我在让NetJets陷入这种状况方面辜负了你们。但幸运的是，我得到了救助。
     </blockquote>
-</div>
+                </div>
+            </div>
 
-<div class="lang-block lang-en">
-    <span class="lang-label">English</span>
-    <blockquote>
+            <div class="bilingual-block">
+                <div class="lang-block lang-en">
+                    <span class="lang-label">English</span>
+                    <blockquote>
 Dave Sokol, the enormously talented builder and operator of MidAmerican Energy, became CEO of NetJets in August. His leadership has been transforming: Debt has already been reduced to $1.4 billion, and, after suffering a staggering loss of $711 million in 2009, the company is now solidly profitable.
     </blockquote>
-</div>
-<div class="lang-block lang-cn">
-    <span class="lang-label">中文翻译</span>
-    <blockquote>
+                </div>
+                <div class="lang-block lang-cn">
+                    <span class="lang-label">中文翻译</span>
+                    <blockquote>
 戴夫·索科尔（Dave Sokol），这位中美能源极有才华的建设者和经营者，于8月成为NetJets的首席执行官。他的领导力带来了变革：债务已经减少到14亿美元，而且在2009年遭受了惊人的7.11亿美元亏损后，公司现在实现了稳定盈利。
     </blockquote>
-</div>
+                </div>
+            </div>
 
-<h2>金融和金融产品</h2>
-
-<div class="lang-block lang-en">
-    <span class="lang-label">English</span>
-    <blockquote>
+            <div class="bilingual-block">
+                <div class="lang-block lang-en">
+                    <span class="lang-label">English</span>
+                    <blockquote>
 Our largest operation in this sector is Clayton Homes, the country's leading producer of modular and manufactured homes. Clayton was not always number one: A decade ago the three leading manufacturers were Fleetwood, Champion and Oakwood, which together accounted for 44% of the output of the industry. All have since gone bankrupt. Total industry output, meanwhile, has fallen from 382,000 units in 1999 to 60,000 units in 2009.
     </blockquote>
-</div>
-<div class="lang-block lang-cn">
-    <span class="lang-label">中文翻译</span>
-    <blockquote>
+                </div>
+                <div class="lang-block lang-cn">
+                    <span class="lang-label">中文翻译</span>
+                    <blockquote>
 我们在该领域最大的业务是克莱顿房屋（Clayton Homes），该公司是美国模块化和预制房屋的领先生产商。克莱顿并非一直是第一名：十年前，三大制造商是Fleetwood、Champion和Oakwood，它们合计占该行业产量的44%。此后它们都破产了。与此同时，整个行业产量从1999年的38.2万套下降到2009年的6万套。
     </blockquote>
-</div>
+                </div>
+            </div>
 
-<div class="lang-block lang-en">
-    <span class="lang-label">English</span>
-    <blockquote>
+            <div class="bilingual-block">
+                <div class="lang-block lang-en">
+                    <span class="lang-label">English</span>
+                    <blockquote>
 The industry is in shambles for two reasons, the first of which must be lived with if the U.S. economy is to recover. This reason concerns U.S. housing starts (including apartment units). In 2009, starts were 554,000, by far the lowest number in the 50 years for which we have data. Paradoxically, this is good news.
     </blockquote>
-</div>
-<div class="lang-block lang-cn">
-    <span class="lang-label">中文翻译</span>
-    <blockquote>
+                </div>
+                <div class="lang-block lang-cn">
+                    <span class="lang-label">中文翻译</span>
+                    <blockquote>
 该行业处于崩溃状态有两个原因，如果美国经济要复苏，第一个原因必须被接受。这个原因涉及美国的新屋开工数（包括公寓单元）。2009年，开工数为55.4万套，是我们有数据以来50年中的最低数字。自相矛盾的是，这是好消息。
     </blockquote>
-</div>
+                </div>
+            </div>
 
-<div class="lang-block lang-en">
-    <span class="lang-label">English</span>
-    <blockquote>
+            <div class="bilingual-block">
+                <div class="lang-block lang-en">
+                    <span class="lang-label">English</span>
+                    <blockquote>
 People thought it was good news a few years back when housing starts – the supply side of the picture – were running about two million annually. But household formations – the demand side – only amounted to about 1.2 million. After a few years of such imbalances, the country unsurprisingly ended up with far too many houses.
     </blockquote>
-</div>
-<div class="lang-block lang-cn">
-    <span class="lang-label">中文翻译</span>
-    <blockquote>
+                </div>
+                <div class="lang-block lang-cn">
+                    <span class="lang-label">中文翻译</span>
+                    <blockquote>
 几年前人们认为房屋开工数——供应端——每年约200万套是好消息。但家庭形成——需求端——只有约120万套。经过几年的这种不平衡后，这个国家不出所料地最终拥有了太多房屋。
     </blockquote>
-</div>
+                </div>
+            </div>
 
-<div class="lang-block lang-en">
-    <span class="lang-label">English</span>
-    <blockquote>
+            <div class="bilingual-block">
+                <div class="lang-block lang-en">
+                    <span class="lang-label">English</span>
+                    <blockquote>
 There were three ways to cure this overhang: (1) blow up a lot of houses, a tactic similar to the destruction of autos that occurred with the "cash-for-clunkers" program; (2) speed up household formations by, say, encouraging teenagers to cohabitate, a program not likely to suffer from a lack of volunteers or; (3) reduce the rate of new housing construction to a level below that of household formations.
     </blockquote>
-</div>
-<div class="lang-block lang-cn">
-    <span class="lang-label">中文翻译</span>
-    <blockquote>
+                </div>
+                <div class="lang-block lang-cn">
+                    <span class="lang-label">中文翻译</span>
+                    <blockquote>
 有三种方法可以治愈这种过剩：（1）炸毁大量房屋，一种类似于"旧车换现金"计划中销毁汽车的做法；（2）加快家庭形成的速度，比如说鼓励青少年同居，一个不太可能缺乏志愿者的计划；或（3）将新房建设率降低到低于家庭形成率的水平。
     </blockquote>
-</div>
+                </div>
+            </div>
 
-<p style="text-align: center; margin-top: 40px; padding: 20px; background: #f0f0f0; border-radius: 8px;">
-    <em>本翻译基于2009年巴菲特致股东信原文，仅供学习参考。</em>
-</p>
 
+            <div class="letter-nav">
+                <a href="2008.html" class="nav-link">← 2008年</a>
+                <a href="../../index-pages/巴菲特致股东信总览.html" class="nav-link">信件总览</a>
+                <a href="2010.html" class="nav-link">2010年 →</a>
+            </div>
+
+            </article>
+        </div>
+    </main>
+    <footer>
+        <div class="container">
+            © 2024 巴菲特知识库 | <a href="https://github.com/akalq/buffett-knowledge-graph">GitHub</a>
+        </div>
+    </footer>
 </body>
 </html>

@@ -3,361 +3,603 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2010年巴菲特致股东信 | 伯克希尔·哈撒韦</title>
+    <title>2010年巴菲特致股东信 - 巴菲特知识库</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
-        body { font-family: "PingFang SC", "Microsoft YaHei", Arial, sans-serif; line-height: 1.8; max-width: 900px; margin: 0 auto; padding: 20px; background: #fafafa; }
-        h1 { color: #1a365d; border-bottom: 3px solid #3b82f6; padding-bottom: 10px; }
-        h2 { color: #2d3748; margin-top: 40px; }
-        .lang-block { margin: 20px 0; padding: 15px; border-radius: 8px; }
-        .lang-en { background: #ebf8ff; border-left: 4px solid #3182ce; }
-        .lang-cn { background: #fffaf0; border-left: 4px solid #dd6b20; }
-        .lang-label { font-weight: bold; display: block; margin-bottom: 8px; color: #4a5568; }
-        blockquote { margin: 0; padding-left: 15px; border-left: 2px solid #cbd5e0; font-size: 15px; }
-        .year-badge { background: #3b82f6; color: white; padding: 5px 15px; border-radius: 20px; display: inline-block; margin-bottom: 20px; }
-        table { width: 100%; border-collapse: collapse; margin: 15px 0; font-size: 14px; }
-        th, td { border: 1px solid #e2e8f0; padding: 8px; text-align: center; }
-        th { background: #2d3748; color: white; }
-        tr:nth-child(even) { background: #f7fafc; }
+        :root {
+            --bg-color: #FFFEF9;
+            --navy: #1B2A4A;
+            --gold: #C9A227;
+            --text: #2C3E50;
+            --secondary: #5D6D7E;
+            --border: #E5E0D8;
+            --en-bg: #F8FAFC;
+            --cn-bg: #FFFBEB;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Noto Serif SC', Georgia, serif;
+            background: var(--bg-color);
+            color: var(--text);
+            line-height: 1.9;
+            min-height: 100vh;
+        }
+        .container { max-width: 1000px; margin: 0 auto; padding: 0 24px; }
+        
+        /* Header */
+        header {
+            background: var(--navy);
+            color: white;
+            padding: 16px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 12px rgba(27, 42, 74, 0.15);
+        }
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--gold);
+            text-decoration: none;
+            font-size: 1.15em;
+            font-weight: 600;
+        }
+        .logo svg { width: 32px; height: 32px; }
+        nav { display: flex; gap: 28px; }
+        nav a {
+            color: rgba(255,255,255,0.85);
+            text-decoration: none;
+            font-size: 0.9em;
+            font-family: 'Noto Sans SC', sans-serif;
+            transition: color 0.2s;
+        }
+        nav a:hover { color: var(--gold); }
+        
+        /* Main Content */
+        main { padding: 48px 0 80px; }
+        
+        .letter-header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--border);
+        }
+        .letter-year {
+            font-size: 4.5em;
+            font-weight: 700;
+            color: var(--navy);
+            line-height: 1;
+            margin-bottom: 12px;
+            letter-spacing: -2px;
+        }
+        .letter-subtitle {
+            font-size: 1.1em;
+            color: var(--secondary);
+            font-family: 'Noto Sans SC', sans-serif;
+        }
+        
+        /* Bilingual Blocks */
+        .bilingual-block {
+            margin-bottom: 32px;
+            display: grid;
+            gap: 16px;
+        }
+        .lang-block {
+            padding: 20px 24px;
+            border-radius: 8px;
+            font-size: 15px;
+        }
+        .lang-en {
+            background: var(--en-bg);
+            border-left: 4px solid var(--navy);
+        }
+        .lang-cn {
+            background: var(--cn-bg);
+            border-left: 4px solid var(--gold);
+        }
+        .lang-label {
+            display: inline-block;
+            padding: 3px 12px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 600;
+            font-family: 'Noto Sans SC', sans-serif;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .lang-en .lang-label { background: var(--navy); color: white; }
+        .lang-cn .lang-label { background: var(--gold); color: white; }
+        .lang-block blockquote {
+            margin: 0;
+            font-style: normal;
+            line-height: 1.85;
+        }
+        .lang-cn blockquote {
+            border-top: 1px dashed var(--border);
+            padding-top: 16px;
+            margin-top: 8px;
+        }
+        
+        /* Section Titles */
+        .section-title {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: var(--navy);
+            margin: 48px 0 24px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--gold);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--navy);
+            color: rgba(255,255,255,0.7);
+            padding: 32px 0;
+            text-align: center;
+            font-size: 0.85em;
+            font-family: 'Noto Sans SC', sans-serif;
+        }
+        footer a { color: var(--gold); text-decoration: none; }
+        
+        /* Navigation */
+        .letter-nav {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 48px;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+        }
+        .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 20px;
+            background: var(--navy);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-family: 'Noto Sans SC', sans-serif;
+            font-size: 0.9em;
+            transition: background 0.2s;
+        }
+        .nav-link:hover { background: var(--gold); }
+        .nav-link.disabled { opacity: 0.4; pointer-events: none; }
+        
+        @media (min-width: 768px) {
+            .bilingual-block {
+                grid-template-columns: 1fr 1fr;
+                gap: 20px;
+            }
+            .lang-cn blockquote {
+                border-top: none;
+                padding-top: 0;
+                margin-top: 0;
+            }
+        }
     </style>
 </head>
 <body>
-    <h1><span class="year-badge">2010</span> 巴菲特致股东信</h1>
-    <p><strong>伯克希尔·哈撒韦公司致全体股东：</strong></p>
-
-<div class="lang-block lang-en">
-    <span class="lang-label">English</span>
-    <blockquote>
+    <header>
+        <div class="container">
+            <a href="../../index.html" class="logo">
+                <svg viewBox="0 0 40 40" fill="none">
+                    <rect width="40" height="40" rx="8" fill="#C9A227"/>
+                    <path d="M10 28V12h4v12h6v4H10z" fill="#1B2A4A"/>
+                    <circle cx="26" cy="20" r="6" fill="#FFFEF9" stroke="#1B2A4A" stroke-width="2"/>
+                </svg>
+                <span>巴菲特知识库</span>
+            </a>
+            <nav>
+                <a href="../../index.html">首页</a>
+                <a href="../../index-pages/巴菲特致股东信总览.html">信件</a>
+                <a href="../../concepts/内在价值.html">概念</a>
+                <a href="../../companies/伯克希尔哈撒韦.html">公司</a>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <div class="container">
+            <div class="letter-header">
+                <div class="letter-year">2010</div>
+                <div class="letter-subtitle">巴菲特致伯克希尔·哈撒韦公司股东信</div>
+            </div>
+            <article class="letter-content">
+            <div class="bilingual-block">
+                <div class="lang-block lang-en">
+                    <span class="lang-label">English</span>
+                    <blockquote>
 The per-share book value of both our Class A and Class B stock increased by 13% in 2010. Over the last 46 years (that is, since present management took over), book value has grown from $19 to $95,453, a rate of 20.2% compounded annually.
     </blockquote>
-</div>
-<div class="lang-block lang-cn">
-    <span class="lang-label">中文翻译</span>
-    <blockquote>
+                </div>
+                <div class="lang-block lang-cn">
+                    <span class="lang-label">中文翻译</span>
+                    <blockquote>
 2010年，我们的A股和B股每股账面价值增长了13%。在过去46年里（即现任管理层接手以来），账面价值从19美元增长到95,453美元，年复合增长率为20.2%。
     </blockquote>
-</div>
+                </div>
+            </div>
 
-<div class="lang-block lang-en">
-    <span class="lang-label">English</span>
-    <blockquote>
+            <div class="bilingual-block">
+                <div class="lang-block lang-en">
+                    <span class="lang-label">English</span>
+                    <blockquote>
 The highlight of 2010 was our acquisition of Burlington Northern Santa Fe, a purchase that's working out even better than I expected. It now appears that owning this railroad will increase Berkshire's "normal" earning power by nearly 40% pre-tax and by well over 30% after-tax. Making this purchase increased our share count by 6% and used $22 billion of cash. Since we've quickly replenished the cash, the economics of this transaction have turned out very well.
     </blockquote>
-</div>
-<div class="lang-block lang-cn">
-    <span class="lang-label">中文翻译</span>
-    <blockquote>
+                </div>
+                <div class="lang-block lang-cn">
+                    <span class="lang-label">中文翻译</span>
+                    <blockquote>
 2010年的亮点是我们收购了伯灵顿北方圣塔菲铁路（Burlington Northern Santa Fe），这项收购的效果比我预期的还要好。现在看来，拥有这条铁路将使伯克希尔的"正常"盈利能力在税前提高近40%，在税后提高超过30%。这项收购使我们的股份数增加了6%，并使用了220亿美元现金。由于我们迅速补充了现金，这项交易的经济效果非常出色。
     </blockquote>
-</div>
+                </div>
+            </div>
 
-<div class="lang-block lang-en">
-    <span class="lang-label">English</span>
-    <blockquote>
+            <div class="bilingual-block">
+                <div class="lang-block lang-en">
+                    <span class="lang-label">English</span>
+                    <blockquote>
 Both of us are enthusiastic about BNSF's future because railroads have major cost and environmental advantages over trucking, their main competitor. Last year BNSF moved each ton of freight it carried a record 500 miles on a single gallon of diesel fuel. That's three times more fuel-efficient than trucking is, which means our railroad owns an important advantage in operating costs. Concurrently, our country gains because of reduced greenhouse emissions and a much smaller need for imported oil. When traffic travels by rail, society benefits.
     </blockquote>
-</div>
-<div class="lang-block lang-cn">
-    <span class="lang-label">中文翻译</span>
-    <blockquote>
+                </div>
+                <div class="lang-block lang-cn">
+                    <span class="lang-label">中文翻译</span>
+                    <blockquote>
 我们对BNSF的未来同样充满热情，因为铁路相对于其主要竞争对手卡车运输具有重大的成本和环境优势。去年，BNSF每加仑柴油燃油将每吨货物运输了创纪录的500英里。这比卡车运输的燃油效率高3倍，意味着我们的铁路在运营成本上拥有重要优势。同时，我们的国家因温室气体排放减少和对进口石油的需求减少而受益。当货物通过铁路运输时，社会受益。
     </blockquote>
-</div>
+                </div>
+            </div>
 
-<div class="lang-block lang-en">
-    <span class="lang-label">English</span>
-    <blockquote>
+            <div class="bilingual-block">
+                <div class="lang-block lang-en">
+                    <span class="lang-label">English</span>
+                    <blockquote>
 Over time, the movement of goods in the United States will increase, and BNSF should get its full share of the gain. The railroad will need to invest massively to bring about this growth, but no one is better situated than Berkshire to supply the funds required. However slow the economy, or chaotic the markets, our checks will clear.
     </blockquote>
-</div>
-<div class="lang-block lang-cn">
-    <span class="lang-label">中文翻译</span>
-    <blockquote>
+                </div>
+                <div class="lang-block lang-cn">
+                    <span class="lang-label">中文翻译</span>
+                    <blockquote>
 随着时间的推移，美国货物运输将增加，而BNSF应该获得其全部份额的增长。为了实现这一增长，铁路需要大量投资，但没有人比伯克希尔更有能力提供所需资金。无论经济多么缓慢或市场多么混乱，我们的支票都会兑现。
     </blockquote>
-</div>
+                </div>
+            </div>
 
-<div class="lang-block lang-en">
-    <span class="lang-label">English</span>
-    <blockquote>
+            <div class="bilingual-block">
+                <div class="lang-block lang-en">
+                    <span class="lang-label">English</span>
+                    <blockquote>
 Last year – in the face of widespread pessimism about our economy – we demonstrated our enthusiasm for capital investment at Berkshire by spending $6 billion on property and equipment. Of this amount, $5.4 billion – or 90% of the total – was spent in the United States. Certainly our businesses will expand abroad in the future, but an overwhelming part of their future investments will be at home. In 2011, we will set a new record for capital spending – $8 billion – and spend all of the $2 billion increase in the United States. Money will always flow toward opportunity, and there is an abundance of that in America.
     </blockquote>
-</div>
-<div class="lang-block lang-cn">
-    <span class="lang-label">中文翻译</span>
-    <blockquote>
+                </div>
+                <div class="lang-block lang-cn">
+                    <span class="lang-label">中文翻译</span>
+                    <blockquote>
 去年——在对经济普遍悲观的环境中——我们通过在伯克希尔投入60亿美元的房产和设备展示了我们对资本投资的热忱。其中，54亿美元——占总数的90%——是在美国支出的。当然，我们的企业未来会在海外扩张，但其未来投资的绝大部分将留在美国。2011年，我们将创造资本支出的新纪录——80亿美元——并将20亿美元增长中的全部支出在美国。资金总是会流向机会，而美国机会充沛。
     </blockquote>
-</div>
+                </div>
+            </div>
 
-<div class="lang-block lang-en">
-    <span class="lang-label">English</span>
-    <blockquote>
+            <div class="bilingual-block">
+                <div class="lang-block lang-en">
+                    <span class="lang-label">English</span>
+                    <blockquote>
 Commentators today often talk of "great uncertainty." But think back, for example, to December 6, 1941, October 18, 1987 and September 10, 2001. No matter how serene today may be, tomorrow is always uncertain.
     </blockquote>
-</div>
-<div class="lang-block lang-cn">
-    <span class="lang-label">中文翻译</span>
-    <blockquote>
+                </div>
+                <div class="lang-block lang-cn">
+                    <span class="lang-label">中文翻译</span>
+                    <blockquote>
 今天的评论员经常谈论"巨大不确定性"。但回想一下，例如，1941年12月6日、1987年10月18日和2001年9月10日。无论今天多么平静，明天永远是不确定的。
     </blockquote>
-</div>
+                </div>
+            </div>
 
-<div class="lang-block lang-en">
-    <span class="lang-label">English</span>
-    <blockquote>
+            <div class="bilingual-block">
+                <div class="lang-block lang-en">
+                    <span class="lang-label">English</span>
+                    <blockquote>
 Don't let that reality spook you. Throughout my lifetime, politicians and pundits have constantly moaned about terrifying problems facing America. Yet our citizens now live an astonishing six times better than when I was born. The prophets of doom have overlooked the all-important factor that is certain: Human potential is far from exhausted, and the American system for unleashing that potential – a system that has worked wonders for over two centuries despite frequent interruptions for recessions and even a Civil War – remains alive and effective.
     </blockquote>
-</div>
-<div class="lang-block lang-cn">
-    <span class="lang-label">中文翻译</span>
-    <blockquote>
+                </div>
+                <div class="lang-block lang-cn">
+                    <span class="lang-label">中文翻译</span>
+                    <blockquote>
 不要让这一现实让你惊慌。在我的一生中，政客和评论员一直在哀叹美国面临的可怕问题。然而，今天的公民生活水平比我出生时提高了惊人的六倍。末日预言家们忽视了一个确定的关键因素：人类潜能远未耗尽，而美国释放这种潜能的体系——一个尽管经济衰退频繁甚至内战中断，但两个多世纪以来创造了奇迹的体系——依然充满活力和有效。
     </blockquote>
-</div>
+                </div>
+            </div>
 
-<div class="lang-block lang-en">
-    <span class="lang-label">English</span>
-    <blockquote>
+            <div class="bilingual-block">
+                <div class="lang-block lang-en">
+                    <span class="lang-label">English</span>
+                    <blockquote>
 We are not natively smarter than we were when our country was founded nor do we work harder. But look around you and see a world beyond the dreams of any colonial citizen. Now, as in 1776, 1861, 1932 and 1941, America's best days lie ahead.
     </blockquote>
-</div>
-<div class="lang-block lang-cn">
-    <span class="lang-label">中文翻译</span>
-    <blockquote>
+                </div>
+                <div class="lang-block lang-cn">
+                    <span class="lang-label">中文翻译</span>
+                    <blockquote>
 我们并不比国家建立时更聪明，也不比那时更努力工作。但环顾四周，你会看到一个任何殖民地公民都无法想象的世界。就像在1776年、1861年、1932年和1941年一样，美国的最好日子还在前面。
     </blockquote>
-</div>
+                </div>
+            </div>
 
-<h2>业绩表现</h2>
-
-<div class="lang-block lang-en">
-    <span class="lang-label">English</span>
-    <blockquote>
+            <div class="bilingual-block">
+                <div class="lang-block lang-en">
+                    <span class="lang-label">English</span>
+                    <blockquote>
 Charlie and I believe that those entrusted with handling the funds of others should establish performance goals at the onset of their stewardship. Lacking such standards, managements are tempted to shoot the arrow of performance and then paint the bull's-eye around wherever it lands.
     </blockquote>
-</div>
-<div class="lang-block lang-cn">
-    <span class="lang-label">中文翻译</span>
-    <blockquote>
+                </div>
+                <div class="lang-block lang-cn">
+                    <span class="lang-label">中文翻译</span>
+                    <blockquote>
 查理和我认为，受托管理他人资金的人应该在接手之初就建立业绩目标。如果没有这样的标准，管理层会倾向于看到业绩之箭落在哪里，然后在落点周围画上靶心。
     </blockquote>
-</div>
+                </div>
+            </div>
 
-<div class="lang-block lang-en">
-    <span class="lang-label">English</span>
-    <blockquote>
+            <div class="bilingual-block">
+                <div class="lang-block lang-en">
+                    <span class="lang-label">English</span>
+                    <blockquote>
 In Berkshire's case, we long ago told you that our job is to increase per-share intrinsic value at a rate greater than the increase (including dividends) of the S&P 500. In some years we succeed; in others we fail. But, if we are unable over time to reach that goal, we have done nothing for our investors, who by themselves could have realized an equal or better result by owning an index fund.
     </blockquote>
-</div>
-<div class="lang-block lang-cn">
-    <span class="lang-label">中文翻译</span>
-    <blockquote>
+                </div>
+                <div class="lang-block lang-cn">
+                    <span class="lang-label">中文翻译</span>
+                    <blockquote>
 对于伯克希尔而言，我们很久以前就告诉过你们，我们的工作是以高于标准普尔500指数增长率（包括股息）的速度提高每股内在价值。有些年份我们成功；有些年份我们失败。但是，如果我们长期无法实现这一目标，我们就为投资者做了任何事，他们自己本来可以通过持有指数基金获得相同或更好的结果。
     </blockquote>
-</div>
+                </div>
+            </div>
 
-<div class="lang-block lang-en">
-    <span class="lang-label">English</span>
-    <blockquote>
+            <div class="bilingual-block">
+                <div class="lang-block lang-en">
+                    <span class="lang-label">English</span>
+                    <blockquote>
 The challenge, of course, is the calculation of intrinsic value. Present that task to Charlie and me separately, and you will get two different answers. Precision just isn't possible.
     </blockquote>
-</div>
-<div class="lang-block lang-cn">
-    <span class="lang-label">中文翻译</span>
-    <blockquote>
+                </div>
+                <div class="lang-block lang-cn">
+                    <span class="lang-label">中文翻译</span>
+                    <blockquote>
 当然，挑战在于内在价值的计算。将这一任务分别交给查理和我，你会得到两个不同的答案。精确根本不可能。
     </blockquote>
-</div>
+                </div>
+            </div>
 
-<div class="lang-block lang-en">
-    <span class="lang-label">English</span>
-    <blockquote>
+            <div class="bilingual-block">
+                <div class="lang-block lang-en">
+                    <span class="lang-label">English</span>
+                    <blockquote>
 To eliminate subjectivity, we therefore use an understated proxy for intrinsic-value – book value – when measuring our performance. To be sure, some of our businesses are worth far more than their carrying value on our books. But since that premium seldom swings wildly from year to year, book value can serve as a reasonable device for tracking how we are doing.
     </blockquote>
-</div>
-<div class="lang-block lang-cn">
-    <span class="lang-label">中文翻译</span>
-    <blockquote>
+                </div>
+                <div class="lang-block lang-cn">
+                    <span class="lang-label">中文翻译</span>
+                    <blockquote>
 为了消除主观性，我们因此使用一个被低估的内在价值替代指标——账面价值——来衡量我们的业绩。可以肯定的是，我们的一些企业价值远高于账面价值。但由于这一溢价很少在年份间剧烈波动，账面价值可以成为追踪我们进展的合理工具。
     </blockquote>
-</div>
+                </div>
+            </div>
 
-<div class="lang-block lang-en">
-    <span class="lang-label">English</span>
-    <blockquote>
+            <div class="bilingual-block">
+                <div class="lang-block lang-en">
+                    <span class="lang-label">English</span>
+                    <blockquote>
 The table on page 2 shows our 46-year record against the S&P, a performance quite good in the earlier years and now only satisfactory. The bountiful years, we want to emphasize, will never return. The huge sums of capital we currently manage eliminate any chance of exceptional performance. We will strive, however, for better-than-average results and feel it fair for you to hold us to that standard.
     </blockquote>
-</div>
-<div class="lang-block lang-cn">
-    <span class="lang-label">中文翻译</span>
-    <blockquote>
+                </div>
+                <div class="lang-block lang-cn">
+                    <span class="lang-label">中文翻译</span>
+                    <blockquote>
 第2页的表格显示了我们与标准普尔指数46年来的业绩，早期相当好，现在只能说令人满意。我们要强调的是，那些丰厚的年份永远不会回来。我们目前管理的大量资本消除了任何取得卓越表现的机会。然而，我们将努力争取高于平均水平的结果，并认为你们按此标准要求我们是公平的。
     </blockquote>
-</div>
+                </div>
+            </div>
 
-<div class="lang-block lang-en">
-    <span class="lang-label">English</span>
-    <blockquote>
+            <div class="bilingual-block">
+                <div class="lang-block lang-en">
+                    <span class="lang-label">English</span>
+                    <blockquote>
 Yearly figures, it should be noted, are neither to be ignored nor viewed as all-important. The pace of the earth's movement around the sun is not synchronized with the time required for either investment ideas or operating decisions to bear fruit. At GEICO, for example, we enthusiastically spent $900 million last year on advertising to obtain policyholders who deliver us no immediate profits. If we could spend twice that amount productively, we would happily do so though short-term results would be further penalized. Many large investments at our railroad and utility operations are also made with an as-yet payoff well down the road.
     </blockquote>
-</div>
-<div class="lang-block lang-cn">
-    <span class="lang-label">中文翻译</span>
-    <blockquote>
+                </div>
+                <div class="lang-block lang-cn">
+                    <span class="lang-label">中文翻译</span>
+                    <blockquote>
 值得注意的是，年度数据既不应被忽视，也不应被视为最重要。地球绕太阳公转的节奏与投资理念或经营决策结出果实所需的时间并不同步调。例如，在GEICO，去年我们热情地投入了9亿美元进行广告，以获取不会立即带来利润的保单持有人。如果我们能够创造性地花费这一数额的两倍，我们会很乐意这样做，尽管短期结果会受到进一步惩罚。我们的铁路和公用事业业务做出的许多大型投资，也是要在很久的将来才能看到回报。
     </blockquote>
-</div>
+                </div>
+            </div>
 
-<h2>内在价值</h2>
-
-<div class="lang-block lang-en">
-    <span class="lang-label">English</span>
-    <blockquote>
+            <div class="bilingual-block">
+                <div class="lang-block lang-en">
+                    <span class="lang-label">English</span>
+                    <blockquote>
 Though Berkshire's intrinsic value cannot be precisely calculated, two of its three key pillars can be measured. Charlie and I rely heavily on these measurements when we make our own estimates of Berkshire's value.
     </blockquote>
-</div>
-<div class="lang-block lang-cn">
-    <span class="lang-label">中文翻译</span>
-    <blockquote>
+                </div>
+                <div class="lang-block lang-cn">
+                    <span class="lang-label">中文翻译</span>
+                    <blockquote>
 虽然伯克希尔的内在价值无法精确计算，但其三大支柱中有两个是可以衡量的。查理和我在估计伯克希尔价值时严重依赖这些衡量指标。
     </blockquote>
-</div>
+                </div>
+            </div>
 
-<div class="lang-block lang-en">
-    <span class="lang-label">English</span>
-    <blockquote>
+            <div class="bilingual-block">
+                <div class="lang-block lang-en">
+                    <span class="lang-label">English</span>
+                    <blockquote>
 The first component of value is our investments: stocks, bonds and cash equivalents. At yearend these totaled $158 billion at market value. Insurance float – money we temporarily hold in our insurance operations that does not belong to us – funds $66 billion of our investments. This float is "free" as long as insurance underwriting breaks even, meaning that the premiums we receive equal the losses and expenses we incur. Of course, underwriting results are volatile, swinging erratically between profits and losses. Over our entire history, though, we've been significantly profitable, and I also expect us to average breakeven results or better in the future. If we do that, all of our investments – those funded both by float and by retained earnings – can be viewed as an element of value for Berkshire shareholders.
     </blockquote>
-</div>
-<div class="lang-block lang-cn">
-    <span class="lang-label">中文翻译</span>
-    <blockquote>
+                </div>
+                <div class="lang-block lang-cn">
+                    <span class="lang-label">中文翻译</span>
+                    <blockquote>
 价值的第一个组成部分是我们的投资：股票、债券和现金等价物。年底这些资产的市场价值总计为1580亿美元。保险浮存金——我们在保险业务中暂时持有但不属于我们的资金——为我们的投资提供了660亿美元资金。只要保险承保保本，即我们收到的保费等于我们承担的损失和费用，这种浮存金就是"免费"的。当然，承保结果波动不定，在盈利和亏损之间无序摇摆。然而，在我们的整个历史上，我们都是显著盈利的，而且我也预期未来我们平均能达到保本或更好的结果。如果我们做到了，我们的所有投资——无论是通过浮存金还是留存收益融资的——都可以被视为伯克希尔股东的价值元素。
     </blockquote>
-</div>
+                </div>
+            </div>
 
-<div class="lang-block lang-en">
-    <span class="lang-label">English</span>
-    <blockquote>
+            <div class="bilingual-block">
+                <div class="lang-block lang-en">
+                    <span class="lang-label">English</span>
+                    <blockquote>
 Berkshire's second component of value is earnings that come from sources other than investments and insurance underwriting. These earnings are delivered by our 68 non-insurance companies, itemized on page 106. In Berkshire's early years, we focused on the investment side. During the past two decades, however, we've increasingly emphasized the development of earnings from non-insurance businesses, a practice that will continue.
     </blockquote>
-</div>
-<div class="lang-block lang-cn">
-    <span class="lang-label">中文翻译</span>
-    <blockquote>
+                </div>
+                <div class="lang-block lang-cn">
+                    <span class="lang-label">中文翻译</span>
+                    <blockquote>
 伯克希尔的第二个价值组成部分是来自投资和保险承保以外来源的收益。这些收益由我们68家非保险公司提供，具体列示于第106页。在伯克希尔早期，我们专注于投资端。然而，在过去二十年中，我们越来越强调非保险业务收益的发展，这一实践将继续下去。
     </blockquote>
-</div>
+                </div>
+            </div>
 
-<div class="lang-block lang-en">
-    <span class="lang-label">English</span>
-    <blockquote>
+            <div class="bilingual-block">
+                <div class="lang-block lang-en">
+                    <span class="lang-label">English</span>
+                    <blockquote>
 The following tables illustrate this shift. In the first table, we present per-share investments at decade intervals beginning in 1970, three years after we entered the insurance business. We exclude those investments applicable to minority interests.
     </blockquote>
-</div>
-<div class="lang-block lang-cn">
-    <span class="lang-label">中文翻译</span>
-    <blockquote>
+                </div>
+                <div class="lang-block lang-cn">
+                    <span class="lang-label">中文翻译</span>
+                    <blockquote>
 下表说明了这一转变。在第一个表格中，我们从1970年开始，以十年为间隔展示每股投资，这是我们进入保险业务三年后。我们排除适用于少数股东权益的投资。
     </blockquote>
-</div>
+                </div>
+            </div>
 
-<div class="lang-block lang-en">
-    <span class="lang-label">English</span>
-    <blockquote>
+            <div class="bilingual-block">
+                <div class="lang-block lang-en">
+                    <span class="lang-label">English</span>
+                    <blockquote>
 Though our compounded annual increase in per-share investments was a healthy 19.9% over the 40-year period, our rate of increase has slowed sharply as we have focused on using funds to buy operating businesses.
     </blockquote>
-</div>
-<div class="lang-block lang-cn">
-    <span class="lang-label">中文翻译</span>
-    <blockquote>
+                </div>
+                <div class="lang-block lang-cn">
+                    <span class="lang-label">中文翻译</span>
+                    <blockquote>
 虽然我们在40年期间每股投资的年复合增长率是健康的19.9%，但由于我们专注于使用资金购买经营企业，这一增长率已大幅放缓。
     </blockquote>
-</div>
+                </div>
+            </div>
 
-<div class="lang-block lang-en">
-    <span class="lang-label">English</span>
-    <blockquote>
+            <div class="bilingual-block">
+                <div class="lang-block lang-en">
+                    <span class="lang-label">English</span>
+                    <blockquote>
 The payoff from this shift is shown in the following table, which illustrates how earnings of our non-insurance businesses have increased, again on a per-share basis and after applicable minority interests.
     </blockquote>
-</div>
-<div class="lang-block lang-cn">
-    <span class="lang-label">中文翻译</span>
-    <blockquote>
+                </div>
+                <div class="lang-block lang-cn">
+                    <span class="lang-label">中文翻译</span>
+                    <blockquote>
 这种转变的回报体现在下表中，它说明了我们的非保险企业收益如何增长，同样基于每股基础并扣除适用的少数股东权益。
     </blockquote>
-</div>
+                </div>
+            </div>
 
-<div class="lang-block lang-en">
-    <span class="lang-label">English</span>
-    <blockquote>
+            <div class="bilingual-block">
+                <div class="lang-block lang-en">
+                    <span class="lang-label">English</span>
+                    <blockquote>
 For the forty years, our compounded annual gain in pre-tax, non-insurance earnings per share is 21.0%. During the same period, Berkshire's stock price increased at a rate of 22.1% annually. Over time, you can expect our stock price to move in rough tandem with Berkshire's investments and earnings. Market price and intrinsic value often follow very different paths – sometimes for extended periods – but eventually they meet.
     </blockquote>
-</div>
-<div class="lang-block lang-cn">
-    <span class="lang-label">中文翻译</span>
-    <blockquote>
+                </div>
+                <div class="lang-block lang-cn">
+                    <span class="lang-label">中文翻译</span>
+                    <blockquote>
 在这40年里，我们的税前非保险每股收益的年复合增长率为21.0%。在同一时期，伯克希尔的股票价格年增长率为22.1%。随着时间的推移，你可以预期我们的股票价格将与伯克希尔的投资和收益大致同步。市场价格和内在价值通常遵循非常不同的路径——有时会持续很长时间——但最终它们会相遇。
     </blockquote>
-</div>
+                </div>
+            </div>
 
-<h2>保险业务</h2>
-
-<div class="lang-block lang-en">
-    <span class="lang-label">English</span>
-    <blockquote>
+            <div class="bilingual-block">
+                <div class="lang-block lang-en">
+                    <span class="lang-label">English</span>
+                    <blockquote>
 Property-casualty ("P/C") insurers receive premiums upfront and pay claims later. In extreme cases, such as those arising from certain workers' compensation accidents, payments can stretch over decades. This collect-now, pay-later model leaves us holding large sums – money we call "float" – that will eventually go to others. Meanwhile, we get to invest this float for Berkshire's benefit. Though individual policies and claims come and go, amount of float we hold remains remarkably stable in relation to premium volume. Consequently, as our business grows, so does our float.
     </blockquote>
-</div>
-<div class="lang-block lang-cn">
-    <span class="lang-label">中文翻译</span>
-    <blockquote>
+                </div>
+                <div class="lang-block lang-cn">
+                    <span class="lang-label">中文翻译</span>
+                    <blockquote>
 财产意外险（"P/C"）保险公司预先收取保费，稍后支付赔款。在极端情况下，比如某些工伤事故，付款可能延续数十年。这种"现在收取，以后支付"的模式使我们持有大量资金——我们称之为"浮存金"——这些钱最终将流向他人。与此同时，我们代表伯克希尔的利益投资这些浮存金。虽然单个保单和赔款来来去去，但我们持有的浮存金数量与保费规模相比保持稳定。因此，随着我们业务增长，我们的浮存金也增长。
     </blockquote>
-</div>
+                </div>
+            </div>
 
-<div class="lang-block lang-en">
-    <span class="lang-label">English</span>
-    <blockquote>
+            <div class="bilingual-block">
+                <div class="lang-block lang-en">
+                    <span class="lang-label">English</span>
+                    <blockquote>
 If our premiums exceed the total of our expenses and eventual losses, we register an underwriting profit that adds to the investment income our float produces. When such a profit occurs, we enjoy the use of free money – and, better yet, get paid for holding it. Alas, the wish of all insurers to achieve this happy result creates intense competition, so vigorous in most years that it causes the P/C industry as a whole to operate at a significant underwriting loss. This loss, in effect, is what the industry pays to hold its float.
     </blockquote>
-</div>
-<div class="lang-block lang-cn">
-    <span class="lang-label">中文翻译</span>
-    <blockquote>
+                </div>
+                <div class="lang-block lang-cn">
+                    <span class="lang-label">中文翻译</span>
+                    <blockquote>
 如果我们的保费超过费用和最终损失的总和，我们就获得承保利润，这会增加浮存金产生的投资收益。当产生这种利润时，我们享受免费资金的使用——而且更好的是，还能因持有它而获得报酬。可惜，所有保险公司实现这一美好结果的愿望导致了激烈竞争，在大多数年份都非常激烈，以至于导致整个P/C行业承受重大承保亏损。实际上，这一亏损就是行业为持有浮存金所付出的代价。
     </blockquote>
-</div>
+                </div>
+            </div>
 
-<div class="lang-block lang-en">
-    <span class="lang-label">English</span>
-    <blockquote>
+            <div class="bilingual-block">
+                <div class="lang-block lang-en">
+                    <span class="lang-label">English</span>
+                    <blockquote>
 At Berkshire, we have now operated at an underwriting profit for eight consecutive years, our total underwriting gain for period having been $17 billion. I believe it likely that we will continue to underwrite profitably in most – though certainly not all – future years. If we accomplish that, our float will be better than cost-free. We will benefit just as we would if some party deposited $66 billion with us, paid us a fee for holding its money and then let us invest its funds for our own benefit.
     </blockquote>
-</div>
-<div class="lang-block lang-cn">
-    <span class="lang-label">中文翻译</span>
-    <blockquote>
+                </div>
+                <div class="lang-block lang-cn">
+                    <span class="lang-label">中文翻译</span>
+                    <blockquote>
 在伯克希尔，我们已经连续八年实现承保盈利，期间的总承保收益为170亿美元。我相信我们很可能在大多数——虽然肯定不是全部——未来年份继续实现盈利承保。如果我们做到了，我们的浮存金将比免费资金更好。我们将受益，就像有方在我们这里存了660亿美元，付给我们费用来持有其资金，然后让我们为其自身利益投资其资金一样。
     </blockquote>
-</div>
+                </div>
+            </div>
 
-<div class="lang-block lang-en">
-    <span class="lang-label">English</span>
-    <blockquote>
+            <div class="bilingual-block">
+                <div class="lang-block lang-en">
+                    <span class="lang-label">English</span>
+                    <blockquote>
 Let me emphasize again that cost-free float is not an outcome to be expected for the P/C industry as a whole: In most years, premiums have been inadequate to cover claims plus expenses. Consequently, the industry's overall return on tangible equity has for many decades fallen far short of that achieved by the S&P 500. Outstanding economics exist at Berkshire only because we have some terrific managers running some unusual businesses.
     </blockquote>
-</div>
-<div class="lang-block lang-cn">
-    <span class="lang-label">中文翻译</span>
-    <blockquote>
+                </div>
+                <div class="lang-block lang-cn">
+                    <span class="lang-label">中文翻译</span>
+                    <blockquote>
 让我再次强调，对整个P/C行业而言，成本为零的浮存金不是可预期的结果：在大多数年份，保费不足以覆盖赔款和费用。因此，该行业几十年来在有形净资产上的整体回报远低于标准普尔500指数的回报。伯克希尔之所以拥有出色的经济表现，仅仅是因为我们有一些优秀管理者在运营一些非同寻常的业务。
     </blockquote>
-</div>
+                </div>
+            </div>
 
-<p style="text-align: center; margin-top: 40px; padding: 20px; background: #e8f5e9; border-radius: 8px;">
-    <em>本翻译基于2010年巴菲特致股东信原文，仅供学习参考。</em>
-</p>
 
+            <div class="letter-nav">
+                <a href="2009.html" class="nav-link">← 2009年</a>
+                <a href="../../index-pages/巴菲特致股东信总览.html" class="nav-link">信件总览</a>
+                <a href="2011.html" class="nav-link">2011年 →</a>
+            </div>
+
+            </article>
+        </div>
+    </main>
+    <footer>
+        <div class="container">
+            © 2024 巴菲特知识库 | <a href="https://github.com/akalq/buffett-knowledge-graph">GitHub</a>
+        </div>
+    </footer>
 </body>
 </html>

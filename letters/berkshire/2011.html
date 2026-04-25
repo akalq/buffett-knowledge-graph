@@ -3,556 +3,828 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2011年巴菲特致股东信 | 伯克希尔·哈撒韦</title>
+    <title>2011年巴菲特致股东信 - 巴菲特知识库</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
-        body { font-family: "PingFang SC", "Microsoft YaHei", Arial, sans-serif; line-height: 1.8; max-width: 900px; margin: 0 auto; padding: 20px; background: #fafafa; }
-        h1 { color: #1a365d; border-bottom: 3px solid #805ad5; padding-bottom: 10px; }
-        h2 { color: #2d3748; margin-top: 40px; }
-        .lang-block { margin: 20px 0; padding: 15px; border-radius: 8px; }
-        .lang-en { background: #ebf8ff; border-left: 4px solid #3182ce; }
-        .lang-cn { background: #fffaf0; border-left: 4px solid #dd6b20; }
-        .lang-label { font-weight: bold; display: block; margin-bottom: 8px; color: #4a5568; }
-        blockquote { margin: 0; padding-left: 15px; border-left: 2px solid #cbd5e0; font-size: 15px; }
-        .year-badge { background: #805ad5; color: white; padding: 5px 15px; border-radius: 20px; display: inline-block; margin-bottom: 20px; }
-        table { width: 100%; border-collapse: collapse; margin: 15px 0; font-size: 14px; }
-        th, td { border: 1px solid #e2e8f0; padding: 8px; text-align: center; }
-        th { background: #2d3748; color: white; }
-        tr:nth-child(even) { background: #f7fafc; }
+        :root {
+            --bg-color: #FFFEF9;
+            --navy: #1B2A4A;
+            --gold: #C9A227;
+            --text: #2C3E50;
+            --secondary: #5D6D7E;
+            --border: #E5E0D8;
+            --en-bg: #F8FAFC;
+            --cn-bg: #FFFBEB;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Noto Serif SC', Georgia, serif;
+            background: var(--bg-color);
+            color: var(--text);
+            line-height: 1.9;
+            min-height: 100vh;
+        }
+        .container { max-width: 1000px; margin: 0 auto; padding: 0 24px; }
+        
+        /* Header */
+        header {
+            background: var(--navy);
+            color: white;
+            padding: 16px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 12px rgba(27, 42, 74, 0.15);
+        }
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--gold);
+            text-decoration: none;
+            font-size: 1.15em;
+            font-weight: 600;
+        }
+        .logo svg { width: 32px; height: 32px; }
+        nav { display: flex; gap: 28px; }
+        nav a {
+            color: rgba(255,255,255,0.85);
+            text-decoration: none;
+            font-size: 0.9em;
+            font-family: 'Noto Sans SC', sans-serif;
+            transition: color 0.2s;
+        }
+        nav a:hover { color: var(--gold); }
+        
+        /* Main Content */
+        main { padding: 48px 0 80px; }
+        
+        .letter-header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--border);
+        }
+        .letter-year {
+            font-size: 4.5em;
+            font-weight: 700;
+            color: var(--navy);
+            line-height: 1;
+            margin-bottom: 12px;
+            letter-spacing: -2px;
+        }
+        .letter-subtitle {
+            font-size: 1.1em;
+            color: var(--secondary);
+            font-family: 'Noto Sans SC', sans-serif;
+        }
+        
+        /* Bilingual Blocks */
+        .bilingual-block {
+            margin-bottom: 32px;
+            display: grid;
+            gap: 16px;
+        }
+        .lang-block {
+            padding: 20px 24px;
+            border-radius: 8px;
+            font-size: 15px;
+        }
+        .lang-en {
+            background: var(--en-bg);
+            border-left: 4px solid var(--navy);
+        }
+        .lang-cn {
+            background: var(--cn-bg);
+            border-left: 4px solid var(--gold);
+        }
+        .lang-label {
+            display: inline-block;
+            padding: 3px 12px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 600;
+            font-family: 'Noto Sans SC', sans-serif;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .lang-en .lang-label { background: var(--navy); color: white; }
+        .lang-cn .lang-label { background: var(--gold); color: white; }
+        .lang-block blockquote {
+            margin: 0;
+            font-style: normal;
+            line-height: 1.85;
+        }
+        .lang-cn blockquote {
+            border-top: 1px dashed var(--border);
+            padding-top: 16px;
+            margin-top: 8px;
+        }
+        
+        /* Section Titles */
+        .section-title {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: var(--navy);
+            margin: 48px 0 24px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--gold);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--navy);
+            color: rgba(255,255,255,0.7);
+            padding: 32px 0;
+            text-align: center;
+            font-size: 0.85em;
+            font-family: 'Noto Sans SC', sans-serif;
+        }
+        footer a { color: var(--gold); text-decoration: none; }
+        
+        /* Navigation */
+        .letter-nav {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 48px;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+        }
+        .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 20px;
+            background: var(--navy);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-family: 'Noto Sans SC', sans-serif;
+            font-size: 0.9em;
+            transition: background 0.2s;
+        }
+        .nav-link:hover { background: var(--gold); }
+        .nav-link.disabled { opacity: 0.4; pointer-events: none; }
+        
+        @media (min-width: 768px) {
+            .bilingual-block {
+                grid-template-columns: 1fr 1fr;
+                gap: 20px;
+            }
+            .lang-cn blockquote {
+                border-top: none;
+                padding-top: 0;
+                margin-top: 0;
+            }
+        }
     </style>
 </head>
 <body>
-    <h1><span class="year-badge">2011</span> 巴菲特致股东信</h1>
-    <p><strong>伯克希尔·哈撒韦公司致全体股东：</strong></p>
-
-<div class="lang-block lang-en">
-    <span class="lang-label">English</span>
-    <blockquote>
+    <header>
+        <div class="container">
+            <a href="../../index.html" class="logo">
+                <svg viewBox="0 0 40 40" fill="none">
+                    <rect width="40" height="40" rx="8" fill="#C9A227"/>
+                    <path d="M10 28V12h4v12h6v4H10z" fill="#1B2A4A"/>
+                    <circle cx="26" cy="20" r="6" fill="#FFFEF9" stroke="#1B2A4A" stroke-width="2"/>
+                </svg>
+                <span>巴菲特知识库</span>
+            </a>
+            <nav>
+                <a href="../../index.html">首页</a>
+                <a href="../../index-pages/巴菲特致股东信总览.html">信件</a>
+                <a href="../../concepts/内在价值.html">概念</a>
+                <a href="../../companies/伯克希尔哈撒韦.html">公司</a>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <div class="container">
+            <div class="letter-header">
+                <div class="letter-year">2011</div>
+                <div class="letter-subtitle">巴菲特致伯克希尔·哈撒韦公司股东信</div>
+            </div>
+            <article class="letter-content">
+            <div class="bilingual-block">
+                <div class="lang-block lang-en">
+                    <span class="lang-label">English</span>
+                    <blockquote>
 The per-share book value of both our Class A and Class B stock increased by 4.6% in 2011. Over the last 47 years (that is, since present management took over), book value has grown from $19 to $99,860, a rate of 19.8% compounded annually.
     </blockquote>
-</div>
-<div class="lang-block lang-cn">
-    <span class="lang-label">中文翻译</span>
-    <blockquote>
+                </div>
+                <div class="lang-block lang-cn">
+                    <span class="lang-label">中文翻译</span>
+                    <blockquote>
 2011年，我们的A股和B股每股账面价值增长了4.6%。在过去47年里（即现任管理层接手以来），账面价值从19美元增长到99,860美元，年复合增长率为19.8%。
     </blockquote>
-</div>
+                </div>
+            </div>
 
-<div class="lang-block lang-en">
-    <span class="lang-label">English</span>
-    <blockquote>
+            <div class="bilingual-block">
+                <div class="lang-block lang-en">
+                    <span class="lang-label">English</span>
+                    <blockquote>
 Charlie Munger, Berkshire's Vice Chairman and my partner, and I feel good about the company's progress during 2011.
     </blockquote>
-</div>
-<div class="lang-block lang-cn">
-    <span class="lang-label">中文翻译</span>
-    <blockquote>
+                </div>
+                <div class="lang-block lang-cn">
+                    <span class="lang-label">中文翻译</span>
+                    <blockquote>
 伯克希尔的副董事长我的合作伙伴查理·芒格和我对公司在2011年的进展感到满意。
     </blockquote>
-</div>
+                </div>
+            </div>
 
-<div class="lang-block lang-en">
-    <span class="lang-label">English</span>
-    <blockquote>
+            <div class="bilingual-block">
+                <div class="lang-block lang-en">
+                    <span class="lang-label">English</span>
+                    <blockquote>
 The primary job of a Board of Directors is to see that the right people are running the business and to be sure that the next generation of leaders is identified and ready to take over tomorrow. I have been on 19 corporate boards, and Berkshire's directors are at the top of the list in the time and diligence they have devoted to succession planning. What's more, their efforts have paid off.
     </blockquote>
-</div>
-<div class="lang-block lang-cn">
-    <span class="lang-label">中文翻译</span>
-    <blockquote>
+                </div>
+                <div class="lang-block lang-cn">
+                    <span class="lang-label">中文翻译</span>
+                    <blockquote>
 董事会的主要工作是确保合适的人在经营业务，并确保下一代领导者已被识别并准备好明天接任。我曾在19家公司董事会任职，伯克希尔的董事们在为继任规划所投入的时间和勤勉方面名列榜首。更重要的是，他们的努力已经得到了回报。
     </blockquote>
-</div>
+                </div>
+            </div>
 
-<div class="lang-block lang-en">
-    <span class="lang-label">English</span>
-    <blockquote>
+            <div class="bilingual-block">
+                <div class="lang-block lang-en">
+                    <span class="lang-label">English</span>
+                    <blockquote>
 As 2011 started, Todd Combs joined us as an investment manager, and shortly after yearend Ted Weschler came aboard. Both of these men have outstanding investment skills and a deep commitment to Berkshire. Each will be handling a few billion dollars in 2012, but they have the brains, judgment and character to manage our entire portfolio when Charlie and I are no longer running Berkshire.
     </blockquote>
-</div>
-<div class="lang-block lang-cn">
-    <span class="lang-label">中文翻译</span>
-    <blockquote>
+                </div>
+                <div class="lang-block lang-cn">
+                    <span class="lang-label">中文翻译</span>
+                    <blockquote>
 2011年初，托德·康姆斯（Todd Combs）作为投资经理加入我们，年末后不久特德·韦斯勒（Ted Weschler）也加入了。这两个人都具有出色的投资技能和对伯克希尔的深厚承诺。2012年他们每人将管理数十亿美元，但当查理和我不再经营伯克希尔时，他们有智慧、判断力和品格来管理我们的整个投资组合。
     </blockquote>
-</div>
+                </div>
+            </div>
 
-<div class="lang-block lang-en">
-    <span class="lang-label">English</span>
-    <blockquote>
+            <div class="bilingual-block">
+                <div class="lang-block lang-en">
+                    <span class="lang-label">English</span>
+                    <blockquote>
 Your Board is equally enthusiastic about my successor as CEO, an individual to whom they have had a great deal of exposure and whose managerial and human qualities they admire. (We have two superb back-up candidates as well.) When a transfer of responsibility is required, it will be seamless, and Berkshire's prospects will remain bright. More than 98% of my net worth is in Berkshire stock, all of which will go to various philanthropies. Being so heavily concentrated in one stock defies conventional wisdom. But I'm fine with this arrangement, knowing both the quality and diversity of the businesses we own and the caliber of the people who manage them. With these assets, my successor will enjoy a running start.
     </blockquote>
-</div>
-<div class="lang-block lang-cn">
-    <span class="lang-label">中文翻译</span>
-    <blockquote>
+                </div>
+                <div class="lang-block lang-cn">
+                    <span class="lang-label">中文翻译</span>
+                    <blockquote>
 你们的董事会对我作为首席执行官的继任者同样充满热情，这是一位他们有大量接触机会并且钦佩其管理才能和人格品质的人。（我们也有两位出色的备选候选人。）当需要责任交接时，这将是无缝的，伯克希尔的前景将保持光明。我的净资产98%以上是伯克希尔股票，所有这些将流向各种慈善事业。如此高度集中于一只股票违反了传统智慧。但我对这种安排感到安心，因为我了解我们所持有业务的质量和多样性，以及管理它们的人才素质。凭借这些资产，我的继任者将有一个良好的开端。
     </blockquote>
-</div>
+                </div>
+            </div>
 
-<div class="lang-block lang-en">
-    <span class="lang-label">English</span>
-    <blockquote>
+            <div class="bilingual-block">
+                <div class="lang-block lang-en">
+                    <span class="lang-label">English</span>
+                    <blockquote>
 On September 16th we acquired Lubrizol, a worldwide producer of additives and other specialty chemicals. The company has had an outstanding record since James Hambrick became CEO in 2004, with pre-tax profits increasing from $147 million to $1,085 million. Lubrizol will have many opportunities for "bolt-on" acquisitions in the specialty chemical field. Indeed, we've already agreed to three, costing $493 million. James is a disciplined buyer and a superb operator. Charlie and I are eager to expand his managerial domain.
     </blockquote>
-</div>
-<div class="lang-block lang-cn">
-    <span class="lang-label">中文翻译</span>
-    <blockquote>
+                </div>
+                <div class="lang-block lang-cn">
+                    <span class="lang-label">中文翻译</span>
+                    <blockquote>
 9月16日，我们收购了路博润（Lubrizol），这是一家全球性的添加剂和其他特种化学品生产商。自詹姆斯·汉布里克（James Hambrick）2004年担任首席执行官以来，该公司有着出色的业绩，税前利润从1.47亿美元增长到10.85亿美元。路博润在特种化学领域将有许多"补充型"收购机会。事实上，我们已经同意了三项收购，耗资4.93亿美元。詹姆斯是一位严谨的买家和卓越的经营者。查理和我渴望扩展他的管理领域。
     </blockquote>
-</div>
+                </div>
+            </div>
 
-<div class="lang-block lang-en">
-    <span class="lang-label">English</span>
-    <blockquote>
+            <div class="bilingual-block">
+                <div class="lang-block lang-en">
+                    <span class="lang-label">English</span>
+                    <blockquote>
 Our major businesses did well last year. In fact, each of our five largest non-insurance companies – BNSF, Iscar, Lubrizol, Marmon Group and MidAmerican Energy – delivered record operating earnings. In aggregate these businesses earned more than $9 billion pre-tax in 2011. Contrast that to seven years ago, when we owned only one of the five, MidAmerican, whose pre-tax earnings were $393 million. Unless the economy weakens in 2012, each of our fabulous five should again set a record, with aggregate earnings comfortably topping $10 billion.
     </blockquote>
-</div>
-<div class="lang-block lang-cn">
-    <span class="lang-label">中文翻译</span>
-    <blockquote>
+                </div>
+                <div class="lang-block lang-cn">
+                    <span class="lang-label">中文翻译</span>
+                    <blockquote>
 我们的主要业务去年表现良好。事实上，我们五大非保险公司——BNSF、伊斯卡、路博润、马尔蒙集团和中美能源——都创造了创纪录的营业收入。2011年这些企业合计税前盈利超过90亿美元。对比七年前，当时我们只拥有五家公司中的一家——中美能源，其税前利润为3.93亿美元。除非2012年经济走弱，我们的出色五强企业都应该再次创下纪录，合计利润将轻松超过100亿美元。
     </blockquote>
-</div>
+                </div>
+            </div>
 
-<div class="lang-block lang-en">
-    <span class="lang-label">English</span>
-    <blockquote>
+            <div class="bilingual-block">
+                <div class="lang-block lang-en">
+                    <span class="lang-label">English</span>
+                    <blockquote>
 In total, our entire string of operating companies spent $8.2 billion for property, plant and equipment in 2011, smashing our previous record by more than $2 billion. About 95% of these outlays were made in the U.S., a fact that may surprise those who believe our country lacks investment opportunities. We welcome projects abroad, but expect the overwhelming majority of Berkshire's future capital commitments to be in America.
     </blockquote>
-</div>
-<div class="lang-block lang-cn">
-    <span class="lang-label">中文翻译</span>
-    <blockquote>
+                </div>
+                <div class="lang-block lang-cn">
+                    <span class="lang-label">中文翻译</span>
+                    <blockquote>
 总体而言，我们整个运营公司群在2011年共投入82亿美元用于购买房产、厂房和设备，比我们之前的纪录高出20多亿美元。其中约95%是在美国支出的，这一事实可能令那些认为我们国家缺乏投资机会的人感到惊讶。我们欢迎海外项目，但预期伯克希尔未来绝大部分资本承诺将在美国。
     </blockquote>
-</div>
+                </div>
+            </div>
 
-<div class="lang-block lang-en">
-    <span class="lang-label">English</span>
-    <blockquote>
+            <div class="bilingual-block">
+                <div class="lang-block lang-en">
+                    <span class="lang-label">English</span>
+                    <blockquote>
 Our insurance operations continued their delivery of costless capital that funds a myriad of other opportunities. This business produces "float" – money that doesn't belong to us, but that we get to invest for Berkshire's benefit. And if we pay out less in losses and expenses than we receive in premiums, we additionally earn an underwriting profit, meaning the float costs us less than nothing. Though we are sure to have underwriting losses from time to time, we've now had nine consecutive years of underwriting profits, totaling about $17 billion. Over the same nine years our float increased from $41 billion to its current record of $70 billion. Insurance has been good to us.
     </blockquote>
-</div>
-<div class="lang-block lang-cn">
-    <span class="lang-label">中文翻译</span>
-    <blockquote>
+                </div>
+                <div class="lang-block lang-cn">
+                    <span class="lang-label">中文翻译</span>
+                    <blockquote>
 我们的保险业务继续提供无成本资本，为无数其他机会提供资金。这一业务产生"浮存金"——不属于我们的钱，但我们可以为伯克希尔的利益进行投资。而且如果我们在损失和费用上的支出少于收到的保费，我们还会获得承保利润，意味着浮存金的成本低于零。尽管我们肯定会时不时出现承保亏损，但我们现在已经连续九年实现承保盈利，累计约170亿美元。在同样的九年里，我们的浮存金从410亿美元增长到目前的纪录700亿美元。保险对我们一直很好。
     </blockquote>
-</div>
+                </div>
+            </div>
 
-<div class="lang-block lang-en">
-    <span class="lang-label">English</span>
-    <blockquote>
+            <div class="bilingual-block">
+                <div class="lang-block lang-en">
+                    <span class="lang-label">English</span>
+                    <blockquote>
 Finally, we made two major investments in marketable securities: (1) a $5 billion 6% preferred stock of Bank of America that came with warrants allowing us to buy 700 million common shares at $7.14 per share anytime before September 2, 2021; and (2) 63.9 million shares of IBM that cost us $10.9 billion. Counting IBM, we now have large ownership interests in four exceptional companies: 13.0% of American Express, 8.8% of Coca-Cola, 5.5% of IBM and 7.6% of Wells Fargo.
     </blockquote>
-</div>
-<div class="lang-block lang-cn">
-    <span class="lang-label">中文翻译</span>
-    <blockquote>
+                </div>
+                <div class="lang-block lang-cn">
+                    <span class="lang-label">中文翻译</span>
+                    <blockquote>
 最后，我们在有价证券方面进行了两项重大投资：（1）美国银行（Bank of America）50亿美元6%优先股，带有认股权证，允许我们在2021年9月2日之前随时以每股7.14美元的价格购买7亿股普通股；（2）6390万股IBM股票，成本为109亿美元。加上IBM，我们现在在四家杰出公司中拥有大量股权：美国运通（American Express）13.0%、可口可乐（Coca-Cola）8.8%、IBM 5.5%和富国银行（Wells Fargo）7.6%。
     </blockquote>
-</div>
+                </div>
+            </div>
 
-<div class="lang-block lang-en">
-    <span class="lang-label">English</span>
-    <blockquote>
+            <div class="bilingual-block">
+                <div class="lang-block lang-en">
+                    <span class="lang-label">English</span>
+                    <blockquote>
 We view these holdings as partnership interests in wonderful businesses, not as marketable securities to be bought or sold based upon their near-term prospects. Our share of their earnings, however, are far from fully reflected in our earnings; only the dividends we receive from these businesses show up in our financial reports. Over time, though, the undistributed earnings of these companies that are attributable to our ownership are of huge importance to us. That's because they will be used in a variety of ways to increase future earnings and dividends of the investee.
     </blockquote>
-</div>
-<div class="lang-block lang-cn">
-    <span class="lang-label">中文翻译</span>
-    <blockquote>
+                </div>
+                <div class="lang-block lang-cn">
+                    <span class="lang-label">中文翻译</span>
+                    <blockquote>
 我们将这些持股视为对卓越企业的合伙权益，而非基于短期前景买卖的有价证券。然而，我们应占的收益远未完全反映在我们的收益中；只有我们从这些企业收到的股息才出现在我们的财务报告中。然而，随着时间的推移，这些公司归属于我们持股的未分配收益对我们非常重要。因为它们将以各种方式用于增加被投资公司的未来收益和股息。
     </blockquote>
-</div>
+                </div>
+            </div>
 
-<div class="lang-block lang-en">
-    <span class="lang-label">English</span>
-    <blockquote>
+            <div class="bilingual-block">
+                <div class="lang-block lang-en">
+                    <span class="lang-label">English</span>
+                    <blockquote>
 A few years back, I spent about $2 billion buying several bond issues of Energy Future Holdings, an electric utility operation serving portions of Texas. That was a mistake – a big mistake. In large measure, the company's prospects were tied to the price of natural gas, which tanked shortly after our purchase and remains depressed. Though we have annually received interest payments of about $102 million since our purchase, the company's ability to pay will soon be exhausted unless gas prices rise substantially.
     </blockquote>
-</div>
-<div class="lang-block lang-cn">
-    <span class="lang-label">中文翻译</span>
-    <blockquote>
+                </div>
+                <div class="lang-block lang-cn">
+                    <span class="lang-label">中文翻译</span>
+                    <blockquote>
 几年前，我花了约20亿美元购买能源未来控股公司（Energy Future Holdings）的几批债券，这是一家为德克萨斯州部分地区服务的电力公用事业公司。这是一个错误——一个重大错误。在很大程度上，该公司的前景与天然气价格挂钩，天然气在我们购买后不久就崩盘了，至今仍处于低迷状态。虽然自我们购买以来我们每年都收到约1.02亿美元的利息，但除非天然气价格大幅上涨，否则该公司偿还债务的能力很快就会耗尽。
     </blockquote>
-</div>
+                </div>
+            </div>
 
-<div class="lang-block lang-en">
-    <span class="lang-label">English</span>
-    <blockquote>
+            <div class="bilingual-block">
+                <div class="lang-block lang-en">
+                    <span class="lang-label">English</span>
+                    <blockquote>
 Three large and very attractive fixed-income investments were called away from us by their issuers in 2011. Swiss Re, Goldman Sachs and General Electric paid us an aggregate of $12.8 billion to redeem securities that were producing about $1.2 billion of pre-tax earnings for Berkshire. That's a lot of income to replace, though our Lubrizol purchase did offset most of it.
     </blockquote>
-</div>
-<div class="lang-block lang-cn">
-    <span class="lang-label">中文翻译</span>
-    <blockquote>
+                </div>
+                <div class="lang-block lang-cn">
+                    <span class="lang-label">中文翻译</span>
+                    <blockquote>
 三项大型且非常有吸引力的固定收益投资在2011年被发行人赎回了。瑞士再保险（Swiss Re）、高盛（Goldman Sachs）和通用电气（General Electric）向我们支付总计128亿美元以赎回证券，这些证券为伯克希尔产生了约12亿美元的税前收益。这是很大一笔需要替换的收入，尽管我们的路博润收购抵消了大部分。
     </blockquote>
-</div>
+                </div>
+            </div>
 
-<div class="lang-block lang-en">
-    <span class="lang-label">English</span>
-    <blockquote>
+            <div class="bilingual-block">
+                <div class="lang-block lang-en">
+                    <span class="lang-label">English</span>
+                    <blockquote>
 Last year, I told you that "a housing recovery will probably begin within a year or so." I was dead wrong. We have five businesses whose results are significantly influenced by housing activity. The connection is direct at Clayton Homes, which is the largest producer of homes in the country, accounting for about 7% of those constructed during 2011.
     </blockquote>
-</div>
-<div class="lang-block lang-cn">
-    <span class="lang-label">中文翻译</span>
-    <blockquote>
+                </div>
+                <div class="lang-block lang-cn">
+                    <span class="lang-label">中文翻译</span>
+                    <blockquote>
 去年，我告诉你们"住房复苏可能在一年左右开始"。我完全错了。我们有五项业务的业绩受住房活动显著影响。克莱顿房屋的联系最为直接，它是美国最大的房屋生产商，占2011年建造房屋的约7%。
     </blockquote>
-</div>
+                </div>
+            </div>
 
-<div class="lang-block lang-en">
-    <span class="lang-label">English</span>
-    <blockquote>
+            <div class="bilingual-block">
+                <div class="lang-block lang-en">
+                    <span class="lang-label">English</span>
+                    <blockquote>
 Housing will come back – you can be sure of that. Over time, the number of housing units necessarily matches the number of households (after allowing for a normal level of vacancies). For a period of years prior to 2008, however, America added more housing units than households. Inevitably, we ended up with far too many units and the bubble popped with a violence that shook the entire economy.
     </blockquote>
-</div>
-<div class="lang-block lang-cn">
-    <span class="lang-label">中文翻译</span>
-    <blockquote>
+                </div>
+                <div class="lang-block lang-cn">
+                    <span class="lang-label">中文翻译</span>
+                    <blockquote>
 住房市场将会复苏——你可以确定这一点。随着时间的推移，住房单元的数量必然与家庭数量相匹配（考虑到正常的空置率）。然而，在2008年之前的几年里，美国新增的住房单元超过了家庭增长。不可避免地，我们最终拥有了太多单元，泡沫破裂的冲击力震动了整个经济。
     </blockquote>
-</div>
+                </div>
+            </div>
 
-<div class="lang-block lang-en">
-    <span class="lang-label">English</span>
-    <blockquote>
+            <div class="bilingual-block">
+                <div class="lang-block lang-en">
+                    <span class="lang-label">English</span>
+                    <blockquote>
 That devastating supply/demand equation is now reversed: Every day we are creating more households than housing units. People may postpone hitching up during uncertain times, but eventually hormones take over. And while "doubling-up" may be the initial reaction of some during a recession, living with in-laws can quickly lose its allure.
     </blockquote>
-</div>
-<div class="lang-block lang-cn">
-    <span class="lang-label">中文翻译</span>
-    <blockquote>
+                </div>
+                <div class="lang-block lang-cn">
+                    <span class="lang-label">中文翻译</span>
+                    <blockquote>
 这一毁灭性的供需方程式现在已经逆转：每天我们创造的家庭数量超过住房单元数量。人们在不确定时期可能会推迟结婚，但最终荷尔蒙会占上风。虽然"两人合住"可能是一些人在衰退期间的最初反应，但和岳父母同住很快就会失去吸引力。
     </blockquote>
-</div>
+                </div>
+            </div>
 
-<div class="lang-block lang-en">
-    <span class="lang-label">English</span>
-    <blockquote>
+            <div class="bilingual-block">
+                <div class="lang-block lang-en">
+                    <span class="lang-label">English</span>
+                    <blockquote>
 At our current annual pace of 600,000 housing starts – considerably less than the number of new households being formed – buyers and renters are sopping up what's left of the old oversupply. (This process will run its course at different rates around the country; the supply-demand situation varies widely by locale.) While this healing takes place, however, our housing-related companies sputter, employing only 43,315 people compared to 58,769 in 2006.
     </blockquote>
-</div>
-<div class="lang-block lang-cn">
-    <span class="lang-label">中文翻译</span>
-    <blockquote>
+                </div>
+                <div class="lang-block lang-cn">
+                    <span class="lang-label">中文翻译</span>
+                    <blockquote>
 在我们目前每年60万套新屋开工的步伐下——远低于新家庭形成的数量——买家和租户正在消耗旧的过剩库存。（这一过程在全国各地会以不同速度进行；供需情况因地区差异很大。）然而，在这个恢复过程中，我们与住房相关的公司步履蹒跚，仅雇用43,315人，而2006年为58,769人。
     </blockquote>
-</div>
+                </div>
+            </div>
 
-<div class="lang-block lang-en">
-    <span class="lang-label">English</span>
-    <blockquote>
+            <div class="bilingual-block">
+                <div class="lang-block lang-en">
+                    <span class="lang-label">English</span>
+                    <blockquote>
 I believe this is the major reason a recovery in employment has so severely lagged the steady and substantial comeback we have seen in almost all other sectors of our economy. Wise monetary and fiscal policies play an important role in tempering recessions, but these tools don't create households nor eliminate excess housing units. Fortunately, demographics and our market system will restore the needed balance – probably before long.
     </blockquote>
-</div>
-<div class="lang-block lang-cn">
-    <span class="lang-label">中文翻译</span>
-    <blockquote>
+                </div>
+                <div class="lang-block lang-cn">
+                    <span class="lang-label">中文翻译</span>
+                    <blockquote>
 我认为这是就业复苏严重落后于我们几乎在所有其他经济领域看到的稳定而显著反弹的主要原因。明智的货币和财政政策在缓和衰退方面发挥着重要作用，但这些工具不会创造家庭，也不会消除过剩的住房单元。幸运的是，人口统计数据和我们的市场体系将恢复所需的平衡——可能很快就会实现。
     </blockquote>
-</div>
+                </div>
+            </div>
 
-<h2>股票回购</h2>
-
-<div class="lang-block lang-en">
-    <span class="lang-label">English</span>
-    <blockquote>
+            <div class="bilingual-block">
+                <div class="lang-block lang-en">
+                    <span class="lang-label">English</span>
+                    <blockquote>
 Last September, we announced that Berkshire would repurchase its shares at a price of up to 110% of book value. We were in the market for only a few days – buying $67 million of stock – before the price advanced beyond our limit. Nonetheless, the general importance of share repurchases suggests I should focus for a bit on the subject.
     </blockquote>
-</div>
-<div class="lang-block lang-cn">
-    <span class="lang-label">中文翻译</span>
-    <blockquote>
+                </div>
+                <div class="lang-block lang-cn">
+                    <span class="lang-label">中文翻译</span>
+                    <blockquote>
 去年9月，我们宣布伯克希尔将以不超过账面价值110%的价格回购股票。我们在市场上只待了几天——回购了6700万美元的股票——价格就涨到了我们的上限之上。尽管如此，股票回购的一般重要性表明我应该花点时间谈谈这个话题。
     </blockquote>
-</div>
+                </div>
+            </div>
 
-<div class="lang-block lang-en">
-    <span class="lang-label">English</span>
-    <blockquote>
+            <div class="bilingual-block">
+                <div class="lang-block lang-en">
+                    <span class="lang-label">English</span>
+                    <blockquote>
 Charlie and I favor repurchases when two conditions are met: first, a company has ample funds to take care of the operational and liquidity needs of its business; second, its stock is selling at a material discount to the company's intrinsic business value, conservatively calculated.
     </blockquote>
-</div>
-<div class="lang-block lang-cn">
-    <span class="lang-label">中文翻译</span>
-    <blockquote>
+                </div>
+                <div class="lang-block lang-cn">
+                    <span class="lang-label">中文翻译</span>
+                    <blockquote>
 查理和我赞成在满足两个条件时进行回购：首先，公司有充足的资金来满足其业务的运营和流动性需求；其次，其股票以低于公司内在业务价值的实质性折扣交易（保守计算）。
     </blockquote>
-</div>
+                </div>
+            </div>
 
-<div class="lang-block lang-en">
-    <span class="lang-label">English</span>
-    <blockquote>
+            <div class="bilingual-block">
+                <div class="lang-block lang-en">
+                    <span class="lang-label">English</span>
+                    <blockquote>
 At our limit price of 110% of book value, repurchases clearly increase Berkshire's per-share intrinsic value. And the more and the cheaper we buy, the greater the gain for continuing shareholders. Therefore, if given the opportunity, we will likely repurchase stock aggressively at our price limit or lower. You should know, however, that we have no interest in supporting the stock and that our bids will fade in particularly weak markets.
     </blockquote>
-</div>
-<div class="lang-block lang-cn">
-    <span class="lang-label">中文翻译</span>
-    <blockquote>
+                </div>
+                <div class="lang-block lang-cn">
+                    <span class="lang-label">中文翻译</span>
+                    <blockquote>
 在我们110%账面价值的上限价格下，回购明显提高了伯克希尔的每股内在价值。我们买得越多、买得越便宜，继续持股的股东收益就越大。因此，如果有机会，我们可能会以我们的价格上限或更低积极回购股票。然而，你应该知道，我们无意支撑股价，我们的出价在特别疲软的市场中会减少。
     </blockquote>
-</div>
+                </div>
+            </div>
 
-<div class="lang-block lang-en">
-    <span class="lang-label">English</span>
-    <blockquote>
+            <div class="bilingual-block">
+                <div class="lang-block lang-en">
+                    <span class="lang-label">English</span>
+                    <blockquote>
 Let's use IBM as an example. As all business observers know, CEOs Lou Gerstner and Sam Palmisano did a superb job in moving IBM from near-bankruptcy twenty years ago to its prominence today. Their operational accomplishments were truly extraordinary. But their financial management was equally brilliant, particularly in recent years as the company's financial flexibility improved.
     </blockquote>
-</div>
-<div class="lang-block lang-cn">
-    <span class="lang-label">中文翻译</span>
-    <blockquote>
+                </div>
+                <div class="lang-block lang-cn">
+                    <span class="lang-label">中文翻译</span>
+                    <blockquote>
 让我们以IBM为例。正如所有商业观察家所知，首席执行官卢·格斯特纳（Lou Gerstner）和萨姆·帕尔米萨诺（Sam Palmisano）在将IBM从二十年前的濒临破产转变到今天的领先地位方面做得非常出色。他们的运营成就确实非同寻常。但他们的财务管理同样精彩，尤其是近年来公司财务灵活性得到改善。
     </blockquote>
-</div>
+                </div>
+            </div>
 
-<div class="lang-block lang-en">
-    <span class="lang-label">English</span>
-    <blockquote>
+            <div class="bilingual-block">
+                <div class="lang-block lang-en">
+                    <span class="lang-label">English</span>
+                    <blockquote>
 Today, IBM has 1.16 billion shares outstanding, of which we own about 63.9 million or 5.5%. Naturally, what happens to the company's earnings over the next five years is of enormous importance to us. Beyond that, the company will likely spend $50 billion or so in those years to repurchase shares. Our quiz for the day: What should a long-term shareholder, such as Berkshire, cheer for during that period?
     </blockquote>
-</div>
-<div class="lang-block lang-cn">
-    <span class="lang-label">中文翻译</span>
-    <blockquote>
+                </div>
+                <div class="lang-block lang-cn">
+                    <span class="lang-label">中文翻译</span>
+                    <blockquote>
 今天，IBM有11.6亿股流通股，我们持有约6390万股，占5.5%。自然，该公司未来五年的收益情况对我们至关重要。除此之外，该公司可能在这些年份花费约500亿美元回购股票。我们今天的问题：像伯克希尔这样的长期股东在此期间应该为什么而欢呼？
     </blockquote>
-</div>
+                </div>
+            </div>
 
-<div class="lang-block lang-en">
-    <span class="lang-label">English</span>
-    <blockquote>
+            <div class="bilingual-block">
+                <div class="lang-block lang-en">
+                    <span class="lang-label">English</span>
+                    <blockquote>
 I won't keep you in suspense. We should wish for IBM's stock price to languish throughout the five years. Let's do the math. If IBM's stock price averages, say, $200 during the period, the company will acquire 250 million shares for its $50 billion. There would consequently be 910 million shares outstanding, and we would own about 7% of the company.
     </blockquote>
-</div>
-<div class="lang-block lang-cn">
-    <span class="lang-label">中文翻译</span>
-    <blockquote>
+                </div>
+                <div class="lang-block lang-cn">
+                    <span class="lang-label">中文翻译</span>
+                    <blockquote>
 我不会让你悬念太久。我们应该希望IBM股价在这五年期间表现低迷。让我们算算。如果IBM股价在此期间平均为比如说200美元，该公司将用其500亿美元收购2.5亿股。因此将有9.1亿股流通股，我们将持有约7%的公司股份。
     </blockquote>
-</div>
+                </div>
+            </div>
 
-<div class="lang-block lang-en">
-    <span class="lang-label">English</span>
-    <blockquote>
+            <div class="bilingual-block">
+                <div class="lang-block lang-en">
+                    <span class="lang-label">English</span>
+                    <blockquote>
 If IBM were to earn, say, $20 billion in the fifth year, our share of those earnings would be a full $100 million greater under the "disappointing" scenario of a lower stock price than they would have been at the higher price. At some later point our shares would be worth perhaps $1½ billion more than if the "high-price" repurchase scenario had taken place.
     </blockquote>
-</div>
-<div class="lang-block lang-cn">
-    <span class="lang-label">中文翻译</span>
-    <blockquote>
+                </div>
+                <div class="lang-block lang-cn">
+                    <span class="lang-label">中文翻译</span>
+                    <blockquote>
 如果IBM在第五年盈利比如说200亿美元，在股价较低的"令人失望"情景下，我们应占的收益将比高价情景下多整整1亿美元。在某个后期时点，我们的股份可能比"高价"回购情景下价值多约15亿美元。
     </blockquote>
-</div>
+                </div>
+            </div>
 
-<div class="lang-block lang-en">
-    <span class="lang-label">English</span>
-    <blockquote>
+            <div class="bilingual-block">
+                <div class="lang-block lang-en">
+                    <span class="lang-label">English</span>
+                    <blockquote>
 The logic is simple: If you are going to be a net buyer of stocks in the future, either directly with your own money or indirectly (through your ownership of a company that is repurchasing shares), you are hurt when stocks rise. You benefit when stocks swoon. Emotions, however, too often complicate the matter: Most people, including those who will be net buyers in the future, take comfort in seeing stock prices advance.
     </blockquote>
-</div>
-<div class="lang-block lang-cn">
-    <span class="lang-label">中文翻译</span>
-    <blockquote>
+                </div>
+                <div class="lang-block lang-cn">
+                    <span class="lang-label">中文翻译</span>
+                    <blockquote>
 逻辑很简单：如果你未来将成为股票的净买家，无论是直接用自己的钱还是间接地（通过你持有的正在回购股票的公司），当股价上涨时你会受损。当股价暴跌时你会受益。然而，情绪往往使事情复杂化：大多数人，包括那些未来将成为净买家的人，看到股价上涨时会感到安慰。
     </blockquote>
-</div>
+                </div>
+            </div>
 
-<h2>保险业务</h2>
-
-<div class="lang-block lang-en">
-    <span class="lang-label">English</span>
-    <blockquote>
+            <div class="bilingual-block">
+                <div class="lang-block lang-en">
+                    <span class="lang-label">English</span>
+                    <blockquote>
 Property-casualty ("P/C") insurers receive premiums upfront and pay claims later. In extreme cases, such as those arising from certain workers' compensation accidents, payments can stretch over decades. This collect-now, pay-later model leaves us holding large sums – money we call "float" – that will eventually go to others. Meanwhile, we get to invest this float for Berkshire's benefit. Though individual policies and claims come and go, the amount of float we hold remains remarkably stable in relation to premium volume. Consequently, as our business grows, so does our float.
     </blockquote>
-</div>
-<div class="lang-block lang-cn">
-    <span class="lang-label">中文翻译</span>
-    <blockquote>
+                </div>
+                <div class="lang-block lang-cn">
+                    <span class="lang-label">中文翻译</span>
+                    <blockquote>
 财产意外险（"P/C"）保险公司预先收取保费，稍后支付赔款。在极端情况下，比如某些工伤事故，付款可能延续数十年。这种"现在收取，以后支付"的模式使我们持有大量资金——我们称之为"浮存金"——这些钱最终将流向他人。与此同时，我们代表伯克希尔的利益投资这些浮存金。虽然单个保单和赔款来来去去，但我们持有的浮存金数量与保费规模相比保持稳定。因此，随着我们业务增长，我们的浮存金也增长。
     </blockquote>
-</div>
+                </div>
+            </div>
 
-<div class="lang-block lang-en">
-    <span class="lang-label">English</span>
-    <blockquote>
+            <div class="bilingual-block">
+                <div class="lang-block lang-en">
+                    <span class="lang-label">English</span>
+                    <blockquote>
 It's unlikely that our float will grow much – if at all – from its current level. That's mainly because we already have an outsized amount relative to our premium volume. Were there to be a decline in float, I will add, it would almost certainly be very gradual and therefore impose no unusual demand for funds on us.
     </blockquote>
-</div>
-<div class="lang-block lang-cn">
-    <span class="lang-label">中文翻译</span>
-    <blockquote>
+                </div>
+                <div class="lang-block lang-cn">
+                    <span class="lang-label">中文翻译</span>
+                    <blockquote>
 我们的浮存金不太可能从当前水平增长太多——如果有的话。这主要是因为我们已经拥有了与保费规模相比过大的金额。我要补充的是，如果浮存金下降，那几乎可以肯定是渐进式的，因此不会对我们造成任何异常的资本需求压力。
     </blockquote>
-</div>
+                </div>
+            </div>
 
-<div class="lang-block lang-en">
-    <span class="lang-label">English</span>
-    <blockquote>
+            <div class="bilingual-block">
+                <div class="lang-block lang-en">
+                    <span class="lang-label">English</span>
+                    <blockquote>
 So how does this attractive float affect intrinsic value calculations? Our float is deducted in full as a liability in calculating Berkshire's book value, just as if we had to pay it out tomorrow and were unable to replenish it. But that's an incorrect way to view float, which should instead be viewed as a revolving fund. If float is both costless and long-enduring, the true value of this liability is far lower than the accounting liability.
     </blockquote>
-</div>
-<div class="lang-block lang-cn">
-    <span class="lang-label">中文翻译</span>
-    <blockquote>
+                </div>
+                <div class="lang-block lang-cn">
+                    <span class="lang-label">中文翻译</span>
+                    <blockquote>
 那么这种有吸引力的浮存金如何影响内在价值计算？我们的浮存金在计算伯克希尔账面价值时作为负债全额扣除，就好像我们必须明天支付且无法补充一样。但这是看待浮存金的不正确方式，它应该被视为循环基金。如果浮存金既无成本又长期存在，这一负债的真实价值远低于会计负债。
     </blockquote>
-</div>
+                </div>
+            </div>
 
-<div class="lang-block lang-en">
-    <span class="lang-label">English</span>
-    <blockquote>
+            <div class="bilingual-block">
+                <div class="lang-block lang-en">
+                    <span class="lang-label">English</span>
+                    <blockquote>
 Let me emphasize once again that cost-free float is not an outcome to be expected for the P/C industry as a whole: We don't think there is much "Berkshire-quality" float existing in the insurance world. In most years, including 2011, the industry's premiums have been inadequate to cover claims plus expenses. Consequently, the industry's overall return on tangible equity has for many decades fallen far short of the average return realized by American industry.
     </blockquote>
-</div>
-<div class="lang-block lang-cn">
-    <span class="lang-label">中文翻译</span>
-    <blockquote>
+                </div>
+                <div class="lang-block lang-cn">
+                    <span class="lang-label">中文翻译</span>
+                    <blockquote>
 让我再次强调，对整个P/C行业而言，成本为零的浮存金不是可预期的结果：我们认为保险界没有多少"伯克希尔品质"的浮存金存在。在大多数年份，包括2011年，该行业的保费不足以覆盖赔款加费用。因此，该行业几十年来在有形净资产上的整体回报远低于美国工业的平均回报。
     </blockquote>
-</div>
+                </div>
+            </div>
 
-<div class="lang-block lang-en">
-    <span class="lang-label">English</span>
-    <blockquote>
+            <div class="bilingual-block">
+                <div class="lang-block lang-en">
+                    <span class="lang-label">English</span>
+                    <blockquote>
 First by float size is the Berkshire Hathaway Reinsurance Group, run by Ajit Jain. Ajit insures risks that no one else has the desire or the capital to take on. His operation combines capacity, speed, decisiveness and, most importantly, brains in a manner that is unique in the insurance business. Yet he never exposes Berkshire to risks that are inappropriate in relation to our resources.
     </blockquote>
-</div>
-<div class="lang-block lang-cn">
-    <span class="lang-label">中文翻译</span>
-    <blockquote>
+                </div>
+                <div class="lang-block lang-cn">
+                    <span class="lang-label">中文翻译</span>
+                    <blockquote>
 按浮存金规模排列第一的是伯克希尔·哈撒韦再保险集团，由阿吉特·贾恩（Ajit Jain）负责。阿吉特承保其他任何人没有意愿或资本来承担的风险。他的业务以保险界独一无二的方式结合了产能、速度、果断和最重要的智慧。然而，他从不使伯克希尔承担与我们的资源不相称的风险。
     </blockquote>
-</div>
+                </div>
+            </div>
 
-<div class="lang-block lang-en">
-    <span class="lang-label">English</span>
-    <blockquote>
+            <div class="bilingual-block">
+                <div class="lang-block lang-en">
+                    <span class="lang-label">English</span>
+                    <blockquote>
 From a standing start in 1985, Ajit has created an insurance business with float of $34 billion and significant underwriting profits, a feat that no CEO of any other insurer has come close to matching. By these accomplishments, he has added a great many billions of dollars to the value of Berkshire. Charlie would gladly trade me for a second Ajit. Alas, there is none.
     </blockquote>
-</div>
-<div class="lang-block lang-cn">
-    <span class="lang-label">中文翻译</span>
-    <blockquote>
+                </div>
+                <div class="lang-block lang-cn">
+                    <span class="lang-label">中文翻译</span>
+                    <blockquote>
 从1985年的起步开始，阿吉特创建了一个拥有340亿美元浮存金和大量承保利润的保险业务，这一成就任何其他保险公司的首席执行官都远未能匹配。通过这些成就，他为伯克希尔增加了数十亿美元的价值。查理很乐意把我换成第二个阿吉特。唉，没有人能和他相比。
     </blockquote>
-</div>
+                </div>
+            </div>
 
-<div class="lang-block lang-en">
-    <span class="lang-label">English</span>
-    <blockquote>
+            <div class="bilingual-block">
+                <div class="lang-block lang-en">
+                    <span class="lang-label">English</span>
+                    <blockquote>
 Finally, there is GEICO, the insurer on which I cut my teeth 61 years ago. GEICO is run by Tony Nicely, who joined the company at 18 and completed 50 years of service in 2011. GEICO's much-envied record comes from Tony's brilliant execution of a superb and almost-impossible-to-replicate business model.
     </blockquote>
-</div>
-<div class="lang-block lang-cn">
-    <span class="lang-label">中文翻译</span>
-    <blockquote>
+                </div>
+                <div class="lang-block lang-cn">
+                    <span class="lang-label">中文翻译</span>
+                    <blockquote>
 最后是GEICO，这是我61年前初涉保险业的起点。GEICO由托尼·尼塞利（Tony Nicely）经营，他18岁加入公司，2011年完成了50年服务。GEICO令人羡慕的业绩来自托尼对一项卓越且几乎不可能复制的商业模式的出色执行。
     </blockquote>
-</div>
+                </div>
+            </div>
 
-<div class="lang-block lang-en">
-    <span class="lang-label">English</span>
-    <blockquote>
+            <div class="bilingual-block">
+                <div class="lang-block lang-en">
+                    <span class="lang-label">English</span>
+                    <blockquote>
 During Tony's 18-year tenure as CEO, our market share has grown from 2.0% to 9.3%. If it had instead remained static – as it had for more than a decade before he took over – our premium volume would now be $3.3 billion rather than the $15.4 billion we attained in 2011. The extra value created by Tony and his associates is a major element in Berkshire's excess of intrinsic value over book value.
     </blockquote>
-</div>
-<div class="lang-block lang-cn">
-    <span class="lang-label">中文翻译</span>
-    <blockquote>
+                </div>
+                <div class="lang-block lang-cn">
+                    <span class="lang-label">中文翻译</span>
+                    <blockquote>
 在托尼担任首席执行官的18年期间，我们的市场份额从2.0%增长到9.3%。如果它保持不变——就像他接手前十多年那样——我们的保费规模现在将是33亿美元，而不是2011年实现的154亿美元。托尼和他的同事们创造的额外价值是伯克希尔内在价值超过账面价值的主要因素。
     </blockquote>
-</div>
+                </div>
+            </div>
 
-<div class="lang-block lang-en">
-    <span class="lang-label">English</span>
-    <blockquote>
+            <div class="bilingual-block">
+                <div class="lang-block lang-en">
+                    <span class="lang-label">English</span>
+                    <blockquote>
 There is still more than 90% of the auto-insurance market left for GEICO to rake in. Don't bet against Tony acquiring chunks of it year after year in the future. Our low costs permit low prices, and every day more Americans discover that the Gecko is doing them a favor when he urges them to visit GEICO.com for a quote.
     </blockquote>
-</div>
-<div class="lang-block lang-cn">
-    <span class="lang-label">中文翻译</span>
-    <blockquote>
+                </div>
+                <div class="lang-block lang-cn">
+                    <span class="lang-label">中文翻译</span>
+                    <blockquote>
 仍有超过90%的汽车保险市场留给GEICO去争取。不要赌托尼在未来不会逐年获取更大的份额。我们的低成本使我们能够提供低保费，每天都有更多美国人发现，当壁虎敦促他们访问GEICO.com获取报价时，它实际上是在帮他们的忙。
     </blockquote>
-</div>
+                </div>
+            </div>
 
-<h2>受监管的资本密集型业务</h2>
-
-<div class="lang-block lang-en">
-    <span class="lang-label">English</span>
-    <blockquote>
+            <div class="bilingual-block">
+                <div class="lang-block lang-en">
+                    <span class="lang-label">English</span>
+                    <blockquote>
 We have two very large businesses, BNSF and MidAmerican Energy, that have important common characteristics distinguishing them from our many other businesses. Consequently, we assign them their own sector in this letter and also split out their combined financial statistics in our GAAP balance sheet and income statement.
     </blockquote>
-</div>
-<div class="lang-block lang-cn">
-    <span class="lang-label">中文翻译</span>
-    <blockquote>
+                </div>
+                <div class="lang-block lang-cn">
+                    <span class="lang-label">中文翻译</span>
+                    <blockquote>
 我们有两项非常大的业务——BNSF和中美能源——它们具有重要共同特征，将它们与我们许多其他业务区分开来。因此，我们在这封信中为它们单独设立一个板块，并在我们的GAAP资产负债表和利润表中分别列出它们的综合财务数据。
     </blockquote>
-</div>
+                </div>
+            </div>
 
-<div class="lang-block lang-en">
-    <span class="lang-label">English</span>
-    <blockquote>
+            <div class="bilingual-block">
+                <div class="lang-block lang-en">
+                    <span class="lang-label">English</span>
+                    <blockquote>
 A key characteristic of both companies is the huge investment they have in very long-lived, regulated assets, with these partially funded by large amounts of long-term debt that is not guaranteed by Berkshire. Our credit is not needed: Both businesses have earning power that even under terrible business conditions amply covers their interest requirements.
     </blockquote>
-</div>
-<div class="lang-block lang-cn">
-    <span class="lang-label">中文翻译</span>
-    <blockquote>
+                </div>
+                <div class="lang-block lang-cn">
+                    <span class="lang-label">中文翻译</span>
+                    <blockquote>
 两家公司的关键特征是它们在非常长期、受监管资产上的巨额投资，部分由大量不被伯克希尔担保的长期债务提供资金。我们的信用不是必需的：两家企业的盈利能力即使在极其恶劣的商业条件下也足以覆盖其利息需求。
     </blockquote>
-</div>
+                </div>
+            </div>
 
-<div class="lang-block lang-en">
-    <span class="lang-label">English</span>
-    <blockquote>
+            <div class="bilingual-block">
+                <div class="lang-block lang-en">
+                    <span class="lang-label">English</span>
+                    <blockquote>
 Measured by ton-miles, rail moves 42% of America's inter-city freight, and BNSF moves more than any other railroad – about 37% of the industry total. A little math will tell you that about 15% of all inter-city ton-miles of freight in the U.S. is transported by BNSF. It is no exaggeration to characterize railroads as the circulatory system of our economy. Your railroad is the largest artery.
     </blockquote>
-</div>
-<div class="lang-block lang-cn">
-    <span class="lang-label">中文翻译</span>
-    <blockquote>
+                </div>
+                <div class="lang-block lang-cn">
+                    <span class="lang-label">中文翻译</span>
+                    <blockquote>
 以吨英里衡量，铁路承担了美国城际货运的42%，而BNSF比任何其他铁路都多——约占行业总量的37%。简单的数学计算会告诉你，美国所有城际货运吨英里中约15%是由BNSF运输的。将铁路描述为我们经济的循环系统毫不为过。你们的铁路是最大的动脉。
     </blockquote>
-</div>
+                </div>
+            </div>
 
-<div class="lang-block lang-en">
-    <span class="lang-label">English</span>
-    <blockquote>
+            <div class="bilingual-block">
+                <div class="lang-block lang-en">
+                    <span class="lang-label">English</span>
+                    <blockquote>
 MidAmerican, 89.8% owned by Berkshire, supplies 2.5 million customers in the U.S. with electricity, operating as the largest supplier in Iowa, Utah and Wyoming and as an important provider in six other states as well. Our pipelines transport 8% of the country's natural gas. Obviously, many millions of Americans depend on us every day. They haven't been disappointed.
     </blockquote>
-</div>
-<div class="lang-block lang-cn">
-    <span class="lang-label">中文翻译</span>
-    <blockquote>
+                </div>
+                <div class="lang-block lang-cn">
+                    <span class="lang-label">中文翻译</span>
+                    <blockquote>
 伯克希尔持有89.8%股权的中美能源为美国250万客户提供电力，是爱荷华州、犹他州和怀俄明州最大的供应商，也是其他六个州的重要提供商。我们的管道运输全国8%的天然气。显然，每天有数百万美国人依赖我们。他们没有失望。
     </blockquote>
-</div>
+                </div>
+            </div>
 
-<div class="lang-block lang-en">
-    <span class="lang-label">English</span>
-    <blockquote>
+            <div class="bilingual-block">
+                <div class="lang-block lang-en">
+                    <span class="lang-label">English</span>
+                    <blockquote>
 MidAmerican will have 3,316 megawatts of wind generation in operation by the end of 2012, far more than any other regulated electric utility in the country. The total amount that we have invested or committed to wind is a staggering $6 billion. We can make this sort of investment because MidAmerican retains all of its earnings, unlike other utilities that generally pay out most of what they earn.
     </blockquote>
-</div>
-<div class="lang-block lang-cn">
-    <span class="lang-label">中文翻译</span>
-    <blockquote>
+                </div>
+                <div class="lang-block lang-cn">
+                    <span class="lang-label">中文翻译</span>
+                    <blockquote>
 中美能源到2012年底将拥有3,316兆瓦的风力发电在运行，远超全国任何其他受监管电力公用事业公司。我们已投资或承诺用于风能的总额高达60亿美元。我们能够进行这种投资是因为中美能源保留了所有收益，不像其他公用事业公司通常将大部分收益分配出去。
     </blockquote>
-</div>
+                </div>
+            </div>
 
-<p style="text-align: center; margin-top: 40px; padding: 20px; background: #f3e8ff; border-radius: 8px;">
-    <em>本翻译基于2011年巴菲特致股东信原文，仅供学习参考。</em>
-</p>
 
+            <div class="letter-nav">
+                <a href="2010.html" class="nav-link">← 2010年</a>
+                <a href="../../index-pages/巴菲特致股东信总览.html" class="nav-link">信件总览</a>
+                <a href="2012.html" class="nav-link">2012年 →</a>
+            </div>
+
+            </article>
+        </div>
+    </main>
+    <footer>
+        <div class="container">
+            © 2024 巴菲特知识库 | <a href="https://github.com/akalq/buffett-knowledge-graph">GitHub</a>
+        </div>
+    </footer>
 </body>
 </html>

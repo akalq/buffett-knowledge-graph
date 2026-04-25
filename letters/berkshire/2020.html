@@ -3,64 +3,218 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>巴菲特致股东信 2020 - 中英对照</title>
+    <title>2020年巴菲特致股东信 - 巴菲特知识库</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --bg-color: #FFFEF9;
+            --navy: #1B2A4A;
+            --gold: #C9A227;
+            --text: #2C3E50;
+            --secondary: #5D6D7E;
+            --border: #E5E0D8;
+            --en-bg: #F8FAFC;
+            --cn-bg: #FFFBEB;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            line-height: 1.8;
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #f5f5f5;
+            font-family: 'Noto Serif SC', Georgia, serif;
+            background: var(--bg-color);
+            color: var(--text);
+            line-height: 1.9;
+            min-height: 100vh;
+        }
+        .container { max-width: 1000px; margin: 0 auto; padding: 0 24px; }
+        
+        /* Header */
+        header {
+            background: var(--navy);
+            color: white;
+            padding: 16px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 12px rgba(27, 42, 74, 0.15);
+        }
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--gold);
+            text-decoration: none;
+            font-size: 1.15em;
+            font-weight: 600;
+        }
+        .logo svg { width: 32px; height: 32px; }
+        nav { display: flex; gap: 28px; }
+        nav a {
+            color: rgba(255,255,255,0.85);
+            text-decoration: none;
+            font-size: 0.9em;
+            font-family: 'Noto Sans SC', sans-serif;
+            transition: color 0.2s;
+        }
+        nav a:hover { color: var(--gold); }
+        
+        /* Main Content */
+        main { padding: 48px 0 80px; }
+        
+        .letter-header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--border);
+        }
+        .letter-year {
+            font-size: 4.5em;
+            font-weight: 700;
+            color: var(--navy);
+            line-height: 1;
+            margin-bottom: 12px;
+            letter-spacing: -2px;
+        }
+        .letter-subtitle {
+            font-size: 1.1em;
+            color: var(--secondary);
+            font-family: 'Noto Sans SC', sans-serif;
+        }
+        
+        /* Bilingual Blocks */
+        .bilingual-block {
+            margin-bottom: 32px;
+            display: grid;
+            gap: 16px;
         }
         .lang-block {
-            margin: 20px 0;
-            padding: 15px;
+            padding: 20px 24px;
             border-radius: 8px;
+            font-size: 15px;
         }
         .lang-en {
-            background-color: #ffffff;
-            border-left: 4px solid #1a73e8;
+            background: var(--en-bg);
+            border-left: 4px solid var(--navy);
         }
         .lang-cn {
-            background-color: #f0f7ff;
-            border-left: 4px solid #34a853;
+            background: var(--cn-bg);
+            border-left: 4px solid var(--gold);
         }
         .lang-label {
             display: inline-block;
-            font-weight: bold;
-            padding: 4px 12px;
+            padding: 3px 12px;
             border-radius: 4px;
-            margin-bottom: 10px;
+            font-size: 11px;
+            font-weight: 600;
+            font-family: 'Noto Sans SC', sans-serif;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
-        .lang-en .lang-label {
-            background-color: #e8f0fe;
-            color: #1a73e8;
-        }
-        .lang-cn .lang-label {
-            background-color: #e6f4ea;
-            color: #34a853;
-        }
-        blockquote {
+        .lang-en .lang-label { background: var(--navy); color: white; }
+        .lang-cn .lang-label { background: var(--gold); color: white; }
+        .lang-block blockquote {
             margin: 0;
-            padding: 10px;
-            white-space: pre-wrap;
-            font-size: 15px;
+            font-style: normal;
+            line-height: 1.85;
         }
-        h1 {
-            color: #333;
+        .lang-cn blockquote {
+            border-top: 1px dashed var(--border);
+            padding-top: 16px;
+            margin-top: 8px;
+        }
+        
+        /* Section Titles */
+        .section-title {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: var(--navy);
+            margin: 48px 0 24px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--gold);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--navy);
+            color: rgba(255,255,255,0.7);
+            padding: 32px 0;
             text-align: center;
-            border-bottom: 2px solid #1a73e8;
-            padding-bottom: 15px;
+            font-size: 0.85em;
+            font-family: 'Noto Sans SC', sans-serif;
+        }
+        footer a { color: var(--gold); text-decoration: none; }
+        
+        /* Navigation */
+        .letter-nav {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 48px;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+        }
+        .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 20px;
+            background: var(--navy);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-family: 'Noto Sans SC', sans-serif;
+            font-size: 0.9em;
+            transition: background 0.2s;
+        }
+        .nav-link:hover { background: var(--gold); }
+        .nav-link.disabled { opacity: 0.4; pointer-events: none; }
+        
+        @media (min-width: 768px) {
+            .bilingual-block {
+                grid-template-columns: 1fr 1fr;
+                gap: 20px;
+            }
+            .lang-cn blockquote {
+                border-top: none;
+                padding-top: 0;
+                margin-top: 0;
+            }
         }
     </style>
 </head>
 <body>
-    <h1>巴菲特致股东信 2020</h1>
-    
-    <div class="lang-block lang-en">
-        <span class="lang-label">English</span>
-        <blockquote>
+    <header>
+        <div class="container">
+            <a href="../../index.html" class="logo">
+                <svg viewBox="0 0 40 40" fill="none">
+                    <rect width="40" height="40" rx="8" fill="#C9A227"/>
+                    <path d="M10 28V12h4v12h6v4H10z" fill="#1B2A4A"/>
+                    <circle cx="26" cy="20" r="6" fill="#FFFEF9" stroke="#1B2A4A" stroke-width="2"/>
+                </svg>
+                <span>巴菲特知识库</span>
+            </a>
+            <nav>
+                <a href="../../index.html">首页</a>
+                <a href="../../index-pages/巴菲特致股东信总览.html">信件</a>
+                <a href="../../concepts/内在价值.html">概念</a>
+                <a href="../../companies/伯克希尔哈撒韦.html">公司</a>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <div class="container">
+            <div class="letter-header">
+                <div class="letter-year">2020</div>
+                <div class="letter-subtitle">巴菲特致伯克希尔·哈撒韦公司股东信</div>
+            </div>
+            <article class="letter-content">
+            <div class="bilingual-block">
+                <div class="lang-block lang-en">
+                    <span class="lang-label">English</span>
+                    <blockquote>
 BERKSHIRE HATHAWAY INC.
 To the Shareholders of Berkshire Hathaway Inc.:
 
@@ -70,11 +224,10 @@ Operating earnings are what count most, even during periods when they are not th
 
 The two GAAP components pertaining to capital gains or losses (whether realized or unrealized) fluctuate capriciously from year to year, reflecting swings in the stock market. Whatever today's figures, Charlie Munger, my long-time partner, and I firmly believe that, over time, Berkshire's capital gains from its investment holdings will be substantial.
         </blockquote>
-    </div>
-    
-    <div class="lang-block lang-cn">
-        <span class="lang-label">中文翻译</span>
-        <blockquote>
+                </div>
+                <div class="lang-block lang-cn">
+                    <span class="lang-label">中文翻译</span>
+                    <blockquote>
 伯克希尔·哈撒韦公司
 致伯克希尔·哈撒韦公司股东：
 
@@ -82,11 +235,13 @@ The two GAAP components pertaining to capital gains or losses (whether realized 
 
 营业利润是最重要的，即使在它们不是我们GAAP总额中最大项目的时期也是如此。我们伯克希尔的重点是增加这部分收入并收购大型且具有良好条件的业务。然而，去年我们两个目标都没有实现：伯克希尔没有进行任何重大收购，营业利润下降了9%。不过，我们通过保留收益和回购约5%的股份增加了伯克希尔的每股内在价值。
         </blockquote>
-    </div>
+                </div>
+            </div>
 
-    <div class="lang-block lang-en">
-        <span class="lang-label">English</span>
-        <blockquote>
+            <div class="bilingual-block">
+                <div class="lang-block lang-en">
+                    <span class="lang-label">English</span>
+                    <blockquote>
 The final component in our GAAP figure – that ugly $11 billion write-down – is almost entirely the quantification of a mistake I made in 2016. That year, Berkshire purchased Precision Castparts ("PCC"), and I paid too much for the company.
 
 No one misled me in any way – I was simply too optimistic about PCC's normalized profit potential. Last year, my miscalculation was laid bare by adverse developments throughout the aerospace industry, PCC's most important source of customers.
@@ -97,11 +252,10 @@ I believe I was right in concluding that PCC would, over time, earn good returns
 
 PCC is far from my first error of that sort. But it's a big one.
         </blockquote>
-    </div>
-    
-    <div class="lang-block lang-cn">
-        <span class="lang-label">中文翻译</span>
-        <blockquote>
+                </div>
+                <div class="lang-block lang-cn">
+                    <span class="lang-label">中文翻译</span>
+                    <blockquote>
 我们GAAP数据中的最后一个组成部分——那笔丑陋的110亿美元减记——几乎完全是我在2016年犯下的一个错误的量化。那一年，伯克希尔收购了精密铸件公司（"PCC"），我为这家公司支付了过高的价格。
 
 没有任何人误导我——我只是对PCC的正常化利润潜力过于乐观。去年，我的误判被整个航空航天工业的不利发展所暴露，而航空航天工业是PCC最重要的客户来源。
@@ -112,11 +266,13 @@ PCC is far from my first error of that sort. But it's a big one.
 
 PCC远不是我在这类事情上的第一次错误。但这确实是一个大错误。
         </blockquote>
-    </div>
+                </div>
+            </div>
 
-    <div class="lang-block lang-en">
-        <span class="lang-label">English</span>
-        <blockquote>
+            <div class="bilingual-block">
+                <div class="lang-block lang-en">
+                    <span class="lang-label">English</span>
+                    <blockquote>
 Two Strings to Our Bow
 
 Berkshire is often labeled a conglomerate, a negative term applied to holding companies that own a hodge-podge of unrelated businesses. And, yes, that describes Berkshire – but only in part. To understand how and why we differ from the prototype conglomerate, let's review a little history.
@@ -131,11 +287,10 @@ Eventually, of course, the party ends, and many business "emperors" are found to
 
 Conglomerates earned their terrible reputation.
         </blockquote>
-    </div>
-    
-    <div class="lang-block lang-cn">
-        <span class="lang-label">中文翻译</span>
-        <blockquote>
+                </div>
+                <div class="lang-block lang-cn">
+                    <span class="lang-label">中文翻译</span>
+                    <blockquote>
 双管齐下
 
 伯克希尔经常被贴上企业集团的标签，这是一个应用于持有各种不相关业务的企业集团的负面术语。是的，这描述了伯克希尔——但只是一部分。要理解我们与原型企业集团的区别和原因，让我们回顾一下历史。
@@ -150,11 +305,13 @@ Conglomerates earned their terrible reputation.
 
 企业集团赢得了他们可怕的声誉。
         </blockquote>
-    </div>
+                </div>
+            </div>
 
-    <div class="lang-block lang-en">
-        <span class="lang-label">English</span>
-        <blockquote>
+            <div class="bilingual-block">
+                <div class="lang-block lang-en">
+                    <span class="lang-label">English</span>
+                    <blockquote>
 Charlie and I want our conglomerate to own all or part of a diverse group of businesses with good economic characteristics and good managers. Whether Berkshire controls these businesses, however, is unimportant to us. It took me a while to wise up. But Charlie – and also my 20-year struggle with the textile operation I inherited at Berkshire – finally convinced me that owning a non-controlling portion of a wonderful business is more profitable, more enjoyable and far less work than struggling with 100% of a marginal enterprise.
 
 For those reasons, our conglomerate will remain a collection of controlled and non-controlled businesses. Charlie and I will simply deploy your capital into whatever we believe makes the most sense, based on a company's durable competitive strengths, the capabilities and character of its management, and price.
@@ -163,11 +320,10 @@ If that strategy requires little or no effort on our part, so much the better. I
 
 Furthermore, as Ronald Reagan cautioned: "It's said that hard work never killed anyone, but I say why take the chance?"
         </blockquote>
-    </div>
-    
-    <div class="lang-block lang-cn">
-        <span class="lang-label">中文翻译</span>
-        <blockquote>
+                </div>
+                <div class="lang-block lang-cn">
+                    <span class="lang-label">中文翻译</span>
+                    <blockquote>
 查理和我希望我们的企业集团拥有具有良好经济特性和优秀管理者的一组多样化企业的全部或部分股权。然而，伯克希尔是否控制这些企业对我们来说并不重要。我花了一些时间才醒悟过来。但查理——以及我在伯克希尔继承的纺织业务上二十年的挣扎——最终说服了我：拥有一家优秀企业的非控制性股权比为一个平庸企业100%股权而挣扎更有利可图、更有乐趣、工作量也少得多。
 
 由于这些原因，我们的企业集团将保持为控股和非控股企业的集合。查理和我将简单地将你们的资本部署到我们认为最有意义的地方，基于公司的持久竞争优势、管理层的能力和品格，以及价格。
@@ -176,11 +332,13 @@ Furthermore, as Ronald Reagan cautioned: "It's said that hard work never killed 
 
 此外，正如罗纳德·里根警告的那样："据说努力工作从不会杀死任何人，但我说为什么要冒险呢？"
         </blockquote>
-    </div>
+                </div>
+            </div>
 
-    <div class="lang-block lang-en">
-        <span class="lang-label">English</span>
-        <blockquote>
+            <div class="bilingual-block">
+                <div class="lang-block lang-en">
+                    <span class="lang-label">English</span>
+                    <blockquote>
 The Family Jewels and How We Increase Your Share of These Gems
 
 Most of Berkshire's value, however, resides in four businesses, three controlled and one in which we have only a 5.4% interest. All four are jewels.
@@ -191,11 +349,10 @@ Overall, the insurance fleet operates with far more capital than is deployed by 
 
 And bonds are not the place to be these days. Can you believe that the income recently available from a 10-year U.S. Treasury bond – the yield was 0.93% at yearend – had fallen 94% from the 15.8% yield available in September 1981? In certain large and important countries, such as Germany and Japan, investors earn a negative return on trillions of dollars of sovereign debt. Fixed-income investors worldwide – whether pension funds, insurance companies or retirees – face a bleak future.
         </blockquote>
-    </div>
-    
-    <div class="lang-block lang-cn">
-        <span class="lang-label">中文翻译</span>
-        <blockquote>
+                </div>
+                <div class="lang-block lang-cn">
+                    <span class="lang-label">中文翻译</span>
+                    <blockquote>
 家族珍宝以及我们如何增加你们在这些珍宝中的份额
 
 然而，伯克希尔大部分价值存在于四家企业中，三家是控股的，一家我们只有5.4%的权益。四家都是珍宝。
@@ -206,51 +363,55 @@ And bonds are not the place to be these days. Can you believe that the income re
 
 而债券在当今不是一个好去处。你能相信吗，最近一只10年期美国国债的收益——年底为0.93%——比1981年9月的15.8%收益率下降了94%？在某些重要的大国，比如德国和日本，投资者在数万亿美元的主权债务上获得负回报。全球固定收益投资者——无论是养老基金、保险公司还是退休人员——都面临着黯淡的未来。
         </blockquote>
-    </div>
+                </div>
+            </div>
 
-    <div class="lang-block lang-en">
-        <span class="lang-label">English</span>
-        <blockquote>
+            <div class="bilingual-block">
+                <div class="lang-block lang-en">
+                    <span class="lang-label">English</span>
+                    <blockquote>
 Berkshire now enjoys $138 billion of insurance "float" – funds that do not belong to us, but are nevertheless ours to deploy, whether in bonds, stocks or cash equivalents such as U.S. Treasury bills. Float has some similarities to bank deposits: cash flows in and out daily to insurers, with the total they hold changing very little. The massive sum held by Berkshire is likely to remain near its present level for many years and, on a cumulative basis, has been costless to us. That happy result, of course, could change – but, over time, I like our odds.
 
 Our second and third most valuable assets – it's pretty much a toss-up at this point – are Berkshire's 100% ownership of BNSF, America's largest railroad measured by freight volume, and our 5.4% ownership of Apple. And in the fourth spot is our 91% ownership of Berkshire Hathaway Energy ("BHE"). What we have here is a very unusual utility business, whose annual earnings have grown from $122 million to $3.4 billion during our 21 years of ownership.
         </blockquote>
-    </div>
-    
-    <div class="lang-block lang-cn">
-        <span class="lang-label">中文翻译</span>
-        <blockquote>
+                </div>
+                <div class="lang-block lang-cn">
+                    <span class="lang-label">中文翻译</span>
+                    <blockquote>
 伯克希尔现在拥有1380亿美元的保险"浮存金"——这些资金不属于我们，但我们可以部署，无论是债券、股票还是美国国债等现金等价物。浮存金与银行存款有些相似：现金每天流入流出保险公司，他们持有的总额变化很小。伯克希尔持有的这笔巨额资金可能在多年内保持在当前水平附近，而且从累计来看，对我们来说成本为零。当然，这个令人高兴的结果可能会改变——但随着时间的推移，我喜欢我们的胜算。
 
 我们第二和第三最有价值的资产——目前几乎不相上下——是伯克希尔100%拥有的BNSF，按货运量计算是美国最大的铁路，以及我们对苹果5.4%的所有权。第四位是我们拥有91%权益的伯克希尔哈撒韦能源公司（"BHE"）。我们这里有一个非常不寻常的公用事业公司，在我们对其实施所有权的21年里，其年度收益从1.22亿美元增长到34亿美元。
         </blockquote>
-    </div>
+                </div>
+            </div>
 
-    <div class="lang-block lang-en">
-        <span class="lang-label">English</span>
-        <blockquote>
+            <div class="bilingual-block">
+                <div class="lang-block lang-en">
+                    <span class="lang-label">English</span>
+                    <blockquote>
 Success stories abound throughout America. Since our country's birth, individuals with an idea, ambition and often just a pittance of capital have succeeded beyond their dreams by creating something new or by improving the customer's experience with something old.
 
 Charlie and I journeyed throughout the nation to join with many of these individuals or their families. On the West Coast, we began the routine in 1972 with our purchase of See's Candy. A full century ago, Mary See set out to deliver an age-old product that she had reinvented with special recipes. Added to her business plan were quaint stores staffed by friendly salespeople. Her first small outlet in Los Angeles eventually led to several hundred shops, throughout the West.
 
 Today, Mrs. See's creations continue to delight customers while providing life-long employment for thousands of women and men. Berkshire's job is simply not to meddle with the company's success. When a business manufactures and distributes a non-essential consumer product, the customer is the boss.
         </blockquote>
-    </div>
-    
-    <div class="lang-block lang-cn">
-        <span class="lang-label">中文翻译</span>
-        <blockquote>
+                </div>
+                <div class="lang-block lang-cn">
+                    <span class="lang-label">中文翻译</span>
+                    <blockquote>
 成功故事在美国比比皆是。自我们国家诞生以来，带着创意、雄心壮志、往往只有微薄资本的个人，通过创造新事物或用旧事物改善客户体验，取得的成功超出了他们的梦想。
 
 查理和我在全国各地旅行，与许多这样的个人或其家族合作。在西海岸，我们于1972年开始惯例，收购了喜诗糖果。一个世纪前，玛丽·喜开始提供她用特殊配方重新改造的传统产品。她的商业计划还包括了由友好销售人员服务的古雅店铺。她在洛杉矶的第一家小门店最终发展到了西部的数百家店铺。
 
 今天，喜夫人的创作继续让顾客愉悦，同时为成千上万的男性和女性提供终身就业机会。伯克希尔的工作就是简单地对公司的成功不横加干涉。当一家企业生产和分销非必需消费品时，客户就是老板。
         </blockquote>
-    </div>
+                </div>
+            </div>
 
-    <div class="lang-block lang-en">
-        <span class="lang-label">English</span>
-        <blockquote>
+            <div class="bilingual-block">
+                <div class="lang-block lang-en">
+                    <span class="lang-label">English</span>
+                    <blockquote>
 When you next fly over Knoxville or Omaha, tip your hat to the Claytons, Haslams and Blumkins as well as to the army of successful entrepreneurs who populate every part of our country. These builders needed America's framework for prosperity – a unique experiment when it was crafted in 1789 – to achieve their potential. In turn, America needed citizens like Jim C., Jim H., Mrs. B and Louie to accomplish the miracles our founding fathers sought.
 
 Today, many people forge similar miracles throughout the world, creating a spread of prosperity that benefits all of humanity. In its brief 232 years of existence, however, there has been no incubator for unleashing human potential like America. Despite some severe interruptions, our country's economic progress has been breathtaking.
@@ -263,11 +424,10 @@ February 27, 2021
 Warren E. Buffett
 Chairman of the Board
         </blockquote>
-    </div>
-    
-    <div class="lang-block lang-cn">
-        <span class="lang-label">中文翻译</span>
-        <blockquote>
+                </div>
+                <div class="lang-block lang-cn">
+                    <span class="lang-label">中文翻译</span>
+                    <blockquote>
 下次你飞越诺克斯维尔或奥马哈上空时，向克莱顿家族、哈斯lam家族和布鲁姆金家族致敬，也向遍布我国各地的成功企业家大军致敬。这些建设者需要美国的繁荣框架——1789年制定的一项独特实验——来实现他们的潜力。反过来，美国需要像吉姆·C.、吉姆·H.、B夫人和路易这样的公民来完成我们开国元勋所寻求的奇迹。
 
 今天，许多人在世界各地创造类似的奇迹，创造了惠及全人类的繁荣传播。然而，在其短暂的232年存在中，没有任何地方能像美国这样释放人类潜力的孵化器。尽管有一些严重的干扰，我们国家的经济进步一直是令人惊叹的。
@@ -280,8 +440,23 @@ Chairman of the Board
 沃伦·E·巴菲特
 董事长
         </blockquote>
-    </div>
+                </div>
+            </div>
 
-    <p style="text-align:center; color:#666; margin-top:30px;">（2020年巴菲特致股东信核心内容翻译完成）</p>
+
+            <div class="letter-nav">
+                <a href="2019.html" class="nav-link">← 2019年</a>
+                <a href="../../index-pages/巴菲特致股东信总览.html" class="nav-link">信件总览</a>
+                <a href="2021.html" class="nav-link">2021年 →</a>
+            </div>
+
+            </article>
+        </div>
+    </main>
+    <footer>
+        <div class="container">
+            © 2024 巴菲特知识库 | <a href="https://github.com/akalq/buffett-knowledge-graph">GitHub</a>
+        </div>
+    </footer>
 </body>
 </html>
