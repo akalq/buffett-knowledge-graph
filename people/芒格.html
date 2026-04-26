@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>芒格 - 巴菲特知识库</title>
+    <title>芒格 - 巴菲特世界关键人物</title>
     <style>
-        :root { --bg-color: #FFFEF9; --navy: #1B2A4A; --gold: #C9A227; --text: #2C3E50; --secondary: #5D6D7E; --border: #E5E0D8; --light-gold: #FFF8E7; }
+        :root { --bg-color: #FFFEF9; --navy: #1B2A4A; --gold: #C9A227; --text: #2C3E50; --secondary: #5D6D7E; --border: #E5E0D8; --light-gold: #FFF8E7; --cream: #F8F5EE; }
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { font-family: 'Noto Serif SC', Georgia, serif; background: var(--bg-color); color: var(--text); line-height: 1.8; }
         .container { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
@@ -13,6 +13,7 @@
         header h1 { font-size: 2em; margin-bottom: 10px; }
         header .en-name { color: var(--gold); font-size: 1.1em; margin: 5px 0; }
         header .meta { color: var(--gold); font-size: 0.95em; margin-top: 10px; }
+        header .dates { color: rgba(255,255,255,0.7); font-size: 0.9em; margin-top: 5px; }
         .avatar-large { width: 120px; height: 120px; background: var(--gold); border-radius: 50%; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; font-size: 3em; }
         .nav { background: white; border: 1px solid var(--border); padding: 15px 20px; margin-bottom: 30px; border-radius: 8px; text-align: center; }
         .nav a { color: var(--navy); text-decoration: none; margin: 0 12px; font-size: 0.95em; }
@@ -21,30 +22,202 @@
         .content h2 { color: var(--navy); font-size: 1.4em; margin: 35px 0 15px; padding-bottom: 8px; border-bottom: 2px solid var(--gold); }
         .content h2:first-child { margin-top: 0; }
         .content p { margin: 15px 0; text-align: justify; }
-        .quote { background: var(--navy); color: white; padding: 20px 25px; border-left: 4px solid var(--gold); margin: 25px 0; border-radius: 0 8px 8px 0; }
-        .quote p { margin: 0; font-style: italic; }
-        .quote .source { color: var(--gold); margin-top: 12px; font-size: 0.9em; }
-        .related { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px; }
-        .related a { background: white; border: 1px solid var(--border); padding: 8px 15px; border-radius: 20px; text-decoration: none; color: var(--navy); font-size: 0.9em; transition: all 0.2s; }
-        .related a:hover { background: var(--gold); color: white; border-color: var(--gold); }
+        
+        /* 人物定位卡片 */
+        .role-card {
+            background: linear-gradient(135deg, var(--navy) 0%, #2C3E50 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .role-type {
+            display: inline-block;
+            background: var(--gold);
+            color: var(--navy);
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.85em;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        .role-summary {
+            font-size: 1.15em;
+            line-height: 1.6;
+        }
+        
+        /* 核心影响 */
+        .impact-section { margin: 25px 0; }
+        .impact-point {
+            display: flex;
+            margin: 15px 0;
+            padding: 18px;
+            background: var(--cream);
+            border-radius: 8px;
+            border-left: 4px solid var(--gold);
+        }
+        .impact-number {
+            font-size: 1.8em;
+            font-weight: 700;
+            color: var(--gold);
+            margin-right: 18px;
+            min-width: 40px;
+            line-height: 1;
+        }
+        .impact-content strong { color: var(--navy); display: block; margin-bottom: 5px; }
+        .impact-content p { margin: 0; font-size: 0.95em; }
+        
+        /* 关系演变时间线 */
+        .relation-timeline {
+            position: relative;
+            padding-left: 30px;
+            margin: 20px 0;
+        }
+        .relation-timeline::before {
+            content: '';
+            position: absolute;
+            left: 8px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--gold), var(--navy));
+        }
+        .relation-point {
+            position: relative;
+            margin-bottom: 25px;
+            padding-left: 20px;
+        }
+        .relation-point::before {
+            content: '';
+            position: absolute;
+            left: -26px;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--gold);
+            border: 2px solid white;
+            box-shadow: 0 0 0 2px var(--gold);
+        }
+        .relation-year {
+            font-weight: 700;
+            color: var(--gold);
+            font-size: 1.1em;
+        }
+        .relation-point p { margin: 5px 0 0; font-size: 0.95em; }
+        
+        /* 巴菲特评价 */
+        .quote-block {
+            background: var(--cream);
+            border-left: 4px solid var(--navy);
+            padding: 20px 25px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .quote-block.dark {
+            background: var(--navy);
+            color: white;
+            border-left-color: var(--gold);
+        }
+        .quote-block.dark .source { color: var(--gold); }
+        .quote-block blockquote {
+            margin: 0;
+            font-style: italic;
+            font-size: 1.05em;
+            line-height: 1.7;
+        }
+        .quote-block .source {
+            color: var(--secondary);
+            margin-top: 12px;
+            font-size: 0.9em;
+            font-style: normal;
+        }
+        .quote-block .source::before { content: '—— '; }
+        
+        /* 人物关系网络 */
+        .network-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 12px;
+            margin: 15px 0;
+        }
+        .network-item {
+            background: var(--cream);
+            padding: 15px;
+            border-radius: 8px;
+            text-decoration: none;
+            color: var(--navy);
+            transition: all 0.2s;
+            border: 1px solid transparent;
+        }
+        .network-item:hover {
+            background: var(--gold);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(201, 162, 39, 0.3);
+        }
+        .network-item strong { display: block; margin-bottom: 3px; }
+        .relation-type {
+            font-size: 0.8em;
+            color: var(--secondary);
+            margin-top: 5px;
+        }
+        .network-item:hover .relation-type { color: rgba(255,255,255,0.85); }
+        
+        /* 相关概念标签 */
+        .concept-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 15px 0;
+        }
+        .concept-tag {
+            background: white;
+            border: 1px solid var(--border);
+            padding: 6px 14px;
+            border-radius: 20px;
+            text-decoration: none;
+            color: var(--navy);
+            font-size: 0.9em;
+            transition: all 0.2s;
+        }
+        .concept-tag:hover {
+            background: var(--navy);
+            color: white;
+            border-color: var(--navy);
+        }
+        
+        /* 反向链接 */
         footer { text-align: center; padding: 40px 20px; color: var(--secondary); border-top: 1px solid var(--border); margin-top: 40px; }
         footer a { color: var(--navy); text-decoration: none; }
         .backlinks { margin-top: 40px; padding-top: 30px; border-top: 2px dashed var(--gold); }
-        .backlinks h2 { color: var(--navy); font-size: 1.3em; margin-bottom: 15px; }
-        .backlinks-intro { color: var(--secondary); margin-bottom: 15px; }
-        .backlinks-list { display: flex; flex-wrap: wrap; gap: 10px; }
-        .backlinks-list a { background: linear-gradient(135deg, var(--light-gold) 0%, #fff9e6 100%); border: 1px solid var(--gold); padding: 8px 16px; border-radius: 20px; text-decoration: none; color: var(--navy); font-size: 0.9em; transition: all 0.3s; }
+        .backlinks h3 { color: var(--navy); font-size: 1.2em; margin-bottom: 15px; }
+        .backlinks-intro { color: var(--secondary); margin-bottom: 15px; font-size: 0.95em; }
+        .backlinks-list { display: flex; flex-wrap: wrap; gap: 8px; }
+        .backlinks-list a { background: linear-gradient(135deg, var(--light-gold) 0%, #fff9e6 100%); border: 1px solid var(--gold); padding: 6px 14px; border-radius: 20px; text-decoration: none; color: var(--navy); font-size: 0.85em; transition: all 0.3s; }
         .backlinks-list a:hover { background: var(--gold); color: white; transform: translateY(-2px); }
         .backlinks-count { margin-top: 15px; color: var(--secondary); font-size: 0.9em; }
+        
+        /* 反向链接按主题组织 */
+        .backlink-topic {
+            margin-bottom: 20px;
+        }
+        .backlink-topic-title {
+            font-weight: 600;
+            color: var(--navy);
+            margin-bottom: 8px;
+            font-size: 0.95em;
+        }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
-        <div class="avatar-large">👨‍⚖️</div>
-        <h1>芒格</h1>
+        <div class="avatar-large">⚖️</div>
+        <h1>查理·芒格</h1>
         <div class="en-name">Charlie Munger</div>
-        <div class="meta">👤 关键人物 · 被引用 47 次</div>
+        <div class="dates">1924年1月1日 - 2023年11月28日</div>
+        <div class="meta">👤 最重要合伙人 · 被引用 47 次</div>
     </header>
     
     <div class="container">
@@ -56,52 +229,214 @@
         </nav>
         
         <article class="content">
-            <h2>人物简介</h2>
-            <p>查理·芒格（1924-2023）是沃伦·巴菲特最亲密的合作伙伴，伯克希尔的副董事长。他与巴菲特的合作始于1959年，共同将伯克希尔打造成了全球最成功的投资帝国之一。芒格于2023年11月28日在加州去世，享年99岁。</p>
-            
-            <h2>与巴菲特的关系</h2>
-            <p>1959年经朋友介绍认识巴菲特，从此成为其黄金搭档长达60余年。</p>
-            
-            <h2>核心贡献</h2>
-            <p>帮助巴菲特从雪茄烟蒂投资法转向优质企业投资理念，引入多元思维模型。</p>
-
-            <h2>经典语录</h2>
-            <div class="quote">
-                <p>"我只想知道我会死在哪里，然后永远不去那里。"</p>
-                <div class="source">—— Charlie Munger</div>
-            </div>
-            <div class="quote">
-                <p>"要学会使用多个学科的知识来分析问题。"</p>
-                <div class="source">—— Charlie Munger</div>
-            </div>
-
-            <h2>巴菲特评价</h2>
-            <div class="quote">
-                <p>"芒格让我从猩猩进化成了人类。"</p>
-                <div class="source">—— 沃伦·巴菲特</div>
+            <!-- 人物定位 -->
+            <div class="role-card">
+                <div class="role-type">合伙人</div>
+                <div class="role-summary">巴菲特的"智囊团团长"，用跨学科思维模型将巴菲特从"雪茄烟蒂"投资者进化为优质企业收藏家，60年合作塑造了伯克希尔的投资哲学灵魂。</div>
             </div>
             
-            <h2>相关公司</h2>
-            <div class="related">
-                <a href="../companies/伯克希尔哈撒韦.html">伯克希尔哈撒韦</a>
-                <a href="../companies/每日快讯集团.html">每日快讯集团</a>
-            </div><p class="backlinks-count">共被提及 47 次</p>
+            <!-- 核心影响 -->
+            <h2>🎯 核心影响</h2>
+            <div class="impact-section">
+                <div class="impact-point">
+                    <div class="impact-number">1</div>
+                    <div class="impact-content">
+                        <strong>投资哲学的根本转型</strong>
+                        <p>说服巴菲特放弃格雷厄姆式的"雪茄烟蒂"投资法，转向"以合理价格买入优秀企业"的理念。这一转变的直接成果是1972年收购喜诗糖果——这笔交易让巴菲特意识到优质品牌的溢价能力，为后续可口可乐等超级投资奠定思想基础。</p>
+                    </div>
+                </div>
+                <div class="impact-point">
+                    <div class="impact-number">2</div>
+                    <div class="impact-content">
+                        <strong>多元思维模型框架</strong>
+                        <p>创立"多元思维模型"——要求投资者掌握心理学、经济学、工程学、数学、统计学等多学科的核心原理，避免"锤子人"倾向（拿着锤子看什么都像钉子）。这种思维方式成为伯克希尔决策体系的核心方法论。</p>
+                    </div>
+                </div>
+                <div class="impact-point">
+                    <div class="impact-number">3</div>
+                    <div class="impact-content">
+                        <strong>反向思考原则</strong>
+                        <p>"我只想知道我会死在哪里，然后永远不去那里。"这句格言体现了芒格的逆向思维：他不是问"什么是正确的"，而是问"什么会让我们失败"。这种思考方式影响了巴菲特对风险的极端厌恶和对确定性的追求。</p>
+                    </div>
+                </div>
+                <div class="impact-point">
+                    <div class="impact-number">4</div>
+                    <div class="impact-content">
+                        <strong>耐心与机会成本</strong>
+                        <p>芒格强调"等待优质投资机会出现"的纪律性。他帮助巴菲特理解：即使市场关闭多年，一个好的投资决策可以弥补所有错过的机会。这直接促成了巴菲特持有现金等待机会的策略。</p>
+                    </div>
+                </div>
+                <div class="impact-point">
+                    <div class="impact-number">5</div>
+                    <div class="impact-content">
+                        <strong>品质至上的投资标准</strong>
+                        <p>推动巴菲特接受"优秀企业值得溢价"的观点。1970年代，当巴菲特还在用格雷厄姆方法评估企业时，芒格已经提出：一家有护城河的品牌公司，其长期价值远超账面价值。</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 关系演变 -->
+            <h2>📅 关系演变</h2>
+            <div class="relation-timeline">
+                <div class="relation-point">
+                    <span class="relation-year">1959年</span>
+                    <p>经共同朋友介绍在奥马哈第一次见面。芒格当时是律师，巴菲特29岁。这次相遇开启了他们长达64年的合作。</p>
+                </div>
+                <div class="relation-point">
+                    <span class="relation-year">1960s初</span>
+                    <p>两人建立深厚友谊。巴菲特说服芒格转行进入投资领域，芒格开始管理自己的投资合伙企业。</p>
+                </div>
+                <div class="relation-point">
+                    <span class="relation-year">1965-1975</span>
+                    <p>关键转型期。芒格开始系统性地影响巴菲特的投资哲学，从"烟蒂"转向优质企业。1972年喜诗糖果收购是这一转变的标志。</p>
+                </div>
+                <div class="relation-point">
+                    <span class="relation-year">1978年</span>
+                    <p>芒格正式担任伯克希尔副董事长，成为官方意义上的"二号人物"，两人的合作关系正式制度化。</p>
+                </div>
+                <div class="relation-point">
+                    <span class="relation-year">1980s-2000s</span>
+                    <p>共同塑造伯克希尔文化。两人形成独特的"好搭档"模式：巴菲特做最终决定，但芒格的反对意见往往促使更深入的思考。</p>
+                </div>
+                <div class="relation-point">
+                    <span class="relation-year">2023年</span>
+                    <p>芒格去世，享年99岁。巴菲特发表声明："没有芒格，伯克希尔不会有今天。"</p>
+                </div>
+            </div>
+            
+            <!-- 巴菲特评价 -->
+            <h2>💬 巴菲特评价</h2>
+            <div class="quote-block dark">
+                <blockquote>"芒格让我从猩猩进化成了人类。"</blockquote>
+                <div class="source">1970s-1980s年代的私下评价，后来在公开场合多次引用</div>
+            </div>
+            <div class="quote-block dark">
+                <blockquote>"他是我的合伙人……他比世界上任何人更能在思想上影响我。"</blockquote>
+                <div class="source">1997年致股东信</div>
+            </div>
+            <div class="quote-block dark">
+                <blockquote>"如果芒格不在，我会在愚蠢的道路上走得更远。"</blockquote>
+                <div class="source">2006年伯克希尔年会</div>
+            </div>
+            <div class="quote-block dark">
+                <blockquote>"查理一直是伯克希尔的建筑工人……他负责设计图纸，我负责搬运砖头。"</blockquote>
+                <div class="source">2014年致股东信</div>
+            </div>
+            
+            <!-- 体现的投资原则 -->
+            <h2>📚 体现的投资原则</h2>
+            <div class="network-grid">
+                <a href="../concepts/护城河.html" class="concept-tag">护城河理论</a>
+                <a href="../concepts/内在价值.html" class="concept-tag">内在价值</a>
+                <a href="../concepts/安全边际.html" class="concept-tag">安全边际</a>
+                <a href="../concepts/集中投资.html" class="concept-tag">集中投资</a>
+                <a href="../concepts/能力圈.html" class="concept-tag">能力圈原则</a>
+            </div>
+            <p style="margin-top: 15px; font-size: 0.95em;">芒格的多元思维模型强调：投资决策需要从多个学科视角审视，而非依赖单一框架。他特别重视心理学中的"误判心理学"（20个常见心理误判）和经济学中的"激励效应"。</p>
+            
+            <!-- 相关人物 -->
+            <h2>👥 相关人物</h2>
+            <div class="network-grid">
+                <a href="格雷厄姆.html" class="network-item">
+                    <strong>本杰明·格雷厄姆</strong>
+                    <div class="relation-type">导师 → 巴菲特（芒格也在格雷厄姆处学习）</div>
+                </a>
+                <a href="巴菲特.html" class="network-item">
+                    <strong>沃伦·巴菲特</strong>
+                    <div class="relation-type">合伙人关系（双向影响）</div>
+                </a>
+                <a href="阿吉特·贾恩.html" class="network-item">
+                    <strong>阿吉特·贾恩</strong>
+                    <div class="relation-type">同为伯克希尔核心人物</div>
+                </a>
+                <a href="格雷格·阿贝尔.html" class="network-item">
+                    <strong>格雷格·阿贝尔</strong>
+                    <div class="relation-type">伯克希尔下一代领导核心</div>
+                </a>
+            </div>
+            
+            <!-- 相关公司 -->
+            <h2>🏢 相关公司</h2>
+            <div class="network-grid">
+                <a href="../companies/伯克希尔哈撒韦.html" class="network-item">
+                    <strong>伯克希尔·哈撒韦</strong>
+                    <div class="relation-type">芒格担任副董事长40+年</div>
+                </a>
+                <a href="../companies/每日快讯集团.html" class="network-item">
+                    <strong>每日快讯集团</strong>
+                    <div class="relation-type">芒格长期担任董事长</div>
+                </a>
+                <a href="../companies/喜诗糖果.html" class="network-item">
+                    <strong>喜诗糖果</strong>
+                    <div class="relation-type">转型理念的标志性投资</div>
+                </a>
             </div>
         </article>
     </div>
     
     <footer>
         <p><a href="../index.html">巴菲特知识库</a> | 数据来源：Berkshire Hathaway Letters</p>
-    
+        
         <div class="backlinks">
-            <h2>📚 反向链接</h2>
-            <p class="backlinks-intro">以下年份的信件提到了此人物：</p>
-            <div class="backlinks-list">
-                <a href="../letters/berkshire/2007.html">2007年</a><a href="../letters/berkshire/2006.html">2006年</a><a href="../letters/berkshire/2005.html">2005年</a><a href="../letters/berkshire/2004.html">2004年</a><a href="../letters/berkshire/2003.html">2003年</a><a href="../letters/berkshire/2002.html">2002年</a><a href="../letters/berkshire/2001.html">2001年</a><a href="../letters/berkshire/2000.html">2000年</a><a href="../letters/berkshire/1999.html">1999年</a><a href="../letters/berkshire/1997.html">1997年</a><a href="../letters/berkshire/1996.html">1996年</a><a href="../letters/berkshire/1995.html">1995年</a><a href="../letters/berkshire/1994.html">1994年</a><a href="../letters/berkshire/1993.html">1993年</a><a href="../letters/berkshire/1992.html">1992年</a><a href="../letters/berkshire/1991.html">1991年</a><a href="../letters/berkshire/1990.html">1990年</a><a href="../letters/berkshire/1989.html">1989年</a><a href="../letters/berkshire/1988.html">1988年</a><a href="../letters/berkshire/1987.html">1987年</a><a href="../letters/berkshire/1986.html">1986年</a><a href="../letters/berkshire/1985.html">1985年</a><a href="../letters/berkshire/1984.html">1984年</a><a href="../letters/berkshire/1983.html">1983年</a><a href="../letters/berkshire/1982.html">1982年</a><a href="../letters/berkshire/1980.html">1980年</a>
+            <h3>📚 反向链接</h3>
+            <p class="backlinks-intro">按讨论主题组织的引用来源：</p>
+            
+            <div class="backlink-topic">
+                <div class="backlink-topic-title">投资哲学与合作</div>
+                <div class="backlinks-list">
+                    <a href="../letters/berkshire/1983.html">1983年</a>
+                    <a href="../letters/berkshire/1984.html">1984年</a>
+                    <a href="../letters/berkshire/1985.html">1985年</a>
+                    <a href="../letters/berkshire/1986.html">1986年</a>
+                </div>
             </div>
-            <p class="backlinks-count">共 26 处引用</p>
+            
+            <div class="backlink-topic">
+                <div class="backlink-topic-title">伯克希尔业绩与管理</div>
+                <div class="backlinks-list">
+                    <a href="../letters/berkshire/1987.html">1987年</a>
+                    <a href="../letters/berkshire/1988.html">1988年</a>
+                    <a href="../letters/berkshire/1989.html">1989年</a>
+                    <a href="../letters/berkshire/1990.html">1990年</a>
+                </div>
+            </div>
+            
+            <div class="backlink-topic">
+                <div class="backlink-topic-title">长期合作伙伴</div>
+                <div class="backlinks-list">
+                    <a href="../letters/berkshire/1991.html">1991年</a>
+                    <a href="../letters/berkshire/1992.html">1992年</a>
+                    <a href="../letters/berkshire/1993.html">1993年</a>
+                    <a href="../letters/berkshire/1994.html">1994年</a>
+                    <a href="../letters/berkshire/1995.html">1995年</a>
+                </div>
+            </div>
+            
+            <div class="backlink-topic">
+                <div class="backlink-topic-title">成熟期合作</div>
+                <div class="backlinks-list">
+                    <a href="../letters/berkshire/1996.html">1996年</a>
+                    <a href="../letters/berkshire/1997.html">1997年</a>
+                    <a href="../letters/berkshire/1999.html">1999年</a>
+                    <a href="../letters/berkshire/2000.html">2000年</a>
+                    <a href="../letters/berkshire/2001.html">2001年</a>
+                </div>
+            </div>
+            
+            <div class="backlink-topic">
+                <div class="backlink-topic-title">21世纪的合作</div>
+                <div class="backlinks-list">
+                    <a href="../letters/berkshire/2002.html">2002年</a>
+                    <a href="../letters/berkshire/2003.html">2003年</a>
+                    <a href="../letters/berkshire/2004.html">2004年</a>
+                    <a href="../letters/berkshire/2005.html">2005年</a>
+                    <a href="../letters/berkshire/2006.html">2006年</a>
+                    <a href="../letters/berkshire/2007.html">2007年</a>
+                </div>
+            </div>
+            
+            <p class="backlinks-count">共 26 处引用，跨越 1980-2007 年</p>
         </div>
-    
-</footer>
+    </footer>
 </body>
 </html>

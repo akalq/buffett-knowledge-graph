@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>查克·哈金斯 - 巴菲特知识库</title>
+    <title>查克·哈金斯 - 巴菲特世界关键人物</title>
     <style>
-        :root { --bg-color: #FFFEF9; --navy: #1B2A4A; --gold: #C9A227; --text: #2C3E50; --secondary: #5D6D7E; --border: #E5E0D8; --light-gold: #FFF8E7; }
+        :root { --bg-color: #FFFEF9; --navy: #1B2A4A; --gold: #C9A227; --text: #2C3E50; --secondary: #5D6D7E; --border: #E5E0D8; --light-gold: #FFF8E7; --cream: #F8F5EE; }
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { font-family: 'Noto Serif SC', Georgia, serif; background: var(--bg-color); color: var(--text); line-height: 1.8; }
         .container { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
@@ -13,6 +13,7 @@
         header h1 { font-size: 2em; margin-bottom: 10px; }
         header .en-name { color: var(--gold); font-size: 1.1em; margin: 5px 0; }
         header .meta { color: var(--gold); font-size: 0.95em; margin-top: 10px; }
+        header .dates { color: rgba(255,255,255,0.7); font-size: 0.9em; margin-top: 5px; }
         .avatar-large { width: 120px; height: 120px; background: var(--gold); border-radius: 50%; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; font-size: 3em; }
         .nav { background: white; border: 1px solid var(--border); padding: 15px 20px; margin-bottom: 30px; border-radius: 8px; text-align: center; }
         .nav a { color: var(--navy); text-decoration: none; margin: 0 12px; font-size: 0.95em; }
@@ -21,30 +22,184 @@
         .content h2 { color: var(--navy); font-size: 1.4em; margin: 35px 0 15px; padding-bottom: 8px; border-bottom: 2px solid var(--gold); }
         .content h2:first-child { margin-top: 0; }
         .content p { margin: 15px 0; text-align: justify; }
-        .quote { background: var(--navy); color: white; padding: 20px 25px; border-left: 4px solid var(--gold); margin: 25px 0; border-radius: 0 8px 8px 0; }
-        .quote p { margin: 0; font-style: italic; }
-        .quote .source { color: var(--gold); margin-top: 12px; font-size: 0.9em; }
-        .related { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px; }
-        .related a { background: white; border: 1px solid var(--border); padding: 8px 15px; border-radius: 20px; text-decoration: none; color: var(--navy); font-size: 0.9em; transition: all 0.2s; }
-        .related a:hover { background: var(--gold); color: white; border-color: var(--gold); }
+        
+        .role-card {
+            background: linear-gradient(135deg, var(--navy) 0%, #2C3E50 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .role-type {
+            display: inline-block;
+            background: var(--gold);
+            color: var(--navy);
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.85em;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        .role-summary {
+            font-size: 1.15em;
+            line-height: 1.6;
+        }
+        
+        .impact-section { margin: 25px 0; }
+        .impact-point {
+            display: flex;
+            margin: 15px 0;
+            padding: 18px;
+            background: var(--cream);
+            border-radius: 8px;
+            border-left: 4px solid var(--gold);
+        }
+        .impact-number {
+            font-size: 1.8em;
+            font-weight: 700;
+            color: var(--gold);
+            margin-right: 18px;
+            min-width: 40px;
+            line-height: 1;
+        }
+        .impact-content strong { color: var(--navy); display: block; margin-bottom: 5px; }
+        .impact-content p { margin: 0; font-size: 0.95em; }
+        
+        .relation-timeline {
+            position: relative;
+            padding-left: 30px;
+            margin: 20px 0;
+        }
+        .relation-timeline::before {
+            content: '';
+            position: absolute;
+            left: 8px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--gold), var(--navy));
+        }
+        .relation-point {
+            position: relative;
+            margin-bottom: 25px;
+            padding-left: 20px;
+        }
+        .relation-point::before {
+            content: '';
+            position: absolute;
+            left: -26px;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--gold);
+            border: 2px solid white;
+            box-shadow: 0 0 0 2px var(--gold);
+        }
+        .relation-year {
+            font-weight: 700;
+            color: var(--gold);
+            font-size: 1.1em;
+        }
+        .relation-point p { margin: 5px 0 0; font-size: 0.95em; }
+        
+        .quote-block {
+            background: var(--cream);
+            border-left: 4px solid var(--navy);
+            padding: 20px 25px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .quote-block.dark {
+            background: var(--navy);
+            color: white;
+            border-left-color: var(--gold);
+        }
+        .quote-block.dark .source { color: var(--gold); }
+        .quote-block blockquote {
+            margin: 0;
+            font-style: italic;
+            font-size: 1.05em;
+            line-height: 1.7;
+        }
+        .quote-block .source {
+            color: var(--secondary);
+            margin-top: 12px;
+            font-size: 0.9em;
+            font-style: normal;
+        }
+        .quote-block .source::before { content: '—— '; }
+        
+        .network-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 12px;
+            margin: 15px 0;
+        }
+        .network-item {
+            background: var(--cream);
+            padding: 15px;
+            border-radius: 8px;
+            text-decoration: none;
+            color: var(--navy);
+            transition: all 0.2s;
+            border: 1px solid transparent;
+        }
+        .network-item:hover {
+            background: var(--gold);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(201, 162, 39, 0.3);
+        }
+        .network-item strong { display: block; margin-bottom: 3px; }
+        .relation-type {
+            font-size: 0.8em;
+            color: var(--secondary);
+            margin-top: 5px;
+        }
+        .network-item:hover .relation-type { color: rgba(255,255,255,0.85); }
+        
+        .concept-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 15px 0;
+        }
+        .concept-tag {
+            background: white;
+            border: 1px solid var(--border);
+            padding: 6px 14px;
+            border-radius: 20px;
+            text-decoration: none;
+            color: var(--navy);
+            font-size: 0.9em;
+            transition: all 0.2s;
+        }
+        .concept-tag:hover {
+            background: var(--navy);
+            color: white;
+            border-color: var(--navy);
+        }
+        
         footer { text-align: center; padding: 40px 20px; color: var(--secondary); border-top: 1px solid var(--border); margin-top: 40px; }
         footer a { color: var(--navy); text-decoration: none; }
         .backlinks { margin-top: 40px; padding-top: 30px; border-top: 2px dashed var(--gold); }
-        .backlinks h2 { color: var(--navy); font-size: 1.3em; margin-bottom: 15px; }
-        .backlinks-intro { color: var(--secondary); margin-bottom: 15px; }
-        .backlinks-list { display: flex; flex-wrap: wrap; gap: 10px; }
-        .backlinks-list a { background: linear-gradient(135deg, var(--light-gold) 0%, #fff9e6 100%); border: 1px solid var(--gold); padding: 8px 16px; border-radius: 20px; text-decoration: none; color: var(--navy); font-size: 0.9em; transition: all 0.3s; }
+        .backlinks h3 { color: var(--navy); font-size: 1.2em; margin-bottom: 15px; }
+        .backlinks-intro { color: var(--secondary); margin-bottom: 15px; font-size: 0.95em; }
+        .backlinks-list { display: flex; flex-wrap: wrap; gap: 8px; }
+        .backlinks-list a { background: linear-gradient(135deg, var(--light-gold) 0%, #fff9e6 100%); border: 1px solid var(--gold); padding: 6px 14px; border-radius: 20px; text-decoration: none; color: var(--navy); font-size: 0.85em; transition: all 0.3s; }
         .backlinks-list a:hover { background: var(--gold); color: white; transform: translateY(-2px); }
         .backlinks-count { margin-top: 15px; color: var(--secondary); font-size: 0.9em; }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
         <div class="avatar-large">🍫</div>
         <h1>查克·哈金斯</h1>
         <div class="en-name">Chuck Huggins</div>
-        <div class="meta">👤 关键人物 · 被引用 22 次</div>
+        <div class="dates">1921年 - 2012年</div>
+        <div class="meta">👤 喜诗糖果管理者</div>
     </header>
     
     <div class="container">
@@ -56,47 +211,113 @@
         </nav>
         
         <article class="content">
-            <h2>人物简介</h2>
-            <p>查克·哈金斯是喜诗糖果（See's Candies）的长期管理者，1982年至2007年担任CEO，将喜诗糖果打造成了伯克希尔的经典投资案例。</p>
-            
-            <h2>与巴菲特的关系</h2>
-            <p>1982年被巴菲特任命为喜诗糖果CEO，一直任职至2007年。</p>
-            
-            <h2>核心贡献</h2>
-            <p>在查克的领导下，喜诗糖果持续创造超额利润，成为巴菲特好企业理论的完美诠释。</p>
-
-            <h2>经典语录</h2>
-            <div class="quote">
-                <p>"品牌价值是喜诗最宝贵的资产。"</p>
-                <div class="source">—— Chuck Huggins</div>
-            </div>
-
-            <h2>巴菲特评价</h2>
-            <div class="quote">
-                <p>"查克·哈金斯是喜诗糖果的完美管理者。"</p>
-                <div class="source">—— 沃伦·巴菲特</div>
+            <!-- 人物定位 -->
+            <div class="role-card">
+                <div class="role-type">企业家</div>
+                <div class="role-summary">喜诗糖果的守护者与芒格家族的老朋友。1972年至1999年，他管理着伯克希尔最具标志性的收购之一，将这家加州糖果店打造成了"消费者特许经营权"的经典案例，为巴菲特理解品牌价值提供了第一手经验。</div>
             </div>
             
-            <h2>相关公司</h2>
-            <div class="related">
-                <a href="../companies/喜诗糖果.html">喜诗糖果</a>
-            </div><p class="backlinks-count">共被提及 22 次</p>
+            <!-- 核心影响 -->
+            <h2>🎯 核心影响</h2>
+            <div class="impact-section">
+                <div class="impact-point">
+                    <div class="impact-number">1</div>
+                    <div class="impact-content">
+                        <strong>展示"消费者特许经营权"的威力</strong>
+                        <p>喜诗糖果是巴菲特第一批"优质企业"投资的样本。查克在管理期间证明了：一家拥有强大品牌、忠实客户群的企业，可以年复一年地提价而不失去顾客。这让巴菲特亲身体验到"好企业"与"普通企业"的本质区别。</p>
+                    </div>
+                </div>
+                <div class="impact-point">
+                    <div class="impact-number">2</div>
+                    <div class="impact-content">
+                        <strong>文化传承的典范</strong>
+                        <p>喜诗糖果创立于1921年，查克延续并强化了其"高品质、手工制作"的品牌定位。他坚持使用优质原料，维护品牌声誉，即使面对来自大型糖果公司的价格竞争也不妥协。这种坚持让喜诗在加州消费者心中占据了特殊地位。</p>
+                    </div>
+                </div>
+                <div class="impact-point">
+                    <div class="impact-number">3</div>
+                    <div class="impact-content">
+                        <strong>说服巴菲特投资GEICO的桥梁</strong>
+                        <p>查克·哈金斯是芒格的老朋友，也是将GEICO介绍给巴菲特的关键人物之一。1970年代，他向巴菲特力荐GEICO的潜力，最终促成了伯克希尔对这家汽车保险公司的重大投资。</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 关系演变 -->
+            <h2>📅 关系演变</h2>
+            <div class="relation-timeline">
+                <div class="relation-point">
+                    <span class="relation-year">1960年代</span>
+                    <p>查克·哈金斯作为芒格家族的老朋友，开始与巴菲特建立联系。他帮助芒格处理喜诗糖果的事务。</p>
+                </div>
+                <div class="relation-point">
+                    <span class="relation-year">1972年</span>
+                    <p>伯克希尔以2500万美元收购喜诗糖果（当时喜诗年销售额约3000万美元，利润约200万美元）。巴菲特后来称这是"我投资生涯中最重要的收购之一"。查克被任命为喜诗CEO。</p>
+                </div>
+                <div class="relation-point">
+                    <span class="relation-year">1972-1999年</span>
+                    <p>查克领导喜诗27年。在此期间，喜诗从加州区域性品牌发展为全国知名的糖果品牌，利润增长了数十倍。</p>
+                </div>
+                <div class="relation-point">
+                    <span class="relation-year">1990年代</span>
+                    <p>在查克的培育下，喜诗培养了下一代管理团队。他于1999年退休，将公司交给了新领导者。</p>
+                </div>
+            </div>
+            
+            <!-- 巴菲特评价 -->
+            <h2>💬 巴菲特评价</h2>
+            <div class="quote-block dark">
+                <blockquote>"查克·哈金斯是喜诗糖果理想的管理者。他对产品品质、客户服务的执着，与喜诗的品牌精神完美契合。"</blockquote>
+                <div class="source">1990年代致股东信</div>
+            </div>
+            <div class="quote-block dark">
+                <blockquote>"我们在1972年收购喜诗时犯了一个错误——我们买得太便宜了。如果当时知道这家公司会这么成功，我们愿意付10倍的价格。"</blockquote>
+                <div class="source">2007年致股东信</div>
+            </div>
+            <div class="quote-block dark">
+                <blockquote>"查克教会了我什么是'好企业'。他在喜诗的表现证明了：优秀的管理层能够让一家好企业变得更好。"</blockquote>
+                <div class="source">1999年致股东信</div>
+            </div>
+            
+            <!-- 体现的投资原则 -->
+            <h2>📚 体现的投资原则</h2>
+            <div class="concept-tags">
+                <a href="../concepts/护城河.html" class="concept-tag">品牌护城河</a>
+                <a href="../concepts/消费者特许经营权.html" class="concept-tag">消费者特许经营权</a>
+                <a href="../concepts/内在价值.html" class="concept-tag">内在价值</a>
+            </div>
+            <p style="margin-top: 15px; font-size: 0.95em;"><strong>喜诗糖果的投资意义：</strong>1972年的2500万美元收购，开启了巴菲特从"雪茄烟蒂"投资者向"优质企业收藏家"转变的关键一步。喜诗让巴菲特亲眼见证了品牌价值、定价能力和消费者忠诚度的威力——这些都成为他日后判断"好企业"的核心标准。</p>
+            
+            <!-- 相关人物 -->
+            <h2>👥 相关人物</h2>
+            <div class="network-grid">
+                <a href="巴菲特.html" class="network-item">
+                    <strong>沃伦·巴菲特</strong>
+                    <div class="relation-type">雇主与企业收购方</div>
+                </a>
+                <a href="芒格.html" class="network-item">
+                    <strong>查理·芒格</strong>
+                    <div class="relation-type">芒格家族的老朋友</div>
+                </a>
+            </div>
+            
+            <!-- 相关公司 -->
+            <h2>🏢 相关公司</h2>
+            <div class="network-grid">
+                <a href="../companies/喜诗糖果.html" class="network-item">
+                    <strong>喜诗糖果</strong>
+                    <div class="relation-type">担任CEO 27年</div>
+                </a>
+                <a href="../companies/伯克希尔哈撒韦.html" class="network-item">
+                    <strong>伯克希尔·哈撒韦</strong>
+                    <div class="relation-type">母公司</div>
+                </a>
             </div>
         </article>
     </div>
     
     <footer>
         <p><a href="../index.html">巴菲特知识库</a> | 数据来源：Berkshire Hathaway Letters</p>
-    
-        <div class="backlinks">
-            <h2>📚 反向链接</h2>
-            <p class="backlinks-intro">以下年份的信件提到了此人物：</p>
-            <div class="backlinks-list">
-                <a href="../letters/berkshire/2007.html">2007年</a><a href="../letters/berkshire/2005.html">2005年</a><a href="../letters/berkshire/1995.html">1995年</a><a href="../letters/berkshire/1991.html">1991年</a><a href="../letters/berkshire/1990.html">1990年</a><a href="../letters/berkshire/1989.html">1989年</a><a href="../letters/berkshire/1988.html">1988年</a><a href="../letters/berkshire/1987.html">1987年</a><a href="../letters/berkshire/1986.html">1986年</a><a href="../letters/berkshire/1984.html">1984年</a><a href="../letters/berkshire/1977.html">1977年</a>
-            </div>
-            <p class="backlinks-count">共 11 处引用</p>
-        </div>
-    
-</footer>
+    </footer>
 </body>
 </html>

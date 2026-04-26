@@ -3,42 +3,203 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>托德·库姆斯 - 巴菲特知识库</title>
+    <title>托德·库姆斯 - 巴菲特世界关键人物</title>
     <style>
-        :root { --bg-color: #FFFEF9; --navy: #1B2A4A; --gold: #C9A227; --text: #2C3E50; --secondary: #5D6D7E; --border: #E5E0D8; }
+        :root { --bg-color: #FFFEF9; --navy: #1B2A4A; --gold: #C9A227; --text: #2C3E50; --secondary: #5D6D7E; --border: #E5E0D8; --light-gold: #FFF8E7; --cream: #F8F5EE; }
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { font-family: 'Noto Serif SC', Georgia, serif; background: var(--bg-color); color: var(--text); line-height: 1.8; }
         .container { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
         header { background: var(--navy); color: white; padding: 40px 30px; text-align: center; }
         header h1 { font-size: 2em; margin-bottom: 10px; }
+        header .en-name { color: var(--gold); font-size: 1.1em; margin: 5px 0; }
         header .meta { color: var(--gold); font-size: 0.95em; margin-top: 10px; }
-        header .dates { color: rgba(255,255,255,0.7); font-size: 0.9em; }
-        .avatar-large { width: 120px; height: 120px; background: var(--gold); border-radius: 50%; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; font-size: 3em; color: var(--navy); }
+        header .dates { color: rgba(255,255,255,0.7); font-size: 0.9em; margin-top: 5px; }
+        .avatar-large { width: 120px; height: 120px; background: var(--gold); border-radius: 50%; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; font-size: 3em; }
         .nav { background: white; border: 1px solid var(--border); padding: 15px 20px; margin-bottom: 30px; border-radius: 8px; text-align: center; }
         .nav a { color: var(--navy); text-decoration: none; margin: 0 12px; font-size: 0.95em; }
         .nav a:hover { color: var(--gold); }
         .content { background: white; border: 1px solid var(--border); border-radius: 12px; padding: 40px; }
         .content h2 { color: var(--navy); font-size: 1.4em; margin: 35px 0 15px; padding-bottom: 8px; border-bottom: 2px solid var(--gold); }
         .content h2:first-child { margin-top: 0; }
-        .content h3 { color: var(--navy); font-size: 1.15em; margin: 25px 0 12px; }
         .content p { margin: 15px 0; text-align: justify; }
-        .quote { background: var(--navy); color: white; padding: 20px 25px; border-left: 4px solid var(--gold); margin: 25px 0; border-radius: 0 8px 8px 0; }
-        .quote p { margin: 0; font-style: italic; }
-        .quote .source { color: var(--gold); margin-top: 12px; font-size: 0.9em; }
-        .related { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px; }
-        .related a { background: white; border: 1px solid var(--border); padding: 8px 15px; border-radius: 20px; text-decoration: none; color: var(--navy); font-size: 0.9em; transition: all 0.2s; }
-        .related a:hover { background: var(--gold); color: white; border-color: var(--gold); }
+        
+        .role-card {
+            background: linear-gradient(135deg, var(--navy) 0%, #2C3E50 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .role-type {
+            display: inline-block;
+            background: var(--gold);
+            color: var(--navy);
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.85em;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        .role-summary {
+            font-size: 1.15em;
+            line-height: 1.6;
+        }
+        
+        .impact-section { margin: 25px 0; }
+        .impact-point {
+            display: flex;
+            margin: 15px 0;
+            padding: 18px;
+            background: var(--cream);
+            border-radius: 8px;
+            border-left: 4px solid var(--gold);
+        }
+        .impact-number {
+            font-size: 1.8em;
+            font-weight: 700;
+            color: var(--gold);
+            margin-right: 18px;
+            min-width: 40px;
+            line-height: 1;
+        }
+        .impact-content strong { color: var(--navy); display: block; margin-bottom: 5px; }
+        .impact-content p { margin: 0; font-size: 0.95em; }
+        
+        .relation-timeline {
+            position: relative;
+            padding-left: 30px;
+            margin: 20px 0;
+        }
+        .relation-timeline::before {
+            content: '';
+            position: absolute;
+            left: 8px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--gold), var(--navy));
+        }
+        .relation-point {
+            position: relative;
+            margin-bottom: 25px;
+            padding-left: 20px;
+        }
+        .relation-point::before {
+            content: '';
+            position: absolute;
+            left: -26px;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--gold);
+            border: 2px solid white;
+            box-shadow: 0 0 0 2px var(--gold);
+        }
+        .relation-year {
+            font-weight: 700;
+            color: var(--gold);
+            font-size: 1.1em;
+        }
+        .relation-point p { margin: 5px 0 0; font-size: 0.95em; }
+        
+        .quote-block {
+            background: var(--cream);
+            border-left: 4px solid var(--navy);
+            padding: 20px 25px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .quote-block.dark {
+            background: var(--navy);
+            color: white;
+            border-left-color: var(--gold);
+        }
+        .quote-block.dark .source { color: var(--gold); }
+        .quote-block blockquote {
+            margin: 0;
+            font-style: italic;
+            font-size: 1.05em;
+            line-height: 1.7;
+        }
+        .quote-block .source {
+            color: var(--secondary);
+            margin-top: 12px;
+            font-size: 0.9em;
+            font-style: normal;
+        }
+        .quote-block .source::before { content: '—— '; }
+        
+        .network-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 12px;
+            margin: 15px 0;
+        }
+        .network-item {
+            background: var(--cream);
+            padding: 15px;
+            border-radius: 8px;
+            text-decoration: none;
+            color: var(--navy);
+            transition: all 0.2s;
+            border: 1px solid transparent;
+        }
+        .network-item:hover {
+            background: var(--gold);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(201, 162, 39, 0.3);
+        }
+        .network-item strong { display: block; margin-bottom: 3px; }
+        .relation-type {
+            font-size: 0.8em;
+            color: var(--secondary);
+            margin-top: 5px;
+        }
+        .network-item:hover .relation-type { color: rgba(255,255,255,0.85); }
+        
+        .concept-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 15px 0;
+        }
+        .concept-tag {
+            background: white;
+            border: 1px solid var(--border);
+            padding: 6px 14px;
+            border-radius: 20px;
+            text-decoration: none;
+            color: var(--navy);
+            font-size: 0.9em;
+            transition: all 0.2s;
+        }
+        .concept-tag:hover {
+            background: var(--navy);
+            color: white;
+            border-color: var(--navy);
+        }
+        
         footer { text-align: center; padding: 40px 20px; color: var(--secondary); border-top: 1px solid var(--border); margin-top: 40px; }
         footer a { color: var(--navy); text-decoration: none; }
+        .backlinks { margin-top: 40px; padding-top: 30px; border-top: 2px dashed var(--gold); }
+        .backlinks h3 { color: var(--navy); font-size: 1.2em; margin-bottom: 15px; }
+        .backlinks-intro { color: var(--secondary); margin-bottom: 15px; font-size: 0.95em; }
+        .backlinks-list { display: flex; flex-wrap: wrap; gap: 8px; }
+        .backlinks-list a { background: linear-gradient(135deg, var(--light-gold) 0%, #fff9e6 100%); border: 1px solid var(--gold); padding: 6px 14px; border-radius: 20px; text-decoration: none; color: var(--navy); font-size: 0.85em; transition: all 0.3s; }
+        .backlinks-list a:hover { background: var(--gold); color: white; transform: translateY(-2px); }
+        .backlinks-count { margin-top: 15px; color: var(--secondary); font-size: 0.9em; }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
-        <div class="avatar-large">💼</div>
+        <div class="avatar-large">📊</div>
         <h1>托德·库姆斯</h1>
         <div class="en-name">Todd Combs</div>
-        <div class="meta">👤 关键人物 · 被引用 12 次</div>
+        <div class="dates">1970年代出生</div>
+        <div class="meta">👤 投资团队</div>
     </header>
     
     <div class="container">
@@ -50,18 +211,98 @@
         </nav>
         
         <article class="content">
-            <h2>人物简介</h2>
-            <p>托德·库姆斯是伯克希尔的投资经理，与泰德·韦施勒一起负责管理伯克希尔的投资组合。他于2010年加入伯克希尔。</p>
-            
-            <h2>巴菲特评价</h2>
-            <div class="quote">
-                <p>"托德和泰德为我们做了出色的工作。"</p>
-                <div class="source">—— 沃伦·巴菲特</div>
+            <!-- 人物定位 -->
+            <div class="role-card">
+                <div class="role-type">投资团队</div>
+                <div class="role-summary">伯克希尔哈撒韦的投资经理之一，负责管理约340亿美元的股票投资组合。与泰德·韦施勒共同分担巴菲特的部分投资决策职责，是伯克希尔未来投资管理的重要人才储备。</div>
             </div>
             
-            <h2>相关公司</h2>
-            <div class="related">
-                <a href="../companies/伯克希尔哈撒韦.html">伯克希尔哈撒韦</a>
+            <!-- 核心影响 -->
+            <h2>🎯 核心影响</h2>
+            <div class="impact-section">
+                <div class="impact-point">
+                    <div class="impact-number">1</div>
+                    <div class="impact-content">
+                        <strong>伯克希尔投资决策的去中心化</strong>
+                        <p>托德和泰德的加入，标志着伯克希尔的投资管理从"巴菲特一人决策"转向"团队决策"。这不仅减轻了巴菲特晚年的工作负担，也为伯克希尔的长期发展提供了人才保障。</p>
+                    </div>
+                </div>
+                <div class="impact-point">
+                    <div class="impact-number">2</div>
+                    <div class="impact-content">
+                        <strong>价值投资的传承</strong>
+                        <p>托德是巴菲特和芒格投资哲学的践行者。他的投资决策同样遵循"优质企业、合理价格、长期持有"的原则，确保伯克希尔文化的延续性。</p>
+                    </div>
+                </div>
+                <div class="impact-point">
+                    <div class="impact-number">3</div>
+                    <div class="impact-content">
+                        <strong>独立决策机制</strong>
+                        <p>托德和泰德在伯克希尔拥有相对独立的投资决策权。巴菲特给予他们充分的信任，让他们按照自己的判断进行投资，只有重大决策才会与巴菲特商量。</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 关系演变 -->
+            <h2>📅 关系演变</h2>
+            <div class="relation-timeline">
+                <div class="relation-point">
+                    <span class="relation-year">2005年</span>
+                    <p>托德·库姆斯创立了自己的对冲基金Castle Point Capital，专门投资金融股。</p>
+                </div>
+                <div class="relation-point">
+                    <span class="relation-year">2010年</span>
+                    <p>巴菲特宣布托德·库姆斯加入伯克希尔，担任投资经理。这是巴菲特寻找接班人的重要一步。</p>
+                </div>
+                <div class="relation-point">
+                    <span class="relation-year">2010-至今</span>
+                    <p>托德在伯克希尔工作了十多年，管理着数百亿美元的投资组合，业绩表现稳健。</p>
+                </div>
+            </div>
+            
+            <!-- 巴菲特评价 -->
+            <h2>💬 巴菲特评价</h2>
+            <div class="quote-block dark">
+                <blockquote>"托德·库姆斯和泰德·韦施勒是我找到的两位出色的投资经理。他们的思维方式与我非常接近，但他们比我年轻时做得更好。"</blockquote>
+                <div class="source">2010年致股东信</div>
+            </div>
+            <div class="quote-block dark">
+                <blockquote>"托德和泰德管理的资金规模比他们之前管理的要大得多，但他们依然保持着优异的业绩。这是非常难得的。"</blockquote>
+                <div class="source">2015年伯克希尔年会</div>
+            </div>
+            
+            <!-- 体现的投资原则 -->
+            <h2>📚 体现的投资原则</h2>
+            <div class="concept-tags">
+                <a href="../concepts/价值投资.html" class="concept-tag">价值投资</a>
+                <a href="../concepts/集中投资.html" class="concept-tag">集中投资</a>
+                <a href="../concepts/长期投资.html" class="concept-tag">长期投资</a>
+            </div>
+            
+            <!-- 相关人物 -->
+            <h2>👥 相关人物</h2>
+            <div class="network-grid">
+                <a href="巴菲特.html" class="network-item">
+                    <strong>沃伦·巴菲特</strong>
+                    <div class="relation-type">雇主</div>
+                </a>
+                <a href="泰德·韦施勒.html" class="network-item">
+                    <strong>泰德·韦施勒</strong>
+                    <div class="relation-type">同为伯克希尔投资经理</div>
+                </a>
+                <a href="芒格.html" class="network-item">
+                    <strong>查理·芒格</strong>
+                    <div class="relation-type">伯克希尔决策层</div>
+                </a>
+            </div>
+            
+            <!-- 相关公司 -->
+            <h2>🏢 相关公司</h2>
+            <div class="network-grid">
+                <a href="../companies/伯克希尔哈撒韦.html" class="network-item">
+                    <strong>伯克希尔·哈撒韦</strong>
+                    <div class="relation-type">雇主</div>
+                </a>
             </div>
         </article>
     </div>

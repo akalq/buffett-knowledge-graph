@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>托尼·奈斯利 - 巴菲特知识库</title>
+    <title>托尼·奈斯利 - 巴菲特世界关键人物</title>
     <style>
-        :root { --bg-color: #FFFEF9; --navy: #1B2A4A; --gold: #C9A227; --text: #2C3E50; --secondary: #5D6D7E; --border: #E5E0D8; --light-gold: #FFF8E7; }
+        :root { --bg-color: #FFFEF9; --navy: #1B2A4A; --gold: #C9A227; --text: #2C3E50; --secondary: #5D6D7E; --border: #E5E0D8; --light-gold: #FFF8E7; --cream: #F8F5EE; }
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { font-family: 'Noto Serif SC', Georgia, serif; background: var(--bg-color); color: var(--text); line-height: 1.8; }
         .container { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
@@ -13,6 +13,7 @@
         header h1 { font-size: 2em; margin-bottom: 10px; }
         header .en-name { color: var(--gold); font-size: 1.1em; margin: 5px 0; }
         header .meta { color: var(--gold); font-size: 0.95em; margin-top: 10px; }
+        header .dates { color: rgba(255,255,255,0.7); font-size: 0.9em; margin-top: 5px; }
         .avatar-large { width: 120px; height: 120px; background: var(--gold); border-radius: 50%; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; font-size: 3em; }
         .nav { background: white; border: 1px solid var(--border); padding: 15px 20px; margin-bottom: 30px; border-radius: 8px; text-align: center; }
         .nav a { color: var(--navy); text-decoration: none; margin: 0 12px; font-size: 0.95em; }
@@ -21,30 +22,184 @@
         .content h2 { color: var(--navy); font-size: 1.4em; margin: 35px 0 15px; padding-bottom: 8px; border-bottom: 2px solid var(--gold); }
         .content h2:first-child { margin-top: 0; }
         .content p { margin: 15px 0; text-align: justify; }
-        .quote { background: var(--navy); color: white; padding: 20px 25px; border-left: 4px solid var(--gold); margin: 25px 0; border-radius: 0 8px 8px 0; }
-        .quote p { margin: 0; font-style: italic; }
-        .quote .source { color: var(--gold); margin-top: 12px; font-size: 0.9em; }
-        .related { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px; }
-        .related a { background: white; border: 1px solid var(--border); padding: 8px 15px; border-radius: 20px; text-decoration: none; color: var(--navy); font-size: 0.9em; transition: all 0.2s; }
-        .related a:hover { background: var(--gold); color: white; border-color: var(--gold); }
+        
+        .role-card {
+            background: linear-gradient(135deg, var(--navy) 0%, #2C3E50 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .role-type {
+            display: inline-block;
+            background: var(--gold);
+            color: var(--navy);
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.85em;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        .role-summary {
+            font-size: 1.15em;
+            line-height: 1.6;
+        }
+        
+        .impact-section { margin: 25px 0; }
+        .impact-point {
+            display: flex;
+            margin: 15px 0;
+            padding: 18px;
+            background: var(--cream);
+            border-radius: 8px;
+            border-left: 4px solid var(--gold);
+        }
+        .impact-number {
+            font-size: 1.8em;
+            font-weight: 700;
+            color: var(--gold);
+            margin-right: 18px;
+            min-width: 40px;
+            line-height: 1;
+        }
+        .impact-content strong { color: var(--navy); display: block; margin-bottom: 5px; }
+        .impact-content p { margin: 0; font-size: 0.95em; }
+        
+        .relation-timeline {
+            position: relative;
+            padding-left: 30px;
+            margin: 20px 0;
+        }
+        .relation-timeline::before {
+            content: '';
+            position: absolute;
+            left: 8px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--gold), var(--navy));
+        }
+        .relation-point {
+            position: relative;
+            margin-bottom: 25px;
+            padding-left: 20px;
+        }
+        .relation-point::before {
+            content: '';
+            position: absolute;
+            left: -26px;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--gold);
+            border: 2px solid white;
+            box-shadow: 0 0 0 2px var(--gold);
+        }
+        .relation-year {
+            font-weight: 700;
+            color: var(--gold);
+            font-size: 1.1em;
+        }
+        .relation-point p { margin: 5px 0 0; font-size: 0.95em; }
+        
+        .quote-block {
+            background: var(--cream);
+            border-left: 4px solid var(--navy);
+            padding: 20px 25px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .quote-block.dark {
+            background: var(--navy);
+            color: white;
+            border-left-color: var(--gold);
+        }
+        .quote-block.dark .source { color: var(--gold); }
+        .quote-block blockquote {
+            margin: 0;
+            font-style: italic;
+            font-size: 1.05em;
+            line-height: 1.7;
+        }
+        .quote-block .source {
+            color: var(--secondary);
+            margin-top: 12px;
+            font-size: 0.9em;
+            font-style: normal;
+        }
+        .quote-block .source::before { content: '—— '; }
+        
+        .network-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 12px;
+            margin: 15px 0;
+        }
+        .network-item {
+            background: var(--cream);
+            padding: 15px;
+            border-radius: 8px;
+            text-decoration: none;
+            color: var(--navy);
+            transition: all 0.2s;
+            border: 1px solid transparent;
+        }
+        .network-item:hover {
+            background: var(--gold);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(201, 162, 39, 0.3);
+        }
+        .network-item strong { display: block; margin-bottom: 3px; }
+        .relation-type {
+            font-size: 0.8em;
+            color: var(--secondary);
+            margin-top: 5px;
+        }
+        .network-item:hover .relation-type { color: rgba(255,255,255,0.85); }
+        
+        .concept-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 15px 0;
+        }
+        .concept-tag {
+            background: white;
+            border: 1px solid var(--border);
+            padding: 6px 14px;
+            border-radius: 20px;
+            text-decoration: none;
+            color: var(--navy);
+            font-size: 0.9em;
+            transition: all 0.2s;
+        }
+        .concept-tag:hover {
+            background: var(--navy);
+            color: white;
+            border-color: var(--navy);
+        }
+        
         footer { text-align: center; padding: 40px 20px; color: var(--secondary); border-top: 1px solid var(--border); margin-top: 40px; }
         footer a { color: var(--navy); text-decoration: none; }
         .backlinks { margin-top: 40px; padding-top: 30px; border-top: 2px dashed var(--gold); }
-        .backlinks h2 { color: var(--navy); font-size: 1.3em; margin-bottom: 15px; }
-        .backlinks-intro { color: var(--secondary); margin-bottom: 15px; }
-        .backlinks-list { display: flex; flex-wrap: wrap; gap: 10px; }
-        .backlinks-list a { background: linear-gradient(135deg, var(--light-gold) 0%, #fff9e6 100%); border: 1px solid var(--gold); padding: 8px 16px; border-radius: 20px; text-decoration: none; color: var(--navy); font-size: 0.9em; transition: all 0.3s; }
+        .backlinks h3 { color: var(--navy); font-size: 1.2em; margin-bottom: 15px; }
+        .backlinks-intro { color: var(--secondary); margin-bottom: 15px; font-size: 0.95em; }
+        .backlinks-list { display: flex; flex-wrap: wrap; gap: 8px; }
+        .backlinks-list a { background: linear-gradient(135deg, var(--light-gold) 0%, #fff9e6 100%); border: 1px solid var(--gold); padding: 6px 14px; border-radius: 20px; text-decoration: none; color: var(--navy); font-size: 0.85em; transition: all 0.3s; }
         .backlinks-list a:hover { background: var(--gold); color: white; transform: translateY(-2px); }
         .backlinks-count { margin-top: 15px; color: var(--secondary); font-size: 0.9em; }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
         <div class="avatar-large">🚗</div>
         <h1>托尼·奈斯利</h1>
         <div class="en-name">Tony Nicely</div>
-        <div class="meta">👤 关键人物 · 被引用 10 次</div>
+        <div class="dates">1943年出生</div>
+        <div class="meta">👤 保险管理者</div>
     </header>
     
     <div class="container">
@@ -56,47 +211,128 @@
         </nav>
         
         <article class="content">
-            <h2>人物简介</h2>
-            <p>托尼·奈斯利（1943-）是GEICO保险公司的首席执行官，在他的领导下，GEICO从一家小型汽车保险公司发展成为全美最大的汽车保险商之一。</p>
-            
-            <h2>与巴菲特的关系</h2>
-            <p>1987年加入GEICO，1993年成为CEO，带领GEICO实现跨越式发展。</p>
-            
-            <h2>核心贡献</h2>
-            <p>大幅提升了GEICO的承保效率和营销能力，使GEICO成为伯克希尔保险帝国的核心资产。</p>
-
-            <h2>经典语录</h2>
-            <div class="quote">
-                <p>"我们的使命是为客户提供最便宜的汽车保险。"</p>
-                <div class="source">—— Tony Nicely</div>
-            </div>
-
-            <h2>巴菲特评价</h2>
-            <div class="quote">
-                <p>"托尼·奈斯利是GEICO的灵魂人物，他对公司的贡献不可估量。"</p>
-                <div class="source">—— 沃伦·巴菲特</div>
+            <!-- 人物定位 -->
+            <div class="role-card">
+                <div class="role-type">企业家</div>
+                <div class="role-summary">GEICO的传奇掌门人。他在GEICO工作了超过50年，将这家曾经濒临破产的汽车保险公司打造成了美国最大的汽车保险商之一，也是伯克希尔保险帝国的重要基石。</div>
             </div>
             
-            <h2>相关公司</h2>
-            <div class="related">
-                <a href="../companies/GEICO.html">GEICO</a>
-            </div><p class="backlinks-count">共被提及 10 次</p>
+            <!-- 核心影响 -->
+            <h2>🎯 核心影响</h2>
+            <div class="impact-section">
+                <div class="impact-point">
+                    <div class="impact-number">1</div>
+                    <div class="impact-content">
+                        <strong>GEICO的复兴</strong>
+                        <p>1990年代，托尼接手GEICO时，公司正陷入困境。他大刀阔斧地改革营销策略、改善服务质量、加强成本控制。在他的领导下，GEICO从1993年市场份额2%增长到2000年代的12%以上。</p>
+                    </div>
+                </div>
+                <div class="impact-point">
+                    <div class="impact-number">2</div>
+                    <div class="impact-content">
+                        <strong>直接营销模式的先驱</strong>
+                        <p>托尼是保险业"直接销售"模式的坚定推动者。GEICO通过电话和互联网直接销售保险，省去了中间商的成本，这是GEICO能够提供更低价格的关键。这种模式后来被整个保险行业效仿。</p>
+                    </div>
+                </div>
+                <div class="impact-point">
+                    <div class="impact-number">3</div>
+                    <div class="impact-content">
+                        <strong>伯克希尔的保险双引擎</strong>
+                        <p>在伯克希尔的保险版图中，阿吉特·贾恩负责再保险（巨型风险），托尼·奈斯利负责直接保险（个人汽车保险）。两人的组合让伯克希尔在保险行业拥有独特的竞争优势。</p>
+                    </div>
+                </div>
+                <div class="impact-point">
+                    <div class="impact-number">4</div>
+                    <div class="impact-content">
+                        <strong>人才与文化传承</strong>
+                        <p>托尼在GEICO工作超过50年，见证了公司从小到大、从困境到辉煌的全过程。他培养的管理团队在他退休后继续带领GEICO增长，证明了"优秀文化"比"个人能力"更持久。</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 关系演变 -->
+            <h2>📅 关系演变</h2>
+            <div class="relation-timeline">
+                <div class="relation-point">
+                    <span class="relation-year">1960年代</span>
+                    <p>托尼·奈斯利大学毕业后加入GEICO，从基层做起，一步步晋升为高管。</p>
+                </div>
+                <div class="relation-point">
+                    <span class="relation-year">1993年</span>
+                    <p>托尼被任命为GEICO CEO。当时GEICO市场份额仅2%，且承保亏损严重。</p>
+                </div>
+                <div class="relation-point">
+                    <span class="relation-year">1995年</span>
+                    <p>伯克希尔收购GEICO剩余全部股份，完全控股。巴菲特对托尼的管理能力印象深刻，给予他充分的支持和信任。</p>
+                </div>
+                <div class="relation-point">
+                    <span class="relation-year">1995-2010年代</span>
+                    <p>在托尼的领导下，GEICO实现了惊人的增长：承保利润持续为正，市场份额从2%增长到超过15%，成为美国第二大汽车保险公司。</p>
+                </div>
+                <div class="relation-point">
+                    <span class="relation-year">2010年代</span>
+                    <p>托尼继续担任GEICO CEO，直到他准备退休。他培养的接班人继续带领GEICO前进。</p>
+                </div>
+            </div>
+            
+            <!-- 巴菲特评价 -->
+            <h2>💬 巴菲特评价</h2>
+            <div class="quote-block dark">
+                <blockquote>"托尼·奈斯利是GEICO的灵魂。他不只是CEO，他是GEICO文化的化身——节俭、专注、以客户为中心。"</blockquote>
+                <div class="source">2000年代致股东信</div>
+            </div>
+            <div class="quote-block dark">
+                <blockquote>"1995年我们收购GEICO时，我最担心的不是业务，而是托尼是否会继续留下来。幸运的是，他不仅留下来了，而且做得比预期更好。"</blockquote>
+                <div class="source">2010年致股东信</div>
+            </div>
+            <div class="quote-block dark">
+                <blockquote>"托尼·奈斯利是保险行业最被低估的CEO之一。他不追求媒体曝光，只是默默地把每一件事做好。这正是GEICO文化的一部分。"</blockquote>
+                <div class="source">伯克希尔年会</div>
+            </div>
+            
+            <!-- 体现的投资原则 -->
+            <h2>📚 体现的投资原则</h2>
+            <div class="concept-tags">
+                <a href="../concepts/浮存金.html" class="concept-tag">浮存金</a>
+                <a href="../concepts/保险.html" class="concept-tag">保险业务</a>
+                <a href="../concepts/竞争优势.html" class="concept-tag">竞争优势</a>
+            </div>
+            <p style="margin-top: 15px; font-size: 0.95em;"><strong>GEICO的商业模式：</strong>直接销售（省去中间商）→更低价格→更多客户→更大规模→更低成本→更低价格。这个正向循环是GEICO的核心竞争力，而托尼是这个循环的设计师和执行者。</p>
+            
+            <!-- 相关人物 -->
+            <h2>👥 相关人物</h2>
+            <div class="network-grid">
+                <a href="巴菲特.html" class="network-item">
+                    <strong>沃伦·巴菲特</strong>
+                    <div class="relation-type">GEICO的收购方，给予托尼充分信任</div>
+                </a>
+                <a href="阿吉特·贾恩.html" class="network-item">
+                    <strong>阿吉特·贾恩</strong>
+                    <div class="relation-type">保险双引擎：托尼负责直接保险，阿吉特负责再保险</div>
+                </a>
+                <a href="芒格.html" class="network-item">
+                    <strong>查理·芒格</strong>
+                    <div class="relation-type">早期GEICO投资者</div>
+                </a>
+            </div>
+            
+            <!-- 相关公司 -->
+            <h2>🏢 相关公司</h2>
+            <div class="network-grid">
+                <a href="../companies/GEICO.html" class="network-item">
+                    <strong>GEICO</strong>
+                    <div class="relation-type">担任CEO超过25年</div>
+                </a>
+                <a href="../companies/伯克希尔哈撒韦.html" class="network-item">
+                    <strong>伯克希尔·哈撒韦</strong>
+                    <div class="relation-type">母公司</div>
+                </a>
             </div>
         </article>
     </div>
     
     <footer>
         <p><a href="../index.html">巴菲特知识库</a> | 数据来源：Berkshire Hathaway Letters</p>
-    
-        <div class="backlinks">
-            <h2>📚 反向链接</h2>
-            <p class="backlinks-intro">以下年份的信件提到了此人物：</p>
-            <div class="backlinks-list">
-                <a href="../letters/berkshire/2007.html">2007年</a><a href="../letters/berkshire/2006.html">2006年</a><a href="../letters/berkshire/2005.html">2005年</a><a href="../letters/berkshire/2004.html">2004年</a><a href="../letters/berkshire/2003.html">2003年</a><a href="../letters/berkshire/2002.html">2002年</a><a href="../letters/berkshire/2001.html">2001年</a><a href="../letters/berkshire/2000.html">2000年</a><a href="../letters/berkshire/1997.html">1997年</a><a href="../letters/berkshire/1995.html">1995年</a>
-            </div>
-            <p class="backlinks-count">共 10 处引用</p>
-        </div>
-    
-</footer>
+    </footer>
 </body>
 </html>

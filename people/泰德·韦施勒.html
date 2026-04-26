@@ -3,42 +3,203 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>泰德·韦施勒 - 巴菲特知识库</title>
+    <title>泰德·韦施勒 - 巴菲特世界关键人物</title>
     <style>
-        :root { --bg-color: #FFFEF9; --navy: #1B2A4A; --gold: #C9A227; --text: #2C3E50; --secondary: #5D6D7E; --border: #E5E0D8; }
+        :root { --bg-color: #FFFEF9; --navy: #1B2A4A; --gold: #C9A227; --text: #2C3E50; --secondary: #5D6D7E; --border: #E5E0D8; --light-gold: #FFF8E7; --cream: #F8F5EE; }
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { font-family: 'Noto Serif SC', Georgia, serif; background: var(--bg-color); color: var(--text); line-height: 1.8; }
         .container { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
         header { background: var(--navy); color: white; padding: 40px 30px; text-align: center; }
         header h1 { font-size: 2em; margin-bottom: 10px; }
+        header .en-name { color: var(--gold); font-size: 1.1em; margin: 5px 0; }
         header .meta { color: var(--gold); font-size: 0.95em; margin-top: 10px; }
-        header .dates { color: rgba(255,255,255,0.7); font-size: 0.9em; }
-        .avatar-large { width: 120px; height: 120px; background: var(--gold); border-radius: 50%; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; font-size: 3em; color: var(--navy); }
+        header .dates { color: rgba(255,255,255,0.7); font-size: 0.9em; margin-top: 5px; }
+        .avatar-large { width: 120px; height: 120px; background: var(--gold); border-radius: 50%; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; font-size: 3em; }
         .nav { background: white; border: 1px solid var(--border); padding: 15px 20px; margin-bottom: 30px; border-radius: 8px; text-align: center; }
         .nav a { color: var(--navy); text-decoration: none; margin: 0 12px; font-size: 0.95em; }
         .nav a:hover { color: var(--gold); }
         .content { background: white; border: 1px solid var(--border); border-radius: 12px; padding: 40px; }
         .content h2 { color: var(--navy); font-size: 1.4em; margin: 35px 0 15px; padding-bottom: 8px; border-bottom: 2px solid var(--gold); }
         .content h2:first-child { margin-top: 0; }
-        .content h3 { color: var(--navy); font-size: 1.15em; margin: 25px 0 12px; }
         .content p { margin: 15px 0; text-align: justify; }
-        .quote { background: var(--navy); color: white; padding: 20px 25px; border-left: 4px solid var(--gold); margin: 25px 0; border-radius: 0 8px 8px 0; }
-        .quote p { margin: 0; font-style: italic; }
-        .quote .source { color: var(--gold); margin-top: 12px; font-size: 0.9em; }
-        .related { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px; }
-        .related a { background: white; border: 1px solid var(--border); padding: 8px 15px; border-radius: 20px; text-decoration: none; color: var(--navy); font-size: 0.9em; transition: all 0.2s; }
-        .related a:hover { background: var(--gold); color: white; border-color: var(--gold); }
+        
+        .role-card {
+            background: linear-gradient(135deg, var(--navy) 0%, #2C3E50 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .role-type {
+            display: inline-block;
+            background: var(--gold);
+            color: var(--navy);
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.85em;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        .role-summary {
+            font-size: 1.15em;
+            line-height: 1.6;
+        }
+        
+        .impact-section { margin: 25px 0; }
+        .impact-point {
+            display: flex;
+            margin: 15px 0;
+            padding: 18px;
+            background: var(--cream);
+            border-radius: 8px;
+            border-left: 4px solid var(--gold);
+        }
+        .impact-number {
+            font-size: 1.8em;
+            font-weight: 700;
+            color: var(--gold);
+            margin-right: 18px;
+            min-width: 40px;
+            line-height: 1;
+        }
+        .impact-content strong { color: var(--navy); display: block; margin-bottom: 5px; }
+        .impact-content p { margin: 0; font-size: 0.95em; }
+        
+        .relation-timeline {
+            position: relative;
+            padding-left: 30px;
+            margin: 20px 0;
+        }
+        .relation-timeline::before {
+            content: '';
+            position: absolute;
+            left: 8px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--gold), var(--navy));
+        }
+        .relation-point {
+            position: relative;
+            margin-bottom: 25px;
+            padding-left: 20px;
+        }
+        .relation-point::before {
+            content: '';
+            position: absolute;
+            left: -26px;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--gold);
+            border: 2px solid white;
+            box-shadow: 0 0 0 2px var(--gold);
+        }
+        .relation-year {
+            font-weight: 700;
+            color: var(--gold);
+            font-size: 1.1em;
+        }
+        .relation-point p { margin: 5px 0 0; font-size: 0.95em; }
+        
+        .quote-block {
+            background: var(--cream);
+            border-left: 4px solid var(--navy);
+            padding: 20px 25px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .quote-block.dark {
+            background: var(--navy);
+            color: white;
+            border-left-color: var(--gold);
+        }
+        .quote-block.dark .source { color: var(--gold); }
+        .quote-block blockquote {
+            margin: 0;
+            font-style: italic;
+            font-size: 1.05em;
+            line-height: 1.7;
+        }
+        .quote-block .source {
+            color: var(--secondary);
+            margin-top: 12px;
+            font-size: 0.9em;
+            font-style: normal;
+        }
+        .quote-block .source::before { content: '—— '; }
+        
+        .network-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 12px;
+            margin: 15px 0;
+        }
+        .network-item {
+            background: var(--cream);
+            padding: 15px;
+            border-radius: 8px;
+            text-decoration: none;
+            color: var(--navy);
+            transition: all 0.2s;
+            border: 1px solid transparent;
+        }
+        .network-item:hover {
+            background: var(--gold);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(201, 162, 39, 0.3);
+        }
+        .network-item strong { display: block; margin-bottom: 3px; }
+        .relation-type {
+            font-size: 0.8em;
+            color: var(--secondary);
+            margin-top: 5px;
+        }
+        .network-item:hover .relation-type { color: rgba(255,255,255,0.85); }
+        
+        .concept-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 15px 0;
+        }
+        .concept-tag {
+            background: white;
+            border: 1px solid var(--border);
+            padding: 6px 14px;
+            border-radius: 20px;
+            text-decoration: none;
+            color: var(--navy);
+            font-size: 0.9em;
+            transition: all 0.2s;
+        }
+        .concept-tag:hover {
+            background: var(--navy);
+            color: white;
+            border-color: var(--navy);
+        }
+        
         footer { text-align: center; padding: 40px 20px; color: var(--secondary); border-top: 1px solid var(--border); margin-top: 40px; }
         footer a { color: var(--navy); text-decoration: none; }
+        .backlinks { margin-top: 40px; padding-top: 30px; border-top: 2px dashed var(--gold); }
+        .backlinks h3 { color: var(--navy); font-size: 1.2em; margin-bottom: 15px; }
+        .backlinks-intro { color: var(--secondary); margin-bottom: 15px; font-size: 0.95em; }
+        .backlinks-list { display: flex; flex-wrap: wrap; gap: 8px; }
+        .backlinks-list a { background: linear-gradient(135deg, var(--light-gold) 0%, #fff9e6 100%); border: 1px solid var(--gold); padding: 6px 14px; border-radius: 20px; text-decoration: none; color: var(--navy); font-size: 0.85em; transition: all 0.3s; }
+        .backlinks-list a:hover { background: var(--gold); color: white; transform: translateY(-2px); }
+        .backlinks-count { margin-top: 15px; color: var(--secondary); font-size: 0.9em; }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
-        <div class="avatar-large">📊</div>
+        <div class="avatar-large">💹</div>
         <h1>泰德·韦施勒</h1>
         <div class="en-name">Ted Weschler</div>
-        <div class="meta">👤 关键人物 · 被引用 15 次</div>
+        <div class="dates">1960年代出生</div>
+        <div class="meta">👤 投资团队</div>
     </header>
     
     <div class="container">
@@ -50,18 +211,106 @@
         </nav>
         
         <article class="content">
-            <h2>人物简介</h2>
-            <p>泰德·韦施勒是伯克希尔的投资经理，他于2011年和2012年两次以创纪录的价格赢得巴菲特慈善午餐竞拍，随后被伯克希尔聘用。</p>
-            
-            <h2>巴菲特评价</h2>
-            <div class="quote">
-                <p>"泰德和托德的加入对我们非常重要。他们都是出色的投资者。"</p>
-                <div class="source">—— 沃伦·巴菲特</div>
+            <!-- 人物定位 -->
+            <div class="role-card">
+                <div class="role-type">投资团队</div>
+                <div class="role-summary">伯克希尔的另一位首席投资官，与托德·库姆斯共同管理伯克希尔的股票投资组合。他和托德一起被称为巴菲特的"左膀右臂"，是伯克希尔投资决策去中心化的关键人物。</div>
             </div>
             
-            <h2>相关公司</h2>
-            <div class="related">
-                <a href="../companies/伯克希尔哈撒韦.html">伯克希尔哈撒韦</a>
+            <!-- 核心影响 -->
+            <h2>🎯 核心影响</h2>
+            <div class="impact-section">
+                <div class="impact-point">
+                    <div class="impact-number">1</div>
+                    <div class="impact-content">
+                        <strong>投资组合管理的专业化</strong>
+                        <p>泰德和托德的加入，让伯克希尔的投资管理从"创始人驱动"转向"团队驱动"。他们各自管理数十亿美元的组合，每年为伯克希尔贡献数十亿美元的投资收益。</p>
+                    </div>
+                </div>
+                <div class="impact-point">
+                    <div class="impact-number">2</div>
+                    <div class="impact-content">
+                        <strong>人才储备与传承</strong>
+                        <p>巴菲特曾两次以"午餐拍卖"的方式与泰德交流（2010年和2011年），每次出价都超过200万美元。这些收入捐给了慈善机构。之后巴菲特邀请泰德加入伯克希尔。</p>
+                    </div>
+                </div>
+                <div class="impact-point">
+                    <div class="impact-number">3</div>
+                    <div class="impact-content">
+                        <strong>独立决策与协作</strong>
+                        <p>泰德在伯克希尔拥有独立决策权，同时与巴菲特、托德保持密切沟通。这种"独立+协作"的模式，让伯克希尔的投资既保持了个人判断的锐度，又有了集体智慧的保障。</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 关系演变 -->
+            <h2>📅 关系演变</h2>
+            <div class="relation-timeline">
+                <div class="relation-point">
+                    <span class="relation-year">1999-2000年代</span>
+                    <p>泰德创立并管理自己的对冲基金Hedge Fund，在投资界建立了良好声誉。</p>
+                </div>
+                <div class="relation-point">
+                    <span class="relation-year">2010年</span>
+                    <p>泰德参加巴菲特的慈善午餐竞拍，以262万美元拍下。这笔钱捐给了旧金山慈善机构Glide Foundation。</p>
+                </div>
+                <div class="relation-point">
+                    <span class="relation-year">2011年</span>
+                    <p>泰德再次参加午餐竞拍，出价234万美元。两次午餐让巴菲特深入了解泰德的投资理念。</p>
+                </div>
+                <div class="relation-point">
+                    <span class="relation-year">2012年</span>
+                    <p>巴菲特正式宣布泰德·韦施勒加入伯克希尔，担任首席投资官，与托德·库姆斯共同管理投资组合。</p>
+                </div>
+                <div class="relation-point">
+                    <span class="relation-year">2012年至今</span>
+                    <p>泰德在伯克希尔工作了十多年，业绩表现优异，管理资产规模超过300亿美元。</p>
+                </div>
+            </div>
+            
+            <!-- 巴菲特评价 -->
+            <h2>💬 巴菲特评价</h2>
+            <div class="quote-block dark">
+                <blockquote>"我通过午餐对泰德有了深入了解。他的投资理念、思考方式都让我印象深刻。找到泰德和托德，是我为伯克希尔做的最重要的事情之一。"</blockquote>
+                <div class="source">2012年致股东信</div>
+            </div>
+            <div class="quote-block dark">
+                <blockquote>"泰德和托德是我能找到的最好的投资经理。他们不只是业绩好，更重要的是他们的思维方式与我们一致。"</blockquote>
+                <div class="source">2015年伯克希尔年会</div>
+            </div>
+            
+            <!-- 体现的投资原则 -->
+            <h2>📚 体现的投资原则</h2>
+            <div class="concept-tags">
+                <a href="../concepts/价值投资.html" class="concept-tag">价值投资</a>
+                <a href="../concepts/长期投资.html" class="concept-tag">长期投资</a>
+                <a href="../concepts/能力圈.html" class="concept-tag">能力圈</a>
+            </div>
+            
+            <!-- 相关人物 -->
+            <h2>👥 相关人物</h2>
+            <div class="network-grid">
+                <a href="巴菲特.html" class="network-item">
+                    <strong>沃伦·巴菲特</strong>
+                    <div class="relation-type">雇主</div>
+                </a>
+                <a href="托德·库姆斯.html" class="network-item">
+                    <strong>托德·库姆斯</strong>
+                    <div class="relation-type">同为伯克希尔投资经理</div>
+                </a>
+                <a href="芒格.html" class="network-item">
+                    <strong>查理·芒格</strong>
+                    <div class="relation-type">伯克希尔决策层</div>
+                </a>
+            </div>
+            
+            <!-- 相关公司 -->
+            <h2>🏢 相关公司</h2>
+            <div class="network-grid">
+                <a href="../companies/伯克希尔哈撒韦.html" class="network-item">
+                    <strong>伯克希尔·哈撒韦</strong>
+                    <div class="relation-type">雇主</div>
+                </a>
             </div>
         </article>
     </div>

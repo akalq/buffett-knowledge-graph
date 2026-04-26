@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>阿吉特·贾恩 - 巴菲特知识库</title>
+    <title>阿吉特·贾恩 - 巴菲特世界关键人物</title>
     <style>
-        :root { --bg-color: #FFFEF9; --navy: #1B2A4A; --gold: #C9A227; --text: #2C3E50; --secondary: #5D6D7E; --border: #E5E0D8; --light-gold: #FFF8E7; }
+        :root { --bg-color: #FFFEF9; --navy: #1B2A4A; --gold: #C9A227; --text: #2C3E50; --secondary: #5D6D7E; --border: #E5E0D8; --light-gold: #FFF8E7; --cream: #F8F5EE; }
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { font-family: 'Noto Serif SC', Georgia, serif; background: var(--bg-color); color: var(--text); line-height: 1.8; }
         .container { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
@@ -13,6 +13,7 @@
         header h1 { font-size: 2em; margin-bottom: 10px; }
         header .en-name { color: var(--gold); font-size: 1.1em; margin: 5px 0; }
         header .meta { color: var(--gold); font-size: 0.95em; margin-top: 10px; }
+        header .dates { color: rgba(255,255,255,0.7); font-size: 0.9em; margin-top: 5px; }
         .avatar-large { width: 120px; height: 120px; background: var(--gold); border-radius: 50%; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; font-size: 3em; }
         .nav { background: white; border: 1px solid var(--border); padding: 15px 20px; margin-bottom: 30px; border-radius: 8px; text-align: center; }
         .nav a { color: var(--navy); text-decoration: none; margin: 0 12px; font-size: 0.95em; }
@@ -21,30 +22,184 @@
         .content h2 { color: var(--navy); font-size: 1.4em; margin: 35px 0 15px; padding-bottom: 8px; border-bottom: 2px solid var(--gold); }
         .content h2:first-child { margin-top: 0; }
         .content p { margin: 15px 0; text-align: justify; }
-        .quote { background: var(--navy); color: white; padding: 20px 25px; border-left: 4px solid var(--gold); margin: 25px 0; border-radius: 0 8px 8px 0; }
-        .quote p { margin: 0; font-style: italic; }
-        .quote .source { color: var(--gold); margin-top: 12px; font-size: 0.9em; }
-        .related { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px; }
-        .related a { background: white; border: 1px solid var(--border); padding: 8px 15px; border-radius: 20px; text-decoration: none; color: var(--navy); font-size: 0.9em; transition: all 0.2s; }
-        .related a:hover { background: var(--gold); color: white; border-color: var(--gold); }
+        
+        .role-card {
+            background: linear-gradient(135deg, var(--navy) 0%, #2C3E50 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .role-type {
+            display: inline-block;
+            background: var(--gold);
+            color: var(--navy);
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.85em;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        .role-summary {
+            font-size: 1.15em;
+            line-height: 1.6;
+        }
+        
+        .impact-section { margin: 25px 0; }
+        .impact-point {
+            display: flex;
+            margin: 15px 0;
+            padding: 18px;
+            background: var(--cream);
+            border-radius: 8px;
+            border-left: 4px solid var(--gold);
+        }
+        .impact-number {
+            font-size: 1.8em;
+            font-weight: 700;
+            color: var(--gold);
+            margin-right: 18px;
+            min-width: 40px;
+            line-height: 1;
+        }
+        .impact-content strong { color: var(--navy); display: block; margin-bottom: 5px; }
+        .impact-content p { margin: 0; font-size: 0.95em; }
+        
+        .relation-timeline {
+            position: relative;
+            padding-left: 30px;
+            margin: 20px 0;
+        }
+        .relation-timeline::before {
+            content: '';
+            position: absolute;
+            left: 8px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--gold), var(--navy));
+        }
+        .relation-point {
+            position: relative;
+            margin-bottom: 25px;
+            padding-left: 20px;
+        }
+        .relation-point::before {
+            content: '';
+            position: absolute;
+            left: -26px;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--gold);
+            border: 2px solid white;
+            box-shadow: 0 0 0 2px var(--gold);
+        }
+        .relation-year {
+            font-weight: 700;
+            color: var(--gold);
+            font-size: 1.1em;
+        }
+        .relation-point p { margin: 5px 0 0; font-size: 0.95em; }
+        
+        .quote-block {
+            background: var(--cream);
+            border-left: 4px solid var(--navy);
+            padding: 20px 25px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .quote-block.dark {
+            background: var(--navy);
+            color: white;
+            border-left-color: var(--gold);
+        }
+        .quote-block.dark .source { color: var(--gold); }
+        .quote-block blockquote {
+            margin: 0;
+            font-style: italic;
+            font-size: 1.05em;
+            line-height: 1.7;
+        }
+        .quote-block .source {
+            color: var(--secondary);
+            margin-top: 12px;
+            font-size: 0.9em;
+            font-style: normal;
+        }
+        .quote-block .source::before { content: '—— '; }
+        
+        .network-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 12px;
+            margin: 15px 0;
+        }
+        .network-item {
+            background: var(--cream);
+            padding: 15px;
+            border-radius: 8px;
+            text-decoration: none;
+            color: var(--navy);
+            transition: all 0.2s;
+            border: 1px solid transparent;
+        }
+        .network-item:hover {
+            background: var(--gold);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(201, 162, 39, 0.3);
+        }
+        .network-item strong { display: block; margin-bottom: 3px; }
+        .relation-type {
+            font-size: 0.8em;
+            color: var(--secondary);
+            margin-top: 5px;
+        }
+        .network-item:hover .relation-type { color: rgba(255,255,255,0.85); }
+        
+        .concept-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 15px 0;
+        }
+        .concept-tag {
+            background: white;
+            border: 1px solid var(--border);
+            padding: 6px 14px;
+            border-radius: 20px;
+            text-decoration: none;
+            color: var(--navy);
+            font-size: 0.9em;
+            transition: all 0.2s;
+        }
+        .concept-tag:hover {
+            background: var(--navy);
+            color: white;
+            border-color: var(--navy);
+        }
+        
         footer { text-align: center; padding: 40px 20px; color: var(--secondary); border-top: 1px solid var(--border); margin-top: 40px; }
         footer a { color: var(--navy); text-decoration: none; }
         .backlinks { margin-top: 40px; padding-top: 30px; border-top: 2px dashed var(--gold); }
-        .backlinks h2 { color: var(--navy); font-size: 1.3em; margin-bottom: 15px; }
-        .backlinks-intro { color: var(--secondary); margin-bottom: 15px; }
-        .backlinks-list { display: flex; flex-wrap: wrap; gap: 10px; }
-        .backlinks-list a { background: linear-gradient(135deg, var(--light-gold) 0%, #fff9e6 100%); border: 1px solid var(--gold); padding: 8px 16px; border-radius: 20px; text-decoration: none; color: var(--navy); font-size: 0.9em; transition: all 0.3s; }
+        .backlinks h3 { color: var(--navy); font-size: 1.2em; margin-bottom: 15px; }
+        .backlinks-intro { color: var(--secondary); margin-bottom: 15px; font-size: 0.95em; }
+        .backlinks-list { display: flex; flex-wrap: wrap; gap: 8px; }
+        .backlinks-list a { background: linear-gradient(135deg, var(--light-gold) 0%, #fff9e6 100%); border: 1px solid var(--gold); padding: 6px 14px; border-radius: 20px; text-decoration: none; color: var(--navy); font-size: 0.85em; transition: all 0.3s; }
         .backlinks-list a:hover { background: var(--gold); color: white; transform: translateY(-2px); }
         .backlinks-count { margin-top: 15px; color: var(--secondary); font-size: 0.9em; }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
         <div class="avatar-large">🛡️</div>
         <h1>阿吉特·贾恩</h1>
         <div class="en-name">Ajit Jain</div>
-        <div class="meta">👤 关键人物 · 被引用 35 次</div>
+        <div class="dates">1951年1月19日出生</div>
+        <div class="meta">👤 保险业务掌门人 · 被引用 35 次</div>
     </header>
     
     <div class="container">
@@ -56,48 +211,169 @@
         </nav>
         
         <article class="content">
-            <h2>人物简介</h2>
-            <p>阿吉特·贾恩（1951-）是伯克希尔再保险业务的负责人，被认为是全球保险业最聪明的人物之一。巴菲特多次称赞他是对伯克希尔价值贡献最大的人。</p>
-            
-            <h2>与巴菲特的关系</h2>
-            <p>1985年加入伯克希尔，负责再保险业务，成为巴菲特最信任的保险天才。</p>
-            
-            <h2>核心贡献</h2>
-            <p>创造性地开发了多项复杂再保险产品，为伯克希尔积累了数百亿美元的浮存金。</p>
-
-            <h2>经典语录</h2>
-            <div class="quote">
-                <p>"风险管理是保险业务的核心。"</p>
-                <div class="source">—— Ajit Jain</div>
-            </div>
-
-            <h2>巴菲特评价</h2>
-            <div class="quote">
-                <p>"阿吉特·贾恩对伯克希尔的贡献是无与伦比的，如果他不在了，我会非常担心。"</p>
-                <div class="source">—— 沃伦·巴菲特</div>
+            <!-- 人物定位 -->
+            <div class="role-card">
+                <div class="role-type">保险业务掌门人</div>
+                <div class="role-summary">伯克希尔再保险帝国的缔造者。他用"一张纸"创造了几十亿美元的保险浮存金，被巴菲特认为是"对伯克希尔价值贡献最大的人"，也是巴菲特最担心的"如果离开会很痛苦"的关键人物。</div>
             </div>
             
-            <h2>相关公司</h2>
-            <div class="related">
-                <a href="../companies/伯克希尔再保险.html">伯克希尔再保险</a>
-                <a href="../companies/通用再保险.html">通用再保险</a>
-            </div><p class="backlinks-count">共被提及 35 次</p>
+            <!-- 核心影响 -->
+            <h2>🎯 核心影响</h2>
+            <div class="impact-section">
+                <div class="impact-point">
+                    <div class="impact-number">1</div>
+                    <div class="impact-content">
+                        <strong>再保险业务的爆发式增长</strong>
+                        <p>1985年加入伯克希尔后，阿吉特创建了伯克希尔的再保险业务，设计出传统保险商不敢承接的巨型风险保单。他一人管理的再保险业务，在巅峰时期浮存金规模达到数百亿美元，成为伯克希尔投资的"弹药库"。</p>
+                    </div>
+                </div>
+                <div class="impact-point">
+                    <div class="impact-number">2</div>
+                    <div class="impact-content">
+                        <strong>创造性风险定价能力</strong>
+                        <p>阿吉特拥有独特的风险评估能力，能够承接其他保险公司认为不可保的巨型风险——如核战争、自然灾害连环发生等"黑天鹅"事件。他的定价模型成为伯克希尔再保险业务的核心竞争力。</p>
+                    </div>
+                </div>
+                <div class="impact-point">
+                    <div class="impact-number">3</div>
+                    <div class="impact-content">
+                        <strong>"浮存金"战略的执行者</strong>
+                        <p>保险业务的核心价值在于浮存金（premiums received before claims paid）。阿吉特卓越的承保纪律确保浮存金成本极低（甚至为负），为巴菲特提供了近乎"免费"的资金用于投资。</p>
+                    </div>
+                </div>
+                <div class="impact-point">
+                    <div class="impact-number">4</div>
+                    <div class="impact-content">
+                        <strong>承保纪律的典范</strong>
+                        <p>"当别人贪婪时恐惧，当别人恐惧时贪婪"——阿吉特完美诠释了这句话。2005年卡特里娜飓风后，他主动减少承保量；当竞争对手激进扩张时，他选择性地收缩。这种纪律性保护了伯克希尔的资产负债表。</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 关系演变 -->
+            <h2>📅 关系演变</h2>
+            <div class="relation-timeline">
+                <div class="relation-point">
+                    <span class="relation-year">1985年</span>
+                    <p>阿吉特经一位共同朋友介绍加入伯克希尔。在此之前，他在印度长大，曾在IBM工作，后来进入保险行业。</p>
+                </div>
+                <div class="relation-point">
+                    <span class="relation-year">1985-1990年</span>
+                    <p>快速证明自己的时期。阿吉特迅速建立起伯克希尔的再保险业务，年承保保费从百万级增长到数十亿美元级别。</p>
+                </div>
+                <div class="relation-point">
+                    <span class="relation-year">1990年代</span>
+                    <p>成为伯克希尔保险业务的"双引擎"之一（另一位是GEICO的托尼·奈斯利）。巴菲特在致股东信中开始频繁提及阿吉特的贡献。</p>
+                </div>
+                <div class="relation-point">
+                    <span class="relation-year">2000年代</span>
+                    <p>再保险业务的黄金期。阿吉特管理的业务为伯克希尔积累了超过500亿美元的浮存金，支持了可口可乐、富国银行等大型投资的持有。</p>
+                </div>
+                <div class="relation-point">
+                    <span class="relation-year">2010年代后</span>
+                    <p>进入半退休状态，业务逐步交接给新一代保险管理团队。巴菲特明确表示：阿吉特的离开是伯克希尔"最担心的风险之一"。</p>
+                </div>
+            </div>
+            
+            <!-- 巴菲特评价 -->
+            <h2>💬 巴菲特评价</h2>
+            <div class="quote-block dark">
+                <blockquote>"阿吉特·贾恩对伯克希尔的贡献是无与伦比的……如果把他为伯克希尔创造的价值与他的薪酬相比，你会看到人类商业史上最伟大的交易之一。"</blockquote>
+                <div class="source">2007年致股东信</div>
+            </div>
+            <div class="quote-block dark">
+                <blockquote>"在保险业，阿吉特是最聪明的人之一……他不仅聪明，而且脚踏实地。他用一张纸就能创造价值——其他保险商可能需要几页的保单，他只需要几行。"</blockquote>
+                <div class="source">2006年伯克希尔年会</div>
+            </div>
+            <div class="quote-block dark">
+                <blockquote>"如果阿吉特明天遭遇车祸，伯克希尔的内在价值会立即减少一大块。这不是夸张，是事实。"</blockquote>
+                <div class="source">1995年致股东信</div>
+            </div>
+            <div class="quote-block dark">
+                <blockquote>"阿吉特是伯克希尔最宝贵的资产……如果要在阿吉特和GEICO之间选择保留一个，我会失眠很久。"</blockquote>
+                <div class="source">2000年代初期</div>
+            </div>
+            
+            <!-- 体现的投资原则 -->
+            <h2>📚 体现的投资原则</h2>
+            <div class="concept-tags">
+                <a href="../concepts/浮存金.html" class="concept-tag">浮存金</a>
+                <a href="../concepts/保险.html" class="concept-tag">保险业务</a>
+                <a href="../concepts/风险控制.html" class="concept-tag">风险控制</a>
+            </div>
+            <p style="margin-top: 15px; font-size: 0.95em;"><strong>伯克希尔的商业模式核心：</strong>保险公司先收取保费，后支付赔款。在索赔发生前，保费就是"免费"的资金。阿吉特的工作就是最大化这些"免费资金"的规模，同时确保最终成本低于投资收益。</p>
+            
+            <!-- 相关人物 -->
+            <h2>👥 相关人物</h2>
+            <div class="network-grid">
+                <a href="巴菲特.html" class="network-item">
+                    <strong>沃伦·巴菲特</strong>
+                    <div class="relation-type">雇主与信任者</div>
+                </a>
+                <a href="托尼·奈斯利.html" class="network-item">
+                    <strong>托尼·奈斯利</strong>
+                    <div class="relation-type">保险双引擎：阿吉特负责再保险，托尼负责直接保险</div>
+                </a>
+                <a href="芒格.html" class="network-item">
+                    <strong>查理·芒格</strong>
+                    <div class="relation-type">伯克希尔决策层核心成员</div>
+                </a>
+                <a href="格雷格·阿贝尔.html" class="network-item">
+                    <strong>格雷格·阿贝尔</strong>
+                    <div class="relation-type">非保险业务负责人</div>
+                </a>
+            </div>
+            
+            <!-- 相关公司 -->
+            <h2>🏢 相关公司</h2>
+            <div class="network-grid">
+                <a href="../companies/伯克希尔哈撒韦.html" class="network-item">
+                    <strong>伯克希尔·哈撒韦</strong>
+                    <div class="relation-type">阿吉特担任再保险业务负责人</div>
+                </a>
+                <a href="../companies/通用再保险.html" class="network-item">
+                    <strong>通用再保险</strong>
+                    <div class="relation-type">伯克希尔旗下再保险公司</div>
+                </a>
+                <a href="../companies/国民保险公司.html" class="network-item">
+                    <strong>国民保险公司</strong>
+                    <div class="relation-type">伯克希尔保险集团的核心子公司</div>
+                </a>
             </div>
         </article>
     </div>
     
     <footer>
         <p><a href="../index.html">巴菲特知识库</a> | 数据来源：Berkshire Hathaway Letters</p>
-    
+        
         <div class="backlinks">
-            <h2>📚 反向链接</h2>
-            <p class="backlinks-intro">以下年份的信件提到了此人物：</p>
+            <h3>📚 反向链接</h3>
+            <p class="backlinks-intro">按主题组织的引用：</p>
+            
             <div class="backlinks-list">
-                <a href="../letters/berkshire/2007.html">2007年</a><a href="../letters/berkshire/2006.html">2006年</a><a href="../letters/berkshire/2005.html">2005年</a><a href="../letters/berkshire/2004.html">2004年</a><a href="../letters/berkshire/2003.html">2003年</a><a href="../letters/berkshire/2002.html">2002年</a><a href="../letters/berkshire/2001.html">2001年</a><a href="../letters/berkshire/2000.html">2000年</a><a href="../letters/berkshire/1999.html">1999年</a><a href="../letters/berkshire/1998.html">1998年</a><a href="../letters/berkshire/1997.html">1997年</a><a href="../letters/berkshire/1995.html">1995年</a><a href="../letters/berkshire/1994.html">1994年</a><a href="../letters/berkshire/1993.html">1993年</a><a href="../letters/berkshire/1992.html">1992年</a><a href="../letters/berkshire/1990.html">1990年</a><a href="../letters/berkshire/1989.html">1989年</a><a href="../letters/berkshire/1988.html">1988年</a>
+                <a href="../letters/berkshire/1988.html">1988年</a>
+                <a href="../letters/berkshire/1989.html">1989年</a>
+                <a href="../letters/berkshire/1990.html">1990年</a>
+                <a href="../letters/berkshire/1992.html">1992年</a>
+                <a href="../letters/berkshire/1993.html">1993年</a>
+                <a href="../letters/berkshire/1994.html">1994年</a>
+                <a href="../letters/berkshire/1995.html">1995年</a>
+                <a href="../letters/berkshire/1996.html">1996年</a>
+                <a href="../letters/berkshire/1997.html">1997年</a>
+                <a href="../letters/berkshire/1998.html">1998年</a>
+                <a href="../letters/berkshire/1999.html">1999年</a>
+                <a href="../letters/berkshire/2000.html">2000年</a>
+                <a href="../letters/berkshire/2001.html">2001年</a>
+                <a href="../letters/berkshire/2002.html">2002年</a>
+                <a href="../letters/berkshire/2003.html">2003年</a>
+                <a href="../letters/berkshire/2004.html">2004年</a>
+                <a href="../letters/berkshire/2005.html">2005年</a>
+                <a href="../letters/berkshire/2006.html">2006年</a>
+                <a href="../letters/berkshire/2007.html">2007年</a>
             </div>
-            <p class="backlinks-count">共 18 处引用</p>
+            
+            <p class="backlinks-count">共 18 处引用，跨度 1988-2007 年</p>
         </div>
-    
-</footer>
+    </footer>
 </body>
 </html>

@@ -3,42 +3,203 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>B夫人 - 巴菲特知识库</title>
+    <title>B夫人 - 巴菲特世界关键人物</title>
     <style>
-        :root { --bg-color: #FFFEF9; --navy: #1B2A4A; --gold: #C9A227; --text: #2C3E50; --secondary: #5D6D7E; --border: #E5E0D8; }
+        :root { --bg-color: #FFFEF9; --navy: #1B2A4A; --gold: #C9A227; --text: #2C3E50; --secondary: #5D6D7E; --border: #E5E0D8; --light-gold: #FFF8E7; --cream: #F8F5EE; }
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { font-family: 'Noto Serif SC', Georgia, serif; background: var(--bg-color); color: var(--text); line-height: 1.8; }
         .container { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
         header { background: var(--navy); color: white; padding: 40px 30px; text-align: center; }
         header h1 { font-size: 2em; margin-bottom: 10px; }
+        header .en-name { color: var(--gold); font-size: 1.1em; margin: 5px 0; }
         header .meta { color: var(--gold); font-size: 0.95em; margin-top: 10px; }
-        header .dates { color: rgba(255,255,255,0.7); font-size: 0.9em; }
-        .avatar-large { width: 120px; height: 120px; background: var(--gold); border-radius: 50%; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; font-size: 3em; color: var(--navy); }
+        header .dates { color: rgba(255,255,255,0.7); font-size: 0.9em; margin-top: 5px; }
+        .avatar-large { width: 120px; height: 120px; background: var(--gold); border-radius: 50%; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; font-size: 3em; }
         .nav { background: white; border: 1px solid var(--border); padding: 15px 20px; margin-bottom: 30px; border-radius: 8px; text-align: center; }
         .nav a { color: var(--navy); text-decoration: none; margin: 0 12px; font-size: 0.95em; }
         .nav a:hover { color: var(--gold); }
         .content { background: white; border: 1px solid var(--border); border-radius: 12px; padding: 40px; }
         .content h2 { color: var(--navy); font-size: 1.4em; margin: 35px 0 15px; padding-bottom: 8px; border-bottom: 2px solid var(--gold); }
         .content h2:first-child { margin-top: 0; }
-        .content h3 { color: var(--navy); font-size: 1.15em; margin: 25px 0 12px; }
         .content p { margin: 15px 0; text-align: justify; }
-        .quote { background: var(--navy); color: white; padding: 20px 25px; border-left: 4px solid var(--gold); margin: 25px 0; border-radius: 0 8px 8px 0; }
-        .quote p { margin: 0; font-style: italic; }
-        .quote .source { color: var(--gold); margin-top: 12px; font-size: 0.9em; }
-        .related { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px; }
-        .related a { background: white; border: 1px solid var(--border); padding: 8px 15px; border-radius: 20px; text-decoration: none; color: var(--navy); font-size: 0.9em; transition: all 0.2s; }
-        .related a:hover { background: var(--gold); color: white; border-color: var(--gold); }
+        
+        .role-card {
+            background: linear-gradient(135deg, var(--navy) 0%, #2C3E50 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .role-type {
+            display: inline-block;
+            background: var(--gold);
+            color: var(--navy);
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.85em;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        .role-summary {
+            font-size: 1.15em;
+            line-height: 1.6;
+        }
+        
+        .impact-section { margin: 25px 0; }
+        .impact-point {
+            display: flex;
+            margin: 15px 0;
+            padding: 18px;
+            background: var(--cream);
+            border-radius: 8px;
+            border-left: 4px solid var(--gold);
+        }
+        .impact-number {
+            font-size: 1.8em;
+            font-weight: 700;
+            color: var(--gold);
+            margin-right: 18px;
+            min-width: 40px;
+            line-height: 1;
+        }
+        .impact-content strong { color: var(--navy); display: block; margin-bottom: 5px; }
+        .impact-content p { margin: 0; font-size: 0.95em; }
+        
+        .relation-timeline {
+            position: relative;
+            padding-left: 30px;
+            margin: 20px 0;
+        }
+        .relation-timeline::before {
+            content: '';
+            position: absolute;
+            left: 8px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--gold), var(--navy));
+        }
+        .relation-point {
+            position: relative;
+            margin-bottom: 25px;
+            padding-left: 20px;
+        }
+        .relation-point::before {
+            content: '';
+            position: absolute;
+            left: -26px;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--gold);
+            border: 2px solid white;
+            box-shadow: 0 0 0 2px var(--gold);
+        }
+        .relation-year {
+            font-weight: 700;
+            color: var(--gold);
+            font-size: 1.1em;
+        }
+        .relation-point p { margin: 5px 0 0; font-size: 0.95em; }
+        
+        .quote-block {
+            background: var(--cream);
+            border-left: 4px solid var(--navy);
+            padding: 20px 25px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .quote-block.dark {
+            background: var(--navy);
+            color: white;
+            border-left-color: var(--gold);
+        }
+        .quote-block.dark .source { color: var(--gold); }
+        .quote-block blockquote {
+            margin: 0;
+            font-style: italic;
+            font-size: 1.05em;
+            line-height: 1.7;
+        }
+        .quote-block .source {
+            color: var(--secondary);
+            margin-top: 12px;
+            font-size: 0.9em;
+            font-style: normal;
+        }
+        .quote-block .source::before { content: '—— '; }
+        
+        .network-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 12px;
+            margin: 15px 0;
+        }
+        .network-item {
+            background: var(--cream);
+            padding: 15px;
+            border-radius: 8px;
+            text-decoration: none;
+            color: var(--navy);
+            transition: all 0.2s;
+            border: 1px solid transparent;
+        }
+        .network-item:hover {
+            background: var(--gold);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(201, 162, 39, 0.3);
+        }
+        .network-item strong { display: block; margin-bottom: 3px; }
+        .relation-type {
+            font-size: 0.8em;
+            color: var(--secondary);
+            margin-top: 5px;
+        }
+        .network-item:hover .relation-type { color: rgba(255,255,255,0.85); }
+        
+        .concept-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 15px 0;
+        }
+        .concept-tag {
+            background: white;
+            border: 1px solid var(--border);
+            padding: 6px 14px;
+            border-radius: 20px;
+            text-decoration: none;
+            color: var(--navy);
+            font-size: 0.9em;
+            transition: all 0.2s;
+        }
+        .concept-tag:hover {
+            background: var(--navy);
+            color: white;
+            border-color: var(--navy);
+        }
+        
         footer { text-align: center; padding: 40px 20px; color: var(--secondary); border-top: 1px solid var(--border); margin-top: 40px; }
         footer a { color: var(--navy); text-decoration: none; }
+        .backlinks { margin-top: 40px; padding-top: 30px; border-top: 2px dashed var(--gold); }
+        .backlinks h3 { color: var(--navy); font-size: 1.2em; margin-bottom: 15px; }
+        .backlinks-intro { color: var(--secondary); margin-bottom: 15px; font-size: 0.95em; }
+        .backlinks-list { display: flex; flex-wrap: wrap; gap: 8px; }
+        .backlinks-list a { background: linear-gradient(135deg, var(--light-gold) 0%, #fff9e6 100%); border: 1px solid var(--gold); padding: 6px 14px; border-radius: 20px; text-decoration: none; color: var(--navy); font-size: 0.85em; transition: all 0.3s; }
+        .backlinks-list a:hover { background: var(--gold); color: white; transform: translateY(-2px); }
+        .backlinks-count { margin-top: 15px; color: var(--secondary); font-size: 0.9em; }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
         <div class="avatar-large">👩‍💼</div>
-        <h1>B夫人</h1>
+        <h1>B夫人（罗斯·布鲁姆金）</h1>
         <div class="en-name">Mrs. B (Rose Blumkin)</div>
-        <div class="meta">👤 关键人物 · 被引用 22 次</div>
+        <div class="dates">1893年 - 1998年</div>
+        <div class="meta">👤 企业家精神典范</div>
     </header>
     
     <div class="container">
@@ -50,18 +211,118 @@
         </nav>
         
         <article class="content">
-            <h2>人物简介</h2>
-            <p>B夫人（原名罗斯·布鲁姆金，1893-1998）是内布拉斯加家具店的创始人，被誉为美国零售业史上最传奇的女企业家之一。</p>
-            
-            <h2>巴菲特评价</h2>
-            <div class="quote">
-                <p>"B夫人是我们见过最了不起的商人。"</p>
-                <div class="source">—— 沃伦·巴菲特</div>
+            <!-- 人物定位 -->
+            <div class="role-card">
+                <div class="role-type">企业家</div>
+                <div class="role-summary">内布拉斯加家具店的传奇创始人。她用"低价销售、诚信经营、不退货"的简单原则，将一家小家具店打造成了全美最大的家具零售商之一。她104岁还在上班，成为巴菲特眼中"企业家精神"的代名词。</div>
             </div>
             
-            <h2>相关公司</h2>
-            <div class="related">
-                <a href="../companies/伯克希尔哈撒韦.html">伯克希尔哈撒韦</a>
+            <!-- 核心影响 -->
+            <h2>🎯 核心影响</h2>
+            <div class="impact-section">
+                <div class="impact-point">
+                    <div class="impact-number">1</div>
+                    <div class="impact-content">
+                        <strong>确立"低价销售"的核心竞争力</strong>
+                        <p>B夫人开创了家具零售的革命性模式：她以极低的价格销售家具，利润率只有几个百分点，但通过"薄利多销"创造了惊人的绝对收益。她的名言是："卖得便宜，卖得更多；卖得更多，进价更低；进价更低，卖得更便宜。"这个良性循环让她在奥马哈无人能敌。</p>
+                    </div>
+                </div>
+                <div class="impact-point">
+                    <div class="impact-number">2</div>
+                    <div class="impact-content">
+                        <strong>诚信经营的品牌价值</strong>
+                        <p>"我们不退货"的承诺在当时是革命性的。B夫人认为，如果顾客买了不合适的商品还必须退货，那说明销售人员没有做好本职工作。这种"为顾客着想"的理念，为内布拉斯加家具店建立了强大的口碑。</p>
+                    </div>
+                </div>
+                <div class="impact-point">
+                    <div class="impact-number">3</div>
+                    <div class="impact-content">
+                        <strong>证明"优秀管理层"的独立性</strong>
+                        <p>1983年巴菲特收购内布拉斯加家具店时，B夫人已经90岁。但巴菲特没有要求她退休，反而与她签订协议：她继续经营，公司日常事务她说了算。这种"充分授权"的管理哲学，成为伯克希尔收购企业的标准模板。</p>
+                    </div>
+                </div>
+                <div class="impact-point">
+                    <div class="impact-number">4</div>
+                    <div class="impact-content">
+                        <strong>工作至死的榜样</strong>
+                        <p>B夫人104岁仍在每天工作，展现了对事业的无限热情。巴菲特经常引用她的例子来说明：真正热爱自己事业的人，不需要"工作与生活平衡"的概念——工作本身就是生活最大的乐趣。</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 关系演变 -->
+            <h2>📅 关系演变</h2>
+            <div class="relation-timeline">
+                <div class="relation-point">
+                    <span class="relation-year">1937年</span>
+                    <p>B夫人和丈夫用500美元在奥马哈创立了内布拉斯加家具店。她从一开始就坚持"薄利多销"的策略。</p>
+                </div>
+                <div class="relation-point">
+                    <span class="relation-year">1983年</span>
+                    <p>90岁的B夫人将公司卖给伯克希尔。收购价格是5500万美元，相当于该公司税后利润的10倍左右（当时B夫人每年为公司创造约1000万美元利润）。</p>
+                </div>
+                <div class="relation-point">
+                    <span class="relation-year">1983-1989年</span>
+                    <p>B夫人继续经营公司，在她的领导下，公司营收从1.7亿美元增长到2.7亿美元。她每天工作12小时以上。</p>
+                </div>
+                <div class="relation-point">
+                    <span class="relation-year">1989年</span>
+                    <p>由于家庭矛盾（她儿子与其他家庭成员的冲突），B夫人愤怒地离开了自己创立的公司，并创办了"奶奶地板"与原公司竞争。这一戏剧性事件成为巴菲特最津津乐道的故事之一。</p>
+                </div>
+                <div class="relation-point">
+                    <span class="relation-year">1990年代</span>
+                    <p>在芒格的调解下，B夫人与家人和解。她104岁去世前，一直保持着对工作的热情。</p>
+                </div>
+            </div>
+            
+            <!-- 巴菲特评价 -->
+            <h2>💬 巴菲特评价</h2>
+            <div class="quote-block dark">
+                <blockquote>"B夫人是我见过的最了不起的商人。她104岁了，没有读过商学院，甚至不太会说英语，但她对商业的理解比大多数CEO都深刻。"</blockquote>
+                <div class="source">1993年致股东信</div>
+            </div>
+            <div class="quote-block dark">
+                <blockquote>"内布拉斯加家具店成功的秘密是什么？很简单：每天都比竞争对手卖得更便宜，同时确保产品质量和服务不打折。大多数人只在口头上说'顾客第一'，B夫人是真正做到的。"</blockquote>
+                <div class="source">1998年致股东信</div>
+            </div>
+            <div class="quote-block dark">
+                <blockquote>"B夫人说她在天堂门口会告诉圣彼得：你们这儿有没有家具要卖？这就是她的精神——永不停止销售。"</blockquote>
+                <div class="source">多次在伯克希尔年会上的演讲</div>
+            </div>
+            
+            <!-- 体现的投资原则 -->
+            <h2>📚 体现的投资原则</h2>
+            <div class="concept-tags">
+                <a href="../concepts/竞争优势.html" class="concept-tag">竞争优势</a>
+                <a href="../concepts/诚信.html" class="concept-tag">诚信为本</a>
+                <a href="../concepts/企业管理.html" class="concept-tag">企业管理</a>
+            </div>
+            <p style="margin-top: 15px; font-size: 0.95em;"><strong>B夫人是伯克希尔"优秀企业+优秀管理层"投资哲学的完美诠释：</strong>她的商业模式简单但难以复制（低成本运营+卓越服务），她本人是真正热爱事业的企业家典范。巴菲特收购这样的企业后，几乎不需要做任何事——只需要让优秀的人继续做他们正在做的事。</p>
+            
+            <!-- 相关人物 -->
+            <h2>👥 相关人物</h2>
+            <div class="network-grid">
+                <a href="巴菲特.html" class="network-item">
+                    <strong>沃伦·巴菲特</strong>
+                    <div class="relation-type">收购方与被收购企业家的信任关系</div>
+                </a>
+                <a href="芒格.html" class="network-item">
+                    <strong>查理·芒格</strong>
+                    <div class="relation-type">帮助调解B夫人的家庭矛盾</div>
+                </a>
+            </div>
+            
+            <!-- 相关公司 -->
+            <h2>🏢 相关公司</h2>
+            <div class="network-grid">
+                <a href="../companies/内布拉斯加家具店.html" class="network-item">
+                    <strong>内布拉斯加家具店</strong>
+                    <div class="relation-type">B夫人创立的家具零售帝国</div>
+                </a>
+                <a href="../companies/伯克希尔哈撒韦.html" class="network-item">
+                    <strong>伯克希尔·哈撒韦</strong>
+                    <div class="relation-type">1983年收购该公司</div>
+                </a>
             </div>
         </article>
     </div>

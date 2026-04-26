@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>汤姆·墨菲 - 巴菲特知识库</title>
+    <title>汤姆·墨菲 - 巴菲特世界关键人物</title>
     <style>
-        :root { --bg-color: #FFFEF9; --navy: #1B2A4A; --gold: #C9A227; --text: #2C3E50; --secondary: #5D6D7E; --border: #E5E0D8; --light-gold: #FFF8E7; }
+        :root { --bg-color: #FFFEF9; --navy: #1B2A4A; --gold: #C9A227; --text: #2C3E50; --secondary: #5D6D7E; --border: #E5E0D8; --light-gold: #FFF8E7; --cream: #F8F5EE; }
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { font-family: 'Noto Serif SC', Georgia, serif; background: var(--bg-color); color: var(--text); line-height: 1.8; }
         .container { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
@@ -13,6 +13,7 @@
         header h1 { font-size: 2em; margin-bottom: 10px; }
         header .en-name { color: var(--gold); font-size: 1.1em; margin: 5px 0; }
         header .meta { color: var(--gold); font-size: 0.95em; margin-top: 10px; }
+        header .dates { color: rgba(255,255,255,0.7); font-size: 0.9em; margin-top: 5px; }
         .avatar-large { width: 120px; height: 120px; background: var(--gold); border-radius: 50%; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; font-size: 3em; }
         .nav { background: white; border: 1px solid var(--border); padding: 15px 20px; margin-bottom: 30px; border-radius: 8px; text-align: center; }
         .nav a { color: var(--navy); text-decoration: none; margin: 0 12px; font-size: 0.95em; }
@@ -21,30 +22,184 @@
         .content h2 { color: var(--navy); font-size: 1.4em; margin: 35px 0 15px; padding-bottom: 8px; border-bottom: 2px solid var(--gold); }
         .content h2:first-child { margin-top: 0; }
         .content p { margin: 15px 0; text-align: justify; }
-        .quote { background: var(--navy); color: white; padding: 20px 25px; border-left: 4px solid var(--gold); margin: 25px 0; border-radius: 0 8px 8px 0; }
-        .quote p { margin: 0; font-style: italic; }
-        .quote .source { color: var(--gold); margin-top: 12px; font-size: 0.9em; }
-        .related { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px; }
-        .related a { background: white; border: 1px solid var(--border); padding: 8px 15px; border-radius: 20px; text-decoration: none; color: var(--navy); font-size: 0.9em; transition: all 0.2s; }
-        .related a:hover { background: var(--gold); color: white; border-color: var(--gold); }
+        
+        .role-card {
+            background: linear-gradient(135deg, var(--navy) 0%, #2C3E50 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .role-type {
+            display: inline-block;
+            background: var(--gold);
+            color: var(--navy);
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.85em;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        .role-summary {
+            font-size: 1.15em;
+            line-height: 1.6;
+        }
+        
+        .impact-section { margin: 25px 0; }
+        .impact-point {
+            display: flex;
+            margin: 15px 0;
+            padding: 18px;
+            background: var(--cream);
+            border-radius: 8px;
+            border-left: 4px solid var(--gold);
+        }
+        .impact-number {
+            font-size: 1.8em;
+            font-weight: 700;
+            color: var(--gold);
+            margin-right: 18px;
+            min-width: 40px;
+            line-height: 1;
+        }
+        .impact-content strong { color: var(--navy); display: block; margin-bottom: 5px; }
+        .impact-content p { margin: 0; font-size: 0.95em; }
+        
+        .relation-timeline {
+            position: relative;
+            padding-left: 30px;
+            margin: 20px 0;
+        }
+        .relation-timeline::before {
+            content: '';
+            position: absolute;
+            left: 8px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--gold), var(--navy));
+        }
+        .relation-point {
+            position: relative;
+            margin-bottom: 25px;
+            padding-left: 20px;
+        }
+        .relation-point::before {
+            content: '';
+            position: absolute;
+            left: -26px;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--gold);
+            border: 2px solid white;
+            box-shadow: 0 0 0 2px var(--gold);
+        }
+        .relation-year {
+            font-weight: 700;
+            color: var(--gold);
+            font-size: 1.1em;
+        }
+        .relation-point p { margin: 5px 0 0; font-size: 0.95em; }
+        
+        .quote-block {
+            background: var(--cream);
+            border-left: 4px solid var(--navy);
+            padding: 20px 25px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .quote-block.dark {
+            background: var(--navy);
+            color: white;
+            border-left-color: var(--gold);
+        }
+        .quote-block.dark .source { color: var(--gold); }
+        .quote-block blockquote {
+            margin: 0;
+            font-style: italic;
+            font-size: 1.05em;
+            line-height: 1.7;
+        }
+        .quote-block .source {
+            color: var(--secondary);
+            margin-top: 12px;
+            font-size: 0.9em;
+            font-style: normal;
+        }
+        .quote-block .source::before { content: '—— '; }
+        
+        .network-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 12px;
+            margin: 15px 0;
+        }
+        .network-item {
+            background: var(--cream);
+            padding: 15px;
+            border-radius: 8px;
+            text-decoration: none;
+            color: var(--navy);
+            transition: all 0.2s;
+            border: 1px solid transparent;
+        }
+        .network-item:hover {
+            background: var(--gold);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(201, 162, 39, 0.3);
+        }
+        .network-item strong { display: block; margin-bottom: 3px; }
+        .relation-type {
+            font-size: 0.8em;
+            color: var(--secondary);
+            margin-top: 5px;
+        }
+        .network-item:hover .relation-type { color: rgba(255,255,255,0.85); }
+        
+        .concept-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 15px 0;
+        }
+        .concept-tag {
+            background: white;
+            border: 1px solid var(--border);
+            padding: 6px 14px;
+            border-radius: 20px;
+            text-decoration: none;
+            color: var(--navy);
+            font-size: 0.9em;
+            transition: all 0.2s;
+        }
+        .concept-tag:hover {
+            background: var(--navy);
+            color: white;
+            border-color: var(--navy);
+        }
+        
         footer { text-align: center; padding: 40px 20px; color: var(--secondary); border-top: 1px solid var(--border); margin-top: 40px; }
         footer a { color: var(--navy); text-decoration: none; }
         .backlinks { margin-top: 40px; padding-top: 30px; border-top: 2px dashed var(--gold); }
-        .backlinks h2 { color: var(--navy); font-size: 1.3em; margin-bottom: 15px; }
-        .backlinks-intro { color: var(--secondary); margin-bottom: 15px; }
-        .backlinks-list { display: flex; flex-wrap: wrap; gap: 10px; }
-        .backlinks-list a { background: linear-gradient(135deg, var(--light-gold) 0%, #fff9e6 100%); border: 1px solid var(--gold); padding: 8px 16px; border-radius: 20px; text-decoration: none; color: var(--navy); font-size: 0.9em; transition: all 0.3s; }
+        .backlinks h3 { color: var(--navy); font-size: 1.2em; margin-bottom: 15px; }
+        .backlinks-intro { color: var(--secondary); margin-bottom: 15px; font-size: 0.95em; }
+        .backlinks-list { display: flex; flex-wrap: wrap; gap: 8px; }
+        .backlinks-list a { background: linear-gradient(135deg, var(--light-gold) 0%, #fff9e6 100%); border: 1px solid var(--gold); padding: 6px 14px; border-radius: 20px; text-decoration: none; color: var(--navy); font-size: 0.85em; transition: all 0.3s; }
         .backlinks-list a:hover { background: var(--gold); color: white; transform: translateY(-2px); }
         .backlinks-count { margin-top: 15px; color: var(--secondary); font-size: 0.9em; }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
-        <div class="avatar-large">🎬</div>
+        <div class="avatar-large">📺</div>
         <h1>汤姆·墨菲</h1>
         <div class="en-name">Tom Murphy</div>
-        <div class="meta">👤 关键人物 · 被引用 13 次</div>
+        <div class="dates">1925年 - 2023年</div>
+        <div class="meta">👤 企业家</div>
     </header>
     
     <div class="container">
@@ -56,48 +211,113 @@
         </nav>
         
         <article class="content">
-            <h2>人物简介</h2>
-            <p>汤姆·墨菲（1925-2018）是大都会通信公司（Capital Cities/ABC）的CEO，是巴菲特最赞赏的企业管理者之一。巴菲特称他为真正杰出的管理者。</p>
-            
-            <h2>与巴菲特的关系</h2>
-            <p>1985年与巴菲特合作，将Capital Cities与ABC合并，后被伯克希尔收购。</p>
-            
-            <h2>核心贡献</h2>
-            <p>创造了资本配置和企业管理的典范案例。</p>
-
-            <h2>经典语录</h2>
-            <div class="quote">
-                <p>"优秀的管理者知道如何配置资本。"</p>
-                <div class="source">—— Tom Murphy</div>
-            </div>
-
-            <h2>巴菲特评价</h2>
-            <div class="quote">
-                <p>"汤姆·墨菲是我见过的最优秀的企业管理者之一。"</p>
-                <div class="source">—— 沃伦·巴菲特</div>
+            <!-- 人物定位 -->
+            <div class="role-card">
+                <div class="role-type">企业家</div>
+                <div class="role-summary">大都会通信公司的传奇CEO，被巴菲特称为"超级CEO典范"。他以极度节俭的运营风格和卓越的资本配置能力著称，是巴菲特眼中"最理想的企业管理者"模板之一。</div>
             </div>
             
-            <h2>相关公司</h2>
-            <div class="related">
-                <a href="../companies/大都会通信.html">大都会通信</a>
-                <a href="../companies/ABC.html">ABC</a>
-            </div><p class="backlinks-count">共被提及 13 次</p>
+            <!-- 核心影响 -->
+            <h2>🎯 核心影响</h2>
+            <div class="impact-section">
+                <div class="impact-point">
+                    <div class="impact-number">1</div>
+                    <div class="impact-content">
+                        <strong>资本配置的极致效率</strong>
+                        <p>汤姆·墨菲的管理哲学可以用一句话概括："把每一分钱都当作是自己的"。他极度厌恶浪费，坚持将运营成本压到最低，同时保持内容质量。在他的领导下，大都会通信成为广播行业利润率最高的公司之一。</p>
+                    </div>
+                </div>
+                <div class="impact-point">
+                    <div class="impact-number">2</div>
+                    <div class="impact-content">
+                        <strong>广播帝国的构建</strong>
+                        <p>1970年代，汤姆将大都会通信从一家小型广播公司发展为全国最大的广播网络之一。1985年，伯克希尔以5.17亿美元收购了大都会通信，这是当时伯克希尔最大的一笔收购。</p>
+                    </div>
+                </div>
+                <div class="impact-point">
+                    <div class="impact-number">3</div>
+                    <div class="impact-content">
+                        <strong>"超级CEO"的典范</strong>
+                        <p>巴菲特经常引用汤姆·墨菲的例子来说明什么是优秀的管理者：聪明、有原则、专注于自己的业务、不追求规模而追求质量。在巴菲特的"最佳CEO"名单中，汤姆·墨菲始终排在前列。</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 关系演变 -->
+            <h2>📅 关系演变</h2>
+            <div class="relation-timeline">
+                <div class="relation-point">
+                    <span class="relation-year">1960年代</span>
+                    <p>汤姆·墨菲与丹·查克林（Cap Cities的另一位创始人）共同创立了大都会通信公司。</p>
+                </div>
+                <div class="relation-point">
+                    <span class="relation-year">1985年</span>
+                    <p>大都会通信以5.17亿美元收购美国广播公司（ABC）。几个月后，伯克希尔以同样价格收购大都会通信。这是巴菲特最大胆的收购之一，也是他对媒体行业下的大赌注。</p>
+                </div>
+                <div class="relation-point">
+                    <span class="relation-year">1985-1990s</span>
+                    <p>汤姆继续担任CEO，与丹·查克林共同管理公司。在他们的领导下，大都会通信/ABC成为最赚钱的广播网络。</p>
+                </div>
+                <div class="relation-point">
+                    <span class="relation-year">1990年代</span>
+                    <p>汤姆逐渐淡出日常管理，将权力交接给新一代领导者。他的管理风格和文化传承至今。</p>
+                </div>
+            </div>
+            
+            <!-- 巴菲特评价 -->
+            <h2>💬 巴菲特评价</h2>
+            <div class="quote-block dark">
+                <blockquote>"汤姆·墨菲是我见过的最好的企业管理者之一。他聪明、有原则，把股东的每一分钱都当作是自己的。"</blockquote>
+                <div class="source">1990年代致股东信</div>
+            </div>
+            <div class="quote-block dark">
+                <blockquote>"汤姆和丹·查克林是我们梦寐以求的那种企业家：他们把大都会当成自己的公司来经营，而不是当成一个职业跳板。"</blockquote>
+                <div class="source">1995年致股东信</div>
+            </div>
+            <div class="quote-block dark">
+                <blockquote>"在收购大都会通信时，我最大的遗憾是没有更早行动。如果我在1970年代就买下这家公司，伯克希尔的股东们会富裕得多。"</blockquote>
+                <div class="source">2000年代</div>
+            </div>
+            
+            <!-- 体现的投资原则 -->
+            <h2>📚 体现的投资原则</h2>
+            <div class="concept-tags">
+                <a href="../concepts/资本配置.html" class="concept-tag">资本配置</a>
+                <a href="../concepts/企业管理.html" class="concept-tag">企业管理</a>
+                <a href="../concepts/护城河.html" class="concept-tag">媒体护城河</a>
+            </div>
+            <p style="margin-top: 15px; font-size: 0.95em;"><strong>汤姆·墨菲的商业哲学：</strong>"不要浪费钱"是他最核心的经营原则。他相信，媒体的竞争优势来自于内容质量，而不是规模。因此，他愿意在优质内容上投入巨资，但在行政开销上极度节俭。</p>
+            
+            <!-- 相关人物 -->
+            <h2>👥 相关人物</h2>
+            <div class="network-grid">
+                <a href="巴菲特.html" class="network-item">
+                    <strong>沃伦·巴菲特</strong>
+                    <div class="relation-type">企业家与收购方</div>
+                </a>
+                <a href="芒格.html" class="network-item">
+                    <strong>查理·芒格</strong>
+                    <div class="relation-type">伯克希尔决策层</div>
+                </a>
+            </div>
+            
+            <!-- 相关公司 -->
+            <h2>🏢 相关公司</h2>
+            <div class="network-grid">
+                <a href="../companies/大都会通信.html" class="network-item">
+                    <strong>大都会通信</strong>
+                    <div class="relation-type">担任CEO和董事长</div>
+                </a>
+                <a href="../companies/伯克希尔哈撒韦.html" class="network-item">
+                    <strong>伯克希尔·哈撒韦</strong>
+                    <div class="relation-type">母公司</div>
+                </a>
             </div>
         </article>
     </div>
     
     <footer>
         <p><a href="../index.html">巴菲特知识库</a> | 数据来源：Berkshire Hathaway Letters</p>
-    
-        <div class="backlinks">
-            <h2>📚 反向链接</h2>
-            <p class="backlinks-intro">以下年份的信件提到了此人物：</p>
-            <div class="backlinks-list">
-                <a href="../letters/berkshire/2003.html">2003年</a><a href="../letters/berkshire/1995.html">1995年</a><a href="../letters/berkshire/1990.html">1990年</a><a href="../letters/berkshire/1988.html">1988年</a><a href="../letters/berkshire/1987.html">1987年</a><a href="../letters/berkshire/1984.html">1984年</a><a href="../letters/berkshire/1981.html">1981年</a>
-            </div>
-            <p class="backlinks-count">共 7 处引用</p>
-        </div>
-    
-</footer>
+    </footer>
 </body>
 </html>

@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>格雷厄姆 - 巴菲特知识库</title>
+    <title>格雷厄姆 - 巴菲特世界关键人物</title>
     <style>
-        :root { --bg-color: #FFFEF9; --navy: #1B2A4A; --gold: #C9A227; --text: #2C3E50; --secondary: #5D6D7E; --border: #E5E0D8; --light-gold: #FFF8E7; }
+        :root { --bg-color: #FFFEF9; --navy: #1B2A4A; --gold: #C9A227; --text: #2C3E50; --secondary: #5D6D7E; --border: #E5E0D8; --light-gold: #FFF8E7; --cream: #F8F5EE; }
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { font-family: 'Noto Serif SC', Georgia, serif; background: var(--bg-color); color: var(--text); line-height: 1.8; }
         .container { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
@@ -13,6 +13,7 @@
         header h1 { font-size: 2em; margin-bottom: 10px; }
         header .en-name { color: var(--gold); font-size: 1.1em; margin: 5px 0; }
         header .meta { color: var(--gold); font-size: 0.95em; margin-top: 10px; }
+        header .dates { color: rgba(255,255,255,0.7); font-size: 0.9em; margin-top: 5px; }
         .avatar-large { width: 120px; height: 120px; background: var(--gold); border-radius: 50%; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; font-size: 3em; }
         .nav { background: white; border: 1px solid var(--border); padding: 15px 20px; margin-bottom: 30px; border-radius: 8px; text-align: center; }
         .nav a { color: var(--navy); text-decoration: none; margin: 0 12px; font-size: 0.95em; }
@@ -21,30 +22,184 @@
         .content h2 { color: var(--navy); font-size: 1.4em; margin: 35px 0 15px; padding-bottom: 8px; border-bottom: 2px solid var(--gold); }
         .content h2:first-child { margin-top: 0; }
         .content p { margin: 15px 0; text-align: justify; }
-        .quote { background: var(--navy); color: white; padding: 20px 25px; border-left: 4px solid var(--gold); margin: 25px 0; border-radius: 0 8px 8px 0; }
-        .quote p { margin: 0; font-style: italic; }
-        .quote .source { color: var(--gold); margin-top: 12px; font-size: 0.9em; }
-        .related { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px; }
-        .related a { background: white; border: 1px solid var(--border); padding: 8px 15px; border-radius: 20px; text-decoration: none; color: var(--navy); font-size: 0.9em; transition: all 0.2s; }
-        .related a:hover { background: var(--gold); color: white; border-color: var(--gold); }
+        
+        .role-card {
+            background: linear-gradient(135deg, var(--navy) 0%, #2C3E50 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .role-type {
+            display: inline-block;
+            background: var(--gold);
+            color: var(--navy);
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.85em;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        .role-summary {
+            font-size: 1.15em;
+            line-height: 1.6;
+        }
+        
+        .impact-section { margin: 25px 0; }
+        .impact-point {
+            display: flex;
+            margin: 15px 0;
+            padding: 18px;
+            background: var(--cream);
+            border-radius: 8px;
+            border-left: 4px solid var(--gold);
+        }
+        .impact-number {
+            font-size: 1.8em;
+            font-weight: 700;
+            color: var(--gold);
+            margin-right: 18px;
+            min-width: 40px;
+            line-height: 1;
+        }
+        .impact-content strong { color: var(--navy); display: block; margin-bottom: 5px; }
+        .impact-content p { margin: 0; font-size: 0.95em; }
+        
+        .relation-timeline {
+            position: relative;
+            padding-left: 30px;
+            margin: 20px 0;
+        }
+        .relation-timeline::before {
+            content: '';
+            position: absolute;
+            left: 8px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--gold), var(--navy));
+        }
+        .relation-point {
+            position: relative;
+            margin-bottom: 25px;
+            padding-left: 20px;
+        }
+        .relation-point::before {
+            content: '';
+            position: absolute;
+            left: -26px;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--gold);
+            border: 2px solid white;
+            box-shadow: 0 0 0 2px var(--gold);
+        }
+        .relation-year {
+            font-weight: 700;
+            color: var(--gold);
+            font-size: 1.1em;
+        }
+        .relation-point p { margin: 5px 0 0; font-size: 0.95em; }
+        
+        .quote-block {
+            background: var(--cream);
+            border-left: 4px solid var(--navy);
+            padding: 20px 25px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .quote-block.dark {
+            background: var(--navy);
+            color: white;
+            border-left-color: var(--gold);
+        }
+        .quote-block.dark .source { color: var(--gold); }
+        .quote-block blockquote {
+            margin: 0;
+            font-style: italic;
+            font-size: 1.05em;
+            line-height: 1.7;
+        }
+        .quote-block .source {
+            color: var(--secondary);
+            margin-top: 12px;
+            font-size: 0.9em;
+            font-style: normal;
+        }
+        .quote-block .source::before { content: '—— '; }
+        
+        .network-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 12px;
+            margin: 15px 0;
+        }
+        .network-item {
+            background: var(--cream);
+            padding: 15px;
+            border-radius: 8px;
+            text-decoration: none;
+            color: var(--navy);
+            transition: all 0.2s;
+            border: 1px solid transparent;
+        }
+        .network-item:hover {
+            background: var(--gold);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(201, 162, 39, 0.3);
+        }
+        .network-item strong { display: block; margin-bottom: 3px; }
+        .relation-type {
+            font-size: 0.8em;
+            color: var(--secondary);
+            margin-top: 5px;
+        }
+        .network-item:hover .relation-type { color: rgba(255,255,255,0.85); }
+        
+        .concept-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 15px 0;
+        }
+        .concept-tag {
+            background: white;
+            border: 1px solid var(--border);
+            padding: 6px 14px;
+            border-radius: 20px;
+            text-decoration: none;
+            color: var(--navy);
+            font-size: 0.9em;
+            transition: all 0.2s;
+        }
+        .concept-tag:hover {
+            background: var(--navy);
+            color: white;
+            border-color: var(--navy);
+        }
+        
         footer { text-align: center; padding: 40px 20px; color: var(--secondary); border-top: 1px solid var(--border); margin-top: 40px; }
         footer a { color: var(--navy); text-decoration: none; }
         .backlinks { margin-top: 40px; padding-top: 30px; border-top: 2px dashed var(--gold); }
-        .backlinks h2 { color: var(--navy); font-size: 1.3em; margin-bottom: 15px; }
-        .backlinks-intro { color: var(--secondary); margin-bottom: 15px; }
-        .backlinks-list { display: flex; flex-wrap: wrap; gap: 10px; }
-        .backlinks-list a { background: linear-gradient(135deg, var(--light-gold) 0%, #fff9e6 100%); border: 1px solid var(--gold); padding: 8px 16px; border-radius: 20px; text-decoration: none; color: var(--navy); font-size: 0.9em; transition: all 0.3s; }
+        .backlinks h3 { color: var(--navy); font-size: 1.2em; margin-bottom: 15px; }
+        .backlinks-intro { color: var(--secondary); margin-bottom: 15px; font-size: 0.95em; }
+        .backlinks-list { display: flex; flex-wrap: wrap; gap: 8px; }
+        .backlinks-list a { background: linear-gradient(135deg, var(--light-gold) 0%, #fff9e6 100%); border: 1px solid var(--gold); padding: 6px 14px; border-radius: 20px; text-decoration: none; color: var(--navy); font-size: 0.85em; transition: all 0.3s; }
         .backlinks-list a:hover { background: var(--gold); color: white; transform: translateY(-2px); }
         .backlinks-count { margin-top: 15px; color: var(--secondary); font-size: 0.9em; }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
         <div class="avatar-large">📚</div>
-        <h1>格雷厄姆</h1>
+        <h1>本杰明·格雷厄姆</h1>
         <div class="en-name">Benjamin Graham</div>
-        <div class="meta">👤 关键人物 · 被引用 10 次</div>
+        <div class="dates">1894年5月9日 - 1976年9月21日</div>
+        <div class="meta">👤 导师 · 被引用 10 次</div>
     </header>
     
     <div class="container">
@@ -56,51 +211,149 @@
         </nav>
         
         <article class="content">
-            <h2>人物简介</h2>
-            <p>本杰明·格雷厄姆（1894-1976）是现代证券分析之父，价值投资的奠基人。他的经典著作《证券分析》和《聪明的投资者》影响了沃伦·巴菲特等几代投资者。</p>
-            
-            <h2>与巴菲特的关系</h2>
-            <p>巴菲特的老师，1950年代巴菲特在哥伦比亚大学师从格雷厄姆学习。</p>
-            
-            <h2>核心贡献</h2>
-            <p>创立了价值投资的基本框架，包括安全边际理论和内在价值评估方法。</p>
-
-            <h2>经典语录</h2>
-            <div class="quote">
-                <p>"投资的第一原则是永远不要亏钱，第二原则是记住第一原则。"</p>
-                <div class="source">—— Benjamin Graham</div>
-            </div>
-            <div class="quote">
-                <p>"市场短期是一台投票机，但长期是一台称重机。"</p>
-                <div class="source">—— Benjamin Graham</div>
-            </div>
-
-            <h2>巴菲特评价</h2>
-            <div class="quote">
-                <p>"格雷厄姆是现代证券分析之父，没有他就不会有今天的价值投资。"</p>
-                <div class="source">—— 沃伦·巴菲特</div>
+            <!-- 人物定位 -->
+            <div class="role-card">
+                <div class="role-type">导师</div>
+                <div class="role-summary">价值投资的奠基人，现代证券分析之父。他为巴菲特提供了投资的"第一套操作系统"，而巴菲特后来在这套系统上开发出了更强大的"升级版本"。</div>
             </div>
             
-            <h2>相关公司</h2>
-            <div class="related">
-                <a href="../companies/格雷厄姆-纽曼公司.html">格雷厄姆-纽曼公司</a>
-            </div><p class="backlinks-count">共被提及 10 次</p>
+            <!-- 核心影响 -->
+            <h2>🎯 核心影响</h2>
+            <div class="impact-section">
+                <div class="impact-point">
+                    <div class="impact-number">1</div>
+                    <div class="impact-content">
+                        <strong>价值投资方法论的创立</strong>
+                        <p>格雷厄姆创立了现代证券分析的基本框架，包括：内在价值评估、安全边际原则、市场先生寓言。他教会巴菲特：股票是企业的一部分，而不是一个代码。当市场恐慌时买入，当市场贪婪时卖出。</p>
+                    </div>
+                </div>
+                <div class="impact-point">
+                    <div class="impact-number">2</div>
+                    <div class="impact-content">
+                        <strong>"市场先生"概念</strong>
+                        <p>格雷厄姆在《聪明的投资者》中提出了"市场先生"的寓言：市场像一个情绪不稳的商人，每天报出一个忽高忽低的价格。理性投资者利用他的报价，而不是被他利用。这一洞察成为巴菲特理解市场波动的基石。</p>
+                    </div>
+                </div>
+                <div class="impact-point">
+                    <div class="impact-number">3</div>
+                    <div class="impact-content">
+                        <strong>安全边际原则</strong>
+                        <p>"投资的第一原则是永远不要亏钱，第二原则是记住第一原则。"格雷厄姆的安全边际概念——以低于内在价值的价格购买证券——为巴菲特提供了风险控制的核心理念。这一原则在巴菲特后期的投资中演化为"优秀企业+合理价格"。</p>
+                    </div>
+                </div>
+                <div class="impact-point">
+                    <div class="impact-number">4</div>
+                    <div class="impact-content">
+                        <strong>系统的投资分析框架</strong>
+                        <p>格雷厄姆开创了通过财务报表分析企业价值的科学方法。他强调资产负债表的重要性，关注"净营运资本"指标，这些方法论在巴菲特的早期投资生涯中发挥了关键作用。</p>
+                    </div>
+                </div>
+                <div class="impact-point">
+                    <div class="impact-number">5</div>
+                    <div class="impact-content">
+                        <strong>师承关系的确立</strong>
+                        <p>1950年，巴菲特申请进入哥伦比亚大学商学院，直接师从格雷厄姆。他不仅学习了格雷厄姆的投资方法，更重要的是学会了如何思考投资。这段师徒关系最终促使巴菲特走上了专业投资的道路。</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 关系演变 -->
+            <h2>📅 关系演变</h2>
+            <div class="relation-timeline">
+                <div class="relation-point">
+                    <span class="relation-year">1949年</span>
+                    <p>巴菲特第一次读到格雷厄姆的《聪明的投资者》，被深深吸引。这是巴菲特投资思想的启蒙时刻。</p>
+                </div>
+                <div class="relation-point">
+                    <span class="relation-year">1950年</span>
+                    <p>巴菲特申请进入哥伦比亚大学商学院，格雷厄姆成为他的导师。巴菲特后来称这是他人生中最重要的决定之一。</p>
+                </div>
+                <div class="relation-point">
+                    <span class="relation-year">1951-1954年</span>
+                    <p>巴菲特毕业后曾为格雷厄姆-纽曼公司工作，成为格雷厄姆的员工，学习实战投资。</p>
+                </div>
+                <div class="relation-point">
+                    <span class="relation-year">1956年-1970s</span>
+                    <p>格雷厄姆退休后，巴菲特返回奥马哈独立管理投资合伙企业，但始终保持与格雷厄姆的学术联系。格雷厄姆晚期更认同巴菲特的投资进化。</p>
+                </div>
+                <div class="relation-point">
+                    <span class="relation-year">1976年</span>
+                    <p>格雷厄姆去世。巴菲特在这一年后的致股东信中开始更多提及并感谢格雷厄姆的教导。</p>
+                </div>
+            </div>
+            
+            <!-- 巴菲特评价 -->
+            <h2>💬 巴菲特评价</h2>
+            <div class="quote-block dark">
+                <blockquote>"格雷厄姆是现代证券分析之父，没有他就不会有今天的价值投资。"</blockquote>
+                <div class="source">1984年致股东信（格雷厄姆诞辰90周年）</div>
+            </div>
+            <div class="quote-block dark">
+                <blockquote>"投资成功最好的方法是用合理的价格购买优秀的企业……这与格雷厄姆的方法不同，但如果没有格雷厄姆打下的基础，我不可能发展出这套方法。"</blockquote>
+                <div class="source">1994年纪念格雷厄姆的演讲</div>
+            </div>
+            <div class="quote-block dark">
+                <blockquote>"格雷厄姆的方法在40年前有效，现在依然有效……但更重要的是，格雷厄姆教会了我如何思考投资，而不是简单地告诉我该买什么股票。"</blockquote>
+                <div class="source">1999年致股东信</div>
+            </div>
+            
+            <!-- 体现的投资原则 -->
+            <h2>📚 体现的投资原则</h2>
+            <div class="concept-tags">
+                <a href="../concepts/内在价值.html" class="concept-tag">内在价值</a>
+                <a href="../concepts/安全边际.html" class="concept-tag">安全边际</a>
+                <a href="../concepts/市场先生.html" class="concept-tag">市场先生</a>
+                <a href="../concepts/长期投资.html" class="concept-tag">长期投资</a>
+            </div>
+            <p style="margin-top: 15px; font-size: 0.95em;"><strong>注：</strong>格雷厄姆的方法是巴菲特投资哲学的"1.0版本"。巴菲特在1.0基础上发展出2.0（优质企业投资），但核心的安全边际和市场先生概念始终未变。</p>
+            
+            <!-- 相关人物 -->
+            <h2>👥 相关人物</h2>
+            <div class="network-grid">
+                <a href="巴菲特.html" class="network-item">
+                    <strong>沃伦·巴菲特</strong>
+                    <div class="relation-type">学生 → 导师</div>
+                </a>
+                <a href="芒格.html" class="network-item">
+                    <strong>查理·芒格</strong>
+                    <div class="relation-type">同门师兄弟（共同受教于格雷厄姆）</div>
+                </a>
+            </div>
+            
+            <!-- 相关公司 -->
+            <h2>🏢 相关公司</h2>
+            <div class="network-grid">
+                <a href="../companies/格雷厄姆-纽曼公司.html" class="network-item">
+                    <strong>格雷厄姆-纽曼公司</strong>
+                    <div class="relation-type">格雷厄姆创立的投资合伙企业</div>
+                </a>
             </div>
         </article>
     </div>
     
     <footer>
         <p><a href="../index.html">巴菲特知识库</a> | 数据来源：Berkshire Hathaway Letters</p>
-    
+        
         <div class="backlinks">
-            <h2>📚 反向链接</h2>
-            <p class="backlinks-intro">以下年份的信件提到了此人物：</p>
+            <h3>📚 反向链接</h3>
+            <p class="backlinks-intro">按主题组织的引用：</p>
+            
             <div class="backlinks-list">
-                <a href="../letters/berkshire/2004.html">2004年</a><a href="../letters/berkshire/1999.html">1999年</a><a href="../letters/berkshire/1995.html">1995年</a><a href="../letters/berkshire/1994.html">1994年</a><a href="../letters/berkshire/1990.html">1990年</a><a href="../letters/berkshire/1988.html">1988年</a><a href="../letters/berkshire/1987.html">1987年</a><a href="../letters/berkshire/1985.html">1985年</a><a href="../letters/berkshire/1984.html">1984年</a>
+                <a href="../letters/berkshire/1984.html">1984年（格雷厄姆诞辰90周年纪念）</a>
+                <a href="../letters/berkshire/1985.html">1985年</a>
+                <a href="../letters/berkshire/1987.html">1987年</a>
+                <a href="../letters/berkshire/1988.html">1988年</a>
+                <a href="../letters/berkshire/1990.html">1990年</a>
+                <a href="../letters/berkshire/1992.html">1992年</a>
+                <a href="../letters/berkshire/1993.html">1993年</a>
+                <a href="../letters/berkshire/1994.html">1994年</a>
+                <a href="../letters/berkshire/1995.html">1995年</a>
+                <a href="../letters/berkshire/1999.html">1999年</a>
+                <a href="../letters/berkshire/2004.html">2004年</a>
             </div>
-            <p class="backlinks-count">共 9 处引用</p>
+            
+            <p class="backlinks-count">共 11 处引用</p>
         </div>
-    
-</footer>
+    </footer>
 </body>
 </html>
