@@ -107,11 +107,15 @@
             color: var(--gold);
         }
         
-        /* Main Content */
-        .main-content {
+        /* Main Content Wrapper */
+        .main-wrapper {
             margin-left: 60px;
             transition: margin-left 0.3s ease;
             min-height: 100vh;
+        }
+        
+        .main-wrapper.sidebar-expanded {
+            margin-left: 220px;
         }
         
         /* Header */
@@ -577,6 +581,13 @@
                 flex-direction: column;
             }
         }
+    
+        header { background: var(--navy); color: white; padding: 15px 0; position: sticky; top: 0; z-index: 100; }
+        header .container { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.1em; font-weight: bold; color: var(--gold); text-decoration: none; }
+        nav a { color: white; text-decoration: none; margin-left: 20px; font-size: 0.9em; opacity: 0.9; transition: opacity 0.2s; }
+        nav a:hover { opacity: 1; color: var(--gold); }
+
     </style>
 </head>
 <body>
@@ -638,7 +649,21 @@
         </div>
         <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
     <div class="sidebar-overlay" id="sidebarOverlay"></div>
-</aside>
+    <header>
+        <div class="container">
+            <a href="../index.html" class="logo">📚 巴菲特知识库</a>
+            <nav>
+                <a href="巴菲特致股东信总览.html">📝 信件</a>
+                <a href="核心思想索引.html">💡 概念</a>
+                <a href="公司索引.html">🏢 公司</a>
+                <a href="人物索引.html">👤 人物</a>
+                <a href="时间线.html">📅 时间线</a>
+                <a href="概念关系图谱.html">🕸️ 图谱</a>
+                <a href="知识树.html">🌳 知识树</a>
+            </nav>
+        </div>
+    </header>
+    </aside>
     
     <!-- Search Modal -->
     <div class="search-modal" id="searchModal">
