@@ -401,8 +401,8 @@
             margin-bottom: 10px;
         }
         
-        /* Index Cards */
-        .index-section {
+        /* Overview Section (知识速览图) */
+        .overview-section {
             padding: 40px 0;
         }
         
@@ -413,47 +413,111 @@
             margin-bottom: 30px;
         }
         
-        .index-grid {
+        .overview-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(2, 1fr);
             gap: 20px;
         }
         
-        .index-card {
+        .overview-card {
             background: var(--card-bg);
             border: 1px solid var(--border);
             border-radius: 12px;
             padding: 25px;
-            text-decoration: none;
-            color: var(--text);
             transition: all 0.3s ease;
-            text-align: center;
         }
         
-        .index-card:hover {
+        .overview-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 30px rgba(27, 42, 74, 0.1);
             border-color: var(--gold);
         }
         
-        .index-card .icon {
-            font-size: 2.5em;
+        .overview-card h3 {
+            color: var(--navy);
+            font-size: 1.2em;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .mini-graph {
+            height: 200px;
+            background: linear-gradient(135deg, #f8f6f1 0%, #fff 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             margin-bottom: 15px;
         }
         
-        .index-card h3 {
+        .mini-graph svg {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .card-link {
+            display: block;
+            text-align: center;
+            color: var(--gold);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        
+        .card-link:hover {
             color: var(--navy);
-            font-size: 1.1em;
-            margin-bottom: 8px;
         }
         
-        .index-card p {
-            color: var(--secondary);
+        .chart-container {
+            height: 200px;
+            background: linear-gradient(135deg, #f8f6f1 0%, #fff 100%);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 15px;
+        }
+        
+        .chart-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+        
+        .chart-icon {
+            font-size: 1.2em;
+            width: 30px;
+        }
+        
+        .chart-label {
+            width: 60px;
             font-size: 0.9em;
+            color: var(--text);
         }
         
-        /* Top Lists */
-        .top-section {
+        .chart-bar-container {
+            flex: 1;
+            height: 16px;
+            background: #f0ebe3;
+            border-radius: 8px;
+            overflow: hidden;
+            margin: 0 10px;
+        }
+        
+        .chart-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--navy) 0%, var(--gold) 100%);
+            border-radius: 8px;
+            transition: width 0.5s ease;
+        }
+        
+        .chart-percent {
+            width: 40px;
+            text-align: right;
+            font-size: 0.85em;
+            color: var(--secondary);
+        }
+        
+        /* Recommend Section (今日推荐) */
+        .recommend-section {
             padding: 40px 0;
             background: #F5F3EE;
             margin: 0 -20px;
@@ -461,10 +525,72 @@
             padding-right: 20px;
         }
         
+        .recommend-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+        
+        .recommend-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 25px;
+            text-decoration: none;
+            color: var(--text);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .recommend-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(27, 42, 74, 0.15);
+            border-color: var(--gold);
+        }
+        
+        .recommend-card .card-icon {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+        
+        .recommend-card h3 {
+            color: var(--secondary);
+            font-size: 0.85em;
+            margin-bottom: 8px;
+            font-weight: normal;
+        }
+        
+        .recommend-card .card-title {
+            color: var(--navy);
+            font-size: 1.1em;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+        
+        .recommend-card .card-desc {
+            color: var(--secondary);
+            font-size: 0.9em;
+            line-height: 1.6;
+            flex: 1;
+            margin-bottom: 15px;
+        }
+        
+        .recommend-card .card-link {
+            color: var(--gold);
+            font-size: 0.9em;
+            font-weight: 500;
+        }
+        
+        /* Top Lists (热门排行) */
+        .top-section {
+            padding: 40px 0;
+        }
+        
         .top-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 40px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
         }
         
         .top-list {
@@ -476,7 +602,7 @@
         
         .top-list h3 {
             color: var(--navy);
-            font-size: 1.3em;
+            font-size: 1.2em;
             margin-bottom: 20px;
             padding-bottom: 10px;
             border-bottom: 2px solid var(--gold);
@@ -577,15 +703,21 @@
         }
         
         /* Responsive */
+        @media (max-width: 1000px) {
+            .recommend-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
         @media (max-width: 900px) {
             .stats {
                 grid-template-columns: repeat(2, 1fr);
             }
-            .index-grid {
-                grid-template-columns: repeat(2, 1fr);
+            .overview-grid {
+                grid-template-columns: 1fr;
             }
             .top-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: repeat(2, 1fr);
             }
             .hero h1 {
                 font-size: 2em;
@@ -613,7 +745,10 @@
             .stats {
                 grid-template-columns: 1fr;
             }
-            .index-grid {
+            .recommend-grid {
+                grid-template-columns: 1fr;
+            }
+            .top-grid {
                 grid-template-columns: 1fr;
             }
             header .container {
@@ -744,6 +879,7 @@
     </section>
     
     <div class="container">
+        <!-- Stats Section (保留) -->
         <section class="stats">
             <div class="stat-card">
                 <span class="stat-icon">📝</span>
@@ -767,37 +903,141 @@
             </div>
         </section>
         
-        <section class="index-section">
-            <h2 class="section-title">知识索引</h2>
-            <div class="index-grid">
-                <a href="index-pages/巴菲特致股东信总览.html" class="index-card">
-                    <div class="icon">📝</div>
-                    <h3>信件总览</h3>
-                    <p>98封完整信件</p>
+        <!-- 知识速览图区域 (新增) -->
+        <section class="overview-section">
+            <h2 class="section-title">🗺️ 知识速览图</h2>
+            <div class="overview-grid">
+                <!-- 左侧：概念关系迷你图 -->
+                <div class="overview-card concept-map">
+                    <h3>概念关系网络</h3>
+                    <div class="mini-graph">
+                        <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+                            <!-- 连线 -->
+                            <line x1="100" y1="60" x2="200" y2="60" stroke="#C9A227" stroke-width="2" stroke-dasharray="4"/>
+                            <line x1="200" y1="60" x2="300" y2="60" stroke="#C9A227" stroke-width="2" stroke-dasharray="4"/>
+                            <line x1="100" y1="60" x2="150" y2="140" stroke="#C9A227" stroke-width="2" stroke-dasharray="4"/>
+                            <line x1="200" y1="60" x2="150" y2="140" stroke="#C9A227" stroke-width="2" stroke-dasharray="4"/>
+                            <line x1="200" y1="60" x2="250" y2="140" stroke="#C9A227" stroke-width="2" stroke-dasharray="4"/>
+                            <line x1="150" y1="140" x2="250" y2="140" stroke="#C9A227" stroke-width="2" stroke-dasharray="4"/>
+                            
+                            <!-- 节点圆圈 -->
+                            <circle cx="100" cy="60" r="28" fill="#1B2A4A"/>
+                            <circle cx="200" cy="60" r="32" fill="#1B2A4A"/>
+                            <circle cx="300" cy="60" r="28" fill="#1B2A4A"/>
+                            <circle cx="150" cy="140" r="30" fill="#C9A227"/>
+                            <circle cx="250" cy="140" r="28" fill="#C9A227"/>
+                            
+                            <!-- 节点文字 -->
+                            <text x="100" y="65" text-anchor="middle" fill="white" font-size="12" font-weight="bold">护城河</text>
+                            <text x="200" y="58" text-anchor="middle" fill="white" font-size="11" font-weight="bold">安全边际</text>
+                            <text x="200" y="72" text-anchor="middle" fill="white" font-size="9">↓</text>
+                            <text x="300" y="65" text-anchor="middle" fill="white" font-size="12" font-weight="bold">能力圈</text>
+                            <text x="150" y="145" text-anchor="middle" fill="#1B2A4A" font-size="12" font-weight="bold">内在价值</text>
+                            <text x="250" y="145" text-anchor="middle" fill="#1B2A4A" font-size="12" font-weight="bold">复利</text>
+                        </svg>
+                    </div>
+                    <a href="index-pages/核心思想索引.html" class="card-link">查看完整图谱 →</a>
+                </div>
+                
+                <!-- 右侧：投资版图分布 -->
+                <div class="overview-card portfolio-chart">
+                    <h3>投资版图分布</h3>
+                    <div class="chart-container" id="portfolioChart">
+                        <div class="chart-item">
+                            <span class="chart-icon">🏦</span>
+                            <span class="chart-label">保险</span>
+                            <div class="chart-bar-container">
+                                <div class="chart-bar" style="width: 40%"></div>
+                            </div>
+                            <span class="chart-percent">40%</span>
+                        </div>
+                        <div class="chart-item">
+                            <span class="chart-icon">🍬</span>
+                            <span class="chart-label">消费</span>
+                            <div class="chart-bar-container">
+                                <div class="chart-bar" style="width: 25%"></div>
+                            </div>
+                            <span class="chart-percent">25%</span>
+                        </div>
+                        <div class="chart-item">
+                            <span class="chart-icon">💻</span>
+                            <span class="chart-label">科技</span>
+                            <div class="chart-bar-container">
+                                <div class="chart-bar" style="width: 15%"></div>
+                            </div>
+                            <span class="chart-percent">15%</span>
+                        </div>
+                        <div class="chart-item">
+                            <span class="chart-icon">🏭</span>
+                            <span class="chart-label">工业</span>
+                            <div class="chart-bar-container">
+                                <div class="chart-bar" style="width: 10%"></div>
+                            </div>
+                            <span class="chart-percent">10%</span>
+                        </div>
+                        <div class="chart-item">
+                            <span class="chart-icon">💰</span>
+                            <span class="chart-label">金融</span>
+                            <div class="chart-bar-container">
+                                <div class="chart-bar" style="width: 10%"></div>
+                            </div>
+                            <span class="chart-percent">10%</span>
+                        </div>
+                    </div>
+                    <a href="index-pages/公司索引.html" class="card-link">查看所有公司 →</a>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 今日推荐区域 (新增) -->
+        <section class="recommend-section">
+            <h2 class="section-title">⭐ 今日推荐</h2>
+            <div class="recommend-grid">
+                <!-- 推荐信件 -->
+                <a href="letters/berkshire/1987.html" class="recommend-card">
+                    <span class="card-icon">📜</span>
+                    <h3>推荐信件</h3>
+                    <p class="card-title" id="recLetterYear">1987年信件</p>
+                    <p class="card-desc" id="recLetterDesc">黑色星期一后的投资思考，展现逆向投资智慧</p>
+                    <span class="card-link">阅读全文 →</span>
                 </a>
-                <a href="index-pages/核心思想索引.html" class="index-card">
-                    <div class="icon">💡</div>
-                    <h3>核心思想</h3>
-                    <p>49个投资概念</p>
+                
+                <!-- 推荐概念 -->
+                <a href="concepts/护城河.html" class="recommend-card" id="recConcept">
+                    <span class="card-icon">💡</span>
+                    <h3>推荐概念</h3>
+                    <p class="card-title" id="recConceptName">护城河</p>
+                    <p class="card-desc" id="recConceptQuote">"护城河的本质是我与别人不同，而非我比别人更好"</p>
+                    <span class="card-link">深入了解 →</span>
                 </a>
-                <a href="index-pages/公司索引.html" class="index-card">
-                    <div class="icon">🏢</div>
-                    <h3>公司索引</h3>
-                    <p>61家相关公司</p>
+                
+                <!-- 推荐公司 -->
+                <a href="companies/喜诗糖果.html" class="recommend-card" id="recCompany">
+                    <span class="card-icon">🏢</span>
+                    <h3>推荐公司</h3>
+                    <p class="card-title" id="recCompanyName">喜诗糖果</p>
+                    <p class="card-desc" id="recCompanyDesc">经典价值投资案例，完美诠释护城河理念</p>
+                    <span class="card-link">查看详情 →</span>
                 </a>
-                <a href="index-pages/人物索引.html" class="index-card">
-                    <div class="icon">👤</div>
-                    <h3>人物索引</h3>
-                    <p>17位关键人物</p>
+                
+                <!-- 推荐人物 -->
+                <a href="people/芒格.html" class="recommend-card" id="recPeople">
+                    <span class="card-icon">👤</span>
+                    <h3>推荐人物</h3>
+                    <p class="card-title" id="recPeopleName">查理·芒格</p>
+                    <p class="card-desc" id="recPeopleDesc">巴菲特的终身伙伴，51次在信件中被提及</p>
+                    <span class="card-link">了解人物 →</span>
                 </a>
             </div>
         </section>
         
+        <!-- 热门排行区域 (完善：增加高频人物，三列布局) -->
         <section class="top-section">
-            <h2 class="section-title">TOP 15 高频引用</h2>
+            <h2 class="section-title">📈 热门排行</h2>
             <div class="top-grid">
+                <!-- 热门概念 -->
                 <div class="top-list">
-                    <h3>核心概念</h3>
+                    <h3>🔥 热门概念</h3>
                     <a href="concepts/内在价值.html" class="top-item">
                         <span class="rank">1</span>
                         <span>内在价值</span>
@@ -839,8 +1079,10 @@
                         <span class="count">52次</span>
                     </a>
                 </div>
+                
+                <!-- 热门公司 -->
                 <div class="top-list">
-                    <h3>相关公司</h3>
+                    <h3>🏢 热门公司</h3>
                     <a href="companies/伯克希尔哈撒韦.html" class="top-item">
                         <span class="rank">1</span>
                         <span>伯克希尔哈撒韦</span>
@@ -882,10 +1124,54 @@
                         <span class="count">51次</span>
                     </a>
                 </div>
+                
+                <!-- 高频人物 (新增) -->
+                <div class="top-list">
+                    <h3>👤 高频人物</h3>
+                    <a href="people/芒格.html" class="top-item">
+                        <span class="rank">1</span>
+                        <span>查理·芒格</span>
+                        <span class="count">51次</span>
+                    </a>
+                    <a href="people/阿吉特·贾恩.html" class="top-item">
+                        <span class="rank">2</span>
+                        <span>阿吉特·贾恩</span>
+                        <span class="count">40次</span>
+                    </a>
+                    <a href="people/格雷厄姆.html" class="top-item">
+                        <span class="rank">3</span>
+                        <span>本杰明·格雷厄姆</span>
+                        <span class="count">37次</span>
+                    </a>
+                    <a href="people/格雷格·阿贝尔.html" class="top-item">
+                        <span class="rank">4</span>
+                        <span>格雷格·阿贝尔</span>
+                        <span class="count">28次</span>
+                    </a>
+                    <a href="people/B夫人.html" class="top-item">
+                        <span class="rank">5</span>
+                        <span>B夫人</span>
+                        <span class="count">22次</span>
+                    </a>
+                    <a href="people/汤姆·墨菲.html" class="top-item">
+                        <span class="rank">6</span>
+                        <span>汤姆·墨菲</span>
+                        <span class="count">18次</span>
+                    </a>
+                    <a href="people/泰德·韦施勒.html" class="top-item">
+                        <span class="rank">7</span>
+                        <span>泰德·韦施勒</span>
+                        <span class="count">15次</span>
+                    </a>
+                    <a href="people/托德·库姆斯.html" class="top-item">
+                        <span class="rank">8</span>
+                        <span>托德·库姆斯</span>
+                        <span class="count">12次</span>
+                    </a>
+                </div>
             </div>
         </section>
         
-
     </div>
     
     <footer>
@@ -932,6 +1218,67 @@
             e.stopPropagation();
             showRandomWisdom();
         });
+        
+        // 今日推荐数据
+        const recommendations = {
+            letters: [
+                { year: "1987", title: "黑色星期一后的投资思考", desc: "黑色星期一后的投资思考，展现逆向投资智慧", file: "letters/berkshire/1987.html" },
+                { year: "2008", title: "金融危机中的贪婪", desc: "2008年金融危机中的贪婪与恐惧，值得反复研读", file: "letters/berkshire/2008.html" },
+                { year: "1988", title: "买入可口可乐的决策", desc: "详细阐述买入可口可乐的思路与逻辑", file: "letters/berkshire/1988.html" },
+                { year: "2016", title: "首次投资苹果", desc: "科技股投资的突破性决策", file: "letters/berkshire/2016.html" }
+            ],
+            concepts: [
+                { name: "护城河", quote: "护城河的本质是我与别人不同，而非我比别人更好", file: "concepts/护城河.html" },
+                { name: "安全边际", quote: "安全边际是应对猜错的保护，而非用来猜对", file: "concepts/安全边际.html" },
+                { name: "能力圈", quote: "知道边界在哪里比范围大更重要", file: "concepts/能力圈.html" },
+                { name: "复利", quote: "时间是好企业的朋友，是平庸企业的敌人", file: "concepts/复利.html" }
+            ],
+            companies: [
+                { name: "喜诗糖果", desc: "经典价值投资案例，完美诠释护城河理念", file: "companies/喜诗糖果.html" },
+                { name: "可口可乐", desc: "消费品牌护城河典范，长期持有的典范", file: "companies/可口可乐.html" },
+                { name: "苹果", desc: "科技投资的标杆，展现能力圈扩展", file: "companies/苹果.html" },
+                { name: "盖可保险", desc: "保险业务的核心，浮存金的来源", file: "companies/盖可保险.html" }
+            ],
+            people: [
+                { name: "查理·芒格", desc: "巴菲特的终身伙伴，51次在信件中被提及", file: "people/芒格.html" },
+                { name: "阿吉特·贾恩", desc: "保险业务掌门人，再保险之父", file: "people/阿吉特·贾恩.html" },
+                { name: "格雷厄姆", desc: "价值投资之父，巴菲特的导师", file: "people/格雷厄姆.html" },
+                { name: "B夫人", desc: "传奇女企业家，内布拉斯加家具城创始人", file: "people/B夫人.html" }
+            ]
+        };
+        
+        function getRandomItem(arr) {
+            return arr[Math.floor(Math.random() * arr.length)];
+        }
+        
+        function initRecommendations() {
+            // 推荐信件
+            const recLetter = getRandomItem(recommendations.letters);
+            document.getElementById('recLetterYear').textContent = recLetter.year + '年信件';
+            document.getElementById('recLetterDesc').textContent = recLetter.desc;
+            document.querySelectorAll('.recommend-card')[0].href = recLetter.file;
+            
+            // 推荐概念
+            const recConcept = getRandomItem(recommendations.concepts);
+            document.getElementById('recConceptName').textContent = recConcept.name;
+            document.getElementById('recConceptQuote').textContent = '"' + recConcept.quote + '"';
+            document.getElementById('recConcept').href = recConcept.file;
+            
+            // 推荐公司
+            const recCompany = getRandomItem(recommendations.companies);
+            document.getElementById('recCompanyName').textContent = recCompany.name;
+            document.getElementById('recCompanyDesc').textContent = recCompany.desc;
+            document.getElementById('recCompany').href = recCompany.file;
+            
+            // 推荐人物
+            const recPeople = getRandomItem(recommendations.people);
+            document.getElementById('recPeopleName').textContent = recPeople.name;
+            document.getElementById('recPeopleDesc').textContent = recPeople.desc;
+            document.getElementById('recPeople').href = recPeople.file;
+        }
+        
+        // 初始化今日推荐
+        initRecommendations();
         
         // Sidebar Toggle
         const sidebar = document.getElementById('sidebar');
@@ -1013,5 +1360,3 @@
     </script>
 </body>
 </html>
-<!-- Rebuild Sun Apr 26 12:03:32 AM CST 2026 -->
-<!-- Sun Apr 26 12:08:42 AM CST 2026 -->
