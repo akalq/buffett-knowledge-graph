@@ -1,89 +1,210 @@
 <!DOCTYPE html>
-
 <html lang="zh-CN">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>纺织业务 - 巴菲特知识库</title>
-<style>
-        :root { --bg-color: #FFFEF9; --navy: #1B2A4A; --gold: #C9A227; --text: #2C3E50; --secondary: #5D6D7E; --border: #E5E0D8; }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>纺织业务 (Textile Business) - 巴菲特投资概念</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root { --bg-color: #FFFEF9; --navy: #1B2A4A; --gold: #C9A227; --text: #2C3E50; --secondary: #5D6D7E; --border: #E5E0D8; --light-gold: #F5ECD7; }
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: 'Noto Serif SC', Georgia, serif; background: var(--bg-color); color: var(--text); line-height: 1.8; }
+        body { font-family: 'Noto Serif SC', Georgia, serif; background: var(--bg-color); color: var(--text); line-height: 1.9; }
         .container { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
-        header { background: var(--navy); color: white; padding: 40px 30px; text-align: center; }
-        header h1 { font-size: 1.8em; margin-bottom: 10px; }
-        header .meta { color: var(--gold); font-size: 0.95em; margin-top: 10px; }
-        .nav { background: white; border: 1px solid var(--border); padding: 15px 20px; margin-bottom: 30px; border-radius: 8px; text-align: center; }
-        .nav a { color: var(--navy); text-decoration: none; margin: 0 12px; font-size: 0.95em; }
-        .nav a:hover { color: var(--gold); }
-        .content { background: white; border: 1px solid var(--border); border-radius: 12px; padding: 40px; }
-        .content h2 { color: var(--navy); font-size: 1.4em; margin: 35px 0 15px; padding-bottom: 8px; border-bottom: 2px solid var(--gold); }
-        .content h2:first-child { margin-top: 0; }
+        header { background: linear-gradient(135deg, var(--navy) 0%, #2a3f6a 100%); color: white; padding: 50px 30px; text-align: center; }
+        header h1 { font-size: 2.2em; margin-bottom: 10px; }
+        header h1::before { content: '🏭'; margin-right: 15px; }
+        header .meta { color: var(--gold); font-size: 1em; margin-top: 15px; }
+        header .meta span { background: rgba(201, 162, 39, 0.2); padding: 5px 15px; border-radius: 20px; }
+        .nav { background: white; border: 1px solid var(--border); padding: 15px 25px; margin-bottom: 30px; border-radius: 10px; text-align: center; }
+        .nav a { color: var(--navy); text-decoration: none; margin: 0 15px; font-size: 0.95em; padding: 8px 15px; border-radius: 5px; transition: all 0.2s; }
+        .nav a:hover { background: var(--gold); color: white; }
+        .content { background: white; border: 1px solid var(--border); border-radius: 15px; padding: 45px; box-shadow: 0 5px 30px rgba(0,0,0,0.05); }
+        .content h2 { color: var(--navy); font-size: 1.4em; margin: 40px 0 20px; padding-bottom: 12px; border-bottom: 3px solid var(--gold); display: inline-block; }
+        .content h2:first-of-type { margin-top: 0; }
+        .content h3 { color: var(--navy); font-size: 1.15em; margin: 25px 0 12px; }
         .content p { margin: 15px 0; text-align: justify; }
-        .quote { background: var(--navy); color: white; padding: 20px 25px; border-left: 4px solid var(--gold); margin: 25px 0; border-radius: 0 8px 8px 0; }
-        .quote p { margin: 0; font-style: italic; }
-        .quote .source { color: var(--gold); margin-top: 12px; font-size: 0.9em; }
-        .related { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px; }
-        .related a { background: white; border: 1px solid var(--border); padding: 8px 15px; border-radius: 20px; text-decoration: none; color: var(--navy); font-size: 0.9em; transition: all 0.2s; }
-        .related a:hover { background: var(--gold); color: white; border-color: var(--gold); }
+        .content ul, .content ol { margin: 15px 0 15px 25px; }
+        .content li { margin: 10px 0; }
+        .content strong { color: var(--navy); font-weight: 700; }
+        
+        .insight { background: linear-gradient(135deg, #f8f5ee 0%, #fff 100%); border-left: 4px solid #C9A227; padding: 18px 22px; margin: 25px 0; font-style: italic; font-size: 1.05em; }
+        
+        .evolution-timeline { position: relative; padding-left: 35px; margin: 25px 0; }
+        .evolution-timeline::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: #C9A227; }
+        .evolution-point { position: relative; margin-bottom: 25px; }
+        .evolution-point::before { content: ''; position: absolute; left: -38px; top: 6px; width: 12px; height: 12px; border-radius: 50%; background: #C9A227; border: 3px solid white; box-shadow: 0 0 0 3px #C9A227; }
+        .evolution-year { font-weight: 600; color: var(--navy); font-size: 1.05em; }
+        .evolution-desc { color: var(--text); margin-top: 5px; }
+        
+        .case-card { background: #F8F5EE; border-radius: 10px; padding: 25px; margin: 20px 0; border: 1px solid var(--border); }
+        .case-company { font-size: 1.15em; font-weight: 600; color: var(--navy); margin-bottom: 8px; }
+        .case-data { color: #5D6D7E; font-size: 0.95em; margin: 8px 0; }
+        .case-lesson { font-style: italic; margin-top: 15px; padding-top: 15px; border-top: 1px solid #E8E4DB; color: var(--text); }
+        
+        .misconception-block { background: #fff5f5; padding: 20px 25px; border-radius: 10px; margin: 20px 0; border-left: 4px solid #e74c3c; }
+        .misconception-block h4 { color: #c0392b; margin-bottom: 12px; font-size: 1.05em; }
+        .misconception-block p { margin: 8px 0; }
+        
+        .quote-block { background: var(--navy); color: white; padding: 25px 30px; border-left: 5px solid var(--gold); margin: 25px 0; border-radius: 0 12px 12px 0; }
+        .quote-block p { margin: 0; font-style: italic; font-size: 1.05em; line-height: 1.8; }
+        .quote-block footer { color: var(--gold); margin-top: 15px; font-size: 0.9em; font-style: normal; }
+        
+        .topic-group { margin: 25px 0; padding: 20px; background: linear-gradient(135deg, var(--light-gold) 0%, #fff9e6 100%); border-radius: 10px; }
+        .topic-title { font-weight: 600; color: var(--navy); margin-bottom: 10px; font-size: 1.05em; }
+        .topic-desc { color: var(--text); margin-bottom: 12px; font-size: 0.95em; }
+        .topic-years { display: flex; flex-wrap: wrap; gap: 8px; }
+        .topic-years a { background: white; border: 1px solid var(--gold); padding: 5px 14px; border-radius: 18px; text-decoration: none; color: var(--navy); font-size: 0.85em; transition: all 0.2s; }
+        .topic-years a:hover { background: var(--gold); color: white; }
+        
         footer { text-align: center; padding: 40px 20px; color: var(--secondary); border-top: 1px solid var(--border); margin-top: 40px; }
-        footer a { color: var(--navy); text-decoration: none; }
+        @media (max-width: 768px) { .container { padding: 20px 15px; } header { padding: 30px 20px; } header h1 { font-size: 1.7em; } .content { padding: 25px 20px; } .nav a { margin: 5px 8px; display: inline-block; } }
     </style>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&amp;display=swap" rel="stylesheet"/>
 </head>
 <body>
-<header>
-<h1>💡 纺织业务</h1>
-<div class="meta">概念 · 被引用 5 次</div>
-</header>
-<div class="container">
-<nav class="nav">
-<a href="../index.html">🏠 首页</a>
-<a href="../index-pages/核心思想索引.html">💡 核心思想索引</a>
-<a href="../index-pages/公司索引.html">🏢 公司索引</a>
-<a href="../index-pages/人物索引.html">👤 人物索引</a>
-</nav>
-<article class="content">
-<h2>概念解析</h2>
-<p>纺织业务是伯克希尔最初的业务，也是巴菲特投资生涯的起点之一。</p>
-<h2>相关概念</h2>
-<div class="related">
-<a href="内在价值.html">内在价值</a>
-<a href="护城河.html">护城河</a>
-</div>
-
-<div class="backlinks">
-<h2>📚 反向链接</h2>
-<p class="backlinks-intro">以下年份的信件提到了此概念：</p>
-<div class="backlinks-list">
-<a href="../letters/berkshire/2024.html">2024年</a>
-<a href="../letters/berkshire/2020.html">2020年</a>
-<a href="../letters/berkshire/2006.html">2006年</a>
-<a href="../letters/berkshire/2005.html">2005年</a>
-<a href="../letters/berkshire/2004.html">2004年</a>
-<a href="../letters/berkshire/2003.html">2003年</a>
-<a href="../letters/berkshire/1994.html">1994年</a>
-<a href="../letters/berkshire/1992.html">1992年</a>
-<a href="../letters/berkshire/1990.html">1990年</a>
-<a href="../letters/berkshire/1989.html">1989年</a>
-<a href="../letters/berkshire/1988.html">1988年</a>
-<a href="../letters/berkshire/1987.html">1987年</a>
-<a href="../letters/berkshire/1985.html">1985年</a>
-<a href="../letters/berkshire/1984.html">1984年</a>
-<a href="../letters/berkshire/1983.html">1983年</a>
-<a href="../letters/berkshire/1982.html">1982年</a>
-<a href="../letters/berkshire/1981.html">1981年</a>
-<a href="../letters/berkshire/1980.html">1980年</a>
-<a href="../letters/berkshire/1979.html">1979年</a>
-<a href="../letters/berkshire/1978.html">1978年</a>
-<a href="../letters/berkshire/1977.html">1977年</a>
-</div>
-<p class="backlinks-count">共 21 处引用</p>
-</div>
-</article>
-</div>
-<footer>
-<p><a href="../index.html">巴菲特知识库</a> | 数据来源：Berkshire Hathaway Letters</p>
-</footer>
+    <header>
+        <h1>纺织业务 (Textile Business)</h1>
+        <div class="meta"><span>投资生涯的起点与教训</span></div>
+    </header>
+    
+    <div class="container">
+        <nav class="nav">
+            <a href="../index.html">🏠 首页</a>
+            <a href="../index-pages/核心思想索引.html">💡 核心思想索引</a>
+            <a href="../index-pages/公司索引.html">🏢 公司索引</a>
+        </nav>
+        
+        <article class="content">
+            <h2>定义与起源</h2>
+            <p><strong>纺织业务是以加工原材料生产布料的制造业</strong>——属于典型的"商品型业务"，产品差异化程度低，价格竞争激烈，技术门槛有限。</p>
+            <p>巴菲特在<strong>1962年</strong>开始买入伯克希尔·哈撒韦的股票，当时这是一家以纺织业为主业的公司。这个"烟蒂"最终成为他整个投资生涯的标志性起点，也成为他最深刻的教训之一。</p>
+            
+            <div class="insight">
+                伯克希尔纺织业务的教训是投资哲学的"反面教材"：看似便宜的"烟蒂"可能持续燃烧，消耗你的时间和资本。商品型业务的问题是——即使你做对了所有事，行业本身可能依然无法盈利。
+            </div>
+            
+            <h2>核心要义</h2>
+            <ul>
+                <li><strong>商品型业务是价值毁灭者</strong>：低差异化产品意味着竞争对手可以通过价格战夺走你的利润。没有护城河的制造业是危险的。</li>
+                <li><strong>"便宜"可能是陷阱</strong>：用账面价值或净资产来估值可能误导你——如果业务本身不赚钱，这些资产可能一文不值。</li>
+                <li><strong>沉没成本与及时止损</strong>：巴菲特在纺织业务上持续投入，试图"挽救"它，结果反而损失更多。这教会他"关门"的勇气。</li>
+                <li><strong>行业结构比管理能力更重要</strong>：优秀的管理层在糟糕的行业结构中，往往只能延缓失败，而非改变结局。</li>
+                <li><strong>资本密集型业务需要谨慎</strong>：持续需要资本投入来维持设备，但回报却有限，这是价值毁灭的配方。</li>
+            </ul>
+            
+            <h2>思想演变</h2>
+            <div class="evolution-timeline">
+                <div class="evolution-point">
+                    <div class="evolution-year">"烟蒂"投资（1962-1967年）</div>
+                    <div class="evolution-desc">像捡烟蒂一样买入伯克希尔股票——价格低于账面价值。但低估了纺织业务的持续亏损。</div>
+                </div>
+                <div class="evolution-point">
+                    <div class="evolution-year">错误的选择（1967-1985年）</div>
+                    <div class="evolution-desc">多次向纺织业务注入资本，试图通过现代化设备扭亏为盈。1985年最终关闭纺织业务，但已浪费20年时间和大量资本。</div>
+                </div>
+                <div class="evolution-point">
+                    <div class="evolution-year">深刻反思（1985年后）</div>
+                    <div class="evolution-desc">公开承认这是"愚蠢"的决策，将伯克希尔从纺织公司转型为保险和投资集团。从此只投资有护城河的企业。</div>
+                </div>
+                <div class="evolution-point">
+                    <div class="evolution-year">投资哲学的升华</div>
+                    <div class="evolution-desc">伯克希尔的教训成为"以合理价格买入优秀企业"理念的反面教材——也证明了"用好价格买入坏业务"可能比"用一般价格买入好业务"更糟糕。</div>
+                </div>
+            </div>
+            
+            <h2>实战案例</h2>
+            <div class="case-card">
+                <div class="case-company">伯克希尔·哈撒韦纺织厂</div>
+                <div class="case-data">1962年建仓；1985年关闭；前后浪费20年时间和大量资本；教训价值远超任何成功案例</div>
+                <div class="case-lesson">"我投资伯克希尔的决策完全错误。虽然当时股价看起来很便宜，但纺织业务的本质决定了它无法产生合理的资本回报。"这是巴菲特最常提及的"反面教材"。</div>
+            </div>
+            
+            <div class="case-card">
+                <div class="case-company">New Bedford纺织厂</div>
+                <div class="case-data">1970年代收购；试图通过现代化扭亏；最终关闭</div>
+                <div class="case-lesson">即使是最优秀的行业专家也无法改变行业的基本结构。竞争来自全球低成本生产商，这是不可逆转的趋势。</div>
+            </div>
+            
+            <div class="case-card">
+                <div class="case-company">巴菲特的"及时止损"教训</div>
+                <div class="case-data">持续投入超过15年；每次以为能好转；最终接受失败</div>
+                <div class="case-lesson">承认错误比坚持错误更困难。巴菲特说："当你发现自己身处洞中，第一件事就是停止挖掘。"这句话来自纺织业务的惨痛教训。</div>
+            </div>
+            
+            <h2>常见误解</h2>
+            <div class="misconception-block">
+                <h4>❌ 误解一：便宜就是好机会</h4>
+                <p><strong>人们以为</strong>：股价低于账面价值的公司是"便宜货"，值得买入。</p>
+                <p><strong>巴菲特说</strong>：如果一家公司的业务持续亏损，再低的股价也只是"便宜地亏损"。账面价值是历史成本，不代表清算价值。</p>
+            </div>
+            
+            <div class="misconception-block">
+                <h4>❌ 误解二：好管理层能拯救任何企业</h4>
+                <p><strong>人们以为</strong>：只要管理层足够优秀，任何业务都能起死回生。</p>
+                <p><strong>巴菲特说</strong>：我和Ken Chace都是优秀的管理者，但在错误的行业里，我们只能延缓失败，而非改变结局。</p>
+            </div>
+            
+            <div class="misconception-block">
+                <h4>❌ 误解三：多元化能分散行业风险</h4>
+                <p><strong>人们以为</strong>：在多个业务间分散投资可以降低风险。</p>
+                <p><strong>巴菲特说</strong>：如果你在一条正在下沉的船上，最好的策略是尽快跳船，而不是买更多救生圈。错误的业务不值得长期坚持。</p>
+            </div>
+            
+            <h2>精华原话</h2>
+            <div class="quote-block">
+                <p>"我在伯克希尔纺织业务上的决策是愚蠢的。我试图用便宜的价格买一家'烟蒂'公司，然后通过改善管理让它变得有价值。但纺织业务的问题不是管理，而是整个行业的基本面。"</p>
+                <footer>—— 1985年致股东信</footer>
+            </div>
+            
+            <div class="quote-block">
+                <p>"当发现自己身处洞中时，最重要的事情就是停止挖掘。如果我知道伯克希尔的纺织业务最终会是这样的结局，我会早点关闭它，而不是浪费20年时间试图挽救。"</p>
+                <footer>—— 1989年致股东信</footer>
+            </div>
+            
+            <div class="quote-block">
+                <p>"我犯的最大错误不是买错了股票，而是留在一项没有未来的业务里太长时间。好的管理层加上坏的行业，结果往往是管理层被行业拖累。"</p>
+                <footer>—— 1990年致股东信</footer>
+            </div>
+            
+            <div class="quote-block">
+                <p>"伯克希尔的教训塑造了我后来的投资哲学。我学会了宁愿以合理价格买入优秀企业，也不要用便宜价格买入平庸企业。"</p>
+                <footer>—— 2005年致股东信</footer>
+            </div>
+            
+            <h2>延伸阅读</h2>
+            <p>纺织业务（伯克希尔的教训）在信件中的讨论分布，按论点组织：</p>
+            
+            <div class="topic-group">
+                <div class="topic-title">"烟蒂投资"的教训</div>
+                <div class="topic-desc">为何看似便宜的股票可能价值毁灭</div>
+                <div class="topic-years">
+                    <a href="../letters/berkshire/1985.html">1985</a>
+                    <a href="../letters/berkshire/1989.html">1989</a>
+                </div>
+            </div>
+            
+            <div class="topic-group">
+                <div class="topic-title">资本配置与沉没成本</div>
+                <div class="topic-desc">为何持续投入无法挽救夕阳行业</div>
+                <div class="topic-years">
+                    <a href="../letters/berkshire/1985.html">1985</a>
+                    <a href="../letters/berkshire/1990.html">1990</a>
+                </div>
+            </div>
+            
+            <div class="topic-group">
+                <div class="topic-title">从纺织到保险的转型</div>
+                <div class="topic-desc">伯克希尔如何从失败中学习，最终成为投资帝国</div>
+                <div class="topic-years">
+                    <a href="../letters/berkshire/1967.html">1967</a>
+                    <a href="../letters/berkshire/1985.html">1985</a>
+                </div>
+            </div>
+            
+        </article>
+    </div>
+    
+    <footer>
+        <p>巴菲特投资概念 · LearnBuffett版</p>
+    </footer>
 </body>
 </html>

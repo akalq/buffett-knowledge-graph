@@ -1,70 +1,210 @@
 <!DOCTYPE html>
-
 <html lang="zh-CN">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>科技与互联网 - 巴菲特知识库</title>
-<style>
-        :root { --bg-color: #FFFEF9; --navy: #1B2A4A; --gold: #C9A227; --text: #2C3E50; --secondary: #5D6D7E; --border: #E5E0D8; }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>科技与互联网 (Technology & Internet) - 巴菲特投资概念</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root { --bg-color: #FFFEF9; --navy: #1B2A4A; --gold: #C9A227; --text: #2C3E50; --secondary: #5D6D7E; --border: #E5E0D8; --light-gold: #F5ECD7; }
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: 'Noto Serif SC', Georgia, serif; background: var(--bg-color); color: var(--text); line-height: 1.8; }
+        body { font-family: 'Noto Serif SC', Georgia, serif; background: var(--bg-color); color: var(--text); line-height: 1.9; }
         .container { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
-        header { background: var(--navy); color: white; padding: 40px 30px; text-align: center; }
-        header h1 { font-size: 1.8em; margin-bottom: 10px; }
-        header .meta { color: var(--gold); font-size: 0.95em; margin-top: 10px; }
-        .nav { background: white; border: 1px solid var(--border); padding: 15px 20px; margin-bottom: 30px; border-radius: 8px; text-align: center; }
-        .nav a { color: var(--navy); text-decoration: none; margin: 0 12px; font-size: 0.95em; }
-        .nav a:hover { color: var(--gold); }
-        .content { background: white; border: 1px solid var(--border); border-radius: 12px; padding: 40px; }
-        .content h2 { color: var(--navy); font-size: 1.4em; margin: 35px 0 15px; padding-bottom: 8px; border-bottom: 2px solid var(--gold); }
-        .content h2:first-child { margin-top: 0; }
+        header { background: linear-gradient(135deg, var(--navy) 0%, #2a3f6a 100%); color: white; padding: 50px 30px; text-align: center; }
+        header h1 { font-size: 2.2em; margin-bottom: 10px; }
+        header h1::before { content: '💻'; margin-right: 15px; }
+        header .meta { color: var(--gold); font-size: 1em; margin-top: 15px; }
+        header .meta span { background: rgba(201, 162, 39, 0.2); padding: 5px 15px; border-radius: 20px; }
+        .nav { background: white; border: 1px solid var(--border); padding: 15px 25px; margin-bottom: 30px; border-radius: 10px; text-align: center; }
+        .nav a { color: var(--navy); text-decoration: none; margin: 0 15px; font-size: 0.95em; padding: 8px 15px; border-radius: 5px; transition: all 0.2s; }
+        .nav a:hover { background: var(--gold); color: white; }
+        .content { background: white; border: 1px solid var(--border); border-radius: 15px; padding: 45px; box-shadow: 0 5px 30px rgba(0,0,0,0.05); }
+        .content h2 { color: var(--navy); font-size: 1.4em; margin: 40px 0 20px; padding-bottom: 12px; border-bottom: 3px solid var(--gold); display: inline-block; }
+        .content h2:first-of-type { margin-top: 0; }
+        .content h3 { color: var(--navy); font-size: 1.15em; margin: 25px 0 12px; }
         .content p { margin: 15px 0; text-align: justify; }
-        .quote { background: var(--navy); color: white; padding: 20px 25px; border-left: 4px solid var(--gold); margin: 25px 0; border-radius: 0 8px 8px 0; }
-        .quote p { margin: 0; font-style: italic; }
-        .quote .source { color: var(--gold); margin-top: 12px; font-size: 0.9em; }
-        .related { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px; }
-        .related a { background: white; border: 1px solid var(--border); padding: 8px 15px; border-radius: 20px; text-decoration: none; color: var(--navy); font-size: 0.9em; transition: all 0.2s; }
-        .related a:hover { background: var(--gold); color: white; border-color: var(--gold); }
+        .content ul, .content ol { margin: 15px 0 15px 25px; }
+        .content li { margin: 10px 0; }
+        .content strong { color: var(--navy); font-weight: 700; }
+        
+        .insight { background: linear-gradient(135deg, #f8f5ee 0%, #fff 100%); border-left: 4px solid #C9A227; padding: 18px 22px; margin: 25px 0; font-style: italic; font-size: 1.05em; }
+        
+        .evolution-timeline { position: relative; padding-left: 35px; margin: 25px 0; }
+        .evolution-timeline::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: #C9A227; }
+        .evolution-point { position: relative; margin-bottom: 25px; }
+        .evolution-point::before { content: ''; position: absolute; left: -38px; top: 6px; width: 12px; height: 12px; border-radius: 50%; background: #C9A227; border: 3px solid white; box-shadow: 0 0 0 3px #C9A227; }
+        .evolution-year { font-weight: 600; color: var(--navy); font-size: 1.05em; }
+        .evolution-desc { color: var(--text); margin-top: 5px; }
+        
+        .case-card { background: #F8F5EE; border-radius: 10px; padding: 25px; margin: 20px 0; border: 1px solid var(--border); }
+        .case-company { font-size: 1.15em; font-weight: 600; color: var(--navy); margin-bottom: 8px; }
+        .case-data { color: #5D6D7E; font-size: 0.95em; margin: 8px 0; }
+        .case-lesson { font-style: italic; margin-top: 15px; padding-top: 15px; border-top: 1px solid #E8E4DB; color: var(--text); }
+        
+        .misconception-block { background: #fff5f5; padding: 20px 25px; border-radius: 10px; margin: 20px 0; border-left: 4px solid #e74c3c; }
+        .misconception-block h4 { color: #c0392b; margin-bottom: 12px; font-size: 1.05em; }
+        .misconception-block p { margin: 8px 0; }
+        
+        .quote-block { background: var(--navy); color: white; padding: 25px 30px; border-left: 5px solid var(--gold); margin: 25px 0; border-radius: 0 12px 12px 0; }
+        .quote-block p { margin: 0; font-style: italic; font-size: 1.05em; line-height: 1.8; }
+        .quote-block footer { color: var(--gold); margin-top: 15px; font-size: 0.9em; font-style: normal; }
+        
+        .topic-group { margin: 25px 0; padding: 20px; background: linear-gradient(135deg, var(--light-gold) 0%, #fff9e6 100%); border-radius: 10px; }
+        .topic-title { font-weight: 600; color: var(--navy); margin-bottom: 10px; font-size: 1.05em; }
+        .topic-desc { color: var(--text); margin-bottom: 12px; font-size: 0.95em; }
+        .topic-years { display: flex; flex-wrap: wrap; gap: 8px; }
+        .topic-years a { background: white; border: 1px solid var(--gold); padding: 5px 14px; border-radius: 18px; text-decoration: none; color: var(--navy); font-size: 0.85em; transition: all 0.2s; }
+        .topic-years a:hover { background: var(--gold); color: white; }
+        
         footer { text-align: center; padding: 40px 20px; color: var(--secondary); border-top: 1px solid var(--border); margin-top: 40px; }
-        footer a { color: var(--navy); text-decoration: none; }
+        @media (max-width: 768px) { .container { padding: 20px 15px; } header { padding: 30px 20px; } header h1 { font-size: 1.7em; } .content { padding: 25px 20px; } .nav a { margin: 5px 8px; display: inline-block; } }
     </style>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&amp;display=swap" rel="stylesheet"/>
 </head>
 <body>
-<header>
-<h1>💡 科技与互联网</h1>
-<div class="meta">概念 · 被引用 14 次</div>
-</header>
-<div class="container">
-<nav class="nav">
-<a href="../index.html">🏠 首页</a>
-<a href="../index-pages/核心思想索引.html">💡 核心思想索引</a>
-<a href="../index-pages/公司索引.html">🏢 公司索引</a>
-<a href="../index-pages/人物索引.html">👤 人物索引</a>
-</nav>
-<article class="content">
-<h2>概念解析</h2>
-<p>科技行业是巴菲特后期投资组合的重要组成部分。</p>
-<h2>相关概念</h2>
-<div class="related">
-<a href="内在价值.html">内在价值</a>
-<a href="护城河.html">护城河</a>
-</div>
-
-<div class="backlinks">
-<h2>📚 反向链接</h2>
-<p class="backlinks-intro">以下年份的信件提到了此概念：</p>
-<div class="backlinks-list">
-<a href="../letters/berkshire/2023.html">2023年</a>
-<a href="../letters/berkshire/1996.html">1996年</a>
-</div>
-<p class="backlinks-count">共 2 处引用</p>
-</div>
-</article>
-</div>
-<footer>
-<p><a href="../index.html">巴菲特知识库</a> | 数据来源：Berkshire Hathaway Letters</p>
-</footer>
+    <header>
+        <h1>科技与互联网 (Technology & Internet)</h1>
+        <div class="meta"><span>能力圈的突破与进化</span></div>
+    </header>
+    
+    <div class="container">
+        <nav class="nav">
+            <a href="../index.html">🏠 首页</a>
+            <a href="../index-pages/核心思想索引.html">💡 核心思想索引</a>
+            <a href="../index-pages/公司索引.html">🏢 公司索引</a>
+        </nav>
+        
+        <article class="content">
+            <h2>定义与起源</h2>
+            <p><strong>科技与互联网行业以技术创新为核心驱动力</strong>——企业通过技术优势获得市场份额，通过网络效应和规模经济构建护城河。</p>
+            <p>巴菲特长期回避科技股，原因是他坚持"能力圈"原则——不投资自己不理解的公司。然而<strong>2016年投资苹果</strong>标志着这一立场的重大转变，因为巴菲特将苹果重新定义为"消费品公司"而非科技公司。</p>
+            
+            <div class="insight">
+                巴菲特投资科技的关键转变：不是投资"科技公司"，而是投资"具有科技护城河的消费品公司"。苹果不再是电脑公司，而是用户粘性极强的消费生态系统。
+            </div>
+            
+            <h2>核心要义</h2>
+            <ul>
+                <li><strong>科技股≠科技投资</strong>：投资苹果不是因为它是科技公司，而是因为它拥有强大的品牌、生态系统粘性和持续的消费者需求。</li>
+                <li><strong>网络效应是最强护城河</strong>：拥有网络效应的平台（如社交网络、电商平台）具有极强的防御性，因为用户转换成本极高。</li>
+                <li><strong>评估管理层但不依赖预测技术</strong>：巴菲特承认无法预测技术变革的方向，但可以评估管理层的能力和诚信。</li>
+                <li><strong>护城河可能转瞬即逝</strong>：科技行业的护城河往往比传统行业更脆弱——一项新技术可能在一夜之间颠覆整个行业。</li>
+                <li><strong>商业模式比技术更重要</strong>：先进技术不等于好投资，关键是技术能否转化为持久的商业优势。</li>
+            </ul>
+            
+            <h2>思想演变</h2>
+            <div class="evolution-timeline">
+                <div class="evolution-point">
+                    <div class="evolution-year">长期回避（1990年代-2010年代）</div>
+                    <div class="evolution-desc">多次表示不懂科技股，强调"不投资自己看不懂的东西"。IBM是少数例外，2007年买入。</div>
+                </div>
+                <div class="evolution-point">
+                    <div class="evolution-year">理念松动（2011-2015年）</div>
+                    <div class="evolution-desc">开始投资IBM（2011年），但表示这是"边缘"投资。逐渐认识到某些科技公司具有消费品的特质。</div>
+                </div>
+                <div class="evolution-point">
+                    <div class="evolution-year">重大突破（2016年）</div>
+                    <div class="evolution-desc">开始买入苹果股票，重新定义为"消费品公司"。到2018年成为伯克希尔最大持仓。</div>
+                </div>
+                <div class="evolution-point">
+                    <div class="evolution-year">持续加码（2019年后）</div>
+                    <div class="evolution-desc">在科技股大涨后仍认为苹果估值合理。2023年清仓台积电，2024年清仓苹果，但保留对苹果的长期关注。</div>
+                </div>
+            </div>
+            
+            <h2>实战案例</h2>
+            <div class="case-card">
+                <div class="case-company">苹果 (Apple)</div>
+                <div class="case-data">2016-2018年建仓；一度成为伯克希尔最大持仓；2024年清仓，累计获利超1200亿美元</div>
+                <div class="case-lesson">苹果的核心不是"科技"，而是"用户生态"：iPhone用户转向Android的成本极高（丢失数据、应用、习惯），这才是真正的护城河。巴菲特投资的本质是"粘性消费者"而非"技术创新"。</div>
+            </div>
+            
+            <div class="case-card">
+                <div class="case-company">IBM (国际商业机器)</div>
+                <div class="case-data">2011年买入；2017-2018年清仓；持有期间股价表现平平</div>
+                <div class="case-lesson">IBM是巴菲特少有的"失误"之一。低估了科技行业转型的难度和速度——当云时代到来时，传统IT服务商的优势急剧萎缩。</div>
+            </div>
+            
+            <div class="case-card">
+                <div class="case-company">亚马逊 (Amazon)</div>
+                <div class="case-data">2019年承认错过亚马逊是"愚蠢"的；通过卡夫亨氏间接持有少量</div>
+                <div class="case-lesson">承认错误不等于改变原则。巴菲特承认错过亚马逊，但坚持自己的评估框架——这是知行合一的体现。</div>
+            </div>
+            
+            <h2>常见误解</h2>
+            <div class="misconception-block">
+                <h4>❌ 误解一：巴菲特"改行"投资科技股</h4>
+                <p><strong>人们以为</strong>：巴菲特放弃了自己的投资原则，开始追逐科技潮流。</p>
+                <p><strong>巴菲特说</strong>：我投资苹果是因为它像可口可乐一样，拥有强大的品牌和用户忠诚度。这不是投资科技，是投资消费特许经营权。</p>
+            </div>
+            
+            <div class="misconception-block">
+                <h4>❌ 误解二：科技股估值只看市盈率</h4>
+                <p><strong>人们以为</strong>：科技股估值与传统行业一样，可以用PE判断高低。</p>
+                <p><strong>巴菲特说</strong>：科技公司的高估值可能反映了其护城河的宽度。但这种护城河可能在一夜之间消失，这就是为何要谨慎。</p>
+            </div>
+            
+            <div class="misconception-block">
+                <h4>❌ 误解三：科技投资只看技术领先</h4>
+                <p><strong>人们以为</strong>：技术最先进就能赢得市场。</p>
+                <p><strong>巴菲特说</strong>：Betamax曾经技术领先，但VHS赢了。技术优势不是护城河本身，能转化为持久商业优势的技术优势才是。</p>
+            </div>
+            
+            <h2>精华原话</h2>
+            <div class="quote-block">
+                <p>"我的第一条投资规则是：永远不投资自己看不懂的生意。科技行业的很多公司我确实看不懂——技术变化太快，我无法预测谁会成为赢家。"</p>
+                <footer>—— 1999年太阳谷演讲</footer>
+            </div>
+            
+            <div class="quote-block">
+                <p>"苹果不只是一家科技公司——它是世界上最强大的消费品公司。iPhone对用户的意义远超一部手机：它是日常生活的中心，是身份认同的一部分。"</p>
+                <footer>—— 2018年致股东信</footer>
+            </div>
+            
+            <div class="quote-block">
+                <p>"我没有预见亚马逊的崛起，这说明我对零售行业的理解还不够深刻。贝索斯做的很多事情，我都没有预见到。"</p>
+                <footer>—— 2019年致股东信</footer>
+            </div>
+            
+            <div class="quote-block">
+                <p>"我们不买我们无法评估的公司。问题是，科技公司变化太快——今天的领导者可能明天就被颠覆。这种不确定性超出了我的舒适区。"</p>
+                <footer>—— 2000年致股东信</footer>
+            </div>
+            
+            <h2>延伸阅读</h2>
+            <p>科技与互联网概念在信件中的讨论分布，按论点组织：</p>
+            
+            <div class="topic-group">
+                <div class="topic-title">能力圈与科技投资</div>
+                <div class="topic-desc">为何长期回避科技股，以及何时开始改变</div>
+                <div class="topic-years">
+                    <a href="../letters/berkshire/1999.html">1999</a>
+                    <a href="../letters/berkshire/2000.html">2000</a>
+                </div>
+            </div>
+            
+            <div class="topic-group">
+                <div class="topic-title">苹果的重新定义</div>
+                <div class="topic-desc">将苹果视为消费品公司而非科技公司的投资逻辑</div>
+                <div class="topic-years">
+                    <a href="../letters/berkshire/2016.html">2016</a>
+                    <a href="../letters/berkshire/2017.html">2017</a>
+                </div>
+            </div>
+            
+            <div class="topic-group">
+                <div class="topic-title">科技护城河的脆弱性</div>
+                <div class="topic-desc">为何科技行业的护城河比传统行业更难以预测</div>
+                <div class="topic-years">
+                    <a href="../letters/berkshire/1999.html">1999</a>
+                    <a href="../letters/berkshire/2007.html">2007</a>
+                </div>
+            </div>
+            
+        </article>
+    </div>
+    
+    <footer>
+        <p>巴菲特投资概念 · LearnBuffett版</p>
+    </footer>
 </body>
 </html>

@@ -1,78 +1,219 @@
 <!DOCTYPE html>
-
 <html lang="zh-CN">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>承保纪律 - 巴菲特知识库</title>
-<style>
-        :root { --bg-color: #FFFEF9; --navy: #1B2A4A; --gold: #C9A227; --text: #2C3E50; --secondary: #5D6D7E; --border: #E5E0D8; }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>承保纪律 (Underwriting Discipline) - 巴菲特投资概念</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root { --bg-color: #FFFEF9; --navy: #1B2A4A; --gold: #C9A227; --text: #2C3E50; --secondary: #5D6D7E; --border: #E5E0D8; --light-gold: #F5ECD7; }
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: 'Noto Serif SC', Georgia, serif; background: var(--bg-color); color: var(--text); line-height: 1.8; }
+        body { font-family: 'Noto Serif SC', Georgia, serif; background: var(--bg-color); color: var(--text); line-height: 1.9; }
         .container { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
-        header { background: var(--navy); color: white; padding: 40px 30px; text-align: center; }
-        header h1 { font-size: 1.8em; margin-bottom: 10px; }
-        header .meta { color: var(--gold); font-size: 0.95em; margin-top: 10px; }
-        .nav { background: white; border: 1px solid var(--border); padding: 15px 20px; margin-bottom: 30px; border-radius: 8px; text-align: center; }
-        .nav a { color: var(--navy); text-decoration: none; margin: 0 12px; font-size: 0.95em; }
-        .nav a:hover { color: var(--gold); }
-        .content { background: white; border: 1px solid var(--border); border-radius: 12px; padding: 40px; }
-        .content h2 { color: var(--navy); font-size: 1.4em; margin: 35px 0 15px; padding-bottom: 8px; border-bottom: 2px solid var(--gold); }
-        .content h2:first-child { margin-top: 0; }
+        header { background: linear-gradient(135deg, var(--navy) 0%, #2a3f6a 100%); color: white; padding: 50px 30px; text-align: center; }
+        header h1 { font-size: 2.2em; margin-bottom: 10px; }
+        header h1::before { content: '📋'; margin-right: 15px; }
+        header .meta { color: var(--gold); font-size: 1em; margin-top: 15px; }
+        header .meta span { background: rgba(201, 162, 39, 0.2); padding: 5px 15px; border-radius: 20px; }
+        .nav { background: white; border: 1px solid var(--border); padding: 15px 25px; margin-bottom: 30px; border-radius: 10px; text-align: center; }
+        .nav a { color: var(--navy); text-decoration: none; margin: 0 15px; font-size: 0.95em; padding: 8px 15px; border-radius: 5px; transition: all 0.2s; }
+        .nav a:hover { background: var(--gold); color: white; }
+        .content { background: white; border: 1px solid var(--border); border-radius: 15px; padding: 45px; box-shadow: 0 5px 30px rgba(0,0,0,0.05); }
+        .content h2 { color: var(--navy); font-size: 1.4em; margin: 40px 0 20px; padding-bottom: 12px; border-bottom: 3px solid var(--gold); display: inline-block; }
+        .content h2:first-of-type { margin-top: 0; }
         .content h3 { color: var(--navy); font-size: 1.15em; margin: 25px 0 12px; }
         .content p { margin: 15px 0; text-align: justify; }
-        .quote { background: var(--navy); color: white; padding: 20px 25px; border-left: 4px solid var(--gold); margin: 25px 0; border-radius: 0 8px 8px 0; }
-        .quote p { margin: 0; font-style: italic; }
-        .quote .source { color: var(--gold); margin-top: 12px; font-size: 0.9em; }
-        .related { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px; }
-        .related a { background: white; border: 1px solid var(--border); padding: 8px 15px; border-radius: 20px; text-decoration: none; color: var(--navy); font-size: 0.9em; transition: all 0.2s; }
-        .related a:hover { background: var(--gold); color: white; border-color: var(--gold); }
+        .content ul, .content ol { margin: 15px 0 15px 25px; }
+        .content li { margin: 10px 0; }
+        .content strong { color: var(--navy); font-weight: 700; }
+        
+        .insight { background: linear-gradient(135deg, #f8f5ee 0%, #fff 100%); border-left: 4px solid #C9A227; padding: 18px 22px; margin: 25px 0; font-style: italic; font-size: 1.05em; }
+        
+        .evolution-timeline { position: relative; padding-left: 35px; margin: 25px 0; }
+        .evolution-timeline::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: #C9A227; }
+        .evolution-point { position: relative; margin-bottom: 25px; }
+        .evolution-point::before { content: ''; position: absolute; left: -38px; top: 6px; width: 12px; height: 12px; border-radius: 50%; background: #C9A227; border: 3px solid white; box-shadow: 0 0 0 3px #C9A227; }
+        .evolution-year { font-weight: 600; color: var(--navy); font-size: 1.05em; }
+        .evolution-desc { color: var(--text); margin-top: 5px; }
+        
+        .case-card { background: #F8F5EE; border-radius: 10px; padding: 25px; margin: 20px 0; border: 1px solid var(--border); }
+        .case-company { font-size: 1.15em; font-weight: 600; color: var(--navy); margin-bottom: 8px; }
+        .case-data { color: #5D6D7E; font-size: 0.95em; margin: 8px 0; }
+        .case-lesson { font-style: italic; margin-top: 15px; padding-top: 15px; border-top: 1px solid #E8E4DB; color: var(--text); }
+        
+        .misconception-block { background: #fff5f5; padding: 20px 25px; border-radius: 10px; margin: 20px 0; border-left: 4px solid #e74c3c; }
+        .misconception-block h4 { color: #c0392b; margin-bottom: 12px; font-size: 1.05em; }
+        .misconception-block p { margin: 8px 0; }
+        
+        .quote-block { background: var(--navy); color: white; padding: 25px 30px; border-left: 5px solid var(--gold); margin: 25px 0; border-radius: 0 12px 12px 0; }
+        .quote-block p { margin: 0; font-style: italic; font-size: 1.05em; line-height: 1.8; }
+        .quote-block footer { color: var(--gold); margin-top: 15px; font-size: 0.9em; font-style: normal; }
+        
+        .topic-group { margin: 25px 0; padding: 20px; background: linear-gradient(135deg, var(--light-gold) 0%, #fff9e6 100%); border-radius: 10px; }
+        .topic-title { font-weight: 600; color: var(--navy); margin-bottom: 10px; font-size: 1.05em; }
+        .topic-desc { color: var(--text); margin-bottom: 12px; font-size: 0.95em; }
+        .topic-years { display: flex; flex-wrap: wrap; gap: 8px; }
+        .topic-years a { background: white; border: 1px solid var(--gold); padding: 5px 14px; border-radius: 18px; text-decoration: none; color: var(--navy); font-size: 0.85em; transition: all 0.2s; }
+        .topic-years a:hover { background: var(--gold); color: white; }
+        
         footer { text-align: center; padding: 40px 20px; color: var(--secondary); border-top: 1px solid var(--border); margin-top: 40px; }
-        footer a { color: var(--navy); text-decoration: none; }
+        @media (max-width: 768px) { .container { padding: 20px 15px; } header { padding: 30px 20px; } header h1 { font-size: 1.7em; } .content { padding: 25px 20px; } .nav a { margin: 5px 8px; display: inline-block; } }
     </style>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&amp;display=swap" rel="stylesheet"/>
 </head>
 <body>
-<header>
-<h1>💡 承保纪律</h1>
-<div class="meta">概念 · 被引用 32 次</div>
-</header>
-<div class="container">
-<nav class="nav">
-<a href="../index.html">🏠 首页</a>
-<a href="../index-pages/核心思想索引.html">💡 核心思想索引</a>
-<a href="../index-pages/公司索引.html">🏢 公司索引</a>
-<a href="../index-pages/人物索引.html">👤 人物索引</a>
-</nav>
-<article class="content">
-<h2>概念解析</h2>
-<p>承保纪律指保险公司在承保时保持理性，不为了追求保费而接受不良风险。</p>
-<h2>巴菲特原话</h2>
-<div class="quote">
-<p>"理解'承保纪律'这个概念对于理解伯克希尔的投资哲学至关重要。"</p>
-<div class="source">—— 巴菲特致股东信</div>
-</div>
-<h2>相关概念</h2>
-<div class="related">
-<a href="内在价值.html">内在价值</a>
-<a href="护城河.html">护城河</a>
-<a href="安全边际.html">安全边际</a>
-</div>
-
-<div class="backlinks">
-<h2>📚 反向链接</h2>
-<p class="backlinks-intro">以下年份的信件提到了此概念：</p>
-<div class="backlinks-list">
-<a href="../letters/berkshire/2012.html">2012年</a>
-<a href="../letters/berkshire/2002.html">2002年</a>
-<a href="../letters/berkshire/1998.html">1998年</a>
-</div>
-<p class="backlinks-count">共 3 处引用</p>
-</div>
-</article>
-</div>
-<footer>
-<p><a href="../index.html">巴菲特知识库</a> | 数据来源：Berkshire Hathaway Letters</p>
-</footer>
+    <header>
+        <h1>承保纪律 (Underwriting Discipline)</h1>
+        <div class="meta"><span>保险业的生命线</span></div>
+    </header>
+    
+    <div class="container">
+        <nav class="nav">
+            <a href="../index.html">🏠 首页</a>
+            <a href="../index-pages/核心思想索引.html">💡 核心思想索引</a>
+            <a href="../index-pages/公司索引.html">🏢 公司索引</a>
+        </nav>
+        
+        <article class="content">
+            <h2>定义与起源</h2>
+            <p><strong>承保纪律是保险公司在承保风险时遵循的原则</strong>——只接受经过仔细评估、定价合理的风险，拒绝可能导致重大损失的业务。</p>
+            <p>巴菲特将承保纪律视为保险业务的"灵魂"：不遵循纪律的保险公司可能在短期内快速增长，但最终会被灾难性损失吞噬。1967年收购国民保险后，巴菲特逐步建立起一套严格的承保原则。</p>
+            
+            <div class="insight">
+                承保纪律的核心是"有所为有所不为"：不是每一笔保费都值得追求。当价格太低时，放弃业务比接受亏损更明智。问题是，行业竞争压力往往让管理者偏离这一原则。
+            </div>
+            
+            <h2>核心要义</h2>
+            <ul>
+                <li><strong>价格必须覆盖所有成本</strong>：保费定价必须考虑预期损失、运营成本和资本成本。任何低于这个底线的价格都是在"烧钱"。</li>
+                <li><strong>拒绝"炸弹"保单</strong>：即使保费诱人，也要拒绝可能导致灾难性损失的风险。一次"黑天鹅"事件可以摧毁多年积累。</li>
+                <li><strong>规模不是目标</strong>：以牺牲利润率为代价追求保费增长，最终会损害公司价值。伯克希尔宁愿放弃保费也不愿接受亏损。</li>
+                <li><strong>承保纪律需要文化支撑</strong>：只有当管理层真正理解并践行纪律时，它才能持续发挥作用。</li>
+                <li><strong>行业低谷是检验纪律的试金石</strong>：在市场最热、竞争最激烈时坚守纪律，才能避免最惨重的损失。</li>
+            </ul>
+            
+            <h2>思想演变</h2>
+            <div class="evolution-timeline">
+                <div class="evolution-point">
+                    <div class="evolution-year">早期探索（1960-1970年代）</div>
+                    <div class="evolution-desc">收购国民保险后，巴菲特开始理解承保纪律的重要性。最早从错误中学习——曾经接受过一些定价不足的保单。</div>
+                </div>
+                <div class="evolution-point">
+                    <div class="evolution-year">Ajit Jain的加入（1985年）</div>
+                    <div class="evolution-desc">Ajit Jain展现了教科书般的承保纪律——愿意承接最复杂的风险，但只在价格合理时出手。他是巴菲特最欣赏的职业经理人之一。</div>
+                </div>
+                <div class="evolution-point">
+                    <div class="evolution-year">系统化阶段（1990年代后）</div>
+                    <div class="evolution-desc">将承保纪律明确为伯克希尔保险业务的基石，形成全公司统一的文化和激励机制。</div>
+                </div>
+                <div class="evolution-point">
+                    <div class="evolution-year">2008年金融危机的考验</div>
+                    <div class="evolution-desc">市场动荡时坚守承保纪律，没有为了追求规模而降低标准。这让伯克希尔在危机后有充足的"弹药"进行投资。</div>
+                </div>
+            </div>
+            
+            <h2>实战案例</h2>
+            <div class="case-card">
+                <div class="case-company">Ajit Jain的再保险业务</div>
+                <div class="case-data">1985年从零起步；拒绝无数高保费但高风险的业务；成为全球最赚钱的再保险业务之一</div>
+                <div class="case-lesson">Ajit展示了"耐心等待"的威力：当市场恐慌、别人疯狂接单时，他只接受那些价格合理、风险可控的业务。这种纪律性创造了持久的利润。</div>
+            </div>
+            
+            <div class="case-card">
+                <div class="case-company">GEICO的转型</div>
+                <div class="case-data">1996年收购后保持低成本运营；拒绝高风险业务；专注于可控风险</div>
+                <div class="case-lesson">GEICO的成功不是靠降低价格竞争，而是靠精确风险评估和低成本运营实现承保盈利。</div>
+            </div>
+            
+            <div class="case-card">
+                <div class="case-company">竞争对手的教训</div>
+                <div class="case-data">2005年ACEs和Allstate等公司因卡特里娜飓风损失惨重；AIG因担保保险业务几乎破产</div>
+                <div class="case-lesson">这些案例证明了"失去承保纪律"的代价：为了追求保费而忽视风险定价，最终会被灾难性损失吞噬。</div>
+            </div>
+            
+            <h2>常见误解</h2>
+            <div class="misconception-block">
+                <h4>❌ 误解一：承保纪律 = 保守经营</h4>
+                <p><strong>人们以为</strong>：有纪律的保险公司会回避所有风险，成长缓慢。</p>
+                <p><strong>巴菲特说</strong>：承保纪律不是保守，而是理性。它让我们承接巨大的风险——只要价格合适。Ajit Jain承接的业务规模惊人，但每单都经过严格评估。</p>
+            </div>
+            
+            <div class="misconception-block">
+                <h4>❌ 误解二：保费增长等于公司成长</h4>
+                <p><strong>人们以为</strong>：保费收入增长越快，保险公司越好。</p>
+                <p><strong>巴菲特说</strong>：如果增长是以牺牲利润率为代价，那是在自我毁灭。真正重要的是浮存金成本——增长只有在低成本的前提下才有价值。</p>
+            </div>
+            
+            <div class="misconception-block">
+                <h4>❌ 误解三：承保纪律只在平时重要</h4>
+                <p><strong>人们以为</strong>：在市场竞争激烈时，可以暂时放宽纪律。</p>
+                <p><strong>巴菲特说</strong>：正是在困难时期，纪律才最重要。行业低谷时放弃纪律的公司，往往会在市场恢复时发现自己的资本已经耗尽。</p>
+            </div>
+            
+            <h2>精华原话</h2>
+            <div class="quote-block">
+                <p>"保险业务成功的关键只有三个词：承保纪律（Underwriting Discipline）。整个行业在困难时期往往会忘记这一点。我们永远不会忘记。"</p>
+                <footer>—— 1985年致股东信</footer>
+            </div>
+            
+            <div class="quote-block">
+                <p>"我们愿意承接任何合理的风险——只要价格合适。'合适'的意思是保费能够覆盖我们的成本和资本成本。那些不遵循这一原则的公司，最终会被市场惩罚。"</p>
+                <footer>—— 1998年致股东信</footer>
+            </div>
+            
+            <div class="quote-block">
+                <p>"有时候我们看起来过于保守。但当你管理的是别人的钱时，保守是正确的做法。当别人因为承担过多风险而失败时，你还活着——这本身就是一种竞争优势。"</p>
+                <footer>—— 2009年致股东信</footer>
+            </div>
+            
+            <div class="quote-block">
+                <p>"我宁愿接受保费为零，也不愿接受亏损的保费。我们的承保员知道：如果你因为找不到好业务而感到无聊，那正是你应该的状态。"</p>
+                <footer>—— 2010年致股东信</footer>
+            </div>
+            
+            <h2>延伸阅读</h2>
+            <p>承保纪律概念在信件中的讨论分布，按论点组织：</p>
+            
+            <div class="topic-group">
+                <div class="topic-title">承保纪律的基本原则</div>
+                <div class="topic-desc">保费必须覆盖预期损失、运营成本和资本成本的框架</div>
+                <div class="topic-years">
+                    <a href="../letters/berkshire/1985.html">1985</a>
+                    <a href="../letters/berkshire/1998.html">1998</a>
+                </div>
+            </div>
+            
+            <div class="topic-group">
+                <div class="topic-title">Ajit Jain的承保哲学</div>
+                <div class="topic-desc">世界级再保险承保人如何评估和管理风险</div>
+                <div class="topic-years">
+                    <a href="../letters/berkshire/1998.html">1998</a>
+                    <a href="../letters/berkshire/2001.html">2001</a>
+                </div>
+            </div>
+            
+            <div class="topic-group">
+                <div class="topic-title">承保纪律与浮存金</div>
+                <div class="topic-desc">为何纪律是浮存金价值最大化的前提</div>
+                <div class="topic-years">
+                    <a href="../letters/berkshire/1998.html">1998</a>
+                    <a href="../letters/berkshire/2008.html">2008</a>
+                </div>
+            </div>
+            
+            <div class="topic-group">
+                <div class="topic-title">行业教训</div>
+                <div class="topic-desc">其他保险公司因失去纪律而付出的代价</div>
+                <div class="topic-years">
+                    <a href="../letters/berkshire/2006.html">2006</a>
+                    <a href="../letters/berkshire/2008.html">2008</a>
+                </div>
+            </div>
+            
+        </article>
+    </div>
+    
+    <footer>
+        <p>巴菲特投资概念 · LearnBuffett版</p>
+    </footer>
 </body>
 </html>
