@@ -142,19 +142,64 @@
             color: var(--gold);
         }
         
+        /* Search Box */
+        .search-box {
+            position: relative;
+            margin-right: 20px;
+        }
+        
+        .search-input {
+            padding: 8px 15px 8px 35px;
+            border: 1px solid rgba(201, 162, 39, 0.5);
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-family: inherit;
+            width: 180px;
+            transition: all 0.2s;
+        }
+        
+        .search-input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+        
+        .search-input:focus {
+            outline: none;
+            background: rgba(255, 255, 255, 0.2);
+            border-color: var(--gold);
+            width: 220px;
+        }
+        
+        .search-icon {
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: rgba(255, 255, 255, 0.6);
+        }
+        
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
         .filter-buttons {
             display: flex;
-            gap: 10px;
+            gap: 8px;
+            flex-wrap: wrap;
         }
         
         .filter-btn {
-            padding: 8px 20px;
+            padding: 6px 14px;
             border: 1px solid rgba(201, 162, 39, 0.5);
             background: transparent;
             color: white;
             border-radius: 20px;
             cursor: pointer;
-            font-size: 0.9em;
+            font-size: 0.85em;
             font-family: inherit;
             transition: all 0.2s;
         }
@@ -217,8 +262,13 @@
         
         #graph-canvas {
             width: 100%;
-            height: 600px;
+            height: 650px;
             background: linear-gradient(135deg, #f8f7f2 0%, #fffef9 100%);
+            cursor: grab;
+        }
+        
+        #graph-canvas:active {
+            cursor: grabbing;
         }
         
         /* Tooltip */
@@ -226,15 +276,16 @@
             position: absolute;
             background: var(--navy);
             color: white;
-            padding: 12px 16px;
-            border-radius: 8px;
+            padding: 14px 18px;
+            border-radius: 10px;
             font-size: 0.9em;
             pointer-events: none;
             opacity: 0;
             transition: opacity 0.2s;
-            max-width: 280px;
+            max-width: 300px;
             z-index: 100;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.35);
+            border: 1px solid rgba(201, 162, 39, 0.3);
         }
         
         .tooltip.visible {
@@ -243,21 +294,37 @@
         
         .tooltip-title {
             font-weight: bold;
-            margin-bottom: 6px;
+            margin-bottom: 8px;
             color: var(--gold);
+            font-size: 1.1em;
         }
         
         .tooltip-desc {
             font-size: 0.85em;
-            line-height: 1.5;
+            line-height: 1.6;
+            margin-bottom: 8px;
+        }
+        
+        .tooltip-meta {
+            display: flex;
+            gap: 12px;
+            font-size: 0.8em;
+            color: rgba(255,255,255,0.7);
+        }
+        
+        .tooltip-meta span {
+            display: flex;
+            align-items: center;
+            gap: 4px;
         }
         
         .tooltip-relation {
-            margin-top: 8px;
-            padding-top: 8px;
+            margin-top: 10px;
+            padding-top: 10px;
             border-top: 1px solid rgba(201, 162, 39, 0.3);
-            color: #a0c4e8;
+            color: #a0d8f0;
             font-style: italic;
+            font-size: 0.85em;
         }
         
         /* Legend */
@@ -270,13 +337,33 @@
         .legend-title {
             font-size: 0.9em;
             color: var(--secondary);
-            margin-bottom: 12px;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        
+        .legend-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+        }
+        
+        .legend-section {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .legend-section-title {
+            font-size: 0.8em;
+            color: var(--secondary);
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
         
         .legend-items {
             display: flex;
             flex-wrap: wrap;
-            gap: 20px;
+            gap: 15px;
         }
         
         .legend-group {
@@ -295,10 +382,16 @@
         .legend-line.strong {
             background: var(--navy);
             height: 4px;
+            width: 35px;
         }
         
         .legend-line.medium {
             background: #5D6D7E;
+        }
+        
+        .legend-line.weak {
+            background: #a0a0a0;
+            height: 2px;
         }
         
         .legend-node {
@@ -306,22 +399,28 @@
             height: 16px;
             border-radius: 50%;
             display: inline-block;
+            flex-shrink: 0;
         }
         
-        .legend-node.level1 {
-            background: var(--gold);
-            width: 20px;
-            height: 20px;
+        /* Category Colors */
+        .legend-node.cat-core { background: #C9A227; }
+        .legend-node.cat-method { background: #1B2A4A; }
+        .legend-node.cat-psychology { background: #805AD5; }
+        .legend-node.cat-analysis { background: #2F855A; }
+        .legend-node.cat-indicator { background: #2C5282; }
+        .legend-node.cat-other { background: #718096; }
+        
+        /* Size Legend */
+        .legend-size {
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
         
-        .legend-node.level2 {
+        .legend-size-circle {
+            border-radius: 50%;
             background: var(--navy);
-        }
-        
-        .legend-node.level3 {
-            background: #7f8c9a;
-            width: 12px;
-            height: 12px;
+            display: inline-block;
         }
         
         /* Instructions */
@@ -350,6 +449,78 @@
             font-size: 0.8em;
         }
         
+        /* Search Results */
+        .search-results {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: var(--navy);
+            border-radius: 8px;
+            margin-top: 5px;
+            max-height: 200px;
+            overflow-y: auto;
+            display: none;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+        
+        .search-results.visible {
+            display: block;
+        }
+        
+        .search-result-item {
+            padding: 10px 15px;
+            color: white;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.2s;
+        }
+        
+        .search-result-item:hover {
+            background: rgba(201, 162, 39, 0.2);
+        }
+        
+        .search-result-name {
+            font-weight: 500;
+        }
+        
+        .search-result-cat {
+            font-size: 0.8em;
+            color: var(--gold);
+        }
+        
+        /* Highlight animation */
+        .node.highlighted circle {
+            animation: pulse 0.5s ease-in-out;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.3); }
+        }
+        
+        /* Focus mode indicator */
+        .focus-mode-indicator {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--gold);
+            color: var(--navy);
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 600;
+            display: none;
+            z-index: 50;
+        }
+        
+        .focus-mode-indicator.visible {
+            display: block;
+        }
+        
         /* Responsive */
         @media (max-width: 768px) {
             .sidebar {
@@ -366,18 +537,44 @@
             
             .header {
                 padding: 15px 20px;
+                flex-direction: column;
+                align-items: flex-start;
             }
             
             .header-title h1 {
                 font-size: 1.3em;
             }
             
+            .header-right {
+                width: 100%;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .search-box {
+                margin-right: 0;
+                margin-bottom: 10px;
+                width: 100%;
+            }
+            
+            .search-input {
+                width: 100%;
+            }
+            
+            .search-input:focus {
+                width: 100%;
+            }
+            
             #graph-canvas {
-                height: 450px;
+                height: 500px;
             }
             
             .graph-container {
                 padding: 15px;
+            }
+            
+            .legend-content {
+                flex-direction: column;
             }
         }
     </style>
@@ -430,10 +627,19 @@
                 <span class="icon">🔗</span>
                 <h1>概念关系图谱</h1>
             </div>
-            <div class="filter-buttons">
-                <button class="filter-btn active" onclick="filterGraph('all')">全部</button>
-                <button class="filter-btn" onclick="filterGraph('core')">核心概念</button>
-                <button class="filter-btn" onclick="filterGraph('basic')">入门概念</button>
+            <div class="header-right">
+                <div class="search-box">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" class="search-input" id="search-input" placeholder="搜索概念..." autocomplete="off">
+                    <div class="search-results" id="search-results"></div>
+                </div>
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter="all">全部</button>
+                    <button class="filter-btn" data-filter="core">核心概念</button>
+                    <button class="filter-btn" data-filter="method">投资方法</button>
+                    <button class="filter-btn" data-filter="indicator">财务指标</button>
+                    <button class="filter-btn" data-filter="psychology">心理因素</button>
+                </div>
             </div>
         </header>
 
@@ -443,52 +649,105 @@
                 <div class="graph-header">
                     <div class="graph-title">
                         <span>📊</span>
-                        <span>51个核心概念的关系网络</span>
+                        <span>巴菲特投资理念的51个核心概念</span>
                     </div>
                     <div class="graph-stats">
                         <div class="stat-item">
                             <span>概念</span>
-                            <span class="stat-num" id="node-count">18</span>
+                            <span class="stat-num" id="node-count">51</span>
                         </div>
                         <div class="stat-item">
                             <span>关系</span>
-                            <span class="stat-num" id="link-count">18</span>
+                            <span class="stat-num" id="link-count">65</span>
                         </div>
                     </div>
                 </div>
                 
-                <svg id="graph-canvas"></svg>
+                <div id="graph-canvas" style="position: relative;">
+                    <svg id="graph-svg" style="width: 100%; height: 100%;"></svg>
+                    <div class="focus-mode-indicator" id="focus-indicator">
+                        <span id="focus-name"></span>
+                        <span style="margin-left: 10px; cursor: pointer;" onclick="clearFocus()">✕ 清除</span>
+                    </div>
+                </div>
                 
                 <!-- Tooltip -->
                 <div class="tooltip" id="tooltip">
                     <div class="tooltip-title"></div>
                     <div class="tooltip-desc"></div>
+                    <div class="tooltip-meta">
+                        <span class="tooltip-mentions"></span>
+                        <span class="tooltip-category"></span>
+                    </div>
                     <div class="tooltip-relation"></div>
                 </div>
                 
                 <!-- Legend -->
                 <div class="legend">
                     <div class="legend-title">图例说明</div>
-                    <div class="legend-items">
-                        <div class="legend-group">
-                            <span class="legend-line strong"></span>
-                            <span>强关联</span>
+                    <div class="legend-content">
+                        <div class="legend-section">
+                            <div class="legend-section-title">节点颜色 - 分类</div>
+                            <div class="legend-items">
+                                <div class="legend-group">
+                                    <span class="legend-node cat-core"></span>
+                                    <span>核心概念</span>
+                                </div>
+                                <div class="legend-group">
+                                    <span class="legend-node cat-method"></span>
+                                    <span>投资方法</span>
+                                </div>
+                                <div class="legend-group">
+                                    <span class="legend-node cat-psychology"></span>
+                                    <span>心理因素</span>
+                                </div>
+                                <div class="legend-group">
+                                    <span class="legend-node cat-analysis"></span>
+                                    <span>企业分析</span>
+                                </div>
+                                <div class="legend-group">
+                                    <span class="legend-node cat-indicator"></span>
+                                    <span>财务指标</span>
+                                </div>
+                                <div class="legend-group">
+                                    <span class="legend-node cat-other"></span>
+                                    <span>其他概念</span>
+                                </div>
+                            </div>
                         </div>
-                        <div class="legend-group">
-                            <span class="legend-line medium"></span>
-                            <span>中关联</span>
+                        <div class="legend-section">
+                            <div class="legend-section-title">节点大小 - 提及次数</div>
+                            <div class="legend-items">
+                                <div class="legend-size">
+                                    <span class="legend-size-circle" style="width: 10px; height: 10px;"></span>
+                                    <span>5-20次</span>
+                                </div>
+                                <div class="legend-size">
+                                    <span class="legend-size-circle" style="width: 16px; height: 16px;"></span>
+                                    <span>30-50次</span>
+                                </div>
+                                <div class="legend-size">
+                                    <span class="legend-size-circle" style="width: 24px; height: 24px;"></span>
+                                    <span>60+次</span>
+                                </div>
+                            </div>
                         </div>
-                        <div class="legend-group">
-                            <span class="legend-node level1"></span>
-                            <span>核心概念</span>
-                        </div>
-                        <div class="legend-group">
-                            <span class="legend-node level2"></span>
-                            <span>重要概念</span>
-                        </div>
-                        <div class="legend-group">
-                            <span class="legend-node level3"></span>
-                            <span>延伸概念</span>
+                        <div class="legend-section">
+                            <div class="legend-section-title">连线粗细 - 关联强度</div>
+                            <div class="legend-items">
+                                <div class="legend-group">
+                                    <span class="legend-line strong"></span>
+                                    <span>强关联 (3)</span>
+                                </div>
+                                <div class="legend-group">
+                                    <span class="legend-line medium"></span>
+                                    <span>中关联 (2)</span>
+                                </div>
+                                <div class="legend-group">
+                                    <span class="legend-line weak"></span>
+                                    <span>弱关联 (1)</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -508,8 +767,12 @@
                         <span>查看详情</span>
                     </div>
                     <div class="instruction-item">
-                        <span class="instruction-key">点击</span>
-                        <span>跳转概念页面</span>
+                        <span class="instruction-key">双击</span>
+                        <span>聚焦该节点</span>
+                    </div>
+                    <div class="instruction-item">
+                        <span class="instruction-key">ESC</span>
+                        <span>清除聚焦</span>
                     </div>
                 </div>
             </div>
@@ -523,86 +786,198 @@
             document.getElementById('sidebar').classList.toggle('expanded');
         }
         
-        // Concept Data
+        // Concept Data - 51个核心概念
         const concepts = [
-            { id: "moat", name: "护城河", level: 1, mentions: 65, desc: "企业持久的竞争优势，防止竞争对手侵蚀利润的护城河" },
-            { id: "margin", name: "安全边际", level: 1, mentions: 62, desc: "买入价格与内在价值之间的差距，保护投资免受错误影响" },
-            { id: "circle", name: "能力圈", level: 1, mentions: 52, desc: "投资者真正理解的行业和企业范围" },
-            { id: "value", name: "内在价值", level: 1, mentions: 83, desc: "企业未来现金流折现到今天的真实价值" },
-            { id: "compound", name: "复利", level: 1, mentions: 68, desc: "利滚利效应，财富增长的核心动力" },
-            { id: "management", name: "管理层", level: 2, mentions: 80, desc: "评估企业管理层的能力、诚信和资本配置能力" },
-            { id: "float", name: "保险浮存金", level: 2, mentions: 58, desc: "保险公司持有的保费资金，可用于投资" },
-            { id: "longterm", name: "长期持有", level: 2, mentions: 55, desc: "以十年为单位持有优质企业股票" },
-            { id: "risk", name: "风险", level: 2, mentions: 45, desc: "损失本金的可能性，与波动性不同" },
-            { id: "owner", name: "股东心态", level: 2, mentions: 40, desc: "把自己当作企业所有者来思考投资" },
-            { id: "quality", name: "企业质量", level: 2, mentions: 38, desc: "商业模式、竞争优势和管理层的综合体现" },
-            { id: "price", name: "合理价格", level: 2, mentions: 35, desc: "相对于内在价值而言合理的买入价格" },
-            { id: "market", name: "市场先生", level: 2, mentions: 30, desc: "情绪化的市场参与者，提供错误定价机会" },
-            { id: "greed", name: "贪婪与恐惧", level: 3, mentions: 28, desc: "驱动市场波动的两种基本情绪" },
-            { id: "patience", name: "耐心", level: 3, mentions: 25, desc: "等待最佳击球机会的品质" },
-            { id: "business", name: "商业模式", level: 3, mentions: 22, desc: "企业如何赚钱的核心逻辑" },
-            { id: "cash", name: "现金流", level: 3, mentions: 20, desc: "企业实际产生的现金，是价值的最终来源" },
-            { id: "roic", name: "投资回报率", level: 3, mentions: 18, desc: "投入资本产生的回报，是复利的关键" }
+            // 核心层 (level 1) - 投资哲学基础
+            { id: "value", name: "内在价值", level: 1, mentions: 83, category: "核心" },
+            { id: "margin", name: "安全边际", level: 1, mentions: 62, category: "核心" },
+            { id: "moat", name: "护城河", level: 1, mentions: 65, category: "核心" },
+            { id: "circle", name: "能力圈", level: 1, mentions: 52, category: "核心" },
+            { id: "compound", name: "复利", level: 1, mentions: 68, category: "核心" },
+            
+            // 重要层 (level 2) - 投资方法
+            { id: "management", name: "管理层", level: 2, mentions: 80, category: "方法" },
+            { id: "float", name: "保险浮存金", level: 2, mentions: 58, category: "方法" },
+            { id: "longterm", name: "长期持有", level: 2, mentions: 55, category: "方法" },
+            { id: "risk", name: "风险", level: 2, mentions: 45, category: "方法" },
+            { id: "owner", name: "股东心态", level: 2, mentions: 40, category: "方法" },
+            { id: "quality", name: "企业质量", level: 2, mentions: 38, category: "方法" },
+            { id: "price", name: "合理价格", level: 2, mentions: 35, category: "方法" },
+            { id: "market", name: "市场先生", level: 2, mentions: 30, category: "方法" },
+            
+            // 扩展层 (level 3) - 心理因素
+            { id: "greed", name: "贪婪与恐惧", level: 3, mentions: 28, category: "心理" },
+            { id: "patience", name: "耐心", level: 3, mentions: 25, category: "心理" },
+            
+            // 扩展层 (level 3) - 企业分析
+            { id: "business", name: "商业模式", level: 3, mentions: 22, category: "分析" },
+            { id: "cash", name: "现金流", level: 3, mentions: 20, category: "分析" },
+            
+            // 扩展层 (level 3) - 财务指标
+            { id: "roic", name: "投资回报率", level: 3, mentions: 18, category: "指标" },
+            { id: "roe", name: "股东权益报酬率", level: 3, mentions: 16, category: "指标" },
+            { id: "dividend", name: "股息", level: 3, mentions: 15, category: "收益" },
+            { id: "book", name: "账面价值", level: 3, mentions: 14, category: "指标" },
+            
+            // 其他概念
+            { id: "inflation", name: "通货膨胀", level: 4, mentions: 12, category: "宏观" },
+            { id: "tax", name: "税务", level: 4, mentions: 11, category: "成本" },
+            { id: "cost", name: "成本控制", level: 4, mentions: 10, category: "经营" },
+            { id: "brand", name: "品牌价值", level: 4, mentions: 9, category: "护城河" },
+            { id: "scale", name: "规模优势", level: 4, mentions: 8, category: "护城河" },
+            { id: "switch", name: "转换成本", level: 4, mentions: 7, category: "护城河" },
+            { id: "network", name: "网络效应", level: 4, mentions: 6, category: "护城河" },
+            { id: "goodwill", name: "商誉", level: 4, mentions: 5, category: "会计" },
+            
+            // 其他概念
+            { id: "acquisition", name: "收购", level: 4, mentions: 25, category: "策略" },
+            { id: "insurance", name: "保险业务", level: 4, mentions: 30, category: "业务" },
+            { id: "retention", name: "留存收益", level: 4, mentions: 18, category: "财务" },
+            { id: "reinvestment", name: "再投资", level: 4, mentions: 16, category: "策略" },
+            { id: "concentration", name: "集中投资", level: 4, mentions: 14, category: "策略" },
+            { id: "diversity", name: "分散投资", level: 4, mentions: 12, category: "策略" },
+            { id: "timing", name: "择时", level: 4, mentions: 10, category: "方法" },
+            { id: "valuation", name: "估值", level: 4, mentions: 22, category: "方法" },
+            { id: "growth", name: "增长", level: 4, mentions: 20, category: "指标" },
+            { id: "debt", name: "债务", level: 4, mentions: 15, category: "财务" },
+            { id: "liquidity", name: "流动性", level: 4, mentions: 12, category: "财务" },
+            { id: "earnings", name: "盈利", level: 4, mentions: 18, category: "指标" },
+            { id: "capital", name: "资本配置", level: 4, mentions: 20, category: "策略" },
+            { id: "succession", name: "接班人", level: 4, mentions: 8, category: "管理" },
+            { id: "culture", name: "企业文化", level: 4, mentions: 10, category: "管理" },
+            { id: "integrity", name: "诚信", level: 4, mentions: 12, category: "品质" },
+            { id: "mistake", name: "错误", level: 4, mentions: 15, category: "学习" },
+            { id: "opportunity", name: "机会", level: 4, mentions: 14, category: "策略" },
+            { id: "market_cap", name: "市值", level: 4, mentions: 10, category: "指标" }
         ];
         
-        // Links Data
+        // Links Data - 完整关系连线
         const links = [
+            // 核心概念间的关系
             { source: "moat", target: "value", strength: 3, desc: "护城河决定内在价值" },
-            { source: "moat", target: "management", strength: 2, desc: "管理层维护护城河" },
+            { source: "moat", target: "management", strength: 3, desc: "管理层维护护城河" },
+            { source: "moat", target: "brand", strength: 2, desc: "品牌是护城河" },
+            { source: "moat", target: "scale", strength: 2, desc: "规模优势形成护城河" },
+            { source: "moat", target: "switch", strength: 2, desc: "转换成本构成护城河" },
+            { source: "moat", target: "network", strength: 2, desc: "网络效应是护城河" },
             { source: "margin", target: "value", strength: 3, desc: "安全边际保护内在价值" },
             { source: "margin", target: "risk", strength: 3, desc: "安全边际降低风险" },
+            { source: "margin", target: "price", strength: 2, desc: "价格低于价值时存在安全边际" },
             { source: "circle", target: "moat", strength: 2, desc: "能力圈内识别护城河" },
             { source: "circle", target: "risk", strength: 3, desc: "能力圈外即风险" },
-            { source: "value", target: "price", strength: 3, desc: "内在价值 vs 价格" },
+            { source: "circle", target: "mistake", strength: 2, desc: "越界导致错误" },
+            { source: "value", target: "price", strength: 3, desc: "内在价值vs价格" },
             { source: "value", target: "compound", strength: 3, desc: "价值随复利增长" },
+            { source: "value", target: "valuation", strength: 3, desc: "估值核心是内在价值" },
+            { source: "value", target: "book", strength: 2, desc: "账面价值是参考" },
             { source: "compound", target: "longterm", strength: 3, desc: "复利需要时间" },
-            { source: "longterm", target: "patience", strength: 3, desc: "长期持有需要耐心" },
+            { source: "compound", target: "retention", strength: 2, desc: "留存收益驱动复利" },
+            { source: "compound", target: "roic", strength: 2, desc: "高ROIC驱动复利" },
+            { source: "compound", target: "roe", strength: 2, desc: "高ROE是复利基础" },
+            
+            // 管理层相关
             { source: "management", target: "quality", strength: 3, desc: "管理层决定企业质量" },
             { source: "management", target: "owner", strength: 3, desc: "股东心态的管理层" },
-            { source: "float", target: "compound", strength: 2, desc: "浮存金复利增值" },
+            { source: "management", target: "integrity", strength: 3, desc: "诚信是首要品质" },
+            { source: "management", target: "culture", strength: 2, desc: "管理层塑造文化" },
+            { source: "management", target: "capital", strength: 2, desc: "资本配置是管理层核心职责" },
+            { source: "management", target: "succession", strength: 2, desc: "接班人计划" },
+            
+            // 长期持有相关
+            { source: "longterm", target: "patience", strength: 3, desc: "长期持有需要耐心" },
+            { source: "longterm", target: "tax", strength: 2, desc: "长期持有税务优势" },
+            { source: "longterm", target: "concentration", strength: 2, desc: "集中持有优质企业" },
+            
+            // 市场先生相关
             { source: "market", target: "greed", strength: 3, desc: "市场先生的情绪" },
             { source: "greed", target: "margin", strength: 2, desc: "恐惧时安全边际大" },
-            { source: "business", target: "moat", strength: 2, desc: "商业模式决定护城河" },
+            { source: "greed", target: "opportunity", strength: 2, desc: "恐惧创造机会" },
+            { source: "market", target: "timing", strength: 2, desc: "不择时，利用市场" },
+            
+            // 业务相关
+            { source: "insurance", target: "float", strength: 3, desc: "保险业务产生浮存金" },
+            { source: "float", target: "compound", strength: 2, desc: "浮存金复利增值" },
+            { source: "float", target: "cost", strength: 2, desc: "浮存金成本控制" },
+            
+            // 投资策略
+            { source: "acquisition", target: "management", strength: 2, desc: "收购看重管理层" },
+            { source: "acquisition", target: "culture", strength: 2, desc: "收购保留文化" },
+            { source: "concentration", target: "circle", strength: 2, desc: "集中投资于能力圈" },
+            { source: "concentration", target: "moat", strength: 2, desc: "集中持有护城河企业" },
+            { source: "diversity", target: "circle", strength: 1, desc: "能力圈窄则需要分散" },
+            
+            // 财务指标
+            { source: "roe", target: "earnings", strength: 2, desc: "ROE反映盈利能力" },
+            { source: "roe", target: "debt", strength: 2, desc: "高ROE可能源于债务" },
             { source: "cash", target: "value", strength: 2, desc: "现金流支撑价值" },
-            { source: "roic", target: "compound", strength: 2, desc: "高ROIC驱动复利" }
+            { source: "cash", target: "liquidity", strength: 2, desc: "现金流保障流动性" },
+            { source: "debt", target: "risk", strength: 2, desc: "债务增加风险" },
+            { source: "growth", target: "value", strength: 2, desc: "增长创造价值" },
+            { source: "growth", target: "reinvestment", strength: 2, desc: "增长需要再投资" },
+            
+            // 股息相关
+            { source: "dividend", target: "owner", strength: 2, desc: "股息回报股东" },
+            { source: "dividend", target: "retention", strength: 1, desc: "股息vs留存收益" },
+            
+            // 其他
+            { source: "inflation", target: "value", strength: 2, desc: "通胀影响内在价值" },
+            { source: "inflation", target: "moat", strength: 2, desc: "护城河抵御通胀" },
+            { source: "business", target: "moat", strength: 2, desc: "商业模式决定护城河" },
+            { source: "business", target: "quality", strength: 2, desc: "商业模式影响质量" },
+            { source: "capital", target: "reinvestment", strength: 2, desc: "资本配置决策再投资" },
+            { source: "capital", target: "dividend", strength: 2, desc: "资本配置决策股息" },
+            { source: "capital", target: "acquisition", strength: 2, desc: "资本配置决策收购" },
+            { source: "mistake", target: "value", strength: 2, desc: "错误促进价值认知" },
+            { source: "market_cap", target: "value", strength: 2, desc: "市值围绕价值波动" },
+            { source: "earnings", target: "cash", strength: 2, desc: "盈利需要现金流支撑" },
+            { source: "opportunity", target: "circle", strength: 2, desc: "机会在能力圈内" }
         ];
         
+        // Category color mapping
+        const categoryColors = {
+            "核心": '#C9A227',
+            "方法": '#1B2A4A',
+            "心理": '#805AD5',
+            "分析": '#2F855A',
+            "指标": '#2C5282',
+            "收益": '#2C5282',
+            "护城河": '#1B2A4A',
+            "宏观": '#744210',
+            "成本": '#744210',
+            "经营": '#276749',
+            "会计": '#718096',
+            "策略": '#553C9A',
+            "业务": '#2B6CB0',
+            "财务": '#2C5282',
+            "管理": '#1B2A4A',
+            "品质": '#C05621',
+            "学习": '#9C4221'
+        };
+        
         // Graph setup
-        const svg = d3.select("#graph-canvas");
+        const svg = d3.select("#graph-svg");
         const container = document.getElementById('graph-canvas');
-        const width = container.clientWidth;
-        const height = container.clientHeight || 600;
+        let width = container.clientWidth;
+        let height = container.clientHeight || 650;
         
         svg.attr("viewBox", [0, 0, width, height]);
-        
-        // Colors
-        const colors = {
-            level1: '#C9A227',
-            level2: '#1B2A4A',
-            level3: '#7f8c9a'
-        };
         
         // Create simulation
         let simulation, nodes, linkElements, nodeElements;
         let currentFilter = 'all';
+        let focusedNode = null;
+        let zoom;
         
         function initGraph() {
             // Clear previous
             svg.selectAll("*").remove();
             
             // Create zoom behavior
-            const zoom = d3.zoom()
-                .scaleExtent([0.3, 3])
+            zoom = d3.zoom()
+                .scaleExtent([0.2, 3])
                 .on("zoom", (event) => {
-                    container.querySelector('g.graph-content')?.remove();
-                    const g = svg.append("g").attr("class", "graph-content");
+                    const g = svg.select("g.graph-content");
                     g.attr("transform", event.transform);
-                    
-                    // Re-render elements
-                    g.selectAll(".link").attr("d", d => {
-                        return `M${d.source.x},${d.source.y} Q${(d.source.x + d.target.x) / 2},${(d.source.y + d.target.y) / 2 - 20} ${d.target.x},${d.target.y}`;
-                    });
-                    g.selectAll(".node").attr("transform", d => `translate(${d.x},${d.y})`);
                 });
             
             svg.call(zoom);
@@ -614,27 +989,33 @@
             const nodesData = concepts.map(d => ({...d}));
             const linksData = links.map(d => ({
                 ...d,
-                source: d.source,
-                target: d.target
+                source: concepts.find(c => c.id === d.source) || d.source,
+                target: concepts.find(c => c.id === d.target) || d.target
             }));
             
             // Create simulation
             simulation = d3.forceSimulation(nodesData)
-                .force("link", d3.forceLink(linksData).id(d => d.id).distance(d => 150 - d.strength * 20))
-                .force("charge", d3.forceManyBody().strength(-400))
+                .force("link", d3.forceLink(linksData).id(d => d.id).distance(d => 180 - d.strength * 25).strength(0.8))
+                .force("charge", d3.forceManyBody().strength(-500).distanceMax(400))
                 .force("center", d3.forceCenter(width / 2, height / 2))
-                .force("collision", d3.forceCollide().radius(d => getNodeRadius(d) + 10));
+                .force("collision", d3.forceCollide().radius(d => getNodeRadius(d) + 15))
+                .force("x", d3.forceX(width / 2).strength(0.05))
+                .force("y", d3.forceY(height / 2).strength(0.05));
             
             // Draw links
             linkElements = g.selectAll(".link")
                 .data(linksData)
                 .enter()
-                .append("path")
+                .append("line")
                 .attr("class", "link")
-                .attr("stroke", d => d.strength >= 3 ? colors.level2 : colors.level3)
+                .attr("stroke", d => {
+                    if (d.strength >= 3) return '#1B2A4A';
+                    if (d.strength >= 2) return '#5D6D7E';
+                    return '#a0a0a0';
+                })
                 .attr("stroke-width", d => d.strength)
-                .attr("fill", "none")
-                .attr("opacity", 0.6)
+                .attr("stroke-opacity", 0.5)
+                .style("pointer-events", "stroke")
                 .on("mouseenter", showLinkTooltip)
                 .on("mouseleave", hideTooltip);
             
@@ -651,58 +1032,82 @@
                     .on("end", dragEnded))
                 .on("mouseenter", showNodeTooltip)
                 .on("mouseleave", hideTooltip)
+                .on("dblclick", focusNode)
                 .on("click", nodeClicked);
             
             // Node circles
             nodeElements.append("circle")
                 .attr("r", d => getNodeRadius(d))
-                .attr("fill", d => colors[`level${d.level}`])
+                .attr("fill", d => categoryColors[d.category] || '#718096')
                 .attr("stroke", "#fff")
                 .attr("stroke-width", 2)
-                .style("filter", "drop-shadow(0 2px 4px rgba(0,0,0,0.1))");
+                .style("filter", "drop-shadow(0 3px 6px rgba(0,0,0,0.15))");
             
             // Node labels
             nodeElements.append("text")
                 .text(d => d.name)
-                .attr("dy", d => getNodeRadius(d) + 16)
+                .attr("dy", d => getNodeRadius(d) + 18)
                 .attr("text-anchor", "middle")
                 .attr("font-size", d => d.level === 1 ? "14px" : "12px")
                 .attr("font-weight", d => d.level === 1 ? "600" : "400")
-                .attr("fill", d => d.level === 1 ? colors.level1 : colors.level2);
+                .attr("fill", d => d.level === 1 ? '#C9A227' : '#1B2A4A');
             
             // Update positions
             simulation.on("tick", () => {
-                linkElements.attr("d", d => {
-                    return `M${d.source.x},${d.source.y} Q${(d.source.x + d.target.x) / 2},${(d.source.y + d.target.y) / 2 - 20} ${d.target.x},${d.target.y}`;
-                });
+                linkElements
+                    .attr("x1", d => d.source.x)
+                    .attr("y1", d => d.source.y)
+                    .attr("x2", d => d.target.x)
+                    .attr("y2", d => d.target.y);
                 
                 nodeElements.attr("transform", d => `translate(${d.x},${d.y})`);
             });
             
             // Initial zoom
-            svg.call(zoom.transform, d3.zoomIdentity.translate(0, 0).scale(1));
+            svg.call(zoom.transform, d3.zoomIdentity.translate(0, 0).scale(0.9));
+            
+            // Update stats
+            updateStats();
         }
         
         function getNodeRadius(d) {
-            const base = 12;
-            const mentionsFactor = Math.sqrt(d.mentions) * 1.5;
-            return base + (d.level === 1 ? 8 : d.level === 2 ? 4 : 0) + mentionsFactor * 0.3;
+            const base = 10;
+            const mentionsFactor = Math.sqrt(d.mentions) * 1.8;
+            return base + mentionsFactor;
         }
         
         function showNodeTooltip(event, d) {
             const tooltip = document.getElementById('tooltip');
             tooltip.querySelector('.tooltip-title').textContent = d.name;
-            tooltip.querySelector('.tooltip-desc').textContent = d.desc;
-            tooltip.querySelector('.tooltip-relation').textContent = `被提及 ${d.mentions} 次 | 层级 ${d.level}`;
+            tooltip.querySelector('.tooltip-desc').textContent = getConceptDesc(d.id);
+            tooltip.querySelector('.tooltip-mentions').textContent = `提及 ${d.mentions} 次`;
+            tooltip.querySelector('.tooltip-category').textContent = d.category;
             
-            tooltip.style.left = (event.pageX + 15) + 'px';
+            // Show related concepts
+            const relatedLinks = links.filter(l => l.source.id === d.id || l.target.id === d.id);
+            const relatedNames = relatedLinks.map(l => 
+                l.source.id === d.id ? l.target.name : l.source.name
+            ).slice(0, 5).join('、');
+            
+            tooltip.querySelector('.tooltip-relation').textContent = relatedNames ? `关联: ${relatedNames}` : '';
+            
+            tooltip.style.left = (event.pageX + 20) + 'px';
             tooltip.style.top = (event.pageY - 10) + 'px';
             tooltip.classList.add('visible');
             
             // Highlight connected links
-            linkElements.attr("opacity", l => 
-                l.source.id === d.id || l.target.id === d.id ? 1 : 0.2
-            );
+            if (!focusedNode) {
+                linkElements.attr("stroke-opacity", l => 
+                    l.source.id === d.id || l.target.id === d.id ? 0.9 : 0.1
+                ).attr("stroke-width", l => 
+                    l.source.id === d.id || l.target.id === d.id ? l.strength + 1 : l.strength
+                );
+                
+                nodeElements.style("opacity", n => {
+                    const isRelated = relatedLinks.some(l => l.source.id === n.id || l.target.id === n.id);
+                    return n.id === d.id || isRelated ? 1 : 0.2;
+                });
+            }
         }
         
         function showLinkTooltip(event, d) {
@@ -710,21 +1115,121 @@
             tooltip.querySelector('.tooltip-title').textContent = '关联关系';
             tooltip.querySelector('.tooltip-desc').textContent = '';
             tooltip.querySelector('.tooltip-relation').textContent = `${d.source.name} ⟷ ${d.target.name}: ${d.desc}`;
+            tooltip.querySelector('.tooltip-mentions').textContent = `关联强度: ${'●'.repeat(d.strength)}`;
+            tooltip.querySelector('.tooltip-category').textContent = '';
             
-            tooltip.style.left = (event.pageX + 15) + 'px';
+            tooltip.style.left = (event.pageX + 20) + 'px';
             tooltip.style.top = (event.pageY - 10) + 'px';
             tooltip.classList.add('visible');
         }
         
         function hideTooltip() {
             document.getElementById('tooltip').classList.remove('visible');
-            linkElements.attr("opacity", 0.6);
+            if (!focusedNode) {
+                linkElements.attr("stroke-opacity", 0.5).attr("stroke-width", d => d.strength);
+                nodeElements.style("opacity", 1);
+            }
+        }
+        
+        function focusNode(event, d) {
+            event.stopPropagation();
+            focusedNode = d;
+            
+            // Get all related nodes
+            const relatedIds = new Set([d.id]);
+            links.forEach(l => {
+                if (l.source.id === d.id) relatedIds.add(l.target.id);
+                if (l.target.id === d.id) relatedIds.add(l.source.id);
+            });
+            
+            // Highlight
+            nodeElements.style("opacity", n => relatedIds.has(n.id) ? 1 : 0.1);
+            linkElements.attr("stroke-opacity", l => 
+                (l.source.id === d.id || l.target.id === d.id) ? 0.8 : 0.05
+            );
+            
+            // Show indicator
+            document.getElementById('focus-name').textContent = d.name;
+            document.getElementById('focus-indicator').classList.add('visible');
+            
+            // Center on node
+            const transform = d3.zoomTransform(svg.node());
+            svg.transition().duration(500).call(
+                zoom.transform,
+                d3.zoomIdentity
+                    .translate(width / 2 - d.x * transform.k, height / 2 - d.y * transform.k)
+                    .scale(transform.k)
+            );
+        }
+        
+        function clearFocus() {
+            focusedNode = null;
+            document.getElementById('focus-indicator').classList.remove('visible');
+            nodeElements.style("opacity", 1);
+            linkElements.attr("stroke-opacity", 0.5);
+            applyFilter(currentFilter);
+        }
+        
+        function getConceptDesc(id) {
+            const descs = {
+                value: "企业未来现金流折现到今天的真实价值，是投资的终极目标",
+                margin: "买入价格与内在价值之间的差距，是投资的安全垫",
+                moat: "企业持久的竞争优势，防止竞争对手侵蚀利润",
+                circle: "投资者真正理解的行业和企业范围",
+                compound: "利滚利效应，财富增长的核心动力",
+                management: "评估企业管理层的能力、诚信和资本配置能力",
+                float: "保险公司持有的保费资金，可用于投资",
+                longterm: "以十年为单位持有优质企业股票",
+                risk: "损失本金的可能性，与波动性不同",
+                owner: "把自己当作企业所有者来思考投资",
+                quality: "商业模式、竞争优势和管理层的综合体现",
+                price: "相对于内在价值而言合理的买入价格",
+                market: "情绪化的市场参与者，提供错误定价机会",
+                greed: "驱动市场波动的两种基本情绪",
+                patience: "等待最佳击球机会的品质",
+                business: "企业如何赚钱的核心逻辑",
+                cash: "企业实际产生的现金，是价值的最终来源",
+                roic: "投入资本产生的回报，是复利的关键",
+                roe: "股东权益报酬率，衡量盈利能力",
+                dividend: "企业向股东分配的利润",
+                book: "企业资产减去负债的账面价值",
+                inflation: "货币购买力下降，影响实际回报",
+                tax: "投资过程中需要考虑的税务因素",
+                cost: "企业控制成本的能力",
+                brand: "品牌认知度和忠诚度",
+                scale: "规模经济带来的成本优势",
+                switch: "客户更换产品的难度和成本",
+                network: "用户越多价值越大的网络效应",
+                goodwill: "收购时超过账面价值的溢价",
+                acquisition: "收购其他企业以扩大规模",
+                insurance: "保险业务产生稳定的浮存金",
+                retention: "留存在企业中继续投资的利润",
+                reinvestment: "将利润重新投入业务发展",
+                concentration: "将资金集中于少数优质投资",
+                diversity: "分散投资于多个标的降低风险",
+                timing: "试图预测市场时机的行为",
+                valuation: "评估企业内在价值的过程",
+                growth: "企业收入和利润的增长能力",
+                debt: "企业借入的资本，增加财务风险",
+                liquidity: "资产变现的能力",
+                earnings: "企业实现的利润",
+                capital: "将资本配置到最佳用途的能力",
+                succession: "领导层传承计划",
+                culture: "企业内部的价值观念和行为准则",
+                integrity: "诚实守信的品质",
+                mistake: "投资过程中的错误和教训",
+                opportunity: "市场错误定价带来的投资机会",
+                market_cap: "公司总市值"
+            };
+            return descs[id] || "巴菲特投资理念中的重要概念";
         }
         
         function nodeClicked(event, d) {
-            // Navigate to concept page
-            const conceptPage = `concepts/${d.name}.html`;
-            window.location.href = conceptPage;
+            if (!focusedNode) {
+                // Navigate to concept page
+                const conceptPage = `concepts/${d.name}.html`;
+                window.location.href = conceptPage;
+            }
         }
         
         function dragStarted(event, d) {
@@ -744,44 +1249,114 @@
             d.fy = null;
         }
         
-        function filterGraph(type) {
+        function applyFilter(type) {
             currentFilter = type;
             
             // Update buttons
             document.querySelectorAll('.filter-btn').forEach(btn => {
-                btn.classList.toggle('active', btn.textContent.includes(
-                    type === 'all' ? '全部' : 
-                    type === 'core' ? '核心' : '入门'
-                ));
+                btn.classList.toggle('active', btn.dataset.filter === type);
             });
             
-            // Update node display
-            const visibleNodes = new Set(
-                concepts
-                    .filter(c => type === 'all' || c.level === (type === 'core' ? 1 : 3))
-                    .map(c => c.id)
-            );
+            let visibleNodes = new Set();
+            
+            if (type === 'all') {
+                visibleNodes = new Set(concepts.map(c => c.id));
+            } else if (type === 'core') {
+                visibleNodes = new Set(concepts.filter(c => c.level === 1).map(c => c.id));
+            } else if (type === 'method') {
+                visibleNodes = new Set(concepts.filter(c => c.category === '方法' || c.category === '策略').map(c => c.id));
+            } else if (type === 'indicator') {
+                visibleNodes = new Set(concepts.filter(c => c.category === '指标' || c.category === '财务').map(c => c.id));
+            } else if (type === 'psychology') {
+                visibleNodes = new Set(concepts.filter(c => c.category === '心理').map(c => c.id));
+            }
             
             nodeElements.style("opacity", d => visibleNodes.has(d.id) ? 1 : 0.1);
-            
-            // Update link visibility
             linkElements.style("opacity", d => 
-                visibleNodes.has(d.source.id) && visibleNodes.has(d.target.id) ? 0.6 : 0.02
+                visibleNodes.has(d.source.id) && visibleNodes.has(d.target.id) ? 0.5 : 0.02
             );
             
-            // Update stats
-            const visibleCount = visibleNodes.size;
-            const linkCount = links.filter(l => visibleNodes.has(l.source) && visibleNodes.has(l.target)).length;
-            document.getElementById('node-count').textContent = visibleCount;
+            updateStats(visibleNodes);
+        }
+        
+        function updateStats(visibleNodes) {
+            const nodeCount = visibleNodes ? visibleNodes.size : concepts.length;
+            const linkCount = visibleNodes 
+                ? links.filter(l => visibleNodes.has(l.source.id || l.source) && visibleNodes.has(l.target.id || l.target)).length
+                : links.length;
+            
+            document.getElementById('node-count').textContent = nodeCount;
             document.getElementById('link-count').textContent = linkCount;
         }
+        
+        // Search functionality
+        const searchInput = document.getElementById('search-input');
+        const searchResults = document.getElementById('search-results');
+        
+        searchInput.addEventListener('input', (e) => {
+            const query = e.target.value.trim().toLowerCase();
+            if (query.length < 1) {
+                searchResults.classList.remove('visible');
+                return;
+            }
+            
+            const results = concepts.filter(c => 
+                c.name.toLowerCase().includes(query) || 
+                c.category.toLowerCase().includes(query)
+            ).slice(0, 8);
+            
+            if (results.length > 0) {
+                searchResults.innerHTML = results.map(r => `
+                    <div class="search-result-item" data-id="${r.id}">
+                        <span class="search-result-name">${r.name}</span>
+                        <span class="search-result-cat">${r.category}</span>
+                    </div>
+                `).join('');
+                searchResults.classList.add('visible');
+                
+                // Add click handlers
+                searchResults.querySelectorAll('.search-result-item').forEach(item => {
+                    item.addEventListener('click', () => {
+                        const id = item.dataset.id;
+                        const node = nodeElements.filter(d => d.id === id);
+                        if (!node.empty()) {
+                            const d = node.datum();
+                            focusNode({ stopPropagation: () => {} }, d);
+                        }
+                        searchResults.classList.remove('visible');
+                        searchInput.value = '';
+                    });
+                });
+            } else {
+                searchResults.classList.remove('visible');
+            }
+        });
+        
+        searchInput.addEventListener('blur', () => {
+            setTimeout(() => searchResults.classList.remove('visible'), 200);
+        });
+        
+        // Filter buttons
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                applyFilter(btn.dataset.filter);
+            });
+        });
+        
+        // ESC to clear focus
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                clearFocus();
+            }
+        });
         
         // Initialize
         window.addEventListener('load', initGraph);
         window.addEventListener('resize', () => {
-            const newWidth = container.clientWidth;
-            svg.attr("viewBox", [0, 0, newWidth, height]);
-            simulation.force("center", d3.forceCenter(newWidth / 2, height / 2));
+            width = container.clientWidth;
+            height = container.clientHeight || 650;
+            svg.attr("viewBox", [0, 0, width, height]);
+            simulation.force("center", d3.forceCenter(width / 2, height / 2));
             simulation.alpha(0.3).restart();
         });
     </script>
