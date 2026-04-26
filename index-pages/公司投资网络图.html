@@ -1,0 +1,1337 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>巴菲特公司投资网络图 - 巴菲特知识库</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #FFFEF9;
+            --navy: #1B2A4A;
+            --gold: #C9A227;
+            --text: #2C3E50;
+            --secondary: #5D6D7E;
+            --border: #E5E0D8;
+            --light-gold: #F5ECD7;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Noto Serif SC', Georgia, serif;
+            background: var(--bg-color);
+            color: var(--text);
+            overflow: hidden;
+        }
+        header {
+            background: linear-gradient(135deg, var(--navy) 0%, #2a3f6a 100%);
+            color: white;
+            padding: 20px 30px;
+            text-align: center;
+            position: relative;
+            z-index: 100;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.2);
+        }
+        header h1 {
+            font-size: 1.8em;
+            margin-bottom: 8px;
+        }
+        header h1::before {
+            content: '🔗 ';
+        }
+        header .subtitle {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.95em;
+        }
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            padding: 15px;
+            background: white;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+        }
+        .search-box {
+            position: relative;
+        }
+        .search-box input {
+            padding: 10px 35px 10px 15px;
+            border: 2px solid var(--border);
+            border-radius: 25px;
+            font-size: 0.95em;
+            width: 220px;
+            font-family: inherit;
+            transition: all 0.3s;
+        }
+        .search-box input:focus {
+            outline: none;
+            border-color: var(--gold);
+            box-shadow: 0 0 0 3px rgba(201,162,39,0.2);
+        }
+        .search-box::after {
+            content: '🔍';
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 0.9em;
+        }
+        .filter-buttons {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .filter-btn {
+            padding: 8px 16px;
+            border: 2px solid var(--border);
+            border-radius: 20px;
+            background: white;
+            color: var(--text);
+            font-size: 0.85em;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: inherit;
+        }
+        .filter-btn:hover {
+            border-color: var(--gold);
+            transform: translateY(-2px);
+        }
+        .filter-btn.active {
+            background: var(--gold);
+            color: white;
+            border-color: var(--gold);
+        }
+        .legend {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            box-shadow: 0 5px 25px rgba(0,0,0,0.1);
+            z-index: 100;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        .legend h3 {
+            color: var(--navy);
+            font-size: 1em;
+            margin-bottom: 12px;
+            border-bottom: 2px solid var(--gold);
+            padding-bottom: 8px;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            margin: 8px 0;
+            font-size: 0.85em;
+        }
+        .legend-color {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            margin-right: 10px;
+            flex-shrink: 0;
+        }
+        .stats-panel {
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            box-shadow: 0 5px 25px rgba(0,0,0,0.1);
+            z-index: 100;
+            min-width: 200px;
+        }
+        .stats-panel h3 {
+            color: var(--navy);
+            font-size: 1em;
+            margin-bottom: 15px;
+            border-bottom: 2px solid var(--gold);
+            padding-bottom: 8px;
+        }
+        .stat-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px dashed var(--border);
+            font-size: 0.9em;
+        }
+        .stat-row:last-child {
+            border-bottom: none;
+        }
+        .stat-label {
+            color: var(--secondary);
+        }
+        .stat-value {
+            color: var(--navy);
+            font-weight: 600;
+        }
+        #graph {
+            width: 100vw;
+            height: calc(100vh - 140px);
+        }
+        .node {
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .node:hover {
+            filter: brightness(1.1);
+        }
+        .node.center-node {
+            cursor: default;
+        }
+        .link {
+            stroke-opacity: 0.6;
+            transition: all 0.3s;
+        }
+        .link:hover {
+            stroke-opacity: 1;
+        }
+        .node-label {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 11px;
+            fill: var(--text);
+            pointer-events: none;
+            text-anchor: middle;
+        }
+        .tooltip {
+            position: fixed;
+            background: var(--navy);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 10px;
+            font-size: 0.9em;
+            pointer-events: none;
+            z-index: 1000;
+            max-width: 300px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .tooltip.visible {
+            opacity: 1;
+        }
+        .tooltip h4 {
+            color: var(--gold);
+            margin-bottom: 8px;
+            font-size: 1.1em;
+        }
+        .tooltip p {
+            margin: 5px 0;
+            line-height: 1.5;
+        }
+        .tooltip .category {
+            display: inline-block;
+            background: rgba(201,162,39,0.3);
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 0.85em;
+            margin-top: 8px;
+        }
+        .back-link {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--navy);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-size: 0.9em;
+            z-index: 100;
+            transition: all 0.3s;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+        .back-link:hover {
+            background: var(--gold);
+            transform: translateY(-2px);
+        }
+        .instruction {
+            position: fixed;
+            bottom: 70px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(27,42,74,0.9);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            z-index: 100;
+            opacity: 0.8;
+        }
+        @media (max-width: 768px) {
+            header h1 { font-size: 1.3em; }
+            .legend { display: none; }
+            .stats-panel { 
+                position: fixed;
+                top: auto;
+                bottom: 70px;
+                right: 10px;
+                left: 10px;
+                min-width: auto;
+            }
+            .controls { gap: 8px; }
+            .search-box input { width: 180px; }
+        }
+    
+        /* Sidebar */
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            height: 100vh;
+            width: 60px;
+            background: #1B2A4A;
+            z-index: 1000;
+            transition: width 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        
+        .sidebar.expanded {
+            width: 220px;
+        }
+        
+        .sidebar-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 60px;
+            background: transparent;
+            border: none;
+            color: #C9A227;
+            font-size: 1.5em;
+            cursor: pointer;
+            transition: all 0.2s;
+            flex-shrink: 0;
+        }
+        
+        .sidebar-toggle:hover {
+            background: rgba(201, 162, 39, 0.2);
+        }
+        
+        .sidebar-nav {
+            flex: 1;
+            overflow-y: auto;
+            overflow-x: hidden;
+            padding: 10px 0;
+        }
+        
+        .sidebar-nav::-webkit-scrollbar {
+            width: 3px;
+        }
+        
+        .sidebar-nav::-webkit-scrollbar-thumb {
+            background: rgba(201, 162, 39, 0.3);
+        }
+        
+        .nav-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 15px;
+            color: white;
+            text-decoration: none;
+            font-size: 0.95em;
+            transition: all 0.2s;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+        
+        .nav-item .icon {
+            font-size: 1.3em;
+            width: 30px;
+            flex-shrink: 0;
+            text-align: center;
+        }
+        
+        .nav-item .label {
+            opacity: 0;
+            margin-left: 12px;
+            transition: opacity 0.2s;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        .sidebar.expanded .nav-item .label {
+            opacity: 1;
+        }
+        
+        .nav-item:hover {
+            background: rgba(201, 162, 39, 0.15);
+            color: #C9A227;
+        }
+        
+        .nav-item:hover .icon {
+            transform: scale(1.1);
+        }
+        
+        /* Wisdom Module */
+        .wisdom-module {
+            border-top: 1px solid rgba(201, 162, 39, 0.3);
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.2);
+            flex-shrink: 0;
+            max-height: 200px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .wisdom-title {
+            color: #C9A227;
+            font-size: 0.85em;
+            font-weight: bold;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+        
+        .sidebar.expanded .wisdom-title {
+            opacity: 1;
+        }
+        
+        .wisdom-content {
+            flex: 1;
+            overflow: hidden;
+        }
+        
+        .wisdom-quote {
+            color: white;
+            font-size: 0.85em;
+            line-height: 1.6;
+            margin-bottom: 8px;
+            opacity: 0;
+            transition: opacity 0.2s;
+            font-style: italic;
+        }
+        
+        .sidebar.expanded .wisdom-quote {
+            opacity: 1;
+        }
+        
+        .wisdom-source {
+            color: #C9A227;
+            font-size: 0.8em;
+            text-decoration: none;
+            opacity: 0;
+            transition: opacity 0.2s;
+            display: block;
+            cursor: pointer;
+        }
+        
+        .sidebar.expanded .wisdom-source {
+            opacity: 1;
+        }
+        
+        .wisdom-source:hover {
+            text-decoration: underline;
+        }
+        
+        .wisdom-refresh {
+            color: white;
+            background: rgba(201, 162, 39, 0.2);
+            border: 1px solid rgba(201, 162, 39, 0.4);
+            padding: 6px 12px;
+            border-radius: 15px;
+            font-size: 0.75em;
+            cursor: pointer;
+            margin-top: 10px;
+            opacity: 0;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
+        
+        .sidebar.expanded .wisdom-refresh {
+            opacity: 1;
+        }
+        
+        .wisdom-refresh:hover {
+            background: rgba(201, 162, 39, 0.4);
+        }
+        
+        /* Search Modal */
+        .search-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 2000;
+            justify-content: center;
+            align-items: flex-start;
+            padding-top: 100px;
+        }
+        
+        .search-modal.active {
+            display: flex;
+        }
+        
+        .search-box {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+        
+        .search-box input {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #E5E0D8;
+            border-radius: 8px;
+            font-size: 1.1em;
+            font-family: inherit;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+        
+        .search-box input:focus {
+            border-color: #C9A227;
+        }
+        
+        .search-hint {
+            color: #5D6D7E;
+            font-size: 0.85em;
+            margin-top: 12px;
+            text-align: center;
+        }
+        
+        /* Main Content Wrapper */
+        .main-wrapper {
+            margin-left: 60px;
+            transition: margin-left 0.3s ease;
+        }
+        
+        .main-wrapper.sidebar-expanded {
+            margin-left: 220px;
+        }
+        
+        /* Mobile Overlay */
+        .sidebar-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+        
+        .sidebar-overlay.active {
+            display: block;
+        }
+        
+        /* Mobile toggle button for small screens */
+        .mobile-menu-btn {
+            display: none;
+            position: fixed;
+            top: 70px;
+            left: 10px;
+            width: 44px;
+            height: 44px;
+            background: #1B2A4A;
+            border: none;
+            border-radius: 8px;
+            color: #C9A227;
+            font-size: 1.3em;
+            cursor: pointer;
+            z-index: 998;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+        
+        @media (max-width: 900px) {
+            .mobile-menu-btn {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .sidebar {
+                transform: translateX(-100%);
+                width: 220px;
+            }
+            .sidebar.mobile-open {
+                transform: translateX(0);
+            }
+            .sidebar .nav-item .label,
+            .sidebar .wisdom-title,
+            .sidebar .wisdom-quote,
+            .sidebar .wisdom-source,
+            .sidebar .wisdom-refresh {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar Overlay (Mobile) -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    
+    <!-- Mobile Menu Button -->
+    <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+    
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <button class="sidebar-toggle" id="sidebarToggle" title="展开/收起菜单">
+            <span id="toggleIcon">☰</span>
+        </button>
+        
+        <nav class="sidebar-nav">
+            <a href="index-pages/巴菲特致股东信总览.html" class="nav-item">
+                <span class="icon">📝</span>
+                <span class="label">信件总览</span>
+            </a>
+            <a href="index-pages/核心思想索引.html" class="nav-item">
+                <span class="icon">💡</span>
+                <span class="label">核心概念</span>
+            </a>
+            <a href="index-pages/公司索引.html" class="nav-item">
+                <span class="icon">🏢</span>
+                <span class="label">公司索引</span>
+            </a>
+            <a href="index-pages/人物索引.html" class="nav-item">
+                <span class="icon">👤</span>
+                <span class="label">人物索引</span>
+            </a>
+            <a href="index-pages/时间线.html" class="nav-item">
+                <span class="icon">📅</span>
+                <span class="label">投资时间线</span>
+            </a>
+            <a href="index-pages/关系网络.html" class="nav-item">
+                <span class="icon">📊</span>
+                <span class="label">关系网络</span>
+            </a>
+            <a href="index-pages/概念关系图谱.html" class="nav-item">
+                <span class="icon">🕸️</span>
+                <span class="label">概念图谱</span>
+            </a>
+            <a href="index-pages/知识树.html" class="nav-item">
+                <span class="icon">🌳</span>
+                <span class="label">知识树</span>
+            </a>
+            <a href="#" class="nav-item" id="searchBtn">
+                <span class="icon">🔍</span>
+                <span class="label">搜索</span>
+            </a>
+        </nav>
+        
+        <!-- Random Wisdom Module -->
+        <div class="wisdom-module">
+            <div class="wisdom-title">💭 随机智慧</div>
+            <div class="wisdom-content">
+                <p class="wisdom-quote" id="wisdomQuote">"护城河的本质是'我与别人不同'，而非'我比别人更好'。"</p>
+                <a class="wisdom-source" id="wisdomSource" href="concepts/护城河.html">— 护城河</a>
+            </div>
+            <button class="wisdom-refresh" id="wisdomRefresh">
+                <span>🔄</span> 换一条
+            </button>
+        </div>
+    </aside>
+    
+    <!-- Search Modal -->
+    <div class="search-modal" id="searchModal">
+        <div class="search-box">
+            <input type="text" placeholder="搜索概念、公司、人物..." id="searchInput" autofocus>
+            <p class="search-hint">按 ESC 或点击外部区域关闭</p>
+        </div>
+    </div>
+    <header>
+        <h1>巴菲特公司投资网络图</h1>
+        <div class="subtitle">Berkshire Hathaway Investment Network</div>
+    </header>
+    <div class="main-wrapper" id="mainWrapper">
+    
+    <div class="controls">
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="搜索公司名称...">
+        </div>
+        <div class="filter-buttons">
+            <button class="filter-btn active" data-category="all">全部</button>
+            <button class="filter-btn" data-category="消费">消费</button>
+            <button class="filter-btn" data-category="金融">金融</button>
+            <button class="filter-btn" data-category="科技">科技</button>
+            <button class="filter-btn" data-category="能源">能源</button>
+            <button class="filter-btn" data-category="铁路">铁路</button>
+            <button class="filter-btn" data-category="航空">航空</button>
+            <button class="filter-btn" data-category="商贸">商贸</button>
+            <button class="filter-btn" data-category="保险">保险</button>
+            <button class="filter-btn" data-category="工业">工业</button>
+        </div>
+    </div>
+    
+    <div class="legend">
+        <h3>行业分类</h3>
+        <div class="legend-item"><span class="legend-color" style="background:#E74C3C"></span>消费类</div>
+        <div class="legend-item"><span class="legend-color" style="background:#3498DB"></span>金融类</div>
+        <div class="legend-item"><span class="legend-color" style="background:#9B59B6"></span>科技类</div>
+        <div class="legend-item"><span class="legend-color" style="background:#27AE60"></span>能源类</div>
+        <div class="legend-item"><span class="legend-color" style="background:#8B4513"></span>铁路运输</div>
+        <div class="legend-item"><span class="legend-color" style="background:#1ABC9C"></span>航空类</div>
+        <div class="legend-item"><span class="legend-color" style="background:#F1C40F"></span>商贸类</div>
+        <div class="legend-item"><span class="legend-color" style="background:#2C3E50"></span>保险类</div>
+        <div class="legend-item"><span class="legend-color" style="background:#95A5A6"></span>工业/其他</div>
+        <div class="legend-item"><span class="legend-color" style="background:#C9A227"></span>伯克希尔核心</div>
+    </div>
+    
+    <div class="stats-panel">
+        <h3>投资统计</h3>
+        <div class="stat-row">
+            <span class="stat-label">投资主体</span>
+            <span class="stat-value">伯克希尔哈撒韦</span>
+        </div>
+        <div class="stat-row">
+            <span class="stat-label">控股公司</span>
+            <span class="stat-value" id="subsidiaryCount">40+</span>
+        </div>
+        <div class="stat-row">
+            <span class="stat-label">重要投资</span>
+            <span class="stat-value" id="investCount">25+</span>
+        </div>
+        <div class="stat-row">
+            <span class="stat-label">行业覆盖</span>
+            <span class="stat-value">10个</span>
+        </div>
+    </div>
+    
+    <svg id="graph"></svg>
+    
+    <div class="tooltip" id="tooltip"></div>
+    
+    <div class="instruction">💡 拖拽节点查看关联 | 悬停查看详情 | 使用搜索和筛选</div>
+    
+    <a href="../index.html" class="back-link">← 返回首页</a>
+
+    <script>
+        // 完整公司数据
+        const companies = [
+            // 中心节点
+            { id: "berkshire", name: "伯克希尔哈撒韦", enName: "Berkshire Hathaway", category: "核心", size: 5, level: 5, 
+              desc: "巴菲特执掌的巨型投资集团，旗下拥有众多全资子公司和重大投资", founded: "1839年", symbol: "BRK.A/B" },
+            
+            // 消费类（橙色/红色）
+            { id: "coca_cola", name: "可口可乐", enName: "Coca-Cola", category: "消费", size: 4, level: 4,
+              desc: "1988年首次买入，核心持仓之一。全球最大饮料公司", startYear: "1988年", note: "最成功的投资之一" },
+            { id: "dairy_queen", name: "冰雪皇后", enName: "Dairy Queen", category: "消费", size: 3.5, level: 4,
+              desc: "美国知名冰淇淋和快餐连锁品牌，1973年收购", startYear: "1973年", note: "全资控股" },
+            { id: "kraft_heinz", name: "卡夫亨氏", enName: "Kraft Heinz", category: "消费", size: 3, level: 3,
+              desc: "全球食品巨头，2013年与3G资本联合收购", startYear: "2013年", note: "重要投资" },
+            { id: "heinz", name: "亨氏", enName: "Heinz", category: "消费", size: 3, level: 3,
+              desc: "百年食品品牌，2013年被伯克希尔和3G资本收购", startYear: "2013年" },
+            { id: "see_candy", name: "喜诗糖果", enName: "See's Candies", category: "消费", size: 3, level: 4,
+              desc: "加州著名糖果品牌，1972年收购，是巴菲特"能力圈"理论的经典案例", startYear: "1972年", note: "全资控股" },
+            { id: "nebraska_furn", name: "内布拉斯加家具店", enName: "Nebraska Furniture Mart", category: "消费", size: 3, level: 4,
+              desc: "美国最大家具零售商之一，1983年由B夫人家族引入", startYear: "1983年", note: "B夫人家族" },
+            { id: "jordan", name: "乔丹家具", enName: "Jordan's Furniture", category: "消费", size: 2.5, level: 3,
+              desc: "新英格兰地区知名家具零售商", startYear: "2000年" },
+            { id: "wisley", name: "威利家居", enName: "Willi Home", category: "消费", size: 2.5, level: 3,
+              desc: "家具零售企业" },
+            { id: "procter", name: "宝洁", enName: "Procter & Gamble", category: "消费", size: 3, level: 3,
+              desc: "全球日化巨头，巴菲特长期持有", startYear: "2005年" },
+            { id: "gillette", name: "吉列", enName: "Gillette", category: "消费", size: 3, level: 3,
+              desc: "剃须刀巨头，后与宝洁合并", startYear: "1989年", note: "已并入宝洁" },
+            { id: "fruit_thread", name: "鲜果布衣", enName: "Fruit of the Loom", category: "消费", size: 2.5, level: 3,
+              desc: "知名内衣和服装品牌", startYear: "2002年" },
+            { id: "marmon", name: "马蒙集团", enName: "Marmon Group", category: "工业", size: 2.5, level: 3,
+              desc: "多元化工业集团，持有多数股权", startYear: "2008年" },
+            { id: "iscar", name: "伊斯卡", enName: "Iscar", category: "工业", size: 2.5, level: 3,
+              desc: "全球领先的金属切削刀具制造商", startYear: "2006年", note: "控股权" },
+            { id: "forest_river", name: "森林河公司", enName: "Forest River", category: "工业", size: 2.5, level: 3,
+              desc: "休闲房车制造商", startYear: "2005年" },
+            { id: "johns_manville", name: "约翰斯曼维尔", enName: "Johns Manville", category: "工业", size: 2.5, level: 3,
+              desc: "建筑材料和绝热材料制造商", startYear: "2001年" },
+            { id: "dextra", name: "德尔", enName: "Dexterity", category: "工业", size: 2, level: 2,
+              desc: "专业制造商" },
+            { id: "pct", name: "精密铸件", enName: "Precision Castparts", category: "工业", size: 3, level: 3,
+              desc: "航空航天精密零部件制造商，2016年收购", startYear: "2016年", note: "大型收购" },
+            { id: "scott_fetzer", name: "斯科特费泽", enName: "Scott & Fetzer", category: "工业", size: 2.5, level: 3,
+              desc: "多元化制造商，旗下有世界图书", startYear: "1985年" },
+            { id: "simon", name: "波仙珠宝", enName: "Borsheim's", category: "消费", size: 2.5, level: 3,
+              desc: "奥马哈知名珠宝店，与B夫人家族相关", startYear: "1989年" },
+            { id: "benjamin_moore", name: "本杰明摩尔", enName: "Benjamin Moore", category: "工业", size: 2, level: 2,
+              desc: "知名油漆品牌" },
+            { id: "mi_co", name: "米科", enName: "MiCo", category: "工业", size: 2, level: 2,
+              desc: "工业服务企业" },
+            
+            // 金融类（蓝色）
+            { id: "american_express", name: "美国运通", enName: "American Express", category: "金融", size: 4, level: 4,
+              desc: "1964年开始投资，核心持仓之一。全球领先金融服务公司", startYear: "1964年", note: "超50年持有" },
+            { id: "wells_fargo", name: "富国银行", enName: "Wells Fargo", category: "金融", size: 4, level: 4,
+              desc: "美国四大银行之一，曾是巴菲特最爱的银行股", startYear: "1989年", note: "长期重仓" },
+            { id: "bank_america", name: "美国银行", enName: "Bank of America", category: "金融", size: 4, level: 4,
+              desc: "美国第二大银行，2011年优先股转普通股", startYear: "2011年", note: "重要投资" },
+            { id: "moody", name: "穆迪", enName: "Moody's", category: "金融", size: 3, level: 3,
+              desc: "全球领先信用评级机构", startYear: "2000年", note: "长期持有" },
+            { id: "us_bancorp", name: "美国合众银行", enName: "U.S. Bancorp", category: "金融", size: 2.5, level: 3,
+              desc: "美国中西部银行", startYear: "2006年" },
+            { id: "jpmorgan", name: "摩根大通", enName: "JPMorgan Chase", category: "金融", size: 3, level: 3,
+              desc: "美国最大银行，巴菲特于2023年买入", startYear: "2023年", note: "新建仓" },
+            { id: "goldman", name: "高盛", enName: "Goldman Sachs", category: "金融", size: 3, level: 3,
+              desc: "全球领先投资银行，2008年金融危机时投资", startYear: "2008年", note: "危机投资" },
+            { id: "m_t_bank", name: "M&T银行", enName: "M&T Bank", category: "金融", size: 2, level: 2,
+              desc: "纽约地区银行" },
+            { id: "ny Mellon", name: "纽约梅隆银行", enName: "Bank of New York Mellon", category: "金融", size: 2, level: 2,
+              desc: "全球领先托管银行和资产管理公司" },
+            
+            // 科技类（紫色）
+            { id: "apple", name: "苹果", enName: "Apple Inc.", category: "科技", size: 5, level: 5,
+              desc: "2016年开始买入，现为第一大重仓股，被视为"消费品牌股"", startYear: "2016年", note: "第一大持仓" },
+            { id: "ibm", name: "IBM", enName: "IBM", category: "科技", size: 3, level: 3,
+              desc: "蓝色巨人，2011年开始买入，2018年清仓", startYear: "2011年", note: "已清仓" },
+            { id: "verizon", name: "威瑞森通讯", enName: "Verizon", category: "科技", size: 2.5, level: 3,
+              desc: "美国最大电信运营商之一", startYear: "2020年" },
+            { id: "suntrust", name: "太阳信托", enName: "SunTrust", category: "金融", size: 2.5, level: 3,
+              desc: "美国东南部银行，已与BB&T合并", startYear: "2016年", note: "已合并" },
+            { id: "tti", name: "TTI", enName: "TTI", category: "科技", size: 2.5, level: 3,
+              desc: "电子元器件分销商", startYear: "2006年" },
+            { id: "charter", name: "特许通讯", enName: "Charter Communications", category: "科技", size: 2.5, level: 3,
+              desc: "美国第二大有线电视运营商", startYear: "2014年" },
+            
+            // 能源类（绿色）
+            { id: "petrochina", name: "中国石油", enName: "PetroChina", category: "能源", size: 3, level: 3,
+              desc: "2002-2007年持有，获利超过7倍", startYear: "2002年", note: "已清仓" },
+            { id: "conocophillips", name: "康菲石油", enName: "ConocoPhillips", category: "能源", size: 3, level: 3,
+              desc: "全球最大石油公司之一", startYear: "2000年" },
+            { id: "chevron", name: "雪佛龙", enName: "Chevron", category: "能源", size: 3.5, level: 4,
+              desc: "美国第二大石油公司", startYear: "2020年", note: "重要持仓" },
+            { id: "occidental", name: "西方石油", enName: "Occidental Petroleum", category: "能源", size: 3.5, level: 4,
+              desc: "2019年开始投资，在阿纳达科收购中大获", startYear: "2019年", note: "积极投资" },
+            { id: "midAmerican", name: "中美能源", enName: "MidAmerican Energy", category: "能源", size: 4, level: 5,
+              desc: "公用事业巨头，2000年收购，旗下有多家能源公司", startYear: "2000年", note: "全资控股" },
+            { id: "berkshire_energy", name: "伯克希尔哈撒韦能源", enName: "Berkshire Hathaway Energy", category: "能源", size: 4, level: 5,
+              desc: "伯克希尔旗下能源板块，涵盖电力、天然气等", startYear: "2000年", note: "核心子公司" },
+            
+            // 铁路运输（棕色）
+            { id: "bnsf", name: "BNSF铁路", enName: "BNSF Railway", category: "铁路", size: 4, level: 5,
+              desc: "北美最大铁路货运公司，2009年收购", startYear: "2009年", note: "全资收购" },
+            
+            // 航空类（天蓝色）
+            { id: "netjet", name: "利捷航空", enName: "NetJets", category: "航空", size: 3.5, level: 4,
+              desc: "全球最大私人飞机服务商", startYear: "1998年", note: "全资控股" },
+            { id: "us_airways", name: "美国航空", enName: "US Airways", category: "航空", size: 2.5, level: 3,
+              desc: "美国主要航空公司之一", startYear: "1998年", note: "已清仓" },
+            { id: "delta", name: "达美航空", enName: "Delta Air Lines", category: "航空", size: 3, level: 3,
+              desc: "全球最大航空公司之一", startYear: "2016年" },
+            { id: "southwest", name: "西南航空", enName: "Southwest Airlines", category: "航空", size: 3, level: 3,
+              desc: "美国首家低成本航空公司", startYear: "2016年" },
+            { id: "united", name: "联合航空", enName: "United Airlines", category: "航空", size: 2.5, level: 3,
+              desc: "美国主要航空公司", startYear: "2016年" },
+            { id: "american_airlines", name: "美国航空", enName: "American Airlines", category: "航空", size: 2.5, level: 3,
+              desc: "全球最大航空公司", startYear: "2016年" },
+            
+            // 商贸类（金色）
+            { id: "mitsui", name: "三井物产", enName: "Mitsui & Co.", category: "商贸", size: 2.5, level: 3,
+              desc: "日本最大综合贸易公司之一", startYear: "2000年" },
+            { id: "mitsubishi", name: "三菱商事", enName: "Mitsubishi Corp.", category: "商贸", size: 2.5, level: 3,
+              desc: "日本最大综合贸易公司", startYear: "2000年" },
+            { id: "itochu", name: "伊藤忠商事", enName: "Itochu Corp.", category: "商贸", size: 2.5, level: 3,
+              desc: "日本顶级综合贸易公司", startYear: "2000年" },
+            { id: "marubeni", name: "丸红商事", enName: "Marubeni Corp.", category: "商贸", size: 2, level: 2,
+              desc: "日本主要综合贸易公司" },
+            
+            // 保险类（深蓝色）
+            { id: "geico", name: "GEICO", enName: "GEICO", category: "保险", size: 4, level: 5,
+              desc: "美国第六大汽车保险公司，1996年全资收购", startYear: "1996年", note: "全资控股" },
+            { id: "national_保障", name: "国民保险公司", enName: "National Indemnity", category: "保险", size: 4, level: 5,
+              desc: "伯克希尔保险帝国核心，再保险巨头", startYear: "1967年", note: "核心子公司" },
+            { id: "general_re", name: "通用再保险", enName: "General Re", category: "保险", size: 3, level: 4,
+              desc: "全球最大再保险公司之一", startYear: "1998年" },
+            
+            // 其他
+            { id: "washington_post", name: "华盛顿邮报", enName: "Washington Post", category: "媒体", size: 3, level: 4,
+              desc: "美国知名媒体，1973年投资，2013年出售给贝索斯", startYear: "1973年", note: "已出售" },
+            { id: "byd", name: "比亚迪", enName: "BYD", category: "新能源", size: 3, level: 4,
+              desc: "中国新能源汽车和电池巨头，2008年投资", startYear: "2008年", note: "新能源布局" },
+            { id: "ups", name: "UPS", enName: "UPS", category: "物流", size: 3, level: 3,
+              desc: "全球最大快递公司", startYear: "2020年" },
+            { id: "johnstone", name: "约翰斯通", enName: "Johnston", category: "工业", size: 2.5, level: 3,
+              desc: "建筑产品供应商" },
+            { id: "clayton", name: "克莱顿房屋", enName: "Clayton Homes", category: "工业", size: 3, level: 4,
+              desc: "美国最大预制房屋制造商", startYear: "2003年", note: "全资控股" },
+            { id: "walnut", name: "麦克莱恩", enName: "McLane", category: "物流", size: 3, level: 4,
+              desc: "美国最大食品杂货批发分销商", startYear: "2003年" },
+            { id: "flight_safety", name: "飞安公司", enName: "Flight Safety", category: "航空", size: 2.5, level: 3,
+              desc: "飞行员培训服务公司", startYear: "1996年" },
+            { id: "buffalo_news", name: "布法罗新闻报", enName: "Buffalo News", category: "媒体", size: 2.5, level: 3,
+              desc: "纽约州布法罗市主要报纸", startYear: "1977年", note: "全资控股" },
+            { id: "dtx", name: "德克斯特鞋业", enName: "Dexter Shoes", category: "消费", size: 2, level: 2,
+              desc: "制鞋企业，2001年收购", startYear: "2001年", note: "失败案例" },
+            { id: "salomon", name: "所罗门", enName: "Salomon", category: "金融", size: 2.5, level: 3,
+              desc: "投资银行，1997年投资", startYear: "1997年" },
+            { id: "frederick", name: "房地美", enName: "Freddie Mac", category: "金融", size: 2.5, level: 3,
+              desc: "美国抵押贷款巨头", startYear: "2000年" },
+            { id: "general_electric", name: "通用电气", enName: "General Electric", category: "工业", size: 2.5, level: 3,
+              desc: "美国工业巨头", startYear: "2008年" },
+            { id: "general_motors", name: "通用汽车", enName: "General Motors", category: "汽车", size: 2.5, level: 3,
+              desc: "美国最大汽车制造商", startYear: "2010年" },
+            { id: "lubrizol", name: "路博润", enName: "Lubrizol", category: "化工", size: 3, level: 4,
+              desc: "全球特种化学品公司", startYear: "2011年", note: "全资收购" },
+            { id: "cablevision", name: "大都会通信", enName: "Cablevision", category: "媒体", size: 2, level: 2,
+              desc: "有线电视运营商" },
+            { id: "home_services", name: "美国家庭服务", enName: "HomeServices", category: "房地产", size: 2.5, level: 3,
+              desc: "美国最大住宅房地产经纪公司之一" },
+            { id: "wiscos", name: "韦斯科", enName: "Wesco", category: "金融", size: 3, level: 4,
+              desc: "伯克希尔控股的保险公司", startYear: "2000年", note: "控股公司" },
+            { id: "johnson", name: "庄臣", enName: "S.C. Johnson", category: "消费", size: 2, level: 2,
+              desc: "家庭清洁和个人护理产品公司" },
+            { id: "fisher", name: "费希海默制服", enName: "Fechheimer", category: "工业", size: 2, level: 2,
+              desc: "_uniform company" },
+            { id: "kirby", name: "科比吸尘器", enName: "Kirby", category: "工业", size: 2.5, level: 3,
+              desc: "高端真空吸尘器制造商" }
+        ];
+
+        // 投资关系数据
+        const links = [
+            // 伯克希尔核心关系
+            { source: "berkshire", target: "apple", strength: 5, desc: "2016年建仓，现为第一大持仓" },
+            { source: "berkshire", target: "american_express", strength: 4, desc: "1964年开始，超50年投资" },
+            { source: "berkshire", target: "coca_cola", strength: 5, desc: "1988年首次买入，最成功投资之一" },
+            { source: "berkshire", target: "wells_fargo", strength: 5, desc: "1989年开始，长期重仓银行股" },
+            { source: "berkshire", target: "bank_america", strength: 4, desc: "2011年投资，现为重要持仓" },
+            { source: "berkshire", target: "byd", strength: 4, desc: "2008年投资，新能源布局" },
+            
+            // 金融类投资
+            { source: "berkshire", target: "moody", strength: 3, desc: "2000年开始，长期持有" },
+            { source: "berkshire", target: "jpmorgan", strength: 3, desc: "2023年新建仓" },
+            { source: "berkshire", target: "goldman", strength: 3, desc: "2008年金融危机投资" },
+            { source: "berkshire", target: "us_bancorp", strength: 2, desc: "银行投资组合" },
+            { source: "berkshire", target: "m_t_bank", strength: 2, desc: "区域银行投资" },
+            { source: "berkshire", target: "ny Mellon", strength: 2, desc: "托管银行投资" },
+            
+            // 能源类投资
+            { source: "berkshire", target: "midAmerican", strength: 5, desc: "2000年全资收购" },
+            { source: "berkshire", target: "berkshire_energy", strength: 5, desc: "伯克希尔能源板块核心" },
+            { source: "berkshire", target: "petrochina", strength: 3, desc: "2002-2007年持有，获7倍回报" },
+            { source: "berkshire", target: "conocophillips", strength: 3, desc: "石油公司投资" },
+            { source: "berkshire", target: "chevron", strength: 4, desc: "2020年开始重要投资" },
+            { source: "berkshire", target: "occidental", strength: 4, desc: "2019年开始积极投资" },
+            
+            // 铁路
+            { source: "berkshire", target: "bnsf", strength: 5, desc: "2009年全资收购" },
+            
+            // 航空类
+            { source: "berkshire", target: "netjet", strength: 4, desc: "1998年全资收购" },
+            { source: "berkshire", target: "delta", strength: 3, desc: "2016年开始投资" },
+            { source: "berkshire", target: "southwest", strength: 3, desc: "2016年开始投资" },
+            { source: "berkshire", target: "united", strength: 3, desc: "2016年开始投资" },
+            { source: "berkshire", target: "american_airlines", strength: 2, desc: "航空投资组合" },
+            { source: "berkshire", target: "flight_safety", strength: 3, desc: "1996年收购" },
+            
+            // 消费类
+            { source: "berkshire", target: "dairy_queen", strength: 4, desc: "1973年收购" },
+            { source: "berkshire", target: "see_candy", strength: 4, desc: "1972年收购，经典案例" },
+            { source: "berkshire", target: "kraft_heinz", strength: 3, desc: "2013年联合收购" },
+            { source: "berkshire", target: "heinz", strength: 3, desc: "2013年收购" },
+            { source: "berkshire", target: "nebraska_furn", strength: 4, desc: "1983年B夫人家族" },
+            { source: "berkshire", target: "jordan", strength: 3, desc: "家具零售投资" },
+            { source: "berkshire", target: "procter", strength: 3, desc: "日化巨头投资" },
+            { source: "berkshire", target: "gillette", strength: 3, desc: "剃须刀巨头，已并入宝洁" },
+            { source: "berkshire", target: "simon", strength: 3, desc: "珠宝零售" },
+            { source: "berkshire", target: "dtx", strength: 2, desc: "制鞋投资，失败案例" },
+            
+            // 科技类
+            { source: "berkshire", target: "ibm", strength: 3, desc: "2011-2018年持有，已清仓" },
+            { source: "berkshire", target: "verizon", strength: 2, desc: "电信投资" },
+            { source: "berkshire", target: "tti", strength: 3, desc: "2006年收购" },
+            { source: "berkshire", target: "charter", strength: 3, desc: "有线电视投资" },
+            
+            // 商贸类
+            { source: "berkshire", target: "mitsui", strength: 2, desc: "日本贸易公司投资" },
+            { source: "berkshire", target: "mitsubishi", strength: 2, desc: "日本贸易公司投资" },
+            { source: "berkshire", target: "itochu", strength: 2, desc: "日本贸易公司投资" },
+            { source: "berkshire", target: "marubeni", strength: 2, desc: "日本贸易公司投资" },
+            
+            // 保险类
+            { source: "berkshire", target: "geico", strength: 5, desc: "1996年全资收购" },
+            { source: "berkshire", target: "national_保障", strength: 5, desc: "1967年收购，保险帝国核心" },
+            { source: "berkshire", target: "general_re", strength: 4, desc: "1998年收购" },
+            { source: "berkshire", target: "wiscos", strength: 4, desc: "控股保险公司" },
+            
+            // 其他
+            { source: "berkshire", target: "washington_post", strength: 4, desc: "1973-2013年持有" },
+            { source: "berkshire", target: "ups", strength: 3, desc: "快递巨头投资" },
+            { source: "berkshire", target: "clayton", strength: 4, desc: "2003年收购" },
+            { source: "berkshire", target: "marmon", strength: 3, desc: "2008年多数股权" },
+            { source: "berkshire", target: "iscar", strength: 3, desc: "2006年收购" },
+            { source: "berkshire", target: "pct", strength: 3, desc: "2016年大型收购" },
+            { source: "berkshire", target: "forest_river", strength: 3, desc: "2005年收购" },
+            { source: "berkshire", target: "johns_manville", strength: 3, desc: "2001年收购" },
+            { source: "berkshire", target: "scott_fetzer", strength: 3, desc: "1985年收购" },
+            { source: "berkshire", target: "walnut", strength: 4, desc: "2003年收购" },
+            { source: "berkshire", target: "buffalo_news", strength: 3, desc: "1977年收购" },
+            { source: "berkshire", target: "lubrizol", strength: 4, desc: "2011年全资收购" },
+            { source: "berkshire", target: "home_services", strength: 3, desc: "房地产经纪投资" },
+            { source: "berkshire", target: "johnstone", strength: 3, desc: "建筑产品供应" },
+            { source: "berkshire", target: "frederick", strength: 2, desc: "抵押贷款投资" },
+            { source: "berkshire", target: "general_electric", strength: 2, desc: "工业投资" },
+            { source: "berkshire", target: "general_motors", strength: 2, desc: "汽车投资" },
+            { source: "berkshire", target: "salomon", strength: 2, desc: "1997年投资" },
+            { source: "berkshire", target: "wisley", strength: 2, desc: "家具零售" },
+            { source: "berkshire", target: "fruit_thread", strength: 2, desc: "服装制造" },
+            { source: "berkshire", target: "d_extra", strength: 2, desc: "专业制造" },
+            { source: "berkshire", target: "cablevision", strength: 2, desc: "有线电视" },
+            { source: "berkshire", target: "johnson", strength: 2, desc: "消费品" },
+            { source: "berkshire", target: "fisher", strength: 2, desc: "制服制造" },
+            { source: "berkshire", target: "kirby", strength: 2, desc: "吸尘器制造" },
+            { source: "berkshire", target: "suntrust", strength: 2, desc: "银行投资" },
+            { source: "berkshire", target: "us_airways", strength: 2, desc: "已清仓" },
+            { source: "berkshire", target: "benjamin_moore", strength: 2, desc: "油漆品牌" }
+        ];
+
+        // 行业颜色映射
+        const categoryColors = {
+            "核心": "#C9A227",
+            "消费": "#E74C3C",
+            "金融": "#3498DB",
+            "科技": "#9B59B6",
+            "能源": "#27AE60",
+            "铁路": "#8B4513",
+            "航空": "#1ABC9C",
+            "商贸": "#F1C40F",
+            "保险": "#2C3E50",
+            "媒体": "#E67E22",
+            "新能源": "#2ECC71",
+            "物流": "#16A085",
+            "工业": "#95A5A6",
+            "房地产": "#D35400",
+            "化工": "#7F8C8D",
+            "汽车": "#34495E"
+        };
+
+        // 初始化图表
+        const width = window.innerWidth;
+        const height = window.innerHeight - 140;
+
+        const svg = d3.select("#graph")
+            .attr("width", width)
+            .attr("height", height);
+
+        // 添加箭头标记
+        svg.append("defs").selectAll("marker")
+            .data(["arrow"])
+            .enter().append("marker")
+            .attr("id", d => d)
+            .attr("viewBox", "0 -5 10 10")
+            .attr("refX", 25)
+            .attr("refY", 0)
+            .attr("markerWidth", 6)
+            .attr("markerHeight", 6)
+            .attr("orient", "auto")
+            .append("path")
+            .attr("fill", "#999")
+            .attr("d", "M0,-5L10,0L0,5");
+
+        const g = svg.append("g");
+
+        // 力模拟
+        const simulation = d3.forceSimulation(companies)
+            .force("link", d3.forceLink(links).id(d => d.id).distance(d => 150 - d.strength * 10).strength(0.5))
+            .force("charge", d3.forceManyBody().strength(-300))
+            .force("center", d3.forceCenter(width / 2, height / 2))
+            .force("collision", d3.forceCollide().radius(d => d.size * 8 + 10));
+
+        // 绘制连线
+        const link = g.append("g")
+            .selectAll("line")
+            .data(links)
+            .enter().append("line")
+            .attr("class", "link")
+            .attr("stroke", d => {
+                const source = companies.find(c => c.id === d.source.id || c.id === d.source);
+                return source ? categoryColors[source.category] || "#ccc" : "#ccc";
+            })
+            .attr("stroke-width", d => d.strength * 0.8)
+            .attr("stroke-opacity", 0.4);
+
+        // 绘制节点组
+        const node = g.append("g")
+            .selectAll(".node")
+            .data(companies)
+            .enter().append("g")
+            .attr("class", d => d.id === "berkshire" ? "node center-node" : "node")
+            .call(d3.drag()
+                .on("start", dragstarted)
+                .on("drag", dragged)
+                .on("end", dragended));
+
+        // 绘制节点圆圈
+        node.append("circle")
+            .attr("r", d => d.size * 5 + 8)
+            .attr("fill", d => categoryColors[d.category] || "#999")
+            .attr("stroke", d => d.id === "berkshire" ? "#fff" : "rgba(255,255,255,0.5)")
+            .attr("stroke-width", d => d.id === "berkshire" ? 4 : 2)
+            .style("filter", d => d.id === "berkshire" ? "drop-shadow(0 0 10px rgba(201,162,39,0.8))" : "none");
+
+        // 添加图标
+        node.append("text")
+            .attr("text-anchor", "middle")
+            .attr("dy", "0.35em")
+            .attr("font-size", d => d.id === "berkshire" ? "18px" : "12px")
+            .text(d => {
+                if (d.id === "berkshire") return "🏢";
+                const icons = {
+                    "金融": "💰", "科技": "💻", "能源": "⚡", "消费": "🛒",
+                    "铁路": "🚂", "航空": "✈️", "商贸": "🌏", "保险": "🛡️",
+                    "媒体": "📰", "新能源": "🔋", "物流": "📦", "工业": "🏭",
+                    "房地产": "🏠", "化工": "🧪", "汽车": "🚗"
+                };
+                return icons[d.category] || "🏢";
+            });
+
+        // 添加标签
+        node.append("text")
+            .attr("class", "node-label")
+            .attr("dy", d => d.size * 5 + 20)
+            .attr("font-weight", d => d.id === "berkshire" ? "bold" : "normal")
+            .attr("font-size", d => d.id === "berkshire" ? "14px" : "11px")
+            .text(d => d.name);
+
+        // 节点悬停事件
+        const tooltip = document.getElementById("tooltip");
+        
+        node.on("mouseover", function(event, d) {
+            const relatedLinks = links.filter(l => 
+                (l.source.id === d.id || l.source === d.id) || 
+                (l.target.id === d.id || l.target === d.id)
+            );
+            
+            let html = `<h4>${d.name}</h4>`;
+            if (d.enName) html += `<p style="color:#aaa;font-size:0.85em">${d.enName}</p>`;
+            html += `<p>${d.desc || ''}</p>`;
+            if (d.startYear) html += `<p style="color:#F1C40F">⏰ ${d.startYear}</p>`;
+            if (d.note) html += `<p style="color:#aaa;font-size:0.85em">📝 ${d.note}</p>`;
+            html += `<span class="category">${d.category}</span>`;
+            html += `<p style="margin-top:10px;color:#aaa;font-size:0.8em">关联投资: ${relatedLinks.length}个</p>`;
+            
+            tooltip.innerHTML = html;
+            tooltip.classList.add("visible");
+        })
+        .on("mousemove", function(event) {
+            tooltip.style.left = (event.pageX + 15) + "px";
+            tooltip.style.top = (event.pageY - 10) + "px";
+        })
+        .on("mouseout", function() {
+            tooltip.classList.remove("visible");
+        });
+
+        // 力模拟更新
+        simulation.on("tick", () => {
+            link
+                .attr("x1", d => d.source.x)
+                .attr("y1", d => d.source.y)
+                .attr("x2", d => d.target.x)
+                .attr("y2", d => d.target.y);
+
+            node.attr("transform", d => `translate(${d.x},${d.y})`);
+        });
+
+        // 拖拽函数
+        function dragstarted(event, d) {
+            if (!event.active) simulation.alphaTarget(0.3).restart();
+            d.fx = d.x;
+            d.fy = d.y;
+        }
+
+        function dragged(event, d) {
+            d.fx = event.x;
+            d.fy = event.y;
+        }
+
+        function dragended(event, d) {
+            if (!event.active) simulation.alphaTarget(0);
+            if (d.id !== "berkshire") {
+                d.fx = null;
+                d.fy = null;
+            }
+        }
+
+        // 缩放
+        const zoom = d3.zoom()
+            .scaleExtent([0.3, 3])
+            .on("zoom", (event) => {
+                g.attr("transform", event.transform);
+            });
+
+        svg.call(zoom);
+
+        // 搜索功能
+        const searchInput = document.getElementById("searchInput");
+        searchInput.addEventListener("input", function() {
+            const searchTerm = this.value.toLowerCase();
+            node.style("opacity", d => {
+                if (!searchTerm) return 1;
+                return d.name.toLowerCase().includes(searchTerm) || 
+                       (d.enName && d.enName.toLowerCase().includes(searchTerm)) ? 1 : 0.2;
+            });
+            link.style("opacity", d => {
+                if (!searchTerm) return 0.6;
+                const sourceMatch = d.source.name && d.source.name.toLowerCase().includes(searchTerm);
+                const targetMatch = d.target.name && d.target.name.toLowerCase().includes(searchTerm);
+                return sourceMatch || targetMatch ? 0.8 : 0.1;
+            });
+        });
+
+        // 筛选功能
+        const filterBtns = document.querySelectorAll(".filter-btn");
+        filterBtns.forEach(btn => {
+            btn.addEventListener("click", function() {
+                filterBtns.forEach(b => b.classList.remove("active"));
+                this.classList.add("active");
+                
+                const category = this.dataset.category;
+                node.style("opacity", d => {
+                    if (category === "all") return 1;
+                    return d.category === category ? 1 : 0.15;
+                });
+                link.style("opacity", d => {
+                    if (category === "all") return 0.6;
+                    const sourceCat = typeof d.source === 'object' ? d.source.category : 
+                                     companies.find(c => c.id === d.source)?.category;
+                    const targetCat = typeof d.target === 'object' ? d.target.category : 
+                                     companies.find(c => c.id === d.target)?.category;
+                    return (sourceCat === category || targetCat === category) ? 0.8 : 0.05;
+                });
+            });
+        });
+
+        // 窗口大小改变
+        window.addEventListener("resize", () => {
+            const newWidth = window.innerWidth;
+            const newHeight = window.innerHeight - 140;
+            svg.attr("width", newWidth).attr("height", newHeight);
+            simulation.force("center", d3.forceCenter(newWidth / 2, newHeight / 2));
+            simulation.alpha(0.3).restart();
+        });
+    </script>
+
+        <script>
+        // Wisdom Data
+        const wisdoms = [
+            { quote: "护城河的本质是'我与别人不同'，而非'我比别人更好'。", source: "护城河", link: "concepts/护城河.html" },
+            { quote: "安全边际不是用来'猜对'的，而是用来应对'猜错'的。", source: "安全边际", link: "concepts/安全边际.html" },
+            { quote: "能力圈的核心是知道边界在哪里，而非范围有多大。", source: "能力圈", link: "concepts/能力圈.html" },
+            { quote: "价格是你付出的，价值是你得到的。", source: "内在价值", link: "concepts/内在价值.html" },
+            { quote: "别人恐惧时我贪婪，别人贪婪时我恐惧。", source: "市场先生", link: "concepts/市场先生.html" },
+            { quote: "如果你不愿意持有一只股票十年，那就不要考虑持有它十分钟。", source: "长期持有", link: "concepts/长期持有.html" },
+            { quote: "时间是优秀企业的朋友，是平庸企业的敌人。", source: "复利", link: "concepts/复利.html" },
+            { quote: "风险来自于你不知道自己在做什么。", source: "风险", link: "concepts/风险.html" },
+            { quote: "投资不需要极高的智商，需要的是稳定的情绪和独立思考的能力。", source: "投资者心理", link: "concepts/投资者心理.html" },
+            { quote: "买入一家公司的股票，就是买入它的一部分生意。", source: "股东心态", link: "concepts/股东心态.html" }
+        ];
+        
+        let currentWisdomIndex = 0;
+        
+        function showRandomWisdom() {
+            currentWisdomIndex = Math.floor(Math.random() * wisdoms.length);
+            const wisdom = wisdoms[currentWisdomIndex];
+            document.getElementById('wisdomQuote').textContent = '"' + wisdom.quote + '"';
+            document.getElementById('wisdomSource').textContent = '— ' + wisdom.source;
+            document.getElementById('wisdomSource').href = wisdom.link;
+        }
+        
+        // Initialize wisdom
+        showRandomWisdom();
+        
+        // Refresh wisdom button
+        document.getElementById('wisdomRefresh').addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            showRandomWisdom();
+        });
+        
+        // Sidebar Toggle
+        const sidebar = document.getElementById('sidebar');
+        const sidebarToggle = document.getElementById('sidebarToggle');
+        const toggleIcon = document.getElementById('toggleIcon');
+        const mainWrapper = document.getElementById('mainWrapper');
+        
+        sidebarToggle.addEventListener('click', function() {
+            sidebar.classList.toggle('expanded');
+            mainWrapper.classList.toggle('sidebar-expanded');
+            toggleIcon.textContent = sidebar.classList.contains('expanded') ? '✕' : '☰';
+        });
+        
+        // Mobile Menu
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const sidebarOverlay = document.getElementById('sidebarOverlay');
+        
+        function openMobileMenu() {
+            sidebar.classList.add('mobile-open');
+            sidebarOverlay.classList.add('active');
+        }
+        
+        function closeMobileMenu() {
+            sidebar.classList.remove('mobile-open');
+            sidebarOverlay.classList.remove('active');
+        }
+        
+        mobileMenuBtn.addEventListener('click', function() {
+            if (sidebar.classList.contains('mobile-open')) {
+                closeMobileMenu();
+            } else {
+                openMobileMenu();
+            }
+        });
+        
+        sidebarOverlay.addEventListener('click', closeMobileMenu);
+        
+        // Close mobile menu when clicking nav items
+        document.querySelectorAll('.nav-item').forEach(function(item) {
+            item.addEventListener('click', function() {
+                if (window.innerWidth <= 900) {
+                    closeMobileMenu();
+                }
+            });
+        });
+        
+        // Search Modal
+        const searchBtn = document.getElementById('searchBtn');
+        const searchModal = document.getElementById('searchModal');
+        const searchInput = document.getElementById('searchInput');
+        
+        searchBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            searchModal.classList.add('active');
+            setTimeout(function() {
+                searchInput.focus();
+            }, 100);
+        });
+        
+        searchModal.addEventListener('click', function(e) {
+            if (e.target === searchModal) {
+                searchModal.classList.remove('active');
+            }
+        });
+        
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                searchModal.classList.remove('active');
+                closeMobileMenu();
+            }
+        });
+        
+        // Handle window resize
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 900) {
+                closeMobileMenu();
+            }
+        });
+        </script>
+</body>
+</html>
