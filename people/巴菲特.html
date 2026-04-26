@@ -3,18 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>沃伦·巴菲特 - 巴菲特世界关键人物</title>
+    <title>巴菲特 - 巴菲特知识库</title>
     <style>
         :root { --bg-color: #FFFEF9; --navy: #1B2A4A; --gold: #C9A227; --text: #2C3E50; --secondary: #5D6D7E; --border: #E5E0D8; --light-gold: #FFF8E7; --cream: #F8F5EE; }
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { font-family: 'Noto Serif SC', Georgia, serif; background: var(--bg-color); color: var(--text); line-height: 1.8; }
         .container { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
-        header { background: linear-gradient(135deg, var(--navy) 0%, #2C3E50 100%); color: white; padding: 40px 30px; text-align: center; }
+        header { background: var(--navy); color: white; padding: 40px 30px; text-align: center; }
         header h1 { font-size: 2em; margin-bottom: 10px; }
         header .en-name { color: var(--gold); font-size: 1.1em; margin: 5px 0; }
         header .meta { color: var(--gold); font-size: 0.95em; margin-top: 10px; }
         header .dates { color: rgba(255,255,255,0.7); font-size: 0.9em; margin-top: 5px; }
-        .avatar-large { width: 140px; height: 140px; background: var(--gold); border-radius: 50%; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; font-size: 4em; border: 4px solid white; box-shadow: 0 0 30px rgba(201, 162, 39, 0.5); }
+        .avatar-large { width: 120px; height: 120px; background: var(--gold); border-radius: 50%; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; font-size: 3em; }
         .nav { background: white; border: 1px solid var(--border); padding: 15px 20px; margin-bottom: 30px; border-radius: 8px; text-align: center; }
         .nav a { color: var(--navy); text-decoration: none; margin: 0 12px; font-size: 0.95em; }
         .nav a:hover { color: var(--gold); }
@@ -22,50 +22,184 @@
         .content h2 { color: var(--navy); font-size: 1.4em; margin: 35px 0 15px; padding-bottom: 8px; border-bottom: 2px solid var(--gold); }
         .content h2:first-child { margin-top: 0; }
         .content p { margin: 15px 0; text-align: justify; }
-        .role-card { background: linear-gradient(135deg, var(--gold) 0%, #B8860B 100%); color: var(--navy); padding: 25px; border-radius: 12px; margin: 20px 0; }
-        .role-type { display: inline-block; background: var(--navy); color: white; padding: 4px 12px; border-radius: 12px; font-size: 0.85em; margin-bottom: 10px; font-weight: 600; }
-        .role-summary { font-size: 1.15em; line-height: 1.6; }
+        
+        .role-card {
+            background: linear-gradient(135deg, var(--navy) 0%, #2C3E50 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .role-type {
+            display: inline-block;
+            background: var(--gold);
+            color: var(--navy);
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.85em;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        .role-summary {
+            font-size: 1.15em;
+            line-height: 1.6;
+        }
+        
         .impact-section { margin: 25px 0; }
-        .impact-point { display: flex; margin: 15px 0; padding: 18px; background: var(--cream); border-radius: 8px; border-left: 4px solid var(--gold); }
-        .impact-number { font-size: 1.8em; font-weight: 700; color: var(--gold); margin-right: 18px; min-width: 40px; line-height: 1; }
+        .impact-point {
+            display: flex;
+            margin: 15px 0;
+            padding: 18px;
+            background: var(--cream);
+            border-radius: 8px;
+            border-left: 4px solid var(--gold);
+        }
+        .impact-number {
+            font-size: 1.8em;
+            font-weight: 700;
+            color: var(--gold);
+            margin-right: 18px;
+            min-width: 40px;
+            line-height: 1;
+        }
         .impact-content strong { color: var(--navy); display: block; margin-bottom: 5px; }
         .impact-content p { margin: 0; font-size: 0.95em; }
-        .relation-timeline { position: relative; padding-left: 30px; margin: 20px 0; }
-        .relation-timeline::before { content: ''; position: absolute; left: 8px; top: 0; bottom: 0; width: 2px; background: linear-gradient(to bottom, var(--gold), var(--navy)); }
-        .relation-point { position: relative; margin-bottom: 25px; padding-left: 20px; }
-        .relation-point::before { content: ''; position: absolute; left: -26px; top: 5px; width: 12px; height: 12px; border-radius: 50%; background: var(--gold); border: 2px solid white; box-shadow: 0 0 0 2px var(--gold); }
-        .relation-year { font-weight: 700; color: var(--gold); font-size: 1.1em; }
+        
+        .relation-timeline {
+            position: relative;
+            padding-left: 30px;
+            margin: 20px 0;
+        }
+        .relation-timeline::before {
+            content: '';
+            position: absolute;
+            left: 8px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--gold), var(--navy));
+        }
+        .relation-point {
+            position: relative;
+            margin-bottom: 25px;
+            padding-left: 20px;
+        }
+        .relation-point::before {
+            content: '';
+            position: absolute;
+            left: -26px;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--gold);
+            border: 2px solid white;
+            box-shadow: 0 0 0 2px var(--gold);
+        }
+        .relation-year {
+            font-weight: 700;
+            color: var(--gold);
+            font-size: 1.1em;
+        }
         .relation-point p { margin: 5px 0 0; font-size: 0.95em; }
-        .quote-block { background: var(--cream); border-left: 4px solid var(--navy); padding: 20px 25px; margin: 20px 0; border-radius: 0 8px 8px 0; }
-        .quote-block.dark { background: var(--navy); color: white; border-left-color: var(--gold); }
+        
+        .quote-block {
+            background: var(--cream);
+            border-left: 4px solid var(--navy);
+            padding: 20px 25px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .quote-block.dark {
+            background: var(--navy);
+            color: white;
+            border-left-color: var(--gold);
+        }
         .quote-block.dark .source { color: var(--gold); }
-        .quote-block blockquote { margin: 0; font-style: italic; font-size: 1.05em; line-height: 1.7; }
-        .quote-block .source { color: var(--secondary); margin-top: 12px; font-size: 0.9em; font-style: normal; }
+        .quote-block blockquote {
+            margin: 0;
+            font-style: italic;
+            font-size: 1.05em;
+            line-height: 1.7;
+        }
+        .quote-block .source {
+            color: var(--secondary);
+            margin-top: 12px;
+            font-size: 0.9em;
+            font-style: normal;
+        }
         .quote-block .source::before { content: '—— '; }
-        .network-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin: 15px 0; }
-        .network-item { background: var(--cream); padding: 15px; border-radius: 8px; text-decoration: none; color: var(--navy); transition: all 0.2s; }
-        .network-item:hover { background: var(--gold); color: white; transform: translateY(-2px); }
+        
+        .network-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 12px;
+            margin: 15px 0;
+        }
+        .network-item {
+            background: var(--cream);
+            padding: 15px;
+            border-radius: 8px;
+            text-decoration: none;
+            color: var(--navy);
+            transition: all 0.2s;
+            border: 1px solid transparent;
+        }
+        .network-item:hover {
+            background: var(--gold);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(201, 162, 39, 0.3);
+        }
         .network-item strong { display: block; margin-bottom: 3px; }
-        .relation-type { font-size: 0.8em; color: var(--secondary); margin-top: 5px; }
-        .concept-tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 15px 0; }
-        .concept-tag { background: white; border: 1px solid var(--border); padding: 6px 14px; border-radius: 20px; text-decoration: none; color: var(--navy); font-size: 0.9em; transition: all 0.2s; }
-        .concept-tag:hover { background: var(--navy); color: white; border-color: var(--navy); }
+        .relation-type {
+            font-size: 0.8em;
+            color: var(--secondary);
+            margin-top: 5px;
+        }
+        .network-item:hover .relation-type { color: rgba(255,255,255,0.85); }
+        
+        .concept-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 15px 0;
+        }
+        .concept-tag {
+            background: white;
+            border: 1px solid var(--border);
+            padding: 6px 14px;
+            border-radius: 20px;
+            text-decoration: none;
+            color: var(--navy);
+            font-size: 0.9em;
+            transition: all 0.2s;
+        }
+        .concept-tag:hover {
+            background: var(--navy);
+            color: white;
+            border-color: var(--navy);
+        }
+        
         footer { text-align: center; padding: 40px 20px; color: var(--secondary); border-top: 1px solid var(--border); margin-top: 40px; }
         footer a { color: var(--navy); text-decoration: none; }
-        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; margin: 20px 0; }
-        .stat-card { background: var(--cream); padding: 20px; border-radius: 8px; text-align: center; }
-        .stat-number { font-size: 2em; font-weight: 700; color: var(--gold); }
-        .stat-label { font-size: 0.9em; color: var(--secondary); }
+        .backlinks { margin-top: 40px; padding-top: 30px; border-top: 2px dashed var(--gold); }
+        .backlinks h3 { color: var(--navy); font-size: 1.2em; margin-bottom: 15px; }
+        .backlinks-intro { color: var(--secondary); margin-bottom: 15px; font-size: 0.95em; }
+        .backlinks-list { display: flex; flex-wrap: wrap; gap: 8px; }
+        .backlinks-list a { background: linear-gradient(135deg, var(--light-gold) 0%, #fff9e6 100%); border: 1px solid var(--gold); padding: 6px 14px; border-radius: 20px; text-decoration: none; color: var(--navy); font-size: 0.85em; transition: all 0.3s; }
+        .backlinks-list a:hover { background: var(--gold); color: white; transform: translateY(-2px); }
+        .backlinks-count { margin-top: 15px; color: var(--secondary); font-size: 0.9em; }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Noto Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
-        <div class="avatar-large">👑</div>
+        <div class="avatar-large">🎯</div>
         <h1>沃伦·巴菲特</h1>
         <div class="en-name">Warren Buffett</div>
-        <div class="dates">1930年8月30日出生</div>
-        <div class="meta">👑 伯克希尔·哈撒韦创始人兼CEO</div>
+        <div class="dates">1930年8月30日 - </div>
+        <div class="meta">👤 价值投资大师 · 伯克希尔帝国缔造者</div>
     </header>
     
     <div class="container">
@@ -80,24 +214,7 @@
             <!-- 人物定位 -->
             <div class="role-card">
                 <div class="role-type">核心人物</div>
-                <div class="role-summary">被称为"奥马哈先知"，是20世纪最成功的投资者之一。他创立的伯克希尔·哈撒韦公司从一家濒临破产的纺织厂发展成为市值超过8000亿美元的投资帝国，改变了全球投资行业的格局。</div>
-            </div>
-            
-            <!-- 核心数据 -->
-            <h2>📊 核心数据</h2>
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-number">23.6%</div>
-                    <div class="stat-label">年化收益率 (1965-2023)</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">4.4万倍</div>
-                    <div class="stat-label">账面价值增长 (1965-2023)</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">#3</div>
-                    <div class="stat-label">全球富豪榜排名</div>
-                </div>
+                <div class="role-summary">价值投资的践行者与布道者，伯克希尔帝国的缔造者。他将格雷厄姆的价值投资理论发展为完整的投资体系，创造了"护城河"、"能力圈"等核心概念，用60年的实践证明价值投资的有效性，被尊称为"奥马哈先知"和"股神"。</div>
             </div>
             
             <!-- 核心影响 -->
@@ -106,112 +223,123 @@
                 <div class="impact-point">
                     <div class="impact-number">1</div>
                     <div class="impact-content">
-                        <strong>价值投资的全球化推广</strong>
-                        <p>巴菲特将格雷厄姆的价值投资理念发展壮大，通过半个多世纪的实践证明了"以合理价格买入优质企业并长期持有"这一策略的可行性。他的成功激励了全球无数投资者。</p>
+                        <strong>价值投资理论的集大成者</strong>
+                        <p>巴菲特师从本杰明·格雷厄姆，但又不止于格雷厄姆的"捡烟蒂"策略。在查理·芒格的影响下，他将价值投资从"寻找便宜企业"提升到"以合理价格买入优秀企业"的新高度，形成了系统化的投资哲学体系。</p>
                     </div>
                 </div>
                 <div class="impact-point">
                     <div class="impact-number">2</div>
                     <div class="impact-content">
-                        <strong>"机构投资者"模式的创新</strong>
-                        <p>巴菲特创造了独特的"保险+投资"商业模式：利用保险业务的浮存金进行投资，实现资金来源的内部化。这一模式成为全球金融行业的经典案例。</p>
+                        <strong>"护城河"与"能力圈"概念的开创者</strong>
+                        <p>巴菲特用通俗易懂的语言，将复杂的商业分析框架具象化。"护城河"描述了企业抵御竞争的结构性优势，"能力圈"则告诫投资者只投资自己真正理解的领域。这两个概念已成为价值投资的基础词汇。</p>
                     </div>
                 </div>
                 <div class="impact-point">
                     <div class="impact-number">3</div>
                     <div class="impact-content">
-                        <strong>公司治理的典范</strong>
-                        <p>巴菲特的"充分授权"管理模式证明了：股东可以通过给予管理层充分信任和自主权来实现双赢。他在伯克希尔实践的这一理念影响了全球公司治理的思考方式。</p>
+                        <strong>长期主义的最佳示范</strong>
+                        <p>1965年接管伯克希尔至今，巴菲特用近60年的投资记录证明：真正的价值投资不需要频繁交易，不需要预测短期走势，只需要找到优秀的企业并长期持有。他的年化回报率约为20%，远超同期市场。</p>
                     </div>
                 </div>
                 <div class="impact-point">
                     <div class="impact-number">4</div>
                     <div class="impact-content">
-                        <strong>慈善与分享</strong>
-                        <p>巴菲特承诺捐出99%的个人财富用于慈善事业，是"捐赠誓言"(The Giving Pledge)的发起人之一。他与比尔·盖茨共同推动全球慈善事业的发展。</p>
-                    </div>
-                </div>
-                <div class="impact-point">
-                    <div class="impact-number">5</div>
-                    <div class="impact-content">
-                        <strong>透明沟通的典范</strong>
-                        <p>巴菲特每年撰写的致股东信被誉为"投资者的圣经"，他的坦诚、幽默和智慧影响了无数企业家和投资者。他坚持用简单易懂的语言解释复杂的投资理念。</p>
+                        <strong>企业管理层评估的标杆</strong>
+                        <p>巴菲特发展出一套评估管理层的方法论：他们是否理性、坦诚、拒绝惯性驱动？他特别强调"诚信"的重要性——管理层的利益必须与股东一致。这种对"人"的关注，成为伯克希尔投资决策的核心要素。</p>
                     </div>
                 </div>
             </div>
             
-            <!-- 人生轨迹 -->
-            <h2>📅 人生轨迹</h2>
+            <!-- 关系演变 -->
+            <h2>📅 思想演进时间线</h2>
             <div class="relation-timeline">
                 <div class="relation-point">
-                    <span class="relation-year">1930年</span>
-                    <p>出生于美国内布拉斯加州奥马哈市，从小展现出商业天赋，11岁时购买了第一张股票。</p>
-                </div>
-                <div class="relation-point">
-                    <span class="relation-year">1950-1954年</span>
-                    <p>在哥伦比亚大学师从本杰明·格雷厄姆学习投资，获得经济学硕士学位。</p>
-                </div>
-                <div class="relation-point">
-                    <span class="relation-year">1956年</span>
-                    <p>返回奥马哈，创立自己的投资合伙企业，开始了专业投资生涯。</p>
-                </div>
-                <div class="relation-point">
-                    <span class="relation-year">1965年</span>
-                    <p>收购伯克希尔·哈撒韦纺织公司，开启了打造商业帝国的征程。</p>
+                    <span class="relation-year">1950年代</span>
+                    <p>师从本杰明·格雷厄姆，在哥伦比亚大学师从格雷厄姆本人，系统学习价值投资理念。这一时期的投资策略以"捡烟蒂"为主——寻找股价低于清算价值的企业。</p>
                 </div>
                 <div class="relation-point">
                     <span class="relation-year">1970年代</span>
-                    <p>在查理·芒格的影响下，转向"优质企业"投资策略，收购喜诗糖果等优秀企业。</p>
+                    <p>受查理·芒格影响，开始转型为"以合理价格买入优秀企业"的策略。这一转变标志着巴菲特投资哲学的成熟，也是他与早期"格雷厄姆式"投资者分道扬镳的关键节点。</p>
                 </div>
                 <div class="relation-point">
-                    <span class="relation-year">1980-2000年代</span>
-                    <p>大举投资可口可乐、富国银行、吉列等标志性企业，伯克希尔进入快速发展期。</p>
+                    <span class="relation-year">1980-90年代</span>
+                    <p>保险帝国建立完成。通过 GEICO 、通用再保险等保险业务，巴菲特获得了源源不断的"浮存金"，为投资提供了稳定的资金来源。这一模式成为伯克希尔的独特竞争优势。</p>
                 </div>
                 <div class="relation-point">
-                    <span class="relation-year">2008年</span>
-                    <p>成为全球首富（短暂），被《福布斯》评为全球第二大富豪。</p>
+                    <span class="relation-year">2000年代</span>
+                    <p>大规模并购时代。伯克希尔收购了伯灵顿铁路、精密机芯等企业，业务多元化深入。巴菲特开始更多谈论"美国顺风"——国家经济增长对投资的加持作用。</p>
                 </div>
                 <div class="relation-point">
-                    <span class="relation-year">2021年</span>
-                    <p>正式宣布格雷格·阿贝尔为接班人，开始伯克希尔的权力交接。</p>
+                    <span class="relation-year">2020年代</span>
+                    <p>交接棒准备。巴菲特正式任命格雷格·阿贝尔为接班人，开始系统性传承伯克希尔的投资哲学与企业文化。他仍活跃于股东大会，以每年一封致股东信延续着价值投资的布道使命。</p>
                 </div>
             </div>
             
-            <!-- 投资原则 -->
-            <h2>📚 投资原则</h2>
-            <div class="concept-tags">
-                <a href="../concepts/内在价值.html" class="concept-tag">内在价值</a>
-                <a href="../concepts/安全边际.html" class="concept-tag">安全边际</a>
-                <a href="../concepts/护城河.html" class="concept-tag">经济护城河</a>
-                <a href="../concepts/能力圈.html" class="concept-tag">能力圈</a>
-                <a href="../concepts/集中投资.html" class="concept-tag">集中投资</a>
-                <a href="../concepts/长期投资.html" class="concept-tag">长期投资</a>
-                <a href="../concepts/浮存金.html" class="concept-tag">浮存金</a>
+            <!-- 投资理念 -->
+            <h2>💬 经典投资理念</h2>
+            <div class="quote-block dark">
+                <blockquote>"别人贪婪时恐惧，别人恐惧时贪婪。"</blockquote>
+                <div class="source">巴菲特</div>
             </div>
+            <div class="quote-block dark">
+                <blockquote>"投资的第一原则是永远不要亏损。第二原则是永远不要忘记第一原则。"</blockquote>
+                <div class="source">巴菲特</div>
+            </div>
+            <div class="quote-block dark">
+                <blockquote>"如果你不愿意持有一只股票十年，那你就不要考虑持有它十分钟。"</blockquote>
+                <div class="source">巴菲特</div>
+            </div>
+            
+            <!-- 体现的投资原则 -->
+            <h2>📚 核心投资原则</h2>
+            <div class="concept-tags">
+                <a href="../concepts/护城河.html" class="concept-tag">护城河</a>
+                <a href="../concepts/能力圈.html" class="concept-tag">能力圈</a>
+                <a href="../concepts/长期投资.html" class="concept-tag">长期投资</a>
+                <a href="../concepts/安全边际.html" class="concept-tag">安全边际</a>
+                <a href="../concepts/竞争优势.html" class="concept-tag">竞争优势</a>
+                <a href="../concepts/理性.html" class="concept-tag">理性</a>
+            </div>
+            <p style="margin-top: 15px; font-size: 0.95em;"><strong>巴菲特的投资哲学核心：</strong>以合理价格买入具有持久竞争优势的优质企业，然后长期持有。他相信市场短期是投票机，长期是称重机；因此投资者应该关注企业本身的价值，而非短期股价波动。</p>
             
             <!-- 相关人物 -->
-            <h2>👥 关系网络</h2>
+            <h2>👥 相关人物</h2>
             <div class="network-grid">
-                <a href="芒格.html" class="network-item"><strong>查理·芒格</strong><div class="relation-type">最重要合伙人（1959-2023）</div></a>
-                <a href="格雷厄姆.html" class="network-item"><strong>本杰明·格雷厄姆</strong><div class="relation-type">导师（1950年代）</div></a>
-                <a href="阿吉特·贾恩.html" class="network-item"><strong>阿吉特·贾恩</strong><div class="relation-type">保险业务掌门人（1985-）</div></a>
-                <a href="格雷格·阿贝尔.html" class="network-item"><strong>格雷格·阿贝尔</strong><div class="relation-type">接班人（2021-）</div></a>
+                <a href="格雷厄姆.html" class="network-item">
+                    <strong>本杰明·格雷厄姆</strong>
+                    <div class="relation-type">导师，传授价值投资理念</div>
+                </a>
+                <a href="芒格.html" class="network-item">
+                    <strong>查理·芒格</strong>
+                    <div class="relation-type">一生挚友与投资伙伴，影响投资哲学转型</div>
+                </a>
+                <a href="格雷格·阿贝尔.html" class="network-item">
+                    <strong>格雷格·阿贝尔</strong>
+                    <div class="relation-type">指定的接班人</div>
+                </a>
+                <a href="阿吉特·贾恩.html" class="network-item">
+                    <strong>阿吉特·贾恩</strong>
+                    <div class="relation-type">保险业务负责人</div>
+                </a>
             </div>
             
             <!-- 相关公司 -->
             <h2>🏢 相关公司</h2>
             <div class="network-grid">
-                <a href="../companies/伯克希尔哈撒韦.html" class="network-item"><strong>伯克希尔·哈撒韦</strong><div class="relation-type">创始人兼CEO</div></a>
-                <a href="../companies/可口可乐.html" class="network-item"><strong>可口可乐</strong><div class="relation-type">最大持股之一</div></a>
-                <a href="../companies/富国银行.html" class="network-item"><strong>富国银行</strong><div class="relation-type">长期重仓股</div></a>
-                <a href="../companies/GEICO.html" class="network-item"><strong>GEICO</strong><div class="relation-type">全资子公司</div></a>
+                <a href="../companies/伯克希尔哈撒韦.html" class="network-item">
+                    <strong>伯克希尔·哈撒韦</strong>
+                    <div class="relation-type">1965年起担任董事长兼CEO</div>
+                </a>
+                <a href="../companies/GEICO.html" class="network-item">
+                    <strong>GEICO</strong>
+                    <div class="relation-type">收购的保险公司，伯克希尔核心资产</div>
+                </a>
             </div>
         </article>
     </div>
     
     <footer>
         <p><a href="../index.html">巴菲特知识库</a> | 数据来源：Berkshire Hathaway Letters</p>
-        <p style="margin-top: 15px; font-size: 0.9em; color: var(--secondary);">沃伦·巴菲特是本知识库的核心人物，所有人物和公司关系都围绕他的投资生涯展开。</p>
     </footer>
 </body>
 </html>
