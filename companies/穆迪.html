@@ -3,70 +3,318 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>穆迪 - 巴菲特知识库</title>
+    <title>穆迪 - 巴菲特投资案例</title>
     <style>
-        :root { --bg-color: #FFFEF9; --navy: #1B2A4A; --gold: #C9A227; --text: #2C3E50; --secondary: #5D6D7E; --border: #E5E0D8; }
+        :root { --navy: #1B2A4A; --gold: #C9A227; --cream: #F8F5EE; --secondary: #5D6D7E; --border: #E5E0D8; --light-gold: #F5ECD7; }
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: 'Noto Serif SC', Georgia, serif; background: var(--bg-color); color: var(--text); line-height: 1.8; }
+        body { font-family: 'Noto Serif SC', Georgia, serif; background: #FFFEF9; color: #2C3E50; line-height: 1.9; }
         .container { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
-        header { background: var(--navy); color: white; padding: 40px 30px; text-align: center; }
-        header h1 { font-size: 1.8em; margin-bottom: 10px; }
-        header .meta { color: var(--gold); font-size: 0.95em; margin-top: 10px; }
-        .nav { background: white; border: 1px solid var(--border); padding: 15px 20px; margin-bottom: 30px; border-radius: 8px; text-align: center; }
-        .nav a { color: var(--navy); text-decoration: none; margin: 0 12px; font-size: 0.95em; }
-        .nav a:hover { color: var(--gold); }
-        .content { background: white; border: 1px solid var(--border); border-radius: 12px; padding: 40px; }
-        .content h2 { color: var(--navy); font-size: 1.4em; margin: 35px 0 15px; padding-bottom: 8px; border-bottom: 2px solid var(--gold); }
-        .content h2:first-child { margin-top: 0; }
-        .content h3 { color: var(--navy); font-size: 1.15em; margin: 25px 0 12px; }
-        .content p { margin: 15px 0; text-align: justify; }
-        .quote { background: var(--navy); color: white; padding: 20px 25px; border-left: 4px solid var(--gold); margin: 25px 0; border-radius: 0 8px 8px 0; }
-        .quote p { margin: 0; font-style: italic; }
-        .quote .source { color: var(--gold); margin-top: 12px; font-size: 0.9em; }
-        .related { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px; }
-        .related a { background: white; border: 1px solid var(--border); padding: 8px 15px; border-radius: 20px; text-decoration: none; color: var(--navy); font-size: 0.9em; transition: all 0.2s; }
-        .related a:hover { background: var(--gold); color: white; border-color: var(--gold); }
-        footer { text-align: center; padding: 40px 20px; color: var(--secondary); border-top: 1px solid var(--border); margin-top: 40px; }
+        header { background: linear-gradient(135deg, var(--navy) 0%, #2a3f6a 100%); color: white; padding: 50px 30px; text-align: center; border-radius: 15px; margin-bottom: 30px; }
+        header h1 { font-size: 2.2em; margin-bottom: 8px; }
+        header h1::before { content: '🏢 '; }
+        .en-name { color: rgba(255,255,255,0.7); font-size: 1.1em; }
+        .meta { color: var(--gold); margin-top: 15px; }
+        .meta span { background: rgba(201, 162, 39, 0.2); padding: 5px 15px; border-radius: 20px; }
+        .nav { background: white; border: 1px solid var(--border); padding: 15px 25px; margin-bottom: 30px; border-radius: 10px; text-align: center; }
+        .nav a { color: var(--navy); text-decoration: none; margin: 0 15px; padding: 8px 15px; border-radius: 5px; transition: all 0.2s; }
+        .nav a:hover { background: var(--gold); color: white; }
+        .content { background: white; border: 1px solid var(--border); border-radius: 15px; padding: 40px; }
+        .section { margin-bottom: 40px; padding-bottom: 35px; border-bottom: 1px solid var(--border); }
+        .section:last-child { border-bottom: none; margin-bottom: 0; }
+        h2 { color: var(--navy); font-size: 1.4em; margin: 0 0 20px; padding-bottom: 10px; border-bottom: 3px solid var(--gold); display: inline-block; }
+        .overview-card { background: linear-gradient(135deg, var(--navy) 0%, #2C3E50 100%); color: white; padding: 25px; border-radius: 12px; margin: 20px 0; }
+        .overview-summary { font-size: 1.15em; margin-bottom: 15px; line-height: 1.6; }
+        .overview-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin-top: 15px; }
+        .stat-item { text-align: center; background: rgba(255,255,255,0.1); padding: 12px; border-radius: 8px; }
+        .stat-value { font-size: 1.4em; font-weight: 600; color: var(--gold); }
+        .stat-label { font-size: 0.8em; opacity: 0.8; }
+        .logic-point { display: flex; margin: 18px 0; padding: 18px; background: var(--cream); border-radius: 10px; }
+        .logic-number { font-size: 1.6em; font-weight: 700; color: var(--gold); margin-right: 18px; min-width: 35px; }
+        .logic-content { flex: 1; }
+        .logic-title { font-weight: 600; color: var(--navy); margin-bottom: 6px; font-size: 1.05em; }
+        .logic-desc { color: #555; font-size: 0.95em; }
+        .cognition-timeline { position: relative; padding-left: 35px; margin: 20px 0; }
+        .cognition-timeline::before { content: ''; position: absolute; left: 8px; top: 0; bottom: 0; width: 3px; background: var(--gold); }
+        .cognition-point { position: relative; margin-bottom: 28px; padding-left: 25px; }
+        .cognition-point::before { content: ''; position: absolute; left: -30px; top: 6px; width: 14px; height: 14px; border-radius: 50%; background: var(--gold); border: 3px solid white; box-shadow: 0 0 0 3px var(--gold); }
+        .cognition-year { font-weight: 700; color: var(--gold); font-size: 1.1em; }
+        .cognition-shift { background: var(--light-gold); padding: 8px 15px; border-radius: 6px; margin: 8px 0; font-size: 0.9em; }
+        .cognition-shift strong { color: var(--navy); }
+        .data-compare { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 20px 0; }
+        .data-card { background: var(--cream); padding: 20px; border-radius: 10px; }
+        .data-card h4 { color: var(--navy); margin-bottom: 12px; font-size: 1em; }
+        .data-row { display: flex; justify-content: space-between; padding: 6px 0; border-bottom: 1px dashed var(--border); }
+        .data-row:last-child { border-bottom: none; }
+        .data-label { color: var(--secondary); font-size: 0.9em; }
+        .data-value { font-weight: 600; color: var(--navy); }
+        .lesson-card { background: var(--cream); border-left: 5px solid var(--gold); padding: 22px; margin: 20px 0; border-radius: 0 10px 10px 0; }
+        .lesson-title { font-weight: 600; color: var(--navy); margin-bottom: 10px; font-size: 1.05em; }
+        .lesson-desc { color: #555; font-size: 0.95em; }
+        .quote { background: var(--navy); color: white; padding: 22px 28px; border-left: 5px solid var(--gold); margin: 20px 0; border-radius: 0 12px 12px 0; position: relative; }
+        .quote::before { content: '"'; position: absolute; top: 8px; left: 12px; font-size: 3.5em; color: var(--gold); opacity: 0.3; }
+        .quote p { margin: 0; font-style: italic; font-size: 1.02em; padding-left: 28px; }
+        .quote footer { color: var(--gold); margin-top: 12px; font-size: 0.9em; padding-left: 28px; font-style: normal; }
+        .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin: 15px 0; }
+        .related-item { background: var(--cream); padding: 14px; border-radius: 8px; text-decoration: none; color: var(--navy); transition: all 0.3s; text-align: center; font-size: 0.95em; }
+        .related-item:hover { background: var(--gold); color: white; transform: translateY(-2px); }
+        .topic-section { margin: 22px 0; padding: 18px; background: var(--cream); border-radius: 10px; }
+        .topic-title { font-weight: 600; color: var(--navy); margin-bottom: 10px; font-size: 1.05em; }
+        .topic-desc { color: #666; font-size: 0.9em; margin-bottom: 12px; }
+        .topic-years { display: flex; flex-wrap: wrap; gap: 8px; }
+        .topic-years a { background: white; padding: 5px 14px; border-radius: 15px; text-decoration: none; color: var(--secondary); font-size: 0.85em; border: 1px solid var(--border); }
+        .topic-years a:hover { background: var(--gold); color: white; border-color: var(--gold); }
+        .backlinks { margin-top: 35px; padding-top: 25px; border-top: 2px dashed var(--gold); }
+        .backlinks h3 { color: var(--navy); font-size: 1.2em; margin-bottom: 15px; }
+        .backlinks-intro { color: var(--secondary); margin-bottom: 15px; font-size: 0.9em; }
+        .backlinks-list { display: flex; flex-wrap: wrap; gap: 10px; }
+        .backlinks-list a { background: var(--cream); border: 1px solid var(--gold); padding: 6px 14px; border-radius: 18px; text-decoration: none; color: var(--navy); font-size: 0.85em; transition: all 0.3s; }
+        .backlinks-list a:hover { background: var(--gold); color: white; }
+        footer { text-align: center; padding: 35px 20px; color: var(--secondary); border-top: 1px solid var(--border); margin-top: 35px; }
         footer a { color: var(--navy); text-decoration: none; }
+        @media (max-width: 768px) { .container { padding: 20px 15px; } header { padding: 30px 20px; } header h1 { font-size: 1.7em; } .content { padding: 25px 18px; } .overview-stats { grid-template-columns: repeat(2, 1fr); } .data-compare { grid-template-columns: 1fr; } .nav a { margin: 5px 8px; display: inline-block; } }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <h1>🏢 穆迪</h1>
-        <div class="en-name">Moody's</div>
-        <div class="meta">公司 · 被引用 31 次</div>
-    </header>
-    
     <div class="container">
+        <header>
+            <h1>穆迪</h1>
+            <div class="en-name">Moody's Corporation (MCO)</div>
+            <div class="meta"><span>评级机构 · 长期重仓</span></div>
+        </header>
+        
         <nav class="nav">
             <a href="../index.html">🏠 首页</a>
-            <a href="../index-pages/核心思想索引.html">💡 核心思想索引</a>
             <a href="../index-pages/公司索引.html">🏢 公司索引</a>
-            <a href="../index-pages/人物索引.html">👤 人物索引</a>
+            <a href="../index-pages/核心思想索引.html">💡 核心思想</a>
         </nav>
         
         <article class="content">
-            <h2>公司概述</h2>
-            <p>全球领先的信用评级机构。</p>
-            
-            <h2>巴菲特评价</h2>
-            <div class="quote">
-                <p>"穆迪是一家优秀的公司，它拥有持久的竞争优势和优秀的管理团队。"</p>
-                <div class="source">—— 巴菲特致股东信</div>
+            <div class="overview-card">
+                <div class="overview-summary">
+                    <strong>"评级行业的印钞机"</strong>——穆迪与标普几乎垄断全球信用评级市场。巴菲特长期持有，看重的是其"特许经营权"和稳定的高回报率。
+                </div>
+                <div class="overview-stats">
+                    <div class="stat-item">
+                        <div class="stat-value">2000</div>
+                        <div class="stat-label">分拆上市时买入</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">~20</div>
+                        <div class="stat-label">持股比例(%)</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">高</div>
+                        <div class="stat-label">ROE水平</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">持续</div>
+                        <div class="stat-label">分红与回购</div>
+                    </div>
+                </div>
             </div>
             
-            <h2>相关概念</h2>
-            <div class="related">
-                <a href="../concepts/护城河.html">护城河</a>
-                <a href="../concepts/管理层.html">管理层</a>
-                <a href="../concepts/长期持有.html">长期持有</a>
+            <div class="section">
+                <h2>投资逻辑</h2>
+                
+                <div class="logic-point">
+                    <div class="logic-number">1</div>
+                    <div class="logic-content">
+                        <div class="logic-title">"双寡头垄断"的护城河</div>
+                        <div class="logic-desc">
+                            穆迪和标普几乎瓜分了全球信用评级市场。穆迪评级是全球债券市场的"通行证"——没有穆迪评级，很多债券无法发行。这种"准垄断"地位创造了强大的定价权。
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="logic-point">
+                    <div class="logic-number">2</div>
+                    <div class="logic-content">
+                        <div class="logic-title">"发行方付费"的商业模式</div>
+                        <div class="logic-desc">
+                            债券发行人付费获取评级——这意味着穆迪的收入与发行量挂钩。当资本市场活跃、债券发行量大时，穆迪收入增加；当市场冷淡时，发行量下降但穆迪成本也同步下降。
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="logic-point">
+                    <div class="logic-number">3</div>
+                    <div class="logic-content">
+                        <div class="logic-title">超高资本回报率的"轻资产"</div>
+                        <div class="logic-desc">
+                            穆迪几乎没有有形资产——主要资产是品牌、专业人才和数据库。这让它能以极低的资本投入获得高额回报，ROE长期维持在30%以上。
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="logic-point">
+                    <div class="logic-number">4</div>
+                    <div class="logic-content">
+                        <div class="logic-title">金融危机的"意外受益者"</div>
+                        <div class="logic-desc">
+                            2008年金融危机后，尽管评级机构受到批评，但监管机构要求更多债券需要"双评级"——这反而增加了穆迪的业务量。危机后严格的监管反而巩固了其市场地位。
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="logic-point">
+                    <div class="logic-number">5</div>
+                    <div class="logic-content">
+                        <div class="logic-title">"关系粘性"的转换成本</div>
+                        <div class="logic-desc">
+                            一旦债券发行人习惯使用穆迪评级，转换成本极高——你需要建立新的分析体系、说服投资者接受新评级。这种习惯性依赖创造了长期客户关系。
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2>认知演进</h2>
+                <div class="cognition-timeline">
+                    <div class="cognition-point">
+                        <span class="cognition-year">2000：从邓白氏分拆 → 长期持有起点</span>
+                        <div class="cognition-shift"><strong>从</strong> 关注子公司 <strong>到</strong> 持有独立公司</div>
+                        <p>2000年穆迪从邓白氏分拆上市，巴菲特立即开始建仓。当时穆迪估值较低，但拥有强大的市场地位和增长潜力。</p>
+                    </div>
+                    
+                    <div class="cognition-point">
+                        <span class="cognition-year">2008-2009：金融危机 → 逆势增持</span>
+                        <div class="cognition-shift"><strong>从</strong> 长期持有 <strong>到</strong> 危机中加仓</div>
+                        <p>金融危机中穆迪股价暴跌，但巴菲特逆势增持。他相信：即使评级机构有争议，其核心功能——提供独立信用评估——是金融市场不可或缺的。</p>
+                    </div>
+                    
+                    <div class="cognition-point">
+                        <span class="cognition-year">2010s至今：持续优化 → 稳定回报</span>
+                        <div class="cognition-shift"><strong>从</strong> 集中持仓 <strong>到</strong> 适度分散</div>
+                        <p>伯克希尔逐步减持穆迪，将资金分散到其他机会。但穆迪仍是巴菲特长期看好的公司之一——其"印钞机"特质未变。</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2>关键数据</h2>
+                <div class="data-compare">
+                    <div class="data-card">
+                        <h4>📊 买入时特征(2000)</h4>
+                        <div class="data-row"><span class="data-label">分拆价格</span><span class="data-value">约10-15美元</span></div>
+                        <div class="data-row"><span class="data-label">市场地位</span><span class="data-value">全球第二大评级机构</span></div>
+                        <div class="data-row"><span class="data-label">商业模式</span><span class="data-value">发行方付费</span></div>
+                    </div>
+                    <div class="data-card">
+                        <h4>📈 财务特征(长期)</h4>
+                        <div class="data-row"><span class="data-label">ROE</span><span class="data-value">30%+</span></div>
+                        <div class="data-row"><span class="data-label">净利润率</span><span class="data-value">30-40%</span></div>
+                        <div class="data-row"><span class="data-label">业务模式</span><span class="data-value">轻资产、高现金流</span></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2>经验教训</h2>
+                
+                <div class="lesson-card">
+                    <div class="lesson-title">💡 "看不见的资产"最值钱</div>
+                    <div class="lesson-desc">
+                        穆迪的资产负债表看起来很"轻"——没有工厂、没有设备。但它的"经济商誉"（品牌、数据、专业人才）是巨大的隐形资产。这就是巴菲特所说的"净资产很低、但内在价值很高"的公司。
+                    </div>
+                </div>
+                
+                <div class="lesson-card">
+                    <div class="lesson-title">💡 "争议行业"也有投资机会</div>
+                    <div class="lesson-desc">
+                        评级机构在金融危机后备受批评，很多人认为它们"应该消失"。但巴菲特看到了另一面：金融系统离不开评级，而穆迪是行业的幸存者和受益者。有时候，争议反而是护城河的一部分。
+                    </div>
+                </div>
+                
+                <div class="lesson-card">
+                    <div class="lesson-title">💡 周期性行业中的"抗周期"公司</div>
+                    <div class="lesson-desc">
+                        穆迪的收入与债券发行量挂钩——表面看是强周期股。但它的成本结构也是"可变的"：市场冷淡时，员工奖金下降、招聘放缓。这种弹性让它在周期底部仍能保持盈利。
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2>精华原话</h2>
+                
+                <div class="quote">
+                    <p>穆迪是一家"经济商誉"巨大的公司。它的护城河不是有形资产，而是品牌、数据和几十年积累的专业知识。这种"看不见的护城河"往往比"看得见的"更持久。</p>
+                    <footer>—— 2009年致股东信</footer>
+                </div>
+                
+                <div class="quote">
+                    <p>评级行业的争议不会改变一个事实：金融市场需要独立、专业的信用评估。穆迪在这个领域有深厚的积累，这不会轻易被取代。</p>
+                    <footer>—— 2010年伯克希尔股东大会</footer>
+                </div>
+                
+                <div class="quote">
+                    <p>穆迪的ROE长期超过30%，而它几乎没有有形资产。这说明什么？说明它的"经济护城河"比资产负债表上的数字更值钱。</p>
+                    <footer>—— 2011年致股东信</footer>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2>相关概念</h2>
+                <div class="related-grid">
+                    <a href="../concepts/经济商誉.html" class="related-item">💎 经济商誉</a>
+                    <a href="../concepts/护城河.html" class="related-item">🛡️ 经济护城河</a>
+                    <a href="../concepts/轻资产模式.html" class="related-item">🪶 轻资产模式</a>
+                    <a href="../concepts/资本回报率.html" class="related-item">📊 高资本回报率</a>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2>相关公司</h2>
+                <div class="related-grid">
+                    <a href="伯克希尔哈撒韦.html" class="related-item">伯克希尔哈撒韦<br><small>投资方</small></a>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2>延伸阅读</h2>
+                
+                <div class="topic-section">
+                    <div class="topic-title">金融评级行业</div>
+                    <div class="topic-desc">评级机构的商业模式与护城河分析</div>
+                    <div class="topic-years">
+                        <a href="../letters/berkshire/2009.html">2009</a>
+                        <a href="../letters/berkshire/2010.html">2010</a>
+                        <a href="../letters/berkshire/2011.html">2011</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="backlinks">
+                <h3>📚 反向链接</h3>
+                <p class="backlinks-intro">巴菲特在以下年份的信件中提到了穆迪：</p>
+                <div class="backlinks-list">
+                    <a href="../letters/berkshire/2021.html">2021</a>
+                    <a href="../letters/berkshire/2019.html">2019</a>
+                    <a href="../letters/berkshire/2018.html">2018</a>
+                    <a href="../letters/berkshire/2017.html">2017</a>
+                    <a href="../letters/berkshire/2016.html">2016</a>
+                    <a href="../letters/berkshire/2015.html">2015</a>
+                    <a href="../letters/berkshire/2014.html">2014</a>
+                    <a href="../letters/berkshire/2013.html">2013</a>
+                    <a href="../letters/berkshire/2012.html">2012</a>
+                    <a href="../letters/berkshire/2011.html">2011</a>
+                    <a href="../letters/berkshire/2010.html">2010</a>
+                    <a href="../letters/berkshire/2009.html">2009</a>
+                    <a href="../letters/berkshire/2008.html">2008</a>
+                    <a href="../letters/berkshire/2007.html">2007</a>
+                    <a href="../letters/berkshire/2006.html">2006</a>
+                    <a href="../letters/berkshire/2005.html">2005</a>
+                    <a href="../letters/berkshire/2004.html">2004</a>
+                    <a href="../letters/berkshire/2003.html">2003</a>
+                    <a href="../letters/berkshire/2002.html">2002</a>
+                    <a href="../letters/berkshire/2001.html">2001</a>
+                </div>
             </div>
         </article>
+        
+        <footer>
+            <p><a href="../index.html">巴菲特知识库</a> | 数据来源：巴菲特致股东信 (2001-2021)</p>
+        </footer>
     </div>
-    
-    <footer>
-        <p><a href="../index.html">巴菲特知识库</a> | 数据来源：Berkshire Hathaway Letters</p>
-    </footer>
 </body>
 </html>

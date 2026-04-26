@@ -3,38 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>股东导向 - 巴菲特知识库</title>
+    <title>股东导向 (Shareholder Oriented) - 巴菲特投资概念</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
-        :root { --bg-color: #FFFEF9; --navy: #1B2A4A; --gold: #C9A227; --text: #2C3E50; --secondary: #5D6D7E; --border: #E5E0D8; }
+        :root { --bg-color: #FFFEF9; --navy: #1B2A4A; --gold: #C9A227; --text: #2C3E50; --secondary: #5D6D7E; --border: #E5E0D8; --light-gold: #F5ECD7; }
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: 'Noto Serif SC', Georgia, serif; background: var(--bg-color); color: var(--text); line-height: 1.8; }
+        body { font-family: 'Noto Serif SC', Georgia, serif; background: var(--bg-color); color: var(--text); line-height: 1.9; }
         .container { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
-        header { background: var(--navy); color: white; padding: 40px 30px; text-align: center; }
-        header h1 { font-size: 1.8em; margin-bottom: 10px; }
-        header .meta { color: var(--gold); font-size: 0.95em; margin-top: 10px; }
-        .nav { background: white; border: 1px solid var(--border); padding: 15px 20px; margin-bottom: 30px; border-radius: 8px; text-align: center; }
-        .nav a { color: var(--navy); text-decoration: none; margin: 0 12px; font-size: 0.95em; }
-        .nav a:hover { color: var(--gold); }
-        .content { background: white; border: 1px solid var(--border); border-radius: 12px; padding: 40px; }
-        .content h2 { color: var(--navy); font-size: 1.4em; margin: 35px 0 15px; padding-bottom: 8px; border-bottom: 2px solid var(--gold); }
-        .content h2:first-child { margin-top: 0; }
+        header { background: linear-gradient(135deg, var(--navy) 0%, #2a3f6a 100%); color: white; padding: 50px 30px; text-align: center; }
+        header h1 { font-size: 2.2em; margin-bottom: 10px; }
+        header h1::before { content: '👥'; margin-right: 15px; }
+        header .meta { color: var(--gold); font-size: 1em; margin-top: 15px; }
+        header .meta span { background: rgba(201, 162, 39, 0.2); padding: 5px 15px; border-radius: 20px; }
+        .nav { background: white; border: 1px solid var(--border); padding: 15px 25px; margin-bottom: 30px; border-radius: 10px; text-align: center; }
+        .nav a { color: var(--navy); text-decoration: none; margin: 0 15px; font-size: 0.95em; padding: 8px 15px; border-radius: 5px; transition: all 0.2s; }
+        .nav a:hover { background: var(--gold); color: white; }
+        .content { background: white; border: 1px solid var(--border); border-radius: 15px; padding: 45px; box-shadow: 0 5px 30px rgba(0,0,0,0.05); }
+        .content h2 { color: var(--navy); font-size: 1.4em; margin: 40px 0 20px; padding-bottom: 12px; border-bottom: 3px solid var(--gold); display: inline-block; }
+        .content h2:first-of-type { margin-top: 0; }
         .content h3 { color: var(--navy); font-size: 1.15em; margin: 25px 0 12px; }
         .content p { margin: 15px 0; text-align: justify; }
-        .quote { background: var(--navy); color: white; padding: 20px 25px; border-left: 4px solid var(--gold); margin: 25px 0; border-radius: 0 8px 8px 0; }
-        .quote p { margin: 0; font-style: italic; }
-        .quote .source { color: var(--gold); margin-top: 12px; font-size: 0.9em; }
-        .related { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px; }
-        .related a { background: white; border: 1px solid var(--border); padding: 8px 15px; border-radius: 20px; text-decoration: none; color: var(--navy); font-size: 0.9em; transition: all 0.2s; }
-        .related a:hover { background: var(--gold); color: white; border-color: var(--gold); }
+        .content ul, .content ol { margin: 15px 0 15px 25px; }
+        .content li { margin: 10px 0; }
+        .content strong { color: var(--navy); font-weight: 700; }
+        
+        .insight { background: linear-gradient(135deg, #f8f5ee 0%, #fff 100%); border-left: 4px solid #C9A227; padding: 18px 22px; margin: 25px 0; font-style: italic; font-size: 1.05em; }
+        
+        .evolution-timeline { position: relative; padding-left: 35px; margin: 25px 0; }
+        .evolution-timeline::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: #C9A227; }
+        .evolution-point { position: relative; margin-bottom: 25px; }
+        .evolution-point::before { content: ''; position: absolute; left: -38px; top: 6px; width: 12px; height: 12px; border-radius: 50%; background: #C9A227; border: 3px solid white; box-shadow: 0 0 0 3px #C9A227; }
+        .evolution-year { font-weight: 600; color: var(--navy); font-size: 1.05em; }
+        .evolution-desc { color: var(--text); margin-top: 5px; }
+        
+        .case-card { background: #F8F5EE; border-radius: 10px; padding: 25px; margin: 20px 0; border: 1px solid var(--border); }
+        .case-company { font-size: 1.15em; font-weight: 600; color: var(--navy); margin-bottom: 8px; }
+        .case-data { color: #5D6D7E; font-size: 0.95em; margin: 8px 0; }
+        .case-lesson { font-style: italic; margin-top: 15px; padding-top: 15px; border-top: 1px solid #E8E4DB; color: var(--text); }
+        
+        .misconception-block { background: #fff5f5; padding: 20px 25px; border-radius: 10px; margin: 20px 0; border-left: 4px solid #e74c3c; }
+        .misconception-block h4 { color: #c0392b; margin-bottom: 12px; font-size: 1.05em; }
+        .misconception-block p { margin: 8px 0; }
+        
+        .quote-block { background: var(--navy); color: white; padding: 25px 30px; border-left: 5px solid var(--gold); margin: 25px 0; border-radius: 0 12px 12px 0; }
+        .quote-block p { margin: 0; font-style: italic; font-size: 1.05em; line-height: 1.8; }
+        .quote-block footer { color: var(--gold); margin-top: 15px; font-size: 0.9em; font-style: normal; }
+        
+        .topic-group { margin: 25px 0; padding: 20px; background: linear-gradient(135deg, var(--light-gold) 0%, #fff9e6 100%); border-radius: 10px; }
+        .topic-title { font-weight: 600; color: var(--navy); margin-bottom: 10px; font-size: 1.05em; }
+        .topic-desc { color: var(--text); margin-bottom: 12px; font-size: 0.95em; }
+        .topic-years { display: flex; flex-wrap: wrap; gap: 8px; }
+        .topic-years a { background: white; border: 1px solid var(--gold); padding: 5px 14px; border-radius: 18px; text-decoration: none; color: var(--navy); font-size: 0.85em; transition: all 0.2s; }
+        .topic-years a:hover { background: var(--gold); color: white; }
+        
         footer { text-align: center; padding: 40px 20px; color: var(--secondary); border-top: 1px solid var(--border); margin-top: 40px; }
-        footer a { color: var(--navy); text-decoration: none; }
+        @media (max-width: 768px) { .container { padding: 20px 15px; } header { padding: 30px 20px; } header h1 { font-size: 1.7em; } .content { padding: 25px 20px; } .nav a { margin: 5px 8px; display: inline-block; } }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
-        <h1>💡 股东导向</h1>
-        <div class="meta">概念 · 被引用 49 次</div>
+        <h1>股东导向 (Shareholder Oriented)</h1>
+        <div class="meta"><span>巴菲特投资体系核心概念</span></div>
     </header>
     
     <div class="container">
@@ -42,30 +71,76 @@
             <a href="../index.html">🏠 首页</a>
             <a href="../index-pages/核心思想索引.html">💡 核心思想索引</a>
             <a href="../index-pages/公司索引.html">🏢 公司索引</a>
-            <a href="../index-pages/人物索引.html">👤 人物索引</a>
         </nav>
         
         <article class="content">
-            <h2>概念解析</h2>
-            <p>巴菲特非常重视管理层是否以股东利益为导向，这是他评估企业的核心标准之一。</p>
+            <h2>定义与起源</h2>
+            <p><strong>股东导向是指公司管理层将股东利益放在首位的经营理念</strong>——包括透明披露、公平对待所有股东、在资本配置中优先考虑股东回报。巴菲特是股东导向的典范："我会像对待自己的钱一样对待股东的钱。"</p>
+            <p>在<strong>伯克希尔数十年的实践中</strong>，股东导向成为其企业文化的核心。</p>
             
-            <h2>巴菲特原话</h2>
-            <div class="quote">
-                <p>"理解'股东导向'这个概念对于理解伯克希尔的投资哲学至关重要。"</p>
-                <div class="source">—— 巴菲特致股东信</div>
+            <div class="insight">
+                股东导向不是一句口号，而是体现在每一个决策中：从坦诚的信息披露，到合理的资本配置，到对管理层的约束机制。
             </div>
             
-            <h2>相关概念</h2>
-            <div class="related">
-                <a href="内在价值.html">内在价值</a>
-                <a href="护城河.html">护城河</a>
-                <a href="安全边际.html">安全边际</a>
+            <h2>核心要义</h2>
+            <ul>
+                <li><strong>股东与管理层利益一致</strong>：管理层的激励应该与股东利益绑定，而非仅仅追求规模或短期业绩。</li>
+                <li><strong>公平对待所有股东</strong>：无论大小，所有股东应该获得相同的信息和公平对待。</li>
+                <li><strong>坦诚的信息披露</strong>：管理层应该如实披露业绩，不隐瞒问题，不夸大成就。</li>
+                <li><strong>合理的资本配置</strong>：资金应该配置到最高回报的用途，而非仅仅追求规模扩张。</li>
+                <li><strong>长期思维而非短期业绩</strong>：真正的股东导向是让股东长期财富最大化，而非追求季度业绩的稳定。</li>
+            </ul>
+            
+            <h2>思想演变</h2>
+            <div class="evolution-timeline">
+                <div class="evolution-point">
+                    <div class="evolution-year">诚信披露原则确立</div>
+                    <div class="evolution-desc">巴菲特在早期就确立了"像对待合伙人一样对待股东"的原则。</div>
+                </div>
+                <div class="evolution-point">
+                    <div class="evolution-year">股东权益最大化</div>
+                    <div class="evolution-desc">通过伯克希斯的实践，将股东导向理念制度化。</div>
+                </div>
             </div>
+            
+            <h2>实战案例</h2>
+            <div class="case-card">
+                <div class="case-company">伯克希尔哈撒韦</div>
+                <div class="case-data">每年致股东信开篇附上前任信件；坦诚披露业绩和问题；从不对业绩进行"平滑处理"</div>
+                <div class="case-lesson">伯克希尔是股东导向的典范——每一个制度设计都以股东利益为核心。</div>
+            </div>
+            
+            <div class="case-card">
+                <div class="case-company">可口可乐</div>
+                <div class="case-data">长期保持稳定的股东回报政策；股息连续60年增长</div>
+                <div class="case-lesson">可口可乐通过持续提高股息和合理增长，体现了对股东的长期承诺。</div>
+            </div>
+            
+            <h2>精华原话</h2>
+            <div class="quote-block">
+                <p>"我会像对待自己的钱一样对待股东的钱。如果你不能这样想，那你不应该管理别人的钱。"</p>
+                <footer>—— 1996年致股东信</footer>
+            </div>
+            
+            <div class="quote-block">
+                <p>"我们的股东是我们事业的合伙人。我们有责任像对待合伙人一样对待他们——公平、坦诚、长期。"</p>
+                <footer>—— 伯克希尔企业文化</footer>
+            </div>
+            
+            <h2>延伸阅读</h2>
+            <div class="topic-group">
+                <div class="topic-title">伯克希尔的股东导向</div>
+                <div class="topic-desc">伯克希尔如何体现股东导向</div>
+                <div class="topic-years">
+                    <a href="../letters/berkshire/1996.html">1996</a>
+                </div>
+            </div>
+            
         </article>
     </div>
     
     <footer>
-        <p><a href="../index.html">巴菲特知识库</a> | 数据来源：Berkshire Hathaway Letters</p>
+        <p>巴菲特知识库 | 数据来源：Berkshire Hathaway Letters to Shareholders</p>
     </footer>
 </body>
 </html>

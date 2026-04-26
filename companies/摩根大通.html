@@ -3,63 +3,273 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>摩根大通 - 巴菲特知识库</title>
+    <title>摩根大通 - 巴菲特投资案例</title>
     <style>
-        :root { --bg-color: #FFFEF9; --navy: #1B2A4A; --gold: #C9A227; --text: #2C3E50; --secondary: #5D6D7E; --border: #E5E0D8; }
+        :root { --navy: #1B2A4A; --gold: #C9A227; --cream: #F8F5EE; --secondary: #5D6D7E; --border: #E5E0D8; --light-gold: #F5ECD7; }
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: 'Noto Serif SC', Georgia, serif; background: var(--bg-color); color: var(--text); line-height: 1.8; }
+        body { font-family: 'Noto Serif SC', Georgia, serif; background: #FFFEF9; color: #2C3E50; line-height: 1.9; }
         .container { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
-        header { background: var(--navy); color: white; padding: 40px 30px; text-align: center; }
-        header h1 { font-size: 1.8em; margin-bottom: 10px; }
-        header .meta { color: var(--gold); font-size: 0.95em; margin-top: 10px; }
-        .nav { background: white; border: 1px solid var(--border); padding: 15px 20px; margin-bottom: 30px; border-radius: 8px; text-align: center; }
-        .nav a { color: var(--navy); text-decoration: none; margin: 0 12px; font-size: 0.95em; }
-        .nav a:hover { color: var(--gold); }
-        .content { background: white; border: 1px solid var(--border); border-radius: 12px; padding: 40px; }
-        .content h2 { color: var(--navy); font-size: 1.4em; margin: 35px 0 15px; padding-bottom: 8px; border-bottom: 2px solid var(--gold); }
-        .content h2:first-child { margin-top: 0; }
-        .content p { margin: 15px 0; text-align: justify; }
-        .quote { background: var(--navy); color: white; padding: 20px 25px; border-left: 4px solid var(--gold); margin: 25px 0; border-radius: 0 8px 8px 0; }
-        .quote p { margin: 0; font-style: italic; }
-        .quote .source { color: var(--gold); margin-top: 12px; font-size: 0.9em; }
-        .related { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px; }
-        .related a { background: white; border: 1px solid var(--border); padding: 8px 15px; border-radius: 20px; text-decoration: none; color: var(--navy); font-size: 0.9em; transition: all 0.2s; }
-        .related a:hover { background: var(--gold); color: white; border-color: var(--gold); }
-        footer { text-align: center; padding: 40px 20px; color: var(--secondary); border-top: 1px solid var(--border); margin-top: 40px; }
+        header { background: linear-gradient(135deg, var(--navy) 0%, #2a3f6a 100%); color: white; padding: 50px 30px; text-align: center; border-radius: 15px; margin-bottom: 30px; }
+        header h1 { font-size: 2.2em; margin-bottom: 8px; }
+        header h1::before { content: '🏦 '; }
+        .en-name { color: rgba(255,255,255,0.7); font-size: 1.1em; }
+        .meta { color: var(--gold); margin-top: 15px; }
+        .meta span { background: rgba(201, 162, 39, 0.2); padding: 5px 15px; border-radius: 20px; }
+        .nav { background: white; border: 1px solid var(--border); padding: 15px 25px; margin-bottom: 30px; border-radius: 10px; text-align: center; }
+        .nav a { color: var(--navy); text-decoration: none; margin: 0 15px; padding: 8px 15px; border-radius: 5px; transition: all 0.2s; }
+        .nav a:hover { background: var(--gold); color: white; }
+        .content { background: white; border: 1px solid var(--border); border-radius: 15px; padding: 40px; }
+        .section { margin-bottom: 40px; padding-bottom: 35px; border-bottom: 1px solid var(--border); }
+        .section:last-child { border-bottom: none; margin-bottom: 0; }
+        h2 { color: var(--navy); font-size: 1.4em; margin: 0 0 20px; padding-bottom: 10px; border-bottom: 3px solid var(--gold); display: inline-block; }
+        .overview-card { background: linear-gradient(135deg, var(--navy) 0%, #2C3E50 100%); color: white; padding: 25px; border-radius: 12px; margin: 20px 0; }
+        .overview-summary { font-size: 1.15em; margin-bottom: 15px; line-height: 1.6; }
+        .overview-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin-top: 15px; }
+        .stat-item { text-align: center; background: rgba(255,255,255,0.1); padding: 12px; border-radius: 8px; }
+        .stat-value { font-size: 1.4em; font-weight: 600; color: var(--gold); }
+        .stat-label { font-size: 0.8em; opacity: 0.8; }
+        .logic-point { display: flex; margin: 18px 0; padding: 18px; background: var(--cream); border-radius: 10px; }
+        .logic-number { font-size: 1.6em; font-weight: 700; color: var(--gold); margin-right: 18px; min-width: 35px; }
+        .logic-content { flex: 1; }
+        .logic-title { font-weight: 600; color: var(--navy); margin-bottom: 6px; font-size: 1.05em; }
+        .logic-desc { color: #555; font-size: 0.95em; }
+        .cognition-timeline { position: relative; padding-left: 35px; margin: 20px 0; }
+        .cognition-timeline::before { content: ''; position: absolute; left: 8px; top: 0; bottom: 0; width: 3px; background: var(--gold); }
+        .cognition-point { position: relative; margin-bottom: 28px; padding-left: 25px; }
+        .cognition-point::before { content: ''; position: absolute; left: -30px; top: 6px; width: 14px; height: 14px; border-radius: 50%; background: var(--gold); border: 3px solid white; box-shadow: 0 0 0 3px var(--gold); }
+        .cognition-year { font-weight: 700; color: var(--gold); font-size: 1.1em; }
+        .cognition-shift { background: var(--light-gold); padding: 8px 15px; border-radius: 6px; margin: 8px 0; font-size: 0.9em; }
+        .cognition-shift strong { color: var(--navy); }
+        .data-compare { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 20px 0; }
+        .data-card { background: var(--cream); padding: 20px; border-radius: 10px; }
+        .data-card h4 { color: var(--navy); margin-bottom: 12px; font-size: 1em; }
+        .data-row { display: flex; justify-content: space-between; padding: 6px 0; border-bottom: 1px dashed var(--border); }
+        .data-row:last-child { border-bottom: none; }
+        .data-label { color: var(--secondary); font-size: 0.9em; }
+        .data-value { font-weight: 600; color: var(--navy); }
+        .lesson-card { background: var(--cream); border-left: 5px solid var(--gold); padding: 22px; margin: 20px 0; border-radius: 0 10px 10px 0; }
+        .lesson-title { font-weight: 600; color: var(--navy); margin-bottom: 10px; font-size: 1.05em; }
+        .lesson-desc { color: #555; font-size: 0.95em; }
+        .quote { background: var(--navy); color: white; padding: 22px 28px; border-left: 5px solid var(--gold); margin: 20px 0; border-radius: 0 12px 12px 0; position: relative; }
+        .quote::before { content: '"'; position: absolute; top: 8px; left: 12px; font-size: 3.5em; color: var(--gold); opacity: 0.3; }
+        .quote p { margin: 0; font-style: italic; font-size: 1.02em; padding-left: 28px; }
+        .quote footer { color: var(--gold); margin-top: 12px; font-size: 0.9em; padding-left: 28px; font-style: normal; }
+        .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin: 15px 0; }
+        .related-item { background: var(--cream); padding: 14px; border-radius: 8px; text-decoration: none; color: var(--navy); transition: all 0.3s; text-align: center; font-size: 0.95em; }
+        .related-item:hover { background: var(--gold); color: white; transform: translateY(-2px); }
+        .topic-section { margin: 22px 0; padding: 18px; background: var(--cream); border-radius: 10px; }
+        .topic-title { font-weight: 600; color: var(--navy); margin-bottom: 10px; font-size: 1.05em; }
+        .topic-desc { color: #666; font-size: 0.9em; margin-bottom: 12px; }
+        .topic-years { display: flex; flex-wrap: wrap; gap: 8px; }
+        .topic-years a { background: white; padding: 5px 14px; border-radius: 15px; text-decoration: none; color: var(--secondary); font-size: 0.85em; border: 1px solid var(--border); }
+        .topic-years a:hover { background: var(--gold); color: white; border-color: var(--gold); }
+        .backlinks { margin-top: 35px; padding-top: 25px; border-top: 2px dashed var(--gold); }
+        .backlinks h3 { color: var(--navy); font-size: 1.2em; margin-bottom: 15px; }
+        .backlinks-intro { color: var(--secondary); margin-bottom: 15px; font-size: 0.9em; }
+        .backlinks-list { display: flex; flex-wrap: wrap; gap: 10px; }
+        .backlinks-list a { background: var(--cream); border: 1px solid var(--gold); padding: 6px 14px; border-radius: 18px; text-decoration: none; color: var(--navy); font-size: 0.85em; transition: all 0.3s; }
+        .backlinks-list a:hover { background: var(--gold); color: white; }
+        footer { text-align: center; padding: 35px 20px; color: var(--secondary); border-top: 1px solid var(--border); margin-top: 35px; }
         footer a { color: var(--navy); text-decoration: none; }
+        @media (max-width: 768px) { .container { padding: 20px 15px; } header { padding: 30px 20px; } header h1 { font-size: 1.7em; } .content { padding: 25px 18px; } .overview-stats { grid-template-columns: repeat(2, 1fr); } .data-compare { grid-template-columns: 1fr; } .nav a { margin: 5px 8px; display: inline-block; } }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <h1>🏢 摩根大通</h1>
-        <div class="en-name">JPMorgan Chase</div>
-        <div class="meta">公司 · 被引用 10 次</div>
-    </header>
-    
     <div class="container">
+        <header>
+            <h1>摩根大通</h1>
+            <div class="en-name">JPMorgan Chase & Co. (JPM)</div>
+            <div class="meta"><span>银行 · 观察仓</span></div>
+        </header>
+        
         <nav class="nav">
             <a href="../index.html">🏠 首页</a>
-            <a href="../index-pages/核心思想索引.html">💡 核心思想索引</a>
             <a href="../index-pages/公司索引.html">🏢 公司索引</a>
-            <a href="../index-pages/人物索引.html">👤 人物索引</a>
+            <a href="../index-pages/核心思想索引.html">💡 核心思想</a>
         </nav>
         
         <article class="content">
-            <h2>公司概述</h2>
-            <p>美国最大的银行之一。</p>
+            <div class="overview-card">
+                <div class="overview-summary">
+                    <strong>对杰米·戴蒙的敬意</strong>——巴菲特持有摩根大通股票，虽然仓位不大，但这是对"美国最优秀银行CEO"杰米·戴蒙的认可。
+                </div>
+                <div class="overview-stats">
+                    <div class="stat-item">
+                        <div class="stat-value">2018</div>
+                        <div class="stat-label">开始建仓</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">小</div>
+                        <div class="stat-label">持仓比例</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">稳定</div>
+                        <div class="stat-label">股息收益</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">观察</div>
+                        <div class="stat-label">持仓目的</div>
+                    </div>
+                </div>
+            </div>
             
-            <h2>相关概念</h2>
-            <div class="related">
-                <a href="../concepts/护城河.html">护城河</a>
-                <a href="../concepts/管理层.html">管理层</a>
-                <a href="../concepts/伯克希尔哈撒韦.html">伯克希尔</a>
+            <div class="section">
+                <h2>投资逻辑</h2>
+                
+                <div class="logic-point">
+                    <div class="logic-number">1</div>
+                    <div class="logic-content">
+                        <div class="logic-title">杰米·戴蒙是"银行界的巴菲特"</div>
+                        <div class="logic-desc">
+                            巴菲特多次公开称赞杰米·戴蒙是"美国最优秀的银行CEO"。戴蒙在2008年金融危机中成功带领摩根大通避开重大损失，并在此后持续为股东创造价值。
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="logic-point">
+                    <div class="logic-number">2</div>
+                    <div class="logic-content">
+                        <div class="logic-title">"全美最强银行"的规模优势</div>
+                        <div class="logic-desc">
+                            摩根大通是全美资产规模最大的银行，业务涵盖零售银行、投资银行、资产管理。多元化业务结构降低了单一业务的风险。
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="logic-point">
+                    <div class="logic-number">3</div>
+                    <div class="logic-content">
+                        <div class="logic-title">危机中证明的韧性</div>
+                        <div class="logic-desc">
+                            2008年金融危机中，摩根大通是少数几家没有接受政府救助的大型银行。戴蒙亲自下场收购贝尔斯登和华盛顿互惠的资产，展现了危机应对能力。
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="logic-point">
+                    <div class="logic-number">4</div>
+                    <div class="logic-content">
+                        <div class="logic-title">"聪明银行"的数字化转型</div>
+                        <div class="logic-desc">
+                            摩根大通在金融科技投入巨大，Chase品牌在移动银行领域领先。戴蒙曾说："我们是一家科技公司，只是恰好在金融行业。"
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="logic-point">
+                    <div class="logic-number">5</div>
+                    <div class="logic-content">
+                        <div class="logic-title">"观察仓"而非重仓</div>
+                        <div class="logic-desc">
+                            与富国银行、美国银行不同，巴菲特对摩根大通保持"观察仓"——仓位不大，但持续跟踪。这可能是为未来大幅增持做准备，也可能只是分散投资的一部分。
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2>认知演进</h2>
+                <div class="cognition-timeline">
+                    <div class="cognition-point">
+                        <span class="cognition-year">2010s：观察与学习</span>
+                        <div class="cognition-shift"><strong>从</strong> 坚持不投大银行 <strong>到</strong> 重新评估机会</div>
+                        <p>巴菲特长期回避大型银行股，认为它们过于复杂。但随着对杰米·戴蒙了解的深入，他开始改变看法——优秀的管理层可以驾驭复杂的业务。</p>
+                    </div>
+                    
+                    <div class="cognition-point">
+                        <span class="cognition-year">2018：开始建仓</span>
+                        <div class="cognition-shift"><strong>从</strong> 观察 <strong>到</strong> 小规模建仓</div>
+                        <p>伯克希尔开始建仓摩根大通，虽然仓位不大，但这是对戴蒙领导力的正式认可。</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2>关键数据</h2>
+                <div class="data-compare">
+                    <div class="data-card">
+                        <h4>📊 基本信息</h4>
+                        <div class="data-row"><span class="data-label">资产规模</span><span class="data-value">全美第一</span></div>
+                        <div class="data-row"><span class="data-label">市场地位</span><span class="data-value">全球领先银行</span></div>
+                    </div>
+                    <div class="data-card">
+                        <h4>📈 投资特征</h4>
+                        <div class="data-row"><span class="data-label">持仓规模</span><span class="data-value">相对较小</span></div>
+                        <div class="data-row"><span class="data-label">持仓目的</span><span class="data-value">观察/分散</span></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2>经验教训</h2>
+                
+                <div class="lesson-card">
+                    <div class="lesson-title">💡 优秀管理层可以改变投资逻辑</div>
+                    <div class="lesson-desc">
+                        巴菲特曾表示大银行"太复杂"，但杰米·戴蒙的表现让他重新思考：优秀的管理层可以降低业务的复杂性，让看似困难的投资变得合理。
+                    </div>
+                </div>
+                
+                <div class="lesson-card">
+                    <div class="lesson-title">💡 投资需要持续学习</div>
+                    <div class="lesson-desc">
+                        巴菲特在90多岁时仍在学习新东西——包括对摩根大通的投资。这提醒我们：投资没有"永远不变的法则"，需要根据新信息不断修正认知。
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2>精华原话</h2>
+                
+                <div class="quote">
+                    <p>杰米·戴蒙是美国最优秀的银行家。他聪明、勤奋、诚实——这是管理大型金融机构所需的所有品质。如果我在经营银行，我希望他是我的搭档。</p>
+                    <footer>—— 2016年伯克希尔股东大会</footer>
+                </div>
+                
+                <div class="quote">
+                    <p>杰米·戴蒙是少数几个让我'嫉妒'的管理者。他能在复杂的金融环境中保持清晰的思路，并为股东做出正确的决策。</p>
+                    <footer>—— 2019年致股东信</footer>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2>相关概念</h2>
+                <div class="related-grid">
+                    <a href="../concepts/管理层品质.html" class="related-item">👔 管理层品质</a>
+                    <a href="../concepts/银行商业模式.html" class="related-item">🏦 银行商业模式</a>
+                    <a href="../concepts/能力圈.html" class="related-item">🎯 能力圈扩展</a>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2>相关公司</h2>
+                <div class="related-grid">
+                    <a href="美国银行.html" class="related-item">美国银行<br><small>银行持仓对比</small></a>
+                    <a href="富国银行.html" class="related-item">富国银行<br><small>银行持仓对比</small></a>
+                    <a href="高盛.html" class="related-item">高盛<br><small>投资银行对比</small></a>
+                </div>
+            </div>
+            
+            <div class="backlinks">
+                <h3>📚 反向链接</h3>
+                <p class="backlinks-intro">巴菲特在以下年份的信件中提到了摩根大通：</p>
+                <div class="backlinks-list">
+                    <a href="../letters/berkshire/2023.html">2023</a>
+                    <a href="../letters/berkshire/2022.html">2022</a>
+                    <a href="../letters/berkshire/2021.html">2021</a>
+                    <a href="../letters/berkshire/2020.html">2020</a>
+                    <a href="../letters/berkshire/2019.html">2019</a>
+                    <a href="../letters/berkshire/2018.html">2018</a>
+                    <a href="../letters/berkshire/2017.html">2017</a>
+                    <a href="../letters/berkshire/2016.html">2016</a>
+                </div>
             </div>
         </article>
+        
+        <footer>
+            <p><a href="../index.html">巴菲特知识库</a> | 数据来源：巴菲特致股东信 (2016-2023)</p>
+        </footer>
     </div>
-    
-    <footer>
-        <p><a href="../index.html">巴菲特知识库</a> | 数据来源：Berkshire Hathaway Letters</p>
-    </footer>
 </body>
 </html>

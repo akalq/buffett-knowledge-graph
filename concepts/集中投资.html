@@ -3,159 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>集中投资 - 巴菲特知识库</title>
+    <title>集中投资 (Focused Investment) - 巴菲特投资概念</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
-        :root { --bg-color: #FFFEF9; --navy: #1B2A4A; --gold: #C9A227; --text: #2C3E50; --secondary: #5D6D7E; --border: #E5E0D8; }
+        :root { --bg-color: #FFFEF9; --navy: #1B2A4A; --gold: #C9A227; --text: #2C3E50; --secondary: #5D6D7E; --border: #E5E0D8; --light-gold: #F5ECD7; }
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: 'Noto Serif SC', Georgia, serif; background: var(--bg-color); color: var(--text); line-height: 1.8; }
+        body { font-family: 'Noto Serif SC', Georgia, serif; background: var(--bg-color); color: var(--text); line-height: 1.9; }
         .container { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
-        header { background: var(--navy); color: white; padding: 40px 30px; text-align: center; }
-        header h1 { font-size: 1.8em; margin-bottom: 10px; }
-        header .meta { color: var(--gold); font-size: 0.95em; margin-top: 10px; }
-        .nav { background: white; border: 1px solid var(--border); padding: 15px 20px; margin-bottom: 30px; border-radius: 8px; text-align: center; }
-        .nav a { color: var(--navy); text-decoration: none; margin: 0 12px; font-size: 0.95em; }
-        .nav a:hover { color: var(--gold); }
-        .content { background: white; border: 1px solid var(--border); border-radius: 12px; padding: 40px; }
-        .content h2 { color: var(--navy); font-size: 1.4em; margin: 35px 0 15px; padding-bottom: 8px; border-bottom: 2px solid var(--gold); }
-        .content h2:first-child { margin-top: 0; }
+        header { background: linear-gradient(135deg, var(--navy) 0%, #2a3f6a 100%); color: white; padding: 50px 30px; text-align: center; }
+        header h1 { font-size: 2.2em; margin-bottom: 10px; }
+        header h1::before { content: '🎯'; margin-right: 15px; }
+        header .meta { color: var(--gold); font-size: 1em; margin-top: 15px; }
+        header .meta span { background: rgba(201, 162, 39, 0.2); padding: 5px 15px; border-radius: 20px; }
+        .nav { background: white; border: 1px solid var(--border); padding: 15px 25px; margin-bottom: 30px; border-radius: 10px; text-align: center; }
+        .nav a { color: var(--navy); text-decoration: none; margin: 0 15px; font-size: 0.95em; padding: 8px 15px; border-radius: 5px; transition: all 0.2s; }
+        .nav a:hover { background: var(--gold); color: white; }
+        .content { background: white; border: 1px solid var(--border); border-radius: 15px; padding: 45px; box-shadow: 0 5px 30px rgba(0,0,0,0.05); }
+        .content h2 { color: var(--navy); font-size: 1.4em; margin: 40px 0 20px; padding-bottom: 12px; border-bottom: 3px solid var(--gold); display: inline-block; }
+        .content h2:first-of-type { margin-top: 0; }
         .content h3 { color: var(--navy); font-size: 1.15em; margin: 25px 0 12px; }
         .content p { margin: 15px 0; text-align: justify; }
-        .quote { background: var(--navy); color: white; padding: 20px 25px; border-left: 4px solid var(--gold); margin: 25px 0; border-radius: 0 8px 8px 0; }
-        .quote p { margin: 0; font-style: italic; }
-        .quote .source { color: var(--gold); margin-top: 12px; font-size: 0.9em; }
-        .related { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px; }
-        .related a { background: white; border: 1px solid var(--border); padding: 8px 15px; border-radius: 20px; text-decoration: none; color: var(--navy); font-size: 0.9em; transition: all 0.2s; }
-        .related a:hover { background: var(--gold); color: white; border-color: var(--gold); }
+        .content ul, .content ol { margin: 15px 0 15px 25px; }
+        .content li { margin: 10px 0; }
+        .content strong { color: var(--navy); font-weight: 700; }
+        
+        .insight { background: linear-gradient(135deg, #f8f5ee 0%, #fff 100%); border-left: 4px solid #C9A227; padding: 18px 22px; margin: 25px 0; font-style: italic; font-size: 1.05em; }
+        
+        .evolution-timeline { position: relative; padding-left: 35px; margin: 25px 0; }
+        .evolution-timeline::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: #C9A227; }
+        .evolution-point { position: relative; margin-bottom: 25px; }
+        .evolution-point::before { content: ''; position: absolute; left: -38px; top: 6px; width: 12px; height: 12px; border-radius: 50%; background: #C9A227; border: 3px solid white; box-shadow: 0 0 0 3px #C9A227; }
+        .evolution-year { font-weight: 600; color: var(--navy); font-size: 1.05em; }
+        .evolution-desc { color: var(--text); margin-top: 5px; }
+        
+        .case-card { background: #F8F5EE; border-radius: 10px; padding: 25px; margin: 20px 0; border: 1px solid var(--border); }
+        .case-company { font-size: 1.15em; font-weight: 600; color: var(--navy); margin-bottom: 8px; }
+        .case-data { color: #5D6D7E; font-size: 0.95em; margin: 8px 0; }
+        .case-lesson { font-style: italic; margin-top: 15px; padding-top: 15px; border-top: 1px solid #E8E4DB; color: var(--text); }
+        
+        .misconception-block { background: #fff5f5; padding: 20px 25px; border-radius: 10px; margin: 20px 0; border-left: 4px solid #e74c3c; }
+        .misconception-block h4 { color: #c0392b; margin-bottom: 12px; font-size: 1.05em; }
+        .misconception-block p { margin: 8px 0; }
+        
+        .quote-block { background: var(--navy); color: white; padding: 25px 30px; border-left: 5px solid var(--gold); margin: 25px 0; border-radius: 0 12px 12px 0; }
+        .quote-block p { margin: 0; font-style: italic; font-size: 1.05em; line-height: 1.8; }
+        .quote-block footer { color: var(--gold); margin-top: 15px; font-size: 0.9em; font-style: normal; }
+        
+        .topic-group { margin: 25px 0; padding: 20px; background: linear-gradient(135deg, var(--light-gold) 0%, #fff9e6 100%); border-radius: 10px; }
+        .topic-title { font-weight: 600; color: var(--navy); margin-bottom: 10px; font-size: 1.05em; }
+        .topic-desc { color: var(--text); margin-bottom: 12px; font-size: 0.95em; }
+        .topic-years { display: flex; flex-wrap: wrap; gap: 8px; }
+        .topic-years a { background: white; border: 1px solid var(--gold); padding: 5px 14px; border-radius: 18px; text-decoration: none; color: var(--navy); font-size: 0.85em; transition: all 0.2s; }
+        .topic-years a:hover { background: var(--gold); color: white; }
+        
         footer { text-align: center; padding: 40px 20px; color: var(--secondary); border-top: 1px solid var(--border); margin-top: 40px; }
-        footer a { color: var(--navy); text-decoration: none; }
-    
-        /* 反向链接样式 */
-        .backlinks {
-            margin-top: 40px;
-            padding-top: 30px;
-            border-top: 2px dashed var(--gold);
-        }
-        .backlinks h2 {
-            color: var(--navy);
-            font-size: 1.3em;
-            margin-bottom: 15px;
-        }
-        .backlinks-intro {
-            color: var(--secondary);
-            margin-bottom: 15px;
-        }
-        .backlinks-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-        .backlinks-list a {
-            background: linear-gradient(135deg, var(--light-gold) 0%, #fff9e6 100%);
-            border: 1px solid var(--gold);
-            padding: 8px 16px;
-            border-radius: 20px;
-            text-decoration: none;
-            color: var(--navy);
-            font-size: 0.9em;
-            transition: all 0.3s;
-        }
-        .backlinks-list a:hover {
-            background: var(--gold);
-            color: white;
-            transform: translateY(-2px);
-        }
-        .backlinks-count {
-            margin-top: 15px;
-            color: var(--secondary);
-            font-size: 0.9em;
-        }
-
-    
-        .citations-container {
-            margin: 30px 0;
-        }
-        .citation-year {
-            margin: 25px 0;
-        }
-        .citation-year h3 {
-            color: #1B2A4A;
-            font-size: 1.1em;
-            margin-bottom: 15px;
-            padding-bottom: 8px;
-            border-bottom: 1px solid #E5E0D8;
-        }
-        .citation-list {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-        .citation-card {
-            background: #F8F5EE;
-            border: 1px solid #E5E0D8;
-            border-radius: 8px;
-            padding: 20px;
-            transition: all 0.2s;
-        }
-        .citation-card:hover {
-            border-color: #C9A227;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-        .citation-text {
-            margin: 0 0 15px 0;
-            padding: 0;
-            font-style: italic;
-            color: #2C3E50;
-            line-height: 1.7;
-        }
-        .citation-text .highlight {
-            background: #FFF3CD;
-            padding: 0 2px;
-            border-radius: 2px;
-            font-weight: 600;
-        }
-        .citation-meta {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 0.85em;
-        }
-        .section-tag {
-            background: #E8E4DB;
-            color: #5D6D7E;
-            padding: 4px 10px;
-            border-radius: 12px;
-            font-size: 0.8em;
-        }
-        .citation-link {
-            color: #1B2A4A;
-            text-decoration: none;
-            font-weight: 500;
-        }
-        .citation-link:hover {
-            color: #C9A227;
-        }
-        .citation-more {
-            text-align: center;
-            padding: 10px;
-            background: #F8F5EE;
-            border-radius: 8px;
-        }
-        .citation-more a {
-            color: #5D6D7E;
-            text-decoration: none;
-            font-size: 0.9em;
-        }
-        .citation-more a:hover {
-            color: #C9A227;
-        }
-    
-        </style>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
+        @media (max-width: 768px) { .container { padding: 20px 15px; } header { padding: 30px 20px; } header h1 { font-size: 1.7em; } .content { padding: 25px 20px; } .nav a { margin: 5px 8px; display: inline-block; } }
+    </style>
 </head>
 <body>
     <header>
-        <h1>💡 集中投资</h1>
-        <div class="meta">概念 · 被引用 31 次</div>
+        <h1>集中投资 (Focused Investment)</h1>
+        <div class="meta"><span>巴菲特投资体系核心概念</span></div>
     </header>
     
     <div class="container">
@@ -163,362 +71,140 @@
             <a href="../index.html">🏠 首页</a>
             <a href="../index-pages/核心思想索引.html">💡 核心思想索引</a>
             <a href="../index-pages/公司索引.html">🏢 公司索引</a>
-            <a href="../index-pages/人物索引.html">👤 人物索引</a>
         </nav>
         
         <article class="content">
-            <h2>概念解析</h2>
-            <p>集中投资指将资金集中在少数几只精心挑选的股票上，而非过度分散。</p>
+            <h2>定义与起源</h2>
+            <p><strong>集中投资是将资金集中于少数高概率获胜机会的投资策略</strong>——不同于分散化降低风险的做法，集中投资强调通过深入研究找到"二十孔"投资机会，然后下大注。</p>
+            <p>巴菲特的集中投资理念形成于<strong>1960年代</strong>，在1996年致股东信中首次向公众详细阐述这一概念。他指出："适度分散投资是一种保护无知的被动行为，对于真正了解企业的投资者来说，集中投资能显著提升回报。"</p>
             
-            <h2>巴菲特原话</h2>
-            <div class="quote">
-                <p>"理解'集中投资'这个概念对于理解伯克希尔的投资哲学至关重要。"</p>
-                <div class="source">—— 巴菲特致股东信</div>
+            <div class="insight">
+                集中投资的核心逻辑不是"把鸡蛋放在不同篮子里"，而是"找到最坚固的篮子，把所有鸡蛋放进去，然后紧紧盯住它"。
             </div>
             
-            <h2>相关概念</h2>
-            <div class="related">
-                <a href="内在价值.html">内在价值</a>
-                <a href="护城河.html">护城河</a>
-                <a href="安全边际.html">安全边际</a>
+            <h2>核心要义</h2>
+            <ul>
+                <li><strong>质量优于数量</strong>：与其持有十几只平庸公司的股票，不如深入研究后重仓三到五家真正了解的企业。巴菲特管理的资金曾90%集中在七只股票上。</li>
+                <li><strong>"二十孔"思维</strong>：想象自己一生只有二十次投资机会，每次决定都会留下印记。这种约束会让人更加谨慎和深思熟虑。</li>
+                <li><strong>认知优势是关键</strong>：集中投资的前提是对投资标的的深刻理解。不了解的企业哪怕占尽风头也不能碰，了解深刻的企业值得重仓。</li>
+                <li><strong>高概率下大注</strong>：当你对某项投资有十足把握且潜在回报远大于风险时，应该大幅提高仓位，而不是机械地分散。</li>
+                <li><strong>长期持有减少摩擦</strong>：集中投资天然导向长期持有，这减少了频繁交易带来的摩擦成本和税务负担。</li>
+            </ul>
+            
+            <h2>思想演变</h2>
+            <div class="evolution-timeline">
+                <div class="evolution-point">
+                    <div class="evolution-year">格雷厄姆式分散（1950-1960年代）</div>
+                    <div class="evolution-desc">早期巴菲特遵循老师格雷厄姆的教导，购买大量"烟蒂"型股票，分散持有数十甚至上百只股票。</div>
+                </div>
+                <div class="evolution-point">
+                    <div class="evolution-year">理念转型（1970年代）</div>
+                    <div class="evolution-desc">受费雪和芒格影响，巴菲特开始意识到质量的重要性。1970年代他大幅减少持股数量，转向"适度集中"。</div>
+                </div>
+                <div class="evolution-point">
+                    <div class="evolution-year">系统化阐述（1996年）</div>
+                    <div class="evolution-desc">在1996年致股东信中，巴菲特首次公开阐述"二十孔"投资卡理论，将集中投资理念系统化。</div>
+                </div>
+                <div class="evolution-point">
+                    <div class="evolution-year">极致实践（2010年后）</div>
+                    <div class="evolution-desc">伯克希尔持仓更加集中，前十大持仓占股票组合的80%以上，苹果一只股票占比超过40%。</div>
+                </div>
             </div>
-        
-        <!-- 反向链接部分 --><p class="backlinks-count">共被提及 3 次</p>
-        </div>
-    
-        <div class="citations-container">
-<div class="citation-year">
-<h3>1984年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">"...he year. In recent years, nshop volume at Christmas has grown in relative importance, and so nhave quantity orders and mail orders. The increased nconcentration of business in the Christmas period produces a nmultitude of managerial problems, all of which have been handled nby Chuck and his associates with..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1984.html" class="citation-link">1984年致股东信 →</a></div>
-</div>
-<div class="citation-card">
-<blockquote class="citation-text">"...n We remain unconventional in the degree to which we nconcentrate the investments of our insurance companies, including nthose in WPPSS bonds. This <span class="highlight">concentration</span> makes sense only nbecause our insurance business is conducted from a position of nexceptional financial strength. For almost all other insurers, a..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1984.html" class="citation-link">1984年致股东信 →</a></div>
-</div>
-<div class="citation-card">
-<blockquote class="citation-text">"...ause our insurance business is conducted from a position of nexceptional financial strength. For almost all other insurers, a ncomparable degree of <span class="highlight">concentration</span> (or anything close to it) nwould be totally inappropriate. Their capital positions are not nstrong enough to withstand a big error, no matter how a..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1984.html" class="citation-link">1984年致股东信 →</a></div>
-</div>
-<div class="citation-more">
-<a href="../letters/berkshire/1984.html">+ 还有1处引用</a>
-</div>
-</div>
-</div>
-</div>
-
-        
-    </article>
-<footer>
-        <p><a href="../index.html">巴菲特知识库</a> | 数据来源：Berkshire Hathaway Letters</p>
-    
-        <div class="backlinks">
-            <h2>📚 反向链接</h2>
-            <p class="backlinks-intro">以下年份的信件提到了此概念：</p>
-            <div class="backlinks-list">
-                <a href="../letters/berkshire/1999.html">1999年</a><a href="../letters/berkshire/1996.html">1996年</a><a href="../letters/berkshire/1984.html">1984年</a>
+            
+            <h2>实战案例</h2>
+            <div class="case-card">
+                <div class="case-company">可口可乐 (Coca-Cola)</div>
+                <div class="case-data">1988年开始建仓，耗资约13亿美元；持仓占当时伯克希尔股票组合的35%；持有至今超35年</div>
+                <div class="case-lesson">这是集中投资的经典案例：巴菲特对可口可乐的竞争优势有深刻理解后，敢于在单一标的上投入巨资，最终获得超过200亿美元的利润。</div>
             </div>
-            <p class="backlinks-count">共 3 处引用</p>
-        </div>
-    
-</footer>
-</body>
-</html<div class="citations-container">
-<div class="citation-year">
-<h3>1984年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">"...he year. In recent years, nshop volume at Christmas has grown in relative importance, and so nhave quantity orders and mail orders. The increased nconcentration of business in the Christmas period produces a nmultitude of managerial problems, all of which have been handled nby Chuck and his associates with..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1984.html" class="citation-link">1984年致股东信 →</a></div>
-</div>
-<div class="citation-card">
-<blockquote class="citation-text">"...n We remain unconventional in the degree to which we nconcentrate the investments of our insurance companies, including nthose in WPPSS bonds. This <span class="highlight">concentration</span> makes sense only nbecause our insurance business is conducted from a position of nexceptional financial strength. For almost all other insurers, a..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1984.html" class="citation-link">1984年致股东信 →</a></div>
-</div>
-<div class="citation-card">
-<blockquote class="citation-text">"...ause our insurance business is conducted from a position of nexceptional financial strength. For almost all other insurers, a ncomparable degree of <span class="highlight">concentration</span> (or anything close to it) nwould be totally inappropriate. Their capital positions are not nstrong enough to withstand a big error, no matter how a..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1984.html" class="citation-link">1984年致股东信 →</a></div>
-</div>
-<div class="citation-more">
-<a href="../letters/berkshire/1984.html">+ 还有1处引用</a>
-</div>
-</div>
-</div>
-</div>
-
-        
-    </article>
-<footer>
-        <p><a href="../index.html">巴菲特知识库</a> | 数据来源：Berkshire Hathaway Letters</p>
-    </footer>
-</body>
-</html<div class="citations-container">
-<div class="citation-year">
-<h3>1984年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">"...he year. In recent years, nshop volume at Christmas has grown in relative importance, and so nhave quantity orders and mail orders. The increased nconcentration of business in the Christmas period produces a nmultitude of managerial problems, all of which have been handled nby Chuck and his associates with..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1984.html" class="citation-link">1984年致股东信 →</a></div>
-</div>
-<div class="citation-card">
-<blockquote class="citation-text">"...n We remain unconventional in the degree to which we nconcentrate the investments of our insurance companies, including nthose in WPPSS bonds. This <span class="highlight">concentration</span> makes sense only nbecause our insurance business is conducted from a position of nexceptional financial strength. For almost all other insurers, a..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1984.html" class="citation-link">1984年致股东信 →</a></div>
-</div>
-<div class="citation-card">
-<blockquote class="citation-text">"...ause our insurance business is conducted from a position of nexceptional financial strength. For almost all other insurers, a ncomparable degree of <span class="highlight">concentration</span> (or anything close to it) nwould be totally inappropriate. Their capital positions are not nstrong enough to withstand a big error, no matter how a..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1984.html" class="citation-link">1984年致股东信 →</a></div>
-</div>
-<div class="citation-more">
-<a href="../letters/berkshire/1984.html">+ 还有1处引用</a>
-</div>
-</div>
-</div>
-</div>
-
-        <h2>引用来源（4处）</h2>
-<div class="citations-container">
-<div class="citation-year">
-<h3>1984年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">"...he year. In recent years, nshop volume at Christmas has grown in relative importance, and so nhave quantity orders and mail orders. The increased nconcentration of business in the Christmas period produces a nmultitude of managerial problems, all of which have been handled nby Chuck and his associates with..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1984.html" class="citation-link">1984年致股东信 →</a></div>
-</div>
-<div class="citation-card">
-<blockquote class="citation-text">"...n We remain unconventional in the degree to which we nconcentrate the investments of our insurance companies, including nthose in WPPSS bonds. This <span class="highlight">concentration</span> makes sense only nbecause our insurance business is conducted from a position of nexceptional financial strength. For almost all other insurers, a..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1984.html" class="citation-link">1984年致股东信 →</a></div>
-</div>
-<div class="citation-card">
-<blockquote class="citation-text">"...ause our insurance business is conducted from a position of nexceptional financial strength. For almost all other insurers, a ncomparable degree of <span class="highlight">concentration</span> (or anything close to it) nwould be totally inappropriate. Their capital positions are not nstrong enough to withstand a big error, no matter how a..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1984.html" class="citation-link">1984年致股东信 →</a></div>
-</div>
-<div class="citation-more">
-<a href="../letters/berkshire/1984.html">+ 还有1处引用</a>
-</div>
-</div>
-</div>
-</div>
-
+            
+            <div class="case-card">
+                <div class="case-company">美国运通 (American Express)</div>
+                <div class="case-data">1964年开始投资1991-1993年大举增持；持仓一度占伯克希尔股票组合的40%；持有超60年</div>
+                <div class="case-lesson">巴菲特在运通遭遇"色拉油丑闻"股价暴跌时，不仅没有抛售反而加仓，体现了他对商业模式和护城河深刻理解后的逆向勇气。</div>
+            </div>
+            
+            <div class="case-card">
+                <div class="case-company">苹果 (Apple)</div>
+                <div class="case-data">2016年开始建仓；累计投入超过350亿美元；单一股票成为伯克希尔最大持仓，峰值占比超45%</div>
+                <div class="case-lesson">尽管巴菲特曾长期回避科技股，但当他将苹果理解为"带有科技属性的消费公司"后，展现了惊人的集中投资魄力。</div>
+            </div>
+            
+            <h2>常见误解</h2>
+            <div class="misconception-block">
+                <h4>❌ 误解一：集中投资 = 赌博</h4>
+                <p><strong>人们以为</strong>：把所有资金放在少数几只股票上，风险极高，类似于赌场下注。</p>
+                <p><strong>巴菲特说</strong>：集中投资的前提是高概率和充分了解。如果你的投资建立在对企业的深刻理解上，这不是赌博，而是经过计算的风险承担。</p>
+            </div>
+            
+            <div class="misconception-block">
+                <h4>❌ 误解二：分散投资才能规避风险</h4>
+                <p><strong>人们以为</strong>：持有几十只股票可以分散非系统性风险，是"聪明"的投资策略。</p>
+                <p><strong>巴菲特说</strong>：分散投资是对无知的保护。如果你真正了解所投资的企业，集中投资反而能降低风险——因为你清楚自己在做什么。</p>
+            </div>
+            
+            <div class="misconception-block">
+                <h4>❌ 误解三：任何人都适合集中投资</h4>
+                <p><strong>人们以为</strong>：集中投资是通往高回报的捷径，应该广泛应用。</p>
+                <p><strong>巴菲特说</strong>：集中投资需要对企业有深刻的理解能力。如果你没有足够的时间和能力去真正了解少数企业，分散投资可能是更明智的选择。</p>
+            </div>
+            
+            <h2>精华原话</h2>
+            <div class="quote-block">
+                <p>"我们相信集中投资能显著提高业绩——对于那些理解企业价值的人来说。适度分散投资是一种保护无知的被动行为。"</p>
+                <footer>—— 1996年致股东信</footer>
+            </div>
+            
+            <div class="quote-block">
+                <p>"想象你有一张投资卡，上面只有二十个孔。每做一次投资决策，你就用掉一个孔，终生只有二十次机会。你会变得更加挑剔，更加深思熟虑。"</p>
+                <footer>—— 1996年致股东信</footer>
+            </div>
+            
+            <div class="quote-block">
+                <p>"我们会将10%的净资产投入到一个看起来有10%回报机会的项目上。在能够理解的企业中，如果有一个投资机会看起来明显优于其他，我们会毫不犹豫地大举投资。"</p>
+                <footer>—— 1994年致股东信</footer>
+            </div>
+            
+            <div class="quote-block">
+                <p>"真正理解一家企业的人，不需要持有太多只股票。多样化投资是无知者的保护伞。如果你不是专家，集中化投资可能会害了你。"</p>
+                <footer>—— 1993年致股东信</footer>
+            </div>
+            
+            <h2>延伸阅读</h2>
+            <p>集中投资概念在信件中的讨论分布，按论点组织：</p>
+            
+            <div class="topic-group">
+                <div class="topic-title">"二十孔"投资卡理论</div>
+                <div class="topic-desc">介绍集中投资的核心理念——限制投资次数，迫使自己更加谨慎</div>
+                <div class="topic-years">
+                    <a href="../letters/berkshire/1996.html">1996</a>
+                    <a href="../letters/berkshire/1993.html">1993</a>
+                </div>
+            </div>
+            
+            <div class="topic-group">
+                <div class="topic-title">集中与分散的辩证</div>
+                <div class="topic-desc">阐述为什么真正的了解会降低风险，以及集中投资的前提条件</div>
+                <div class="topic-years">
+                    <a href="../letters/berkshire/1996.html">1996</a>
+                    <a href="../letters/berkshire/1987.html">1987</a>
+                </div>
+            </div>
+            
+            <div class="topic-group">
+                <div class="topic-title">伯克希尔的仓位实践</div>
+                <div class="topic-desc">展示伯克希尔如何践行集中投资，包括持仓数据和调整逻辑</div>
+                <div class="topic-years">
+                    <a href="../letters/berkshire/2019.html">2019</a>
+                    <a href="../letters/berkshire/2020.html">2020</a>
+                </div>
+            </div>
+            
         </article>
-    </div>
-    <h2>引用来源（4处）</h2>
-<div class="citations-container">
-<div class="citation-year">
-<h3>1984年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">"...he year. In recent years, nshop volume at Christmas has grown in relative importance, and so nhave quantity orders and mail orders. The increased nconcentration of business in the Christmas period produces a nmultitude of managerial problems, all of which have been handled nby Chuck and his associates with..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1984.html" class="citation-link">1984年致股东信 →</a></div>
-</div>
-<div class="citation-card">
-<blockquote class="citation-text">"...n We remain unconventional in the degree to which we nconcentrate the investments of our insurance companies, including nthose in WPPSS bonds. This <span class="highlight">concentration</span> makes sense only nbecause our insurance business is conducted from a position of nexceptional financial strength. For almost all other insurers, a..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1984.html" class="citation-link">1984年致股东信 →</a></div>
-</div>
-<div class="citation-card">
-<blockquote class="citation-text">"...ause our insurance business is conducted from a position of nexceptional financial strength. For almost all other insurers, a ncomparable degree of <span class="highlight">concentration</span> (or anything close to it) nwould be totally inappropriate. Their capital positions are not nstrong enough to withstand a big error, no matter how a..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1984.html" class="citation-link">1984年致股东信 →</a></div>
-</div>
-<div class="citation-more">
-<a href="../letters/berkshire/1984.html">+ 还有1处引用</a>
-</div>
-</div>
-</div>
-</div>
-
-        </article>
-
     </div>
     
     <footer>
-        <p><a href="../index.html">巴菲特知识库</a> | 数据来源：Berkshire Hathaway Letters</p>
-    </footer>
-</body>
-</html<div class="citations-container">
-<div class="citation-year">
-<h3>1984年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">"...he year. In recent years, nshop volume at Christmas has grown in relative importance, and so nhave quantity orders and mail orders. The increased nconcentration of business in the Christmas period produces a nmultitude of managerial problems, all of which have been handled nby Chuck and his associates with..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1984.html" class="citation-link">1984年致股东信 →</a></div>
-</div>
-<div class="citation-card">
-<blockquote class="citation-text">"...n We remain unconventional in the degree to which we nconcentrate the investments of our insurance companies, including nthose in WPPSS bonds. This <span class="highlight">concentration</span> makes sense only nbecause our insurance business is conducted from a position of nexceptional financial strength. For almost all other insurers, a..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1984.html" class="citation-link">1984年致股东信 →</a></div>
-</div>
-<div class="citation-card">
-<blockquote class="citation-text">"...ause our insurance business is conducted from a position of nexceptional financial strength. For almost all other insurers, a ncomparable degree of <span class="highlight">concentration</span> (or anything close to it) nwould be totally inappropriate. Their capital positions are not nstrong enough to withstand a big error, no matter how a..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1984.html" class="citation-link">1984年致股东信 →</a></div>
-</div>
-<div class="citation-more">
-<a href="../letters/berkshire/1984.html">+ 还有1处引用</a>
-</div>
-</div>
-</div>
-</div>
-
-        <h2>引用来源（4处）</h2>
-<div class="citations-container">
-<div class="citation-year">
-<h3>1984年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">"...he year. In recent years, nshop volume at Christmas has grown in relative importance, and so nhave quantity orders and mail orders. The increased nconcentration of business in the Christmas period produces a nmultitude of managerial problems, all of which have been handled nby Chuck and his associates with..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1984.html" class="citation-link">1984年致股东信 →</a></div>
-</div>
-<div class="citation-card">
-<blockquote class="citation-text">"...n We remain unconventional in the degree to which we nconcentrate the investments of our insurance companies, including nthose in WPPSS bonds. This <span class="highlight">concentration</span> makes sense only nbecause our insurance business is conducted from a position of nexceptional financial strength. For almost all other insurers, a..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1984.html" class="citation-link">1984年致股东信 →</a></div>
-</div>
-<div class="citation-card">
-<blockquote class="citation-text">"...ause our insurance business is conducted from a position of nexceptional financial strength. For almost all other insurers, a ncomparable degree of <span class="highlight">concentration</span> (or anything close to it) nwould be totally inappropriate. Their capital positions are not nstrong enough to withstand a big error, no matter how a..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1984.html" class="citation-link">1984年致股东信 →</a></div>
-</div>
-<div class="citation-more">
-<a href="../letters/berkshire/1984.html">+ 还有1处引用</a>
-</div>
-</div>
-</div>
-</div>
-
-        </article>
-    </div>
-    <h2>引用来源（4处）</h2>
-<div class="citations-container">
-<div class="citation-year">
-<h3>1984年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">"...he year. In recent years, nshop volume at Christmas has grown in relative importance, and so nhave quantity orders and mail orders. The increased nconcentration of business in the Christmas period produces a nmultitude of managerial problems, all of which have been handled nby Chuck and his associates with..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1984.html" class="citation-link">1984年致股东信 →</a></div>
-</div>
-<div class="citation-card">
-<blockquote class="citation-text">"...n We remain unconventional in the degree to which we nconcentrate the investments of our insurance companies, including nthose in WPPSS bonds. This <span class="highlight">concentration</span> makes sense only nbecause our insurance business is conducted from a position of nexceptional financial strength. For almost all other insurers, a..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1984.html" class="citation-link">1984年致股东信 →</a></div>
-</div>
-<div class="citation-card">
-<blockquote class="citation-text">"...ause our insurance business is conducted from a position of nexceptional financial strength. For almost all other insurers, a ncomparable degree of <span class="highlight">concentration</span> (or anything close to it) nwould be totally inappropriate. Their capital positions are not nstrong enough to withstand a big error, no matter how a..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1984.html" class="citation-link">1984年致股东信 →</a></div>
-</div>
-<div class="citation-more">
-<a href="../letters/berkshire/1984.html">+ 还有1处引用</a>
-</div>
-</div>
-</div>
-</div>
-
-        </article>
-
-    </div>
-    <h2>引用来源（4处）</h2>
-<div class="citations-container">
-<div class="citation-year">
-<h3>1984年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">"...he year. In recent years, nshop volume at Christmas has grown in relative importance, and so nhave quantity orders and mail orders. The increased nconcentration of business in the Christmas period produces a nmultitude of managerial problems, all of which have been handled nby Chuck and his associates with..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1984.html" class="citation-link">1984年致股东信 →</a></div>
-</div>
-<div class="citation-card">
-<blockquote class="citation-text">"...n We remain unconventional in the degree to which we nconcentrate the investments of our insurance companies, including nthose in WPPSS bonds. This <span class="highlight">concentration</span> makes sense only nbecause our insurance business is conducted from a position of nexceptional financial strength. For almost all other insurers, a..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1984.html" class="citation-link">1984年致股东信 →</a></div>
-</div>
-<div class="citation-card">
-<blockquote class="citation-text">"...ause our insurance business is conducted from a position of nexceptional financial strength. For almost all other insurers, a ncomparable degree of <span class="highlight">concentration</span> (or anything close to it) nwould be totally inappropriate. Their capital positions are not nstrong enough to withstand a big error, no matter how a..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1984.html" class="citation-link">1984年致股东信 →</a></div>
-</div>
-<div class="citation-more">
-<a href="../letters/berkshire/1984.html">+ 还有1处引用</a>
-</div>
-</div>
-</div>
-</div>
-
-        </article>
-<footer>
-        <p><a href="../index.html">巴菲特知识库</a> | 数据来源：Berkshire Hathaway Letters</p>
-    </footer>
-</body>
-</html<div class="citations-container">
-<div class="citation-year">
-<h3>1984年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">"...he year. In recent years, nshop volume at Christmas has grown in relative importance, and so nhave quantity orders and mail orders. The increased nconcentration of business in the Christmas period produces a nmultitude of managerial problems, all of which have been handled nby Chuck and his associates with..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1984.html" class="citation-link">1984年致股东信 →</a></div>
-</div>
-<div class="citation-card">
-<blockquote class="citation-text">"...n We remain unconventional in the degree to which we nconcentrate the investments of our insurance companies, including nthose in WPPSS bonds. This <span class="highlight">concentration</span> makes sense only nbecause our insurance business is conducted from a position of nexceptional financial strength. For almost all other insurers, a..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1984.html" class="citation-link">1984年致股东信 →</a></div>
-</div>
-<div class="citation-card">
-<blockquote class="citation-text">"...ause our insurance business is conducted from a position of nexceptional financial strength. For almost all other insurers, a ncomparable degree of <span class="highlight">concentration</span> (or anything close to it) nwould be totally inappropriate. Their capital positions are not nstrong enough to withstand a big error, no matter how a..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1984.html" class="citation-link">1984年致股东信 →</a></div>
-</div>
-<div class="citation-more">
-<a href="../letters/berkshire/1984.html">+ 还有1处引用</a>
-</div>
-</div>
-</div>
-</div>
-
-        <h2>引用来源（4处）</h2>
-<div class="citations-container">
-<div class="citation-year">
-<h3>1984年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">"...he year. In recent years, nshop volume at Christmas has grown in relative importance, and so nhave quantity orders and mail orders. The increased nconcentration of business in the Christmas period produces a nmultitude of managerial problems, all of which have been handled nby Chuck and his associates with..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1984.html" class="citation-link">1984年致股东信 →</a></div>
-</div>
-<div class="citation-card">
-<blockquote class="citation-text">"...n We remain unconventional in the degree to which we nconcentrate the investments of our insurance companies, including nthose in WPPSS bonds. This <span class="highlight">concentration</span> makes sense only nbecause our insurance business is conducted from a position of nexceptional financial strength. For almost all other insurers, a..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1984.html" class="citation-link">1984年致股东信 →</a></div>
-</div>
-<div class="citation-card">
-<blockquote class="citation-text">"...ause our insurance business is conducted from a position of nexceptional financial strength. For almost all other insurers, a ncomparable degree of <span class="highlight">concentration</span> (or anything close to it) nwould be totally inappropriate. Their capital positions are not nstrong enough to withstand a big error, no matter how a..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1984.html" class="citation-link">1984年致股东信 →</a></div>
-</div>
-<div class="citation-more">
-<a href="../letters/berkshire/1984.html">+ 还有1处引用</a>
-</div>
-</div>
-</div>
-</div>
-
-        </article>
-    </div>
-    <h2>引用来源（4处）</h2>
-<div class="citations-container">
-<div class="citation-year">
-<h3>1984年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">"...he year. In recent years, nshop volume at Christmas has grown in relative importance, and so nhave quantity orders and mail orders. The increased nconcentration of business in the Christmas period produces a nmultitude of managerial problems, all of which have been handled nby Chuck and his associates with..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1984.html" class="citation-link">1984年致股东信 →</a></div>
-</div>
-<div class="citation-card">
-<blockquote class="citation-text">"...n We remain unconventional in the degree to which we nconcentrate the investments of our insurance companies, including nthose in WPPSS bonds. This <span class="highlight">concentration</span> makes sense only nbecause our insurance business is conducted from a position of nexceptional financial strength. For almost all other insurers, a..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1984.html" class="citation-link">1984年致股东信 →</a></div>
-</div>
-<div class="citation-card">
-<blockquote class="citation-text">"...ause our insurance business is conducted from a position of nexceptional financial strength. For almost all other insurers, a ncomparable degree of <span class="highlight">concentration</span> (or anything close to it) nwould be totally inappropriate. Their capital positions are not nstrong enough to withstand a big error, no matter how a..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1984.html" class="citation-link">1984年致股东信 →</a></div>
-</div>
-<div class="citation-more">
-<a href="../letters/berkshire/1984.html">+ 还有1处引用</a>
-</div>
-</div>
-</div>
-</div>
-
-        </article>
-
-    </div>
-    
-    <footer>
-        <p><a href="../index.html">巴菲特知识库</a> | 数据来源：Berkshire Hathaway Letters</p>
+        <p>巴菲特知识库 | 数据来源：Berkshire Hathaway Letters to Shareholders</p>
     </footer>
 </body>
 </html>

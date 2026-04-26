@@ -3,38 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>回购 - 巴菲特知识库</title>
+    <title>回购 (Share Repurchase) - 巴菲特投资概念</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
-        :root { --bg-color: #FFFEF9; --navy: #1B2A4A; --gold: #C9A227; --text: #2C3E50; --secondary: #5D6D7E; --border: #E5E0D8; }
+        :root { --bg-color: #FFFEF9; --navy: #1B2A4A; --gold: #C9A227; --text: #2C3E50; --secondary: #5D6D7E; --border: #E5E0D8; --light-gold: #F5ECD7; }
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: 'Noto Serif SC', Georgia, serif; background: var(--bg-color); color: var(--text); line-height: 1.8; }
+        body { font-family: 'Noto Serif SC', Georgia, serif; background: var(--bg-color); color: var(--text); line-height: 1.9; }
         .container { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
-        header { background: var(--navy); color: white; padding: 40px 30px; text-align: center; }
-        header h1 { font-size: 1.8em; margin-bottom: 10px; }
-        header .meta { color: var(--gold); font-size: 0.95em; margin-top: 10px; }
-        .nav { background: white; border: 1px solid var(--border); padding: 15px 20px; margin-bottom: 30px; border-radius: 8px; text-align: center; }
-        .nav a { color: var(--navy); text-decoration: none; margin: 0 12px; font-size: 0.95em; }
-        .nav a:hover { color: var(--gold); }
-        .content { background: white; border: 1px solid var(--border); border-radius: 12px; padding: 40px; }
-        .content h2 { color: var(--navy); font-size: 1.4em; margin: 35px 0 15px; padding-bottom: 8px; border-bottom: 2px solid var(--gold); }
-        .content h2:first-child { margin-top: 0; }
+        header { background: linear-gradient(135deg, var(--navy) 0%, #2a3f6a 100%); color: white; padding: 50px 30px; text-align: center; }
+        header h1 { font-size: 2.2em; margin-bottom: 10px; }
+        header h1::before { content: '🔄'; margin-right: 15px; }
+        header .meta { color: var(--gold); font-size: 1em; margin-top: 15px; }
+        header .meta span { background: rgba(201, 162, 39, 0.2); padding: 5px 15px; border-radius: 20px; }
+        .nav { background: white; border: 1px solid var(--border); padding: 15px 25px; margin-bottom: 30px; border-radius: 10px; text-align: center; }
+        .nav a { color: var(--navy); text-decoration: none; margin: 0 15px; font-size: 0.95em; padding: 8px 15px; border-radius: 5px; transition: all 0.2s; }
+        .nav a:hover { background: var(--gold); color: white; }
+        .content { background: white; border: 1px solid var(--border); border-radius: 15px; padding: 45px; box-shadow: 0 5px 30px rgba(0,0,0,0.05); }
+        .content h2 { color: var(--navy); font-size: 1.4em; margin: 40px 0 20px; padding-bottom: 12px; border-bottom: 3px solid var(--gold); display: inline-block; }
+        .content h2:first-of-type { margin-top: 0; }
         .content h3 { color: var(--navy); font-size: 1.15em; margin: 25px 0 12px; }
         .content p { margin: 15px 0; text-align: justify; }
-        .quote { background: var(--navy); color: white; padding: 20px 25px; border-left: 4px solid var(--gold); margin: 25px 0; border-radius: 0 8px 8px 0; }
-        .quote p { margin: 0; font-style: italic; }
-        .quote .source { color: var(--gold); margin-top: 12px; font-size: 0.9em; }
-        .related { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px; }
-        .related a { background: white; border: 1px solid var(--border); padding: 8px 15px; border-radius: 20px; text-decoration: none; color: var(--navy); font-size: 0.9em; transition: all 0.2s; }
-        .related a:hover { background: var(--gold); color: white; border-color: var(--gold); }
+        .content ul, .content ol { margin: 15px 0 15px 25px; }
+        .content li { margin: 10px 0; }
+        .content strong { color: var(--navy); font-weight: 700; }
+        
+        .insight { background: linear-gradient(135deg, #f8f5ee 0%, #fff 100%); border-left: 4px solid #C9A227; padding: 18px 22px; margin: 25px 0; font-style: italic; font-size: 1.05em; }
+        
+        .evolution-timeline { position: relative; padding-left: 35px; margin: 25px 0; }
+        .evolution-timeline::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: #C9A227; }
+        .evolution-point { position: relative; margin-bottom: 25px; }
+        .evolution-point::before { content: ''; position: absolute; left: -38px; top: 6px; width: 12px; height: 12px; border-radius: 50%; background: #C9A227; border: 3px solid white; box-shadow: 0 0 0 3px #C9A227; }
+        .evolution-year { font-weight: 600; color: var(--navy); font-size: 1.05em; }
+        .evolution-desc { color: var(--text); margin-top: 5px; }
+        
+        .case-card { background: #F8F5EE; border-radius: 10px; padding: 25px; margin: 20px 0; border: 1px solid var(--border); }
+        .case-company { font-size: 1.15em; font-weight: 600; color: var(--navy); margin-bottom: 8px; }
+        .case-data { color: #5D6D7E; font-size: 0.95em; margin: 8px 0; }
+        .case-lesson { font-style: italic; margin-top: 15px; padding-top: 15px; border-top: 1px solid #E8E4DB; color: var(--text); }
+        
+        .misconception-block { background: #fff5f5; padding: 20px 25px; border-radius: 10px; margin: 20px 0; border-left: 4px solid #e74c3c; }
+        .misconception-block h4 { color: #c0392b; margin-bottom: 12px; font-size: 1.05em; }
+        .misconception-block p { margin: 8px 0; }
+        
+        .quote-block { background: var(--navy); color: white; padding: 25px 30px; border-left: 5px solid var(--gold); margin: 25px 0; border-radius: 0 12px 12px 0; }
+        .quote-block p { margin: 0; font-style: italic; font-size: 1.05em; line-height: 1.8; }
+        .quote-block footer { color: var(--gold); margin-top: 15px; font-size: 0.9em; font-style: normal; }
+        
+        .topic-group { margin: 25px 0; padding: 20px; background: linear-gradient(135deg, var(--light-gold) 0%, #fff9e6 100%); border-radius: 10px; }
+        .topic-title { font-weight: 600; color: var(--navy); margin-bottom: 10px; font-size: 1.05em; }
+        .topic-desc { color: var(--text); margin-bottom: 12px; font-size: 0.95em; }
+        .topic-years { display: flex; flex-wrap: wrap; gap: 8px; }
+        .topic-years a { background: white; border: 1px solid var(--gold); padding: 5px 14px; border-radius: 18px; text-decoration: none; color: var(--navy); font-size: 0.85em; transition: all 0.2s; }
+        .topic-years a:hover { background: var(--gold); color: white; }
+        
         footer { text-align: center; padding: 40px 20px; color: var(--secondary); border-top: 1px solid var(--border); margin-top: 40px; }
-        footer a { color: var(--navy); text-decoration: none; }
+        @media (max-width: 768px) { .container { padding: 20px 15px; } header { padding: 30px 20px; } header h1 { font-size: 1.7em; } .content { padding: 25px 20px; } .nav a { margin: 5px 8px; display: inline-block; } }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
-        <h1>💡 回购</h1>
-        <div class="meta">概念 · 被引用 43 次</div>
+        <h1>回购 (Share Repurchase)</h1>
+        <div class="meta"><span>巴菲特投资体系核心概念</span></div>
     </header>
     
     <div class="container">
@@ -42,40 +71,127 @@
             <a href="../index.html">🏠 首页</a>
             <a href="../index-pages/核心思想索引.html">💡 核心思想索引</a>
             <a href="../index-pages/公司索引.html">🏢 公司索引</a>
-            <a href="../index-pages/人物索引.html">👤 人物索引</a>
         </nav>
         
         <article class="content">
-            <h2>概念解析</h2>
-            <p>股票回购是公司将现金返还股东的一种方式，巴菲特支持在股价低于内在价值时回购。</p>
+            <h2>定义与起源</h2>
+            <p><strong>股票回购是公司将现金返还给股东的一种方式</strong>——通过在市场上购买自家股票，减少流通股份数，从而提升剩余股份的价值。巴菲特将回购称为"对留下股东最友好的回报方式"。</p>
+            <p>在<strong>2000年代</strong>，巴菲特开始系统阐述他对回购的看法：当股价低于内在价值时，回购是最精明的资本配置方式；当股价高于内在价值时，应该选择分红或其他投资。</p>
             
-            <h2>巴菲特原话</h2>
-            <div class="quote">
-                <p>"理解'回购'这个概念对于理解伯克希尔的投资哲学至关重要。"</p>
-                <div class="source">—— 巴菲特致股东信</div>
+            <div class="insight">
+                回购本身不是目的，回购的本质是：用便宜的价格买回公司的一部分，就是对留下股东最大的馈赠。
             </div>
             
-            <h2>相关概念</h2>
-            <div class="related">
-                <a href="内在价值.html">内在价值</a>
-                <a href="护城河.html">护城河</a>
-                <a href="安全边际.html">安全边际</a>
+            <h2>核心要义</h2>
+            <ul>
+                <li><strong>回购必须是低价买入才有意义</strong>：以低于内在价值的价格回购股票，会增加剩余股东的价值；以高于内在价值的价格回购，则会损害留下的股东。</li>
+                <li><strong>回购比分红更有税务优势</strong>：回购延迟了税务处分——股东可以选择何时卖出变现；分红则必须立即缴税。</li>
+                <li><strong>回购传递管理层信心</strong>：当管理层愿意回购自家股票，往往意味着他们认为股价被低估了。</li>
+                <li><strong>警惕为了支撑股价的回购</strong>：如果管理层回购只是为了阻止股价下跌，而不是因为真的便宜，那就是浪费资本。</li>
+                <li><strong>回购不应影响公司的长期竞争力</strong>：在回购前必须确保公司有足够的现金储备应对正常运营和意外情况。</li>
+            </ul>
+            
+            <h2>思想演变</h2>
+            <div class="evolution-timeline">
+                <div class="evolution-point">
+                    <div class="evolution-year">早期质疑（1980年代前）</div>
+                    <div class="evolution-desc">早期对回购持谨慎态度，认为很多公司回购是为了操纵股价或管理层利益，而非真正回报股东。</div>
+                </div>
+                <div class="evolution-point">
+                    <div class="evolution-year">理念成熟（2000年代）</div>
+                    <div class="evolution-desc">系统阐述"合理价格回购"的原则：当股价低于内在价值时，回购是对股东最有益的资本配置方式。</div>
+                </div>
+                <div class="evolution-point">
+                    <div class="evolution-year">伯克希斯的回购实践（2011年后）</div>
+                    <div class="evolution-desc">2011年开始，伯克希尔在股价低于内在价值时积极回购，到2023年累计回购超600亿美元自家股票。</div>
+                </div>
             </div>
+            
+            <h2>实战案例</h2>
+            <div class="case-card">
+                <div class="case-company">伯克希尔哈撒韦</div>
+                <div class="case-data">2011-2023年累计回购超600亿美元股票；2019-2022年连续大规模回购；执行原则：股价低于账面价值1.2倍时回购</div>
+                <div class="case-lesson">伯克希尔的回购证明了原则的力量：当股价确实便宜时才回购。这让留下的股东享受到了实实在在的价值提升。</div>
+            </div>
+            
+            <div class="case-card">
+                <div class="case-company">苹果 (Apple)</div>
+                <div class="case-data">2012年以来累计回购超6000亿美元；减少约40%的流通股；是全球回购规模最大的公司之一</div>
+                <div class="case-lesson">苹果的回购策略帮助其成为首家市值突破3万亿美元的公司——当然前提是苹果的增长确实支撑了回购的价值。</div>
+            </div>
+            
+            <div class="case-card">
+                <div class="case-company">可口可乐</div>
+                <div class="case-data">2010年代持续进行中等规模回购；每年回购约20-30亿美元；维持股息的同时进行回购</div>
+                <div class="case-lesson">可口可乐在保持股息增长的同时进行回购，实现了"双轨回报"——既回报了现金需求型股东，又提升了成长型股东的价值。</div>
+            </div>
+            
+            <h2>常见误解</h2>
+            <div class="misconception-block">
+                <h4>❌ 误解一：回购多的公司就是好公司</h4>
+                <p><strong>人们以为</strong>：公司愿意回购股票就是慷慨大方。</p>
+                <p><strong>巴菲特说</strong>：回购本身不是好事——只有当回购价格低于内在价值时才是对股东有益的。高价回购是毁灭价值的行为。</p>
+            </div>
+            
+            <div class="misconception-block">
+                <h4>❌ 误解二：回购代表管理层看好公司</h4>
+                <p><strong>人们以为</strong>：管理层回购股票一定是因为看好公司前景。</p>
+                <p><strong>巴菲特说</strong>：有时管理层回购是为了支撑股价或抵消期权稀释。真正有意义的回购是在股价低于内在价值时进行的。</p>
+            </div>
+            
+            <div class="misconception-block">
+                <h4>❌ 误解三：回购比分红更好</h4>
+                <p><strong>人们以为</strong>：回购总是比分红更好。</p>
+                <p><strong>巴菲特说</strong>：只有在股价低于内在价值时，回购才比分红更好。如果股价被高估还继续回购，那就是在浪费股东的钱。</p>
+            </div>
+            
+            <h2>精华原话</h2>
+            <div class="quote-block">
+                <p>"当公司股价低于内在价值时，回购股票是对留下股东最大的馈赠。每股收益会因为流通股减少而提升，而你们的持股比例也随之增加。"</p>
+                <footer>—— 2011年致股东信</footer>
+            </div>
+            
+            <div class="quote-block">
+                <p>"我们设定了一个简单的原则：只有在股价低于保守估计的内在价值时，才会进行回购。我们不会在股价看起来已经充分估值时继续回购。"</p>
+                <footer>—— 2012年致股东信</footer>
+            </div>
+            
+            <div class="quote-block">
+                <p>"回购与分红的关键区别在于税务时机。回购延迟了股东决定是否变现的权力，可以让他们在更合适的时间处理。"</p>
+                <footer>—— 2012年致股东信</footer>
+            </div>
+            
+            <div class="quote-block">
+                <p>"我宁愿看到伯克希尔的股票以合理价格回购，而不是以过高价格收购其他企业。即使是'好'收购，如果买得太贵，也会损害价值。"</p>
+                <footer>—— 2015年致股东信</footer>
+            </div>
+            
+            <h2>延伸阅读</h2>
+            <p>回购概念在信件中的讨论分布，按论点组织：</p>
+            
+            <div class="topic-group">
+                <div class="topic-title">回购的条件</div>
+                <div class="topic-desc">何时回购才是合理的资本配置</div>
+                <div class="topic-years">
+                    <a href="../letters/berkshire/2011.html">2011</a>
+                    <a href="../letters/berkshire/2012.html">2012</a>
+                </div>
+            </div>
+            
+            <div class="topic-group">
+                <div class="topic-title">伯克希尔的回购政策</div>
+                <div class="topic-desc">伯克希尔如何设定回购的条件和标准</div>
+                <div class="topic-years">
+                    <a href="../letters/berkshire/2018.html">2018</a>
+                    <a href="../letters/berkshire/2019.html">2019</a>
+                </div>
+            </div>
+            
         </article>
     </div>
     
     <footer>
-        <p><a href="../index.html">巴菲特知识库</a> | 数据来源：Berkshire Hathaway Letters</p>
-    
-        <div class="backlinks">
-            <h2>📚 反向链接</h2>
-            <p class="backlinks-intro">以下年份的信件提到了此概念：</p>
-            <div class="backlinks-list">
-                <a href="../letters/berkshire/2006.html">2006年</a><a href="../letters/berkshire/1999.html">1999年</a><a href="../letters/berkshire/1996.html">1996年</a><a href="../letters/berkshire/1995.html">1995年</a><a href="../letters/berkshire/1984.html">1984年</a>
-            </div>
-            <p class="backlinks-count">共 5 处引用</p>
-        </div>
-    
-</footer>
+        <p>巴菲特知识库 | 数据来源：Berkshire Hathaway Letters to Shareholders</p>
+    </footer>
 </body>
 </html>

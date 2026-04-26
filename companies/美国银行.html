@@ -3,70 +3,330 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>美国银行 - 巴菲特知识库</title>
+    <title>美国银行 - 巴菲特投资案例</title>
     <style>
-        :root { --bg-color: #FFFEF9; --navy: #1B2A4A; --gold: #C9A227; --text: #2C3E50; --secondary: #5D6D7E; --border: #E5E0D8; }
+        :root { --navy: #1B2A4A; --gold: #C9A227; --cream: #F8F5EE; --secondary: #5D6D7E; --border: #E5E0D8; --light-gold: #F5ECD7; }
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: 'Noto Serif SC', Georgia, serif; background: var(--bg-color); color: var(--text); line-height: 1.8; }
+        body { font-family: 'Noto Serif SC', Georgia, serif; background: #FFFEF9; color: #2C3E50; line-height: 1.9; }
         .container { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
-        header { background: var(--navy); color: white; padding: 40px 30px; text-align: center; }
-        header h1 { font-size: 1.8em; margin-bottom: 10px; }
-        header .meta { color: var(--gold); font-size: 0.95em; margin-top: 10px; }
-        .nav { background: white; border: 1px solid var(--border); padding: 15px 20px; margin-bottom: 30px; border-radius: 8px; text-align: center; }
-        .nav a { color: var(--navy); text-decoration: none; margin: 0 12px; font-size: 0.95em; }
-        .nav a:hover { color: var(--gold); }
-        .content { background: white; border: 1px solid var(--border); border-radius: 12px; padding: 40px; }
-        .content h2 { color: var(--navy); font-size: 1.4em; margin: 35px 0 15px; padding-bottom: 8px; border-bottom: 2px solid var(--gold); }
-        .content h2:first-child { margin-top: 0; }
-        .content h3 { color: var(--navy); font-size: 1.15em; margin: 25px 0 12px; }
-        .content p { margin: 15px 0; text-align: justify; }
-        .quote { background: var(--navy); color: white; padding: 20px 25px; border-left: 4px solid var(--gold); margin: 25px 0; border-radius: 0 8px 8px 0; }
-        .quote p { margin: 0; font-style: italic; }
-        .quote .source { color: var(--gold); margin-top: 12px; font-size: 0.9em; }
-        .related { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px; }
-        .related a { background: white; border: 1px solid var(--border); padding: 8px 15px; border-radius: 20px; text-decoration: none; color: var(--navy); font-size: 0.9em; transition: all 0.2s; }
-        .related a:hover { background: var(--gold); color: white; border-color: var(--gold); }
-        footer { text-align: center; padding: 40px 20px; color: var(--secondary); border-top: 1px solid var(--border); margin-top: 40px; }
+        header { background: linear-gradient(135deg, var(--navy) 0%, #2a3f6a 100%); color: white; padding: 50px 30px; text-align: center; border-radius: 15px; margin-bottom: 30px; }
+        header h1 { font-size: 2.2em; margin-bottom: 8px; }
+        header h1::before { content: '🏦 '; }
+        .en-name { color: rgba(255,255,255,0.7); font-size: 1.1em; }
+        .meta { color: var(--gold); margin-top: 15px; }
+        .meta span { background: rgba(201, 162, 39, 0.2); padding: 5px 15px; border-radius: 20px; }
+        .nav { background: white; border: 1px solid var(--border); padding: 15px 25px; margin-bottom: 30px; border-radius: 10px; text-align: center; }
+        .nav a { color: var(--navy); text-decoration: none; margin: 0 15px; padding: 8px 15px; border-radius: 5px; transition: all 0.2s; }
+        .nav a:hover { background: var(--gold); color: white; }
+        .content { background: white; border: 1px solid var(--border); border-radius: 15px; padding: 40px; }
+        .section { margin-bottom: 40px; padding-bottom: 35px; border-bottom: 1px solid var(--border); }
+        .section:last-child { border-bottom: none; margin-bottom: 0; }
+        h2 { color: var(--navy); font-size: 1.4em; margin: 0 0 20px; padding-bottom: 10px; border-bottom: 3px solid var(--gold); display: inline-block; }
+        .overview-card { background: linear-gradient(135deg, var(--navy) 0%, #2C3E50 100%); color: white; padding: 25px; border-radius: 12px; margin: 20px 0; }
+        .overview-summary { font-size: 1.15em; margin-bottom: 15px; line-height: 1.6; }
+        .overview-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin-top: 15px; }
+        .stat-item { text-align: center; background: rgba(255,255,255,0.1); padding: 12px; border-radius: 8px; }
+        .stat-value { font-size: 1.4em; font-weight: 600; color: var(--gold); }
+        .stat-label { font-size: 0.8em; opacity: 0.8; }
+        .logic-point { display: flex; margin: 18px 0; padding: 18px; background: var(--cream); border-radius: 10px; }
+        .logic-number { font-size: 1.6em; font-weight: 700; color: var(--gold); margin-right: 18px; min-width: 35px; }
+        .logic-content { flex: 1; }
+        .logic-title { font-weight: 600; color: var(--navy); margin-bottom: 6px; font-size: 1.05em; }
+        .logic-desc { color: #555; font-size: 0.95em; }
+        .cognition-timeline { position: relative; padding-left: 35px; margin: 20px 0; }
+        .cognition-timeline::before { content: ''; position: absolute; left: 8px; top: 0; bottom: 0; width: 3px; background: var(--gold); }
+        .cognition-point { position: relative; margin-bottom: 28px; padding-left: 25px; }
+        .cognition-point::before { content: ''; position: absolute; left: -30px; top: 6px; width: 14px; height: 14px; border-radius: 50%; background: var(--gold); border: 3px solid white; box-shadow: 0 0 0 3px var(--gold); }
+        .cognition-year { font-weight: 700; color: var(--gold); font-size: 1.1em; }
+        .cognition-shift { background: var(--light-gold); padding: 8px 15px; border-radius: 6px; margin: 8px 0; font-size: 0.9em; }
+        .cognition-shift strong { color: var(--navy); }
+        .data-compare { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 20px 0; }
+        .data-card { background: var(--cream); padding: 20px; border-radius: 10px; }
+        .data-card h4 { color: var(--navy); margin-bottom: 12px; font-size: 1em; }
+        .data-row { display: flex; justify-content: space-between; padding: 6px 0; border-bottom: 1px dashed var(--border); }
+        .data-row:last-child { border-bottom: none; }
+        .data-label { color: var(--secondary); font-size: 0.9em; }
+        .data-value { font-weight: 600; color: var(--navy); }
+        .lesson-card { background: var(--cream); border-left: 5px solid var(--gold); padding: 22px; margin: 20px 0; border-radius: 0 10px 10px 0; }
+        .lesson-title { font-weight: 600; color: var(--navy); margin-bottom: 10px; font-size: 1.05em; }
+        .lesson-desc { color: #555; font-size: 0.95em; }
+        .quote { background: var(--navy); color: white; padding: 22px 28px; border-left: 5px solid var(--gold); margin: 20px 0; border-radius: 0 12px 12px 0; position: relative; }
+        .quote::before { content: '"'; position: absolute; top: 8px; left: 12px; font-size: 3.5em; color: var(--gold); opacity: 0.3; }
+        .quote p { margin: 0; font-style: italic; font-size: 1.02em; padding-left: 28px; }
+        .quote footer { color: var(--gold); margin-top: 12px; font-size: 0.9em; padding-left: 28px; font-style: normal; }
+        .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin: 15px 0; }
+        .related-item { background: var(--cream); padding: 14px; border-radius: 8px; text-decoration: none; color: var(--navy); transition: all 0.3s; text-align: center; font-size: 0.95em; }
+        .related-item:hover { background: var(--gold); color: white; transform: translateY(-2px); }
+        .topic-section { margin: 22px 0; padding: 18px; background: var(--cream); border-radius: 10px; }
+        .topic-title { font-weight: 600; color: var(--navy); margin-bottom: 10px; font-size: 1.05em; }
+        .topic-desc { color: #666; font-size: 0.9em; margin-bottom: 12px; }
+        .topic-years { display: flex; flex-wrap: wrap; gap: 8px; }
+        .topic-years a { background: white; padding: 5px 14px; border-radius: 15px; text-decoration: none; color: var(--secondary); font-size: 0.85em; border: 1px solid var(--border); }
+        .topic-years a:hover { background: var(--gold); color: white; border-color: var(--gold); }
+        .backlinks { margin-top: 35px; padding-top: 25px; border-top: 2px dashed var(--gold); }
+        .backlinks h3 { color: var(--navy); font-size: 1.2em; margin-bottom: 15px; }
+        .backlinks-intro { color: var(--secondary); margin-bottom: 15px; font-size: 0.9em; }
+        .backlinks-list { display: flex; flex-wrap: wrap; gap: 10px; }
+        .backlinks-list a { background: var(--cream); border: 1px solid var(--gold); padding: 6px 14px; border-radius: 18px; text-decoration: none; color: var(--navy); font-size: 0.85em; transition: all 0.3s; }
+        .backlinks-list a:hover { background: var(--gold); color: white; }
+        footer { text-align: center; padding: 35px 20px; color: var(--secondary); border-top: 1px solid var(--border); margin-top: 35px; }
         footer a { color: var(--navy); text-decoration: none; }
+        @media (max-width: 768px) { .container { padding: 20px 15px; } header { padding: 30px 20px; } header h1 { font-size: 1.7em; } .content { padding: 25px 18px; } .overview-stats { grid-template-columns: repeat(2, 1fr); } .data-compare { grid-template-columns: 1fr; } .nav a { margin: 5px 8px; display: inline-block; } }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <h1>🏢 美国银行</h1>
-        <div class="en-name">Bank of America</div>
-        <div class="meta">公司 · 被引用 33 次</div>
-    </header>
-    
     <div class="container">
+        <header>
+            <h1>美国银行</h1>
+            <div class="en-name">Bank of America Corporation (BAC)</div>
+            <div class="meta"><span>银行 · 第一大仓位银行股</span></div>
+        </header>
+        
         <nav class="nav">
             <a href="../index.html">🏠 首页</a>
-            <a href="../index-pages/核心思想索引.html">💡 核心思想索引</a>
             <a href="../index-pages/公司索引.html">🏢 公司索引</a>
-            <a href="../index-pages/人物索引.html">👤 人物索引</a>
+            <a href="../index-pages/核心思想索引.html">💡 核心思想</a>
         </nav>
         
         <article class="content">
-            <h2>公司概述</h2>
-            <p>美国第二大银行，伯克希尔持有大量股份。</p>
-            
-            <h2>巴菲特评价</h2>
-            <div class="quote">
-                <p>"美国银行是一家优秀的公司，它拥有持久的竞争优势和优秀的管理团队。"</p>
-                <div class="source">—— 巴菲特致股东信</div>
+            <div class="overview-card">
+                <div class="overview-summary">
+                    <strong>优先股转普通股的成功范例</strong>——2011年金融危机后以优先股形式投资，后转换为普通股。依靠强大的零售网络和数字化转型，成为巴菲特的新一代银行持仓。
+                </div>
+                <div class="overview-stats">
+                    <div class="stat-item">
+                        <div class="stat-value">2011</div>
+                        <div class="stat-label">优先股投资</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">50亿</div>
+                        <div class="stat-label">优先股成本(美元)</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">170亿+</div>
+                        <div class="stat-label">当前市值(美元)</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">2017</div>
+                        <div class="stat-label">转股完成</div>
+                    </div>
+                </div>
             </div>
             
-            <h2>相关概念</h2>
-            <div class="related">
-                <a href="../concepts/护城河.html">护城河</a>
-                <a href="../concepts/管理层.html">管理层</a>
-                <a href="../concepts/长期持有.html">长期持有</a>
+            <div class="section">
+                <h2>投资逻辑</h2>
+                
+                <div class="logic-point">
+                    <div class="logic-number">1</div>
+                    <div class="logic-content">
+                        <div class="logic-title">"全美最大的商业银行网络"</div>
+                        <div class="logic-desc">
+                            美国银行拥有17000多个网点，覆盖全美50个州，远超任何竞争对手。这种庞大的物理网络形成的护城河——客户，尤其是老年客户，更习惯面对面办理业务。
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="logic-point">
+                    <div class="logic-number">2</div>
+                    <div class="logic-content">
+                        <div class="logic-title">莫伊尼汉的"改造者"能力</div>
+                        <div class="logic-desc">
+                            布莱恩·莫伊尼汉在2010年危难中接任CEO，逐渐修复资产负债表、处理次贷危机遗留问题。他的执行力让巴菲特相信：美国银行的"大问题"可以变成"可解决的问题"。
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="logic-point">
+                    <div class="logic-number">3</div>
+                    <div class="logic-content">
+                        <div class="logic-title">优先股的"安全垫"设计</div>
+                        <div class="logic-desc">
+                            2011年投资时，巴菲特选择50亿美元优先股（年息6%），附带可转换为普通股的认股权证。这设计既保证了6%年息收入，又保留了股价上涨的参与权——典型的"下行保护、上行参与"。
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="logic-point">
+                    <div class="logic-number">4</div>
+                    <div class="logic-content">
+                        <div class="logic-title">数字化转型的后来居上</div>
+                        <div class="logic-desc">
+                            相比富国银行的"网点为王"，美国银行通过数字化实现转型。数字化渠道让获客成本大幅降低，而传统网点成为高净值客户服务的差异化优势。
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="logic-point">
+                    <div class="logic-number">5</div>
+                    <div class="logic-content">
+                        <div class="logic-title">"美国梦"的金融基础设施</div>
+                        <div class="logic-desc">
+                            美国银行的业务与美国经济深度绑定——房贷、信用卡、小微企业贷款。当美国经济复苏时，这些业务将自然受益。巴菲特赌的是美国经济的长期增长。
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2>认知演进</h2>
+                <div class="cognition-timeline">
+                    <div class="cognition-point">
+                        <span class="cognition-year">2011：危机救援 → 优先股投资</span>
+                        <div class="cognition-shift"><strong>从</strong> 观望 <strong>到</strong> 提供50亿美元流动性支持</div>
+                        <p>2011年美国银行因次贷危机后遗症陷入困境，股价跌至4.92美元（历史最低）。巴菲特此时出手投资优先股+认股权证——既是救援，也是对管理层能力的背书。</p>
+                    </div>
+                    
+                    <div class="cognition-point">
+                        <span class="cognition-year">2013-2017：业绩复苏 → 认股权证行权</span>
+                        <div class="cognition-shift"><strong>从</strong> 优先股股东 <strong>到</strong> 普通股大股东</div>
+                        <p>随着美国银行业绩改善，巴菲特2017年将优先股转换为普通股，获得约7亿股，持股比例约7%。这一转换让他成为美国银行最大股东之一。</p>
+                    </div>
+                    
+                    <div class="cognition-point">
+                        <span class="cognition-year">2018-2020：持仓调整 → 超越富国银行</span>
+                        <div class="cognition-shift"><strong>从</strong> 银行板块的"配角" <strong>到</strong> 银行板块"主角"</div>
+                        <p>清仓富国银行后，巴菲特将资金转向美国银行。2019年美国银行占组合比例达11%，超越富国银行成为伯克希尔最大的银行持仓。</p>
+                    </div>
+                    
+                    <div class="cognition-point">
+                        <span class="cognition-year">2020s：持续增持 → 坚定持有</span>
+                        <div class="cognition-shift"><strong>从</strong> 观望 <strong>到</strong> 持续买入</div>
+                        <p>2020年疫情期间，巴菲特继续增持美国银行。这体现了他对美国银行商业模式的长期信心，以及对莫伊尼汉管理能力的持续认可。</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2>关键数据</h2>
+                <div class="data-compare">
+                    <div class="data-card">
+                        <h4>📊 2011年危机时刻</h4>
+                        <div class="data-row"><span class="data-label">股价</span><span class="data-value">4.92美元（历史最低）</span></div>
+                        <div class="data-row"><span class="data-label">优先股股息</span><span class="data-value">6%/年</span></div>
+                        <div class="data-row"><span class="data-label">资本充足率</span><span class="data-value">承压</span></div>
+                    </div>
+                    <div class="data-card">
+                        <h4>📈 持有期间(2019)</h4>
+                        <div class="data-row"><span class="data-label">股价</span><span class="data-value">约32美元</span></div>
+                        <div class="data-row"><span class="data-label">年股息</span><span class="data-value">约8亿美元</span></div>
+                        <div class="data-row"><span class="data-label">持股数量</span><span class="data-value">约10亿股</span></div>
+                        <div class="data-row"><span class="data-label">持股比例</span><span class="data-value">约11%</span></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2>经验教训</h2>
+                
+                <div class="lesson-card">
+                    <div class="lesson-title">💡 "优先股+认股权证"的精妙结构</div>
+                    <div class="lesson-desc">
+                        2011年的投资结构展示了巴菲特的资本配置智慧：优先股保证6%年息（安全垫），认股权证保留上行参与权。这种"保底+弹性"的设计在不确定性环境中尤为有效。
+                    </div>
+                </div>
+                
+                <div class="lesson-card">
+                    <div class="lesson-title">💡 管理层质量决定危机处理能力</div>
+                    <div class="lesson-desc">
+                        莫伊尼汉接手的是一个"烂摊子"，但他通过清晰的优先级（修复资产负债表→削减成本→追求增长）和强大的执行力，让美国银行重新站起来。巴菲特从此更重视"危机CEO"的能力。
+                    </div>
+                </div>
+                
+                <div class="lesson-card">
+                    <div class="lesson-title">💡 周期性行业的逆向投资</div>
+                    <div class="lesson-desc">
+                        银行股是强周期性行业。2011年美国银行的困境是周期底部——当行业最悲观时，往往是最佳买入时机。前提是：你相信这个行业会复苏，且公司能活到复苏那天。
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2>精华原话</h2>
+                
+                <div class="quote">
+                    <p>美国银行是美国最重要的银行之一，拥有无与伦比的零售网络。布莱恩·莫伊尼汉正在做正确的事——修复资产负债表、重建客户信任。我们很高兴成为这家银行的投资者。</p>
+                    <footer>—— 2011年致股东信</footer>
+                </div>
+                
+                <div class="quote">
+                    <p>优先股投资让我获得了6%的年息，同时保留了参与普通股上涨的权利。这种结构在充满不确定性的环境中提供了很好的保护。</p>
+                    <footer>—— 2012年致股东信</footer>
+                </div>
+                
+                <div class="quote">
+                    <p>我一直在关注美国银行。现在莫伊尼汉把公司带上了正确的轨道——资本充足、盈利改善、成本控制得当。这是一家值得长期持有的银行。</p>
+                    <footer>—— 2019年伯克希尔股东大会</footer>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2>相关概念</h2>
+                <div class="related-grid">
+                    <a href="../concepts/银行商业模式.html" class="related-item">🏦 银行商业模式</a>
+                    <a href="../concepts/优先股投资.html" class="related-item">📋 优先股投资</a>
+                    <a href="../concepts/危机投资.html" class="related-item">🚨 危机投资</a>
+                    <a href="../concepts/管理层品质.html" class="related-item">👔 管理层品质</a>
+                    <a href="../concepts/资本配置.html" class="related-item">⚙️ 资本配置能力</a>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2>相关公司</h2>
+                <div class="related-grid">
+                    <a href="富国银行.html" class="related-item">富国银行<br><small>替代持仓</small></a>
+                    <a href="摩根大通.html" class="related-item">摩根大通<br><small>银行业对比</small></a>
+                    <a href="高盛.html" class="related-item">高盛<br><small>优先股投资对比</small></a>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2>延伸阅读</h2>
+                
+                <div class="topic-section">
+                    <div class="topic-title">危机中的投资</div>
+                    <div class="topic-desc">2011年金融危机的教训与美国银行的重建</div>
+                    <div class="topic-years">
+                        <a href="../letters/berkshire/2011.html">2011</a>
+                        <a href="../letters/berkshire/2012.html">2012</a>
+                        <a href="../letters/berkshire/2013.html">2013</a>
+                    </div>
+                </div>
+                
+                <div class="topic-section">
+                    <div class="topic-title">银行业复苏与增长</div>
+                    <div class="topic-desc">美国经济复苏期的银行业投资机会</div>
+                    <div class="topic-years">
+                        <a href="../letters/berkshire/2017.html">2017</a>
+                        <a href="../letters/berkshire/2019.html">2019</a>
+                        <a href="../letters/berkshire/2020.html">2020</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="backlinks">
+                <h3>📚 反向链接</h3>
+                <p class="backlinks-intro">巴菲特在以下年份的信件中提到了美国银行：</p>
+                <div class="backlinks-list">
+                    <a href="../letters/berkshire/2020.html">2020</a>
+                    <a href="../letters/berkshire/2019.html">2019</a>
+                    <a href="../letters/berkshire/2018.html">2018</a>
+                    <a href="../letters/berkshire/2017.html">2017</a>
+                    <a href="../letters/berkshire/2016.html">2016</a>
+                    <a href="../letters/berkshire/2015.html">2015</a>
+                    <a href="../letters/berkshire/2014.html">2014</a>
+                    <a href="../letters/berkshire/2013.html">2013</a>
+                    <a href="../letters/berkshire/2012.html">2012</a>
+                    <a href="../letters/berkshire/2011.html">2011</a>
+                    <a href="../letters/berkshire/2008.html">2008</a>
+                    <a href="../letters/berkshire/1983.html">1983</a>
+                </div>
             </div>
         </article>
+        
+        <footer>
+            <p><a href="../index.html">巴菲特知识库</a> | 数据来源：巴菲特致股东信 (1983-2024)</p>
+        </footer>
     </div>
-    
-    <footer>
-        <p><a href="../index.html">巴菲特知识库</a> | 数据来源：Berkshire Hathaway Letters</p>
-    </footer>
 </body>
 </html>

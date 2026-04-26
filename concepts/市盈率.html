@@ -3,38 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>市盈率 - 巴菲特知识库</title>
+    <title>市盈率 (P/E Ratio) - 巴菲特投资概念</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
-        :root { --bg-color: #FFFEF9; --navy: #1B2A4A; --gold: #C9A227; --text: #2C3E50; --secondary: #5D6D7E; --border: #E5E0D8; }
+        :root { --bg-color: #FFFEF9; --navy: #1B2A4A; --gold: #C9A227; --text: #2C3E50; --secondary: #5D6D7E; --border: #E5E0D8; --light-gold: #F5ECD7; }
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: 'Noto Serif SC', Georgia, serif; background: var(--bg-color); color: var(--text); line-height: 1.8; }
+        body { font-family: 'Noto Serif SC', Georgia, serif; background: var(--bg-color); color: var(--text); line-height: 1.9; }
         .container { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
-        header { background: var(--navy); color: white; padding: 40px 30px; text-align: center; }
-        header h1 { font-size: 1.8em; margin-bottom: 10px; }
-        header .meta { color: var(--gold); font-size: 0.95em; margin-top: 10px; }
-        .nav { background: white; border: 1px solid var(--border); padding: 15px 20px; margin-bottom: 30px; border-radius: 8px; text-align: center; }
-        .nav a { color: var(--navy); text-decoration: none; margin: 0 12px; font-size: 0.95em; }
-        .nav a:hover { color: var(--gold); }
-        .content { background: white; border: 1px solid var(--border); border-radius: 12px; padding: 40px; }
-        .content h2 { color: var(--navy); font-size: 1.4em; margin: 35px 0 15px; padding-bottom: 8px; border-bottom: 2px solid var(--gold); }
-        .content h2:first-child { margin-top: 0; }
+        header { background: linear-gradient(135deg, var(--navy) 0%, #2a3f6a 100%); color: white; padding: 50px 30px; text-align: center; }
+        header h1 { font-size: 2.2em; margin-bottom: 10px; }
+        header h1::before { content: '📈'; margin-right: 15px; }
+        header .meta { color: var(--gold); font-size: 1em; margin-top: 15px; }
+        header .meta span { background: rgba(201, 162, 39, 0.2); padding: 5px 15px; border-radius: 20px; }
+        .nav { background: white; border: 1px solid var(--border); padding: 15px 25px; margin-bottom: 30px; border-radius: 10px; text-align: center; }
+        .nav a { color: var(--navy); text-decoration: none; margin: 0 15px; font-size: 0.95em; padding: 8px 15px; border-radius: 5px; transition: all 0.2s; }
+        .nav a:hover { background: var(--gold); color: white; }
+        .content { background: white; border: 1px solid var(--border); border-radius: 15px; padding: 45px; box-shadow: 0 5px 30px rgba(0,0,0,0.05); }
+        .content h2 { color: var(--navy); font-size: 1.4em; margin: 40px 0 20px; padding-bottom: 12px; border-bottom: 3px solid var(--gold); display: inline-block; }
+        .content h2:first-of-type { margin-top: 0; }
         .content h3 { color: var(--navy); font-size: 1.15em; margin: 25px 0 12px; }
         .content p { margin: 15px 0; text-align: justify; }
-        .quote { background: var(--navy); color: white; padding: 20px 25px; border-left: 4px solid var(--gold); margin: 25px 0; border-radius: 0 8px 8px 0; }
-        .quote p { margin: 0; font-style: italic; }
-        .quote .source { color: var(--gold); margin-top: 12px; font-size: 0.9em; }
-        .related { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px; }
-        .related a { background: white; border: 1px solid var(--border); padding: 8px 15px; border-radius: 20px; text-decoration: none; color: var(--navy); font-size: 0.9em; transition: all 0.2s; }
-        .related a:hover { background: var(--gold); color: white; border-color: var(--gold); }
+        .content ul, .content ol { margin: 15px 0 15px 25px; }
+        .content li { margin: 10px 0; }
+        .content strong { color: var(--navy); font-weight: 700; }
+        
+        .insight { background: linear-gradient(135deg, #f8f5ee 0%, #fff 100%); border-left: 4px solid #C9A227; padding: 18px 22px; margin: 25px 0; font-style: italic; font-size: 1.05em; }
+        
+        .evolution-timeline { position: relative; padding-left: 35px; margin: 25px 0; }
+        .evolution-timeline::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: #C9A227; }
+        .evolution-point { position: relative; margin-bottom: 25px; }
+        .evolution-point::before { content: ''; position: absolute; left: -38px; top: 6px; width: 12px; height: 12px; border-radius: 50%; background: #C9A227; border: 3px solid white; box-shadow: 0 0 0 3px #C9A227; }
+        .evolution-year { font-weight: 600; color: var(--navy); font-size: 1.05em; }
+        .evolution-desc { color: var(--text); margin-top: 5px; }
+        
+        .case-card { background: #F8F5EE; border-radius: 10px; padding: 25px; margin: 20px 0; border: 1px solid var(--border); }
+        .case-company { font-size: 1.15em; font-weight: 600; color: var(--navy); margin-bottom: 8px; }
+        .case-data { color: #5D6D7E; font-size: 0.95em; margin: 8px 0; }
+        .case-lesson { font-style: italic; margin-top: 15px; padding-top: 15px; border-top: 1px solid #E8E4DB; color: var(--text); }
+        
+        .misconception-block { background: #fff5f5; padding: 20px 25px; border-radius: 10px; margin: 20px 0; border-left: 4px solid #e74c3c; }
+        .misconception-block h4 { color: #c0392b; margin-bottom: 12px; font-size: 1.05em; }
+        .misconception-block p { margin: 8px 0; }
+        
+        .quote-block { background: var(--navy); color: white; padding: 25px 30px; border-left: 5px solid var(--gold); margin: 25px 0; border-radius: 0 12px 12px 0; }
+        .quote-block p { margin: 0; font-style: italic; font-size: 1.05em; line-height: 1.8; }
+        .quote-block footer { color: var(--gold); margin-top: 15px; font-size: 0.9em; font-style: normal; }
+        
+        .topic-group { margin: 25px 0; padding: 20px; background: linear-gradient(135deg, var(--light-gold) 0%, #fff9e6 100%); border-radius: 10px; }
+        .topic-title { font-weight: 600; color: var(--navy); margin-bottom: 10px; font-size: 1.05em; }
+        .topic-desc { color: var(--text); margin-bottom: 12px; font-size: 0.95em; }
+        .topic-years { display: flex; flex-wrap: wrap; gap: 8px; }
+        .topic-years a { background: white; border: 1px solid var(--gold); padding: 5px 14px; border-radius: 18px; text-decoration: none; color: var(--navy); font-size: 0.85em; transition: all 0.2s; }
+        .topic-years a:hover { background: var(--gold); color: white; }
+        
         footer { text-align: center; padding: 40px 20px; color: var(--secondary); border-top: 1px solid var(--border); margin-top: 40px; }
-        footer a { color: var(--navy); text-decoration: none; }
+        @media (max-width: 768px) { .container { padding: 20px 15px; } header { padding: 30px 20px; } header h1 { font-size: 1.7em; } .content { padding: 25px 20px; } .nav a { margin: 5px 8px; display: inline-block; } }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
-        <h1>💡 市盈率</h1>
-        <div class="meta">概念 · 被引用 24 次</div>
+        <h1>市盈率 (P/E Ratio)</h1>
+        <div class="meta"><span>巴菲特投资体系核心概念</span></div>
     </header>
     
     <div class="container">
@@ -42,30 +71,127 @@
             <a href="../index.html">🏠 首页</a>
             <a href="../index-pages/核心思想索引.html">💡 核心思想索引</a>
             <a href="../index-pages/公司索引.html">🏢 公司索引</a>
-            <a href="../index-pages/人物索引.html">👤 人物索引</a>
         </nav>
         
         <article class="content">
-            <h2>概念解析</h2>
-            <p>市盈率是股价与每股收益的比率，用于评估股票的相对估值。</p>
+            <h2>定义与起源</h2>
+            <p><strong>市盈率是股票价格与每股收益的比值</strong>——反映投资者为每1元盈利愿意支付的价格。巴菲特将市盈率视为评估企业相对价值的有用工具，但强调它必须结合企业质量和其他因素综合考量。</p>
+            <p>格雷厄姆在<strong>1934年</strong>的《证券分析》中系统阐述了这一指标，巴菲特继承了格雷厄姆对价值与价格差异的关注，但对如何使用市盈率有了更成熟的理解。</p>
             
-            <h2>巴菲特原话</h2>
-            <div class="quote">
-                <p>"理解'市盈率'这个概念对于理解伯克希尔的投资哲学至关重要。"</p>
-                <div class="source">—— 巴菲特致股东信</div>
+            <div class="insight">
+                市盈率本身只是一个数字游戏——关键不是这个数字有多低，而是企业能否以足够高的回报率运用这些资本来证明这个价格是合理的。
             </div>
             
-            <h2>相关概念</h2>
-            <div class="related">
-                <a href="内在价值.html">内在价值</a>
-                <a href="护城河.html">护城河</a>
-                <a href="安全边际.html">安全边际</a>
+            <h2>核心要义</h2>
+            <ul>
+                <li><strong>市盈率是相对指标，不是绝对标准</strong>：高市盈率可能合理，低市盈率可能陷阱，关键看背后的企业质量和成长性。</li>
+                <li><strong>关注"peg"思维</strong>：如果一家公司增长快速且确定，高市盈率可能是合理的；但对未来成长过于乐观是危险的。</li>
+                <li><strong>利率环境决定合理市盈率</strong>：低利率环境下，高市盈率更合理；高利率环境下，要求的市盈率更低。</li>
+                <li><strong>警惕周期性股票的市盈率陷阱</strong>：在盈利高峰时市盈率很低，在盈利低谷时市盈率很高，需要调整看待。</li>
+                <li><strong>回购与市盈率</strong>：公司以低市盈率回购股票会提升股东价值，以高市盈率回购则可能损害价值。</li>
+            </ul>
+            
+            <h2>思想演变</h2>
+            <div class="evolution-timeline">
+                <div class="evolution-point">
+                    <div class="evolution-year">格雷厄姆阶段（1950年代）</div>
+                    <div class="evolution-desc">严格遵守"市盈率不超过15倍"的标准，寻找低估值机会，专注于价格而非质量。</div>
+                </div>
+                <div class="evolution-point">
+                    <div class="evolution-year">理念扩展（1970-1980年代）</div>
+                    <div class="evolution-desc">开始接受适度的高市盈率，只要企业质量足够好且护城河足够宽。喜诗、可口可乐都是在这个框架下买入的。</div>
+                </div>
+                <div class="evolution-point">
+                    <div class="evolution-year">动态评估（1990年代至今）</div>
+                    <div class="evolution-desc">不再机械看待市盈率，而是将其作为思考企业价值的起点，结合护城河、资本回报、管理质量等综合判断。</div>
+                </div>
             </div>
+            
+            <h2>实战案例</h2>
+            <div class="case-card">
+                <div class="case-company">可口可乐 (Coca-Cola)</div>
+                <div class="case-data">1988年买入时市盈率约15倍；年收益增长约15%；持有35年后价值增长超20倍</div>
+                <div class="case-lesson">看似普通的市盈率，但背后是强大的品牌护城河和持续增长能力。高质量企业在合理市盈率买入，长期回报惊人。</div>
+            </div>
+            
+            <div class="case-card">
+                <div class="case-company">IBM</div>
+                <div class="case-data">2011年开始买入；市盈率约15倍；最终2018年清仓，亏损约10亿美元</div>
+                <div class="case-lesson">即使以合理市盈率买入，如果护城河判断错误，依然会失败。IBM的护城河比预期弱得多。</div>
+            </div>
+            
+            <div class="case-card">
+                <div class="case-company">苹果 (Apple)</div>
+                <div class="case-data">2016年开始买入时市盈率约10-12倍；拥有强大护城河和大量现金；持仓盈利超500%</div>
+                <div class="case-lesson">科技股不一定高市盈率。苹果的护城河（生态、转换成本）和业务模式让这个市盈率显得很便宜。</div>
+            </div>
+            
+            <h2>常见误解</h2>
+            <div class="misconception-block">
+                <h4>❌ 误解一：低市盈率一定值得买</h4>
+                <p><strong>人们以为</strong>：市盈率越低越好，低市盈率意味着股票被低估。</p>
+                <p><strong>巴菲特说</strong>：低市盈率可能是陷阱——市场知道为什么这只股票便宜。平庸的企业即使便宜也不值得买。</p>
+            </div>
+            
+            <div class="misconception-block">
+                <h4>❌ 误解二：高市盈率一定太贵</h4>
+                <p><strong>人们以为</strong>：高市盈率意味着股票已经涨到顶了。</p>
+                <p><strong>巴菲特说</strong>：优秀企业的高市盈率可能完全合理，如果企业能够持续高增长。关键是判断增长的确定性和持续性。</p>
+            </div>
+            
+            <div class="misconception-block">
+                <h4>❌ 误解三：只用市盈率就能判断贵贱</h4>
+                <p><strong>人们以为</strong>：市盈率低就是便宜，市盈率高就是贵。</p>
+                <p><strong>巴菲特说</strong>：市盈率只是思考的起点。必须结合企业护城河、资本回报率、管理质量、增长潜力等因素综合判断。</p>
+            </div>
+            
+            <h2>精华原话</h2>
+            <div class="quote-block">
+                <p>"投资者需要关注的不是股票的绝对价格，而是相对于企业价值的价格。简单地以市盈率高低来判断是否买入，就和以温度高低来判断今天是否该出门一样愚蠢。"</p>
+                <footer>—— 1992年致股东信</footer>
+            </div>
+            
+            <div class="quote-block">
+                <p>"最危险的股票是那些看起来'只贵一点点'的——20倍市盈率的股票看起来不像100倍那么贵，但它们可能同样糟糕。"</p>
+                <footer>—— 2008年致股东信</footer>
+            </div>
+            
+            <div class="quote-block">
+                <p>"评估一只股票是否值得买入，市盈率可以告诉你为盈利支付了什么，但无法告诉你这个盈利有多确定、多持久。"</p>
+                <footer>—— 1993年致股东信</footer>
+            </div>
+            
+            <div class="quote-block">
+                <p>"当利率处于低位时，股票看起来总是很便宜；当利率上升时，同样的市盈率可能就显得很贵了。理解利率对估值的影响至关重要。"</p>
+                <footer>—— 2012年致股东信</footer>
+            </div>
+            
+            <h2>延伸阅读</h2>
+            <p>市盈率概念在信件中的讨论分布，按论点组织：</p>
+            
+            <div class="topic-group">
+                <div class="topic-title">市盈率与价值判断</div>
+                <div class="topic-desc">如何将市盈率作为思考企业价值的起点</div>
+                <div class="topic-years">
+                    <a href="../letters/berkshire/1992.html">1992</a>
+                    <a href="../letters/berkshire/1993.html">1993</a>
+                </div>
+            </div>
+            
+            <div class="topic-group">
+                <div class="topic-title">周期性公司的市盈率</div>
+                <div class="topic-desc">如何正确评估周期型公司的市盈率</div>
+                <div class="topic-years">
+                    <a href="../letters/berkshire/2005.html">2005</a>
+                    <a href="../letters/berkshire/2010.html">2010</a>
+                </div>
+            </div>
+            
         </article>
     </div>
     
     <footer>
-        <p><a href="../index.html">巴菲特知识库</a> | 数据来源：Berkshire Hathaway Letters</p>
+        <p>巴菲特知识库 | 数据来源：Berkshire Hathaway Letters to Shareholders</p>
     </footer>
 </body>
 </html>

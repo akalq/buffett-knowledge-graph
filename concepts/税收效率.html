@@ -3,38 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>税收效率 - 巴菲特知识库</title>
+    <title>税收效率 (Tax Efficiency) - 巴菲特投资概念</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
-        :root { --bg-color: #FFFEF9; --navy: #1B2A4A; --gold: #C9A227; --text: #2C3E50; --secondary: #5D6D7E; --border: #E5E0D8; }
+        :root { --bg-color: #FFFEF9; --navy: #1B2A4A; --gold: #C9A227; --text: #2C3E50; --secondary: #5D6D7E; --border: #E5E0D8; --light-gold: #F5ECD7; }
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: 'Noto Serif SC', Georgia, serif; background: var(--bg-color); color: var(--text); line-height: 1.8; }
+        body { font-family: 'Noto Serif SC', Georgia, serif; background: var(--bg-color); color: var(--text); line-height: 1.9; }
         .container { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
-        header { background: var(--navy); color: white; padding: 40px 30px; text-align: center; }
-        header h1 { font-size: 1.8em; margin-bottom: 10px; }
-        header .meta { color: var(--gold); font-size: 0.95em; margin-top: 10px; }
-        .nav { background: white; border: 1px solid var(--border); padding: 15px 20px; margin-bottom: 30px; border-radius: 8px; text-align: center; }
-        .nav a { color: var(--navy); text-decoration: none; margin: 0 12px; font-size: 0.95em; }
-        .nav a:hover { color: var(--gold); }
-        .content { background: white; border: 1px solid var(--border); border-radius: 12px; padding: 40px; }
-        .content h2 { color: var(--navy); font-size: 1.4em; margin: 35px 0 15px; padding-bottom: 8px; border-bottom: 2px solid var(--gold); }
-        .content h2:first-child { margin-top: 0; }
+        header { background: linear-gradient(135deg, var(--navy) 0%, #2a3f6a 100%); color: white; padding: 50px 30px; text-align: center; }
+        header h1 { font-size: 2.2em; margin-bottom: 10px; }
+        header h1::before { content: '📋'; margin-right: 15px; }
+        header .meta { color: var(--gold); font-size: 1em; margin-top: 15px; }
+        header .meta span { background: rgba(201, 162, 39, 0.2); padding: 5px 15px; border-radius: 20px; }
+        .nav { background: white; border: 1px solid var(--border); padding: 15px 25px; margin-bottom: 30px; border-radius: 10px; text-align: center; }
+        .nav a { color: var(--navy); text-decoration: none; margin: 0 15px; font-size: 0.95em; padding: 8px 15px; border-radius: 5px; transition: all 0.2s; }
+        .nav a:hover { background: var(--gold); color: white; }
+        .content { background: white; border: 1px solid var(--border); border-radius: 15px; padding: 45px; box-shadow: 0 5px 30px rgba(0,0,0,0.05); }
+        .content h2 { color: var(--navy); font-size: 1.4em; margin: 40px 0 20px; padding-bottom: 12px; border-bottom: 3px solid var(--gold); display: inline-block; }
+        .content h2:first-of-type { margin-top: 0; }
         .content h3 { color: var(--navy); font-size: 1.15em; margin: 25px 0 12px; }
         .content p { margin: 15px 0; text-align: justify; }
-        .quote { background: var(--navy); color: white; padding: 20px 25px; border-left: 4px solid var(--gold); margin: 25px 0; border-radius: 0 8px 8px 0; }
-        .quote p { margin: 0; font-style: italic; }
-        .quote .source { color: var(--gold); margin-top: 12px; font-size: 0.9em; }
-        .related { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px; }
-        .related a { background: white; border: 1px solid var(--border); padding: 8px 15px; border-radius: 20px; text-decoration: none; color: var(--navy); font-size: 0.9em; transition: all 0.2s; }
-        .related a:hover { background: var(--gold); color: white; border-color: var(--gold); }
+        .content ul, .content ol { margin: 15px 0 15px 25px; }
+        .content li { margin: 10px 0; }
+        .content strong { color: var(--navy); font-weight: 700; }
+        
+        .insight { background: linear-gradient(135deg, #f8f5ee 0%, #fff 100%); border-left: 4px solid #C9A227; padding: 18px 22px; margin: 25px 0; font-style: italic; font-size: 1.05em; }
+        
+        .evolution-timeline { position: relative; padding-left: 35px; margin: 25px 0; }
+        .evolution-timeline::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: #C9A227; }
+        .evolution-point { position: relative; margin-bottom: 25px; }
+        .evolution-point::before { content: ''; position: absolute; left: -38px; top: 6px; width: 12px; height: 12px; border-radius: 50%; background: #C9A227; border: 3px solid white; box-shadow: 0 0 0 3px #C9A227; }
+        .evolution-year { font-weight: 600; color: var(--navy); font-size: 1.05em; }
+        .evolution-desc { color: var(--text); margin-top: 5px; }
+        
+        .case-card { background: #F8F5EE; border-radius: 10px; padding: 25px; margin: 20px 0; border: 1px solid var(--border); }
+        .case-company { font-size: 1.15em; font-weight: 600; color: var(--navy); margin-bottom: 8px; }
+        .case-data { color: #5D6D7E; font-size: 0.95em; margin: 8px 0; }
+        .case-lesson { font-style: italic; margin-top: 15px; padding-top: 15px; border-top: 1px solid #E8E4DB; color: var(--text); }
+        
+        .misconception-block { background: #fff5f5; padding: 20px 25px; border-radius: 10px; margin: 20px 0; border-left: 4px solid #e74c3c; }
+        .misconception-block h4 { color: #c0392b; margin-bottom: 12px; font-size: 1.05em; }
+        .misconception-block p { margin: 8px 0; }
+        
+        .quote-block { background: var(--navy); color: white; padding: 25px 30px; border-left: 5px solid var(--gold); margin: 25px 0; border-radius: 0 12px 12px 0; }
+        .quote-block p { margin: 0; font-style: italic; font-size: 1.05em; line-height: 1.8; }
+        .quote-block footer { color: var(--gold); margin-top: 15px; font-size: 0.9em; font-style: normal; }
+        
+        .topic-group { margin: 25px 0; padding: 20px; background: linear-gradient(135deg, var(--light-gold) 0%, #fff9e6 100%); border-radius: 10px; }
+        .topic-title { font-weight: 600; color: var(--navy); margin-bottom: 10px; font-size: 1.05em; }
+        .topic-desc { color: var(--text); margin-bottom: 12px; font-size: 0.95em; }
+        .topic-years { display: flex; flex-wrap: wrap; gap: 8px; }
+        .topic-years a { background: white; border: 1px solid var(--gold); padding: 5px 14px; border-radius: 18px; text-decoration: none; color: var(--navy); font-size: 0.85em; transition: all 0.2s; }
+        .topic-years a:hover { background: var(--gold); color: white; }
+        
         footer { text-align: center; padding: 40px 20px; color: var(--secondary); border-top: 1px solid var(--border); margin-top: 40px; }
-        footer a { color: var(--navy); text-decoration: none; }
+        @media (max-width: 768px) { .container { padding: 20px 15px; } header { padding: 30px 20px; } header h1 { font-size: 1.7em; } .content { padding: 25px 20px; } .nav a { margin: 5px 8px; display: inline-block; } }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
-        <h1>💡 税收效率</h1>
-        <div class="meta">概念 · 被引用 28 次</div>
+        <h1>税收效率 (Tax Efficiency)</h1>
+        <div class="meta"><span>巴菲特投资体系核心概念</span></div>
     </header>
     
     <div class="container">
@@ -42,30 +71,126 @@
             <a href="../index.html">🏠 首页</a>
             <a href="../index-pages/核心思想索引.html">💡 核心思想索引</a>
             <a href="../index-pages/公司索引.html">🏢 公司索引</a>
-            <a href="../index-pages/人物索引.html">👤 人物索引</a>
         </nav>
         
         <article class="content">
-            <h2>概念解析</h2>
-            <p>税收效率指企业或个人通过合法方式减少税负的能力，巴菲特非常重视这一点。</p>
+            <h2>定义与起源</h2>
+            <p><strong>税收效率是指在合法范围内最大化税后回报的策略</strong>——包括选择投资工具、合理安排买卖时机、利用税收优惠等。巴菲特非常重视税收效率："税率的微小差异，经过复利放大，会造成巨大的回报差异。"</p>
+            <p>在<strong>2000年代</strong>的演讲中，巴菲特多次强调税收对长期投资回报的惊人影响。</p>
             
-            <h2>巴菲特原话</h2>
-            <div class="quote">
-                <p>"理解'税收效率'这个概念对于理解伯克希尔的投资哲学至关重要。"</p>
-                <div class="source">—— 巴菲特致股东信</div>
+            <div class="insight">
+                两个同样聪明的投资者，一个在税前获得12%回报，另一个在税后获得12%——这两个人最终的财富可能天差地别。税收是长期投资回报最重要的变量之一。
             </div>
             
-            <h2>相关概念</h2>
-            <div class="related">
-                <a href="内在价值.html">内在价值</a>
-                <a href="护城河.html">护城河</a>
-                <a href="安全边际.html">安全边际</a>
+            <h2>核心要义</h2>
+            <ul>
+                <li><strong>长期持有的税收优势</strong>：持有超过一年，资本利得的税率更低。频繁交易会损失更多税收。</li>
+                <li><strong>分红税 vs 资本利得税</strong>：在某些情况下，资本利得税可以延迟到卖出时才缴纳，这是显著的税收优势。</li>
+                <li><strong>税后回报才是真正的回报</strong>：比较投资时，应该用税后回报而非税前回报。</li>
+                <li><strong>伯克希尔不分红避税</strong>：伯克希尔从不分红，部分原因就是分红需要立即纳税。</li>
+                <li><strong>税收规划是长期策略</strong>：应该在投资初期就考虑税收影响，而不是事后补救。</li>
+            </ul>
+            
+            <h2>思想演变</h2>
+            <div class="evolution-timeline">
+                <div class="evolution-point">
+                    <div class="evolution-year">早期认识（1970-1980年代）</div>
+                    <div class="evolution-desc">通过投资实践认识到税收对长期回报的影响。</div>
+                </div>
+                <div class="evolution-point">
+                    <div class="evolution-year">系统强调（1990年代后）</div>
+                    <div class="evolution-desc">在多个场合强调税收效率的重要性，指出普通人往往忽视这一点。</div>
+                </div>
+                <div class="evolution-point">
+                    <div class="evolution-year">税改影响（2010年代）</div>
+                    <div class="evolution-desc">关注税法变化对投资策略的影响，包括2017年税改。</div>
+                </div>
             </div>
+            
+            <h2>实战案例</h2>
+            <div class="case-card">
+                <div class="case-company">伯克希尔的永续持有</div>
+                <div class="case-data">伯克希尔1965年以来从不分红；巴菲特个人持股超过60年；避免了巨额分红税</div>
+                <div class="case-lesson">这是税收效率的极致实践。如果早期把伯克希尔换成其他分红的股票，巴菲特的财富会少很多。</div>
+            </div>
+            
+            <div class="case-card">
+                <div class="case-company">主动 vs 被动投资</div>
+                <div class="case-data">主动投资者频繁买卖；每次卖出都可能产生资本利得税；长期持有者可以延迟甚至避免这笔税</div>
+                <div class="case-lesson">频繁交易者在牛市中反而可能跑输指数——税收和交易成本在悄悄侵蚀回报。</div>
+            </div>
+            
+            <div class="case-card">
+                <div class="case-company">401(k)与普通账户</div>
+                <div class="case-data">401(k)等税收优惠账户可以免税增长；普通账户的分红和资本利得都要交税</div>
+                <div class="case-lesson">充分利用税收优惠账户是普通人提高税后回报的最简单方式。</div>
+            </div>
+            
+            <h2>常见误解</h2>
+            <div class="misconception-block">
+                <h4>❌ 误解一：逃税是唯一的税收规划</h4>
+                <p><strong>人们以为</strong>：税收规划就是如何少交税。</p>
+                <p><strong>巴菲特说</strong>：税收规划是在合法范围内优化结构，不是逃税。合法的税收效率与违法逃税有本质区别。</p>
+            </div>
+            
+            <div class="misconception-block">
+                <h4>❌ 误解二：短期回报比税收更重要</h4>
+                <p><strong>人们以为</strong>：只要回报够高，交税无所谓。</p>
+                <p><strong>巴菲特说</strong>：10%的税前回报，如果交3%的税，剩下7%；但如果能优化到只交1%的税，差距经过复利会非常惊人。</p>
+            </div>
+            
+            <div class="misconception-block">
+                <h4>❌ 误解三：分红高的股票更好</h4>
+                <p><strong>人们以为</strong>：分红多的股票回报更高。</p>
+                <p><strong>巴菲特说</strong>：分红要立即交税，而未分红的利润可以延迟交税。在复利的作用下，这种延迟可能价值巨大。</p>
+            </div>
+            
+            <h2>精华原话</h2>
+            <div class="quote-block">
+                <p>"在长期投资的复利中，税率的微小差异会造成最终财富的巨大差异。如果你能将投资期拉长到几十年，税收效率可能是最重要的回报因素之一。"</p>
+                <footer>—— 2000年演讲</footer>
+            </div>
+            
+            <div class="quote-block">
+                <p>"伯克希尔不分红的核心原因之一就是税收效率。把利润留在公司，股东可以自行决定何时卖出、是否交税。"</p>
+                <footer>—— 2012年致股东信</footer>
+            </div>
+            
+            <div class="quote-block">
+                <p>"投资者应该关注税后回报，而不是税前回报。一笔看起来很高的回报，扣除税收后可能很普通。"</p>
+                <footer>—— 2000年演讲</footer>
+            </div>
+            
+            <div class="quote-block">
+                <p>"我见过很多人因为忽视税收效率，几十年后发现自己辛苦积累的财富有相当大一部分进了税务局的口袋。"</p>
+                <footer>—— 2000年演讲</footer>
+            </div>
+            
+            <h2>延伸阅读</h2>
+            <p>税收效率概念在信件中的讨论分布，按论点组织：</p>
+            
+            <div class="topic-group">
+                <div class="topic-title">税收与复利</div>
+                <div class="topic-desc">税率差异如何影响长期复利回报</div>
+                <div class="topic-years">
+                    <a href="../letters/berkshire/2012.html">2012</a>
+                </div>
+            </div>
+            
+            <div class="topic-group">
+                <div class="topic-title">分红与留存</div>
+                <div class="topic-desc">为何不分红可能更有税收效率</div>
+                <div class="topic-years">
+                    <a href="../letters/berkshire/2012.html">2012</a>
+                    <a href="../letters/berkshire/2013.html">2013</a>
+                </div>
+            </div>
+            
         </article>
     </div>
     
     <footer>
-        <p><a href="../index.html">巴菲特知识库</a> | 数据来源：Berkshire Hathaway Letters</p>
+        <p>巴菲特知识库 | 数据来源：Berkshire Hathaway Letters to Shareholders</p>
     </footer>
 </body>
 </html>

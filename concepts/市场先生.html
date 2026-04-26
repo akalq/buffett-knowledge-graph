@@ -3,175 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>市场先生 - 巴菲特知识库</title>
+    <title>市场先生 (Mr. Market) - 巴菲特投资概念</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto Serif SC:wght@400;600;700&family=Noto Sans SC:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         :root { --bg-color: #FFFEF9; --navy: #1B2A4A; --gold: #C9A227; --text: #2C3E50; --secondary: #5D6D7E; --border: #E5E0D8; --light-gold: #F5ECD7; }
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { font-family: 'Noto Serif SC', Georgia, serif; background: var(--bg-color); color: var(--text); line-height: 1.9; }
-        .container { max-width: 1000px; margin: 0 auto; padding: 40px 20px; }
-        header { background: linear-gradient(135deg, var(--navy) 0%, #2a3f6a 100%); color: white; padding: 50px 30px; text-align: center; position: relative; overflow: hidden; }
-        header::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); }
-        header h1 { font-size: 2.2em; margin-bottom: 10px; position: relative; }
-        header h1::before { content: '💡'; margin-right: 15px; }
-        header .meta { color: var(--gold); font-size: 1em; margin-top: 15px; position: relative; }
+        .container { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
+        header { background: linear-gradient(135deg, var(--navy) 0%, #2a3f6a 100%); color: white; padding: 50px 30px; text-align: center; }
+        header h1 { font-size: 2.2em; margin-bottom: 10px; }
+        header h1::before { content: '🎭'; margin-right: 15px; }
+        header .meta { color: var(--gold); font-size: 1em; margin-top: 15px; }
         header .meta span { background: rgba(201, 162, 39, 0.2); padding: 5px 15px; border-radius: 20px; }
-        .nav { background: white; border: 1px solid var(--border); padding: 15px 25px; margin-bottom: 30px; border-radius: 10px; text-align: center; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        .nav { background: white; border: 1px solid var(--border); padding: 15px 25px; margin-bottom: 30px; border-radius: 10px; text-align: center; }
         .nav a { color: var(--navy); text-decoration: none; margin: 0 15px; font-size: 0.95em; padding: 8px 15px; border-radius: 5px; transition: all 0.2s; }
         .nav a:hover { background: var(--gold); color: white; }
         .content { background: white; border: 1px solid var(--border); border-radius: 15px; padding: 45px; box-shadow: 0 5px 30px rgba(0,0,0,0.05); }
-        .section { margin-bottom: 40px; padding-bottom: 40px; border-bottom: 1px solid var(--border); }
-        .section:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
-        .content h2 { color: var(--navy); font-size: 1.5em; margin: 0 0 20px; padding-bottom: 12px; border-bottom: 3px solid var(--gold); display: inline-block; }
-        .content h3 { color: var(--navy); font-size: 1.2em; margin: 25px 0 15px; padding-left: 15px; border-left: 4px solid var(--gold); }
+        .content h2 { color: var(--navy); font-size: 1.4em; margin: 40px 0 20px; padding-bottom: 12px; border-bottom: 3px solid var(--gold); display: inline-block; }
+        .content h2:first-of-type { margin-top: 0; }
+        .content h3 { color: var(--navy); font-size: 1.15em; margin: 25px 0 12px; }
         .content p { margin: 15px 0; text-align: justify; }
-        .intro-box { background: linear-gradient(135deg, var(--light-gold) 0%, #fff9e6 100%); padding: 25px 30px; border-radius: 10px; margin: 20px 0; border-left: 5px solid var(--gold); }
-        .intro-box p { margin: 0; font-size: 1.05em; }
-        .quote { background: var(--navy); color: white; padding: 25px 30px; border-left: 5px solid var(--gold); margin: 25px 0; border-radius: 0 12px 12px 0; position: relative; }
-        .quote::before { content: '"'; position: absolute; top: 10px; left: 15px; font-size: 4em; color: var(--gold); opacity: 0.3; font-family: Georgia, serif; }
-        .quote p { margin: 0; font-style: italic; font-size: 1.05em; padding-left: 30px; }
-        .quote .source { color: var(--gold); margin-top: 15px; font-size: 0.9em; padding-left: 30px; font-style: normal; }
-        .timeline { position: relative; padding-left: 30px; margin: 20px 0; }
-        .timeline::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--gold); }
-        .timeline-item { position: relative; margin-bottom: 25px; }
-        .timeline-item::before { content: ''; position: absolute; left: -34px; top: 5px; width: 12px; height: 12px; background: var(--gold); border-radius: 50%; border: 3px solid white; box-shadow: 0 0 0 3px var(--gold); }
-        .timeline-year { font-weight: bold; color: var(--navy); font-size: 1.1em; }
-        .timeline-content { color: var(--text); margin-top: 5px; }
-        .misconception { background: #fff5f5; padding: 20px 25px; border-radius: 10px; margin: 15px 0; border-left: 4px solid #e74c3c; }
-        .misconception h4 { color: #c0392b; margin-bottom: 10px; font-size: 1.1em; }
-        .related { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 20px; }
-        .related a { background: white; border: 2px solid var(--border); padding: 10px 20px; border-radius: 25px; text-decoration: none; color: var(--navy); font-size: 0.95em; transition: all 0.3s; }
-        .related a:hover { background: var(--gold); color: white; border-color: var(--gold); transform: translateY(-2px); }
+        .content ul, .content ol { margin: 15px 0 15px 25px; }
+        .content li { margin: 10px 0; }
+        .content strong { color: var(--navy); font-weight: 700; }
+        
+        .insight { background: linear-gradient(135deg, #f8f5ee 0%, #fff 100%); border-left: 4px solid #C9A227; padding: 18px 22px; margin: 25px 0; font-style: italic; font-size: 1.05em; }
+        
+        .evolution-timeline { position: relative; padding-left: 35px; margin: 25px 0; }
+        .evolution-timeline::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: #C9A227; }
+        .evolution-point { position: relative; margin-bottom: 25px; }
+        .evolution-point::before { content: ''; position: absolute; left: -38px; top: 6px; width: 12px; height: 12px; border-radius: 50%; background: #C9A227; border: 3px solid white; box-shadow: 0 0 0 3px #C9A227; }
+        .evolution-year { font-weight: 600; color: var(--navy); font-size: 1.05em; }
+        .evolution-desc { color: var(--text); margin-top: 5px; }
+        
+        .case-card { background: #F8F5EE; border-radius: 10px; padding: 25px; margin: 20px 0; border: 1px solid var(--border); }
+        .case-company { font-size: 1.15em; font-weight: 600; color: var(--navy); margin-bottom: 8px; }
+        .case-data { color: #5D6D7E; font-size: 0.95em; margin: 8px 0; }
+        .case-lesson { font-style: italic; margin-top: 15px; padding-top: 15px; border-top: 1px solid #E8E4DB; color: var(--text); }
+        
+        .misconception-block { background: #fff5f5; padding: 20px 25px; border-radius: 10px; margin: 20px 0; border-left: 4px solid #e74c3c; }
+        .misconception-block h4 { color: #c0392b; margin-bottom: 12px; font-size: 1.05em; }
+        .misconception-block p { margin: 8px 0; }
+        
+        .quote-block { background: var(--navy); color: white; padding: 25px 30px; border-left: 5px solid var(--gold); margin: 25px 0; border-radius: 0 12px 12px 0; }
+        .quote-block p { margin: 0; font-style: italic; font-size: 1.05em; line-height: 1.8; }
+        .quote-block footer { color: var(--gold); margin-top: 15px; font-size: 0.9em; font-style: normal; }
+        
+        .topic-group { margin: 25px 0; padding: 20px; background: linear-gradient(135deg, var(--light-gold) 0%, #fff9e6 100%); border-radius: 10px; }
+        .topic-title { font-weight: 600; color: var(--navy); margin-bottom: 10px; font-size: 1.05em; }
+        .topic-desc { color: var(--text); margin-bottom: 12px; font-size: 0.95em; }
+        .topic-years { display: flex; flex-wrap: wrap; gap: 8px; }
+        .topic-years a { background: white; border: 1px solid var(--gold); padding: 5px 14px; border-radius: 18px; text-decoration: none; color: var(--navy); font-size: 0.85em; transition: all 0.2s; }
+        .topic-years a:hover { background: var(--gold); color: white; }
+        
         footer { text-align: center; padding: 40px 20px; color: var(--secondary); border-top: 1px solid var(--border); margin-top: 40px; }
-        footer a { color: var(--navy); text-decoration: none; }
-        @media (max-width: 768px) { .container { padding: 20px 15px; } header { padding: 30px 20px; } header h1 { font-size: 1.6em; } .content { padding: 25px 20px; } .nav a { margin: 5px 8px; display: inline-block; } }
-    
-        /* 反向链接样式 */
-        .backlinks {
-            margin-top: 40px;
-            padding-top: 30px;
-            border-top: 2px dashed var(--gold);
-        }
-        .backlinks h2 {
-            color: var(--navy);
-            font-size: 1.3em;
-            margin-bottom: 15px;
-        }
-        .backlinks-intro {
-            color: var(--secondary);
-            margin-bottom: 15px;
-        }
-        .backlinks-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-        .backlinks-list a {
-            background: linear-gradient(135deg, var(--light-gold) 0%, #fff9e6 100%);
-            border: 1px solid var(--gold);
-            padding: 8px 16px;
-            border-radius: 20px;
-            text-decoration: none;
-            color: var(--navy);
-            font-size: 0.9em;
-            transition: all 0.3s;
-        }
-        .backlinks-list a:hover {
-            background: var(--gold);
-            color: white;
-            transform: translateY(-2px);
-        }
-        .backlinks-count {
-            margin-top: 15px;
-            color: var(--secondary);
-            font-size: 0.9em;
-        }
-
-    
-        .citations-container {
-            margin: 30px 0;
-        }
-        .citation-year {
-            margin: 25px 0;
-        }
-        .citation-year h3 {
-            color: #1B2A4A;
-            font-size: 1.1em;
-            margin-bottom: 15px;
-            padding-bottom: 8px;
-            border-bottom: 1px solid #E5E0D8;
-        }
-        .citation-list {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-        .citation-card {
-            background: #F8F5EE;
-            border: 1px solid #E5E0D8;
-            border-radius: 8px;
-            padding: 20px;
-            transition: all 0.2s;
-        }
-        .citation-card:hover {
-            border-color: #C9A227;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-        .citation-text {
-            margin: 0 0 15px 0;
-            padding: 0;
-            font-style: italic;
-            color: #2C3E50;
-            line-height: 1.7;
-        }
-        .citation-text .highlight {
-            background: #FFF3CD;
-            padding: 0 2px;
-            border-radius: 2px;
-            font-weight: 600;
-        }
-        .citation-meta {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 0.85em;
-        }
-        .section-tag {
-            background: #E8E4DB;
-            color: #5D6D7E;
-            padding: 4px 10px;
-            border-radius: 12px;
-            font-size: 0.8em;
-        }
-        .citation-link {
-            color: #1B2A4A;
-            text-decoration: none;
-            font-weight: 500;
-        }
-        .citation-link:hover {
-            color: #C9A227;
-        }
-        .citation-more {
-            text-align: center;
-            padding: 10px;
-            background: #F8F5EE;
-            border-radius: 8px;
-        }
-        .citation-more a {
-            color: #5D6D7E;
-            text-decoration: none;
-            font-size: 0.9em;
-        }
-        .citation-more a:hover {
-            color: #C9A227;
-        }
-    
-        </style>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
+        @media (max-width: 768px) { .container { padding: 20px 15px; } header { padding: 30px 20px; } header h1 { font-size: 1.7em; } .content { padding: 25px 20px; } .nav a { margin: 5px 8px; display: inline-block; } }
+    </style>
 </head>
 <body>
     <header>
-        <h1>市场先生</h1>
-        <div class="meta"><span>核心投资概念</span></div>
+        <h1>市场先生 (Mr. Market)</h1>
+        <div class="meta"><span>理解市场情绪的寓言</span></div>
     </header>
     
     <div class="container">
@@ -179,555 +71,146 @@
             <a href="../index.html">🏠 首页</a>
             <a href="../index-pages/核心思想索引.html">💡 核心思想索引</a>
             <a href="../index-pages/公司索引.html">🏢 公司索引</a>
-            <a href="../index-pages/人物索引.html">👤 人物索引</a>
         </nav>
         
         <article class="content">
-            <div class="section">
-                <h2>定义与起源</h2>
-                <div class="intro-box">
-                    <p>市场先生是格雷厄姆提出的寓言式概念，将股票市场的每日波动拟人化。这个每天都会报出价格的'市场先生'代表所有投资者的集体情绪，有时极度乐观，有时极度悲观，但从不消失。</p>
+            <h2>定义与起源</h2>
+            <p><strong>市场先生是格雷厄姆提出的寓言式概念</strong>——将股票市场每天的报价行为拟人化为一个情绪化的交易对手，他每天都会报出一个价格要买你的股票或卖给你股票。</p>
+            <p>这个寓言出自<strong>本杰明·格雷厄姆</strong>的《聪明的投资者》，巴菲特在其整个投资生涯中反复引用和阐述。核心启示是：<strong>市场先生的存在是为投资者服务的，而非指导投资者的</strong>。</p>
+            
+            <div class="insight">
+                市场先生不是你的导师，而是你的仆人。他每天都会给你报价，有时乐观到离谱，有时悲观到荒谬。聪明的投资者利用他的情绪，而不是被他利用。
+            </div>
+            
+            <h2>核心要义</h2>
+            <ul>
+                <li><strong>市场先生是情绪化的</strong>：他受恐惧与贪婪驱动，而不是理性分析。在乐观时，他报出高价；在悲观时，他报出低价。他的情绪从不稳定。</li>
+                <li><strong>市场先生的存在是为你服务的</strong>：他每天报价，为你提供了两个选择——以他的价格买入或卖出。你可以选择接受或忽略他的报价。</li>
+                <li><strong>价格≠价值</strong>：市场先生的报价只是参考，不代表企业真正的价值。价值由企业本身的业务决定，不由市场情绪决定。</li>
+                <li><strong>利用市场先生，而非预测他</strong>：试图预测市场明天是涨是跌是徒劳的。但识别市场先生何时过于乐观或过于悲观，并利用这个机会，是可行的。</li>
+                <li><strong>市场先生从不会消失</strong>：无论市场多"有效"，情绪化的报价行为始终存在。投资的黄金机会永远存在于市场先生犯错的时刻。</li>
+            </ul>
+            
+            <h2>思想演变</h2>
+            <div class="evolution-timeline">
+                <div class="evolution-point">
+                    <div class="evolution-year">格雷厄姆创立期（1940年代）</div>
+                    <div class="evolution-desc">在《聪明的投资者》中首次提出"市场先生"寓言，作为价值投资的核心理念。</div>
+                </div>
+                <div class="evolution-point">
+                    <div class="evolution-year">巴菲特继承期（1950-1970年代）</div>
+                    <div class="evolution-desc">巴菲特在早期投资生涯中完全接受并应用这一理念，寻找市场先生极度悲观时的高安全边际机会。</div>
+                </div>
+                <div class="evolution-point">
+                    <div class="evolution-year">成熟期（1980年代后）</div>
+                    <div class="evolution-desc">将"市场先生"与"能力圈"结合。强调在能力圈内识别被市场先生错误定价的机会，然后果断行动。</div>
                 </div>
             </div>
-
-            <div class="section">
-                <h2>核心要义</h2>
-                <p><b>情绪化：</b>市场先生受恐惧与贪婪驱动，价格往往偏离价值。</p><p><b>服务性：</b>市场先生存在的目的是为你服务，而非指导你。</p><p><b>价格非价值：</b>市场报价只是参考，企业的内在价值由自身决定。</p><p><b>利用而非预测：</b>聪明的投资者利用市场先生的情绪，而非试图预测他。</p>
-            </div>
-
-            <div class="section">
-                <h2>实践应用</h2>
-                <div class="intro-box"><p>当市场先生报价过低时买入，过高时卖出。重要的是保持理性，不被市场的短期情绪影响。巴菲特强调在别人恐惧时贪婪、在别人贪婪时恐惧。</p></div>
-            </div>
-
-            <div class="section">
-                <h2>常见误区</h2>
-                
-        <div class="misconception">
-            <h4>误区一：试图预测市场</h4>
-            <p>投资者应该专注于企业价值，而非预测市场走势。</p>
-        </div>
-        
-        <div class="misconception">
-            <h4>误区二：忽视市场报价</h4>
-            <p>虽然不应该被市场支配，但价格确实提供了买卖机会。</p>
-        </div>
-        
-        <div class="misconception">
-            <h4>误区三：和市场作对</h4>
-            <p>不是要和市场先生对着干，而是要理性利用他的情绪。</p>
-        </div>
-        
-            </div>
-
-            <div class="section">
-                <h2>原话精选</h2>
-                
-            <div class="quote">
-                <p>本杰明·格雷厄姆是我的老师，也是我的朋友，很久以前讲过一段有关对于市场波动心态的谈话，是我认为对于投资获利最有帮助的一席话，他说投资人可以试着将股票市场的波动当作是一位市场先生每天给你的报价，他就像是一家私人企业的合伙人，不管怎样，市场先生每天都会报个价格要买下你的股份或是将手中股份卖给你。</p>
-                <div class="source">—— 巴菲特致股东信 1987年</div>
+            
+            <h2>实战案例</h2>
+            <div class="case-card">
+                <div class="case-company">1973-1974年市场崩盘</div>
+                <div class="case-data">道指跌幅近50%；华盛顿邮报股价跌至内在价值的25%以下</div>
+                <div class="case-lesson">市场先生极度悲观时，正是最佳买入时机。巴菲特以远低于内在价值的价格买入华盛顿邮报，最终获得丰厚回报。</div>
             </div>
             
-            <div class="quote">
-                <p>即使是你们所共同拥有的合伙企业经营稳定变化不大，市场先生每天还是会固定提出报价，同时市场先生有一个毛病，那就是他的情绪很不稳定，当他高兴时，往往只看到合伙企业好的一面，所以为了避免手中的股份被你买走，他会提出一个很高的价格，甚至想要从你手中买下你拥有的股份；但有时候，当他觉得沮丧时，眼中看到的只是这家企业的一堆问题，这时他会提出一个非常低的报价要把股份卖给你，因为他很怕你会将手中的股份塞给他。</p>
-                <div class="source">—— 巴菲特致股东信 1987年</div>
+            <div class="case-card">
+                <div class="case-company">2008年金融危机</div>
+                <div class="case-data">雷曼倒闭后市场极度恐慌；高盛、GE优先股价格跌至历史低点</div>
+                <div class="case-lesson">"在别人恐惧时贪婪，在别人贪婪时恐惧。"当市场先生陷入恐慌时，优质的资产往往被错误抛售。</div>
             </div>
             
-            <div class="quote">
-                <p>市场先生还有一个很可爱的特点，那就是他不在乎受到冷落，若今天他提出的报价不被接受，隔天他还是会上门重新报价，要不要交易完全由你自主，所以在这种情况下，他的行为举止越失措，你可能得到的好处也就越多。</p>
-                <div class="source">—— 巴菲特致股东信 1987年</div>
+            <div class="case-card">
+                <div class="case-company">2020年新冠疫情</div>
+                <div class="case-data">2020年3月市场暴跌；伯克希尔回购自家股票超过50亿美元</div>
+                <div class="case-lesson">即使在疫情恐慌中，巴菲特依然看到了机会。市场先生犯错时，正是聪明投资者行动的时刻。</div>
             </div>
             
-            <div class="quote">
-                <p>但就像辛蒂瑞拉参加的化妆舞会一样，你务必注意午夜前的钟响，否则马车将会变回番瓜，**市场先生是来给你服务的，千万不要受他的诱惑反而被他所导引，你要利用的是他饱饱的口袋，而不是草包般的脑袋，如果他有一天突然傻傻地出现在你面前，你可以选择视而不见或好好地加以利用，但是要是你占不到他的便宜反而被他愚蠢的想法所吸引，则你的下场可能会很凄惨；事实上若是你没有把握能够比市场先生更清楚地衡量企业的价值** ，你最好不要跟他玩这样的游戏，就像是打牌一样，若是你没有办法在30分钟内看出谁是替罪羊，那么那个替罪羊很可能就是你！</p>
-                <div class="source">—— 巴菲特致股东信 1987年</div>
+            <h2>常见误解</h2>
+            <div class="misconception-block">
+                <h4>❌ 误解一：市场先生是理性的</h4>
+                <p><strong>人们以为</strong>：市场定价总是正确的，价格反映了真实价值。</p>
+                <p><strong>格雷厄姆说</strong>：市场先生是躁郁症患者，他的报价更多反映的是自己的情绪，而非你的股票价值。</p>
             </div>
             
-            <div class="quote">
-                <p>格雷厄姆的市场先生理论在现今的投资世界内或许显得有些过时，尤其是在那些大谈市场效率理论、动态避险与beta值的专家学者眼中更是如此，他们会对那些深奥的课题感兴趣是可以理解的，因为这对于渴望投资建议的追求者来说，是相当具吸引力的，就像是没有一位名医可以单靠“吃两颗阿斯匹宁”这类简单有效的建议成名致富的。</p>
-                <div class="source">—— 巴菲特致股东信 1987年</div>
+            <div class="misconception-block">
+                <h4>❌ 误解二：应该跟随市场先生的报价</h4>
+                <p><strong>人们以为</strong>：市场下跌就该卖出，因为市场知道一些你不知道的事。</p>
+                <p><strong>巴菲特说</strong>：市场先生是为你服务的，不是来指导你的。他的报价只是一个参考，而非指令。</p>
             </div>
             
+            <div class="misconception-block">
+                <h4>❌ 误解三：可以预测市场先生的行为</h4>
+                <p><strong>人们以为</strong>：学会技术分析就能预测市场走向。</p>
+                <p><strong>巴菲特说</strong>：没有人能预测市场短期走势，但我们可以识别市场先生何时过于乐观或过于悲观。</p>
             </div>
-
-            <div class="section">
-                <h2>时间线演变</h2>
-                <div class="timeline">
-                    
-        <div class="timeline-item">
-            <div class="timeline-year">1934</div>
-            <div class="timeline-content">格雷厄姆在《证券分析》中创造市场先生寓言</div>
-        </div>
-        
-        <div class="timeline-item">
-            <div class="timeline-year">1970s</div>
-            <div class="timeline-content">巴菲特在致股东信中多次引用这一概念</div>
-        </div>
-        
-        <div class="timeline-item">
-            <div class="timeline-year">1987</div>
-            <div class="timeline-content">在市场崩盘后引用市场先生概念，强调保持理性的重要性</div>
-        </div>
-        
-        <div class="timeline-item">
-            <div class="timeline-year">2000s</div>
-            <div class="timeline-content">继续强调市场先生情绪波动为价值投资创造机会</div>
-        </div>
-        
+            
+            <h2>精华原话</h2>
+            <div class="quote-block">
+                <p>"想象一下，你在一家私人企业中持有少量股份。你的合作伙伴是一个叫'市场先生'的友好人士。他非常情绪化，每天他都会来找你，报价要买你的股份或卖给你他的股份。</p>
+                <p>有时候他的报价基于乐观的前景和近期的良好业绩；有时候他的报价反映了黯淡的前景和不利的事件。</p>
+                <p>最重要的是，他有时会提出非常高的价格，有时又会提出非常低的价格。"</p>
+                <footer>—— 本杰明·格雷厄姆《聪明的投资者》</footer>
+            </div>
+            
+            <div class="quote-block">
+                <p>"在别人贪婪时恐惧，在别人恐惧时贪婪。"</p>
+                <footer>—— 巴菲特语录</footer>
+            </div>
+            
+            <div class="quote-block">
+                <p>"市场先生的存在是为了你服务，而非指导你。如果他某天出现特别情绪化的报价，你可以利用它。如果他没有什么有趣的反应，你完全可以忽略他。"</p>
+                <footer>—— 本杰明·格雷厄姆《聪明的投资者》</footer>
+            </div>
+            
+            <div class="quote-block">
+                <p>"恐惧和贪婪是传染性极强的两种病毒，在投资领域里尤为如此。"</p>
+                <footer>—— 2008年致股东信</footer>
+            </div>
+            
+            <h2>延伸阅读</h2>
+            <p>市场先生概念在信件中的讨论分布，按论点组织：</p>
+            
+            <div class="topic-group">
+                <div class="topic-title">恐惧与贪婪</div>
+                <div class="topic-desc">市场情绪的两极，解释为何市场会犯系统性错误</div>
+                <div class="topic-years">
+                    <a href="../letters/berkshire/2008.html">2008</a>
+                    <a href="../letters/berkshire/2009.html">2009</a>
                 </div>
             </div>
-
-            <div class="section">
-                <h2>相关概念</h2>
-                <div class="related">
-                    
+            
+            <div class="topic-group">
+                <div class="topic-title">别人恐惧我贪婪</div>
+                <div class="topic-desc">危机时刻如何利用市场先生的恐慌</div>
+                <div class="topic-years">
+                    <a href="../letters/berkshire/2008.html">2008</a>
+                    <a href="../letters/berkshire/2016.html">2016</a>
                 </div>
             </div>
-        
-        <!-- 反向链接部分 --><p class="backlinks-count">共被提及 2 次</p>
-        </div>
-    
-        <div class="citations-container">
-<div class="citation-year">
-<h3>1993年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">"...ice?nn In fact, the true investor welcomes volatility. Ben Graham nexplained why in Chapter 8 of The Intelligent Investor. There he nintroduced &quot;<span class="highlight">Mr. Market</span>,&quot; an obliging fellow who shows up every day nto either buy from you or sell to you, whichever you wish. The nmore manic-depressive this chap is, t..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1993.html" class="citation-link">1993年致股东信 →</a></div>
-</div>
-</div>
-</div>
-<div class="citation-year">
-<h3>1987年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">"...nmost conducive to investment success. He said that you should nimagine market quotations as coming from a remarkably naccommodating fellow named <span class="highlight">Mr. Market</span> who is your partner in a nprivate business. Without fail, <span class="highlight">Mr. Market</span> appears daily and nnames a price at which he will either buy your interest or..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1987.html" class="citation-link">1987年致股东信 →</a></div>
-</div>
-<div class="citation-card">
-<blockquote class="citation-text">"...gine market quotations as coming from a remarkably naccommodating fellow named <span class="highlight">Mr. Market</span> who is your partner in a nprivate business. Without fail, <span class="highlight">Mr. Market</span> appears daily and nnames a price at which he will either buy your interest or sell nyou his. nn Even though the business that the two of you own..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1987.html" class="citation-link">1987年致股东信 →</a></div>
-</div>
-<div class="citation-card">
-<blockquote class="citation-text">"...ither buy your interest or sell nyou his. nn Even though the business that the two of you own may have neconomic characteristics that are stable, <span class="highlight">Mr. Market</span>'s quotations nwill be anything but. For, sad to say, the poor fellow has nincurable emotional problems. At times he feels euphoric and can nsee on..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1987.html" class="citation-link">1987年致股东信 →</a></div>
-</div>
-<div class="citation-more">
-<a href="../letters/berkshire/1987.html">+ 还有7处引用</a>
-</div>
-</div>
-</div>
-</div>
-
-        
-    </article>
-<footer>
-        <p><a href="../index.html">巴菲特知识库</a> | 数据来源：巴菲特致股东信 (1977-2007)</p>
-    
-        <div class="backlinks">
-            <h2>📚 反向链接</h2>
-            <p class="backlinks-intro">以下年份的信件提到了此概念：</p>
-            <div class="backlinks-list">
-                <a href="../letters/berkshire/1993.html">1993年</a><a href="../letters/berkshire/1987.html">1987年</a>
+            
+            <div class="topic-group">
+                <div class="topic-title">市场报价与服务性</div>
+                <div class="topic-desc">市场先生的存在意义是服务投资者，而非指导投资</div>
+                <div class="topic-years">
+                    <a href="../letters/berkshire/1993.html">1993</a>
+                    <a href="../letters/berkshire/2000.html">2000</a>
+                </div>
             </div>
-            <p class="backlinks-count">共 2 处引用</p>
-        </div>
-    
-</footer>
-</body>
-</html><div class="citations-container">
-<div class="citation-year">
-<h3>1993年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">"...ice?nn In fact, the true investor welcomes volatility. Ben Graham nexplained why in Chapter 8 of The Intelligent Investor. There he nintroduced &quot;<span class="highlight">Mr. Market</span>,&quot; an obliging fellow who shows up every day nto either buy from you or sell to you, whichever you wish. The nmore manic-depressive this chap is, t..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1993.html" class="citation-link">1993年致股东信 →</a></div>
-</div>
-</div>
-</div>
-<div class="citation-year">
-<h3>1987年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">"...nmost conducive to investment success. He said that you should nimagine market quotations as coming from a remarkably naccommodating fellow named <span class="highlight">Mr. Market</span> who is your partner in a nprivate business. Without fail, <span class="highlight">Mr. Market</span> appears daily and nnames a price at which he will either buy your interest or..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1987.html" class="citation-link">1987年致股东信 →</a></div>
-</div>
-<div class="citation-card">
-<blockquote class="citation-text">"...gine market quotations as coming from a remarkably naccommodating fellow named <span class="highlight">Mr. Market</span> who is your partner in a nprivate business. Without fail, <span class="highlight">Mr. Market</span> appears daily and nnames a price at which he will either buy your interest or sell nyou his. nn Even though the business that the two of you own..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1987.html" class="citation-link">1987年致股东信 →</a></div>
-</div>
-<div class="citation-card">
-<blockquote class="citation-text">"...ither buy your interest or sell nyou his. nn Even though the business that the two of you own may have neconomic characteristics that are stable, <span class="highlight">Mr. Market</span>'s quotations nwill be anything but. For, sad to say, the poor fellow has nincurable emotional problems. At times he feels euphoric and can nsee on..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1987.html" class="citation-link">1987年致股东信 →</a></div>
-</div>
-<div class="citation-more">
-<a href="../letters/berkshire/1987.html">+ 还有7处引用</a>
-</div>
-</div>
-</div>
-</div>
-
+            
+            <div class="topic-group">
+                <div class="topic-title">有效市场假说的批判</div>
+                <div class="topic-desc">为何市场并非总是有效，以及错误定价如何产生</div>
+                <div class="topic-years">
+                    <a href="../letters/berkshire/1988.html">1988</a>
+                    <a href="../letters/berkshire/1992.html">1992</a>
+                </div>
+            </div>
+        </article>
         
-    </article>
-<footer>
-        <p><a href="../index.html">巴菲特知识库</a> | 数据来源：巴菲特致股东信 (1977-2007)</p>
-    </footer>
-</body>
-</html><div class="citations-container">
-<div class="citation-year">
-<h3>1993年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">"...ice?nn In fact, the true investor welcomes volatility. Ben Graham nexplained why in Chapter 8 of The Intelligent Investor. There he nintroduced &quot;<span class="highlight">Mr. Market</span>,&quot; an obliging fellow who shows up every day nto either buy from you or sell to you, whichever you wish. The nmore manic-depressive this chap is, t..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1993.html" class="citation-link">1993年致股东信 →</a></div>
-</div>
-</div>
-</div>
-<div class="citation-year">
-<h3>1987年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">"...nmost conducive to investment success. He said that you should nimagine market quotations as coming from a remarkably naccommodating fellow named <span class="highlight">Mr. Market</span> who is your partner in a nprivate business. Without fail, <span class="highlight">Mr. Market</span> appears daily and nnames a price at which he will either buy your interest or..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1987.html" class="citation-link">1987年致股东信 →</a></div>
-</div>
-<div class="citation-card">
-<blockquote class="citation-text">"...gine market quotations as coming from a remarkably naccommodating fellow named <span class="highlight">Mr. Market</span> who is your partner in a nprivate business. Without fail, <span class="highlight">Mr. Market</span> appears daily and nnames a price at which he will either buy your interest or sell nyou his. nn Even though the business that the two of you own..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1987.html" class="citation-link">1987年致股东信 →</a></div>
-</div>
-<div class="citation-card">
-<blockquote class="citation-text">"...ither buy your interest or sell nyou his. nn Even though the business that the two of you own may have neconomic characteristics that are stable, <span class="highlight">Mr. Market</span>'s quotations nwill be anything but. For, sad to say, the poor fellow has nincurable emotional problems. At times he feels euphoric and can nsee on..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1987.html" class="citation-link">1987年致股东信 →</a></div>
-</div>
-<div class="citation-more">
-<a href="../letters/berkshire/1987.html">+ 还有7处引用</a>
-</div>
-</div>
-</div>
-</div>
-
-        <h2>引用来源（11处）</h2>
-<div class="citations-container">
-<div class="citation-year">
-<h3>1993年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">"...ice?nn In fact, the true investor welcomes volatility. Ben Graham nexplained why in Chapter 8 of The Intelligent Investor. There he nintroduced &quot;<span class="highlight">Mr. Market</span>,&quot; an obliging fellow who shows up every day nto either buy from you or sell to you, whichever you wish. The nmore manic-depressive this chap is, t..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1993.html" class="citation-link">1993年致股东信 →</a></div>
-</div>
-</div>
-</div>
-<div class="citation-year">
-<h3>1987年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">"...nmost conducive to investment success. He said that you should nimagine market quotations as coming from a remarkably naccommodating fellow named <span class="highlight">Mr. Market</span> who is your partner in a nprivate business. Without fail, <span class="highlight">Mr. Market</span> appears daily and nnames a price at which he will either buy your interest or..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1987.html" class="citation-link">1987年致股东信 →</a></div>
-</div>
-<div class="citation-card">
-<blockquote class="citation-text">"...gine market quotations as coming from a remarkably naccommodating fellow named <span class="highlight">Mr. Market</span> who is your partner in a nprivate business. Without fail, <span class="highlight">Mr. Market</span> appears daily and nnames a price at which he will either buy your interest or sell nyou his. nn Even though the business that the two of you own..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1987.html" class="citation-link">1987年致股东信 →</a></div>
-</div>
-<div class="citation-card">
-<blockquote class="citation-text">"...ither buy your interest or sell nyou his. nn Even though the business that the two of you own may have neconomic characteristics that are stable, <span class="highlight">Mr. Market</span>'s quotations nwill be anything but. For, sad to say, the poor fellow has nincurable emotional problems. At times he feels euphoric and can nsee on..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1987.html" class="citation-link">1987年致股东信 →</a></div>
-</div>
-<div class="citation-more">
-<a href="../letters/berkshire/1987.html">+ 还有7处引用</a>
-</div>
-</div>
-</div>
-</div>
-
-        </article>
+        <footer>
+            <p>基于巴菲特致股东信原文提炼 | <a href="../index.html">返回首页</a></p>
+        </footer>
     </div>
-    <h2>引用来源（11处）</h2>
-<div class="citations-container">
-<div class="citation-year">
-<h3>1993年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">"...ice?nn In fact, the true investor welcomes volatility. Ben Graham nexplained why in Chapter 8 of The Intelligent Investor. There he nintroduced &quot;<span class="highlight">Mr. Market</span>,&quot; an obliging fellow who shows up every day nto either buy from you or sell to you, whichever you wish. The nmore manic-depressive this chap is, t..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1993.html" class="citation-link">1993年致股东信 →</a></div>
-</div>
-</div>
-</div>
-<div class="citation-year">
-<h3>1987年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">"...nmost conducive to investment success. He said that you should nimagine market quotations as coming from a remarkably naccommodating fellow named <span class="highlight">Mr. Market</span> who is your partner in a nprivate business. Without fail, <span class="highlight">Mr. Market</span> appears daily and nnames a price at which he will either buy your interest or..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1987.html" class="citation-link">1987年致股东信 →</a></div>
-</div>
-<div class="citation-card">
-<blockquote class="citation-text">"...gine market quotations as coming from a remarkably naccommodating fellow named <span class="highlight">Mr. Market</span> who is your partner in a nprivate business. Without fail, <span class="highlight">Mr. Market</span> appears daily and nnames a price at which he will either buy your interest or sell nyou his. nn Even though the business that the two of you own..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1987.html" class="citation-link">1987年致股东信 →</a></div>
-</div>
-<div class="citation-card">
-<blockquote class="citation-text">"...ither buy your interest or sell nyou his. nn Even though the business that the two of you own may have neconomic characteristics that are stable, <span class="highlight">Mr. Market</span>'s quotations nwill be anything but. For, sad to say, the poor fellow has nincurable emotional problems. At times he feels euphoric and can nsee on..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1987.html" class="citation-link">1987年致股东信 →</a></div>
-</div>
-<div class="citation-more">
-<a href="../letters/berkshire/1987.html">+ 还有7处引用</a>
-</div>
-</div>
-</div>
-</div>
-
-        </article>
-
-    </div>
-    
-    <footer>
-        <p><a href="../index.html">巴菲特知识库</a> | 数据来源：巴菲特致股东信 (1977-2007)</p>
-    </footer>
-</body>
-</html><div class="citations-container">
-<div class="citation-year">
-<h3>1993年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">"...ice?nn In fact, the true investor welcomes volatility. Ben Graham nexplained why in Chapter 8 of The Intelligent Investor. There he nintroduced &quot;<span class="highlight">Mr. Market</span>,&quot; an obliging fellow who shows up every day nto either buy from you or sell to you, whichever you wish. The nmore manic-depressive this chap is, t..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1993.html" class="citation-link">1993年致股东信 →</a></div>
-</div>
-</div>
-</div>
-<div class="citation-year">
-<h3>1987年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">"...nmost conducive to investment success. He said that you should nimagine market quotations as coming from a remarkably naccommodating fellow named <span class="highlight">Mr. Market</span> who is your partner in a nprivate business. Without fail, <span class="highlight">Mr. Market</span> appears daily and nnames a price at which he will either buy your interest or..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1987.html" class="citation-link">1987年致股东信 →</a></div>
-</div>
-<div class="citation-card">
-<blockquote class="citation-text">"...gine market quotations as coming from a remarkably naccommodating fellow named <span class="highlight">Mr. Market</span> who is your partner in a nprivate business. Without fail, <span class="highlight">Mr. Market</span> appears daily and nnames a price at which he will either buy your interest or sell nyou his. nn Even though the business that the two of you own..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1987.html" class="citation-link">1987年致股东信 →</a></div>
-</div>
-<div class="citation-card">
-<blockquote class="citation-text">"...ither buy your interest or sell nyou his. nn Even though the business that the two of you own may have neconomic characteristics that are stable, <span class="highlight">Mr. Market</span>'s quotations nwill be anything but. For, sad to say, the poor fellow has nincurable emotional problems. At times he feels euphoric and can nsee on..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1987.html" class="citation-link">1987年致股东信 →</a></div>
-</div>
-<div class="citation-more">
-<a href="../letters/berkshire/1987.html">+ 还有7处引用</a>
-</div>
-</div>
-</div>
-</div>
-
-        <h2>引用来源（11处）</h2>
-<div class="citations-container">
-<div class="citation-year">
-<h3>1993年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">"...ice?nn In fact, the true investor welcomes volatility. Ben Graham nexplained why in Chapter 8 of The Intelligent Investor. There he nintroduced &quot;<span class="highlight">Mr. Market</span>,&quot; an obliging fellow who shows up every day nto either buy from you or sell to you, whichever you wish. The nmore manic-depressive this chap is, t..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1993.html" class="citation-link">1993年致股东信 →</a></div>
-</div>
-</div>
-</div>
-<div class="citation-year">
-<h3>1987年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">"...nmost conducive to investment success. He said that you should nimagine market quotations as coming from a remarkably naccommodating fellow named <span class="highlight">Mr. Market</span> who is your partner in a nprivate business. Without fail, <span class="highlight">Mr. Market</span> appears daily and nnames a price at which he will either buy your interest or..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1987.html" class="citation-link">1987年致股东信 →</a></div>
-</div>
-<div class="citation-card">
-<blockquote class="citation-text">"...gine market quotations as coming from a remarkably naccommodating fellow named <span class="highlight">Mr. Market</span> who is your partner in a nprivate business. Without fail, <span class="highlight">Mr. Market</span> appears daily and nnames a price at which he will either buy your interest or sell nyou his. nn Even though the business that the two of you own..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1987.html" class="citation-link">1987年致股东信 →</a></div>
-</div>
-<div class="citation-card">
-<blockquote class="citation-text">"...ither buy your interest or sell nyou his. nn Even though the business that the two of you own may have neconomic characteristics that are stable, <span class="highlight">Mr. Market</span>'s quotations nwill be anything but. For, sad to say, the poor fellow has nincurable emotional problems. At times he feels euphoric and can nsee on..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1987.html" class="citation-link">1987年致股东信 →</a></div>
-</div>
-<div class="citation-more">
-<a href="../letters/berkshire/1987.html">+ 还有7处引用</a>
-</div>
-</div>
-</div>
-</div>
-
-        </article>
-    </div>
-    <h2>引用来源（11处）</h2>
-<div class="citations-container">
-<div class="citation-year">
-<h3>1993年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">"...ice?nn In fact, the true investor welcomes volatility. Ben Graham nexplained why in Chapter 8 of The Intelligent Investor. There he nintroduced &quot;<span class="highlight">Mr. Market</span>,&quot; an obliging fellow who shows up every day nto either buy from you or sell to you, whichever you wish. The nmore manic-depressive this chap is, t..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1993.html" class="citation-link">1993年致股东信 →</a></div>
-</div>
-</div>
-</div>
-<div class="citation-year">
-<h3>1987年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">"...nmost conducive to investment success. He said that you should nimagine market quotations as coming from a remarkably naccommodating fellow named <span class="highlight">Mr. Market</span> who is your partner in a nprivate business. Without fail, <span class="highlight">Mr. Market</span> appears daily and nnames a price at which he will either buy your interest or..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1987.html" class="citation-link">1987年致股东信 →</a></div>
-</div>
-<div class="citation-card">
-<blockquote class="citation-text">"...gine market quotations as coming from a remarkably naccommodating fellow named <span class="highlight">Mr. Market</span> who is your partner in a nprivate business. Without fail, <span class="highlight">Mr. Market</span> appears daily and nnames a price at which he will either buy your interest or sell nyou his. nn Even though the business that the two of you own..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1987.html" class="citation-link">1987年致股东信 →</a></div>
-</div>
-<div class="citation-card">
-<blockquote class="citation-text">"...ither buy your interest or sell nyou his. nn Even though the business that the two of you own may have neconomic characteristics that are stable, <span class="highlight">Mr. Market</span>'s quotations nwill be anything but. For, sad to say, the poor fellow has nincurable emotional problems. At times he feels euphoric and can nsee on..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1987.html" class="citation-link">1987年致股东信 →</a></div>
-</div>
-<div class="citation-more">
-<a href="../letters/berkshire/1987.html">+ 还有7处引用</a>
-</div>
-</div>
-</div>
-</div>
-
-        </article>
-
-    </div>
-    <h2>引用来源（11处）</h2>
-<div class="citations-container">
-<div class="citation-year">
-<h3>1993年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">"...ice?nn In fact, the true investor welcomes volatility. Ben Graham nexplained why in Chapter 8 of The Intelligent Investor. There he nintroduced &quot;<span class="highlight">Mr. Market</span>,&quot; an obliging fellow who shows up every day nto either buy from you or sell to you, whichever you wish. The nmore manic-depressive this chap is, t..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1993.html" class="citation-link">1993年致股东信 →</a></div>
-</div>
-</div>
-</div>
-<div class="citation-year">
-<h3>1987年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">"...nmost conducive to investment success. He said that you should nimagine market quotations as coming from a remarkably naccommodating fellow named <span class="highlight">Mr. Market</span> who is your partner in a nprivate business. Without fail, <span class="highlight">Mr. Market</span> appears daily and nnames a price at which he will either buy your interest or..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1987.html" class="citation-link">1987年致股东信 →</a></div>
-</div>
-<div class="citation-card">
-<blockquote class="citation-text">"...gine market quotations as coming from a remarkably naccommodating fellow named <span class="highlight">Mr. Market</span> who is your partner in a nprivate business. Without fail, <span class="highlight">Mr. Market</span> appears daily and nnames a price at which he will either buy your interest or sell nyou his. nn Even though the business that the two of you own..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1987.html" class="citation-link">1987年致股东信 →</a></div>
-</div>
-<div class="citation-card">
-<blockquote class="citation-text">"...ither buy your interest or sell nyou his. nn Even though the business that the two of you own may have neconomic characteristics that are stable, <span class="highlight">Mr. Market</span>'s quotations nwill be anything but. For, sad to say, the poor fellow has nincurable emotional problems. At times he feels euphoric and can nsee on..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1987.html" class="citation-link">1987年致股东信 →</a></div>
-</div>
-<div class="citation-more">
-<a href="../letters/berkshire/1987.html">+ 还有7处引用</a>
-</div>
-</div>
-</div>
-</div>
-
-        </article>
-<footer>
-        <p><a href="../index.html">巴菲特知识库</a> | 数据来源：巴菲特致股东信 (1977-2007)</p>
-    </footer>
-</body>
-</html><div class="citations-container">
-<div class="citation-year">
-<h3>1993年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">"...ice?nn In fact, the true investor welcomes volatility. Ben Graham nexplained why in Chapter 8 of The Intelligent Investor. There he nintroduced &quot;<span class="highlight">Mr. Market</span>,&quot; an obliging fellow who shows up every day nto either buy from you or sell to you, whichever you wish. The nmore manic-depressive this chap is, t..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1993.html" class="citation-link">1993年致股东信 →</a></div>
-</div>
-</div>
-</div>
-<div class="citation-year">
-<h3>1987年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">"...nmost conducive to investment success. He said that you should nimagine market quotations as coming from a remarkably naccommodating fellow named <span class="highlight">Mr. Market</span> who is your partner in a nprivate business. Without fail, <span class="highlight">Mr. Market</span> appears daily and nnames a price at which he will either buy your interest or..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1987.html" class="citation-link">1987年致股东信 →</a></div>
-</div>
-<div class="citation-card">
-<blockquote class="citation-text">"...gine market quotations as coming from a remarkably naccommodating fellow named <span class="highlight">Mr. Market</span> who is your partner in a nprivate business. Without fail, <span class="highlight">Mr. Market</span> appears daily and nnames a price at which he will either buy your interest or sell nyou his. nn Even though the business that the two of you own..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1987.html" class="citation-link">1987年致股东信 →</a></div>
-</div>
-<div class="citation-card">
-<blockquote class="citation-text">"...ither buy your interest or sell nyou his. nn Even though the business that the two of you own may have neconomic characteristics that are stable, <span class="highlight">Mr. Market</span>'s quotations nwill be anything but. For, sad to say, the poor fellow has nincurable emotional problems. At times he feels euphoric and can nsee on..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1987.html" class="citation-link">1987年致股东信 →</a></div>
-</div>
-<div class="citation-more">
-<a href="../letters/berkshire/1987.html">+ 还有7处引用</a>
-</div>
-</div>
-</div>
-</div>
-
-        <h2>引用来源（11处）</h2>
-<div class="citations-container">
-<div class="citation-year">
-<h3>1993年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">"...ice?nn In fact, the true investor welcomes volatility. Ben Graham nexplained why in Chapter 8 of The Intelligent Investor. There he nintroduced &quot;<span class="highlight">Mr. Market</span>,&quot; an obliging fellow who shows up every day nto either buy from you or sell to you, whichever you wish. The nmore manic-depressive this chap is, t..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1993.html" class="citation-link">1993年致股东信 →</a></div>
-</div>
-</div>
-</div>
-<div class="citation-year">
-<h3>1987年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">"...nmost conducive to investment success. He said that you should nimagine market quotations as coming from a remarkably naccommodating fellow named <span class="highlight">Mr. Market</span> who is your partner in a nprivate business. Without fail, <span class="highlight">Mr. Market</span> appears daily and nnames a price at which he will either buy your interest or..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1987.html" class="citation-link">1987年致股东信 →</a></div>
-</div>
-<div class="citation-card">
-<blockquote class="citation-text">"...gine market quotations as coming from a remarkably naccommodating fellow named <span class="highlight">Mr. Market</span> who is your partner in a nprivate business. Without fail, <span class="highlight">Mr. Market</span> appears daily and nnames a price at which he will either buy your interest or sell nyou his. nn Even though the business that the two of you own..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1987.html" class="citation-link">1987年致股东信 →</a></div>
-</div>
-<div class="citation-card">
-<blockquote class="citation-text">"...ither buy your interest or sell nyou his. nn Even though the business that the two of you own may have neconomic characteristics that are stable, <span class="highlight">Mr. Market</span>'s quotations nwill be anything but. For, sad to say, the poor fellow has nincurable emotional problems. At times he feels euphoric and can nsee on..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1987.html" class="citation-link">1987年致股东信 →</a></div>
-</div>
-<div class="citation-more">
-<a href="../letters/berkshire/1987.html">+ 还有7处引用</a>
-</div>
-</div>
-</div>
-</div>
-
-        </article>
-    </div>
-    <h2>引用来源（11处）</h2>
-<div class="citations-container">
-<div class="citation-year">
-<h3>1993年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">"...ice?nn In fact, the true investor welcomes volatility. Ben Graham nexplained why in Chapter 8 of The Intelligent Investor. There he nintroduced &quot;<span class="highlight">Mr. Market</span>,&quot; an obliging fellow who shows up every day nto either buy from you or sell to you, whichever you wish. The nmore manic-depressive this chap is, t..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1993.html" class="citation-link">1993年致股东信 →</a></div>
-</div>
-</div>
-</div>
-<div class="citation-year">
-<h3>1987年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">"...nmost conducive to investment success. He said that you should nimagine market quotations as coming from a remarkably naccommodating fellow named <span class="highlight">Mr. Market</span> who is your partner in a nprivate business. Without fail, <span class="highlight">Mr. Market</span> appears daily and nnames a price at which he will either buy your interest or..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1987.html" class="citation-link">1987年致股东信 →</a></div>
-</div>
-<div class="citation-card">
-<blockquote class="citation-text">"...gine market quotations as coming from a remarkably naccommodating fellow named <span class="highlight">Mr. Market</span> who is your partner in a nprivate business. Without fail, <span class="highlight">Mr. Market</span> appears daily and nnames a price at which he will either buy your interest or sell nyou his. nn Even though the business that the two of you own..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1987.html" class="citation-link">1987年致股东信 →</a></div>
-</div>
-<div class="citation-card">
-<blockquote class="citation-text">"...ither buy your interest or sell nyou his. nn Even though the business that the two of you own may have neconomic characteristics that are stable, <span class="highlight">Mr. Market</span>'s quotations nwill be anything but. For, sad to say, the poor fellow has nincurable emotional problems. At times he feels euphoric and can nsee on..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1987.html" class="citation-link">1987年致股东信 →</a></div>
-</div>
-<div class="citation-more">
-<a href="../letters/berkshire/1987.html">+ 还有7处引用</a>
-</div>
-</div>
-</div>
-</div>
-
-        </article>
-
-    </div>
-    
-    <footer>
-        <p><a href="../index.html">巴菲特知识库</a> | 数据来源：巴菲特致股东信 (1977-2007)</p>
-    </footer>
 </body>
 </html>

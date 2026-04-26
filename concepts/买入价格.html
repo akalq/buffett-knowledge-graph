@@ -3,38 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>买入价格 - 巴菲特知识库</title>
+    <title>买入价格 (Purchase Price) - 巴菲特投资概念</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
-        :root { --bg-color: #FFFEF9; --navy: #1B2A4A; --gold: #C9A227; --text: #2C3E50; --secondary: #5D6D7E; --border: #E5E0D8; }
+        :root { --bg-color: #FFFEF9; --navy: #1B2A4A; --gold: #C9A227; --text: #2C3E50; --secondary: #5D6D7E; --border: #E5E0D8; --light-gold: #F5ECD7; }
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: 'Noto Serif SC', Georgia, serif; background: var(--bg-color); color: var(--text); line-height: 1.8; }
+        body { font-family: 'Noto Serif SC', Georgia, serif; background: var(--bg-color); color: var(--text); line-height: 1.9; }
         .container { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
-        header { background: var(--navy); color: white; padding: 40px 30px; text-align: center; }
-        header h1 { font-size: 1.8em; margin-bottom: 10px; }
-        header .meta { color: var(--gold); font-size: 0.95em; margin-top: 10px; }
-        .nav { background: white; border: 1px solid var(--border); padding: 15px 20px; margin-bottom: 30px; border-radius: 8px; text-align: center; }
-        .nav a { color: var(--navy); text-decoration: none; margin: 0 12px; font-size: 0.95em; }
-        .nav a:hover { color: var(--gold); }
-        .content { background: white; border: 1px solid var(--border); border-radius: 12px; padding: 40px; }
-        .content h2 { color: var(--navy); font-size: 1.4em; margin: 35px 0 15px; padding-bottom: 8px; border-bottom: 2px solid var(--gold); }
-        .content h2:first-child { margin-top: 0; }
+        header { background: linear-gradient(135deg, var(--navy) 0%, #2a3f6a 100%); color: white; padding: 50px 30px; text-align: center; }
+        header h1 { font-size: 2.2em; margin-bottom: 10px; }
+        header h1::before { content: '💰'; margin-right: 15px; }
+        header .meta { color: var(--gold); font-size: 1em; margin-top: 15px; }
+        header .meta span { background: rgba(201, 162, 39, 0.2); padding: 5px 15px; border-radius: 20px; }
+        .nav { background: white; border: 1px solid var(--border); padding: 15px 25px; margin-bottom: 30px; border-radius: 10px; text-align: center; }
+        .nav a { color: var(--navy); text-decoration: none; margin: 0 15px; font-size: 0.95em; padding: 8px 15px; border-radius: 5px; transition: all 0.2s; }
+        .nav a:hover { background: var(--gold); color: white; }
+        .content { background: white; border: 1px solid var(--border); border-radius: 15px; padding: 45px; box-shadow: 0 5px 30px rgba(0,0,0,0.05); }
+        .content h2 { color: var(--navy); font-size: 1.4em; margin: 40px 0 20px; padding-bottom: 12px; border-bottom: 3px solid var(--gold); display: inline-block; }
+        .content h2:first-of-type { margin-top: 0; }
         .content h3 { color: var(--navy); font-size: 1.15em; margin: 25px 0 12px; }
         .content p { margin: 15px 0; text-align: justify; }
-        .quote { background: var(--navy); color: white; padding: 20px 25px; border-left: 4px solid var(--gold); margin: 25px 0; border-radius: 0 8px 8px 0; }
-        .quote p { margin: 0; font-style: italic; }
-        .quote .source { color: var(--gold); margin-top: 12px; font-size: 0.9em; }
-        .related { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px; }
-        .related a { background: white; border: 1px solid var(--border); padding: 8px 15px; border-radius: 20px; text-decoration: none; color: var(--navy); font-size: 0.9em; transition: all 0.2s; }
-        .related a:hover { background: var(--gold); color: white; border-color: var(--gold); }
+        .content ul, .content ol { margin: 15px 0 15px 25px; }
+        .content li { margin: 10px 0; }
+        .content strong { color: var(--navy); font-weight: 700; }
+        
+        .insight { background: linear-gradient(135deg, #f8f5ee 0%, #fff 100%); border-left: 4px solid #C9A227; padding: 18px 22px; margin: 25px 0; font-style: italic; font-size: 1.05em; }
+        
+        .evolution-timeline { position: relative; padding-left: 35px; margin: 25px 0; }
+        .evolution-timeline::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: #C9A227; }
+        .evolution-point { position: relative; margin-bottom: 25px; }
+        .evolution-point::before { content: ''; position: absolute; left: -38px; top: 6px; width: 12px; height: 12px; border-radius: 50%; background: #C9A227; border: 3px solid white; box-shadow: 0 0 0 3px #C9A227; }
+        .evolution-year { font-weight: 600; color: var(--navy); font-size: 1.05em; }
+        .evolution-desc { color: var(--text); margin-top: 5px; }
+        
+        .case-card { background: #F8F5EE; border-radius: 10px; padding: 25px; margin: 20px 0; border: 1px solid var(--border); }
+        .case-company { font-size: 1.15em; font-weight: 600; color: var(--navy); margin-bottom: 8px; }
+        .case-data { color: #5D6D7E; font-size: 0.95em; margin: 8px 0; }
+        .case-lesson { font-style: italic; margin-top: 15px; padding-top: 15px; border-top: 1px solid #E8E4DB; color: var(--text); }
+        
+        .misconception-block { background: #fff5f5; padding: 20px 25px; border-radius: 10px; margin: 20px 0; border-left: 4px solid #e74c3c; }
+        .misconception-block h4 { color: #c0392b; margin-bottom: 12px; font-size: 1.05em; }
+        .misconception-block p { margin: 8px 0; }
+        
+        .quote-block { background: var(--navy); color: white; padding: 25px 30px; border-left: 5px solid var(--gold); margin: 25px 0; border-radius: 0 12px 12px 0; }
+        .quote-block p { margin: 0; font-style: italic; font-size: 1.05em; line-height: 1.8; }
+        .quote-block footer { color: var(--gold); margin-top: 15px; font-size: 0.9em; font-style: normal; }
+        
+        .topic-group { margin: 25px 0; padding: 20px; background: linear-gradient(135deg, var(--light-gold) 0%, #fff9e6 100%); border-radius: 10px; }
+        .topic-title { font-weight: 600; color: var(--navy); margin-bottom: 10px; font-size: 1.05em; }
+        .topic-desc { color: var(--text); margin-bottom: 12px; font-size: 0.95em; }
+        .topic-years { display: flex; flex-wrap: wrap; gap: 8px; }
+        .topic-years a { background: white; border: 1px solid var(--gold); padding: 5px 14px; border-radius: 18px; text-decoration: none; color: var(--navy); font-size: 0.85em; transition: all 0.2s; }
+        .topic-years a:hover { background: var(--gold); color: white; }
+        
         footer { text-align: center; padding: 40px 20px; color: var(--secondary); border-top: 1px solid var(--border); margin-top: 40px; }
-        footer a { color: var(--navy); text-decoration: none; }
+        @media (max-width: 768px) { .container { padding: 20px 15px; } header { padding: 30px 20px; } header h1 { font-size: 1.7em; } .content { padding: 25px 20px; } .nav a { margin: 5px 8px; display: inline-block; } }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
-        <h1>💡 买入价格</h1>
-        <div class="meta">概念 · 被引用 34 次</div>
+        <h1>买入价格 (Purchase Price)</h1>
+        <div class="meta"><span>巴菲特投资体系核心概念</span></div>
     </header>
     
     <div class="container">
@@ -42,30 +71,140 @@
             <a href="../index.html">🏠 首页</a>
             <a href="../index-pages/核心思想索引.html">💡 核心思想索引</a>
             <a href="../index-pages/公司索引.html">🏢 公司索引</a>
-            <a href="../index-pages/人物索引.html">👤 人物索引</a>
         </nav>
         
         <article class="content">
-            <h2>概念解析</h2>
-            <p>买入价格决定了安全边际的大小，巴菲特强调'以合理价格买入优秀企业'。</p>
+            <h2>定义与起源</h2>
+            <p><strong>买入价格是决定投资成败的第一要素</strong>——即使是最优秀的企业，如果买入价格过高，也会变成糟糕的投资。巴菲特强调："好的骑手需要好马，但更重要的是，好价格决定好回报。"</p>
+            <p>这一理念最早体现在<strong>1970年代</strong>巴菲特对喜诗糖果的收购中：虽然支付的价格远超账面价值，但相对于其未来现金流潜力，这个价格是划算的。这标志着巴菲特从纯粹"捡烟蒂"向"合理价格买优质企业"转变。</p>
             
-            <h2>巴菲特原话</h2>
-            <div class="quote">
-                <p>"理解'买入价格'这个概念对于理解伯克希尔的投资哲学至关重要。"</p>
-                <div class="source">—— 巴菲特致股东信</div>
+            <div class="insight">
+                买入价格决定了你的安全边际和安全边际决定了你的收益率。在一个悲观的市场中以低估的价格买入优质企业，是巴菲特成功的根本原因。
             </div>
             
-            <h2>相关概念</h2>
-            <div class="related">
-                <a href="内在价值.html">内在价值</a>
-                <a href="护城河.html">护城河</a>
-                <a href="安全边际.html">安全边际</a>
+            <h2>核心要义</h2>
+            <ul>
+                <li><strong>价格决定回报率</strong>：同一家企业，不同买入价格会导致截然不同的投资结果。好公司配合好价格才能产生好回报。</li>
+                <li><strong>不要为成长支付过高溢价</strong>：即使相信企业会高速成长，如果支付的价格已经充分反映了这种成长，回报也会令人失望。</li>
+                <li><strong>耐心等待"击球点"</strong>：成功的投资需要耐心等待完美机会。巴菲特形容这如同棒球击球——等待最理想的投球出现。</li>
+                <li><strong>避免"太贵但会涨"的思维</strong>：不能因为觉得某股票"虽然贵但还会涨"就买入，价格永远是首要考量。</li>
+                <li><strong>相对价值而非绝对价格</strong>：关键不是绝对价格高低，而是相对于内在价值的折扣程度。一万元一股不一定贵，一元一股不一定便宜。</li>
+            </ul>
+            
+            <h2>思想演变</h2>
+            <div class="evolution-timeline">
+                <div class="evolution-point">
+                    <div class="evolution-year">格雷厄姆的"清算价值"法（1950年代）</div>
+                    <div class="evolution-desc">早期严格遵循"价格低于清算价值"的标准，只在极端折扣时买入，关注的是资产价值而非企业质量。</div>
+                </div>
+                <div class="evolution-point">
+                    <div class="evolution-year">转变起点（1972年收购喜诗）</div>
+                    <div class="evolution-desc">以远超账面价值的价格收购喜诗糖果，这是第一次为"质地"支付溢价，但价格仍然合理。巴菲特称之为"第一次为品质付出"。</div>
+                </div>
+                <div class="evolution-point">
+                    <div class="evolution-year">理念成熟（1989年《格雷厄姆和多德》演讲）</div>
+                    <div class="evolution-desc">系统阐述"合理价格买入优秀企业"的理念，明确表示价格和质量的平衡才是投资的真谛。</div>
+                </div>
+                <div class="evolution-point">
+                    <div class="evolution-year">数字时代的新挑战</div>
+                    <div class="evolution-desc">面对高估的市场，巴菲特选择持有大量现金等待机会，而非降低标准。他认为市场定价过高不是买入的理由。</div>
+                </div>
             </div>
+            
+            <h2>实战案例</h2>
+            <div class="case-card">
+                <div class="case-company">喜诗糖果 (See's Candies)</div>
+                <div class="case-data">1972年以2500万美元收购，是当时账面价值的3倍；年利润约200万美元；至今已产生超20亿美元利润</div>
+                <div class="case-lesson">这笔投资证明了：适度为优质支付溢价是值得的，只要这个溢价相对于未来现金流是合理的。"好价格+好企业=超额回报"在这里得到完美验证。</div>
+            </div>
+            
+            <div class="case-card">
+                <div class="case-company">可口可乐 (Coca-Cola)</div>
+                <div class="case-data">1988年以约13亿美元买入；当时市盈率约15倍；持有至今价值超250亿美元</div>
+                <div class="case-lesson">1988年市场对可口可乐看法悲观时，巴菲特以合理而非低廉的价格买入，结果证明好价格加好企业产生了惊人的复利效应。</div>
+            </div>
+            
+            <div class="case-card">
+                <div class="case-company">德克斯特鞋业 (Dexter Shoes)</div>
+                <div class="case-data">1993年以4.34亿美元收购；最终价值归零；这是巴菲特承认的最失败投资之一</div>
+                <div class="case-lesson">这笔投资的问题不是企业本身有多差，而是支付的价格太高且行业竞争激烈。价格永远是首要考量，这笔教训代价高昂。</div>
+            </div>
+            
+            <h2>常见误解</h2>
+            <div class="misconception-block">
+                <h4>❌ 误解一：好公司可以任何价格买</h4>
+                <p><strong>人们以为</strong>：优秀企业永远不会让人亏钱，所以无论什么价格买入都没关系。</p>
+                <p><strong>巴菲特说</strong>：再好的公司也可能是个糟糕的投资——如果你支付的价格过高的话。高价买入优秀企业，结果往往是平庸的回报。</p>
+            </div>
+            
+            <div class="misconception-block">
+                <h4>❌ 误解二：只要股票会涨，价格高点无所谓</h4>
+                <p><strong>人们以为</strong>：预测股价上涨比关注买入价格更重要。</p>
+                <p><strong>巴菲特说</strong>：价格决定了你未来的回报空间。买入价格越高，安全边际越小，潜在的失望就越大。</p>
+            </div>
+            
+            <div class="misconception-block">
+                <h4>❌ 误解三：低价股比高价股安全</h4>
+                <p><strong>人们以为</strong>：股价低的股票风险更小，上涨空间更大。</p>
+                <p><strong>巴菲特说</strong>：股票没有"便宜"和"贵"之分，只有相对于内在价值的高估和低估。一万元的股票可能很便宜，一元的股票可能很贵。</p>
+            </div>
+            
+            <h2>精华原话</h2>
+            <div class="quote-block">
+                <p>"价格是你支付的东西，价值是你得到的东西。二者很少完全相等，但大多数人花的是价格，期待得到的是价值，结果往往事与愿违。"</p>
+                <footer>—— 2008年致股东信</footer>
+            </div>
+            
+            <div class="quote-block">
+                <p>"无论企业有多好，如果你买入价格过高，这都可能是一笔糟糕的投资。我们追求的是以合理价格买入出色企业。"</p>
+                <footer>—— 2008年致股东信</footer>
+            </div>
+            
+            <div class="quote-block">
+                <p>"投资的秘诀在于当价格显著低于价值时买入，并等待价格反映或超出价值。如果你买入了价格合理的好企业，回报会自己照顾自己。"</p>
+                <footer>—— 1994年致股东信</footer>
+            </div>
+            
+            <div class="quote-block">
+                <p>"优秀的企业是那些可以回报大量现金给投资者的企业。关键问题是：你为这种能力支付了什么？"</p>
+                <footer>—— 2012年致股东信</footer>
+            </div>
+            
+            <h2>延伸阅读</h2>
+            <p>买入价格概念在信件中的讨论分布，按论点组织：</p>
+            
+            <div class="topic-group">
+                <div class="topic-title">价格与价值的关系</div>
+                <div class="topic-desc">核心原则：投资成功取决于你支付的价格与所获得价值之间的关系</div>
+                <div class="topic-years">
+                    <a href="../letters/berkshire/2008.html">2008</a>
+                    <a href="../letters/berkshire/1994.html">1994</a>
+                </div>
+            </div>
+            
+            <div class="topic-group">
+                <div class="topic-title">合理价格买优质企业</div>
+                <div class="topic-desc">阐述"合理价格"与"优质企业"的平衡艺术</div>
+                <div class="topic-years">
+                    <a href="../letters/berkshire/2008.html">2008</a>
+                    <a href="../letters/berkshire/1993.html">1993</a>
+                </div>
+            </div>
+            
+            <div class="topic-group">
+                <div class="topic-title">喜诗糖果案例</div>
+                <div class="topic-desc">从喜诗糖果看如何判断"合理价格"</div>
+                <div class="topic-years">
+                    <a href="../letters/berkshire/2007.html">2007</a>
+                    <a href="../letters/berkshire/2012.html">2012</a>
+                </div>
+            </div>
+            
         </article>
     </div>
     
     <footer>
-        <p><a href="../index.html">巴菲特知识库</a> | 数据来源：Berkshire Hathaway Letters</p>
+        <p>巴菲特知识库 | 数据来源：Berkshire Hathaway Letters to Shareholders</p>
     </footer>
 </body>
 </html>

@@ -3,37 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>债券 - 巴菲特知识库</title>
+    <title>债券 (Bonds) - 巴菲特投资概念</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
-        :root { --bg-color: #FFFEF9; --navy: #1B2A4A; --gold: #C9A227; --text: #2C3E50; --secondary: #5D6D7E; --border: #E5E0D8; }
+        :root { --bg-color: #FFFEF9; --navy: #1B2A4A; --gold: #C9A227; --text: #2C3E50; --secondary: #5D6D7E; --border: #E5E0D8; --light-gold: #F5ECD7; }
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: 'Noto Serif SC', Georgia, serif; background: var(--bg-color); color: var(--text); line-height: 1.8; }
+        body { font-family: 'Noto Serif SC', Georgia, serif; background: var(--bg-color); color: var(--text); line-height: 1.9; }
         .container { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
-        header { background: var(--navy); color: white; padding: 40px 30px; text-align: center; }
-        header h1 { font-size: 1.8em; margin-bottom: 10px; }
-        header .meta { color: var(--gold); font-size: 0.95em; margin-top: 10px; }
-        .nav { background: white; border: 1px solid var(--border); padding: 15px 20px; margin-bottom: 30px; border-radius: 8px; text-align: center; }
-        .nav a { color: var(--navy); text-decoration: none; margin: 0 12px; font-size: 0.95em; }
-        .nav a:hover { color: var(--gold); }
-        .content { background: white; border: 1px solid var(--border); border-radius: 12px; padding: 40px; }
-        .content h2 { color: var(--navy); font-size: 1.4em; margin: 35px 0 15px; padding-bottom: 8px; border-bottom: 2px solid var(--gold); }
-        .content h2:first-child { margin-top: 0; }
+        header { background: linear-gradient(135deg, var(--navy) 0%, #2a3f6a 100%); color: white; padding: 50px 30px; text-align: center; }
+        header h1 { font-size: 2.2em; margin-bottom: 10px; }
+        header h1::before { content: '📜'; margin-right: 15px; }
+        header .meta { color: var(--gold); font-size: 1em; margin-top: 15px; }
+        header .meta span { background: rgba(201, 162, 39, 0.2); padding: 5px 15px; border-radius: 20px; }
+        .nav { background: white; border: 1px solid var(--border); padding: 15px 25px; margin-bottom: 30px; border-radius: 10px; text-align: center; }
+        .nav a { color: var(--navy); text-decoration: none; margin: 0 15px; font-size: 0.95em; padding: 8px 15px; border-radius: 5px; transition: all 0.2s; }
+        .nav a:hover { background: var(--gold); color: white; }
+        .content { background: white; border: 1px solid var(--border); border-radius: 15px; padding: 45px; box-shadow: 0 5px 30px rgba(0,0,0,0.05); }
+        .content h2 { color: var(--navy); font-size: 1.4em; margin: 40px 0 20px; padding-bottom: 12px; border-bottom: 3px solid var(--gold); display: inline-block; }
+        .content h2:first-of-type { margin-top: 0; }
+        .content h3 { color: var(--navy); font-size: 1.15em; margin: 25px 0 12px; }
         .content p { margin: 15px 0; text-align: justify; }
-        .quote { background: var(--navy); color: white; padding: 20px 25px; border-left: 4px solid var(--gold); margin: 25px 0; border-radius: 0 8px 8px 0; }
-        .quote p { margin: 0; font-style: italic; }
-        .quote .source { color: var(--gold); margin-top: 12px; font-size: 0.9em; }
-        .related { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px; }
-        .related a { background: white; border: 1px solid var(--border); padding: 8px 15px; border-radius: 20px; text-decoration: none; color: var(--navy); font-size: 0.9em; transition: all 0.2s; }
-        .related a:hover { background: var(--gold); color: white; border-color: var(--gold); }
+        .content ul, .content ol { margin: 15px 0 15px 25px; }
+        .content li { margin: 10px 0; }
+        .content strong { color: var(--navy); font-weight: 700; }
+        
+        .insight { background: linear-gradient(135deg, #f8f5ee 0%, #fff 100%); border-left: 4px solid #C9A227; padding: 18px 22px; margin: 25px 0; font-style: italic; font-size: 1.05em; }
+        
+        .evolution-timeline { position: relative; padding-left: 35px; margin: 25px 0; }
+        .evolution-timeline::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: #C9A227; }
+        .evolution-point { position: relative; margin-bottom: 25px; }
+        .evolution-point::before { content: ''; position: absolute; left: -38px; top: 6px; width: 12px; height: 12px; border-radius: 50%; background: #C9A227; border: 3px solid white; box-shadow: 0 0 0 3px #C9A227; }
+        .evolution-year { font-weight: 600; color: var(--navy); font-size: 1.05em; }
+        .evolution-desc { color: var(--text); margin-top: 5px; }
+        
+        .case-card { background: #F8F5EE; border-radius: 10px; padding: 25px; margin: 20px 0; border: 1px solid var(--border); }
+        .case-company { font-size: 1.15em; font-weight: 600; color: var(--navy); margin-bottom: 8px; }
+        .case-data { color: #5D6D7E; font-size: 0.95em; margin: 8px 0; }
+        .case-lesson { font-style: italic; margin-top: 15px; padding-top: 15px; border-top: 1px solid #E8E4DB; color: var(--text); }
+        
+        .misconception-block { background: #fff5f5; padding: 20px 25px; border-radius: 10px; margin: 20px 0; border-left: 4px solid #e74c3c; }
+        .misconception-block h4 { color: #c0392b; margin-bottom: 12px; font-size: 1.05em; }
+        .misconception-block p { margin: 8px 0; }
+        
+        .quote-block { background: var(--navy); color: white; padding: 25px 30px; border-left: 5px solid var(--gold); margin: 25px 0; border-radius: 0 12px 12px 0; }
+        .quote-block p { margin: 0; font-style: italic; font-size: 1.05em; line-height: 1.8; }
+        .quote-block footer { color: var(--gold); margin-top: 15px; font-size: 0.9em; font-style: normal; }
+        
+        .topic-group { margin: 25px 0; padding: 20px; background: linear-gradient(135deg, var(--light-gold) 0%, #fff9e6 100%); border-radius: 10px; }
+        .topic-title { font-weight: 600; color: var(--navy); margin-bottom: 10px; font-size: 1.05em; }
+        .topic-desc { color: var(--text); margin-bottom: 12px; font-size: 0.95em; }
+        .topic-years { display: flex; flex-wrap: wrap; gap: 8px; }
+        .topic-years a { background: white; border: 1px solid var(--gold); padding: 5px 14px; border-radius: 18px; text-decoration: none; color: var(--navy); font-size: 0.85em; transition: all 0.2s; }
+        .topic-years a:hover { background: var(--gold); color: white; }
+        
         footer { text-align: center; padding: 40px 20px; color: var(--secondary); border-top: 1px solid var(--border); margin-top: 40px; }
-        footer a { color: var(--navy); text-decoration: none; }
+        @media (max-width: 768px) { .container { padding: 20px 15px; } header { padding: 30px 20px; } header h1 { font-size: 1.7em; } .content { padding: 25px 20px; } .nav a { margin: 5px 8px; display: inline-block; } }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
-        <h1>💡 债券</h1>
-        <div class="meta">概念 · 被引用 20 次</div>
+        <h1>债券 (Bonds)</h1>
+        <div class="meta"><span>巴菲特投资体系核心概念</span></div>
     </header>
     
     <div class="container">
@@ -41,23 +71,122 @@
             <a href="../index.html">🏠 首页</a>
             <a href="../index-pages/核心思想索引.html">💡 核心思想索引</a>
             <a href="../index-pages/公司索引.html">🏢 公司索引</a>
-            <a href="../index-pages/人物索引.html">👤 人物索引</a>
         </nav>
         
         <article class="content">
-            <h2>概念解析</h2>
-            <p>债券是固定收益证券，巴菲特将其与股票进行比较来评估相对价值。</p>
+            <h2>定义与起源</h2>
+            <p><strong>债券是借款人发行的债务证券</strong>——承诺按期支付利息并在到期时偿还本金。巴菲特对债券的态度非常谨慎："债券承诺确定性回报，但在通胀环境下，这种确定性可能导致购买力损失。"</p>
+            <p>虽然巴菲特早期曾投资过一些债券，但随着他对复利力量的理解加深，他逐步转向股票投资。</p>
             
-            <h2>相关概念</h2>
-            <div class="related">
-                <a href="内在价值.html">内在价值</a>
-                <a href="护城河.html">护城河</a>
+            <div class="insight">
+                债券在低通胀时期是安全的，但在高通胀时期是危险的。长期投资者应该记住：债券的"无风险"只是名义上的，实际上存在购买力风险。
             </div>
+            
+            <h2>核心要义</h2>
+            <ul>
+                <li><strong>债券有"无风险"的假象</strong>：虽然违约风险低，但通胀风险和再投资风险是真实存在的。</li>
+                <li><strong>股票长期优于债券</strong>：在足够长的时间维度内，股票的风险实际上低于债券。</li>
+                <li><strong>债券适合短期资金</strong>：对于短期内需要支配的资金，债券是合适的配置。</li>
+                <li><strong>长期债券是高风险资产</strong>：在通胀环境下，30年期债券的实际回报可能是负的。</li>
+                <li><strong>优先股是债券和股票的混合</strong>：伯克希尔投资了许多优先股，它们提供固定收益但具有股权特征。</li>
+            </ul>
+            
+            <h2>思想演变</h2>
+            <div class="evolution-timeline">
+                <div class="evolution-point">
+                    <div class="evolution-year">早期债券投资（1960年代前）</div>
+                    <div class="evolution-desc">早期曾投资一些债券，但规模有限。</div>
+                </div>
+                <div class="evolution-point">
+                    <div class="evolution-year">转向股票（1970-1980年代）</div>
+                    <div class="evolution-desc">认识到股票的长期回报优势，逐步减少债券配置。</div>
+                </div>
+                <div class="evolution-point">
+                    <div class="evolution-year">优先股投资（2008年后）</div>
+                    <div class="evolution-desc">2008年金融危机后投资了多个优先股项目，提供了稳定的固定收益。</div>
+                </div>
+            </div>
+            
+            <h2>实战案例</h2>
+            <div class="case-card">
+                <div class="case-company">高盛优先股</div>
+                <div class="case-data">2008年投资50亿美元优先股；年股息10%；附带认股权证</div>
+                <div class="case-lesson">这笔投资展示了巴菲特如何利用优先股——获得稳定收益的同时保留上行空间。</div>
+            </div>
+            
+            <div class="case-card">
+                <div class="case-company">美国银行优先股</div>
+                <div class="case-data">2011年投资50亿美元优先股；年股息6%；附带认股权证</div>
+                <div class="case-lesson">同样的投资逻辑——优先股提供了安全性，认股权证提供了上行空间。</div>
+            </div>
+            
+            <div class="case-card">
+                <div class="case-company">陶氏化学优先股</div>
+                <div class="case-data">2009年投资30亿美元；之后转为普通股；最终获利丰厚</div>
+                <div class="case-lesson">这个案例展示了危机时期的债券投资机会——当时企业债券价格暴跌提供了绝佳买点。</div>
+            </div>
+            
+            <h2>常见误解</h2>
+            <div class="misconception-block">
+                <h4>❌ 误解一：债券是"安全"的投资</h4>
+                <p><strong>人们以为</strong>：债券因为有固定收益，就比股票安全。</p>
+                <p><strong>巴菲特说</strong>：债券在低通胀下是安全的，但在高通胀下可能比股票更危险——你的本金购买力在持续缩水。</p>
+            </div>
+            
+            <div class="misconception-block">
+                <h4>❌ 误解二：持有债券比持有股票风险小</h4>
+                <p><strong>人们以为</strong>：债券波动小，所以风险也小。</p>
+                <p><strong>巴菲特说</strong>：从长期看，股票的回报实际上比债券更稳定——而且更高。债券的"稳定"只是表面。</p>
+            </div>
+            
+            <div class="misconception-block">
+                <h4>❌ 误解三：债券到期就不会亏</h4>
+                <p><strong>人们以为</strong>：持有债券到期就能拿回本金，不会亏损。</p>
+                <p><strong>巴菲特说</strong>：即使持有到期，如果期间通胀很高，你拿回的本金购买力可能已经大幅缩水。</p>
+            </div>
+            
+            <h2>精华原话</h2>
+            <div class="quote-block">
+                <p>"股票在通胀环境中表现更好——虽然这似乎违反直觉。债券持有者在通胀中受损，因为他们的回报是固定的。"</p>
+                <footer>—— 1977年致股东信</footer>
+            </div>
+            
+            <div class="quote-block">
+                <p>"过去100年，美国的通胀率约为3%。这意味着现在100美元的购买力，10年后只有75美元。对于持有长期债券的人来说，这是残酷的。"</p>
+                <footer>—— 1980年致股东信</footer>
+            </div>
+            
+            <div class="quote-block">
+                <p>"在长期，股票的表现会超过债券。而且不仅是平均表现更好，实际上股票在长期内的波动性也更低。"</p>
+                <footer>—— 2012年致股东信</footer>
+            </div>
+            
+            <h2>延伸阅读</h2>
+            <p>债券概念在信件中的讨论分布，按论点组织：</p>
+            
+            <div class="topic-group">
+                <div class="topic-title">债券与通胀</div>
+                <div class="topic-desc">债券在通胀环境下的风险</div>
+                <div class="topic-years">
+                    <a href="../letters/berkshire/1977.html">1977</a>
+                    <a href="../letters/berkshire/1980.html">1980</a>
+                </div>
+            </div>
+            
+            <div class="topic-group">
+                <div class="topic-title">股票 vs 债券</div>
+                <div class="topic-desc">长期投资的收益比较</div>
+                <div class="topic-years">
+                    <a href="../letters/berkshire/2012.html">2012</a>
+                    <a href="../letters/berkshire/2014.html">2014</a>
+                </div>
+            </div>
+            
         </article>
     </div>
     
     <footer>
-        <p><a href="../index.html">巴菲特知识库</a> | 数据来源：Berkshire Hathaway Letters</p>
+        <p>巴菲特知识库 | 数据来源：Berkshire Hathaway Letters to Shareholders</p>
     </footer>
 </body>
 </html>

@@ -3,175 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>长期持有 - 巴菲特知识库</title>
+    <title>长期持有 (Long-Term Holding) - 巴菲特投资概念</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto Serif SC:wght@400;600;700&family=Noto Sans SC:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         :root { --bg-color: #FFFEF9; --navy: #1B2A4A; --gold: #C9A227; --text: #2C3E50; --secondary: #5D6D7E; --border: #E5E0D8; --light-gold: #F5ECD7; }
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { font-family: 'Noto Serif SC', Georgia, serif; background: var(--bg-color); color: var(--text); line-height: 1.9; }
-        .container { max-width: 1000px; margin: 0 auto; padding: 40px 20px; }
-        header { background: linear-gradient(135deg, var(--navy) 0%, #2a3f6a 100%); color: white; padding: 50px 30px; text-align: center; position: relative; overflow: hidden; }
-        header::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); }
-        header h1 { font-size: 2.2em; margin-bottom: 10px; position: relative; }
-        header h1::before { content: '💡'; margin-right: 15px; }
-        header .meta { color: var(--gold); font-size: 1em; margin-top: 15px; position: relative; }
+        .container { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
+        header { background: linear-gradient(135deg, var(--navy) 0%, #2a3f6a 100%); color: white; padding: 50px 30px; text-align: center; }
+        header h1 { font-size: 2.2em; margin-bottom: 10px; }
+        header h1::before { content: '🤝'; margin-right: 15px; }
+        header .meta { color: var(--gold); font-size: 1em; margin-top: 15px; }
         header .meta span { background: rgba(201, 162, 39, 0.2); padding: 5px 15px; border-radius: 20px; }
-        .nav { background: white; border: 1px solid var(--border); padding: 15px 25px; margin-bottom: 30px; border-radius: 10px; text-align: center; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        .nav { background: white; border: 1px solid var(--border); padding: 15px 25px; margin-bottom: 30px; border-radius: 10px; text-align: center; }
         .nav a { color: var(--navy); text-decoration: none; margin: 0 15px; font-size: 0.95em; padding: 8px 15px; border-radius: 5px; transition: all 0.2s; }
         .nav a:hover { background: var(--gold); color: white; }
         .content { background: white; border: 1px solid var(--border); border-radius: 15px; padding: 45px; box-shadow: 0 5px 30px rgba(0,0,0,0.05); }
-        .section { margin-bottom: 40px; padding-bottom: 40px; border-bottom: 1px solid var(--border); }
-        .section:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
-        .content h2 { color: var(--navy); font-size: 1.5em; margin: 0 0 20px; padding-bottom: 12px; border-bottom: 3px solid var(--gold); display: inline-block; }
-        .content h3 { color: var(--navy); font-size: 1.2em; margin: 25px 0 15px; padding-left: 15px; border-left: 4px solid var(--gold); }
+        .content h2 { color: var(--navy); font-size: 1.4em; margin: 40px 0 20px; padding-bottom: 12px; border-bottom: 3px solid var(--gold); display: inline-block; }
+        .content h2:first-of-type { margin-top: 0; }
+        .content h3 { color: var(--navy); font-size: 1.15em; margin: 25px 0 12px; }
         .content p { margin: 15px 0; text-align: justify; }
-        .intro-box { background: linear-gradient(135deg, var(--light-gold) 0%, #fff9e6 100%); padding: 25px 30px; border-radius: 10px; margin: 20px 0; border-left: 5px solid var(--gold); }
-        .intro-box p { margin: 0; font-size: 1.05em; }
-        .quote { background: var(--navy); color: white; padding: 25px 30px; border-left: 5px solid var(--gold); margin: 25px 0; border-radius: 0 12px 12px 0; position: relative; }
-        .quote::before { content: '"'; position: absolute; top: 10px; left: 15px; font-size: 4em; color: var(--gold); opacity: 0.3; font-family: Georgia, serif; }
-        .quote p { margin: 0; font-style: italic; font-size: 1.05em; padding-left: 30px; }
-        .quote .source { color: var(--gold); margin-top: 15px; font-size: 0.9em; padding-left: 30px; font-style: normal; }
-        .timeline { position: relative; padding-left: 30px; margin: 20px 0; }
-        .timeline::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--gold); }
-        .timeline-item { position: relative; margin-bottom: 25px; }
-        .timeline-item::before { content: ''; position: absolute; left: -34px; top: 5px; width: 12px; height: 12px; background: var(--gold); border-radius: 50%; border: 3px solid white; box-shadow: 0 0 0 3px var(--gold); }
-        .timeline-year { font-weight: bold; color: var(--navy); font-size: 1.1em; }
-        .timeline-content { color: var(--text); margin-top: 5px; }
-        .misconception { background: #fff5f5; padding: 20px 25px; border-radius: 10px; margin: 15px 0; border-left: 4px solid #e74c3c; }
-        .misconception h4 { color: #c0392b; margin-bottom: 10px; font-size: 1.1em; }
-        .related { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 20px; }
-        .related a { background: white; border: 2px solid var(--border); padding: 10px 20px; border-radius: 25px; text-decoration: none; color: var(--navy); font-size: 0.95em; transition: all 0.3s; }
-        .related a:hover { background: var(--gold); color: white; border-color: var(--gold); transform: translateY(-2px); }
+        .content ul, .content ol { margin: 15px 0 15px 25px; }
+        .content li { margin: 10px 0; }
+        .content strong { color: var(--navy); font-weight: 700; }
+        
+        .insight { background: linear-gradient(135deg, #f8f5ee 0%, #fff 100%); border-left: 4px solid #C9A227; padding: 18px 22px; margin: 25px 0; font-style: italic; font-size: 1.05em; }
+        
+        .evolution-timeline { position: relative; padding-left: 35px; margin: 25px 0; }
+        .evolution-timeline::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: #C9A227; }
+        .evolution-point { position: relative; margin-bottom: 25px; }
+        .evolution-point::before { content: ''; position: absolute; left: -38px; top: 6px; width: 12px; height: 12px; border-radius: 50%; background: #C9A227; border: 3px solid white; box-shadow: 0 0 0 3px #C9A227; }
+        .evolution-year { font-weight: 600; color: var(--navy); font-size: 1.05em; }
+        .evolution-desc { color: var(--text); margin-top: 5px; }
+        
+        .case-card { background: #F8F5EE; border-radius: 10px; padding: 25px; margin: 20px 0; border: 1px solid var(--border); }
+        .case-company { font-size: 1.15em; font-weight: 600; color: var(--navy); margin-bottom: 8px; }
+        .case-data { color: #5D6D7E; font-size: 0.95em; margin: 8px 0; }
+        .case-lesson { font-style: italic; margin-top: 15px; padding-top: 15px; border-top: 1px solid #E8E4DB; color: var(--text); }
+        
+        .misconception-block { background: #fff5f5; padding: 20px 25px; border-radius: 10px; margin: 20px 0; border-left: 4px solid #e74c3c; }
+        .misconception-block h4 { color: #c0392b; margin-bottom: 12px; font-size: 1.05em; }
+        .misconception-block p { margin: 8px 0; }
+        
+        .quote-block { background: var(--navy); color: white; padding: 25px 30px; border-left: 5px solid var(--gold); margin: 25px 0; border-radius: 0 12px 12px 0; }
+        .quote-block p { margin: 0; font-style: italic; font-size: 1.05em; line-height: 1.8; }
+        .quote-block footer { color: var(--gold); margin-top: 15px; font-size: 0.9em; font-style: normal; }
+        
+        .topic-group { margin: 25px 0; padding: 20px; background: linear-gradient(135deg, var(--light-gold) 0%, #fff9e6 100%); border-radius: 10px; }
+        .topic-title { font-weight: 600; color: var(--navy); margin-bottom: 10px; font-size: 1.05em; }
+        .topic-desc { color: var(--text); margin-bottom: 12px; font-size: 0.95em; }
+        .topic-years { display: flex; flex-wrap: wrap; gap: 8px; }
+        .topic-years a { background: white; border: 1px solid var(--gold); padding: 5px 14px; border-radius: 18px; text-decoration: none; color: var(--navy); font-size: 0.85em; transition: all 0.2s; }
+        .topic-years a:hover { background: var(--gold); color: white; }
+        
         footer { text-align: center; padding: 40px 20px; color: var(--secondary); border-top: 1px solid var(--border); margin-top: 40px; }
-        footer a { color: var(--navy); text-decoration: none; }
-        @media (max-width: 768px) { .container { padding: 20px 15px; } header { padding: 30px 20px; } header h1 { font-size: 1.6em; } .content { padding: 25px 20px; } .nav a { margin: 5px 8px; display: inline-block; } }
-    
-        /* 反向链接样式 */
-        .backlinks {
-            margin-top: 40px;
-            padding-top: 30px;
-            border-top: 2px dashed var(--gold);
-        }
-        .backlinks h2 {
-            color: var(--navy);
-            font-size: 1.3em;
-            margin-bottom: 15px;
-        }
-        .backlinks-intro {
-            color: var(--secondary);
-            margin-bottom: 15px;
-        }
-        .backlinks-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-        .backlinks-list a {
-            background: linear-gradient(135deg, var(--light-gold) 0%, #fff9e6 100%);
-            border: 1px solid var(--gold);
-            padding: 8px 16px;
-            border-radius: 20px;
-            text-decoration: none;
-            color: var(--navy);
-            font-size: 0.9em;
-            transition: all 0.3s;
-        }
-        .backlinks-list a:hover {
-            background: var(--gold);
-            color: white;
-            transform: translateY(-2px);
-        }
-        .backlinks-count {
-            margin-top: 15px;
-            color: var(--secondary);
-            font-size: 0.9em;
-        }
-
-    
-        .citations-container {
-            margin: 30px 0;
-        }
-        .citation-year {
-            margin: 25px 0;
-        }
-        .citation-year h3 {
-            color: #1B2A4A;
-            font-size: 1.1em;
-            margin-bottom: 15px;
-            padding-bottom: 8px;
-            border-bottom: 1px solid #E5E0D8;
-        }
-        .citation-list {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-        .citation-card {
-            background: #F8F5EE;
-            border: 1px solid #E5E0D8;
-            border-radius: 8px;
-            padding: 20px;
-            transition: all 0.2s;
-        }
-        .citation-card:hover {
-            border-color: #C9A227;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-        .citation-text {
-            margin: 0 0 15px 0;
-            padding: 0;
-            font-style: italic;
-            color: #2C3E50;
-            line-height: 1.7;
-        }
-        .citation-text .highlight {
-            background: #FFF3CD;
-            padding: 0 2px;
-            border-radius: 2px;
-            font-weight: 600;
-        }
-        .citation-meta {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 0.85em;
-        }
-        .section-tag {
-            background: #E8E4DB;
-            color: #5D6D7E;
-            padding: 4px 10px;
-            border-radius: 12px;
-            font-size: 0.8em;
-        }
-        .citation-link {
-            color: #1B2A4A;
-            text-decoration: none;
-            font-weight: 500;
-        }
-        .citation-link:hover {
-            color: #C9A227;
-        }
-        .citation-more {
-            text-align: center;
-            padding: 10px;
-            background: #F8F5EE;
-            border-radius: 8px;
-        }
-        .citation-more a {
-            color: #5D6D7E;
-            text-decoration: none;
-            font-size: 0.9em;
-        }
-        .citation-more a:hover {
-            color: #C9A227;
-        }
-    
-        </style>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
+        @media (max-width: 768px) { .container { padding: 20px 15px; } header { padding: 30px 20px; } header h1 { font-size: 1.7em; } .content { padding: 25px 20px; } .nav a { margin: 5px 8px; display: inline-block; } }
+    </style>
 </head>
 <body>
     <header>
-        <h1>长期持有</h1>
-        <div class="meta"><span>核心投资概念</span></div>
+        <h1>长期持有 (Long-Term Holding)</h1>
+        <div class="meta"><span>复利效应的最佳实践</span></div>
     </header>
     
     <div class="container">
@@ -179,613 +71,144 @@
             <a href="../index.html">🏠 首页</a>
             <a href="../index-pages/核心思想索引.html">💡 核心思想索引</a>
             <a href="../index-pages/公司索引.html">🏢 公司索引</a>
-            <a href="../index-pages/人物索引.html">👤 人物索引</a>
         </nav>
         
         <article class="content">
-            <div class="section">
-                <h2>定义与起源</h2>
-                <div class="intro-box">
-                    <p>巴菲特偏好永久持有优质企业，享受复利带来的财富增长。他认为最好的投资是买进后永远不需要卖出的股票。长期持有减少了交易成本和税收，让投资者能够分享企业的长期成长。</p>
+            <h2>定义与起源</h2>
+            <p><strong>长期持有是基于复利原理，通过永久持有优质企业来积累财富的投资策略</strong>——当企业具有持久的竞争优势和卓越的管理层时，最优选择是长期持有而非频繁交易。</p>
+            <p>巴菲特最著名的表述是："如果你不想持有某只股票10年，就不要持有它10分钟。"这不仅是投资理念，更是对优质企业本质的深刻理解。</p>
+            
+            <div class="insight">
+                长期持有的前提是选对了企业。不是"买了就不卖"，而是"因为企业足够好，所以不需要卖"。频繁交易的投资者试图打败市场，而长期持有的投资者让复利为自己工作。
+            </div>
+            
+            <h2>核心要义</h2>
+            <ul>
+                <li><strong>优质为前提</strong>：长期持有只适用于优质企业。烂企业的股票拿得越久，亏得越多。"买进并持有"本身不是策略，选择正确的企业才是。</li>
+                <li><strong>减少摩擦成本</strong>：每次买卖都有成本（佣金、价差、税费）。长期持有大幅降低了这些摩擦，让复利效应最大化。</li>
+                <li><strong>税负优势</strong>：在多数市场，长期持有的资本利得税率更低。美国长期资本利得税优惠显著，这是持有不动的重要优势。</li>
+                <li><strong>让复利充分发挥</strong>：复利需要时间才能显现威力。频繁交易打断了复利链条，让"雪球"无法滚大。</li>
+                <li><strong>减少决策疲劳</strong>：市场每天都在波动。长期持有意味着不需要每天做决策，减少了情绪干扰和判断失误。</li>
+            </ul>
+            
+            <h2>思想演变</h2>
+            <div class="evolution-timeline">
+                <div class="evolution-point">
+                    <div class="evolution-year">早期（1960-1970年代）</div>
+                    <div class="evolution-desc">巴菲特早期采用"烟蒂投资法"，频繁交易以积累资本。当时的资本规模也限制了他长期持有的能力。</div>
+                </div>
+                <div class="evolution-point">
+                    <div class="evolution-year">转型期（1980年代）</div>
+                    <div class="evolution-desc">芒格影响下巴菲特转向"优质企业+长期持有"。资本规模增大后，频繁交易变得不切实际。</div>
+                </div>
+                <div class="evolution-point">
+                    <div class="evolution-year">成熟期（1990年代后）</div>
+                    <div class="evolution-desc">明确提出"永久持有"理念。伯克希尔的持仓很多是永远不打算卖出的。</div>
                 </div>
             </div>
-
-            <div class="section">
-                <h2>核心要义</h2>
-                <p><b>优质为前提：</b>只有优质企业才值得长期持有。</p><p><b>复利效应：</b>长期持有让复利充分发挥作用。</p><p><b>税负优势：</b>美国长期资本利得税优惠鼓励长期投资。</p><p><b>减少摩擦：</b>不交易就没有交易成本和滑点损失。</p>
+            
+            <h2>实战案例</h2>
+            <div class="case-card">
+                <div class="case-company">可口可乐 (Coca-Cola)</div>
+                <div class="case-data">1988年开始建仓；持有至今超35年；原始投资13亿美元，现值超200亿美元</div>
+                <div class="case-lesson">可口可乐是"永久持有"理念的最佳诠释。持有35年不仅享受了复利增长，还避免了无数次"该不该卖"的决策困扰。</div>
             </div>
-
-            <div class="section">
-                <h2>实践应用</h2>
-                <div class="intro-box"><p>巴菲特的典型持仓持有数十年，如可口可乐超过30年、美国运通超过25年。他强调如果你不想持有某只股票10年，就不要持有它10分钟。但他也愿意在发现错误时及时止损。</p></div>
+            
+            <div class="case-card">
+                <div class="case-company">美国运通 (American Express)</div>
+                <div class="case-data">1964年开始投资；1994年增持；持有超过60年</div>
+                <div class="case-lesson">美国运通经历了多次危机（1990年代信用卡危机、2008年金融危机），但长期持有的投资者获得了惊人回报。</div>
             </div>
-
-            <div class="section">
-                <h2>常见误区</h2>
-                
-        <div class="misconception">
-            <h4>误区一：任何股票都长期持有</h4>
-            <p>只有真正优质、有护城河的企业才值得长期持有。</p>
-        </div>
-        
-        <div class="misconception">
-            <h4>误区二：永不卖出</h4>
-            <p>当企业护城河消失或估值过高时也应该卖出。</p>
-        </div>
-        
-        <div class="misconception">
-            <h4>误区三：被成本价束缚</h4>
-            <p>持有还是卖出与成本无关，只与未来价值有关。</p>
-        </div>
-        
+            
+            <div class="case-card">
+                <div class="case-company">富国银行 (Wells Fargo)</div>
+                <div class="case-data">1989年开始投资；2016年曾是最大持仓之一；后因丑闻减持</div>
+                <div class="case-lesson">长期持有不意味着永不卖出。当企业护城河被侵蚀或管理文化变质时，应该果断行动。巴菲特卖出富国银行就是因为管理层诚信问题。</div>
             </div>
-
-            <div class="section">
-                <h2>原话精选</h2>
-                
+            
+            <h2>常见误解</h2>
+            <div class="misconception-block">
+                <h4>❌ 误解一：长期持有 = 买了就不卖</h4>
+                <p><strong>人们以为</strong>：长期持有的核心是"不动"。</p>
+                <p><strong>巴菲特说</strong>：前提是选对了好企业。如果企业基本面恶化，长期持有会让你亏得更惨。</p>
             </div>
-
-            <div class="section">
-                <h2>时间线演变</h2>
-                <div class="timeline">
-                    
-        <div class="timeline-item">
-            <div class="timeline-year">1970s</div>
-            <div class="timeline-content">开始形成永久持有优质企业的投资理念</div>
-        </div>
-        
-        <div class="timeline-item">
-            <div class="timeline-year">1980s</div>
-            <div class="timeline-content">强调不想持有10年的股票不要持有10分钟</div>
-        </div>
-        
-        <div class="timeline-item">
-            <div class="timeline-year">1990s</div>
-            <div class="timeline-content">可口可乐等持仓成为长期持有典范</div>
-        </div>
-        
-        <div class="timeline-item">
-            <div class="timeline-year">2000s-2020s</div>
-            <div class="timeline-content">继续实践长期持有，即使面对短期波动</div>
-        </div>
-        
+            
+            <div class="misconception-block">
+                <h4>❌ 误解二：长期持有是为了等解套</h4>
+                <p><strong>人们以为</strong>：亏钱了没关系，长期持有总能解套。</p>
+                <p><strong>巴菲特说</strong>：如果是买错了公司，长期持有只会让你亏更多。长期持有应该是主动选择，而非被动套牢。</p>
+            </div>
+            
+            <div class="misconception-block">
+                <h4>❌ 误解三：长期持有放弃了择时</h4>
+                <p><strong>人们以为</strong>：长期持有意味着放弃了高抛低吸的机会。</p>
+                <p><strong>巴菲特说</strong>：没有人能持续准确地预测市场。试图择时只会增加犯错概率，长期持有的回报往往胜过择时交易。</p>
+            </div>
+            
+            <h2>精华原话</h2>
+            <div class="quote-block">
+                <p>"如果你不想持有某只股票10年，就不要持有它10分钟。"</p>
+                <footer>—— 巴菲特语录</footer>
+            </div>
+            
+            <div class="quote-block">
+                <p>"我们的持有期限是'永久'。我们买股票，是打算持有这些企业很长很长时间——就像我们买下整家企业一样。我们不会因为股价上涨就卖出，也不会因为股价下跌就恐慌。"</p>
+                <footer>—— 1993年致股东信</footer>
+            </div>
+            
+            <div class="quote-block">
+                <p>"市场先生为投资者提供了很好的服务——他每天都会报价，有时很有吸引力，有时很令人反感。但他从不强迫你交易。你只需要利用他的情绪，而不是被他利用。"</p>
+                <footer>—— 1996年致股东信</footer>
+            </div>
+            
+            <div class="quote-block">
+                <p>"最好的投资是那些你永远不需要卖出的投资。当你的投资能够'生钱'的时候，为什么要卖掉它呢？"</p>
+                <footer>—— 巴菲特语录</footer>
+            </div>
+            
+            <h2>延伸阅读</h2>
+            <p>长期持有概念在信件中的讨论分布，按论点组织：</p>
+            
+            <div class="topic-group">
+                <div class="topic-title">优质企业前提</div>
+                <div class="topic-desc">为何长期持有只适用于优质企业</div>
+                <div class="topic-years">
+                    <a href="../letters/berkshire/1993.html">1993</a>
+                    <a href="../letters/berkshire/2007.html">2007</a>
                 </div>
             </div>
-
-            <div class="section">
-                <h2>相关概念</h2>
-                <div class="related">
-                    
+            
+            <div class="topic-group">
+                <div class="topic-title">永久持有理念</div>
+                <div class="topic-desc">为何巴菲特愿意永远不卖出优质持仓</div>
+                <div class="topic-years">
+                    <a href="../letters/berkshire/1993.html">1993</a>
+                    <a href="../letters/berkshire/1996.html">1996</a>
                 </div>
             </div>
-        
-        <!-- 反向链接部分 -->
-        <div class="backlinks">
-            <h2>📚 相关概念</h2>
-            <p class="backlinks-intro">此概念在以下信件中被提及：</p>
-            <div class="backlinks-list">
-            <a href="../letters/berkshire/2006.html">2006年致股东信</a>
-            <a href="../letters/berkshire/2000.html">2000年致股东信</a>
-            <a href="../letters/berkshire/1995.html">1995年致股东信</a>
-            <a href="../letters/berkshire/1994.html">1994年致股东信</a>
-            <a href="../letters/berkshire/1993.html">1993年致股东信</a>
-            <a href="../letters/berkshire/1992.html">1992年致股东信</a>
-            <a href="../letters/berkshire/1990.html">1990年致股东信</a>
-            <a href="../letters/berkshire/1989.html">1989年致股东信</a>
-            <a href="../letters/berkshire/1988.html">1988年致股东信</a>
-            <a href="../letters/berkshire/1987.html">1987年致股东信</a>
-            <a href="../letters/berkshire/1985.html">1985年致股东信</a>
-            <a href="../letters/berkshire/1984.html">1984年致股东信</a>
-            <a href="../letters/berkshire/1983.html">1983年致股东信</a>
-            <a href="../letters/berkshire/1980.html">1980年致股东信</a>
-            <a href="../letters/berkshire/1978.html">1978年致股东信</a>
+            
+            <div class="topic-group">
+                <div class="topic-title">何时卖出</div>
+                <div class="topic-desc">长期持有不代表永不卖出，当企业变质时应该行动</div>
+                <div class="topic-years">
+                    <a href="../letters/berkshire/1993.html">1993</a>
+                    <a href="../letters/berkshire/2008.html">2008</a>
+                </div>
             </div>
-            <p class="backlinks-count">共被提及 15 次</p>
-        </div>
-    
-        <div class="citations-container">
-<div class="citation-year">
-<h3>1988年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">"...ost Company ........... 9,731 364,126nn*Although nominally a preferred stock, this security is n financially equivalent to a common stock.nn Our permanent holdings - Capital Cities/ABC, Inc., GEICO nCorporation, and The Washington Post Company - remain unchanged. nAlso unchanged is our unqualified admiration..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1988.html" class="citation-link">1988年致股东信 →</a></div>
-</div>
-</div>
-</div>
-<div class="citation-year">
-<h3>1987年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">"...few years away, we may see nsome major opportunities, for which we are now much better nprepared than we were in 1985. nnMarketable Securities - Permanent Holdingsnn Whenever Charlie and I buy common stocks for Berkshire's ninsurance companies (leaving aside arbitrage purchases, discussed nlater) we approac..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1987.html" class="citation-link">1987年致股东信 →</a></div>
-</div>
-<div class="citation-card">
-<blockquote class="citation-text">"...resting or unpleasant ones. And we will nnever find people we like and admire more than some of the main nparticipants at the three companies - our permanent holdings - nshown below: nnNo. of Shares Cost Marketn------------- ---------- ----------n (000s omitted) n 3,000,000 Capital Cities/ABC, Inc. ............"</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1987.html" class="citation-link">1987年致股东信 →</a></div>
-</div>
-<div class="citation-card">
-<blockquote class="citation-text">"...somewhat illusory: nManagement changes, like marital changes, are painful, time-nconsuming and chancy. In any event, at our three marketable-but npermanent holdings, this point is moot: With Tom Murphy and Dan nBurke at Cap Cities, Bill Snyder and Lou Simpson at GEICO, and nKay Graham and Dick Simmons at The W..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1987.html" class="citation-link">1987年致股东信 →</a></div>
-</div>
-</div>
-</div>
-<div class="citation-year">
-<h3>1985年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">"...unappreciated.nn Our Capital Cities purchase, described in the next section, nrequired me to leave the WPC Board early in 1986. But we intend nto <span class="highlight">hold indefinitely</span> whatever WPC stock FCC rules allow us to. nWe expect WPC’s business values to grow at a reasonable rate, and nwe know that management is both able..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1985.html" class="citation-link">1985年致股东信 →</a></div>
-</div>
-</div>
-</div>
-</div>
-
+            
+            <div class="topic-group">
+                <div class="topic-title">长期持有的复利效应</div>
+                <div class="topic-desc">时间如何让复利发挥最大威力</div>
+                <div class="topic-years">
+                    <a href="../letters/berkshire/1994.html">1994</a>
+                    <a href="../letters/berkshire/2014.html">2014</a>
+                </div>
+            </div>
+        </article>
         
-    </article>
-<footer>
-        <p><a href="../index.html">巴菲特知识库</a> | 数据来源：巴菲特致股东信 (1977-2007)</p>
-    </footer>
-</body>
-</html><div class="citations-container">
-<div class="citation-year">
-<h3>1988年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">"...ost Company ........... 9,731 364,126nn*Although nominally a preferred stock, this security is n financially equivalent to a common stock.nn Our permanent holdings - Capital Cities/ABC, Inc., GEICO nCorporation, and The Washington Post Company - remain unchanged. nAlso unchanged is our unqualified admiration..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1988.html" class="citation-link">1988年致股东信 →</a></div>
-</div>
-</div>
-</div>
-<div class="citation-year">
-<h3>1987年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">"...few years away, we may see nsome major opportunities, for which we are now much better nprepared than we were in 1985. nnMarketable Securities - Permanent Holdingsnn Whenever Charlie and I buy common stocks for Berkshire's ninsurance companies (leaving aside arbitrage purchases, discussed nlater) we approac..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1987.html" class="citation-link">1987年致股东信 →</a></div>
-</div>
-<div class="citation-card">
-<blockquote class="citation-text">"...resting or unpleasant ones. And we will nnever find people we like and admire more than some of the main nparticipants at the three companies - our permanent holdings - nshown below: nnNo. of Shares Cost Marketn------------- ---------- ----------n (000s omitted) n 3,000,000 Capital Cities/ABC, Inc. ............"</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1987.html" class="citation-link">1987年致股东信 →</a></div>
-</div>
-<div class="citation-card">
-<blockquote class="citation-text">"...somewhat illusory: nManagement changes, like marital changes, are painful, time-nconsuming and chancy. In any event, at our three marketable-but npermanent holdings, this point is moot: With Tom Murphy and Dan nBurke at Cap Cities, Bill Snyder and Lou Simpson at GEICO, and nKay Graham and Dick Simmons at The W..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1987.html" class="citation-link">1987年致股东信 →</a></div>
-</div>
-</div>
-</div>
-<div class="citation-year">
-<h3>1985年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">"...unappreciated.nn Our Capital Cities purchase, described in the next section, nrequired me to leave the WPC Board early in 1986. But we intend nto <span class="highlight">hold indefinitely</span> whatever WPC stock FCC rules allow us to. nWe expect WPC’s business values to grow at a reasonable rate, and nwe know that management is both able..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1985.html" class="citation-link">1985年致股东信 →</a></div>
-</div>
-</div>
-</div>
-</div>
-
-        
-    </article>
-<footer>
-        <p><a href="../index.html">巴菲特知识库</a> | 数据来源：巴菲特致股东信 (1977-2007)</p>
-    </footer>
-</body>
-</html><div class="citations-container">
-<div class="citation-year">
-<h3>1988年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">"...ost Company ........... 9,731 364,126nn*Although nominally a preferred stock, this security is n financially equivalent to a common stock.nn Our permanent holdings - Capital Cities/ABC, Inc., GEICO nCorporation, and The Washington Post Company - remain unchanged. nAlso unchanged is our unqualified admiration..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1988.html" class="citation-link">1988年致股东信 →</a></div>
-</div>
-</div>
-</div>
-<div class="citation-year">
-<h3>1987年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">"...few years away, we may see nsome major opportunities, for which we are now much better nprepared than we were in 1985. nnMarketable Securities - Permanent Holdingsnn Whenever Charlie and I buy common stocks for Berkshire's ninsurance companies (leaving aside arbitrage purchases, discussed nlater) we approac..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1987.html" class="citation-link">1987年致股东信 →</a></div>
-</div>
-<div class="citation-card">
-<blockquote class="citation-text">"...resting or unpleasant ones. And we will nnever find people we like and admire more than some of the main nparticipants at the three companies - our permanent holdings - nshown below: nnNo. of Shares Cost Marketn------------- ---------- ----------n (000s omitted) n 3,000,000 Capital Cities/ABC, Inc. ............"</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1987.html" class="citation-link">1987年致股东信 →</a></div>
-</div>
-<div class="citation-card">
-<blockquote class="citation-text">"...somewhat illusory: nManagement changes, like marital changes, are painful, time-nconsuming and chancy. In any event, at our three marketable-but npermanent holdings, this point is moot: With Tom Murphy and Dan nBurke at Cap Cities, Bill Snyder and Lou Simpson at GEICO, and nKay Graham and Dick Simmons at The W..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1987.html" class="citation-link">1987年致股东信 →</a></div>
-</div>
-</div>
-</div>
-<div class="citation-year">
-<h3>1985年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">"...unappreciated.nn Our Capital Cities purchase, described in the next section, nrequired me to leave the WPC Board early in 1986. But we intend nto <span class="highlight">hold indefinitely</span> whatever WPC stock FCC rules allow us to. nWe expect WPC’s business values to grow at a reasonable rate, and nwe know that management is both able..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1985.html" class="citation-link">1985年致股东信 →</a></div>
-</div>
-</div>
-</div>
-</div>
-
-        <h2>引用来源（5处）</h2>
-<div class="citations-container">
-<div class="citation-year">
-<h3>1988年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">"...ost Company ........... 9,731 364,126nn*Although nominally a preferred stock, this security is n financially equivalent to a common stock.nn Our permanent holdings - Capital Cities/ABC, Inc., GEICO nCorporation, and The Washington Post Company - remain unchanged. nAlso unchanged is our unqualified admiration..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1988.html" class="citation-link">1988年致股东信 →</a></div>
-</div>
-</div>
-</div>
-<div class="citation-year">
-<h3>1987年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">"...few years away, we may see nsome major opportunities, for which we are now much better nprepared than we were in 1985. nnMarketable Securities - Permanent Holdingsnn Whenever Charlie and I buy common stocks for Berkshire's ninsurance companies (leaving aside arbitrage purchases, discussed nlater) we approac..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1987.html" class="citation-link">1987年致股东信 →</a></div>
-</div>
-<div class="citation-card">
-<blockquote class="citation-text">"...resting or unpleasant ones. And we will nnever find people we like and admire more than some of the main nparticipants at the three companies - our permanent holdings - nshown below: nnNo. of Shares Cost Marketn------------- ---------- ----------n (000s omitted) n 3,000,000 Capital Cities/ABC, Inc. ............"</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1987.html" class="citation-link">1987年致股东信 →</a></div>
-</div>
-<div class="citation-card">
-<blockquote class="citation-text">"...somewhat illusory: nManagement changes, like marital changes, are painful, time-nconsuming and chancy. In any event, at our three marketable-but npermanent holdings, this point is moot: With Tom Murphy and Dan nBurke at Cap Cities, Bill Snyder and Lou Simpson at GEICO, and nKay Graham and Dick Simmons at The W..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1987.html" class="citation-link">1987年致股东信 →</a></div>
-</div>
-</div>
-</div>
-<div class="citation-year">
-<h3>1985年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">"...unappreciated.nn Our Capital Cities purchase, described in the next section, nrequired me to leave the WPC Board early in 1986. But we intend nto <span class="highlight">hold indefinitely</span> whatever WPC stock FCC rules allow us to. nWe expect WPC’s business values to grow at a reasonable rate, and nwe know that management is both able..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1985.html" class="citation-link">1985年致股东信 →</a></div>
-</div>
-</div>
-</div>
-</div>
-
-        </article>
+        <footer>
+            <p>基于巴菲特致股东信原文提炼 | <a href="../index.html">返回首页</a></p>
+        </footer>
     </div>
-    <h2>引用来源（5处）</h2>
-<div class="citations-container">
-<div class="citation-year">
-<h3>1988年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">"...ost Company ........... 9,731 364,126nn*Although nominally a preferred stock, this security is n financially equivalent to a common stock.nn Our permanent holdings - Capital Cities/ABC, Inc., GEICO nCorporation, and The Washington Post Company - remain unchanged. nAlso unchanged is our unqualified admiration..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1988.html" class="citation-link">1988年致股东信 →</a></div>
-</div>
-</div>
-</div>
-<div class="citation-year">
-<h3>1987年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">"...few years away, we may see nsome major opportunities, for which we are now much better nprepared than we were in 1985. nnMarketable Securities - Permanent Holdingsnn Whenever Charlie and I buy common stocks for Berkshire's ninsurance companies (leaving aside arbitrage purchases, discussed nlater) we approac..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1987.html" class="citation-link">1987年致股东信 →</a></div>
-</div>
-<div class="citation-card">
-<blockquote class="citation-text">"...resting or unpleasant ones. And we will nnever find people we like and admire more than some of the main nparticipants at the three companies - our permanent holdings - nshown below: nnNo. of Shares Cost Marketn------------- ---------- ----------n (000s omitted) n 3,000,000 Capital Cities/ABC, Inc. ............"</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1987.html" class="citation-link">1987年致股东信 →</a></div>
-</div>
-<div class="citation-card">
-<blockquote class="citation-text">"...somewhat illusory: nManagement changes, like marital changes, are painful, time-nconsuming and chancy. In any event, at our three marketable-but npermanent holdings, this point is moot: With Tom Murphy and Dan nBurke at Cap Cities, Bill Snyder and Lou Simpson at GEICO, and nKay Graham and Dick Simmons at The W..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1987.html" class="citation-link">1987年致股东信 →</a></div>
-</div>
-</div>
-</div>
-<div class="citation-year">
-<h3>1985年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">"...unappreciated.nn Our Capital Cities purchase, described in the next section, nrequired me to leave the WPC Board early in 1986. But we intend nto <span class="highlight">hold indefinitely</span> whatever WPC stock FCC rules allow us to. nWe expect WPC’s business values to grow at a reasonable rate, and nwe know that management is both able..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1985.html" class="citation-link">1985年致股东信 →</a></div>
-</div>
-</div>
-</div>
-</div>
-
-        </article>
-
-    </div>
-    
-    <footer>
-        <p><a href="../index.html">巴菲特知识库</a> | 数据来源：巴菲特致股东信 (1977-2007)</p>
-    </footer>
-</body>
-</html><div class="citations-container">
-<div class="citation-year">
-<h3>1988年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">"...ost Company ........... 9,731 364,126nn*Although nominally a preferred stock, this security is n financially equivalent to a common stock.nn Our permanent holdings - Capital Cities/ABC, Inc., GEICO nCorporation, and The Washington Post Company - remain unchanged. nAlso unchanged is our unqualified admiration..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1988.html" class="citation-link">1988年致股东信 →</a></div>
-</div>
-</div>
-</div>
-<div class="citation-year">
-<h3>1987年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">"...few years away, we may see nsome major opportunities, for which we are now much better nprepared than we were in 1985. nnMarketable Securities - Permanent Holdingsnn Whenever Charlie and I buy common stocks for Berkshire's ninsurance companies (leaving aside arbitrage purchases, discussed nlater) we approac..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1987.html" class="citation-link">1987年致股东信 →</a></div>
-</div>
-<div class="citation-card">
-<blockquote class="citation-text">"...resting or unpleasant ones. And we will nnever find people we like and admire more than some of the main nparticipants at the three companies - our permanent holdings - nshown below: nnNo. of Shares Cost Marketn------------- ---------- ----------n (000s omitted) n 3,000,000 Capital Cities/ABC, Inc. ............"</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1987.html" class="citation-link">1987年致股东信 →</a></div>
-</div>
-<div class="citation-card">
-<blockquote class="citation-text">"...somewhat illusory: nManagement changes, like marital changes, are painful, time-nconsuming and chancy. In any event, at our three marketable-but npermanent holdings, this point is moot: With Tom Murphy and Dan nBurke at Cap Cities, Bill Snyder and Lou Simpson at GEICO, and nKay Graham and Dick Simmons at The W..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1987.html" class="citation-link">1987年致股东信 →</a></div>
-</div>
-</div>
-</div>
-<div class="citation-year">
-<h3>1985年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">"...unappreciated.nn Our Capital Cities purchase, described in the next section, nrequired me to leave the WPC Board early in 1986. But we intend nto <span class="highlight">hold indefinitely</span> whatever WPC stock FCC rules allow us to. nWe expect WPC’s business values to grow at a reasonable rate, and nwe know that management is both able..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1985.html" class="citation-link">1985年致股东信 →</a></div>
-</div>
-</div>
-</div>
-</div>
-
-        <h2>引用来源（5处）</h2>
-<div class="citations-container">
-<div class="citation-year">
-<h3>1988年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">"...ost Company ........... 9,731 364,126nn*Although nominally a preferred stock, this security is n financially equivalent to a common stock.nn Our permanent holdings - Capital Cities/ABC, Inc., GEICO nCorporation, and The Washington Post Company - remain unchanged. nAlso unchanged is our unqualified admiration..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1988.html" class="citation-link">1988年致股东信 →</a></div>
-</div>
-</div>
-</div>
-<div class="citation-year">
-<h3>1987年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">"...few years away, we may see nsome major opportunities, for which we are now much better nprepared than we were in 1985. nnMarketable Securities - Permanent Holdingsnn Whenever Charlie and I buy common stocks for Berkshire's ninsurance companies (leaving aside arbitrage purchases, discussed nlater) we approac..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1987.html" class="citation-link">1987年致股东信 →</a></div>
-</div>
-<div class="citation-card">
-<blockquote class="citation-text">"...resting or unpleasant ones. And we will nnever find people we like and admire more than some of the main nparticipants at the three companies - our permanent holdings - nshown below: nnNo. of Shares Cost Marketn------------- ---------- ----------n (000s omitted) n 3,000,000 Capital Cities/ABC, Inc. ............"</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1987.html" class="citation-link">1987年致股东信 →</a></div>
-</div>
-<div class="citation-card">
-<blockquote class="citation-text">"...somewhat illusory: nManagement changes, like marital changes, are painful, time-nconsuming and chancy. In any event, at our three marketable-but npermanent holdings, this point is moot: With Tom Murphy and Dan nBurke at Cap Cities, Bill Snyder and Lou Simpson at GEICO, and nKay Graham and Dick Simmons at The W..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1987.html" class="citation-link">1987年致股东信 →</a></div>
-</div>
-</div>
-</div>
-<div class="citation-year">
-<h3>1985年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">"...unappreciated.nn Our Capital Cities purchase, described in the next section, nrequired me to leave the WPC Board early in 1986. But we intend nto <span class="highlight">hold indefinitely</span> whatever WPC stock FCC rules allow us to. nWe expect WPC’s business values to grow at a reasonable rate, and nwe know that management is both able..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1985.html" class="citation-link">1985年致股东信 →</a></div>
-</div>
-</div>
-</div>
-</div>
-
-        </article>
-    </div>
-    <h2>引用来源（5处）</h2>
-<div class="citations-container">
-<div class="citation-year">
-<h3>1988年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">"...ost Company ........... 9,731 364,126nn*Although nominally a preferred stock, this security is n financially equivalent to a common stock.nn Our permanent holdings - Capital Cities/ABC, Inc., GEICO nCorporation, and The Washington Post Company - remain unchanged. nAlso unchanged is our unqualified admiration..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1988.html" class="citation-link">1988年致股东信 →</a></div>
-</div>
-</div>
-</div>
-<div class="citation-year">
-<h3>1987年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">"...few years away, we may see nsome major opportunities, for which we are now much better nprepared than we were in 1985. nnMarketable Securities - Permanent Holdingsnn Whenever Charlie and I buy common stocks for Berkshire's ninsurance companies (leaving aside arbitrage purchases, discussed nlater) we approac..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1987.html" class="citation-link">1987年致股东信 →</a></div>
-</div>
-<div class="citation-card">
-<blockquote class="citation-text">"...resting or unpleasant ones. And we will nnever find people we like and admire more than some of the main nparticipants at the three companies - our permanent holdings - nshown below: nnNo. of Shares Cost Marketn------------- ---------- ----------n (000s omitted) n 3,000,000 Capital Cities/ABC, Inc. ............"</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1987.html" class="citation-link">1987年致股东信 →</a></div>
-</div>
-<div class="citation-card">
-<blockquote class="citation-text">"...somewhat illusory: nManagement changes, like marital changes, are painful, time-nconsuming and chancy. In any event, at our three marketable-but npermanent holdings, this point is moot: With Tom Murphy and Dan nBurke at Cap Cities, Bill Snyder and Lou Simpson at GEICO, and nKay Graham and Dick Simmons at The W..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1987.html" class="citation-link">1987年致股东信 →</a></div>
-</div>
-</div>
-</div>
-<div class="citation-year">
-<h3>1985年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">"...unappreciated.nn Our Capital Cities purchase, described in the next section, nrequired me to leave the WPC Board early in 1986. But we intend nto <span class="highlight">hold indefinitely</span> whatever WPC stock FCC rules allow us to. nWe expect WPC’s business values to grow at a reasonable rate, and nwe know that management is both able..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1985.html" class="citation-link">1985年致股东信 →</a></div>
-</div>
-</div>
-</div>
-</div>
-
-        </article>
-
-    </div>
-    <h2>引用来源（5处）</h2>
-<div class="citations-container">
-<div class="citation-year">
-<h3>1988年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">"...ost Company ........... 9,731 364,126nn*Although nominally a preferred stock, this security is n financially equivalent to a common stock.nn Our permanent holdings - Capital Cities/ABC, Inc., GEICO nCorporation, and The Washington Post Company - remain unchanged. nAlso unchanged is our unqualified admiration..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1988.html" class="citation-link">1988年致股东信 →</a></div>
-</div>
-</div>
-</div>
-<div class="citation-year">
-<h3>1987年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">"...few years away, we may see nsome major opportunities, for which we are now much better nprepared than we were in 1985. nnMarketable Securities - Permanent Holdingsnn Whenever Charlie and I buy common stocks for Berkshire's ninsurance companies (leaving aside arbitrage purchases, discussed nlater) we approac..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1987.html" class="citation-link">1987年致股东信 →</a></div>
-</div>
-<div class="citation-card">
-<blockquote class="citation-text">"...resting or unpleasant ones. And we will nnever find people we like and admire more than some of the main nparticipants at the three companies - our permanent holdings - nshown below: nnNo. of Shares Cost Marketn------------- ---------- ----------n (000s omitted) n 3,000,000 Capital Cities/ABC, Inc. ............"</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1987.html" class="citation-link">1987年致股东信 →</a></div>
-</div>
-<div class="citation-card">
-<blockquote class="citation-text">"...somewhat illusory: nManagement changes, like marital changes, are painful, time-nconsuming and chancy. In any event, at our three marketable-but npermanent holdings, this point is moot: With Tom Murphy and Dan nBurke at Cap Cities, Bill Snyder and Lou Simpson at GEICO, and nKay Graham and Dick Simmons at The W..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1987.html" class="citation-link">1987年致股东信 →</a></div>
-</div>
-</div>
-</div>
-<div class="citation-year">
-<h3>1985年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">"...unappreciated.nn Our Capital Cities purchase, described in the next section, nrequired me to leave the WPC Board early in 1986. But we intend nto <span class="highlight">hold indefinitely</span> whatever WPC stock FCC rules allow us to. nWe expect WPC’s business values to grow at a reasonable rate, and nwe know that management is both able..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1985.html" class="citation-link">1985年致股东信 →</a></div>
-</div>
-</div>
-</div>
-</div>
-
-        </article>
-<footer>
-        <p><a href="../index.html">巴菲特知识库</a> | 数据来源：巴菲特致股东信 (1977-2007)</p>
-    </footer>
-</body>
-</html><div class="citations-container">
-<div class="citation-year">
-<h3>1988年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">"...ost Company ........... 9,731 364,126nn*Although nominally a preferred stock, this security is n financially equivalent to a common stock.nn Our permanent holdings - Capital Cities/ABC, Inc., GEICO nCorporation, and The Washington Post Company - remain unchanged. nAlso unchanged is our unqualified admiration..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1988.html" class="citation-link">1988年致股东信 →</a></div>
-</div>
-</div>
-</div>
-<div class="citation-year">
-<h3>1987年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">"...few years away, we may see nsome major opportunities, for which we are now much better nprepared than we were in 1985. nnMarketable Securities - Permanent Holdingsnn Whenever Charlie and I buy common stocks for Berkshire's ninsurance companies (leaving aside arbitrage purchases, discussed nlater) we approac..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1987.html" class="citation-link">1987年致股东信 →</a></div>
-</div>
-<div class="citation-card">
-<blockquote class="citation-text">"...resting or unpleasant ones. And we will nnever find people we like and admire more than some of the main nparticipants at the three companies - our permanent holdings - nshown below: nnNo. of Shares Cost Marketn------------- ---------- ----------n (000s omitted) n 3,000,000 Capital Cities/ABC, Inc. ............"</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1987.html" class="citation-link">1987年致股东信 →</a></div>
-</div>
-<div class="citation-card">
-<blockquote class="citation-text">"...somewhat illusory: nManagement changes, like marital changes, are painful, time-nconsuming and chancy. In any event, at our three marketable-but npermanent holdings, this point is moot: With Tom Murphy and Dan nBurke at Cap Cities, Bill Snyder and Lou Simpson at GEICO, and nKay Graham and Dick Simmons at The W..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1987.html" class="citation-link">1987年致股东信 →</a></div>
-</div>
-</div>
-</div>
-<div class="citation-year">
-<h3>1985年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">"...unappreciated.nn Our Capital Cities purchase, described in the next section, nrequired me to leave the WPC Board early in 1986. But we intend nto <span class="highlight">hold indefinitely</span> whatever WPC stock FCC rules allow us to. nWe expect WPC’s business values to grow at a reasonable rate, and nwe know that management is both able..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1985.html" class="citation-link">1985年致股东信 →</a></div>
-</div>
-</div>
-</div>
-</div>
-
-        <h2>引用来源（5处）</h2>
-<div class="citations-container">
-<div class="citation-year">
-<h3>1988年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">"...ost Company ........... 9,731 364,126nn*Although nominally a preferred stock, this security is n financially equivalent to a common stock.nn Our permanent holdings - Capital Cities/ABC, Inc., GEICO nCorporation, and The Washington Post Company - remain unchanged. nAlso unchanged is our unqualified admiration..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1988.html" class="citation-link">1988年致股东信 →</a></div>
-</div>
-</div>
-</div>
-<div class="citation-year">
-<h3>1987年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">"...few years away, we may see nsome major opportunities, for which we are now much better nprepared than we were in 1985. nnMarketable Securities - Permanent Holdingsnn Whenever Charlie and I buy common stocks for Berkshire's ninsurance companies (leaving aside arbitrage purchases, discussed nlater) we approac..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1987.html" class="citation-link">1987年致股东信 →</a></div>
-</div>
-<div class="citation-card">
-<blockquote class="citation-text">"...resting or unpleasant ones. And we will nnever find people we like and admire more than some of the main nparticipants at the three companies - our permanent holdings - nshown below: nnNo. of Shares Cost Marketn------------- ---------- ----------n (000s omitted) n 3,000,000 Capital Cities/ABC, Inc. ............"</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1987.html" class="citation-link">1987年致股东信 →</a></div>
-</div>
-<div class="citation-card">
-<blockquote class="citation-text">"...somewhat illusory: nManagement changes, like marital changes, are painful, time-nconsuming and chancy. In any event, at our three marketable-but npermanent holdings, this point is moot: With Tom Murphy and Dan nBurke at Cap Cities, Bill Snyder and Lou Simpson at GEICO, and nKay Graham and Dick Simmons at The W..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1987.html" class="citation-link">1987年致股东信 →</a></div>
-</div>
-</div>
-</div>
-<div class="citation-year">
-<h3>1985年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">"...unappreciated.nn Our Capital Cities purchase, described in the next section, nrequired me to leave the WPC Board early in 1986. But we intend nto <span class="highlight">hold indefinitely</span> whatever WPC stock FCC rules allow us to. nWe expect WPC’s business values to grow at a reasonable rate, and nwe know that management is both able..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1985.html" class="citation-link">1985年致股东信 →</a></div>
-</div>
-</div>
-</div>
-</div>
-
-        </article>
-    </div>
-    <h2>引用来源（5处）</h2>
-<div class="citations-container">
-<div class="citation-year">
-<h3>1988年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">"...ost Company ........... 9,731 364,126nn*Although nominally a preferred stock, this security is n financially equivalent to a common stock.nn Our permanent holdings - Capital Cities/ABC, Inc., GEICO nCorporation, and The Washington Post Company - remain unchanged. nAlso unchanged is our unqualified admiration..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1988.html" class="citation-link">1988年致股东信 →</a></div>
-</div>
-</div>
-</div>
-<div class="citation-year">
-<h3>1987年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">"...few years away, we may see nsome major opportunities, for which we are now much better nprepared than we were in 1985. nnMarketable Securities - Permanent Holdingsnn Whenever Charlie and I buy common stocks for Berkshire's ninsurance companies (leaving aside arbitrage purchases, discussed nlater) we approac..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1987.html" class="citation-link">1987年致股东信 →</a></div>
-</div>
-<div class="citation-card">
-<blockquote class="citation-text">"...resting or unpleasant ones. And we will nnever find people we like and admire more than some of the main nparticipants at the three companies - our permanent holdings - nshown below: nnNo. of Shares Cost Marketn------------- ---------- ----------n (000s omitted) n 3,000,000 Capital Cities/ABC, Inc. ............"</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1987.html" class="citation-link">1987年致股东信 →</a></div>
-</div>
-<div class="citation-card">
-<blockquote class="citation-text">"...somewhat illusory: nManagement changes, like marital changes, are painful, time-nconsuming and chancy. In any event, at our three marketable-but npermanent holdings, this point is moot: With Tom Murphy and Dan nBurke at Cap Cities, Bill Snyder and Lou Simpson at GEICO, and nKay Graham and Dick Simmons at The W..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1987.html" class="citation-link">1987年致股东信 →</a></div>
-</div>
-</div>
-</div>
-<div class="citation-year">
-<h3>1985年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">"...unappreciated.nn Our Capital Cities purchase, described in the next section, nrequired me to leave the WPC Board early in 1986. But we intend nto <span class="highlight">hold indefinitely</span> whatever WPC stock FCC rules allow us to. nWe expect WPC’s business values to grow at a reasonable rate, and nwe know that management is both able..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1985.html" class="citation-link">1985年致股东信 →</a></div>
-</div>
-</div>
-</div>
-</div>
-
-        </article>
-
-    </div>
-    
-    <footer>
-        <p><a href="../index.html">巴菲特知识库</a> | 数据来源：巴菲特致股东信 (1977-2007)</p>
-    </footer>
 </body>
 </html>

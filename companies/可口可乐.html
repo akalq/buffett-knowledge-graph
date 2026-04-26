@@ -3,250 +3,373 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>可口可乐 - 巴菲特知识库</title>
+    <title>可口可乐 - 巴菲特投资案例</title>
     <style>
-        :root { --bg-color: #FFFEF9; --navy: #1B2A4A; --gold: #C9A227; --text: #2C3E50; --secondary: #5D6D7E; --border: #E5E0D8; --light-gold: #F5ECD7; }
+        :root { --navy: #1B2A4A; --gold: #C9A227; --cream: #F8F5EE; --secondary: #5D6D7E; --border: #E5E0D8; --light-gold: #F5ECD7; }
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: 'Noto Serif SC', Georgia, serif; background: var(--bg-color); color: var(--text); line-height: 1.9; }
-        .container { max-width: 1000px; margin: 0 auto; padding: 40px 20px; }
-        header { background: linear-gradient(135deg, var(--navy) 0%, #2a3f6a 100%); color: white; padding: 50px 30px; text-align: center; position: relative; overflow: hidden; }
-        header::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); }
-        header h1 { font-size: 2.2em; margin-bottom: 8px; position: relative; }
-        header h1::before { content: '🏢'; margin-right: 15px; }
-        header .en-name { color: rgba(255,255,255,0.7); font-size: 1.1em; margin-bottom: 10px; }
-        header .meta { color: var(--gold); font-size: 1em; margin-top: 15px; position: relative; }
-        header .meta span { background: rgba(201, 162, 39, 0.2); padding: 5px 15px; border-radius: 20px; }
-        .nav { background: white; border: 1px solid var(--border); padding: 15px 25px; margin-bottom: 30px; border-radius: 10px; text-align: center; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
-        .nav a { color: var(--navy); text-decoration: none; margin: 0 15px; font-size: 0.95em; padding: 8px 15px; border-radius: 5px; transition: all 0.2s; }
+        body { font-family: 'Noto Serif SC', Georgia, serif; background: #FFFEF9; color: #2C3E50; line-height: 1.9; }
+        .container { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
+        header { background: linear-gradient(135deg, var(--navy) 0%, #2a3f6a 100%); color: white; padding: 50px 30px; text-align: center; border-radius: 15px; margin-bottom: 30px; }
+        header h1 { font-size: 2.2em; margin-bottom: 8px; }
+        header h1::before { content: '🏢 '; }
+        .en-name { color: rgba(255,255,255,0.7); font-size: 1.1em; }
+        .meta { color: var(--gold); margin-top: 15px; }
+        .meta span { background: rgba(201, 162, 39, 0.2); padding: 5px 15px; border-radius: 20px; }
+        .nav { background: white; border: 1px solid var(--border); padding: 15px 25px; margin-bottom: 30px; border-radius: 10px; text-align: center; }
+        .nav a { color: var(--navy); text-decoration: none; margin: 0 15px; padding: 8px 15px; border-radius: 5px; transition: all 0.2s; }
         .nav a:hover { background: var(--gold); color: white; }
-        .content { background: white; border: 1px solid var(--border); border-radius: 15px; padding: 45px; box-shadow: 0 5px 30px rgba(0,0,0,0.05); }
-        .section { margin-bottom: 40px; padding-bottom: 40px; border-bottom: 1px solid var(--border); }
-        .section:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
-        .content h2 { color: var(--navy); font-size: 1.5em; margin: 0 0 20px; padding-bottom: 12px; border-bottom: 3px solid var(--gold); display: inline-block; }
-        .content h3 { color: var(--navy); font-size: 1.2em; margin: 25px 0 15px; padding-left: 15px; border-left: 4px solid var(--gold); }
-        .content p { margin: 15px 0; text-align: justify; }
-        .profile-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin: 20px 0; }
-        .profile-item { background: var(--light-gold); padding: 20px; border-radius: 10px; }
-        .profile-item .label { color: var(--secondary); font-size: 0.9em; margin-bottom: 5px; }
-        .profile-item .value { color: var(--navy); font-weight: 600; font-size: 1.1em; }
-        .quote { background: var(--navy); color: white; padding: 25px 30px; border-left: 5px solid var(--gold); margin: 25px 0; border-radius: 0 12px 12px 0; position: relative; }
-        .quote::before { content: '"'; position: absolute; top: 10px; left: 15px; font-size: 4em; color: var(--gold); opacity: 0.3; font-family: Georgia, serif; }
-        .quote p { margin: 0; font-style: italic; font-size: 1.05em; padding-left: 30px; }
-        .quote .source { color: var(--gold); margin-top: 15px; font-size: 0.9em; padding-left: 30px; font-style: normal; }
-        .timeline { position: relative; padding-left: 30px; margin: 20px 0; }
-        .timeline::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--gold); }
-        .timeline-item { position: relative; margin-bottom: 25px; }
-        .timeline-item::before { content: ''; position: absolute; left: -34px; top: 5px; width: 12px; height: 12px; background: var(--gold); border-radius: 50%; border: 3px solid white; box-shadow: 0 0 0 3px var(--gold); }
-        .timeline-year { font-weight: bold; color: var(--navy); font-size: 1.1em; }
-        .timeline-content { color: var(--text); margin-top: 5px; }
-        .logic-box { background: linear-gradient(135deg, var(--light-gold) 0%, #fff9e6 100%); padding: 25px 30px; border-radius: 10px; margin: 20px 0; border-left: 5px solid var(--gold); }
-        .logic-box h4 { color: var(--navy); margin-bottom: 15px; font-size: 1.1em; }
-        .logic-box ul { margin: 0; padding-left: 20px; }
-        .logic-box li { margin: 10px 0; }
-        .event-item { display: flex; margin: 15px 0; padding: 15px; background: #f9f9f9; border-radius: 8px; }
-        .event-year { background: var(--navy); color: white; padding: 5px 15px; border-radius: 20px; font-weight: bold; margin-right: 15px; white-space: nowrap; }
-        .event-desc { color: var(--text); }
-        .related { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 20px; }
-        .related a { background: white; border: 2px solid var(--border); padding: 10px 20px; border-radius: 25px; text-decoration: none; color: var(--navy); font-size: 0.95em; transition: all 0.3s; }
-        .related a:hover { background: var(--gold); color: white; border-color: var(--gold); transform: translateY(-2px); }
-        footer { text-align: center; padding: 40px 20px; color: var(--secondary); border-top: 1px solid var(--border); margin-top: 40px; }
-        footer a { color: var(--navy); text-decoration: none; }
-        @media (max-width: 768px) { .container { padding: 20px 15px; } header { padding: 30px 20px; } header h1 { font-size: 1.6em; } .content { padding: 25px 20px; } .nav a { margin: 5px 8px; display: inline-block; } .profile-grid { grid-template-columns: 1fr; } }
-    
+        .content { background: white; border: 1px solid var(--border); border-radius: 15px; padding: 40px; }
+        .section { margin-bottom: 40px; padding-bottom: 35px; border-bottom: 1px solid var(--border); }
+        .section:last-child { border-bottom: none; margin-bottom: 0; }
+        h2 { color: var(--navy); font-size: 1.4em; margin: 0 0 20px; padding-bottom: 10px; border-bottom: 3px solid var(--gold); display: inline-block; }
+        
+        /* 投资概览卡片 */
+        .overview-card { background: linear-gradient(135deg, var(--navy) 0%, #2C3E50 100%); color: white; padding: 25px; border-radius: 12px; margin: 20px 0; }
+        .overview-summary { font-size: 1.15em; margin-bottom: 15px; line-height: 1.6; }
+        .overview-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin-top: 15px; }
+        .stat-item { text-align: center; background: rgba(255,255,255,0.1); padding: 12px; border-radius: 8px; }
+        .stat-value { font-size: 1.4em; font-weight: 600; color: var(--gold); }
+        .stat-label { font-size: 0.8em; opacity: 0.8; }
+        
+        /* 投资逻辑 */
+        .logic-point { display: flex; margin: 18px 0; padding: 18px; background: var(--cream); border-radius: 10px; }
+        .logic-number { font-size: 1.6em; font-weight: 700; color: var(--gold); margin-right: 18px; min-width: 35px; }
+        .logic-content { flex: 1; }
+        .logic-title { font-weight: 600; color: var(--navy); margin-bottom: 6px; font-size: 1.05em; }
+        .logic-desc { color: #555; font-size: 0.95em; }
+        
+        /* 认知演进时间线 */
+        .cognition-timeline { position: relative; padding-left: 35px; margin: 20px 0; }
+        .cognition-timeline::before { content: ''; position: absolute; left: 8px; top: 0; bottom: 0; width: 3px; background: var(--gold); }
+        .cognition-point { position: relative; margin-bottom: 28px; padding-left: 25px; }
+        .cognition-point::before { content: ''; position: absolute; left: -30px; top: 6px; width: 14px; height: 14px; border-radius: 50%; background: var(--gold); border: 3px solid white; box-shadow: 0 0 0 3px var(--gold); }
+        .cognition-year { font-weight: 700; color: var(--gold); font-size: 1.1em; }
+        .cognition-shift { background: var(--light-gold); padding: 8px 15px; border-radius: 6px; margin: 8px 0; font-size: 0.9em; }
+        .cognition-shift strong { color: var(--navy); }
+        
+        /* 关键数据 */
+        .data-compare { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 20px 0; }
+        .data-card { background: var(--cream); padding: 20px; border-radius: 10px; }
+        .data-card h4 { color: var(--navy); margin-bottom: 12px; font-size: 1em; }
+        .data-row { display: flex; justify-content: space-between; padding: 6px 0; border-bottom: 1px dashed var(--border); }
+        .data-row:last-child { border-bottom: none; }
+        .data-label { color: var(--secondary); font-size: 0.9em; }
+        .data-value { font-weight: 600; color: var(--navy); }
+        
+        /* 经验教训卡片 */
+        .lesson-card { background: var(--cream); border-left: 5px solid var(--gold); padding: 22px; margin: 20px 0; border-radius: 0 10px 10px 0; }
+        .lesson-title { font-weight: 600; color: var(--navy); margin-bottom: 10px; font-size: 1.05em; }
+        .lesson-desc { color: #555; font-size: 0.95em; }
+        
+        /* 精华原话 */
+        .quote { background: var(--navy); color: white; padding: 22px 28px; border-left: 5px solid var(--gold); margin: 20px 0; border-radius: 0 12px 12px 0; position: relative; }
+        .quote::before { content: '"'; position: absolute; top: 8px; left: 12px; font-size: 3.5em; color: var(--gold); opacity: 0.3; }
+        .quote p { margin: 0; font-style: italic; font-size: 1.02em; padding-left: 28px; }
+        .quote footer { color: var(--gold); margin-top: 12px; font-size: 0.9em; padding-left: 28px; font-style: normal; }
+        
+        /* 关联部分 */
+        .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin: 15px 0; }
+        .related-item { background: var(--cream); padding: 14px; border-radius: 8px; text-decoration: none; color: var(--navy); transition: all 0.3s; text-align: center; font-size: 0.95em; }
+        .related-item:hover { background: var(--gold); color: white; transform: translateY(-2px); }
+        
+        /* 延伸阅读 */
+        .topic-section { margin: 22px 0; padding: 18px; background: var(--cream); border-radius: 10px; }
+        .topic-title { font-weight: 600; color: var(--navy); margin-bottom: 10px; font-size: 1.05em; }
+        .topic-desc { color: #666; font-size: 0.9em; margin-bottom: 12px; }
+        .topic-years { display: flex; flex-wrap: wrap; gap: 8px; }
+        .topic-years a { background: white; padding: 5px 14px; border-radius: 15px; text-decoration: none; color: var(--secondary); font-size: 0.85em; border: 1px solid var(--border); }
+        .topic-years a:hover { background: var(--gold); color: white; border-color: var(--gold); }
+        
         /* 反向链接样式 */
-        .backlinks {
-            margin-top: 40px;
-            padding-top: 30px;
-            border-top: 2px dashed var(--gold);
-        }
-        .backlinks h2 {
-            color: var(--navy);
-            font-size: 1.3em;
-            margin-bottom: 15px;
-        }
-        .backlinks-intro {
-            color: var(--secondary);
-            margin-bottom: 15px;
-        }
-        .backlinks-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-        .backlinks-list a {
-            background: linear-gradient(135deg, var(--light-gold) 0%, #fff9e6 100%);
-            border: 1px solid var(--gold);
-            padding: 8px 16px;
-            border-radius: 20px;
-            text-decoration: none;
-            color: var(--navy);
-            font-size: 0.9em;
-            transition: all 0.3s;
-        }
-        .backlinks-list a:hover {
-            background: var(--gold);
-            color: white;
-            transform: translateY(-2px);
-        }
-        .backlinks-count {
-            margin-top: 15px;
-            color: var(--secondary);
-            font-size: 0.9em;
-        }
-
+        .backlinks { margin-top: 35px; padding-top: 25px; border-top: 2px dashed var(--gold); }
+        .backlinks h3 { color: var(--navy); font-size: 1.2em; margin-bottom: 15px; }
+        .backlinks-intro { color: var(--secondary); margin-bottom: 15px; font-size: 0.9em; }
+        .backlinks-list { display: flex; flex-wrap: wrap; gap: 10px; }
+        .backlinks-list a { background: var(--cream); border: 1px solid var(--gold); padding: 6px 14px; border-radius: 18px; text-decoration: none; color: var(--navy); font-size: 0.85em; transition: all 0.3s; }
+        .backlinks-list a:hover { background: var(--gold); color: white; }
+        
+        footer { text-align: center; padding: 35px 20px; color: var(--secondary); border-top: 1px solid var(--border); margin-top: 35px; }
+        footer a { color: var(--navy); text-decoration: none; }
+        
+        @media (max-width: 768px) { .container { padding: 20px 15px; } header { padding: 30px 20px; } header h1 { font-size: 1.7em; } .content { padding: 25px 18px; } .overview-stats { grid-template-columns: repeat(2, 1fr); } .data-compare { grid-template-columns: 1fr; } .nav a { margin: 5px 8px; display: inline-block; } }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <h1>可口可乐</h1>
-        <div class="en-name">Coca-Cola</div>
-        <div class="meta"><span>饮料/消费 · 巴菲特投资</span></div>
-    </header>
-    
     <div class="container">
+        <header>
+            <h1>可口可乐</h1>
+            <div class="en-name">Coca-Cola (KO)</div>
+            <div class="meta"><span>饮料/消费 · 长期重仓股</span></div>
+        </header>
+        
         <nav class="nav">
             <a href="../index.html">🏠 首页</a>
-            <a href="../index-pages/核心思想索引.html">💡 核心思想索引</a>
             <a href="../index-pages/公司索引.html">🏢 公司索引</a>
-            <a href="../index-pages/人物索引.html">👤 人物索引</a>
+            <a href="../index-pages/核心思想索引.html">💡 核心思想</a>
         </nav>
         
         <article class="content">
-            <div class="section">
-                <h2>公司档案</h2>
-                <div class="profile-grid">
-                    <div class="profile-item">
-                        <div class="label">中文名称</div>
-                        <div class="value">可口可乐</div>
+            <!-- 投资概览 -->
+            <div class="overview-card">
+                <div class="overview-summary">
+                    <strong>巴菲特最经典的"品牌护城河"投资案例</strong>——在市场恐惧时以合理价格买入具有强大定价权的全球饮料龙头，持有超过30年获得超过200亿美元收益。
+                </div>
+                <div class="overview-stats">
+                    <div class="stat-item">
+                        <div class="stat-value">1988</div>
+                        <div class="stat-label">首次买入</div>
                     </div>
-                    <div class="profile-item">
-                        <div class="label">英文名称</div>
-                        <div class="value">Coca-Cola</div>
+                    <div class="stat-item">
+                        <div class="stat-value">5.93亿</div>
+                        <div class="stat-label">买入成本(美元)</div>
                     </div>
-                    <div class="profile-item">
-                        <div class="label">所属行业</div>
-                        <div class="value">饮料/消费</div>
+                    <div class="stat-item">
+                        <div class="stat-value">200亿+</div>
+                        <div class="stat-label">当前市值(美元)</div>
                     </div>
-                    <div class="profile-item">
-                        <div class="label">巴菲特持仓</div>
-                        <div class="value">长期重仓</div>
+                    <div class="stat-item">
+                        <div class="stat-value">30+年</div>
+                        <div class="stat-label">持有年限</div>
                     </div>
                 </div>
             </div>
-
-            <div class="section">
-                <h2>投资时间线</h2>
-                <div class="timeline">
-                    
-        <div class="timeline-item">
-            <div class="timeline-year">1988-1989</div>
-            <div class="timeline-content">首次买入可口可乐股票，共计买入1417万股，成本约5.93亿美元</div>
-        </div>
-        
-        <div class="timeline-item">
-            <div class="timeline-year">1990s</div>
-            <div class="timeline-content">持续持有，期间多次增持，成为第二大重仓股</div>
-        </div>
-        
-        <div class="timeline-item">
-            <div class="timeline-year">1998</div>
-            <div class="timeline-content">可口可乐股价达到峰值，约占伯克希尔组合的35%</div>
-        </div>
-        
-        <div class="timeline-item">
-            <div class="timeline-year">2000s-2020s</div>
-            <div class="timeline-content">继续持有超过30年，是巴菲特最成功的投资之一</div>
-        </div>
-        
-                </div>
-            </div>
-
-            <div class="section">
-                <h2>重要事件</h2>
-                
-        <div class="event-item">
-            <span class="event-year">1988</span>
-            <span class="event-desc">巴菲特首次买入可口可乐，正值股价低迷期</span>
-        </div>
-        
-        <div class="event-item">
-            <span class="event-year">1996</span>
-            <span class="event-desc">可口可乐成为伯克希尔最大持仓</span>
-        </div>
-        
-        <div class="event-item">
-            <span class="event-year">2020s</span>
-            <span class="event-desc">仍为主要持仓之一，体现长期持有理念</span>
-        </div>
-        
-            </div>
-
-            <div class="section">
-                <h2>巴菲特评价</h2>
-                
-            <div class="quote">
-                <p>伯克希尔的股东年会预计于1986年五月二十在奥马哈举行，我希望各位届时都能参加，今年将会有一项改变，那就是经过48年的坚持，本人将进行一项前所未有的习惯改变，将平常喝的饮料改成新的樱桃 [可口可乐](https://xueqiu.com/S/KO?from=status_stock_match) ，而它也将是本次伯克希尔-哈撒韦股东大会的指定饮料。</p>
-                <div class="source">—— 巴菲特致股东信 1985年</div>
-            </div>
             
-            <div class="quote">
-                <p>1988年我们做出两项重大的决定，大笔买进联邦家庭贷款抵押公司(房地美)与可口可乐，我们打算要持有这些股票很长的一段期间，事实上当我们发现我们持有兼具杰出企业与杰出经理人的股权时，我们最长的投资期间是永久，我们跟那些急着想要卖出表现不错的股票以实现获利却顽固地不肯出脱那些绩效差的股份的那群人完全相反。彼得林奇曾生动地将这种行为解释成砍除花朵来当作野草的肥料，我们持有房利美的股份比例是法令规定的上限，这部分查理在后面会详加为各位说明，因为他们是属于共同储贷-我们一家非保险的子公司所投资，所以在我们的合并资产负债表当中，这些持股将以成本而非市价列示。</p>
-                <div class="source">—— 巴菲特致股东信 1988年</div>
-            </div>
-            
-            <div class="quote">
-                <p>除了账列盈余数字之外，实际上我们受惠于会计原则不能认列的盈余，后面我列示出五家主要被投资公司在1989年收到的税后现金股利收入合计是4,500万美元，然而若依照投资比例我们可以分得的税后盈余却高达2.12亿美元，这还不包含我们在盖可与可口可乐身上所获得的资本利得，而若将这应得的2.12亿盈余分给我们，则在扣除应付的所得税之后，公司账列的盈余可能会大幅增加为5亿美元，而不是现在的3亿美元。</p>
-                <div class="source">—— 巴菲特致股东信 1989年</div>
-            </div>
-            
-            <div class="quote">
-                <p>表上的投资组合与去年几乎相同，只有一项投资的持股有变动，我们将可口可乐的持股数由去年的1,417万股提高到今年的2,335万股。</p>
-                <div class="source">—— 巴菲特致股东信 1989年</div>
-            </div>
-            
-            <div class="quote">
-                <p>这次的可口可乐投资，提供了一个机会来证明你们的董事长对投资机会的反应之快速，不管这些机会是如何的不明确或是被隐藏，我记得我是在1935年或1936年第一次喝到可口可乐的，不过可以确定的是，我从1936年开始以25分钱半打从巴菲特兄弟杂货店批货后，在以每罐5分钱卖给邻居街坊，作为我个人从事高毛利零售业的开端，我也深深观察到这项产品给消费者特殊的吸引力及背后所代表庞大的商机。</p>
-                <div class="source">—— 巴菲特致股东信 1989年</div>
-            </div>
-            
-            </div>
-
             <div class="section">
                 <h2>投资逻辑</h2>
-                <div class="logic-box">
-                    <h4>为什么投资可口可乐？</h4>
-                    <ul>
-                        <li>强大的品牌护城河：可口可乐是全球最具价值的品牌之一</li><li>全球化业务模式：产品销往200多个国家</li><li>定价权：品牌溢价能力强，多次提价不影响销量</li><li>管理层优秀：拥有优秀的管理团队和股东导向文化</li>
-                    </ul>
+                
+                <div class="logic-point">
+                    <div class="logic-number">1</div>
+                    <div class="logic-content">
+                        <div class="logic-title">"每天10亿次"的消费粘性</div>
+                        <div class="logic-desc">
+                            1988年买入时，可口可乐在全球每天售出超过10亿份饮料。这种高频、低价的消费习惯创造了难以撼动的品牌忠诚度——人们不会因为涨价5分钱就改喝百事可乐，就像不会因为电价上涨就不用电一样。
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="logic-point">
+                    <div class="logic-number">2</div>
+                    <div class="logic-content">
+                        <div class="logic-title">被低估的"心理锚定"</div>
+                        <div class="logic-desc">
+                            1988年股价下跌25%时，市场忽视了可口可乐的核心竞争力。巴菲特观察到：人们在咖啡店里点可乐、在餐厅里坚持要可口可乐——这种"指定品牌"的行为是企业定价权的最直接证明。
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="logic-point">
+                    <div class="logic-number">3</div>
+                    <div class="logic-content">
+                        <div class="logic-title">全球化扩张的"尚未兑现的期权"</div>
+                        <div class="logic-desc">
+                            1988年的可口可乐就像一颗还未完全发芽的种子——国际市场(尤其是亚洲和东欧)刚刚开始开拓。巴菲特看到了郭思达领导下的管理层正在推进的全球化战略，这相当于免费获得了未来增长的看涨期权。
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="logic-point">
+                    <div class="logic-number">4</div>
+                    <div class="logic-content">
+                        <div class="logic-title">个人经历验证商业直觉</div>
+                        <div class="logic-desc">
+                            巴菲特6岁时以25美分进货6罐可乐，再以每罐5美分卖给邻居——这是他最早的"零售经验"。50年后重仓持有，不仅是投资判断，更是对这个商业模式的深刻理解："我知道这东西好卖，我知道消费者会反复购买。"
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="logic-point">
+                    <div class="logic-number">5</div>
+                    <div class="logic-content">
+                        <div class="logic-title">管理层与股东利益一致</div>
+                        <div class="logic-desc">
+                            罗伯特·郭思达和唐纳德·考夫托斯基团队是真正的"企业家型管理层"——他们重视资本回报率、持续回购股票、与股东利益高度绑定。巴菲特曾说："和欣赏信任的人打交道是最重要的。"
+                        </div>
+                    </div>
                 </div>
             </div>
-
+            
+            <div class="section">
+                <h2>认知演进</h2>
+                <div class="cognition-timeline">
+                    <div class="cognition-point">
+                        <span class="cognition-year">1930s-1970s：童年印记 → 深刻理解</span>
+                        <div class="cognition-shift"><strong>从</strong> 13岁时第一次买可乐 <strong>到</strong> 理解"高毛利零售业"的本质</div>
+                        <p>巴菲特6岁开始卖可乐时就直观感受到：这是人们会反复购买的东西。50年的观察让他对品牌忠诚度有了超越数字的感性认知。</p>
+                    </div>
+                    
+                    <div class="cognition-point">
+                        <span class="cognition-year">1985-1987：犹豫观望 → 识别机会</span>
+                        <div class="cognition-shift"><strong>从</strong> "错过1950年代最佳买入时机" <strong>到</strong> "1987年股灾创造买入窗口"</div>
+                        <p>可口可乐1985年推出"新可乐"失败一度让巴菲特观望。1987年股灾导致股价下跌25%，他开始重新审视这个曾经"太贵"的标的。</p>
+                    </div>
+                    
+                    <div class="cognition-point">
+                        <span class="cognition-year">1988-1989：重仓出击 → 持续增持</span>
+                        <div class="cognition-shift"><strong>从</strong> 试探性买入 <strong>到</strong> 大举增持至2335万股</div>
+                        <p>1988年买入1417万股，1989年增持至2335万股。巴菲特在致股东信中坦言："1988年我们做出两项重大决定，大笔买进可口可乐。"</p>
+                    </div>
+                    
+                    <div class="cognition-point">
+                        <span class="cognition-year">1990s-2000s：坚定持有 → 享受复利</span>
+                        <div class="cognition-shift"><strong>从</strong> "第二大重仓股" <strong>到</strong> 超过200亿美元市值</div>
+                        <p>1998年可口可乐占伯克希尔组合35%。尽管2000年后增长放缓，巴菲特从未减持——他看的是10年、20年的复利效应。</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2>关键数据</h2>
+                <div class="data-compare">
+                    <div class="data-card">
+                        <h4>📊 买入时(1988)</h4>
+                        <div class="data-row"><span class="data-label">市盈率(PE)</span><span class="data-value">约14-15倍</span></div>
+                        <div class="data-row"><span class="data-label">持股数量</span><span class="data-value">1417万股</span></div>
+                        <div class="data-row"><span class="data-label">买入成本</span><span class="data-value">5.93亿美元</span></div>
+                        <div class="data-row"><span class="data-label">股价</span><span class="data-value">约42美元/股</span></div>
+                    </div>
+                    <div class="data-card">
+                        <h4>📈 持有期间</h4>
+                        <div class="data-row"><span class="data-label">累计分红</span><span class="data-value">超50亿美元</span></div>
+                        <div class="data-row"><span class="data-label">2019年股息</span><span class="data-value">16.5亿美元</span></div>
+                        <div class="data-row"><span class="data-label">分红再投资</span><span class="data-value">持续增持</span></div>
+                        <div class="data-row"><span class="data-label">总回报</span><span class="data-value">超200亿美元</span></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2>经验教训</h2>
+                
+                <div class="lesson-card">
+                    <div class="lesson-title">💡 品牌护城河的量化验证</div>
+                    <div class="lesson-desc">
+                        可口可乐教会巴菲特：强大的品牌不是抽象概念，而是可以量化的竞争优势——消费者愿意为品牌支付溢价，且不会轻易流失。这笔投资验证了"经济商誉"(Economic Goodwill)的重要性：1988年可口可乐的市值是其账面价值的6倍，但巴菲特认为实际护城河价值远超这个数字。
+                    </div>
+                </div>
+                
+                <div class="lesson-card">
+                    <div class="lesson-title">💡 "逆向时机"的把握</div>
+                    <div class="lesson-desc">
+                        1987年股灾时众人恐惧，巴菲特却在次年开始大举买入。这不是赌博，而是"在别人恐惧时贪婪"的具体实践——前提是对公司基本面的深刻理解。巴菲特说："机会来临时，你要确保自己还有子弹。"
+                    </div>
+                </div>
+                
+                <div class="lesson-card">
+                    <div class="lesson-title">💡 长期主义的复利威力</div>
+                    <div class="lesson-desc">
+                        持有30年+的意义不仅是等待，而是分红再投资带来的"复利加速"。1988年的5.93亿美元在2019年产生16.5亿美元年度股息——这相当于每年3%的"利息"，而且本金还在持续增值。
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2>精华原话</h2>
+                
+                <div class="quote">
+                    <p>1988年我们做出两项重大的决定，大笔买进联邦家庭贷款抵押公司与可口可乐，我们打算要持有这些股票很长的一段期间，事实上当我们发现我们持有兼具杰出企业与杰出经理人的股权时，我们最长的投资期间是永久。</p>
+                    <footer>—— 1988年致股东信</footer>
+                </div>
+                
+                <div class="quote">
+                    <p>这次的可口可乐投资，提供了一个机会来证明你们的董事长对投资机会的反应之快速，不管这些机会是如何的不明确或是被隐藏，我记得我是在1935年或1936年第一次喝到可口可乐的......我从1936年开始以25分钱半打从巴菲特兄弟杂货店批货后，在以每罐5分钱卖给邻居街坊。</p>
+                    <footer>—— 1989年致股东信</footer>
+                </div>
+                
+                <div class="quote">
+                    <p>我们持有兼具杰出企业与杰出经理人的股权时，我们最长的投资期间是永久，我们跟那些急着想要卖出表现不错的股票以实现获利却顽固地不肯出脱那些绩效差的股份的那群人完全相反。</p>
+                    <footer>—— 1988年致股东信</footer>
+                </div>
+                
+                <div class="quote">
+                    <p>我宁愿要一个规模小但优秀的企业，也不要一个大但平庸的企业。可口可乐就是那种你希望它永远不要倒闭的卓越企业。</p>
+                    <footer>—— 1996年伯克希尔股东大会</footer>
+                </div>
+            </div>
+            
             <div class="section">
                 <h2>相关概念</h2>
-                <div class="related">
-                    
+                <div class="related-grid">
+                    <a href="../concepts/品牌护城河.html" class="related-item">🏰 品牌护城河</a>
+                    <a href="../concepts/经济商誉.html" class="related-item">💎 经济商誉</a>
+                    <a href="../concepts/长期投资.html" class="related-item">⏳ 长期投资</a>
+                    <a href="../concepts/合理价格买入优质企业.html" class="related-item">💰 合理价格买入</a>
+                    <a href="../concepts/资本配置.html" class="related-item">⚙️ 资本配置能力</a>
                 </div>
             </div>
-        
-        <!-- 反向链接部分 --><p class="backlinks-count">共被提及 17 次</p>
-        </div>
-    
-        </article>
-    </div>
-    
-    <footer>
-        <p><a href="../index.html">巴菲特知识库</a> | 数据来源：巴菲特致股东信 (1977-2007)</p>
-    
-        <div class="backlinks">
-            <h2>📚 反向链接</h2>
-            <p class="backlinks-intro">以下年份的信件提到了此公司：</p>
-            <div class="backlinks-list">
-                <a href="../letters/berkshire/2007.html">2007年</a><a href="../letters/berkshire/2006.html">2006年</a><a href="../letters/berkshire/2005.html">2005年</a><a href="../letters/berkshire/2004.html">2004年</a><a href="../letters/berkshire/2003.html">2003年</a><a href="../letters/berkshire/1999.html">1999年</a><a href="../letters/berkshire/1997.html">1997年</a><a href="../letters/berkshire/1996.html">1996年</a><a href="../letters/berkshire/1995.html">1995年</a><a href="../letters/berkshire/1994.html">1994年</a><a href="../letters/berkshire/1993.html">1993年</a><a href="../letters/berkshire/1991.html">1991年</a><a href="../letters/berkshire/1990.html">1990年</a><a href="../letters/berkshire/1989.html">1989年</a><a href="../letters/berkshire/1988.html">1988年</a><a href="../letters/berkshire/1985.html">1985年</a><a href="../letters/berkshire/1983.html">1983年</a>
+            
+            <div class="section">
+                <h2>相关公司</h2>
+                <div class="related-grid">
+                    <a href="喜诗糖果.html" class="related-item">喜诗糖果<br><small>全资控股的糖果企业</small></a>
+                    <a href="吉列.html" class="related-item">吉列<br><small>刀片+刀架模式</small></a>
+                    <a href="美国运通.html" class="related-item">美国运通<br><small>品牌忠诚度案例</small></a>
+                    <a href="伯克希尔哈撒韦.html" class="related-item">伯克希尔<br><small>投资方</small></a>
+                </div>
             </div>
-            <p class="backlinks-count">共 17 处引用</p>
-        </div>
-    
-</footer>
+            
+            <div class="section">
+                <h2>延伸阅读</h2>
+                
+                <div class="topic-section">
+                    <div class="topic-title">品牌与定价权</div>
+                    <div class="topic-desc">巴菲特如何在不同时期论述品牌的价值与定价能力</div>
+                    <div class="topic-years">
+                        <a href="../letters/berkshire/1988.html">1988</a>
+                        <a href="../letters/berkshire/1996.html">1996</a>
+                        <a href="../letters/berkshire/2007.html">2007</a>
+                    </div>
+                </div>
+                
+                <div class="topic-section">
+                    <div class="topic-title">投资时机与逆向思维</div>
+                    <div class="topic-desc">1987年股灾后的投资决策与心理博弈</div>
+                    <div class="topic-years">
+                        <a href="../letters/berkshire/1987.html">1987</a>
+                        <a href="../letters/berkshire/1988.html">1988</a>
+                        <a href="../letters/berkshire/1989.html">1989</a>
+                    </div>
+                </div>
+                
+                <div class="topic-section">
+                    <div class="topic-title">全球化与长期视角</div>
+                    <div class="topic-desc">可口可乐的全球化扩张如何影响巴菲特的投资判断</div>
+                    <div class="topic-years">
+                        <a href="../letters/berkshire/1993.html">1993</a>
+                        <a href="../letters/berkshire/1998.html">1998</a>
+                        <a href="../letters/berkshire/2003.html">2003</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="backlinks">
+                <h3>📚 反向链接</h3>
+                <p class="backlinks-intro">巴菲特在以下年份的信件中提到了可口可乐：</p>
+                <div class="backlinks-list">
+                    <a href="../letters/berkshire/2007.html">2007</a>
+                    <a href="../letters/berkshire/2006.html">2006</a>
+                    <a href="../letters/berkshire/2005.html">2005</a>
+                    <a href="../letters/berkshire/2004.html">2004</a>
+                    <a href="../letters/berkshire/2003.html">2003</a>
+                    <a href="../letters/berkshire/1999.html">1999</a>
+                    <a href="../letters/berkshire/1997.html">1997</a>
+                    <a href="../letters/berkshire/1996.html">1996</a>
+                    <a href="../letters/berkshire/1995.html">1995</a>
+                    <a href="../letters/berkshire/1994.html">1994</a>
+                    <a href="../letters/berkshire/1993.html">1993</a>
+                    <a href="../letters/berkshire/1991.html">1991</a>
+                    <a href="../letters/berkshire/1990.html">1990</a>
+                    <a href="../letters/berkshire/1989.html">1989</a>
+                    <a href="../letters/berkshire/1988.html">1988</a>
+                    <a href="../letters/berkshire/1985.html">1985</a>
+                    <a href="../letters/berkshire/1983.html">1983</a>
+                </div>
+            </div>
+        </article>
+        
+        <footer>
+            <p><a href="../index.html">巴菲特知识库</a> | 数据来源：巴菲特致股东信 (1977-2007)</p>
+        </footer>
+    </div>
 </body>
 </html>

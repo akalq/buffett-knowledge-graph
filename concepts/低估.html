@@ -3,37 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>低估 - 巴菲特知识库</title>
+    <title>低估 (Undervaluation) - 巴菲特投资概念</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
-        :root { --bg-color: #FFFEF9; --navy: #1B2A4A; --gold: #C9A227; --text: #2C3E50; --secondary: #5D6D7E; --border: #E5E0D8; }
+        :root { --bg-color: #FFFEF9; --navy: #1B2A4A; --gold: #C9A227; --text: #2C3E50; --secondary: #5D6D7E; --border: #E5E0D8; --light-gold: #F5ECD7; }
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: 'Noto Serif SC', Georgia, serif; background: var(--bg-color); color: var(--text); line-height: 1.8; }
+        body { font-family: 'Noto Serif SC', Georgia, serif; background: var(--bg-color); color: var(--text); line-height: 1.9; }
         .container { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
-        header { background: var(--navy); color: white; padding: 40px 30px; text-align: center; }
-        header h1 { font-size: 1.8em; margin-bottom: 10px; }
-        header .meta { color: var(--gold); font-size: 0.95em; margin-top: 10px; }
-        .nav { background: white; border: 1px solid var(--border); padding: 15px 20px; margin-bottom: 30px; border-radius: 8px; text-align: center; }
-        .nav a { color: var(--navy); text-decoration: none; margin: 0 12px; font-size: 0.95em; }
-        .nav a:hover { color: var(--gold); }
-        .content { background: white; border: 1px solid var(--border); border-radius: 12px; padding: 40px; }
-        .content h2 { color: var(--navy); font-size: 1.4em; margin: 35px 0 15px; padding-bottom: 8px; border-bottom: 2px solid var(--gold); }
-        .content h2:first-child { margin-top: 0; }
+        header { background: linear-gradient(135deg, var(--navy) 0%, #2a3f6a 100%); color: white; padding: 50px 30px; text-align: center; }
+        header h1 { font-size: 2.2em; margin-bottom: 10px; }
+        header h1::before { content: '🔍'; margin-right: 15px; }
+        header .meta { color: var(--gold); font-size: 1em; margin-top: 15px; }
+        header .meta span { background: rgba(201, 162, 39, 0.2); padding: 5px 15px; border-radius: 20px; }
+        .nav { background: white; border: 1px solid var(--border); padding: 15px 25px; margin-bottom: 30px; border-radius: 10px; text-align: center; }
+        .nav a { color: var(--navy); text-decoration: none; margin: 0 15px; font-size: 0.95em; padding: 8px 15px; border-radius: 5px; transition: all 0.2s; }
+        .nav a:hover { background: var(--gold); color: white; }
+        .content { background: white; border: 1px solid var(--border); border-radius: 15px; padding: 45px; box-shadow: 0 5px 30px rgba(0,0,0,0.05); }
+        .content h2 { color: var(--navy); font-size: 1.4em; margin: 40px 0 20px; padding-bottom: 12px; border-bottom: 3px solid var(--gold); display: inline-block; }
+        .content h2:first-of-type { margin-top: 0; }
+        .content h3 { color: var(--navy); font-size: 1.15em; margin: 25px 0 12px; }
         .content p { margin: 15px 0; text-align: justify; }
-        .quote { background: var(--navy); color: white; padding: 20px 25px; border-left: 4px solid var(--gold); margin: 25px 0; border-radius: 0 8px 8px 0; }
-        .quote p { margin: 0; font-style: italic; }
-        .quote .source { color: var(--gold); margin-top: 12px; font-size: 0.9em; }
-        .related { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px; }
-        .related a { background: white; border: 1px solid var(--border); padding: 8px 15px; border-radius: 20px; text-decoration: none; color: var(--navy); font-size: 0.9em; transition: all 0.2s; }
-        .related a:hover { background: var(--gold); color: white; border-color: var(--gold); }
+        .content ul, .content ol { margin: 15px 0 15px 25px; }
+        .content li { margin: 10px 0; }
+        .content strong { color: var(--navy); font-weight: 700; }
+        
+        .insight { background: linear-gradient(135deg, #f8f5ee 0%, #fff 100%); border-left: 4px solid #C9A227; padding: 18px 22px; margin: 25px 0; font-style: italic; font-size: 1.05em; }
+        
+        .evolution-timeline { position: relative; padding-left: 35px; margin: 25px 0; }
+        .evolution-timeline::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: #C9A227; }
+        .evolution-point { position: relative; margin-bottom: 25px; }
+        .evolution-point::before { content: ''; position: absolute; left: -38px; top: 6px; width: 12px; height: 12px; border-radius: 50%; background: #C9A227; border: 3px solid white; box-shadow: 0 0 0 3px #C9A227; }
+        .evolution-year { font-weight: 600; color: var(--navy); font-size: 1.05em; }
+        .evolution-desc { color: var(--text); margin-top: 5px; }
+        
+        .case-card { background: #F8F5EE; border-radius: 10px; padding: 25px; margin: 20px 0; border: 1px solid var(--border); }
+        .case-company { font-size: 1.15em; font-weight: 600; color: var(--navy); margin-bottom: 8px; }
+        .case-data { color: #5D6D7E; font-size: 0.95em; margin: 8px 0; }
+        .case-lesson { font-style: italic; margin-top: 15px; padding-top: 15px; border-top: 1px solid #E8E4DB; color: var(--text); }
+        
+        .misconception-block { background: #fff5f5; padding: 20px 25px; border-radius: 10px; margin: 20px 0; border-left: 4px solid #e74c3c; }
+        .misconception-block h4 { color: #c0392b; margin-bottom: 12px; font-size: 1.05em; }
+        .misconception-block p { margin: 8px 0; }
+        
+        .quote-block { background: var(--navy); color: white; padding: 25px 30px; border-left: 5px solid var(--gold); margin: 25px 0; border-radius: 0 12px 12px 0; }
+        .quote-block p { margin: 0; font-style: italic; font-size: 1.05em; line-height: 1.8; }
+        .quote-block footer { color: var(--gold); margin-top: 15px; font-size: 0.9em; font-style: normal; }
+        
+        .topic-group { margin: 25px 0; padding: 20px; background: linear-gradient(135deg, var(--light-gold) 0%, #fff9e6 100%); border-radius: 10px; }
+        .topic-title { font-weight: 600; color: var(--navy); margin-bottom: 10px; font-size: 1.05em; }
+        .topic-desc { color: var(--text); margin-bottom: 12px; font-size: 0.95em; }
+        .topic-years { display: flex; flex-wrap: wrap; gap: 8px; }
+        .topic-years a { background: white; border: 1px solid var(--gold); padding: 5px 14px; border-radius: 18px; text-decoration: none; color: var(--navy); font-size: 0.85em; transition: all 0.2s; }
+        .topic-years a:hover { background: var(--gold); color: white; }
+        
         footer { text-align: center; padding: 40px 20px; color: var(--secondary); border-top: 1px solid var(--border); margin-top: 40px; }
-        footer a { color: var(--navy); text-decoration: none; }
+        @media (max-width: 768px) { .container { padding: 20px 15px; } header { padding: 30px 20px; } header h1 { font-size: 1.7em; } .content { padding: 25px 20px; } .nav a { margin: 5px 8px; display: inline-block; } }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
-        <h1>💡 低估</h1>
-        <div class="meta">概念 · 被引用 23 次</div>
+        <h1>低估 (Undervaluation)</h1>
+        <div class="meta"><span>巴菲特投资体系核心概念</span></div>
     </header>
     
     <div class="container">
@@ -41,23 +71,127 @@
             <a href="../index.html">🏠 首页</a>
             <a href="../index-pages/核心思想索引.html">💡 核心思想索引</a>
             <a href="../index-pages/公司索引.html">🏢 公司索引</a>
-            <a href="../index-pages/人物索引.html">👤 人物索引</a>
         </nav>
         
         <article class="content">
-            <h2>概念解析</h2>
-            <p>低估指股票的市场价格低于其内在价值，这是价值投资的核心机会。</p>
+            <h2>定义与起源</h2>
+            <p><strong>低估是市场价格低于内在价值的状态</strong>——这是价值投资的基石。巴菲特说："价格是你支付的，价值是你得到的。二者很少完全相等，这就是机会所在。"</p>
+            <p>低估的概念源于<strong>格雷厄姆</strong>的安全边际原则：只有在价格显著低于保守估计的价值时买入，才能在"市场先生"的非理性波动中保护自己。</p>
             
-            <h2>相关概念</h2>
-            <div class="related">
-                <a href="内在价值.html">内在价值</a>
-                <a href="护城河.html">护城河</a>
+            <div class="insight">
+                市场短期是投票机，长期是称重机。被低估的股票就像被贴错价格标签的商品——有些只是暂时被忽视，有些则反映了对公司前景的悲观预期。无论哪种，足够大的折扣都是最好的保护。
             </div>
+            
+            <h2>核心要义</h2>
+            <ul>
+                <li><strong>低估创造安全边际</strong>：以显著低于价值的价格买入，即使判断略有偏差，也能保护自己免受损失。</li>
+                <li><strong>低估的两种类型</strong>：一种是"静态低估"——公司价值不变但价格因市场情绪偏低；另一种是"动态低估"——市场正确预见了暂时性困难，但低估了恢复速度。</li>
+                <li><strong>低估需要时间回归</strong>：价值回归可能需要很长时间，甚至超出你的耐心范围。低估不等于马上上涨。</li>
+                <li><strong>低估需要催化剂</strong>：有时低估会持续很久，除非出现触发价值重估的事件（如管理层变动、业务好转、收购要约等）。</li>
+                <li><strong>低估不是选股的唯一标准</strong>：便宜的垃圾还是垃圾。低估必须与优质企业结合才能产生真正好的投资。</li>
+            </ul>
+            
+            <h2>思想演变</h2>
+            <div class="evolution-timeline">
+                <div class="evolution-point">
+                    <div class="evolution-year">格雷厄姆式低估（1950-1960年代）</div>
+                    <div class="evolution-desc">早期寻找静态低估的"烟蒂"公司——价格低于净流动资产的三分之二。这是一种纯粹的量化筛选。</div>
+                </div>
+                <div class="evolution-point">
+                    <div class="evolution-year">质量与低估结合（1970年代后）</div>
+                    <div class="evolution-desc">开始接受适度低估+优秀质量的组合。即使估值合理，只要有足够的折扣和成长性，也可以接受。</div>
+                </div>
+                <div class="evolution-point">
+                    <div class="evolution-year">内在价值为核心的评估</div>
+                    <div class="evolution-desc">将重心放在估算内在价值上，而非寻找极端低估。足够的折扣比极端折扣更实用。</div>
+                </div>
+            </div>
+            
+            <h2>实战案例</h2>
+            <div class="case-card">
+                <div class="case-company">美国运通 (American Express)</div>
+                <div class="case-data">1964年因"色拉油丑闻"股价暴跌50%；巴菲特趁机大举买入；持有至今超60年</div>
+                <div class="case-lesson">这是典型的市场过度反应导致的低估——公司核心竞争力未受损，但股价反映了短期恐慌。巴菲特的洞察力让他能分辨"真问题"和"假问题"。</div>
+            </div>
+            
+            <div class="case-card">
+                <div class="case-company">华盛顿邮报 (Washington Post)</div>
+                <div class="case-data">1970年代因行业困境股价低迷；巴菲特1973年以约1000万美元买入；最终价值超10亿美元</div>
+                <div class="case-lesson">市场对报纸行业的悲观预期导致了极端低估。巴菲特看到了品牌护城河被低估的价值。</div>
+            </div>
+            
+            <div class="case-card">
+                <div class="case-company">金融危机中的银行股</div>
+                <div class="case-data">2008-2009年花旗等银行股暴跌90%；部分银行确实存在问题；但优质银行被错杀</div>
+                <div class="case-lesson">低估和陷阱有时很难区分。关键是分辨哪些银行有真正的护城河可以度过危机，哪些只是看起来便宜。</div>
+            </div>
+            
+            <h2>常见误解</h2>
+            <div class="misconception-block">
+                <h4>❌ 误解一：低估的股票一定会涨</h4>
+                <p><strong>人们以为</strong>：找到低估的股票就等于找到了赚钱的方法。</p>
+                <p><strong>巴菲特说</strong>：低估的股票可能继续保持低估很长时间。你需要有耐心和资金实力等待价值回归。</p>
+            </div>
+            
+            <div class="misconception-block">
+                <h4>❌ 误解二：低估就是好投资</h4>
+                <p><strong>人们以为</strong>：只要买入低估的股票就是好投资。</p>
+                <p><strong>巴菲特说</strong>：低估只是安全边际的一种形式。如果公司最终破产清算，低估也救不了你。</p>
+            </div>
+            
+            <div class="misconception-block">
+                <h4>❌ 误解三：低市盈率就是低估</h4>
+                <p><strong>人们以为</strong>：市盈率低的股票就是被低估的股票。</p>
+                <p><strong>巴菲特说</strong>：低市盈率可能反映的是市场对公司前景的真实判断。关键不是数字本身，而是数字背后的企业质量。</p>
+            </div>
+            
+            <h2>精华原话</h2>
+            <div class="quote-block">
+                <p>"价格是你支付的，价值是你得到的。二者很少完全相等，但总是趋向于相等——只是这个过程可能很长。"</p>
+                <footer>—— 2008年致股东信</footer>
+            </div>
+            
+            <div class="quote-block">
+                <p>"投资的秘诀在于，当价格显著低于价值时买入，并耐心等待价格反映或超出价值。这个策略有时候很快见效，有时候需要很多年。"</p>
+                <footer>—— 1994年致股东信</footer>
+            </div>
+            
+            <div class="quote-block">
+                <p>"最成功的投资往往来自那些看起来最糟糕的时刻——当所有人都悲观地抛售，价格被压到最低。这时候买入需要勇气，但回报也最丰厚。"</p>
+                <footer>—— 2009年致股东信</footer>
+            </div>
+            
+            <div class="quote-block">
+                <p>"我们需要安全边际——足够大的折扣来弥补我们犯错的可能性。偶尔的错误不可避免，但拥有安全边际可以确保这些错误不会致命。"</p>
+                <footer>—— 1993年致股东信</footer>
+            </div>
+            
+            <h2>延伸阅读</h2>
+            <p>低估概念在信件中的讨论分布，按论点组织：</p>
+            
+            <div class="topic-group">
+                <div class="topic-title">低估与安全边际</div>
+                <div class="topic-desc">低估如何创造安全边际</div>
+                <div class="topic-years">
+                    <a href="../letters/berkshire/1993.html">1993</a>
+                    <a href="../letters/berkshire/1994.html">1994</a>
+                </div>
+            </div>
+            
+            <div class="topic-group">
+                <div class="topic-title">低估的识别</div>
+                <div class="topic-desc">如何识别真正被低估的公司</div>
+                <div class="topic-years">
+                    <a href="../letters/berkshire/2008.html">2008</a>
+                    <a href="../letters/berkshire/2009.html">2009</a>
+                </div>
+            </div>
+            
         </article>
     </div>
     
     <footer>
-        <p><a href="../index.html">巴菲特知识库</a> | 数据来源：Berkshire Hathaway Letters</p>
+        <p>巴菲特知识库 | 数据来源：Berkshire Hathaway Letters to Shareholders</p>
     </footer>
 </body>
 </html>

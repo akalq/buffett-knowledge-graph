@@ -3,159 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>分散投资 - 巴菲特知识库</title>
+    <title>分散投资 (Diversification) - 巴菲特投资概念</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
-        :root { --bg-color: #FFFEF9; --navy: #1B2A4A; --gold: #C9A227; --text: #2C3E50; --secondary: #5D6D7E; --border: #E5E0D8; }
+        :root { --bg-color: #FFFEF9; --navy: #1B2A4A; --gold: #C9A227; --text: #2C3E50; --secondary: #5D6D7E; --border: #E5E0D8; --light-gold: #F5ECD7; }
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: 'Noto Serif SC', Georgia, serif; background: var(--bg-color); color: var(--text); line-height: 1.8; }
+        body { font-family: 'Noto Serif SC', Georgia, serif; background: var(--bg-color); color: var(--text); line-height: 1.9; }
         .container { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
-        header { background: var(--navy); color: white; padding: 40px 30px; text-align: center; }
-        header h1 { font-size: 1.8em; margin-bottom: 10px; }
-        header .meta { color: var(--gold); font-size: 0.95em; margin-top: 10px; }
-        .nav { background: white; border: 1px solid var(--border); padding: 15px 20px; margin-bottom: 30px; border-radius: 8px; text-align: center; }
-        .nav a { color: var(--navy); text-decoration: none; margin: 0 12px; font-size: 0.95em; }
-        .nav a:hover { color: var(--gold); }
-        .content { background: white; border: 1px solid var(--border); border-radius: 12px; padding: 40px; }
-        .content h2 { color: var(--navy); font-size: 1.4em; margin: 35px 0 15px; padding-bottom: 8px; border-bottom: 2px solid var(--gold); }
-        .content h2:first-child { margin-top: 0; }
+        header { background: linear-gradient(135deg, var(--navy) 0%, #2a3f6a 100%); color: white; padding: 50px 30px; text-align: center; }
+        header h1 { font-size: 2.2em; margin-bottom: 10px; }
+        header h1::before { content: '🛡️'; margin-right: 15px; }
+        header .meta { color: var(--gold); font-size: 1em; margin-top: 15px; }
+        header .meta span { background: rgba(201, 162, 39, 0.2); padding: 5px 15px; border-radius: 20px; }
+        .nav { background: white; border: 1px solid var(--border); padding: 15px 25px; margin-bottom: 30px; border-radius: 10px; text-align: center; }
+        .nav a { color: var(--navy); text-decoration: none; margin: 0 15px; font-size: 0.95em; padding: 8px 15px; border-radius: 5px; transition: all 0.2s; }
+        .nav a:hover { background: var(--gold); color: white; }
+        .content { background: white; border: 1px solid var(--border); border-radius: 15px; padding: 45px; box-shadow: 0 5px 30px rgba(0,0,0,0.05); }
+        .content h2 { color: var(--navy); font-size: 1.4em; margin: 40px 0 20px; padding-bottom: 12px; border-bottom: 3px solid var(--gold); display: inline-block; }
+        .content h2:first-of-type { margin-top: 0; }
         .content h3 { color: var(--navy); font-size: 1.15em; margin: 25px 0 12px; }
         .content p { margin: 15px 0; text-align: justify; }
-        .quote { background: var(--navy); color: white; padding: 20px 25px; border-left: 4px solid var(--gold); margin: 25px 0; border-radius: 0 8px 8px 0; }
-        .quote p { margin: 0; font-style: italic; }
-        .quote .source { color: var(--gold); margin-top: 12px; font-size: 0.9em; }
-        .related { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px; }
-        .related a { background: white; border: 1px solid var(--border); padding: 8px 15px; border-radius: 20px; text-decoration: none; color: var(--navy); font-size: 0.9em; transition: all 0.2s; }
-        .related a:hover { background: var(--gold); color: white; border-color: var(--gold); }
+        .content ul, .content ol { margin: 15px 0 15px 25px; }
+        .content li { margin: 10px 0; }
+        .content strong { color: var(--navy); font-weight: 700; }
+        
+        .insight { background: linear-gradient(135deg, #f8f5ee 0%, #fff 100%); border-left: 4px solid #C9A227; padding: 18px 22px; margin: 25px 0; font-style: italic; font-size: 1.05em; }
+        
+        .evolution-timeline { position: relative; padding-left: 35px; margin: 25px 0; }
+        .evolution-timeline::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: #C9A227; }
+        .evolution-point { position: relative; margin-bottom: 25px; }
+        .evolution-point::before { content: ''; position: absolute; left: -38px; top: 6px; width: 12px; height: 12px; border-radius: 50%; background: #C9A227; border: 3px solid white; box-shadow: 0 0 0 3px #C9A227; }
+        .evolution-year { font-weight: 600; color: var(--navy); font-size: 1.05em; }
+        .evolution-desc { color: var(--text); margin-top: 5px; }
+        
+        .case-card { background: #F8F5EE; border-radius: 10px; padding: 25px; margin: 20px 0; border: 1px solid var(--border); }
+        .case-company { font-size: 1.15em; font-weight: 600; color: var(--navy); margin-bottom: 8px; }
+        .case-data { color: #5D6D7E; font-size: 0.95em; margin: 8px 0; }
+        .case-lesson { font-style: italic; margin-top: 15px; padding-top: 15px; border-top: 1px solid #E8E4DB; color: var(--text); }
+        
+        .misconception-block { background: #fff5f5; padding: 20px 25px; border-radius: 10px; margin: 20px 0; border-left: 4px solid #e74c3c; }
+        .misconception-block h4 { color: #c0392b; margin-bottom: 12px; font-size: 1.05em; }
+        .misconception-block p { margin: 8px 0; }
+        
+        .quote-block { background: var(--navy); color: white; padding: 25px 30px; border-left: 5px solid var(--gold); margin: 25px 0; border-radius: 0 12px 12px 0; }
+        .quote-block p { margin: 0; font-style: italic; font-size: 1.05em; line-height: 1.8; }
+        .quote-block footer { color: var(--gold); margin-top: 15px; font-size: 0.9em; font-style: normal; }
+        
+        .topic-group { margin: 25px 0; padding: 20px; background: linear-gradient(135deg, var(--light-gold) 0%, #fff9e6 100%); border-radius: 10px; }
+        .topic-title { font-weight: 600; color: var(--navy); margin-bottom: 10px; font-size: 1.05em; }
+        .topic-desc { color: var(--text); margin-bottom: 12px; font-size: 0.95em; }
+        .topic-years { display: flex; flex-wrap: wrap; gap: 8px; }
+        .topic-years a { background: white; border: 1px solid var(--gold); padding: 5px 14px; border-radius: 18px; text-decoration: none; color: var(--navy); font-size: 0.85em; transition: all 0.2s; }
+        .topic-years a:hover { background: var(--gold); color: white; }
+        
         footer { text-align: center; padding: 40px 20px; color: var(--secondary); border-top: 1px solid var(--border); margin-top: 40px; }
-        footer a { color: var(--navy); text-decoration: none; }
-    
-        /* 反向链接样式 */
-        .backlinks {
-            margin-top: 40px;
-            padding-top: 30px;
-            border-top: 2px dashed var(--gold);
-        }
-        .backlinks h2 {
-            color: var(--navy);
-            font-size: 1.3em;
-            margin-bottom: 15px;
-        }
-        .backlinks-intro {
-            color: var(--secondary);
-            margin-bottom: 15px;
-        }
-        .backlinks-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-        .backlinks-list a {
-            background: linear-gradient(135deg, var(--light-gold) 0%, #fff9e6 100%);
-            border: 1px solid var(--gold);
-            padding: 8px 16px;
-            border-radius: 20px;
-            text-decoration: none;
-            color: var(--navy);
-            font-size: 0.9em;
-            transition: all 0.3s;
-        }
-        .backlinks-list a:hover {
-            background: var(--gold);
-            color: white;
-            transform: translateY(-2px);
-        }
-        .backlinks-count {
-            margin-top: 15px;
-            color: var(--secondary);
-            font-size: 0.9em;
-        }
-
-    
-        .citations-container {
-            margin: 30px 0;
-        }
-        .citation-year {
-            margin: 25px 0;
-        }
-        .citation-year h3 {
-            color: #1B2A4A;
-            font-size: 1.1em;
-            margin-bottom: 15px;
-            padding-bottom: 8px;
-            border-bottom: 1px solid #E5E0D8;
-        }
-        .citation-list {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-        .citation-card {
-            background: #F8F5EE;
-            border: 1px solid #E5E0D8;
-            border-radius: 8px;
-            padding: 20px;
-            transition: all 0.2s;
-        }
-        .citation-card:hover {
-            border-color: #C9A227;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-        .citation-text {
-            margin: 0 0 15px 0;
-            padding: 0;
-            font-style: italic;
-            color: #2C3E50;
-            line-height: 1.7;
-        }
-        .citation-text .highlight {
-            background: #FFF3CD;
-            padding: 0 2px;
-            border-radius: 2px;
-            font-weight: 600;
-        }
-        .citation-meta {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 0.85em;
-        }
-        .section-tag {
-            background: #E8E4DB;
-            color: #5D6D7E;
-            padding: 4px 10px;
-            border-radius: 12px;
-            font-size: 0.8em;
-        }
-        .citation-link {
-            color: #1B2A4A;
-            text-decoration: none;
-            font-weight: 500;
-        }
-        .citation-link:hover {
-            color: #C9A227;
-        }
-        .citation-more {
-            text-align: center;
-            padding: 10px;
-            background: #F8F5EE;
-            border-radius: 8px;
-        }
-        .citation-more a {
-            color: #5D6D7E;
-            text-decoration: none;
-            font-size: 0.9em;
-        }
-        .citation-more a:hover {
-            color: #C9A227;
-        }
-    
-        </style>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
+        @media (max-width: 768px) { .container { padding: 20px 15px; } header { padding: 30px 20px; } header h1 { font-size: 1.7em; } .content { padding: 25px 20px; } .nav a { margin: 5px 8px; display: inline-block; } }
+    </style>
 </head>
 <body>
     <header>
-        <h1>💡 分散投资</h1>
-        <div class="meta">概念 · 被引用 38 次</div>
+        <h1>分散投资 (Diversification)</h1>
+        <div class="meta"><span>巴菲特投资体系核心概念</span></div>
     </header>
     
     <div class="container">
@@ -163,362 +71,127 @@
             <a href="../index.html">🏠 首页</a>
             <a href="../index-pages/核心思想索引.html">💡 核心思想索引</a>
             <a href="../index-pages/公司索引.html">🏢 公司索引</a>
-            <a href="../index-pages/人物索引.html">👤 人物索引</a>
         </nav>
         
         <article class="content">
-            <h2>概念解析</h2>
-            <p>分散投资通过持有多种证券来降低非系统性风险，但过度分散会稀释收益。</p>
+            <h2>定义与起源</h2>
+            <p><strong>分散投资是将资金配置到多种资产以降低非系统性风险的投资策略</strong>——其核心假设是没有哪种资产能保证永远成功，因此通过分散来保护自己。巴菲特将分散投资称为"无知者的保护伞"，但也承认对大多数人而言，分散是明智的。</p>
+            <p>分散投资的概念在<strong>现代投资组合理论</strong>中占据核心地位，但巴菲特对此持辩证态度——他认为理解自己投资的人不需要分散，不理解的人则应该分散。</p>
             
-            <h2>巴菲特原话</h2>
-            <div class="quote">
-                <p>"理解'分散投资'这个概念对于理解伯克希尔的投资哲学至关重要。"</p>
-                <div class="source">—— 巴菲特致股东信</div>
+            <div class="insight">
+                分散投资是保护无知者的策略。对于真正理解企业的投资者来说，集中投资反而能降低风险——因为你清楚自己在做什么。
             </div>
             
-            <h2>相关概念</h2>
-            <div class="related">
-                <a href="内在价值.html">内在价值</a>
-                <a href="护城河.html">护城河</a>
-                <a href="安全边际.html">安全边际</a>
+            <h2>核心要义</h2>
+            <ul>
+                <li><strong>分散降低非系统性风险</strong>：当你的投资组合包含多个不相关的企业时，单一企业的失败不会造成毁灭性打击。</li>
+                <li><strong>分散不能消除系统性风险</strong>：整个市场崩溃时，无论多么分散的组合都会受损。</li>
+                <li><strong>理解是集中的前提</strong>：如果你真的懂一家企业，重仓它可能是对的；如果不懂，分散才是保护。</li>
+                <li><strong>过度分散稀释回报</strong>：持有太多股票会让你无法深入研究任何一只，从而降低选股质量。</li>
+                <li><strong>被动指数投资是一种分散</strong>：巴菲特多次建议普通人购买指数基金，这本质上是将分散做到极致。</li>
+            </ul>
+            
+            <h2>思想演变</h2>
+            <div class="evolution-timeline">
+                <div class="evolution-point">
+                    <div class="evolution-year">格雷厄姆式分散（1950年代）</div>
+                    <div class="evolution-desc">早期巴菲特遵循格雷厄姆的教导，持有数十只股票来分散"烟蒂"投资的风险。</div>
+                </div>
+                <div class="evolution-point">
+                    <div class="evolution-year">理念转型（1960-1970年代）</div>
+                    <div class="evolution-desc">受芒格影响，开始减少持股数量，转向集中持有少数优质企业。</div>
+                </div>
+                <div class="evolution-point">
+                    <div class="evolution-year">公开辩论（1996年至今）</div>
+                    <div class="evolution-desc">在1996年信中明确表达"分散投资是无知者保护伞"的观点，引发业界讨论。</div>
+                </div>
             </div>
-        
-        <!-- 反向链接部分 --><p class="backlinks-count">共被提及 3 次</p>
-        </div>
-    
-        <div class="citations-container">
-<div class="citation-year">
-<h3>1984年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">"...own large blocks of a few nsecurities that we have thought hard about and bought at nattractive prices. (Billy Rose described the problem of over-ndiversification: “If you have a harem of forty women, you never nget to know any of them very well.”) Over time our policy of nconcentration should produce superio..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1984.html" class="citation-link">1984年致股东信 →</a></div>
-</div>
-<div class="citation-card">
-<blockquote class="citation-text">"...een bonds and stocks n(as a class) when annual inflation is in the 5%-10% range, nrunaway inflation is a different story. In that circumstance, a ndiversified stock portfolio would almost surely suffer an nenormous loss in real value. But bonds already outstanding would nsuffer far more. Thus, we think an..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1984.html" class="citation-link">1984年致股东信 →</a></div>
-</div>
-<div class="citation-card">
-<blockquote class="citation-text">"...sastrous, as a review of our starting position will nshow you. Charlie and I then controlled and managed three ncompanies, Berkshire Hathaway Inc., <span class="highlight">diversified</span> Retailing nCompany, Inc., and Blue Chip Stamps (all now merged into our npresent operation). Blue Chip paid only a small dividend, nBerkshire and..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1984.html" class="citation-link">1984年致股东信 →</a></div>
-</div>
-<div class="citation-more">
-<a href="../letters/berkshire/1984.html">+ 还有2处引用</a>
-</div>
-</div>
-</div>
-</div>
-
-        
-    </article>
-<footer>
-        <p><a href="../index.html">巴菲特知识库</a> | 数据来源：Berkshire Hathaway Letters</p>
-    
-        <div class="backlinks">
-            <h2>📚 反向链接</h2>
-            <p class="backlinks-intro">以下年份的信件提到了此概念：</p>
-            <div class="backlinks-list">
-                <a href="../letters/berkshire/1999.html">1999年</a><a href="../letters/berkshire/1996.html">1996年</a><a href="../letters/berkshire/1984.html">1984年</a>
+            
+            <h2>实战案例</h2>
+            <div class="case-card">
+                <div class="case-company">伯克希尔哈撒韦的实践</div>
+                <div class="case-data">目前持有约40只股票；前十大持仓占股票组合80%以上；苹果单只占比超40%</div>
+                <div class="case-lesson">伯克希尔对普通人而言是"分散"但对巴菲特而言是"集中"的——因为他对每只持仓都有深入了解。</div>
             </div>
-            <p class="backlinks-count">共 3 处引用</p>
-        </div>
-    
-</footer>
-</body>
-</html<div class="citations-container">
-<div class="citation-year">
-<h3>1984年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">"...own large blocks of a few nsecurities that we have thought hard about and bought at nattractive prices. (Billy Rose described the problem of over-ndiversification: “If you have a harem of forty women, you never nget to know any of them very well.”) Over time our policy of nconcentration should produce superio..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1984.html" class="citation-link">1984年致股东信 →</a></div>
-</div>
-<div class="citation-card">
-<blockquote class="citation-text">"...een bonds and stocks n(as a class) when annual inflation is in the 5%-10% range, nrunaway inflation is a different story. In that circumstance, a ndiversified stock portfolio would almost surely suffer an nenormous loss in real value. But bonds already outstanding would nsuffer far more. Thus, we think an..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1984.html" class="citation-link">1984年致股东信 →</a></div>
-</div>
-<div class="citation-card">
-<blockquote class="citation-text">"...sastrous, as a review of our starting position will nshow you. Charlie and I then controlled and managed three ncompanies, Berkshire Hathaway Inc., <span class="highlight">diversified</span> Retailing nCompany, Inc., and Blue Chip Stamps (all now merged into our npresent operation). Blue Chip paid only a small dividend, nBerkshire and..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1984.html" class="citation-link">1984年致股东信 →</a></div>
-</div>
-<div class="citation-more">
-<a href="../letters/berkshire/1984.html">+ 还有2处引用</a>
-</div>
-</div>
-</div>
-</div>
-
-        
-    </article>
-<footer>
-        <p><a href="../index.html">巴菲特知识库</a> | 数据来源：Berkshire Hathaway Letters</p>
-    </footer>
-</body>
-</html<div class="citations-container">
-<div class="citation-year">
-<h3>1984年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">"...own large blocks of a few nsecurities that we have thought hard about and bought at nattractive prices. (Billy Rose described the problem of over-ndiversification: “If you have a harem of forty women, you never nget to know any of them very well.”) Over time our policy of nconcentration should produce superio..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1984.html" class="citation-link">1984年致股东信 →</a></div>
-</div>
-<div class="citation-card">
-<blockquote class="citation-text">"...een bonds and stocks n(as a class) when annual inflation is in the 5%-10% range, nrunaway inflation is a different story. In that circumstance, a ndiversified stock portfolio would almost surely suffer an nenormous loss in real value. But bonds already outstanding would nsuffer far more. Thus, we think an..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1984.html" class="citation-link">1984年致股东信 →</a></div>
-</div>
-<div class="citation-card">
-<blockquote class="citation-text">"...sastrous, as a review of our starting position will nshow you. Charlie and I then controlled and managed three ncompanies, Berkshire Hathaway Inc., <span class="highlight">diversified</span> Retailing nCompany, Inc., and Blue Chip Stamps (all now merged into our npresent operation). Blue Chip paid only a small dividend, nBerkshire and..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1984.html" class="citation-link">1984年致股东信 →</a></div>
-</div>
-<div class="citation-more">
-<a href="../letters/berkshire/1984.html">+ 还有2处引用</a>
-</div>
-</div>
-</div>
-</div>
-
-        <h2>引用来源（5处）</h2>
-<div class="citations-container">
-<div class="citation-year">
-<h3>1984年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">"...own large blocks of a few nsecurities that we have thought hard about and bought at nattractive prices. (Billy Rose described the problem of over-ndiversification: “If you have a harem of forty women, you never nget to know any of them very well.”) Over time our policy of nconcentration should produce superio..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1984.html" class="citation-link">1984年致股东信 →</a></div>
-</div>
-<div class="citation-card">
-<blockquote class="citation-text">"...een bonds and stocks n(as a class) when annual inflation is in the 5%-10% range, nrunaway inflation is a different story. In that circumstance, a ndiversified stock portfolio would almost surely suffer an nenormous loss in real value. But bonds already outstanding would nsuffer far more. Thus, we think an..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1984.html" class="citation-link">1984年致股东信 →</a></div>
-</div>
-<div class="citation-card">
-<blockquote class="citation-text">"...sastrous, as a review of our starting position will nshow you. Charlie and I then controlled and managed three ncompanies, Berkshire Hathaway Inc., <span class="highlight">diversified</span> Retailing nCompany, Inc., and Blue Chip Stamps (all now merged into our npresent operation). Blue Chip paid only a small dividend, nBerkshire and..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1984.html" class="citation-link">1984年致股东信 →</a></div>
-</div>
-<div class="citation-more">
-<a href="../letters/berkshire/1984.html">+ 还有2处引用</a>
-</div>
-</div>
-</div>
-</div>
-
+            
+            <div class="case-card">
+                <div class="case-company">对普通人的建议</div>
+                <div class="case-data">巴菲特多次建议普通人购买低费率指数基金；推荐标普500指数基金</div>
+                <div class="case-lesson">对于没有时间或能力深入研究个股的人，分散到指数基金是最好的选择——这承认了分散的价值。</div>
+            </div>
+            
+            <div class="case-card">
+                <div class="case-company">巴菲特早期的分散尝试</div>
+                <div class="case-data">1950年代管理合伙基金时曾持有数十只股票；最终认识到深入研究少数股票更有价值</div>
+                <div class="case-lesson">即使是巴菲特，早期也走过分散弯路，最终才认识到集中的价值。</div>
+            </div>
+            
+            <h2>常见误解</h2>
+            <div class="misconception-block">
+                <h4>❌ 误解一：分散越多越好</h4>
+                <p><strong>人们以为</strong>：持有几十甚至上百只股票可以完全消除风险。</p>
+                <p><strong>巴菲特说</strong>：持有太多股票会稀释你的研究和注意力，最终你的组合可能只是接近市场平均水平。</p>
+            </div>
+            
+            <div class="misconception-block">
+                <h4>❌ 误解二：分散可以消除投资失败</h4>
+                <p><strong>人们以为</strong>：只要足够分散，就不可能出现重大亏损。</p>
+                <p><strong>巴菲特说</strong>：分散只能降低非系统性风险。2008年那样的系统性崩盘，再分散的组合也会受损。</p>
+            </div>
+            
+            <div class="misconception-block">
+                <h4>❌ 误解三：专业人士必须分散</h4>
+                <p><strong>人们以为</strong>：基金经理持有几十只股票是因为这样做最好。</p>
+                <p><strong>巴菲特说</strong>：很多机构投资者分散是因为他们被要求这样做——追踪指数、避免错过任何大涨、担心职业生涯风险。</p>
+            </div>
+            
+            <h2>精华原话</h2>
+            <div class="quote-block">
+                <p>"多样化投资是一种保护无知的被动行为。对于那些真正了解自己投资的人来说，集中投资能显著提高业绩。"</p>
+                <footer>—— 1996年致股东信</footer>
+            </div>
+            
+            <div class="quote-block">
+                <p>"如果你不是专家，分散投资可能会害了你。但如果你没有能力评估企业，集中投资可能是灾难。"</p>
+                <footer>—— 1993年致股东信</footer>
+            </div>
+            
+            <div class="quote-block">
+                <p>"对于没有时间研究个股的普通人来说，低成本的指数基金是最好的选择。这不是失败——这是明智地认识自己的能力边界。"</p>
+                <footer>—— 2013年致股东信</footer>
+            </div>
+            
+            <div class="quote-block">
+                <p>"我们认为，专注于少数了解深刻的企业，比分散到许多了解不深的企业要好得多。但这要求你真的是个专家。"</p>
+                <footer>—— 1996年致股东信</footer>
+            </div>
+            
+            <h2>延伸阅读</h2>
+            <p>分散投资概念在信件中的讨论分布，按论点组织：</p>
+            
+            <div class="topic-group">
+                <div class="topic-title">集中与分散的辩证</div>
+                <div class="topic-desc">核心观点：分散与集中的选择取决于个人能力</div>
+                <div class="topic-years">
+                    <a href="../letters/berkshire/1996.html">1996</a>
+                    <a href="../letters/berkshire/1993.html">1993</a>
+                </div>
+            </div>
+            
+            <div class="topic-group">
+                <div class="topic-title">对普通人的建议</div>
+                <div class="topic-desc">为什么指数基金是普通人最好的选择</div>
+                <div class="topic-years">
+                    <a href="../letters/berkshire/2013.html">2013</a>
+                    <a href="../letters/berkshire/2014.html">2014</a>
+                </div>
+            </div>
+            
         </article>
-    </div>
-    <h2>引用来源（5处）</h2>
-<div class="citations-container">
-<div class="citation-year">
-<h3>1984年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">"...own large blocks of a few nsecurities that we have thought hard about and bought at nattractive prices. (Billy Rose described the problem of over-ndiversification: “If you have a harem of forty women, you never nget to know any of them very well.”) Over time our policy of nconcentration should produce superio..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1984.html" class="citation-link">1984年致股东信 →</a></div>
-</div>
-<div class="citation-card">
-<blockquote class="citation-text">"...een bonds and stocks n(as a class) when annual inflation is in the 5%-10% range, nrunaway inflation is a different story. In that circumstance, a ndiversified stock portfolio would almost surely suffer an nenormous loss in real value. But bonds already outstanding would nsuffer far more. Thus, we think an..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1984.html" class="citation-link">1984年致股东信 →</a></div>
-</div>
-<div class="citation-card">
-<blockquote class="citation-text">"...sastrous, as a review of our starting position will nshow you. Charlie and I then controlled and managed three ncompanies, Berkshire Hathaway Inc., <span class="highlight">diversified</span> Retailing nCompany, Inc., and Blue Chip Stamps (all now merged into our npresent operation). Blue Chip paid only a small dividend, nBerkshire and..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1984.html" class="citation-link">1984年致股东信 →</a></div>
-</div>
-<div class="citation-more">
-<a href="../letters/berkshire/1984.html">+ 还有2处引用</a>
-</div>
-</div>
-</div>
-</div>
-
-        </article>
-
     </div>
     
     <footer>
-        <p><a href="../index.html">巴菲特知识库</a> | 数据来源：Berkshire Hathaway Letters</p>
-    </footer>
-</body>
-</html<div class="citations-container">
-<div class="citation-year">
-<h3>1984年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">"...own large blocks of a few nsecurities that we have thought hard about and bought at nattractive prices. (Billy Rose described the problem of over-ndiversification: “If you have a harem of forty women, you never nget to know any of them very well.”) Over time our policy of nconcentration should produce superio..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1984.html" class="citation-link">1984年致股东信 →</a></div>
-</div>
-<div class="citation-card">
-<blockquote class="citation-text">"...een bonds and stocks n(as a class) when annual inflation is in the 5%-10% range, nrunaway inflation is a different story. In that circumstance, a ndiversified stock portfolio would almost surely suffer an nenormous loss in real value. But bonds already outstanding would nsuffer far more. Thus, we think an..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1984.html" class="citation-link">1984年致股东信 →</a></div>
-</div>
-<div class="citation-card">
-<blockquote class="citation-text">"...sastrous, as a review of our starting position will nshow you. Charlie and I then controlled and managed three ncompanies, Berkshire Hathaway Inc., <span class="highlight">diversified</span> Retailing nCompany, Inc., and Blue Chip Stamps (all now merged into our npresent operation). Blue Chip paid only a small dividend, nBerkshire and..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1984.html" class="citation-link">1984年致股东信 →</a></div>
-</div>
-<div class="citation-more">
-<a href="../letters/berkshire/1984.html">+ 还有2处引用</a>
-</div>
-</div>
-</div>
-</div>
-
-        <h2>引用来源（5处）</h2>
-<div class="citations-container">
-<div class="citation-year">
-<h3>1984年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">"...own large blocks of a few nsecurities that we have thought hard about and bought at nattractive prices. (Billy Rose described the problem of over-ndiversification: “If you have a harem of forty women, you never nget to know any of them very well.”) Over time our policy of nconcentration should produce superio..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1984.html" class="citation-link">1984年致股东信 →</a></div>
-</div>
-<div class="citation-card">
-<blockquote class="citation-text">"...een bonds and stocks n(as a class) when annual inflation is in the 5%-10% range, nrunaway inflation is a different story. In that circumstance, a ndiversified stock portfolio would almost surely suffer an nenormous loss in real value. But bonds already outstanding would nsuffer far more. Thus, we think an..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1984.html" class="citation-link">1984年致股东信 →</a></div>
-</div>
-<div class="citation-card">
-<blockquote class="citation-text">"...sastrous, as a review of our starting position will nshow you. Charlie and I then controlled and managed three ncompanies, Berkshire Hathaway Inc., <span class="highlight">diversified</span> Retailing nCompany, Inc., and Blue Chip Stamps (all now merged into our npresent operation). Blue Chip paid only a small dividend, nBerkshire and..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1984.html" class="citation-link">1984年致股东信 →</a></div>
-</div>
-<div class="citation-more">
-<a href="../letters/berkshire/1984.html">+ 还有2处引用</a>
-</div>
-</div>
-</div>
-</div>
-
-        </article>
-    </div>
-    <h2>引用来源（5处）</h2>
-<div class="citations-container">
-<div class="citation-year">
-<h3>1984年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">"...own large blocks of a few nsecurities that we have thought hard about and bought at nattractive prices. (Billy Rose described the problem of over-ndiversification: “If you have a harem of forty women, you never nget to know any of them very well.”) Over time our policy of nconcentration should produce superio..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1984.html" class="citation-link">1984年致股东信 →</a></div>
-</div>
-<div class="citation-card">
-<blockquote class="citation-text">"...een bonds and stocks n(as a class) when annual inflation is in the 5%-10% range, nrunaway inflation is a different story. In that circumstance, a ndiversified stock portfolio would almost surely suffer an nenormous loss in real value. But bonds already outstanding would nsuffer far more. Thus, we think an..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1984.html" class="citation-link">1984年致股东信 →</a></div>
-</div>
-<div class="citation-card">
-<blockquote class="citation-text">"...sastrous, as a review of our starting position will nshow you. Charlie and I then controlled and managed three ncompanies, Berkshire Hathaway Inc., <span class="highlight">diversified</span> Retailing nCompany, Inc., and Blue Chip Stamps (all now merged into our npresent operation). Blue Chip paid only a small dividend, nBerkshire and..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1984.html" class="citation-link">1984年致股东信 →</a></div>
-</div>
-<div class="citation-more">
-<a href="../letters/berkshire/1984.html">+ 还有2处引用</a>
-</div>
-</div>
-</div>
-</div>
-
-        </article>
-
-    </div>
-    <h2>引用来源（5处）</h2>
-<div class="citations-container">
-<div class="citation-year">
-<h3>1984年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">"...own large blocks of a few nsecurities that we have thought hard about and bought at nattractive prices. (Billy Rose described the problem of over-ndiversification: “If you have a harem of forty women, you never nget to know any of them very well.”) Over time our policy of nconcentration should produce superio..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1984.html" class="citation-link">1984年致股东信 →</a></div>
-</div>
-<div class="citation-card">
-<blockquote class="citation-text">"...een bonds and stocks n(as a class) when annual inflation is in the 5%-10% range, nrunaway inflation is a different story. In that circumstance, a ndiversified stock portfolio would almost surely suffer an nenormous loss in real value. But bonds already outstanding would nsuffer far more. Thus, we think an..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1984.html" class="citation-link">1984年致股东信 →</a></div>
-</div>
-<div class="citation-card">
-<blockquote class="citation-text">"...sastrous, as a review of our starting position will nshow you. Charlie and I then controlled and managed three ncompanies, Berkshire Hathaway Inc., <span class="highlight">diversified</span> Retailing nCompany, Inc., and Blue Chip Stamps (all now merged into our npresent operation). Blue Chip paid only a small dividend, nBerkshire and..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1984.html" class="citation-link">1984年致股东信 →</a></div>
-</div>
-<div class="citation-more">
-<a href="../letters/berkshire/1984.html">+ 还有2处引用</a>
-</div>
-</div>
-</div>
-</div>
-
-        </article>
-<footer>
-        <p><a href="../index.html">巴菲特知识库</a> | 数据来源：Berkshire Hathaway Letters</p>
-    </footer>
-</body>
-</html<div class="citations-container">
-<div class="citation-year">
-<h3>1984年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">"...own large blocks of a few nsecurities that we have thought hard about and bought at nattractive prices. (Billy Rose described the problem of over-ndiversification: “If you have a harem of forty women, you never nget to know any of them very well.”) Over time our policy of nconcentration should produce superio..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1984.html" class="citation-link">1984年致股东信 →</a></div>
-</div>
-<div class="citation-card">
-<blockquote class="citation-text">"...een bonds and stocks n(as a class) when annual inflation is in the 5%-10% range, nrunaway inflation is a different story. In that circumstance, a ndiversified stock portfolio would almost surely suffer an nenormous loss in real value. But bonds already outstanding would nsuffer far more. Thus, we think an..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1984.html" class="citation-link">1984年致股东信 →</a></div>
-</div>
-<div class="citation-card">
-<blockquote class="citation-text">"...sastrous, as a review of our starting position will nshow you. Charlie and I then controlled and managed three ncompanies, Berkshire Hathaway Inc., <span class="highlight">diversified</span> Retailing nCompany, Inc., and Blue Chip Stamps (all now merged into our npresent operation). Blue Chip paid only a small dividend, nBerkshire and..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1984.html" class="citation-link">1984年致股东信 →</a></div>
-</div>
-<div class="citation-more">
-<a href="../letters/berkshire/1984.html">+ 还有2处引用</a>
-</div>
-</div>
-</div>
-</div>
-
-        <h2>引用来源（5处）</h2>
-<div class="citations-container">
-<div class="citation-year">
-<h3>1984年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">"...own large blocks of a few nsecurities that we have thought hard about and bought at nattractive prices. (Billy Rose described the problem of over-ndiversification: “If you have a harem of forty women, you never nget to know any of them very well.”) Over time our policy of nconcentration should produce superio..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1984.html" class="citation-link">1984年致股东信 →</a></div>
-</div>
-<div class="citation-card">
-<blockquote class="citation-text">"...een bonds and stocks n(as a class) when annual inflation is in the 5%-10% range, nrunaway inflation is a different story. In that circumstance, a ndiversified stock portfolio would almost surely suffer an nenormous loss in real value. But bonds already outstanding would nsuffer far more. Thus, we think an..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1984.html" class="citation-link">1984年致股东信 →</a></div>
-</div>
-<div class="citation-card">
-<blockquote class="citation-text">"...sastrous, as a review of our starting position will nshow you. Charlie and I then controlled and managed three ncompanies, Berkshire Hathaway Inc., <span class="highlight">diversified</span> Retailing nCompany, Inc., and Blue Chip Stamps (all now merged into our npresent operation). Blue Chip paid only a small dividend, nBerkshire and..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1984.html" class="citation-link">1984年致股东信 →</a></div>
-</div>
-<div class="citation-more">
-<a href="../letters/berkshire/1984.html">+ 还有2处引用</a>
-</div>
-</div>
-</div>
-</div>
-
-        </article>
-    </div>
-    <h2>引用来源（5处）</h2>
-<div class="citations-container">
-<div class="citation-year">
-<h3>1984年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">"...own large blocks of a few nsecurities that we have thought hard about and bought at nattractive prices. (Billy Rose described the problem of over-ndiversification: “If you have a harem of forty women, you never nget to know any of them very well.”) Over time our policy of nconcentration should produce superio..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1984.html" class="citation-link">1984年致股东信 →</a></div>
-</div>
-<div class="citation-card">
-<blockquote class="citation-text">"...een bonds and stocks n(as a class) when annual inflation is in the 5%-10% range, nrunaway inflation is a different story. In that circumstance, a ndiversified stock portfolio would almost surely suffer an nenormous loss in real value. But bonds already outstanding would nsuffer far more. Thus, we think an..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1984.html" class="citation-link">1984年致股东信 →</a></div>
-</div>
-<div class="citation-card">
-<blockquote class="citation-text">"...sastrous, as a review of our starting position will nshow you. Charlie and I then controlled and managed three ncompanies, Berkshire Hathaway Inc., <span class="highlight">diversified</span> Retailing nCompany, Inc., and Blue Chip Stamps (all now merged into our npresent operation). Blue Chip paid only a small dividend, nBerkshire and..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1984.html" class="citation-link">1984年致股东信 →</a></div>
-</div>
-<div class="citation-more">
-<a href="../letters/berkshire/1984.html">+ 还有2处引用</a>
-</div>
-</div>
-</div>
-</div>
-
-        </article>
-
-    </div>
-    
-    <footer>
-        <p><a href="../index.html">巴菲特知识库</a> | 数据来源：Berkshire Hathaway Letters</p>
+        <p>巴菲特知识库 | 数据来源：Berkshire Hathaway Letters to Shareholders</p>
     </footer>
 </body>
 </html>

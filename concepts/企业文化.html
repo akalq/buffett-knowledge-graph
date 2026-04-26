@@ -3,37 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>企业文化 - 巴菲特知识库</title>
+    <title>企业文化 (Corporate Culture) - 巴菲特投资概念</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
-        :root { --bg-color: #FFFEF9; --navy: #1B2A4A; --gold: #C9A227; --text: #2C3E50; --secondary: #5D6D7E; --border: #E5E0D8; }
+        :root { --bg-color: #FFFEF9; --navy: #1B2A4A; --gold: #C9A227; --text: #2C3E50; --secondary: #5D6D7E; --border: #E5E0D8; --light-gold: #F5ECD7; }
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: 'Noto Serif SC', Georgia, serif; background: var(--bg-color); color: var(--text); line-height: 1.8; }
+        body { font-family: 'Noto Serif SC', Georgia, serif; background: var(--bg-color); color: var(--text); line-height: 1.9; }
         .container { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
-        header { background: var(--navy); color: white; padding: 40px 30px; text-align: center; }
-        header h1 { font-size: 1.8em; margin-bottom: 10px; }
-        header .meta { color: var(--gold); font-size: 0.95em; margin-top: 10px; }
-        .nav { background: white; border: 1px solid var(--border); padding: 15px 20px; margin-bottom: 30px; border-radius: 8px; text-align: center; }
-        .nav a { color: var(--navy); text-decoration: none; margin: 0 12px; font-size: 0.95em; }
-        .nav a:hover { color: var(--gold); }
-        .content { background: white; border: 1px solid var(--border); border-radius: 12px; padding: 40px; }
-        .content h2 { color: var(--navy); font-size: 1.4em; margin: 35px 0 15px; padding-bottom: 8px; border-bottom: 2px solid var(--gold); }
-        .content h2:first-child { margin-top: 0; }
+        header { background: linear-gradient(135deg, var(--navy) 0%, #2a3f6a 100%); color: white; padding: 50px 30px; text-align: center; }
+        header h1 { font-size: 2.2em; margin-bottom: 10px; }
+        header h1::before { content: '🏛️'; margin-right: 15px; }
+        header .meta { color: var(--gold); font-size: 1em; margin-top: 15px; }
+        header .meta span { background: rgba(201, 162, 39, 0.2); padding: 5px 15px; border-radius: 20px; }
+        .nav { background: white; border: 1px solid var(--border); padding: 15px 25px; margin-bottom: 30px; border-radius: 10px; text-align: center; }
+        .nav a { color: var(--navy); text-decoration: none; margin: 0 15px; font-size: 0.95em; padding: 8px 15px; border-radius: 5px; transition: all 0.2s; }
+        .nav a:hover { background: var(--gold); color: white; }
+        .content { background: white; border: 1px solid var(--border); border-radius: 15px; padding: 45px; box-shadow: 0 5px 30px rgba(0,0,0,0.05); }
+        .content h2 { color: var(--navy); font-size: 1.4em; margin: 40px 0 20px; padding-bottom: 12px; border-bottom: 3px solid var(--gold); display: inline-block; }
+        .content h2:first-of-type { margin-top: 0; }
+        .content h3 { color: var(--navy); font-size: 1.15em; margin: 25px 0 12px; }
         .content p { margin: 15px 0; text-align: justify; }
-        .quote { background: var(--navy); color: white; padding: 20px 25px; border-left: 4px solid var(--gold); margin: 25px 0; border-radius: 0 8px 8px 0; }
-        .quote p { margin: 0; font-style: italic; }
-        .quote .source { color: var(--gold); margin-top: 12px; font-size: 0.9em; }
-        .related { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px; }
-        .related a { background: white; border: 1px solid var(--border); padding: 8px 15px; border-radius: 20px; text-decoration: none; color: var(--navy); font-size: 0.9em; transition: all 0.2s; }
-        .related a:hover { background: var(--gold); color: white; border-color: var(--gold); }
+        .content ul, .content ol { margin: 15px 0 15px 25px; }
+        .content li { margin: 10px 0; }
+        .content strong { color: var(--navy); font-weight: 700; }
+        
+        .insight { background: linear-gradient(135deg, #f8f5ee 0%, #fff 100%); border-left: 4px solid #C9A227; padding: 18px 22px; margin: 25px 0; font-style: italic; font-size: 1.05em; }
+        
+        .evolution-timeline { position: relative; padding-left: 35px; margin: 25px 0; }
+        .evolution-timeline::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: #C9A227; }
+        .evolution-point { position: relative; margin-bottom: 25px; }
+        .evolution-point::before { content: ''; position: absolute; left: -38px; top: 6px; width: 12px; height: 12px; border-radius: 50%; background: #C9A227; border: 3px solid white; box-shadow: 0 0 0 3px #C9A227; }
+        .evolution-year { font-weight: 600; color: var(--navy); font-size: 1.05em; }
+        .evolution-desc { color: var(--text); margin-top: 5px; }
+        
+        .case-card { background: #F8F5EE; border-radius: 10px; padding: 25px; margin: 20px 0; border: 1px solid var(--border); }
+        .case-company { font-size: 1.15em; font-weight: 600; color: var(--navy); margin-bottom: 8px; }
+        .case-data { color: #5D6D7E; font-size: 0.95em; margin: 8px 0; }
+        .case-lesson { font-style: italic; margin-top: 15px; padding-top: 15px; border-top: 1px solid #E8E4DB; color: var(--text); }
+        
+        .misconception-block { background: #fff5f5; padding: 20px 25px; border-radius: 10px; margin: 20px 0; border-left: 4px solid #e74c3c; }
+        .misconception-block h4 { color: #c0392b; margin-bottom: 12px; font-size: 1.05em; }
+        .misconception-block p { margin: 8px 0; }
+        
+        .quote-block { background: var(--navy); color: white; padding: 25px 30px; border-left: 5px solid var(--gold); margin: 25px 0; border-radius: 0 12px 12px 0; }
+        .quote-block p { margin: 0; font-style: italic; font-size: 1.05em; line-height: 1.8; }
+        .quote-block footer { color: var(--gold); margin-top: 15px; font-size: 0.9em; font-style: normal; }
+        
+        .topic-group { margin: 25px 0; padding: 20px; background: linear-gradient(135deg, var(--light-gold) 0%, #fff9e6 100%); border-radius: 10px; }
+        .topic-title { font-weight: 600; color: var(--navy); margin-bottom: 10px; font-size: 1.05em; }
+        .topic-desc { color: var(--text); margin-bottom: 12px; font-size: 0.95em; }
+        .topic-years { display: flex; flex-wrap: wrap; gap: 8px; }
+        .topic-years a { background: white; border: 1px solid var(--gold); padding: 5px 14px; border-radius: 18px; text-decoration: none; color: var(--navy); font-size: 0.85em; transition: all 0.2s; }
+        .topic-years a:hover { background: var(--gold); color: white; }
+        
         footer { text-align: center; padding: 40px 20px; color: var(--secondary); border-top: 1px solid var(--border); margin-top: 40px; }
-        footer a { color: var(--navy); text-decoration: none; }
+        @media (max-width: 768px) { .container { padding: 20px 15px; } header { padding: 30px 20px; } header h1 { font-size: 1.7em; } .content { padding: 25px 20px; } .nav a { margin: 5px 8px; display: inline-block; } }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
-        <h1>💡 企业文化</h1>
-        <div class="meta">概念 · 被引用 11 次</div>
+        <h1>企业文化 (Corporate Culture)</h1>
+        <div class="meta"><span>巴菲特投资体系核心概念</span></div>
     </header>
     
     <div class="container">
@@ -41,23 +71,127 @@
             <a href="../index.html">🏠 首页</a>
             <a href="../index-pages/核心思想索引.html">💡 核心思想索引</a>
             <a href="../index-pages/公司索引.html">🏢 公司索引</a>
-            <a href="../index-pages/人物索引.html">👤 人物索引</a>
         </nav>
         
         <article class="content">
-            <h2>概念解析</h2>
-            <p>企业文化影响员工行为和公司长期发展，巴菲特非常重视这一因素。</p>
+            <h2>定义与起源</h2>
+            <p><strong>企业文化是组织内共享的价值观、信念和行为规范</strong>——它决定了员工如何对待客户、同事和股东。巴菲特将企业文化视为企业护城河的重要组成部分："在收购中，文化比合同更重要。"</p>
+            <p>在<strong>1990年代</strong>经历多次收购后，巴菲特开始深刻认识到：糟糕的企业文化可以摧毁原本优质的业务，而优秀的企业文化是持久的竞争优势。</p>
             
-            <h2>相关概念</h2>
-            <div class="related">
-                <a href="内在价值.html">内在价值</a>
-                <a href="护城河.html">护城河</a>
+            <div class="insight">
+                企业文化是一种软护城河——它无法被轻易复制，也很难在短期内改变。当好的文化和好的战略结合时，企业就能持续创造价值。
             </div>
+            
+            <h2>核心要义</h2>
+            <ul>
+                <li><strong>文化是护城河的延伸</strong>：强大的企业文化让竞争对手难以复制——因为这不仅是流程，而是根深蒂固的价值观。</li>
+                <li><strong>诚信是文化的基石</strong>：巴菲特最重视的文化特质是诚信——对客户、对员工、对股东坦诚相待。</li>
+                <li><strong>文化需要制度保障</strong>：好的文化不是靠道德说教，而是需要激励制度来强化。</li>
+                <li><strong>创始人对文化影响深远</strong>：优秀企业往往在创始期间就确立了好文化，这种文化会延续数十年。</li>
+                <li><strong>收购中文化的风险</strong>：并购中文化冲突是失败的主要原因之一。巴菲特在收购中非常重视文化兼容性。</li>
+            </ul>
+            
+            <h2>思想演变</h2>
+            <div class="evolution-timeline">
+                <div class="evolution-point">
+                    <div class="evolution-year">早期忽视（1960-1970年代）</div>
+                    <div class="evolution-desc">早期更关注财务数据，对企业文化的理解相对简单。</div>
+                </div>
+                <div class="evolution-point">
+                    <div class="evolution-year">文化风险认识（1980-1990年代）</div>
+                    <div class="evolution-desc">通过德克斯特鞋业等收购失败案例认识到文化兼容性的重要性。</div>
+                </div>
+                <div class="evolution-point">
+                    <div class="evolution-year">系统重视（2000年代至今）</div>
+                    <div class="evolution-desc">在每次收购中都将文化评估作为重要环节，提出"收购时，首先看人"。</div>
+                </div>
+            </div>
+            
+            <h2>实战案例</h2>
+            <div class="case-card">
+                <div class="case-company">伯克希尔的企业文化</div>
+                <div class="case-data">去中心化管理；赋予经理人充分自主权；信任和诚信为核心价值</div>
+                <div class="case-lesson">伯克希尔独特的文化让它能够管理数百家企业而无需庞大总部。这种文化吸引了优秀经理人，也让他们充分发挥能力。</div>
+            </div>
+            
+            <div class="case-card">
+                <div class="case-company">GEICO</div>
+                <div class="case-data">"追求卓越、诚信经营、客户至上"的文化；低成本运营的基因根植于每个员工</div>
+                <div class="case-lesson">GEICO的文化让它能够持续保持低成本优势。这种文化已经深入骨髓，不会因为管理层的变动而改变。</div>
+            </div>
+            
+            <div class="case-card">
+                <div class="case-company">Dexter鞋业（反面案例）</div>
+                <div class="case-data">1993年收购；与伯克希尔文化冲突；管理层行为不当；最终关闭</div>
+                <div class="case-lesson">这笔失败揭示了文化兼容性的重要性——即使财务数据看起来合理，文化不合拍也会导致灾难。</div>
+            </div>
+            
+            <h2>常见误解</h2>
+            <div class="misconception-block">
+                <h4>❌ 误解一：文化只是口号</h4>
+                <p><strong>人们以为</strong>：企业文化只是写在墙上的标语。</p>
+                <p><strong>巴菲特说</strong>：真正的文化体现在行动中——当员工的行为与CEO演讲不一致时，行动才是真实的企业文化。</p>
+            </div>
+            
+            <div class="misconception-block">
+                <h4>❌ 误解二：好文化可以移植</h4>
+                <p><strong>人们以为</strong>：可以通过培训和制度来改变企业文化。</p>
+                <p><strong>巴菲特说</strong>：企业文化很难从外部强行改变。在收购中，文化兼容性是首要考量。</p>
+            </div>
+            
+            <div class="misconception-block">
+                <h4>❌ 误解三：文化不重要，战略才重要</h4>
+                <p><strong>人们以为</strong>：战略正确就能成功，文化只是锦上添花。</p>
+                <p><strong>巴菲特说</strong>：糟糕的文化会阻止最好的战略执行。即使战略再好，没有好文化也难以实现。</p>
+            </div>
+            
+            <h2>精华原话</h2>
+            <div class="quote-block">
+                <p>"收购时，我首先看人。我需要找到值得信任、能力和诚信兼具的经理。合同是第二位的——如果人不对，合同再好也没用。"</p>
+                <footer>—— 1996年致股东信</footer>
+            </div>
+            
+            <div class="quote-block">
+                <p>"在伯克希尔，我们不教经理人如何运营业务。我们只做一件事：找到对的人，然后让他们自由发挥。"</p>
+                <footer>—— 1996年致股东信</footer>
+            </div>
+            
+            <div class="quote-block">
+                <p>"当你有诚信、能力和激情的人，按照正确的激励机制运作时，他们可以创造奇迹。这就是伯克希尔文化的核心。"</p>
+                <footer>—— 2015年致股东信</footer>
+            </div>
+            
+            <div class="quote-block">
+                <p>"我们发现，最好的企业都有一种文化——在那里，员工真正关心客户和同事。这种文化是无法模仿的。"</p>
+                <footer>—— 2005年致股东信</footer>
+            </div>
+            
+            <h2>延伸阅读</h2>
+            <p>企业文化概念在信件中的讨论分布，按论点组织：</p>
+            
+            <div class="topic-group">
+                <div class="topic-title">伯克希尔的文化</div>
+                <div class="topic-desc">伯克希尔独特的管理文化</div>
+                <div class="topic-years">
+                    <a href="../letters/berkshire/1996.html">1996</a>
+                    <a href="../letters/berkshire/2015.html">2015</a>
+                </div>
+            </div>
+            
+            <div class="topic-group">
+                <div class="topic-title">文化与收购</div>
+                <div class="topic-desc">收购中文化兼容性的重要性</div>
+                <div class="topic-years">
+                    <a href="../letters/berkshire/2005.html">2005</a>
+                    <a href="../letters/berkshire/2011.html">2011</a>
+                </div>
+            </div>
+            
         </article>
     </div>
     
     <footer>
-        <p><a href="../index.html">巴菲特知识库</a> | 数据来源：Berkshire Hathaway Letters</p>
+        <p>巴菲特知识库 | 数据来源：Berkshire Hathaway Letters to Shareholders</p>
     </footer>
 </body>
 </html>

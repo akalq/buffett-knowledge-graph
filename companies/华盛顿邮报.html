@@ -3,245 +3,381 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>华盛顿邮报 - 巴菲特知识库</title>
+    <title>华盛顿邮报 - 巴菲特投资案例</title>
     <style>
-        :root { --bg-color: #FFFEF9; --navy: #1B2A4A; --gold: #C9A227; --text: #2C3E50; --secondary: #5D6D7E; --border: #E5E0D8; --light-gold: #F5ECD7; }
+        :root { --navy: #1B2A4A; --gold: #C9A227; --cream: #F8F5EE; --secondary: #5D6D7E; --border: #E5E0D8; --light-gold: #F5ECD7; }
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: 'Noto Serif SC', Georgia, serif; background: var(--bg-color); color: var(--text); line-height: 1.9; }
-        .container { max-width: 1000px; margin: 0 auto; padding: 40px 20px; }
-        header { background: linear-gradient(135deg, var(--navy) 0%, #2a3f6a 100%); color: white; padding: 50px 30px; text-align: center; position: relative; overflow: hidden; }
-        header::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); }
-        header h1 { font-size: 2.2em; margin-bottom: 8px; position: relative; }
-        header h1::before { content: '🏢'; margin-right: 15px; }
-        header .en-name { color: rgba(255,255,255,0.7); font-size: 1.1em; margin-bottom: 10px; }
-        header .meta { color: var(--gold); font-size: 1em; margin-top: 15px; position: relative; }
-        header .meta span { background: rgba(201, 162, 39, 0.2); padding: 5px 15px; border-radius: 20px; }
-        .nav { background: white; border: 1px solid var(--border); padding: 15px 25px; margin-bottom: 30px; border-radius: 10px; text-align: center; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
-        .nav a { color: var(--navy); text-decoration: none; margin: 0 15px; font-size: 0.95em; padding: 8px 15px; border-radius: 5px; transition: all 0.2s; }
+        body { font-family: 'Noto Serif SC', Georgia, serif; background: #FFFEF9; color: #2C3E50; line-height: 1.9; }
+        .container { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
+        header { background: linear-gradient(135deg, var(--navy) 0%, #2a3f6a 100%); color: white; padding: 50px 30px; text-align: center; border-radius: 15px; margin-bottom: 30px; }
+        header h1 { font-size: 2.2em; margin-bottom: 8px; }
+        header h1::before { content: '📰 '; }
+        .en-name { color: rgba(255,255,255,0.7); font-size: 1.1em; }
+        .meta { color: var(--gold); margin-top: 15px; }
+        .meta span { background: rgba(201, 162, 39, 0.2); padding: 5px 15px; border-radius: 20px; }
+        .nav { background: white; border: 1px solid var(--border); padding: 15px 25px; margin-bottom: 30px; border-radius: 10px; text-align: center; }
+        .nav a { color: var(--navy); text-decoration: none; margin: 0 15px; padding: 8px 15px; border-radius: 5px; transition: all 0.2s; }
         .nav a:hover { background: var(--gold); color: white; }
-        .content { background: white; border: 1px solid var(--border); border-radius: 15px; padding: 45px; box-shadow: 0 5px 30px rgba(0,0,0,0.05); }
-        .section { margin-bottom: 40px; padding-bottom: 40px; border-bottom: 1px solid var(--border); }
-        .section:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
-        .content h2 { color: var(--navy); font-size: 1.5em; margin: 0 0 20px; padding-bottom: 12px; border-bottom: 3px solid var(--gold); display: inline-block; }
-        .content h3 { color: var(--navy); font-size: 1.2em; margin: 25px 0 15px; padding-left: 15px; border-left: 4px solid var(--gold); }
-        .content p { margin: 15px 0; text-align: justify; }
-        .profile-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin: 20px 0; }
-        .profile-item { background: var(--light-gold); padding: 20px; border-radius: 10px; }
-        .profile-item .label { color: var(--secondary); font-size: 0.9em; margin-bottom: 5px; }
-        .profile-item .value { color: var(--navy); font-weight: 600; font-size: 1.1em; }
-        .quote { background: var(--navy); color: white; padding: 25px 30px; border-left: 5px solid var(--gold); margin: 25px 0; border-radius: 0 12px 12px 0; position: relative; }
-        .quote::before { content: '"'; position: absolute; top: 10px; left: 15px; font-size: 4em; color: var(--gold); opacity: 0.3; font-family: Georgia, serif; }
-        .quote p { margin: 0; font-style: italic; font-size: 1.05em; padding-left: 30px; }
-        .quote .source { color: var(--gold); margin-top: 15px; font-size: 0.9em; padding-left: 30px; font-style: normal; }
-        .timeline { position: relative; padding-left: 30px; margin: 20px 0; }
-        .timeline::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--gold); }
-        .timeline-item { position: relative; margin-bottom: 25px; }
-        .timeline-item::before { content: ''; position: absolute; left: -34px; top: 5px; width: 12px; height: 12px; background: var(--gold); border-radius: 50%; border: 3px solid white; box-shadow: 0 0 0 3px var(--gold); }
-        .timeline-year { font-weight: bold; color: var(--navy); font-size: 1.1em; }
-        .timeline-content { color: var(--text); margin-top: 5px; }
-        .logic-box { background: linear-gradient(135deg, var(--light-gold) 0%, #fff9e6 100%); padding: 25px 30px; border-radius: 10px; margin: 20px 0; border-left: 5px solid var(--gold); }
-        .logic-box h4 { color: var(--navy); margin-bottom: 15px; font-size: 1.1em; }
-        .logic-box ul { margin: 0; padding-left: 20px; }
-        .logic-box li { margin: 10px 0; }
-        .event-item { display: flex; margin: 15px 0; padding: 15px; background: #f9f9f9; border-radius: 8px; }
-        .event-year { background: var(--navy); color: white; padding: 5px 15px; border-radius: 20px; font-weight: bold; margin-right: 15px; white-space: nowrap; }
-        .event-desc { color: var(--text); }
-        .related { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 20px; }
-        .related a { background: white; border: 2px solid var(--border); padding: 10px 20px; border-radius: 25px; text-decoration: none; color: var(--navy); font-size: 0.95em; transition: all 0.3s; }
-        .related a:hover { background: var(--gold); color: white; border-color: var(--gold); transform: translateY(-2px); }
-        footer { text-align: center; padding: 40px 20px; color: var(--secondary); border-top: 1px solid var(--border); margin-top: 40px; }
-        footer a { color: var(--navy); text-decoration: none; }
-        @media (max-width: 768px) { .container { padding: 20px 15px; } header { padding: 30px 20px; } header h1 { font-size: 1.6em; } .content { padding: 25px 20px; } .nav a { margin: 5px 8px; display: inline-block; } .profile-grid { grid-template-columns: 1fr; } }
-    
+        .content { background: white; border: 1px solid var(--border); border-radius: 15px; padding: 40px; }
+        .section { margin-bottom: 40px; padding-bottom: 35px; border-bottom: 1px solid var(--border); }
+        .section:last-child { border-bottom: none; margin-bottom: 0; }
+        h2 { color: var(--navy); font-size: 1.4em; margin: 0 0 20px; padding-bottom: 10px; border-bottom: 3px solid var(--gold); display: inline-block; }
+        
+        /* 投资概览卡片 */
+        .overview-card { background: linear-gradient(135deg, var(--navy) 0%, #2C3E50 100%); color: white; padding: 25px; border-radius: 12px; margin: 20px 0; }
+        .overview-summary { font-size: 1.15em; margin-bottom: 15px; line-height: 1.6; }
+        .overview-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin-top: 15px; }
+        .stat-item { text-align: center; background: rgba(255,255,255,0.1); padding: 12px; border-radius: 8px; }
+        .stat-value { font-size: 1.4em; font-weight: 600; color: var(--gold); }
+        .stat-label { font-size: 0.8em; opacity: 0.8; }
+        
+        /* 投资逻辑 */
+        .logic-point { display: flex; margin: 18px 0; padding: 18px; background: var(--cream); border-radius: 10px; }
+        .logic-number { font-size: 1.6em; font-weight: 700; color: var(--gold); margin-right: 18px; min-width: 35px; }
+        .logic-content { flex: 1; }
+        .logic-title { font-weight: 600; color: var(--navy); margin-bottom: 6px; font-size: 1.05em; }
+        .logic-desc { color: #555; font-size: 0.95em; }
+        
+        /* 认知演进时间线 */
+        .cognition-timeline { position: relative; padding-left: 35px; margin: 20px 0; }
+        .cognition-timeline::before { content: ''; position: absolute; left: 8px; top: 0; bottom: 0; width: 3px; background: var(--gold); }
+        .cognition-point { position: relative; margin-bottom: 28px; padding-left: 25px; }
+        .cognition-point::before { content: ''; position: absolute; left: -30px; top: 6px; width: 14px; height: 14px; border-radius: 50%; background: var(--gold); border: 3px solid white; box-shadow: 0 0 0 3px var(--gold); }
+        .cognition-year { font-weight: 700; color: var(--gold); font-size: 1.1em; }
+        .cognition-shift { background: var(--light-gold); padding: 8px 15px; border-radius: 6px; margin: 8px 0; font-size: 0.9em; }
+        .cognition-shift strong { color: var(--navy); }
+        
+        /* 关键数据 */
+        .data-compare { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 20px 0; }
+        .data-card { background: var(--cream); padding: 20px; border-radius: 10px; }
+        .data-card h4 { color: var(--navy); margin-bottom: 12px; font-size: 1em; }
+        .data-row { display: flex; justify-content: space-between; padding: 6px 0; border-bottom: 1px dashed var(--border); }
+        .data-row:last-child { border-bottom: none; }
+        .data-label { color: var(--secondary); font-size: 0.9em; }
+        .data-value { font-weight: 600; color: var(--navy); }
+        
+        /* 经验教训卡片 */
+        .lesson-card { background: var(--cream); border-left: 5px solid var(--gold); padding: 22px; margin: 20px 0; border-radius: 0 10px 10px 0; }
+        .lesson-title { font-weight: 600; color: var(--navy); margin-bottom: 10px; font-size: 1.05em; }
+        .lesson-desc { color: #555; font-size: 0.95em; }
+        
+        /* 精华原话 */
+        .quote { background: var(--navy); color: white; padding: 22px 28px; border-left: 5px solid var(--gold); margin: 20px 0; border-radius: 0 12px 12px 0; position: relative; }
+        .quote::before { content: '"'; position: absolute; top: 8px; left: 12px; font-size: 3.5em; color: var(--gold); opacity: 0.3; }
+        .quote p { margin: 0; font-style: italic; font-size: 1.02em; padding-left: 28px; }
+        .quote footer { color: var(--gold); margin-top: 12px; font-size: 0.9em; padding-left: 28px; font-style: normal; }
+        
+        /* 关联部分 */
+        .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin: 15px 0; }
+        .related-item { background: var(--cream); padding: 14px; border-radius: 8px; text-decoration: none; color: var(--navy); transition: all 0.3s; text-align: center; font-size: 0.95em; }
+        .related-item:hover { background: var(--gold); color: white; transform: translateY(-2px); }
+        
+        /* 延伸阅读 */
+        .topic-section { margin: 22px 0; padding: 18px; background: var(--cream); border-radius: 10px; }
+        .topic-title { font-weight: 600; color: var(--navy); margin-bottom: 10px; font-size: 1.05em; }
+        .topic-desc { color: #666; font-size: 0.9em; margin-bottom: 12px; }
+        .topic-years { display: flex; flex-wrap: wrap; gap: 8px; }
+        .topic-years a { background: white; padding: 5px 14px; border-radius: 15px; text-decoration: none; color: var(--secondary); font-size: 0.85em; border: 1px solid var(--border); }
+        .topic-years a:hover { background: var(--gold); color: white; border-color: var(--gold); }
+        
         /* 反向链接样式 */
-        .backlinks {
-            margin-top: 40px;
-            padding-top: 30px;
-            border-top: 2px dashed var(--gold);
-        }
-        .backlinks h2 {
-            color: var(--navy);
-            font-size: 1.3em;
-            margin-bottom: 15px;
-        }
-        .backlinks-intro {
-            color: var(--secondary);
-            margin-bottom: 15px;
-        }
-        .backlinks-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-        .backlinks-list a {
-            background: linear-gradient(135deg, var(--light-gold) 0%, #fff9e6 100%);
-            border: 1px solid var(--gold);
-            padding: 8px 16px;
-            border-radius: 20px;
-            text-decoration: none;
-            color: var(--navy);
-            font-size: 0.9em;
-            transition: all 0.3s;
-        }
-        .backlinks-list a:hover {
-            background: var(--gold);
-            color: white;
-            transform: translateY(-2px);
-        }
-        .backlinks-count {
-            margin-top: 15px;
-            color: var(--secondary);
-            font-size: 0.9em;
-        }
-
+        .backlinks { margin-top: 35px; padding-top: 25px; border-top: 2px dashed var(--gold); }
+        .backlinks h3 { color: var(--navy); font-size: 1.2em; margin-bottom: 15px; }
+        .backlinks-intro { color: var(--secondary); margin-bottom: 15px; font-size: 0.9em; }
+        .backlinks-list { display: flex; flex-wrap: wrap; gap: 10px; }
+        .backlinks-list a { background: var(--cream); border: 1px solid var(--gold); padding: 6px 14px; border-radius: 18px; text-decoration: none; color: var(--navy); font-size: 0.85em; transition: all 0.3s; }
+        .backlinks-list a:hover { background: var(--gold); color: white; }
+        
+        footer { text-align: center; padding: 35px 20px; color: var(--secondary); border-top: 1px solid var(--border); margin-top: 35px; }
+        footer a { color: var(--navy); text-decoration: none; }
+        
+        @media (max-width: 768px) { .container { padding: 20px 15px; } header { padding: 30px 20px; } header h1 { font-size: 1.7em; } .content { padding: 25px 18px; } .overview-stats { grid-template-columns: repeat(2, 1fr); } .data-compare { grid-template-columns: 1fr; } .nav a { margin: 5px 8px; display: inline-block; } }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <h1>华盛顿邮报</h1>
-        <div class="en-name">Washington Post</div>
-        <div class="meta"><span>媒体/出版 · 巴菲特投资</span></div>
-    </header>
-    
     <div class="container">
+        <header>
+            <h1>华盛顿邮报</h1>
+            <div class="en-name">Washington Post (WPO)</div>
+            <div class="meta"><span>媒体/出版 · 已退出持仓</span></div>
+        </header>
+        
         <nav class="nav">
             <a href="../index.html">🏠 首页</a>
-            <a href="../index-pages/核心思想索引.html">💡 核心思想索引</a>
             <a href="../index-pages/公司索引.html">🏢 公司索引</a>
-            <a href="../index-pages/人物索引.html">👤 人物索引</a>
+            <a href="../index-pages/核心思想索引.html">💡 核心思想</a>
         </nav>
         
         <article class="content">
-            <div class="section">
-                <h2>公司档案</h2>
-                <div class="profile-grid">
-                    <div class="profile-item">
-                        <div class="label">中文名称</div>
-                        <div class="value">华盛顿邮报</div>
+            <!-- 投资概览 -->
+            <div class="overview-card">
+                <div class="overview-summary">
+                    <strong>巴菲特"内在价值"投资理念的完美诠释</strong>——1973年以约1100万美元买入，2013年以贝佐斯收购价计算约值6亿美元，40年回报超过50倍。这不是运气，而是对一个"暂时困难的好公司"的精准估值。
+                </div>
+                <div class="overview-stats">
+                    <div class="stat-item">
+                        <div class="stat-value">1973</div>
+                        <div class="stat-label">首次买入</div>
                     </div>
-                    <div class="profile-item">
-                        <div class="label">英文名称</div>
-                        <div class="value">Washington Post</div>
+                    <div class="stat-item">
+                        <div class="stat-value">1100万</div>
+                        <div class="stat-label">买入成本(美元)</div>
                     </div>
-                    <div class="profile-item">
-                        <div class="label">所属行业</div>
-                        <div class="value">媒体/出版</div>
+                    <div class="stat-item">
+                        <div class="stat-value">6亿+</div>
+                        <div class="stat-label">退出时价值(美元)</div>
                     </div>
-                    <div class="profile-item">
-                        <div class="label">巴菲特持仓</div>
-                        <div class="value">已卖出</div>
+                    <div class="stat-item">
+                        <div class="stat-value">40年</div>
+                        <div class="stat-label">持有年限</div>
                     </div>
                 </div>
             </div>
-
-            <div class="section">
-                <h2>投资时间线</h2>
-                <div class="timeline">
-                    
-        <div class="timeline-item">
-            <div class="timeline-year">1973</div>
-            <div class="timeline-content">巴菲特开始买入华盛顿邮报股票</div>
-        </div>
-        
-        <div class="timeline-item">
-            <div class="timeline-year">1970s-1980s</div>
-            <div class="timeline-content">作为重要投资持有，分享媒体行业黄金期</div>
-        </div>
-        
-        <div class="timeline-item">
-            <div class="timeline-year">2013</div>
-            <div class="timeline-content">华盛顿邮报被亚马逊创始人贝佐斯收购</div>
-        </div>
-        
-                </div>
-            </div>
-
-            <div class="section">
-                <h2>重要事件</h2>
-                
-        <div class="event-item">
-            <span class="event-year">1973</span>
-            <span class="event-desc">以约1100万美元买入约10%股份</span>
-        </div>
-        
-        <div class="event-item">
-            <span class="event-year">1980s</span>
-            <span class="event-desc">成为伯克希尔重要持仓之一</span>
-        </div>
-        
-        <div class="event-item">
-            <span class="event-year">2013</span>
-            <span class="event-desc">家族出售给贝佐斯，伯克希尔退出</span>
-        </div>
-        
-            </div>
-
-            <div class="section">
-                <h2>巴菲特评价</h2>
-                
-            <div class="quote">
-                <p>为免你未注意到，本表有个投资经验可与大家分享，念旧(Nostalgia)在我们投资选股时必须特别加以重视，我们投资组合中具有最大未实现利益的两家公司GEIGO与Washington Post，事实上本人早在13岁与20岁时便与它们结缘，但磋跎了二十几年，迟至1970年代我们才正式成为该公司的股东，但结果证明所谓:「迟到总比未到好。」</p>
-                <div class="source">—— 巴菲特致股东信 1982年</div>
-            </div>
             
-            <div class="quote">
-                <p>最近我们靠前三大持股-盖可、通用食品与华盛顿邮报大量买回自家股票(埃克森-我们的第四大持股也积极买回股票，只是因为我们是最近才建仓，所以影响不大)，而大发利市，我们对于投资这种具竞争优势同时又真正注重股东权益的管理阶层感到相当安心。</p>
-                <div class="source">—— 巴菲特致股东信 1984年</div>
-            </div>
-            
-            <div class="quote">
-                <p>我认为所有在产险业有重大投资的股东，对于这行业每年盈余报告的一项盲点要特别注意，Phil Graham在担任华盛顿邮报的发行人时曾说:“新闻日报是攥写历史的第一手草稿”，而很不幸的，产险从业者所提供的年度财务报告，也可称得上是该公司财务与经营状况的第一手草稿。</p>
-                <div class="source">—— 巴菲特致股东信 1984年</div>
-            </div>
-            
-            <div class="quote">
-                <p>今年我们又再度收到被投资公司的特别股利，这次是华盛顿邮报以及通用食品，(通用的这笔交易很明显地是发生在菲利普莫里斯提出并购要求之前)，这种特别股利的发生系由于公司在买回我们手中的股份的同时也从其它股东那里买回等比例的股份，合约中并明订我们在该公司所占的股权比例在买卖交易的前后维持不变，这类交易被IRS认定为类似股利的发放，因为身为一位股东即使在收到现金之后，在该公司的股权比例仍维持不变。这对我们来说较为有利，因为美国税法规定法人纳税义务人(不像个人)，对于股利的所得税远低于长期投资的资本利得税(而其中的差异将会再扩大，若国会通过的法案正式成为法律:相关条款规定企业实现的资本利得所适用税率与一般所得相同)，然而会计准则对于这类交易在财务报表上应如何处理却无统一看法，为与去年做法一致，在财务上我们仍将之视为资本利得。</p>
-                <div class="source">—— 巴菲特致股东信 1985年</div>
-            </div>
-            
-            <div class="quote">
-                <p>1973到1974年间华盛顿邮报表现依旧良好使得内在价值持续增加，尽管如此我们在该公司的持股市值却由原始成本的一千多万减少25%变成八百万美元，本来我们觉得已经够便宜的东西，没想到在一年之后具有无比大智能的市场又将它的标价又向下调整到至少比其实际价值少两成的地步。</p>
-                <div class="source">—— 巴菲特致股东信 1985年</div>
-            </div>
-            
-            </div>
-
             <div class="section">
                 <h2>投资逻辑</h2>
-                <div class="logic-box">
-                    <h4>为什么投资华盛顿邮报？</h4>
-                    <ul>
-                        <li>媒体垄断优势：华盛顿地区主要报纸</li><li>管理层优秀：凯瑟琳·格雷厄姆是杰出领导者</li><li>资本配置能力强：回购和分红回馈股东</li><li>品牌价值高：新闻质量和公信力卓著</li>
-                    </ul>
+                
+                <div class="logic-point">
+                    <div class="logic-number">1</div>
+                    <div class="logic-content">
+                        <div class="logic-title">"自然垄断"的媒体经济学</div>
+                        <div class="logic-desc">
+                            1970年代的华盛顿邮报是华盛顿特区的绝对主导媒体——一座城市只有一份真正的"大报"。这种"自然垄断"意味着定价权：广告商除了邮报没有其他高效选择，读者除了邮报没有其他深度新闻来源。巴菲特看穿了这一点。
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="logic-point">
+                    <div class="logic-number">2</div>
+                    <div class="logic-content">
+                        <div class="logic-title">凯瑟琳·格雷厄姆：被低估的管理天才</div>
+                        <div class="logic-desc">
+                            1973年接手邮报时，凯瑟琳面临巨大压力：父亲去世、公司动荡、水门事件。但她展现了卓越的学习能力和决策力——巴菲特观察到她在水门报道上的勇气和判断力，认定她是"值得信任的管理者"。
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="logic-point">
+                    <div class="logic-number">3</div>
+                    <div class="logic-content">
+                        <div class="logic-title">"水门效应"：声誉即护城河</div>
+                        <div class="logic-desc">
+                            1972年水门事件的报道让邮报声名大噪，成为与《纽约时报》并列的美国顶级报纸。这种"公信力"是难以量化的护城河——人们相信邮报的新闻，这意味着广告溢价和读者忠诚度都更高。
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="logic-point">
+                    <div class="logic-number">4</div>
+                    <div class="logic-content">
+                        <div class="logic-title">"暂时困境"中的买入时机</div>
+                        <div class="logic-desc">
+                            1973-1974年买入后股价下跌25%——但巴菲特没有慌张。他计算内在价值后反而加仓(在一定范围内)。他后来写道："本来我们觉得已经够便宜的东西，没想到市场又把它向下调整到至少比实际价值少两成的地步。"这是市场的非理性，不是公司的问题。
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="logic-point">
+                    <div class="logic-number">5</div>
+                    <div class="logic-content">
+                        <div class="logic-title">资本配置能力的验证</div>
+                        <div class="logic-desc">
+                            邮报管理层在凯瑟琳的领导下展现了优秀的资本配置能力：持续回购股票、积极分红、将多余现金返还股东。巴菲特曾说："衡量管理层的标准是看他们如何配置资本。"邮报通过了这项测试。
+                        </div>
+                    </div>
                 </div>
             </div>
-
+            
+            <div class="section">
+                <h2>认知演进</h2>
+                <div class="cognition-timeline">
+                    <div class="cognition-point">
+                        <span class="cognition-year">1973-1974：信念的考验</span>
+                        <div class="cognition-shift"><strong>从</strong> "好公司+合理价格" <strong>到</strong> "市场短期不认可也没关系"</div>
+                        <p>1973年买入后，1974年股价从1100万跌到800万。巴菲特没有卖出，而是继续持有并评估内在价值。这教会他：短期市场表现无关紧要，关键是内在价值是否持续增长。</p>
+                    </div>
+                    
+                    <div class="cognition-point">
+                        <span class="cognition-year">1980s：价值绽放</span>
+                        <div class="cognition-shift"><strong>从</strong> "被套牢" <strong>到</strong> "证明自己是正确的"</div>
+                        <p>1980年代邮报成为巴菲特的"明星持仓"，股价大幅上涨。他写道："我们1973-1974年的判断最终被证明是正确的。"这次经历强化了他"买入好公司并长期持有"的信念。</p>
+                    </div>
+                    
+                    <div class="cognition-point">
+                        <span class="cognition-year">1990s-2000s：行业变迁的隐忧</span>
+                        <div class="cognition-shift"><strong>从</strong> "媒体垄断" <strong>到</strong> "互联网冲击"</div>
+                        <p>随着互联网兴起，传统报纸的护城河开始侵蚀。巴菲特注意到了这一点，但他认为邮报的内在价值依然被低估，直到2013年家族决定出售。</p>
+                    </div>
+                    
+                    <div class="cognition-point">
+                        <span class="cognition-year">2013：优雅退出</span>
+                        <div class="cognition-shift"><strong>从</strong> "长期持有" <strong>到</strong> "尊重所有者的选择"</div>
+                        <p>贝佐斯以2.5亿美元收购邮报。巴菲特的股份约值6亿美元(40年50倍回报)。他尊重唐尼家族的决定——投资不仅是买股票，也是和人打交道。</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2>关键数据</h2>
+                <div class="data-compare">
+                    <div class="data-card">
+                        <h4>📊 买入时(1973-1974)</h4>
+                        <div class="data-row"><span class="data-label">持股比例</span><span class="data-value">约10%</span></div>
+                        <div class="data-row"><span class="data-label">买入成本</span><span class="data-value">约1100万美元</span></div>
+                        <div class="data-row"><span class="data-label">买入PE</span><span class="data-value">约10倍</span></div>
+                        <div class="data-row"><span class="data-label">内在价值估算</span><span class="data-value">被显著低估</span></div>
+                    </div>
+                    <div class="data-card">
+                        <h4>📈 持有40年</h4>
+                        <div class="data-row"><span class="data-label">累计回报</span><span class="data-value">超50倍</span></div>
+                        <div class="data-row"><span class="data-label">年化收益</span><span class="data-value">约15-18%</span></div>
+                        <div class="data-row"><span class="data-label">2013年市值</span><span class="data-value">约6亿美元</span></div>
+                        <div class="data-row"><span class="data-label">分红+回购</span><span class="data-value">持续进行</span></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2>经验教训</h2>
+                
+                <div class="lesson-card">
+                    <div class="lesson-title">💡 "暂时困难"vs"永久性损害"的区分</div>
+                    <div class="lesson-desc">
+                        1973-1974年买入后股价下跌是市场情绪问题，不是邮报的业务问题。巴菲特的洞察在于：他区分了"内在价值受损"和"股价暂时下跌"。前者才是卖出的理由，后者是买入的机会。
+                    </div>
+                </div>
+                
+                <div class="lesson-card">
+                    <div class="lesson-title">💡 管理层的"品质"比"能力"更难评估</div>
+                    <div class="lesson-desc">
+                        凯瑟琳·格雷厄姆不是天生的CEO，但她有快速学习的能力和正直的品质。巴菲特后来总结："找一个你能信任的人比找到一个完美的人更重要。"这种判断力需要时间和观察。
+                    </div>
+                </div>
+                
+                <div class="lesson-card">
+                    <div class="lesson-title">💡 声誉是最深的护城河</div>
+                    <div class="lesson-desc">
+                        水门事件让邮报建立了"无所畏惧的新闻"的声誉。这种声誉在短期内难以建立，竞争对手也难以复制。巴菲特在评估任何媒体公司时都会问："读者相信这张报纸吗？"
+                    </div>
+                </div>
+                
+                <div class="lesson-card">
+                    <div class="lesson-title">💡 行业变化最终会侵蚀所有护城河</div>
+                    <div class="lesson-desc">
+                        华盛顿邮报教会巴菲特：即使是再深的护城河，最终也会被时代侵蚀。这促使他在1990年代后更谨慎地评估媒体行业，也为后来卖出邮报埋下伏笔。
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2>精华原话</h2>
+                
+                <div class="quote">
+                    <p>为免你未注意到，本表有个投资经验可与大家分享，念旧(Nostalgia)在我们投资选股时必须特别加以重视，我们投资组合中具有最大未实现利益的两家公司GEIGO与Washington Post，事实上本人早在13岁与20岁时便与它们结缘，但磋跎了二十几年，迟至1970年代我们才正式成为该公司的股东，但结果证明所谓:"迟到总比未到好。"</p>
+                    <footer>—— 1982年致股东信</footer>
+                </div>
+                
+                <div class="quote">
+                    <p>1973到1974年间华盛顿邮报表现依旧良好使得内在价值持续增加，尽管如此我们在该公司的持股市值却由原始成本的一千多万减少25%变成八百万美元，本来我们觉得已经够便宜的东西，没想到在一年之后具有无比大智能的市场又将它的标价又向下调整到至少比其实际价值少两成的地步。</p>
+                    <footer>—— 1985年致股东信</footer>
+                </div>
+                
+                <div class="quote">
+                    <p>Phil Graham在担任华盛顿邮报的发行人时曾说:"新闻日报是攥写历史的第一手草稿"，而很不幸的，产险从业者所提供的年度财务报告，也可称得上是该公司财务与经营状况的第一手草稿。</p>
+                    <footer>—— 1984年致股东信</footer>
+                </div>
+                
+                <div class="quote">
+                    <p>衡量管理层的标准是看他们如何配置从经营中产生的资本。如果管理层在资本配置上缺乏能力或者不诚实，最终会成为优秀公司的掘墓人。</p>
+                    <footer>—— 伯克希尔股东大会</footer>
+                </div>
+            </div>
+            
             <div class="section">
                 <h2>相关概念</h2>
-                <div class="related">
-                    
+                <div class="related-grid">
+                    <a href="../concepts/内在价值.html" class="related-item">📊 内在价值</a>
+                    <a href="../concepts/护城河.html" class="related-item">🏰 经济护城河</a>
+                    <a href="../concepts/管理层评估.html" class="related-item">👔 管理层评估</a>
+                    <a href="../concepts/资本配置.html" class="related-item">⚙️ 资本配置能力</a>
+                    <a href="../concepts/长期投资.html" class="related-item">⏳ 长期投资</a>
                 </div>
             </div>
-        
-        <!-- 反向链接部分 --><p class="backlinks-count">共被提及 19 次</p>
-        </div>
-    
-        </article>
-    </div>
-    
-    <footer>
-        <p><a href="../index.html">巴菲特知识库</a> | 数据来源：巴菲特致股东信 (1977-2007)</p>
-    
-        <div class="backlinks">
-            <h2>📚 反向链接</h2>
-            <p class="backlinks-intro">以下年份的信件提到了此公司：</p>
-            <div class="backlinks-list">
-                <a href="../letters/berkshire/2004.html">2004年</a><a href="../letters/berkshire/2003.html">2003年</a><a href="../letters/berkshire/2001.html">2001年</a><a href="../letters/berkshire/2000.html">2000年</a><a href="../letters/berkshire/1997.html">1997年</a><a href="../letters/berkshire/1995.html">1995年</a><a href="../letters/berkshire/1994.html">1994年</a><a href="../letters/berkshire/1993.html">1993年</a><a href="../letters/berkshire/1991.html">1991年</a><a href="../letters/berkshire/1990.html">1990年</a><a href="../letters/berkshire/1989.html">1989年</a><a href="../letters/berkshire/1988.html">1988年</a><a href="../letters/berkshire/1987.html">1987年</a><a href="../letters/berkshire/1986.html">1986年</a><a href="../letters/berkshire/1985.html">1985年</a><a href="../letters/berkshire/1984.html">1984年</a><a href="../letters/berkshire/1982.html">1982年</a><a href="../letters/berkshire/1981.html">1981年</a><a href="../letters/berkshire/1978.html">1978年</a>
+            
+            <div class="section">
+                <h2>相关公司</h2>
+                <div class="related-grid">
+                    <a href="伯克希尔哈撒韦.html" class="related-item">伯克希尔<br><small>投资方</small></a>
+                    <a href="GEICO.html" class="related-item">GEICO<br><small>同样经历考验</small></a>
+                    <a href="大都会通信.html" class="related-item">大都会通信<br><small>另一媒体投资</small></a>
+                </div>
             </div>
-            <p class="backlinks-count">共 19 处引用</p>
-        </div>
-    
-</footer>
+            
+            <div class="section">
+                <h2>延伸阅读</h2>
+                
+                <div class="topic-section">
+                    <div class="topic-title">内在价值与估值</div>
+                    <div class="topic-desc">如何计算和评估公司的内在价值</div>
+                    <div class="topic-years">
+                        <a href="../letters/berkshire/1984.html">1984</a>
+                        <a href="../letters/berkshire/1985.html">1985</a>
+                        <a href="../letters/berkshire/1992.html">1992</a>
+                    </div>
+                </div>
+                
+                <div class="topic-section">
+                    <div class="topic-title">管理层与资本配置</div>
+                    <div class="topic-desc">如何评估管理层的资本配置能力</div>
+                    <div class="topic-years">
+                        <a href="../letters/berkshire/1987.html">1987</a>
+                        <a href="../letters/berkshire/1990.html">1990</a>
+                        <a href="../letters/berkshire/1995.html">1995</a>
+                    </div>
+                </div>
+                
+                <div class="topic-section">
+                    <div class="topic-title">媒体行业分析</div>
+                    <div class="topic-desc">巴菲特对报纸和媒体行业的看法演变</div>
+                    <div class="topic-years">
+                        <a href="../letters/berkshire/1991.html">1991</a>
+                        <a href="../letters/berkshire/2003.html">2003</a>
+                        <a href="../letters/berkshire/2004.html">2004</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="backlinks">
+                <h3>📚 反向链接</h3>
+                <p class="backlinks-intro">巴菲特在以下年份的信件中提到了华盛顿邮报：</p>
+                <div class="backlinks-list">
+                    <a href="../letters/berkshire/2004.html">2004</a>
+                    <a href="../letters/berkshire/2003.html">2003</a>
+                    <a href="../letters/berkshire/2001.html">2001</a>
+                    <a href="../letters/berkshire/2000.html">2000</a>
+                    <a href="../letters/berkshire/1997.html">1997</a>
+                    <a href="../letters/berkshire/1995.html">1995</a>
+                    <a href="../letters/berkshire/1994.html">1994</a>
+                    <a href="../letters/berkshire/1993.html">1993</a>
+                    <a href="../letters/berkshire/1991.html">1991</a>
+                    <a href="../letters/berkshire/1990.html">1990</a>
+                    <a href="../letters/berkshire/1989.html">1989</a>
+                    <a href="../letters/berkshire/1988.html">1988</a>
+                    <a href="../letters/berkshire/1987.html">1987</a>
+                    <a href="../letters/berkshire/1986.html">1986</a>
+                    <a href="../letters/berkshire/1985.html">1985</a>
+                    <a href="../letters/berkshire/1984.html">1984</a>
+                    <a href="../letters/berkshire/1982.html">1982</a>
+                    <a href="../letters/berkshire/1981.html">1981</a>
+                    <a href="../letters/berkshire/1978.html">1978</a>
+                </div>
+            </div>
+        </article>
+        
+        <footer>
+            <p><a href="../index.html">巴菲特知识库</a> | 数据来源：巴菲特致股东信 (1977-2007)</p>
+        </footer>
+    </div>
 </body>
 </html>

@@ -3,38 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>资本配置 - 巴菲特知识库</title>
+    <title>资本配置 (Capital Allocation) - 巴菲特投资概念</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
-        :root { --bg-color: #FFFEF9; --navy: #1B2A4A; --gold: #C9A227; --text: #2C3E50; --secondary: #5D6D7E; --border: #E5E0D8; }
+        :root { --bg-color: #FFFEF9; --navy: #1B2A4A; --gold: #C9A227; --text: #2C3E50; --secondary: #5D6D7E; --border: #E5E0D8; --light-gold: #F5ECD7; }
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: 'Noto Serif SC', Georgia, serif; background: var(--bg-color); color: var(--text); line-height: 1.8; }
+        body { font-family: 'Noto Serif SC', Georgia, serif; background: var(--bg-color); color: var(--text); line-height: 1.9; }
         .container { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
-        header { background: var(--navy); color: white; padding: 40px 30px; text-align: center; }
-        header h1 { font-size: 1.8em; margin-bottom: 10px; }
-        header .meta { color: var(--gold); font-size: 0.95em; margin-top: 10px; }
-        .nav { background: white; border: 1px solid var(--border); padding: 15px 20px; margin-bottom: 30px; border-radius: 8px; text-align: center; }
-        .nav a { color: var(--navy); text-decoration: none; margin: 0 12px; font-size: 0.95em; }
-        .nav a:hover { color: var(--gold); }
-        .content { background: white; border: 1px solid var(--border); border-radius: 12px; padding: 40px; }
-        .content h2 { color: var(--navy); font-size: 1.4em; margin: 35px 0 15px; padding-bottom: 8px; border-bottom: 2px solid var(--gold); }
-        .content h2:first-child { margin-top: 0; }
+        header { background: linear-gradient(135deg, var(--navy) 0%, #2a3f6a 100%); color: white; padding: 50px 30px; text-align: center; }
+        header h1 { font-size: 2.2em; margin-bottom: 10px; }
+        header h1::before { content: '💹'; margin-right: 15px; }
+        header .meta { color: var(--gold); font-size: 1em; margin-top: 15px; }
+        header .meta span { background: rgba(201, 162, 39, 0.2); padding: 5px 15px; border-radius: 20px; }
+        .nav { background: white; border: 1px solid var(--border); padding: 15px 25px; margin-bottom: 30px; border-radius: 10px; text-align: center; }
+        .nav a { color: var(--navy); text-decoration: none; margin: 0 15px; font-size: 0.95em; padding: 8px 15px; border-radius: 5px; transition: all 0.2s; }
+        .nav a:hover { background: var(--gold); color: white; }
+        .content { background: white; border: 1px solid var(--border); border-radius: 15px; padding: 45px; box-shadow: 0 5px 30px rgba(0,0,0,0.05); }
+        .content h2 { color: var(--navy); font-size: 1.4em; margin: 40px 0 20px; padding-bottom: 12px; border-bottom: 3px solid var(--gold); display: inline-block; }
+        .content h2:first-of-type { margin-top: 0; }
         .content h3 { color: var(--navy); font-size: 1.15em; margin: 25px 0 12px; }
         .content p { margin: 15px 0; text-align: justify; }
-        .quote { background: var(--navy); color: white; padding: 20px 25px; border-left: 4px solid var(--gold); margin: 25px 0; border-radius: 0 8px 8px 0; }
-        .quote p { margin: 0; font-style: italic; }
-        .quote .source { color: var(--gold); margin-top: 12px; font-size: 0.9em; }
-        .related { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px; }
-        .related a { background: white; border: 1px solid var(--border); padding: 8px 15px; border-radius: 20px; text-decoration: none; color: var(--navy); font-size: 0.9em; transition: all 0.2s; }
-        .related a:hover { background: var(--gold); color: white; border-color: var(--gold); }
+        .content ul, .content ol { margin: 15px 0 15px 25px; }
+        .content li { margin: 10px 0; }
+        .content strong { color: var(--navy); font-weight: 700; }
+        
+        .insight { background: linear-gradient(135deg, #f8f5ee 0%, #fff 100%); border-left: 4px solid #C9A227; padding: 18px 22px; margin: 25px 0; font-style: italic; font-size: 1.05em; }
+        
+        .evolution-timeline { position: relative; padding-left: 35px; margin: 25px 0; }
+        .evolution-timeline::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: #C9A227; }
+        .evolution-point { position: relative; margin-bottom: 25px; }
+        .evolution-point::before { content: ''; position: absolute; left: -38px; top: 6px; width: 12px; height: 12px; border-radius: 50%; background: #C9A227; border: 3px solid white; box-shadow: 0 0 0 3px #C9A227; }
+        .evolution-year { font-weight: 600; color: var(--navy); font-size: 1.05em; }
+        .evolution-desc { color: var(--text); margin-top: 5px; }
+        
+        .case-card { background: #F8F5EE; border-radius: 10px; padding: 25px; margin: 20px 0; border: 1px solid var(--border); }
+        .case-company { font-size: 1.15em; font-weight: 600; color: var(--navy); margin-bottom: 8px; }
+        .case-data { color: #5D6D7E; font-size: 0.95em; margin: 8px 0; }
+        .case-lesson { font-style: italic; margin-top: 15px; padding-top: 15px; border-top: 1px solid #E8E4DB; color: var(--text); }
+        
+        .misconception-block { background: #fff5f5; padding: 20px 25px; border-radius: 10px; margin: 20px 0; border-left: 4px solid #e74c3c; }
+        .misconception-block h4 { color: #c0392b; margin-bottom: 12px; font-size: 1.05em; }
+        .misconception-block p { margin: 8px 0; }
+        
+        .quote-block { background: var(--navy); color: white; padding: 25px 30px; border-left: 5px solid var(--gold); margin: 25px 0; border-radius: 0 12px 12px 0; }
+        .quote-block p { margin: 0; font-style: italic; font-size: 1.05em; line-height: 1.8; }
+        .quote-block footer { color: var(--gold); margin-top: 15px; font-size: 0.9em; font-style: normal; }
+        
+        .topic-group { margin: 25px 0; padding: 20px; background: linear-gradient(135deg, var(--light-gold) 0%, #fff9e6 100%); border-radius: 10px; }
+        .topic-title { font-weight: 600; color: var(--navy); margin-bottom: 10px; font-size: 1.05em; }
+        .topic-desc { color: var(--text); margin-bottom: 12px; font-size: 0.95em; }
+        .topic-years { display: flex; flex-wrap: wrap; gap: 8px; }
+        .topic-years a { background: white; border: 1px solid var(--gold); padding: 5px 14px; border-radius: 18px; text-decoration: none; color: var(--navy); font-size: 0.85em; transition: all 0.2s; }
+        .topic-years a:hover { background: var(--gold); color: white; }
+        
         footer { text-align: center; padding: 40px 20px; color: var(--secondary); border-top: 1px solid var(--border); margin-top: 40px; }
-        footer a { color: var(--navy); text-decoration: none; }
+        @media (max-width: 768px) { .container { padding: 20px 15px; } header { padding: 30px 20px; } header h1 { font-size: 1.7em; } .content { padding: 25px 20px; } .nav a { margin: 5px 8px; display: inline-block; } }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
-        <h1>💡 资本配置</h1>
-        <div class="meta">概念 · 被引用 45 次</div>
+        <h1>资本配置 (Capital Allocation)</h1>
+        <div class="meta"><span>巴菲特投资体系核心概念</span></div>
     </header>
     
     <div class="container">
@@ -42,30 +71,127 @@
             <a href="../index.html">🏠 首页</a>
             <a href="../index-pages/核心思想索引.html">💡 核心思想索引</a>
             <a href="../index-pages/公司索引.html">🏢 公司索引</a>
-            <a href="../index-pages/人物索引.html">👤 人物索引</a>
         </nav>
         
         <article class="content">
-            <h2>概念解析</h2>
-            <p>资本配置是CEO最重要的职责之一，优秀的资本配置能为股东创造巨大价值。</p>
+            <h2>定义与起源</h2>
+            <p><strong>资本配置是将企业资源（现金、利润）分配到不同用途的决策过程</strong>——包括再投资、收购、分红、回购等。巴菲特认为："CEO最重要的职责是资本配置——决定在哪里投入资本，以及如何回报股东。"</p>
+            <p>在<strong>1970年代</strong>担任伯克希尔CEO后，巴菲特将资本配置能力视为他最核心的能力之一。</p>
             
-            <h2>巴菲特原话</h2>
-            <div class="quote">
-                <p>"理解'资本配置'这个概念对于理解伯克希尔的投资哲学至关重要。"</p>
-                <div class="source">—— 巴菲特致股东信</div>
+            <div class="insight">
+                资本配置的精髓在于：将资本配置到最高回报的用途。如果内部投资回报低，就应该向外部分配——分红或回购。反之则应该投资或收购。
             </div>
             
-            <h2>相关概念</h2>
-            <div class="related">
-                <a href="内在价值.html">内在价值</a>
-                <a href="护城河.html">护城河</a>
-                <a href="安全边际.html">安全边际</a>
+            <h2>核心要义</h2>
+            <ul>
+                <li><strong>资本配置的五个选项</strong>：再投资于现有业务、收购其他企业、分红、回购股票、偿债。每种选择都有其适用场景。</li>
+                <li><strong>机会成本是核心原则</strong>：每项投资都应该与"无风险收益率"或"其他投资机会"比较。</li>
+                <li><strong>避免"帝国建设"心态</strong>：许多CEO喜欢收购是因为这让他们感觉在"建设帝国"——但这对股东未必有利。</li>
+                <li><strong>理性对待规模</strong>：规模不是目标，高资本回报才是。如果小而美比大而平庸更好，就应该选择小而美。</li>
+                <li><strong>坦诚面对失败</strong>：资本配置难免出错，关键是承认错误、止损，而不是继续错下去。</li>
+            </ul>
+            
+            <h2>思想演变</h2>
+            <div class="evolution-timeline">
+                <div class="evolution-point">
+                    <div class="evolution-year">早期摸索（1960-1970年代）</div>
+                    <div class="evolution-desc">在合伙公司时期开始积累资本配置经验。</div>
+                </div>
+                <div class="evolution-point">
+                    <div class="evolution-year">系统化（1980年代）</div>
+                    <div class="evolution-desc">在致股东信中系统阐述资本配置原则，形成完整的框架。</div>
+                </div>
+                <div class="evolution-point">
+                    <div class="evolution-year">持续实践（1990年代至今）</div>
+                    <div class="evolution-desc">伯克希尔的资本配置决策成为投资界的经典案例。</div>
+                </div>
             </div>
+            
+            <h2>实战案例</h2>
+            <div class="case-card">
+                <div class="case-company">伯克希尔的资本配置</div>
+                <div class="case-data">优先内部投资，其次收购，最后分红/回购；在股价低估时积极回购</div>
+                <div class="case-lesson">伯克希尔的资本配置哲学很简单：将钱投向回报最高的地方。2011年后开始回购自家股票，是因为股价低于内在价值。</div>
+            </div>
+            
+            <div class="case-card">
+                <div class="case-company">BNSF收购</div>
+                <div class="case-data">2009年以260亿美元收购BNSF；当时是伯克希尔最大收购；为铁路业务增加巨大价值</div>
+                <div class="case-lesson">这笔收购体现了巴菲特的资本配置逻辑：在看到确定的高回报机会时，敢于下重注。</div>
+            </div>
+            
+            <div class="case-card">
+                <div class="case-company">Dexter鞋业</div>
+                <div class="case-data">1993年以4.34亿美元收购；最终价值归零；巴菲特承认这是资本配置的错误</div>
+                <div class="case-lesson">这笔失败揭示了资本配置的挑战：即使分析再充分，也可能犯错。关键是承认错误、止损。</div>
+            </div>
+            
+            <h2>常见误解</h2>
+            <div class="misconception-block">
+                <h4>❌ 误解一：CEO都是资本配置高手</h4>
+                <p><strong>人们以为</strong>：CEO自然擅长资本配置。</p>
+                <p><strong>巴菲特说</strong>：实际上大多数CEO更擅长运营而非资本配置。他们往往过度投资于内部项目，即使回报低于市场利率。</p>
+            </div>
+            
+            <div class="misconception-block">
+                <h4>❌ 误解二：多元化就是好的资本配置</h4>
+                <p><strong>人们以为</strong>：收购不同业务可以分散风险。</p>
+                <p><strong>巴菲特说</strong>：多元化的危险在于，它可能成为用高价收购烂业务的借口。真正的风险控制来自质量，而非数量。</p>
+            </div>
+            
+            <div class="misconception-block">
+                <h4>❌ 误解三：分红越多越好</h4>
+                <p><strong>人们以为</strong>：愿意分红的就是好公司。</p>
+                <p><strong>巴菲特说</strong>：只有当公司无法找到高于平均回报的投资机会时，分红才是合理的。否则，留存收益再投资对股东更有利。</p>
+            </div>
+            
+            <h2>精华原话</h2>
+            <div class="quote-block">
+                <p>"CEO最重要的职责是资本配置——决定资金投向哪里、哪里需要收缩、是否分红或回购。这个工作做得好，股东受益；做不好，股东遭殃。"</p>
+                <footer>—— 1992年致股东信</footer>
+            </div>
+            
+            <div class="quote-block">
+                <p>"我们只在看到确定的高回报机会时才进行收购。如果找不到好的机会，我们不会勉强收购——现金为王。"</p>
+                <footer>—— 2015年致股东信</footer>
+            </div>
+            
+            <div class="quote-block">
+                <p>"资本配置的第一原则是：比较所有选项的机会成本。不要为了投资而投资，要确保每项投资的回报都高于其他选项。"</p>
+                <footer>—— 1992年致股东信</footer>
+            </div>
+            
+            <div class="quote-block">
+                <p>"如果经理人不愿以合理价格回购自家股票，那只能说明他们对股东利益不够重视。"</p>
+                <footer>—— 2011年致股东信</footer>
+            </div>
+            
+            <h2>延伸阅读</h2>
+            <p>资本配置概念在信件中的讨论分布，按论点组织：</p>
+            
+            <div class="topic-group">
+                <div class="topic-title">资本配置原则</div>
+                <div class="topic-desc">资本配置的基本框架</div>
+                <div class="topic-years">
+                    <a href="../letters/berkshire/1992.html">1992</a>
+                    <a href="../letters/berkshire/1994.html">1994</a>
+                </div>
+            </div>
+            
+            <div class="topic-group">
+                <div class="topic-title">收购与回购</div>
+                <div class="topic-desc">何时收购，何时回购</div>
+                <div class="topic-years">
+                    <a href="../letters/berkshire/2011.html">2011</a>
+                    <a href="../letters/berkshire/2015.html">2015</a>
+                </div>
+            </div>
+            
         </article>
     </div>
     
     <footer>
-        <p><a href="../index.html">巴菲特知识库</a> | 数据来源：Berkshire Hathaway Letters</p>
+        <p>巴菲特知识库 | 数据来源：Berkshire Hathaway Letters to Shareholders</p>
     </footer>
 </body>
 </html>

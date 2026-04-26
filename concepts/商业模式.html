@@ -3,38 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>商业模式 - 巴菲特知识库</title>
+    <title>商业模式 (Business Model) - 巴菲特投资概念</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
-        :root { --bg-color: #FFFEF9; --navy: #1B2A4A; --gold: #C9A227; --text: #2C3E50; --secondary: #5D6D7E; --border: #E5E0D8; }
+        :root { --bg-color: #FFFEF9; --navy: #1B2A4A; --gold: #C9A227; --text: #2C3E50; --secondary: #5D6D7E; --border: #E5E0D8; --light-gold: #F5ECD7; }
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: 'Noto Serif SC', Georgia, serif; background: var(--bg-color); color: var(--text); line-height: 1.8; }
+        body { font-family: 'Noto Serif SC', Georgia, serif; background: var(--bg-color); color: var(--text); line-height: 1.9; }
         .container { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
-        header { background: var(--navy); color: white; padding: 40px 30px; text-align: center; }
-        header h1 { font-size: 1.8em; margin-bottom: 10px; }
-        header .meta { color: var(--gold); font-size: 0.95em; margin-top: 10px; }
-        .nav { background: white; border: 1px solid var(--border); padding: 15px 20px; margin-bottom: 30px; border-radius: 8px; text-align: center; }
-        .nav a { color: var(--navy); text-decoration: none; margin: 0 12px; font-size: 0.95em; }
-        .nav a:hover { color: var(--gold); }
-        .content { background: white; border: 1px solid var(--border); border-radius: 12px; padding: 40px; }
-        .content h2 { color: var(--navy); font-size: 1.4em; margin: 35px 0 15px; padding-bottom: 8px; border-bottom: 2px solid var(--gold); }
-        .content h2:first-child { margin-top: 0; }
+        header { background: linear-gradient(135deg, var(--navy) 0%, #2a3f6a 100%); color: white; padding: 50px 30px; text-align: center; }
+        header h1 { font-size: 2.2em; margin-bottom: 10px; }
+        header h1::before { content: '🏪'; margin-right: 15px; }
+        header .meta { color: var(--gold); font-size: 1em; margin-top: 15px; }
+        header .meta span { background: rgba(201, 162, 39, 0.2); padding: 5px 15px; border-radius: 20px; }
+        .nav { background: white; border: 1px solid var(--border); padding: 15px 25px; margin-bottom: 30px; border-radius: 10px; text-align: center; }
+        .nav a { color: var(--navy); text-decoration: none; margin: 0 15px; font-size: 0.95em; padding: 8px 15px; border-radius: 5px; transition: all 0.2s; }
+        .nav a:hover { background: var(--gold); color: white; }
+        .content { background: white; border: 1px solid var(--border); border-radius: 15px; padding: 45px; box-shadow: 0 5px 30px rgba(0,0,0,0.05); }
+        .content h2 { color: var(--navy); font-size: 1.4em; margin: 40px 0 20px; padding-bottom: 12px; border-bottom: 3px solid var(--gold); display: inline-block; }
+        .content h2:first-of-type { margin-top: 0; }
         .content h3 { color: var(--navy); font-size: 1.15em; margin: 25px 0 12px; }
         .content p { margin: 15px 0; text-align: justify; }
-        .quote { background: var(--navy); color: white; padding: 20px 25px; border-left: 4px solid var(--gold); margin: 25px 0; border-radius: 0 8px 8px 0; }
-        .quote p { margin: 0; font-style: italic; }
-        .quote .source { color: var(--gold); margin-top: 12px; font-size: 0.9em; }
-        .related { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px; }
-        .related a { background: white; border: 1px solid var(--border); padding: 8px 15px; border-radius: 20px; text-decoration: none; color: var(--navy); font-size: 0.9em; transition: all 0.2s; }
-        .related a:hover { background: var(--gold); color: white; border-color: var(--gold); }
+        .content ul, .content ol { margin: 15px 0 15px 25px; }
+        .content li { margin: 10px 0; }
+        .content strong { color: var(--navy); font-weight: 700; }
+        
+        .insight { background: linear-gradient(135deg, #f8f5ee 0%, #fff 100%); border-left: 4px solid #C9A227; padding: 18px 22px; margin: 25px 0; font-style: italic; font-size: 1.05em; }
+        
+        .evolution-timeline { position: relative; padding-left: 35px; margin: 25px 0; }
+        .evolution-timeline::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: #C9A227; }
+        .evolution-point { position: relative; margin-bottom: 25px; }
+        .evolution-point::before { content: ''; position: absolute; left: -38px; top: 6px; width: 12px; height: 12px; border-radius: 50%; background: #C9A227; border: 3px solid white; box-shadow: 0 0 0 3px #C9A227; }
+        .evolution-year { font-weight: 600; color: var(--navy); font-size: 1.05em; }
+        .evolution-desc { color: var(--text); margin-top: 5px; }
+        
+        .case-card { background: #F8F5EE; border-radius: 10px; padding: 25px; margin: 20px 0; border: 1px solid var(--border); }
+        .case-company { font-size: 1.15em; font-weight: 600; color: var(--navy); margin-bottom: 8px; }
+        .case-data { color: #5D6D7E; font-size: 0.95em; margin: 8px 0; }
+        .case-lesson { font-style: italic; margin-top: 15px; padding-top: 15px; border-top: 1px solid #E8E4DB; color: var(--text); }
+        
+        .misconception-block { background: #fff5f5; padding: 20px 25px; border-radius: 10px; margin: 20px 0; border-left: 4px solid #e74c3c; }
+        .misconception-block h4 { color: #c0392b; margin-bottom: 12px; font-size: 1.05em; }
+        .misconception-block p { margin: 8px 0; }
+        
+        .quote-block { background: var(--navy); color: white; padding: 25px 30px; border-left: 5px solid var(--gold); margin: 25px 0; border-radius: 0 12px 12px 0; }
+        .quote-block p { margin: 0; font-style: italic; font-size: 1.05em; line-height: 1.8; }
+        .quote-block footer { color: var(--gold); margin-top: 15px; font-size: 0.9em; font-style: normal; }
+        
+        .topic-group { margin: 25px 0; padding: 20px; background: linear-gradient(135deg, var(--light-gold) 0%, #fff9e6 100%); border-radius: 10px; }
+        .topic-title { font-weight: 600; color: var(--navy); margin-bottom: 10px; font-size: 1.05em; }
+        .topic-desc { color: var(--text); margin-bottom: 12px; font-size: 0.95em; }
+        .topic-years { display: flex; flex-wrap: wrap; gap: 8px; }
+        .topic-years a { background: white; border: 1px solid var(--gold); padding: 5px 14px; border-radius: 18px; text-decoration: none; color: var(--navy); font-size: 0.85em; transition: all 0.2s; }
+        .topic-years a:hover { background: var(--gold); color: white; }
+        
         footer { text-align: center; padding: 40px 20px; color: var(--secondary); border-top: 1px solid var(--border); margin-top: 40px; }
-        footer a { color: var(--navy); text-decoration: none; }
+        @media (max-width: 768px) { .container { padding: 20px 15px; } header { padding: 30px 20px; } header h1 { font-size: 1.7em; } .content { padding: 25px 20px; } .nav a { margin: 5px 8px; display: inline-block; } }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
-        <h1>💡 商业模式</h1>
-        <div class="meta">概念 · 被引用 29 次</div>
+        <h1>商业模式 (Business Model)</h1>
+        <div class="meta"><span>巴菲特投资体系核心概念</span></div>
     </header>
     
     <div class="container">
@@ -42,30 +71,127 @@
             <a href="../index.html">🏠 首页</a>
             <a href="../index-pages/核心思想索引.html">💡 核心思想索引</a>
             <a href="../index-pages/公司索引.html">🏢 公司索引</a>
-            <a href="../index-pages/人物索引.html">👤 人物索引</a>
         </nav>
         
         <article class="content">
-            <h2>概念解析</h2>
-            <p>商业模式指企业如何创造、传递和获取价值，优秀的商业模式是成功的基础。</p>
+            <h2>定义与起源</h2>
+            <p><strong>商业模式是企业如何创造、传递和获取价值的方式</strong>——包括产品或服务、客户群体、收入来源、成本结构等核心要素。巴菲特说："投资的关键是理解企业的商业模式——它如何赚钱，为什么能持续赚钱。"</p>
+            <p>在<strong>1980年代收购喜诗糖果</strong>后，巴菲特开始深刻认识到：不同商业模式的持久性和盈利潜力差异巨大，而理解这一点是投资成功的关键。</p>
             
-            <h2>巴菲特原话</h2>
-            <div class="quote">
-                <p>"理解'商业模式'这个概念对于理解伯克希尔的投资哲学至关重要。"</p>
-                <div class="source">—— 巴菲特致股东信</div>
+            <div class="insight">
+                好的商业模式能够持续产生现金，坏的商业模式会不断消耗现金。理解这一点，比任何财务分析都重要。
             </div>
             
-            <h2>相关概念</h2>
-            <div class="related">
-                <a href="内在价值.html">内在价值</a>
-                <a href="护城河.html">护城河</a>
-                <a href="安全边际.html">安全边际</a>
+            <h2>核心要义</h2>
+            <ul>
+                <li><strong>商业模式决定企业命运</strong>：同样努力的两个管理者，在不同商业模式下会得到完全不同的结果。</li>
+                <li><strong>简单易懂是前提</strong>：巴菲特只投资他能理解的商业模式。复杂的金融工程和多元化集团往往隐藏着问题。</li>
+                <li><strong>好的商业模式需要资本少</strong>：能以少量资本投入产生高回报的模式，比需要不断大量资本投入的模式更有价值。</li>
+                <li><strong>定价权是好模式的标志</strong>：能够持续提价而不失去客户的商业模式，是最珍贵的模式之一。</li>
+                <li><strong>警惕模式转变</strong>：技术的变革往往改变商业模式，需要持续评估原有的护城河是否还在。</li>
+            </ul>
+            
+            <h2>思想演变</h2>
+            <div class="evolution-timeline">
+                <div class="evolution-point">
+                    <div class="evolution-year">早期忽视（1950-1960年代）</div>
+                    <div class="evolution-desc">早期更关注价格和资产，对商业模式的理解相对简单——好公司就是能赚钱的公司。</div>
+                </div>
+                <div class="evolution-point">
+                    <div class="evolution-year">模式觉醒（1970-1980年代）</div>
+                    <div class="evolution-desc">喜诗糖果让巴菲特深刻认识到：同样的资本投入，不同商业模式会产生完全不同的回报。这是转向"优质企业"投资的关键。</div>
+                </div>
+                <div class="evolution-point">
+                    <div class="evolution-year">系统化理解（1990年代至今）</div>
+                    <div class="evolution-desc">将商业模式分析框架系统化，提出"能力圈"概念——只投资自己能理解的商业模式。</div>
+                </div>
             </div>
+            
+            <h2>实战案例</h2>
+            <div class="case-card">
+                <div class="case-company">喜诗糖果 (See's Candies)</div>
+                <div class="case-data">预制现金模式：先收款后发货；无需大量资本投入；净利润率超15%</div>
+                <div class="case-lesson">喜诗的商业模式堪称完美：低成本扩张、高利润率、强定价权。这笔投资让巴菲特深刻理解了优质商业模式的威力。</div>
+            </div>
+            
+            <div class="case-card">
+                <div class="case-company">GEICO保险</div>
+                <div class="case-data">低成本的直销模式：直接向客户销售，省去经纪人成本；利润率约15%远高于行业平均3%</div>
+                <div class="case-lesson">保险行业同样模式差异巨大。GEICO的低成本直销模式比传统经纪人模式具有压倒性优势。</div>
+            </div>
+            
+            <div class="case-card">
+                <div class="case-company">伯克希斯的纺织业务</div>
+                <div class="case-data">低利润率的商品化模式：产品同质化严重；需要持续资本投入；最终被关闭</div>
+                <div class="case-lesson">这是糟糕商业模式的典型代表：即使管理层再优秀，也无法克服模式的劣势。这个教训让巴菲特更重视商业模式本身。</div>
+            </div>
+            
+            <h2>常见误解</h2>
+            <div class="misconception-block">
+                <h4>❌ 误解一：好行业就是好投资</h4>
+                <p><strong>人们以为</strong>：投资热门行业就一定能赚钱。</p>
+                <p><strong>巴菲特说</strong>：同一行业内，商业模式可能天差地别。航空公司和软件公司都在"科技"行业，但商业模式完全不同。</p>
+            </div>
+            
+            <div class="misconception-block">
+                <h4>❌ 误解二：模式复杂=公司优秀</h4>
+                <p><strong>人们以为</strong>：商业模式越复杂、越创新，说明公司越厉害。</p>
+                <p><strong>巴菲特说</strong>：恰恰相反。真正优秀的商业模式应该简单易懂。复杂的金融产品和多元化业务往往隐藏着问题。</p>
+            </div>
+            
+            <div class="misconception-block">
+                <h4>❌ 误解三：好模式会一直好</h4>
+                <p><strong>人们以为</strong>：一旦找到好商业模式，就可以高枕无忧。</p>
+                <p><strong>巴菲特说</strong>：技术变革和竞争会改变商业模式的优劣。报纸曾是"黄金模式"，互联网颠覆了它。</p>
+            </div>
+            
+            <h2>精华原话</h2>
+            <div class="quote-block">
+                <p>"投资的关键不是找到改变世界的公司，而是找到不会被世界改变的公司。真正持久的商业模式，是那种即使来了聪明人也无法改变其竞争地位的公司。"</p>
+                <footer>—— 2007年致股东信</footer>
+            </div>
+            
+            <div class="quote-block">
+                <p>"一个普通的商业模式的成功，主要取决于管理层的优秀程度。但一个优秀的商业模式，即使普通的管理层也能做得不错。"</p>
+                <footer>—— 2007年致股东信</footer>
+            </div>
+            
+            <div class="quote-block">
+                <p>"我们喜欢简单的业务——那种一个普通人就能经营的，不需要不断发明创新的。复杂的业务往往需要复杂的人，而复杂的人会做出复杂的决定。"</p>
+                <footer>—— 1992年致股东信</footer>
+            </div>
+            
+            <div class="quote-block">
+                <p>"最好的商业模式是那种能够持续产生现金，同时不需要大量资本再投入的模式。这种模式像一棵摇钱树，只需要很少的照料就能不断结果。"</p>
+                <footer>—— 2008年致股东信</footer>
+            </div>
+            
+            <h2>延伸阅读</h2>
+            <p>商业模式概念在信件中的讨论分布，按论点组织：</p>
+            
+            <div class="topic-group">
+                <div class="topic-title">优质商业模式的特征</div>
+                <div class="topic-desc">什么是巴菲特眼中的理想商业模式</div>
+                <div class="topic-years">
+                    <a href="../letters/berkshire/2007.html">2007</a>
+                    <a href="../letters/berkshire/2008.html">2008</a>
+                </div>
+            </div>
+            
+            <div class="topic-group">
+                <div class="topic-title">模式与管理的关系</div>
+                <div class="topic-desc">商业模式和管理层能力的关系</div>
+                <div class="topic-years">
+                    <a href="../letters/berkshire/2007.html">2007</a>
+                    <a href="../letters/berkshire/1992.html">1992</a>
+                </div>
+            </div>
+            
         </article>
     </div>
     
     <footer>
-        <p><a href="../index.html">巴菲特知识库</a> | 数据来源：Berkshire Hathaway Letters</p>
+        <p>巴菲特知识库 | 数据来源：Berkshire Hathaway Letters to Shareholders</p>
     </footer>
 </body>
 </html>

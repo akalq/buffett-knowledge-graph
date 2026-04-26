@@ -3,175 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>复利 - 巴菲特知识库</title>
+    <title>复利 (Compound Interest) - 巴菲特投资概念</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto Serif SC:wght@400;600;700&family=Noto Sans SC:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         :root { --bg-color: #FFFEF9; --navy: #1B2A4A; --gold: #C9A227; --text: #2C3E50; --secondary: #5D6D7E; --border: #E5E0D8; --light-gold: #F5ECD7; }
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { font-family: 'Noto Serif SC', Georgia, serif; background: var(--bg-color); color: var(--text); line-height: 1.9; }
-        .container { max-width: 1000px; margin: 0 auto; padding: 40px 20px; }
-        header { background: linear-gradient(135deg, var(--navy) 0%, #2a3f6a 100%); color: white; padding: 50px 30px; text-align: center; position: relative; overflow: hidden; }
-        header::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); }
-        header h1 { font-size: 2.2em; margin-bottom: 10px; position: relative; }
-        header h1::before { content: '💡'; margin-right: 15px; }
-        header .meta { color: var(--gold); font-size: 1em; margin-top: 15px; position: relative; }
+        .container { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
+        header { background: linear-gradient(135deg, var(--navy) 0%, #2a3f6a 100%); color: white; padding: 50px 30px; text-align: center; }
+        header h1 { font-size: 2.2em; margin-bottom: 10px; }
+        header h1::before { content: '⏳'; margin-right: 15px; }
+        header .meta { color: var(--gold); font-size: 1em; margin-top: 15px; }
         header .meta span { background: rgba(201, 162, 39, 0.2); padding: 5px 15px; border-radius: 20px; }
-        .nav { background: white; border: 1px solid var(--border); padding: 15px 25px; margin-bottom: 30px; border-radius: 10px; text-align: center; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        .nav { background: white; border: 1px solid var(--border); padding: 15px 25px; margin-bottom: 30px; border-radius: 10px; text-align: center; }
         .nav a { color: var(--navy); text-decoration: none; margin: 0 15px; font-size: 0.95em; padding: 8px 15px; border-radius: 5px; transition: all 0.2s; }
         .nav a:hover { background: var(--gold); color: white; }
         .content { background: white; border: 1px solid var(--border); border-radius: 15px; padding: 45px; box-shadow: 0 5px 30px rgba(0,0,0,0.05); }
-        .section { margin-bottom: 40px; padding-bottom: 40px; border-bottom: 1px solid var(--border); }
-        .section:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
-        .content h2 { color: var(--navy); font-size: 1.5em; margin: 0 0 20px; padding-bottom: 12px; border-bottom: 3px solid var(--gold); display: inline-block; }
-        .content h3 { color: var(--navy); font-size: 1.2em; margin: 25px 0 15px; padding-left: 15px; border-left: 4px solid var(--gold); }
+        .content h2 { color: var(--navy); font-size: 1.4em; margin: 40px 0 20px; padding-bottom: 12px; border-bottom: 3px solid var(--gold); display: inline-block; }
+        .content h2:first-of-type { margin-top: 0; }
+        .content h3 { color: var(--navy); font-size: 1.15em; margin: 25px 0 12px; }
         .content p { margin: 15px 0; text-align: justify; }
-        .intro-box { background: linear-gradient(135deg, var(--light-gold) 0%, #fff9e6 100%); padding: 25px 30px; border-radius: 10px; margin: 20px 0; border-left: 5px solid var(--gold); }
-        .intro-box p { margin: 0; font-size: 1.05em; }
-        .quote { background: var(--navy); color: white; padding: 25px 30px; border-left: 5px solid var(--gold); margin: 25px 0; border-radius: 0 12px 12px 0; position: relative; }
-        .quote::before { content: '"'; position: absolute; top: 10px; left: 15px; font-size: 4em; color: var(--gold); opacity: 0.3; font-family: Georgia, serif; }
-        .quote p { margin: 0; font-style: italic; font-size: 1.05em; padding-left: 30px; }
-        .quote .source { color: var(--gold); margin-top: 15px; font-size: 0.9em; padding-left: 30px; font-style: normal; }
-        .timeline { position: relative; padding-left: 30px; margin: 20px 0; }
-        .timeline::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--gold); }
-        .timeline-item { position: relative; margin-bottom: 25px; }
-        .timeline-item::before { content: ''; position: absolute; left: -34px; top: 5px; width: 12px; height: 12px; background: var(--gold); border-radius: 50%; border: 3px solid white; box-shadow: 0 0 0 3px var(--gold); }
-        .timeline-year { font-weight: bold; color: var(--navy); font-size: 1.1em; }
-        .timeline-content { color: var(--text); margin-top: 5px; }
-        .misconception { background: #fff5f5; padding: 20px 25px; border-radius: 10px; margin: 15px 0; border-left: 4px solid #e74c3c; }
-        .misconception h4 { color: #c0392b; margin-bottom: 10px; font-size: 1.1em; }
-        .related { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 20px; }
-        .related a { background: white; border: 2px solid var(--border); padding: 10px 20px; border-radius: 25px; text-decoration: none; color: var(--navy); font-size: 0.95em; transition: all 0.3s; }
-        .related a:hover { background: var(--gold); color: white; border-color: var(--gold); transform: translateY(-2px); }
+        .content ul, .content ol { margin: 15px 0 15px 25px; }
+        .content li { margin: 10px 0; }
+        .content strong { color: var(--navy); font-weight: 700; }
+        
+        .insight { background: linear-gradient(135deg, #f8f5ee 0%, #fff 100%); border-left: 4px solid #C9A227; padding: 18px 22px; margin: 25px 0; font-style: italic; font-size: 1.05em; }
+        
+        .evolution-timeline { position: relative; padding-left: 35px; margin: 25px 0; }
+        .evolution-timeline::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: #C9A227; }
+        .evolution-point { position: relative; margin-bottom: 25px; }
+        .evolution-point::before { content: ''; position: absolute; left: -38px; top: 6px; width: 12px; height: 12px; border-radius: 50%; background: #C9A227; border: 3px solid white; box-shadow: 0 0 0 3px #C9A227; }
+        .evolution-year { font-weight: 600; color: var(--navy); font-size: 1.05em; }
+        .evolution-desc { color: var(--text); margin-top: 5px; }
+        
+        .case-card { background: #F8F5EE; border-radius: 10px; padding: 25px; margin: 20px 0; border: 1px solid var(--border); }
+        .case-company { font-size: 1.15em; font-weight: 600; color: var(--navy); margin-bottom: 8px; }
+        .case-data { color: #5D6D7E; font-size: 0.95em; margin: 8px 0; }
+        .case-lesson { font-style: italic; margin-top: 15px; padding-top: 15px; border-top: 1px solid #E8E4DB; color: var(--text); }
+        
+        .misconception-block { background: #fff5f5; padding: 20px 25px; border-radius: 10px; margin: 20px 0; border-left: 4px solid #e74c3c; }
+        .misconception-block h4 { color: #c0392b; margin-bottom: 12px; font-size: 1.05em; }
+        .misconception-block p { margin: 8px 0; }
+        
+        .quote-block { background: var(--navy); color: white; padding: 25px 30px; border-left: 5px solid var(--gold); margin: 25px 0; border-radius: 0 12px 12px 0; }
+        .quote-block p { margin: 0; font-style: italic; font-size: 1.05em; line-height: 1.8; }
+        .quote-block footer { color: var(--gold); margin-top: 15px; font-size: 0.9em; font-style: normal; }
+        
+        .topic-group { margin: 25px 0; padding: 20px; background: linear-gradient(135deg, var(--light-gold) 0%, #fff9e6 100%); border-radius: 10px; }
+        .topic-title { font-weight: 600; color: var(--navy); margin-bottom: 10px; font-size: 1.05em; }
+        .topic-desc { color: var(--text); margin-bottom: 12px; font-size: 0.95em; }
+        .topic-years { display: flex; flex-wrap: wrap; gap: 8px; }
+        .topic-years a { background: white; border: 1px solid var(--gold); padding: 5px 14px; border-radius: 18px; text-decoration: none; color: var(--navy); font-size: 0.85em; transition: all 0.2s; }
+        .topic-years a:hover { background: var(--gold); color: white; }
+        
         footer { text-align: center; padding: 40px 20px; color: var(--secondary); border-top: 1px solid var(--border); margin-top: 40px; }
-        footer a { color: var(--navy); text-decoration: none; }
-        @media (max-width: 768px) { .container { padding: 20px 15px; } header { padding: 30px 20px; } header h1 { font-size: 1.6em; } .content { padding: 25px 20px; } .nav a { margin: 5px 8px; display: inline-block; } }
-    
-        /* 反向链接样式 */
-        .backlinks {
-            margin-top: 40px;
-            padding-top: 30px;
-            border-top: 2px dashed var(--gold);
-        }
-        .backlinks h2 {
-            color: var(--navy);
-            font-size: 1.3em;
-            margin-bottom: 15px;
-        }
-        .backlinks-intro {
-            color: var(--secondary);
-            margin-bottom: 15px;
-        }
-        .backlinks-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-        .backlinks-list a {
-            background: linear-gradient(135deg, var(--light-gold) 0%, #fff9e6 100%);
-            border: 1px solid var(--gold);
-            padding: 8px 16px;
-            border-radius: 20px;
-            text-decoration: none;
-            color: var(--navy);
-            font-size: 0.9em;
-            transition: all 0.3s;
-        }
-        .backlinks-list a:hover {
-            background: var(--gold);
-            color: white;
-            transform: translateY(-2px);
-        }
-        .backlinks-count {
-            margin-top: 15px;
-            color: var(--secondary);
-            font-size: 0.9em;
-        }
-
-    
-        .citations-container {
-            margin: 30px 0;
-        }
-        .citation-year {
-            margin: 25px 0;
-        }
-        .citation-year h3 {
-            color: #1B2A4A;
-            font-size: 1.1em;
-            margin-bottom: 15px;
-            padding-bottom: 8px;
-            border-bottom: 1px solid #E5E0D8;
-        }
-        .citation-list {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-        .citation-card {
-            background: #F8F5EE;
-            border: 1px solid #E5E0D8;
-            border-radius: 8px;
-            padding: 20px;
-            transition: all 0.2s;
-        }
-        .citation-card:hover {
-            border-color: #C9A227;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-        .citation-text {
-            margin: 0 0 15px 0;
-            padding: 0;
-            font-style: italic;
-            color: #2C3E50;
-            line-height: 1.7;
-        }
-        .citation-text .highlight {
-            background: #FFF3CD;
-            padding: 0 2px;
-            border-radius: 2px;
-            font-weight: 600;
-        }
-        .citation-meta {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 0.85em;
-        }
-        .section-tag {
-            background: #E8E4DB;
-            color: #5D6D7E;
-            padding: 4px 10px;
-            border-radius: 12px;
-            font-size: 0.8em;
-        }
-        .citation-link {
-            color: #1B2A4A;
-            text-decoration: none;
-            font-weight: 500;
-        }
-        .citation-link:hover {
-            color: #C9A227;
-        }
-        .citation-more {
-            text-align: center;
-            padding: 10px;
-            background: #F8F5EE;
-            border-radius: 8px;
-        }
-        .citation-more a {
-            color: #5D6D7E;
-            text-decoration: none;
-            font-size: 0.9em;
-        }
-        .citation-more a:hover {
-            color: #C9A227;
-        }
-    
-        </style>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
+        @media (max-width: 768px) { .container { padding: 20px 15px; } header { padding: 30px 20px; } header h1 { font-size: 1.7em; } .content { padding: 25px 20px; } .nav a { margin: 5px 8px; display: inline-block; } }
+    </style>
 </head>
 <body>
     <header>
-        <h1>复利</h1>
-        <div class="meta"><span>核心投资概念</span></div>
+        <h1>复利 (Compound Interest)</h1>
+        <div class="meta"><span>财富创造的核心引擎</span></div>
     </header>
     
     <div class="container">
@@ -179,843 +71,144 @@
             <a href="../index.html">🏠 首页</a>
             <a href="../index-pages/核心思想索引.html">💡 核心思想索引</a>
             <a href="../index-pages/公司索引.html">🏢 公司索引</a>
-            <a href="../index-pages/人物索引.html">👤 人物索引</a>
         </nav>
         
         <article class="content">
-            <div class="section">
-                <h2>定义与起源</h2>
-                <div class="intro-box">
-                    <p>复利是巴菲特最强调的投资原则之一。通过长期持有优质企业，盈利再投资可以实现财富的指数级增长。巴菲特的伯克希尔市值从1965年的约1500万美元增长到超过7000亿美元，复利是核心驱动力。</p>
+            <h2>定义与起源</h2>
+            <p><strong>复利是资本收益再投资产生的收益叠加效应</strong>——赚到的钱继续生钱，利滚利，时间越长威力越大。爱因斯坦称复利为"世界第八大奇迹"。</p>
+            <p>巴菲特在<strong>1965年</strong>接手伯克希尔时，公司市值约1500万美元；到2024年，伯克希尔市值超过8000亿美元——这其中98%以上的财富是在最后20年创造的，这就是复利的威力。</p>
+            
+            <div class="insight">
+                复利的关键不是收益率有多高，而是持续时间和稳定性。20%的年化收益，10年后是6倍，30年后是237倍。亏损一次则需要更长时间恢复，这就是为何"不亏损"比"高收益"更重要。
+            </div>
+            
+            <h2>核心要义</h2>
+            <ul>
+                <li><strong>时间是复利的朋友</strong>：复利需要时间来发挥作用。巴菲特845亿美元财富中，90%是在60岁之后积累的。越早开始越好，但任何时候开始都不晚。</li>
+                <li><strong>不亏损比高收益更重要</strong>：亏损50%需要涨100%才能回本。复利的敌人是大额亏损，保持稳定正收益比追求暴利更有价值。</li>
+                <li><strong>保留收益是复利的前提</strong>：企业将利润再投资于高回报项目，才能实现复利效应。分红会打断复利链条。</li>
+                <li><strong>滚雪球需要长长的坡</strong>：投资的企业必须具有持续竞争优势，能将资本不断转化为更多资本。烂业务的钱滚不出雪球。</li>
+                <li><strong>复利在生活中同样适用</strong>：知识、关系、声誉都能产生复利效应——每天进步1%，一年后是37倍。</li>
+            </ul>
+            
+            <h2>思想演变</h2>
+            <div class="evolution-timeline">
+                <div class="evolution-point">
+                    <div class="evolution-year">格雷厄姆时期（1950年代）</div>
+                    <div class="evolution-desc">早期巴菲特追求"烟蒂"企业的短期利润，复利思维尚未成为核心。</div>
+                </div>
+                <div class="evolution-point">
+                    <div class="evolution-year">转型期（1970年代）</div>
+                    <div class="evolution-desc">芒格影响下巴菲特转向"优质企业+长期持有"，开始系统性地利用复利。喜诗糖果成为第一个成功的复利案例。</div>
+                </div>
+                <div class="evolution-point">
+                    <div class="evolution-year">成熟期（1980年代后）</div>
+                    <div class="evolution-desc">伯克希尔成为复利机器。巴菲特明确将"最大化复利效应"作为核心目标，愿意为优质企业永久持有。</div>
                 </div>
             </div>
-
-            <div class="section">
-                <h2>核心要义</h2>
-                <p><b>时间的力量：</b>复利需要时间才能显现威力，越早开始越好。</p><p><b>保留收益：</b>企业将利润再投资于高回报项目是复利的关键。</p><p><b>避免亏损：</b>复利的敌人是大幅亏损，需要安全边际保护。</p><p><b>持续性：</b>每年不需要高回报，持续的复利增长才是关键。</p>
-            </div>
-
-            <div class="section">
-                <h2>实践应用</h2>
-                <div class="intro-box"><p>巴菲特的财富增长主要来自持续数十年的复利。他强调投资的关键不是抓到大牛股，而是长期持有优质公司让复利发挥作用。他有一句名言：'复利就像滚雪球，你需要长长的坡和湿湿的雪。'</p></div>
-            </div>
-
-            <div class="section">
-                <h2>常见误区</h2>
-                
-        <div class="misconception">
-            <h4>误区一：追求高回报</h4>
-            <p>追求高回报往往伴随高风险，复利稳健增长更可靠。</p>
-        </div>
-        
-        <div class="misconception">
-            <h4>误区二：频繁交易</h4>
-            <p>交易越多，摩擦成本越高，复利效应越难实现。</p>
-        </div>
-        
-        <div class="misconception">
-            <h4>误区三：忽视亏损</h4>
-            <p>一次大亏损可能毁掉多年的复利积累。</p>
-        </div>
-        
-            </div>
-
-            <div class="section">
-                <h2>原话精选</h2>
-                
-            <div class="quote">
-                <p>通常公司会宣称每股盈余又创下历史新高，然而由于公司的资本会随着盈余的累积扩增，所以我们并不认为这样的经营表现有什么大不了的，比如说每年股本扩充10%或是每股盈余成长5%等等，毕竟就算是静止不动的定存帐户，由于复利的关系每年都可稳定地产生同样的效果。</p>
-                <div class="source">—— 巴菲特致股东信 1977年</div>
+            
+            <h2>实战案例</h2>
+            <div class="case-card">
+                <div class="case-company">可口可乐 (Coca-Cola)</div>
+                <div class="case-data">1988年建仓；持有至今超35年；原始投资约13亿美元，目前价值超200亿美元</div>
+                <div class="case-lesson">长期持有优质企业，复利效应惊人。可口可乐的业务模式稳定，管理层持续将利润再投资于高回报项目。</div>
             </div>
             
-            <div class="quote">
-                <p>然而即便在这样的前提下，我们还是可以如此说，不论财报数字是否重编，1978年都是丰收的一年，不含资本利得的营业利益约为期初股东投资成本的19.4%，虽然低于1972年的历史记录，我们认为评估单一年度的表现，不适宜将资本利得或损失纳入计算，但不可否认他们却是衡量长期绩效的重要指针，拜这类利得所赐，伯克希尔每股权益长期的成长率远大于每年年度营业利益所带来的复利报酬。</p>
-                <div class="source">—— 巴菲特致股东信 1978年</div>
+            <div class="case-card">
+                <div class="case-company">喜诗糖果 (See's Candies)</div>
+                <div class="case-data">1972年以2500万美元收购；50多年来累计创造超13亿美元税前利润</div>
+                <div class="case-lesson">喜诗是巴菲特的"初恋"优质企业，证明好业务即使追加很少投资（仅3200万美元），也能持续创造惊人回报。</div>
             </div>
             
-            <div class="quote">
-                <p>自现有经营阶层接掌伯克希尔(1964-1979)的十五年来，公司每股净值由19.46美元成长至335.85美元(持有股票投资以市价计)，年复合成长率达20.5%。这个比率远高于每年营业利益率的平均数，突显保险子公司股票增值利益对于股东权益的重要性，而且1964年的帐面价值实际上超过其实质价值，因为当时帐列的资产不论是以继续经营或清算的基础来看，其价值都远低于帐面净值，(至于负债则一毛也少不了)。</p>
-                <div class="source">—— 巴菲特致股东信 1979年</div>
+            <div class="case-card">
+                <div class="case-company">伯克希尔本身</div>
+                <div class="case-data">1965年市值1500万美元；2024年市值超8000亿美元；年化收益约19.5%</div>
+                <div class="case-lesson">伯克希尔60年的历史本身就是复利奇迹的证明。关键是找到能够持续创造高资本回报的企业，然后将利润再投资。</div>
             </div>
             
-            <div class="quote">
-                <p>在现有经营阶层接掌伯克希尔的十六年来，公司每股的帐面净值(其中保险事业的股权投资以市价计)已由原先的19.46美元成长至400.8美元，相当于年复合成长率20.5% (事实上你“本身”作得也不错，过去十年来人体内所含矿物质成份的价值以年复合成长率22%增加)，值得庆幸的是，虽然我们也犯了不少错，但还是能达到这样的记录，尽管管理上时常糟到三振，但优异的企业体质仍然可以维持相当不错的平均打击率。</p>
-                <div class="source">—— 巴菲特致股东信 1980年</div>
+            <h2>常见误解</h2>
+            <div class="misconception-block">
+                <h4>❌ 误解一：复利需要高收益率</h4>
+                <p><strong>人们以为</strong>：复利需要每年50%以上的收益。</p>
+                <p><strong>巴菲特说</strong>：19%的年化收益就足以创造惊人财富。关键是稳定和持续，而非暴利。</p>
             </div>
             
-            <div class="quote">
-                <p>在现有经营阶层过去十九年的任期内，帐面价值由19美元增加成为975美元，约以22.6%年复合成长率成长，考量到我们现有的规模，未来可能无法支持这么高的成长率，不信的人最好选择去当业务员而非数学家。我们之所以选择帐面价值(虽然不是所有形况皆如此)是因为它是衡量内含价值成长(这是真正重要的)的一种保守但合理的替代方式，它的好处是很容易去计算且不牵涉主观去衡量内含价值，但仍需强调这两者事实上具有截然不同的意义。</p>
-                <div class="source">—— 巴菲特致股东信 1983年</div>
+            <div class="misconception-block">
+                <h4>❌ 误解二：复利可以快速致富</h4>
+                <p><strong>人们以为</strong>：复利可以让人在几年内暴富。</p>
+                <p><strong>巴菲特说</strong>：复利需要时间。巴菲特90%的财富是在60岁之后积累的。耐心是复利的前提。</p>
             </div>
             
+            <div class="misconception-block">
+                <h4>❌ 误解三：任何投资都能享受复利</h4>
+                <p><strong>人们以为</strong>：把钱存银行也能实现复利。</p>
+                <p><strong>巴菲特说</strong>：只有高于通胀率和企业资本成本的回报，才能真正创造财富。烂业务的钱无法滚出雪球。</p>
             </div>
-
-            <div class="section">
-                <h2>时间线演变</h2>
-                <div class="timeline">
-                    
-        <div class="timeline-item">
-            <div class="timeline-year">1960s</div>
-            <div class="timeline-content">开始积累伯克希尔复利的基础</div>
-        </div>
-        
-        <div class="timeline-item">
-            <div class="timeline-year">1970s</div>
-            <div class="timeline-content">强调复利是长期财富增长的核心机制</div>
-        </div>
-        
-        <div class="timeline-item">
-            <div class="timeline-year">1990s</div>
-            <div class="timeline-content">用具体数字说明长期复利的威力</div>
-        </div>
-        
-        <div class="timeline-item">
-            <div class="timeline-year">2020s</div>
-            <div class="timeline-content">强调伯克希尔的复利引擎：保险浮存金和优质企业群</div>
-        </div>
-        
+            
+            <h2>精华原话</h2>
+            <div class="quote-block">
+                <p>"复利就像滚雪球。你需要长长的坡和湿湿的雪——坡够长意味着时间足够，雪够湿意味着收益率足够。伯克希尔能够滚出大雪球，是因为我们从一家小公司开始，而且一直滚了60年。"</p>
+                <footer>—— 2014年致股东信</footer>
+            </div>
+            
+            <div class="quote-block">
+                <p>"我的财富来自以下因素的结合：生活在美国、一些幸运的基因，以及复利。"</p>
+                <footer>—— 2006年慈善捐赠声明</footer>
+            </div>
+            
+            <div class="quote-block">
+                <p>"成功的投资不需要高智商。需要的既有坚持自己的判断的勇气，也是一个在众人恐惧时贪婪、众人贪婪时恐惧的能力。"</p>
+                <footer>—— 1996年致股东信</footer>
+            </div>
+            
+            <div class="quote-block">
+                <p>"如果他们（继承人）能维持大约10%的年化回报，那么30年后，伯克希尔的价值将是现在的17倍。"</p>
+                <footer>—— 2006年致股东信</footer>
+            </div>
+            
+            <h2>延伸阅读</h2>
+            <p>复利概念在信件中的讨论分布，按论点组织：</p>
+            
+            <div class="topic-group">
+                <div class="topic-title">复利的数学魔力</div>
+                <div class="topic-desc">时间+稳定收益率=惊人财富，解释为何稳定比暴利更重要</div>
+                <div class="topic-years">
+                    <a href="../letters/berkshire/1994.html">1994</a>
+                    <a href="../letters/berkshire/2014.html">2014</a>
                 </div>
             </div>
-
-            <div class="section">
-                <h2>相关概念</h2>
-                <div class="related">
-                    
+            
+            <div class="topic-group">
+                <div class="topic-title">滚雪球比喻</div>
+                <div class="topic-desc">长长的坡+湿湿的雪=大雪球，解释优质企业对复利的重要性</div>
+                <div class="topic-years">
+                    <a href="../letters/berkshire/2000.html">2000</a>
+                    <a href="../letters/berkshire/2014.html">2014</a>
                 </div>
             </div>
-        
-        <!-- 反向链接部分 --><p class="backlinks-count">共被提及 10 次</p>
-        </div>
-    
-        <div class="citations-container">
-<div class="citation-year">
-<h3>2006年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">".... In effect, we’ve used up our bank account and turned to our credit card. And, like everyone who gets in hock, the U.S. will now experience “reverse <span class="highlight">compounding</span>” as we pay ever-increasing amounts of interest on interest. I want to emphasize that even though our course is unwise, Americans will live better ten..."</blockquote>
-<div class="citation-meta"><span class="section-tag">billion. Here’s a breakdown by currency:</span><a href="../letters/berkshire/2006.html" class="citation-link">2006年致股东信 →</a></div>
-</div>
-</div>
-</div>
-<div class="citation-year">
-<h3>1989年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">"...lly be very high, which means that the nsituation in year 2 might be $90 million cash interest plus $69 nmillion accrued interest, and so on as the <span class="highlight">compounding</span> proceeds. nSuch high-rate reborrowing schemes, which a few years ago were nappropriately confined to the waterfront, soon became models of nmodern..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1989.html" class="citation-link">1989年致股东信 →</a></div>
-</div>
-<div class="citation-card">
-<blockquote class="citation-text">"...a show, and you can rely on him nto produce something very special for our shareholders.nn In this letter we've had a lot to say about rates of ncompounding. If you can bear having your own rate turn negative nfor a day - not a pretty thought, I admit - visit Ike on the n29th.nn Warren E. BuffettnMar..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1989.html" class="citation-link">1989年致股东信 →</a></div>
-</div>
-</div>
-</div>
-<div class="citation-year">
-<h3>1985年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">"...any during ntheir reign - with no one examining whether this gain was nattributable simply to many years of retained earnings and the nworkings of <span class="highlight">compound interest</span>.nn If the widget company consistently earned a superior return non capital throughout the period, or if capital employed only ndoubled during the..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1985.html" class="citation-link">1985年致股东信 →</a></div>
-</div>
-</div>
-</div>
-<div class="citation-year">
-<h3>1978年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">"...nt of the longer term record. Because of such ngains, Berkshire’s long-term growth in equity per share has been ngreater than would be indicated by <span class="highlight">compounding</span> the returns from noperating earnings that we have reported annually.nn For example, over the last three years - generally a bonanza nperiod for t..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1978.html" class="citation-link">1978年致股东信 →</a></div>
-</div>
-<div class="citation-card">
-<blockquote class="citation-text">"...rally a bonanza nperiod for the insurance industry, our largest profit producer - nBerkshire’s per share net worth virtually has doubled, thereby ncompounding at about 25% annually through a combination of good noperating earnings and fairly substantial capital gains. Neither nthis 25% equity gain from al..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1978.html" class="citation-link">1978年致股东信 →</a></div>
-</div>
-</div>
-</div>
-<div class="citation-year">
-<h3>1977年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">"...se in earnings per nshare. After all, even a totally dormant savings account will nproduce steadily rising interest earnings each year because of ncompounding.nn Except for special cases (for example, companies with nunusual debt-equity ratios or those with important assets carried nat unrealistic balan..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1977.html" class="citation-link">1977年致股东信 →</a></div>
-</div>
-</div>
-</div>
-</div>
-
-        
-    </article>
-<footer>
-        <p><a href="../index.html">巴菲特知识库</a> | 数据来源：巴菲特致股东信 (1977-2007)</p>
-    
-        <div class="backlinks">
-            <h2>📚 反向链接</h2>
-            <p class="backlinks-intro">以下年份的信件提到了此概念：</p>
-            <div class="backlinks-list">
-                <a href="../letters/berkshire/2006.html">2006年</a><a href="../letters/berkshire/2005.html">2005年</a><a href="../letters/berkshire/2000.html">2000年</a><a href="../letters/berkshire/1999.html">1999年</a><a href="../letters/berkshire/1996.html">1996年</a><a href="../letters/berkshire/1989.html">1989年</a><a href="../letters/berkshire/1988.html">1988年</a><a href="../letters/berkshire/1985.html">1985年</a><a href="../letters/berkshire/1978.html">1978年</a><a href="../letters/berkshire/1977.html">1977年</a>
+            
+            <div class="topic-group">
+                <div class="topic-title">避免亏损</div>
+                <div class="topic-desc">亏损对复利的伤害远超想象，保持稳定正收益是关键</div>
+                <div class="topic-years">
+                    <a href="../letters/berkshire/1993.html">1993</a>
+                    <a href="../letters/berkshire/2005.html">2005</a>
+                </div>
             </div>
-            <p class="backlinks-count">共 10 处引用</p>
-        </div>
-    
-</footer>
-</body>
-</html><div class="citations-container">
-<div class="citation-year">
-<h3>2006年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">".... In effect, we’ve used up our bank account and turned to our credit card. And, like everyone who gets in hock, the U.S. will now experience “reverse <span class="highlight">compounding</span>” as we pay ever-increasing amounts of interest on interest. I want to emphasize that even though our course is unwise, Americans will live better ten..."</blockquote>
-<div class="citation-meta"><span class="section-tag">billion. Here’s a breakdown by currency:</span><a href="../letters/berkshire/2006.html" class="citation-link">2006年致股东信 →</a></div>
-</div>
-</div>
-</div>
-<div class="citation-year">
-<h3>1989年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">"...lly be very high, which means that the nsituation in year 2 might be $90 million cash interest plus $69 nmillion accrued interest, and so on as the <span class="highlight">compounding</span> proceeds. nSuch high-rate reborrowing schemes, which a few years ago were nappropriately confined to the waterfront, soon became models of nmodern..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1989.html" class="citation-link">1989年致股东信 →</a></div>
-</div>
-<div class="citation-card">
-<blockquote class="citation-text">"...a show, and you can rely on him nto produce something very special for our shareholders.nn In this letter we've had a lot to say about rates of ncompounding. If you can bear having your own rate turn negative nfor a day - not a pretty thought, I admit - visit Ike on the n29th.nn Warren E. BuffettnMar..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1989.html" class="citation-link">1989年致股东信 →</a></div>
-</div>
-</div>
-</div>
-<div class="citation-year">
-<h3>1985年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">"...any during ntheir reign - with no one examining whether this gain was nattributable simply to many years of retained earnings and the nworkings of <span class="highlight">compound interest</span>.nn If the widget company consistently earned a superior return non capital throughout the period, or if capital employed only ndoubled during the..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1985.html" class="citation-link">1985年致股东信 →</a></div>
-</div>
-</div>
-</div>
-<div class="citation-year">
-<h3>1978年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">"...nt of the longer term record. Because of such ngains, Berkshire’s long-term growth in equity per share has been ngreater than would be indicated by <span class="highlight">compounding</span> the returns from noperating earnings that we have reported annually.nn For example, over the last three years - generally a bonanza nperiod for t..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1978.html" class="citation-link">1978年致股东信 →</a></div>
-</div>
-<div class="citation-card">
-<blockquote class="citation-text">"...rally a bonanza nperiod for the insurance industry, our largest profit producer - nBerkshire’s per share net worth virtually has doubled, thereby ncompounding at about 25% annually through a combination of good noperating earnings and fairly substantial capital gains. Neither nthis 25% equity gain from al..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1978.html" class="citation-link">1978年致股东信 →</a></div>
-</div>
-</div>
-</div>
-<div class="citation-year">
-<h3>1977年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">"...se in earnings per nshare. After all, even a totally dormant savings account will nproduce steadily rising interest earnings each year because of ncompounding.nn Except for special cases (for example, companies with nunusual debt-equity ratios or those with important assets carried nat unrealistic balan..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1977.html" class="citation-link">1977年致股东信 →</a></div>
-</div>
-</div>
-</div>
-</div>
-
+            
+            <div class="topic-group">
+                <div class="topic-title">保留收益再投资</div>
+                <div class="topic-desc">企业将利润用于再投资是复利效应的核心机制</div>
+                <div class="topic-years">
+                    <a href="../letters/berkshire/1989.html">1989</a>
+                    <a href="../letters/berkshire/1991.html">1991</a>
+                </div>
+            </div>
+        </article>
         
-    </article>
-<footer>
-        <p><a href="../index.html">巴菲特知识库</a> | 数据来源：巴菲特致股东信 (1977-2007)</p>
-    </footer>
-</body>
-</html><div class="citations-container">
-<div class="citation-year">
-<h3>2006年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">".... In effect, we’ve used up our bank account and turned to our credit card. And, like everyone who gets in hock, the U.S. will now experience “reverse <span class="highlight">compounding</span>” as we pay ever-increasing amounts of interest on interest. I want to emphasize that even though our course is unwise, Americans will live better ten..."</blockquote>
-<div class="citation-meta"><span class="section-tag">billion. Here’s a breakdown by currency:</span><a href="../letters/berkshire/2006.html" class="citation-link">2006年致股东信 →</a></div>
-</div>
-</div>
-</div>
-<div class="citation-year">
-<h3>1989年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">"...lly be very high, which means that the nsituation in year 2 might be $90 million cash interest plus $69 nmillion accrued interest, and so on as the <span class="highlight">compounding</span> proceeds. nSuch high-rate reborrowing schemes, which a few years ago were nappropriately confined to the waterfront, soon became models of nmodern..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1989.html" class="citation-link">1989年致股东信 →</a></div>
-</div>
-<div class="citation-card">
-<blockquote class="citation-text">"...a show, and you can rely on him nto produce something very special for our shareholders.nn In this letter we've had a lot to say about rates of ncompounding. If you can bear having your own rate turn negative nfor a day - not a pretty thought, I admit - visit Ike on the n29th.nn Warren E. BuffettnMar..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1989.html" class="citation-link">1989年致股东信 →</a></div>
-</div>
-</div>
-</div>
-<div class="citation-year">
-<h3>1985年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">"...any during ntheir reign - with no one examining whether this gain was nattributable simply to many years of retained earnings and the nworkings of <span class="highlight">compound interest</span>.nn If the widget company consistently earned a superior return non capital throughout the period, or if capital employed only ndoubled during the..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1985.html" class="citation-link">1985年致股东信 →</a></div>
-</div>
-</div>
-</div>
-<div class="citation-year">
-<h3>1978年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">"...nt of the longer term record. Because of such ngains, Berkshire’s long-term growth in equity per share has been ngreater than would be indicated by <span class="highlight">compounding</span> the returns from noperating earnings that we have reported annually.nn For example, over the last three years - generally a bonanza nperiod for t..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1978.html" class="citation-link">1978年致股东信 →</a></div>
-</div>
-<div class="citation-card">
-<blockquote class="citation-text">"...rally a bonanza nperiod for the insurance industry, our largest profit producer - nBerkshire’s per share net worth virtually has doubled, thereby ncompounding at about 25% annually through a combination of good noperating earnings and fairly substantial capital gains. Neither nthis 25% equity gain from al..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1978.html" class="citation-link">1978年致股东信 →</a></div>
-</div>
-</div>
-</div>
-<div class="citation-year">
-<h3>1977年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">"...se in earnings per nshare. After all, even a totally dormant savings account will nproduce steadily rising interest earnings each year because of ncompounding.nn Except for special cases (for example, companies with nunusual debt-equity ratios or those with important assets carried nat unrealistic balan..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1977.html" class="citation-link">1977年致股东信 →</a></div>
-</div>
-</div>
-</div>
-</div>
-
-        <h2>引用来源（7处）</h2>
-<div class="citations-container">
-<div class="citation-year">
-<h3>2006年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">".... In effect, we’ve used up our bank account and turned to our credit card. And, like everyone who gets in hock, the U.S. will now experience “reverse <span class="highlight">compounding</span>” as we pay ever-increasing amounts of interest on interest. I want to emphasize that even though our course is unwise, Americans will live better ten..."</blockquote>
-<div class="citation-meta"><span class="section-tag">billion. Here’s a breakdown by currency:</span><a href="../letters/berkshire/2006.html" class="citation-link">2006年致股东信 →</a></div>
-</div>
-</div>
-</div>
-<div class="citation-year">
-<h3>1989年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">"...lly be very high, which means that the nsituation in year 2 might be $90 million cash interest plus $69 nmillion accrued interest, and so on as the <span class="highlight">compounding</span> proceeds. nSuch high-rate reborrowing schemes, which a few years ago were nappropriately confined to the waterfront, soon became models of nmodern..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1989.html" class="citation-link">1989年致股东信 →</a></div>
-</div>
-<div class="citation-card">
-<blockquote class="citation-text">"...a show, and you can rely on him nto produce something very special for our shareholders.nn In this letter we've had a lot to say about rates of ncompounding. If you can bear having your own rate turn negative nfor a day - not a pretty thought, I admit - visit Ike on the n29th.nn Warren E. BuffettnMar..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1989.html" class="citation-link">1989年致股东信 →</a></div>
-</div>
-</div>
-</div>
-<div class="citation-year">
-<h3>1985年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">"...any during ntheir reign - with no one examining whether this gain was nattributable simply to many years of retained earnings and the nworkings of <span class="highlight">compound interest</span>.nn If the widget company consistently earned a superior return non capital throughout the period, or if capital employed only ndoubled during the..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1985.html" class="citation-link">1985年致股东信 →</a></div>
-</div>
-</div>
-</div>
-<div class="citation-year">
-<h3>1978年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">"...nt of the longer term record. Because of such ngains, Berkshire’s long-term growth in equity per share has been ngreater than would be indicated by <span class="highlight">compounding</span> the returns from noperating earnings that we have reported annually.nn For example, over the last three years - generally a bonanza nperiod for t..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1978.html" class="citation-link">1978年致股东信 →</a></div>
-</div>
-<div class="citation-card">
-<blockquote class="citation-text">"...rally a bonanza nperiod for the insurance industry, our largest profit producer - nBerkshire’s per share net worth virtually has doubled, thereby ncompounding at about 25% annually through a combination of good noperating earnings and fairly substantial capital gains. Neither nthis 25% equity gain from al..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1978.html" class="citation-link">1978年致股东信 →</a></div>
-</div>
-</div>
-</div>
-<div class="citation-year">
-<h3>1977年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">"...se in earnings per nshare. After all, even a totally dormant savings account will nproduce steadily rising interest earnings each year because of ncompounding.nn Except for special cases (for example, companies with nunusual debt-equity ratios or those with important assets carried nat unrealistic balan..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1977.html" class="citation-link">1977年致股东信 →</a></div>
-</div>
-</div>
-</div>
-</div>
-
-        </article>
+        <footer>
+            <p>基于巴菲特致股东信原文提炼 | <a href="../index.html">返回首页</a></p>
+        </footer>
     </div>
-    <h2>引用来源（7处）</h2>
-<div class="citations-container">
-<div class="citation-year">
-<h3>2006年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">".... In effect, we’ve used up our bank account and turned to our credit card. And, like everyone who gets in hock, the U.S. will now experience “reverse <span class="highlight">compounding</span>” as we pay ever-increasing amounts of interest on interest. I want to emphasize that even though our course is unwise, Americans will live better ten..."</blockquote>
-<div class="citation-meta"><span class="section-tag">billion. Here’s a breakdown by currency:</span><a href="../letters/berkshire/2006.html" class="citation-link">2006年致股东信 →</a></div>
-</div>
-</div>
-</div>
-<div class="citation-year">
-<h3>1989年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">"...lly be very high, which means that the nsituation in year 2 might be $90 million cash interest plus $69 nmillion accrued interest, and so on as the <span class="highlight">compounding</span> proceeds. nSuch high-rate reborrowing schemes, which a few years ago were nappropriately confined to the waterfront, soon became models of nmodern..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1989.html" class="citation-link">1989年致股东信 →</a></div>
-</div>
-<div class="citation-card">
-<blockquote class="citation-text">"...a show, and you can rely on him nto produce something very special for our shareholders.nn In this letter we've had a lot to say about rates of ncompounding. If you can bear having your own rate turn negative nfor a day - not a pretty thought, I admit - visit Ike on the n29th.nn Warren E. BuffettnMar..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1989.html" class="citation-link">1989年致股东信 →</a></div>
-</div>
-</div>
-</div>
-<div class="citation-year">
-<h3>1985年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">"...any during ntheir reign - with no one examining whether this gain was nattributable simply to many years of retained earnings and the nworkings of <span class="highlight">compound interest</span>.nn If the widget company consistently earned a superior return non capital throughout the period, or if capital employed only ndoubled during the..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1985.html" class="citation-link">1985年致股东信 →</a></div>
-</div>
-</div>
-</div>
-<div class="citation-year">
-<h3>1978年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">"...nt of the longer term record. Because of such ngains, Berkshire’s long-term growth in equity per share has been ngreater than would be indicated by <span class="highlight">compounding</span> the returns from noperating earnings that we have reported annually.nn For example, over the last three years - generally a bonanza nperiod for t..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1978.html" class="citation-link">1978年致股东信 →</a></div>
-</div>
-<div class="citation-card">
-<blockquote class="citation-text">"...rally a bonanza nperiod for the insurance industry, our largest profit producer - nBerkshire’s per share net worth virtually has doubled, thereby ncompounding at about 25% annually through a combination of good noperating earnings and fairly substantial capital gains. Neither nthis 25% equity gain from al..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1978.html" class="citation-link">1978年致股东信 →</a></div>
-</div>
-</div>
-</div>
-<div class="citation-year">
-<h3>1977年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">"...se in earnings per nshare. After all, even a totally dormant savings account will nproduce steadily rising interest earnings each year because of ncompounding.nn Except for special cases (for example, companies with nunusual debt-equity ratios or those with important assets carried nat unrealistic balan..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1977.html" class="citation-link">1977年致股东信 →</a></div>
-</div>
-</div>
-</div>
-</div>
-
-        </article>
-
-    </div>
-    
-    <footer>
-        <p><a href="../index.html">巴菲特知识库</a> | 数据来源：巴菲特致股东信 (1977-2007)</p>
-    </footer>
-</body>
-</html><div class="citations-container">
-<div class="citation-year">
-<h3>2006年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">".... In effect, we’ve used up our bank account and turned to our credit card. And, like everyone who gets in hock, the U.S. will now experience “reverse <span class="highlight">compounding</span>” as we pay ever-increasing amounts of interest on interest. I want to emphasize that even though our course is unwise, Americans will live better ten..."</blockquote>
-<div class="citation-meta"><span class="section-tag">billion. Here’s a breakdown by currency:</span><a href="../letters/berkshire/2006.html" class="citation-link">2006年致股东信 →</a></div>
-</div>
-</div>
-</div>
-<div class="citation-year">
-<h3>1989年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">"...lly be very high, which means that the nsituation in year 2 might be $90 million cash interest plus $69 nmillion accrued interest, and so on as the <span class="highlight">compounding</span> proceeds. nSuch high-rate reborrowing schemes, which a few years ago were nappropriately confined to the waterfront, soon became models of nmodern..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1989.html" class="citation-link">1989年致股东信 →</a></div>
-</div>
-<div class="citation-card">
-<blockquote class="citation-text">"...a show, and you can rely on him nto produce something very special for our shareholders.nn In this letter we've had a lot to say about rates of ncompounding. If you can bear having your own rate turn negative nfor a day - not a pretty thought, I admit - visit Ike on the n29th.nn Warren E. BuffettnMar..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1989.html" class="citation-link">1989年致股东信 →</a></div>
-</div>
-</div>
-</div>
-<div class="citation-year">
-<h3>1985年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">"...any during ntheir reign - with no one examining whether this gain was nattributable simply to many years of retained earnings and the nworkings of <span class="highlight">compound interest</span>.nn If the widget company consistently earned a superior return non capital throughout the period, or if capital employed only ndoubled during the..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1985.html" class="citation-link">1985年致股东信 →</a></div>
-</div>
-</div>
-</div>
-<div class="citation-year">
-<h3>1978年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">"...nt of the longer term record. Because of such ngains, Berkshire’s long-term growth in equity per share has been ngreater than would be indicated by <span class="highlight">compounding</span> the returns from noperating earnings that we have reported annually.nn For example, over the last three years - generally a bonanza nperiod for t..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1978.html" class="citation-link">1978年致股东信 →</a></div>
-</div>
-<div class="citation-card">
-<blockquote class="citation-text">"...rally a bonanza nperiod for the insurance industry, our largest profit producer - nBerkshire’s per share net worth virtually has doubled, thereby ncompounding at about 25% annually through a combination of good noperating earnings and fairly substantial capital gains. Neither nthis 25% equity gain from al..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1978.html" class="citation-link">1978年致股东信 →</a></div>
-</div>
-</div>
-</div>
-<div class="citation-year">
-<h3>1977年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">"...se in earnings per nshare. After all, even a totally dormant savings account will nproduce steadily rising interest earnings each year because of ncompounding.nn Except for special cases (for example, companies with nunusual debt-equity ratios or those with important assets carried nat unrealistic balan..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1977.html" class="citation-link">1977年致股东信 →</a></div>
-</div>
-</div>
-</div>
-</div>
-
-        <h2>引用来源（7处）</h2>
-<div class="citations-container">
-<div class="citation-year">
-<h3>2006年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">".... In effect, we’ve used up our bank account and turned to our credit card. And, like everyone who gets in hock, the U.S. will now experience “reverse <span class="highlight">compounding</span>” as we pay ever-increasing amounts of interest on interest. I want to emphasize that even though our course is unwise, Americans will live better ten..."</blockquote>
-<div class="citation-meta"><span class="section-tag">billion. Here’s a breakdown by currency:</span><a href="../letters/berkshire/2006.html" class="citation-link">2006年致股东信 →</a></div>
-</div>
-</div>
-</div>
-<div class="citation-year">
-<h3>1989年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">"...lly be very high, which means that the nsituation in year 2 might be $90 million cash interest plus $69 nmillion accrued interest, and so on as the <span class="highlight">compounding</span> proceeds. nSuch high-rate reborrowing schemes, which a few years ago were nappropriately confined to the waterfront, soon became models of nmodern..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1989.html" class="citation-link">1989年致股东信 →</a></div>
-</div>
-<div class="citation-card">
-<blockquote class="citation-text">"...a show, and you can rely on him nto produce something very special for our shareholders.nn In this letter we've had a lot to say about rates of ncompounding. If you can bear having your own rate turn negative nfor a day - not a pretty thought, I admit - visit Ike on the n29th.nn Warren E. BuffettnMar..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1989.html" class="citation-link">1989年致股东信 →</a></div>
-</div>
-</div>
-</div>
-<div class="citation-year">
-<h3>1985年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">"...any during ntheir reign - with no one examining whether this gain was nattributable simply to many years of retained earnings and the nworkings of <span class="highlight">compound interest</span>.nn If the widget company consistently earned a superior return non capital throughout the period, or if capital employed only ndoubled during the..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1985.html" class="citation-link">1985年致股东信 →</a></div>
-</div>
-</div>
-</div>
-<div class="citation-year">
-<h3>1978年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">"...nt of the longer term record. Because of such ngains, Berkshire’s long-term growth in equity per share has been ngreater than would be indicated by <span class="highlight">compounding</span> the returns from noperating earnings that we have reported annually.nn For example, over the last three years - generally a bonanza nperiod for t..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1978.html" class="citation-link">1978年致股东信 →</a></div>
-</div>
-<div class="citation-card">
-<blockquote class="citation-text">"...rally a bonanza nperiod for the insurance industry, our largest profit producer - nBerkshire’s per share net worth virtually has doubled, thereby ncompounding at about 25% annually through a combination of good noperating earnings and fairly substantial capital gains. Neither nthis 25% equity gain from al..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1978.html" class="citation-link">1978年致股东信 →</a></div>
-</div>
-</div>
-</div>
-<div class="citation-year">
-<h3>1977年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">"...se in earnings per nshare. After all, even a totally dormant savings account will nproduce steadily rising interest earnings each year because of ncompounding.nn Except for special cases (for example, companies with nunusual debt-equity ratios or those with important assets carried nat unrealistic balan..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1977.html" class="citation-link">1977年致股东信 →</a></div>
-</div>
-</div>
-</div>
-</div>
-
-        </article>
-    </div>
-    <h2>引用来源（7处）</h2>
-<div class="citations-container">
-<div class="citation-year">
-<h3>2006年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">".... In effect, we’ve used up our bank account and turned to our credit card. And, like everyone who gets in hock, the U.S. will now experience “reverse <span class="highlight">compounding</span>” as we pay ever-increasing amounts of interest on interest. I want to emphasize that even though our course is unwise, Americans will live better ten..."</blockquote>
-<div class="citation-meta"><span class="section-tag">billion. Here’s a breakdown by currency:</span><a href="../letters/berkshire/2006.html" class="citation-link">2006年致股东信 →</a></div>
-</div>
-</div>
-</div>
-<div class="citation-year">
-<h3>1989年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">"...lly be very high, which means that the nsituation in year 2 might be $90 million cash interest plus $69 nmillion accrued interest, and so on as the <span class="highlight">compounding</span> proceeds. nSuch high-rate reborrowing schemes, which a few years ago were nappropriately confined to the waterfront, soon became models of nmodern..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1989.html" class="citation-link">1989年致股东信 →</a></div>
-</div>
-<div class="citation-card">
-<blockquote class="citation-text">"...a show, and you can rely on him nto produce something very special for our shareholders.nn In this letter we've had a lot to say about rates of ncompounding. If you can bear having your own rate turn negative nfor a day - not a pretty thought, I admit - visit Ike on the n29th.nn Warren E. BuffettnMar..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1989.html" class="citation-link">1989年致股东信 →</a></div>
-</div>
-</div>
-</div>
-<div class="citation-year">
-<h3>1985年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">"...any during ntheir reign - with no one examining whether this gain was nattributable simply to many years of retained earnings and the nworkings of <span class="highlight">compound interest</span>.nn If the widget company consistently earned a superior return non capital throughout the period, or if capital employed only ndoubled during the..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1985.html" class="citation-link">1985年致股东信 →</a></div>
-</div>
-</div>
-</div>
-<div class="citation-year">
-<h3>1978年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">"...nt of the longer term record. Because of such ngains, Berkshire’s long-term growth in equity per share has been ngreater than would be indicated by <span class="highlight">compounding</span> the returns from noperating earnings that we have reported annually.nn For example, over the last three years - generally a bonanza nperiod for t..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1978.html" class="citation-link">1978年致股东信 →</a></div>
-</div>
-<div class="citation-card">
-<blockquote class="citation-text">"...rally a bonanza nperiod for the insurance industry, our largest profit producer - nBerkshire’s per share net worth virtually has doubled, thereby ncompounding at about 25% annually through a combination of good noperating earnings and fairly substantial capital gains. Neither nthis 25% equity gain from al..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1978.html" class="citation-link">1978年致股东信 →</a></div>
-</div>
-</div>
-</div>
-<div class="citation-year">
-<h3>1977年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">"...se in earnings per nshare. After all, even a totally dormant savings account will nproduce steadily rising interest earnings each year because of ncompounding.nn Except for special cases (for example, companies with nunusual debt-equity ratios or those with important assets carried nat unrealistic balan..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1977.html" class="citation-link">1977年致股东信 →</a></div>
-</div>
-</div>
-</div>
-</div>
-
-        </article>
-
-    </div>
-    <h2>引用来源（7处）</h2>
-<div class="citations-container">
-<div class="citation-year">
-<h3>2006年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">".... In effect, we’ve used up our bank account and turned to our credit card. And, like everyone who gets in hock, the U.S. will now experience “reverse <span class="highlight">compounding</span>” as we pay ever-increasing amounts of interest on interest. I want to emphasize that even though our course is unwise, Americans will live better ten..."</blockquote>
-<div class="citation-meta"><span class="section-tag">billion. Here’s a breakdown by currency:</span><a href="../letters/berkshire/2006.html" class="citation-link">2006年致股东信 →</a></div>
-</div>
-</div>
-</div>
-<div class="citation-year">
-<h3>1989年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">"...lly be very high, which means that the nsituation in year 2 might be $90 million cash interest plus $69 nmillion accrued interest, and so on as the <span class="highlight">compounding</span> proceeds. nSuch high-rate reborrowing schemes, which a few years ago were nappropriately confined to the waterfront, soon became models of nmodern..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1989.html" class="citation-link">1989年致股东信 →</a></div>
-</div>
-<div class="citation-card">
-<blockquote class="citation-text">"...a show, and you can rely on him nto produce something very special for our shareholders.nn In this letter we've had a lot to say about rates of ncompounding. If you can bear having your own rate turn negative nfor a day - not a pretty thought, I admit - visit Ike on the n29th.nn Warren E. BuffettnMar..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1989.html" class="citation-link">1989年致股东信 →</a></div>
-</div>
-</div>
-</div>
-<div class="citation-year">
-<h3>1985年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">"...any during ntheir reign - with no one examining whether this gain was nattributable simply to many years of retained earnings and the nworkings of <span class="highlight">compound interest</span>.nn If the widget company consistently earned a superior return non capital throughout the period, or if capital employed only ndoubled during the..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1985.html" class="citation-link">1985年致股东信 →</a></div>
-</div>
-</div>
-</div>
-<div class="citation-year">
-<h3>1978年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">"...nt of the longer term record. Because of such ngains, Berkshire’s long-term growth in equity per share has been ngreater than would be indicated by <span class="highlight">compounding</span> the returns from noperating earnings that we have reported annually.nn For example, over the last three years - generally a bonanza nperiod for t..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1978.html" class="citation-link">1978年致股东信 →</a></div>
-</div>
-<div class="citation-card">
-<blockquote class="citation-text">"...rally a bonanza nperiod for the insurance industry, our largest profit producer - nBerkshire’s per share net worth virtually has doubled, thereby ncompounding at about 25% annually through a combination of good noperating earnings and fairly substantial capital gains. Neither nthis 25% equity gain from al..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1978.html" class="citation-link">1978年致股东信 →</a></div>
-</div>
-</div>
-</div>
-<div class="citation-year">
-<h3>1977年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">"...se in earnings per nshare. After all, even a totally dormant savings account will nproduce steadily rising interest earnings each year because of ncompounding.nn Except for special cases (for example, companies with nunusual debt-equity ratios or those with important assets carried nat unrealistic balan..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1977.html" class="citation-link">1977年致股东信 →</a></div>
-</div>
-</div>
-</div>
-</div>
-
-        </article>
-<footer>
-        <p><a href="../index.html">巴菲特知识库</a> | 数据来源：巴菲特致股东信 (1977-2007)</p>
-    </footer>
-</body>
-</html><div class="citations-container">
-<div class="citation-year">
-<h3>2006年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">".... In effect, we’ve used up our bank account and turned to our credit card. And, like everyone who gets in hock, the U.S. will now experience “reverse <span class="highlight">compounding</span>” as we pay ever-increasing amounts of interest on interest. I want to emphasize that even though our course is unwise, Americans will live better ten..."</blockquote>
-<div class="citation-meta"><span class="section-tag">billion. Here’s a breakdown by currency:</span><a href="../letters/berkshire/2006.html" class="citation-link">2006年致股东信 →</a></div>
-</div>
-</div>
-</div>
-<div class="citation-year">
-<h3>1989年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">"...lly be very high, which means that the nsituation in year 2 might be $90 million cash interest plus $69 nmillion accrued interest, and so on as the <span class="highlight">compounding</span> proceeds. nSuch high-rate reborrowing schemes, which a few years ago were nappropriately confined to the waterfront, soon became models of nmodern..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1989.html" class="citation-link">1989年致股东信 →</a></div>
-</div>
-<div class="citation-card">
-<blockquote class="citation-text">"...a show, and you can rely on him nto produce something very special for our shareholders.nn In this letter we've had a lot to say about rates of ncompounding. If you can bear having your own rate turn negative nfor a day - not a pretty thought, I admit - visit Ike on the n29th.nn Warren E. BuffettnMar..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1989.html" class="citation-link">1989年致股东信 →</a></div>
-</div>
-</div>
-</div>
-<div class="citation-year">
-<h3>1985年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">"...any during ntheir reign - with no one examining whether this gain was nattributable simply to many years of retained earnings and the nworkings of <span class="highlight">compound interest</span>.nn If the widget company consistently earned a superior return non capital throughout the period, or if capital employed only ndoubled during the..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1985.html" class="citation-link">1985年致股东信 →</a></div>
-</div>
-</div>
-</div>
-<div class="citation-year">
-<h3>1978年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">"...nt of the longer term record. Because of such ngains, Berkshire’s long-term growth in equity per share has been ngreater than would be indicated by <span class="highlight">compounding</span> the returns from noperating earnings that we have reported annually.nn For example, over the last three years - generally a bonanza nperiod for t..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1978.html" class="citation-link">1978年致股东信 →</a></div>
-</div>
-<div class="citation-card">
-<blockquote class="citation-text">"...rally a bonanza nperiod for the insurance industry, our largest profit producer - nBerkshire’s per share net worth virtually has doubled, thereby ncompounding at about 25% annually through a combination of good noperating earnings and fairly substantial capital gains. Neither nthis 25% equity gain from al..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1978.html" class="citation-link">1978年致股东信 →</a></div>
-</div>
-</div>
-</div>
-<div class="citation-year">
-<h3>1977年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">"...se in earnings per nshare. After all, even a totally dormant savings account will nproduce steadily rising interest earnings each year because of ncompounding.nn Except for special cases (for example, companies with nunusual debt-equity ratios or those with important assets carried nat unrealistic balan..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1977.html" class="citation-link">1977年致股东信 →</a></div>
-</div>
-</div>
-</div>
-</div>
-
-        <h2>引用来源（7处）</h2>
-<div class="citations-container">
-<div class="citation-year">
-<h3>2006年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">".... In effect, we’ve used up our bank account and turned to our credit card. And, like everyone who gets in hock, the U.S. will now experience “reverse <span class="highlight">compounding</span>” as we pay ever-increasing amounts of interest on interest. I want to emphasize that even though our course is unwise, Americans will live better ten..."</blockquote>
-<div class="citation-meta"><span class="section-tag">billion. Here’s a breakdown by currency:</span><a href="../letters/berkshire/2006.html" class="citation-link">2006年致股东信 →</a></div>
-</div>
-</div>
-</div>
-<div class="citation-year">
-<h3>1989年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">"...lly be very high, which means that the nsituation in year 2 might be $90 million cash interest plus $69 nmillion accrued interest, and so on as the <span class="highlight">compounding</span> proceeds. nSuch high-rate reborrowing schemes, which a few years ago were nappropriately confined to the waterfront, soon became models of nmodern..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1989.html" class="citation-link">1989年致股东信 →</a></div>
-</div>
-<div class="citation-card">
-<blockquote class="citation-text">"...a show, and you can rely on him nto produce something very special for our shareholders.nn In this letter we've had a lot to say about rates of ncompounding. If you can bear having your own rate turn negative nfor a day - not a pretty thought, I admit - visit Ike on the n29th.nn Warren E. BuffettnMar..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1989.html" class="citation-link">1989年致股东信 →</a></div>
-</div>
-</div>
-</div>
-<div class="citation-year">
-<h3>1985年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">"...any during ntheir reign - with no one examining whether this gain was nattributable simply to many years of retained earnings and the nworkings of <span class="highlight">compound interest</span>.nn If the widget company consistently earned a superior return non capital throughout the period, or if capital employed only ndoubled during the..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1985.html" class="citation-link">1985年致股东信 →</a></div>
-</div>
-</div>
-</div>
-<div class="citation-year">
-<h3>1978年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">"...nt of the longer term record. Because of such ngains, Berkshire’s long-term growth in equity per share has been ngreater than would be indicated by <span class="highlight">compounding</span> the returns from noperating earnings that we have reported annually.nn For example, over the last three years - generally a bonanza nperiod for t..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1978.html" class="citation-link">1978年致股东信 →</a></div>
-</div>
-<div class="citation-card">
-<blockquote class="citation-text">"...rally a bonanza nperiod for the insurance industry, our largest profit producer - nBerkshire’s per share net worth virtually has doubled, thereby ncompounding at about 25% annually through a combination of good noperating earnings and fairly substantial capital gains. Neither nthis 25% equity gain from al..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1978.html" class="citation-link">1978年致股东信 →</a></div>
-</div>
-</div>
-</div>
-<div class="citation-year">
-<h3>1977年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">"...se in earnings per nshare. After all, even a totally dormant savings account will nproduce steadily rising interest earnings each year because of ncompounding.nn Except for special cases (for example, companies with nunusual debt-equity ratios or those with important assets carried nat unrealistic balan..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1977.html" class="citation-link">1977年致股东信 →</a></div>
-</div>
-</div>
-</div>
-</div>
-
-        </article>
-    </div>
-    <h2>引用来源（7处）</h2>
-<div class="citations-container">
-<div class="citation-year">
-<h3>2006年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">".... In effect, we’ve used up our bank account and turned to our credit card. And, like everyone who gets in hock, the U.S. will now experience “reverse <span class="highlight">compounding</span>” as we pay ever-increasing amounts of interest on interest. I want to emphasize that even though our course is unwise, Americans will live better ten..."</blockquote>
-<div class="citation-meta"><span class="section-tag">billion. Here’s a breakdown by currency:</span><a href="../letters/berkshire/2006.html" class="citation-link">2006年致股东信 →</a></div>
-</div>
-</div>
-</div>
-<div class="citation-year">
-<h3>1989年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">"...lly be very high, which means that the nsituation in year 2 might be $90 million cash interest plus $69 nmillion accrued interest, and so on as the <span class="highlight">compounding</span> proceeds. nSuch high-rate reborrowing schemes, which a few years ago were nappropriately confined to the waterfront, soon became models of nmodern..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1989.html" class="citation-link">1989年致股东信 →</a></div>
-</div>
-<div class="citation-card">
-<blockquote class="citation-text">"...a show, and you can rely on him nto produce something very special for our shareholders.nn In this letter we've had a lot to say about rates of ncompounding. If you can bear having your own rate turn negative nfor a day - not a pretty thought, I admit - visit Ike on the n29th.nn Warren E. BuffettnMar..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1989.html" class="citation-link">1989年致股东信 →</a></div>
-</div>
-</div>
-</div>
-<div class="citation-year">
-<h3>1985年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">"...any during ntheir reign - with no one examining whether this gain was nattributable simply to many years of retained earnings and the nworkings of <span class="highlight">compound interest</span>.nn If the widget company consistently earned a superior return non capital throughout the period, or if capital employed only ndoubled during the..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1985.html" class="citation-link">1985年致股东信 →</a></div>
-</div>
-</div>
-</div>
-<div class="citation-year">
-<h3>1978年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">"...nt of the longer term record. Because of such ngains, Berkshire’s long-term growth in equity per share has been ngreater than would be indicated by <span class="highlight">compounding</span> the returns from noperating earnings that we have reported annually.nn For example, over the last three years - generally a bonanza nperiod for t..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1978.html" class="citation-link">1978年致股东信 →</a></div>
-</div>
-<div class="citation-card">
-<blockquote class="citation-text">"...rally a bonanza nperiod for the insurance industry, our largest profit producer - nBerkshire’s per share net worth virtually has doubled, thereby ncompounding at about 25% annually through a combination of good noperating earnings and fairly substantial capital gains. Neither nthis 25% equity gain from al..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1978.html" class="citation-link">1978年致股东信 →</a></div>
-</div>
-</div>
-</div>
-<div class="citation-year">
-<h3>1977年</h3>
-<div class="citation-list">
-<div class="citation-card">
-<blockquote class="citation-text">"...se in earnings per nshare. After all, even a totally dormant savings account will nproduce steadily rising interest earnings each year because of ncompounding.nn Except for special cases (for example, companies with nunusual debt-equity ratios or those with important assets carried nat unrealistic balan..."</blockquote>
-<div class="citation-meta"><span class="section-tag">投资理念</span><a href="../letters/berkshire/1977.html" class="citation-link">1977年致股东信 →</a></div>
-</div>
-</div>
-</div>
-</div>
-
-        </article>
-
-    </div>
-    
-    <footer>
-        <p><a href="../index.html">巴菲特知识库</a> | 数据来源：巴菲特致股东信 (1977-2007)</p>
-    </footer>
 </body>
 </html>

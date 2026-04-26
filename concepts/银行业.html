@@ -3,37 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>银行业 - 巴菲特知识库</title>
+    <title>银行业 (Banking) - 巴菲特投资概念</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
-        :root { --bg-color: #FFFEF9; --navy: #1B2A4A; --gold: #C9A227; --text: #2C3E50; --secondary: #5D6D7E; --border: #E5E0D8; }
+        :root { --bg-color: #FFFEF9; --navy: #1B2A4A; --gold: #C9A227; --text: #2C3E50; --secondary: #5D6D7E; --border: #E5E0D8; --light-gold: #F5ECD7; }
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: 'Noto Serif SC', Georgia, serif; background: var(--bg-color); color: var(--text); line-height: 1.8; }
+        body { font-family: 'Noto Serif SC', Georgia, serif; background: var(--bg-color); color: var(--text); line-height: 1.9; }
         .container { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
-        header { background: var(--navy); color: white; padding: 40px 30px; text-align: center; }
-        header h1 { font-size: 1.8em; margin-bottom: 10px; }
-        header .meta { color: var(--gold); font-size: 0.95em; margin-top: 10px; }
-        .nav { background: white; border: 1px solid var(--border); padding: 15px 20px; margin-bottom: 30px; border-radius: 8px; text-align: center; }
-        .nav a { color: var(--navy); text-decoration: none; margin: 0 12px; font-size: 0.95em; }
-        .nav a:hover { color: var(--gold); }
-        .content { background: white; border: 1px solid var(--border); border-radius: 12px; padding: 40px; }
-        .content h2 { color: var(--navy); font-size: 1.4em; margin: 35px 0 15px; padding-bottom: 8px; border-bottom: 2px solid var(--gold); }
-        .content h2:first-child { margin-top: 0; }
+        header { background: linear-gradient(135deg, var(--navy) 0%, #2a3f6a 100%); color: white; padding: 50px 30px; text-align: center; }
+        header h1 { font-size: 2.2em; margin-bottom: 10px; }
+        header h1::before { content: '🏦'; margin-right: 15px; }
+        header .meta { color: var(--gold); font-size: 1em; margin-top: 15px; }
+        header .meta span { background: rgba(201, 162, 39, 0.2); padding: 5px 15px; border-radius: 20px; }
+        .nav { background: white; border: 1px solid var(--border); padding: 15px 25px; margin-bottom: 30px; border-radius: 10px; text-align: center; }
+        .nav a { color: var(--navy); text-decoration: none; margin: 0 15px; font-size: 0.95em; padding: 8px 15px; border-radius: 5px; transition: all 0.2s; }
+        .nav a:hover { background: var(--gold); color: white; }
+        .content { background: white; border: 1px solid var(--border); border-radius: 15px; padding: 45px; box-shadow: 0 5px 30px rgba(0,0,0,0.05); }
+        .content h2 { color: var(--navy); font-size: 1.4em; margin: 40px 0 20px; padding-bottom: 12px; border-bottom: 3px solid var(--gold); display: inline-block; }
+        .content h2:first-of-type { margin-top: 0; }
+        .content h3 { color: var(--navy); font-size: 1.15em; margin: 25px 0 12px; }
         .content p { margin: 15px 0; text-align: justify; }
-        .quote { background: var(--navy); color: white; padding: 20px 25px; border-left: 4px solid var(--gold); margin: 25px 0; border-radius: 0 8px 8px 0; }
-        .quote p { margin: 0; font-style: italic; }
-        .quote .source { color: var(--gold); margin-top: 12px; font-size: 0.9em; }
-        .related { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px; }
-        .related a { background: white; border: 1px solid var(--border); padding: 8px 15px; border-radius: 20px; text-decoration: none; color: var(--navy); font-size: 0.9em; transition: all 0.2s; }
-        .related a:hover { background: var(--gold); color: white; border-color: var(--gold); }
+        .content ul, .content ol { margin: 15px 0 15px 25px; }
+        .content li { margin: 10px 0; }
+        .content strong { color: var(--navy); font-weight: 700; }
+        
+        .insight { background: linear-gradient(135deg, #f8f5ee 0%, #fff 100%); border-left: 4px solid #C9A227; padding: 18px 22px; margin: 25px 0; font-style: italic; font-size: 1.05em; }
+        
+        .evolution-timeline { position: relative; padding-left: 35px; margin: 25px 0; }
+        .evolution-timeline::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: #C9A227; }
+        .evolution-point { position: relative; margin-bottom: 25px; }
+        .evolution-point::before { content: ''; position: absolute; left: -38px; top: 6px; width: 12px; height: 12px; border-radius: 50%; background: #C9A227; border: 3px solid white; box-shadow: 0 0 0 3px #C9A227; }
+        .evolution-year { font-weight: 600; color: var(--navy); font-size: 1.05em; }
+        .evolution-desc { color: var(--text); margin-top: 5px; }
+        
+        .case-card { background: #F8F5EE; border-radius: 10px; padding: 25px; margin: 20px 0; border: 1px solid var(--border); }
+        .case-company { font-size: 1.15em; font-weight: 600; color: var(--navy); margin-bottom: 8px; }
+        .case-data { color: #5D6D7E; font-size: 0.95em; margin: 8px 0; }
+        .case-lesson { font-style: italic; margin-top: 15px; padding-top: 15px; border-top: 1px solid #E8E4DB; color: var(--text); }
+        
+        .misconception-block { background: #fff5f5; padding: 20px 25px; border-radius: 10px; margin: 20px 0; border-left: 4px solid #e74c3c; }
+        .misconception-block h4 { color: #c0392b; margin-bottom: 12px; font-size: 1.05em; }
+        .misconception-block p { margin: 8px 0; }
+        
+        .quote-block { background: var(--navy); color: white; padding: 25px 30px; border-left: 5px solid var(--gold); margin: 25px 0; border-radius: 0 12px 12px 0; }
+        .quote-block p { margin: 0; font-style: italic; font-size: 1.05em; line-height: 1.8; }
+        .quote-block footer { color: var(--gold); margin-top: 15px; font-size: 0.9em; font-style: normal; }
+        
+        .topic-group { margin: 25px 0; padding: 20px; background: linear-gradient(135deg, var(--light-gold) 0%, #fff9e6 100%); border-radius: 10px; }
+        .topic-title { font-weight: 600; color: var(--navy); margin-bottom: 10px; font-size: 1.05em; }
+        .topic-desc { color: var(--text); margin-bottom: 12px; font-size: 0.95em; }
+        .topic-years { display: flex; flex-wrap: wrap; gap: 8px; }
+        .topic-years a { background: white; border: 1px solid var(--gold); padding: 5px 14px; border-radius: 18px; text-decoration: none; color: var(--navy); font-size: 0.85em; transition: all 0.2s; }
+        .topic-years a:hover { background: var(--gold); color: white; }
+        
         footer { text-align: center; padding: 40px 20px; color: var(--secondary); border-top: 1px solid var(--border); margin-top: 40px; }
-        footer a { color: var(--navy); text-decoration: none; }
+        @media (max-width: 768px) { .container { padding: 20px 15px; } header { padding: 30px 20px; } header h1 { font-size: 1.7em; } .content { padding: 25px 20px; } .nav a { margin: 5px 8px; display: inline-block; } }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
-        <h1>💡 银行业</h1>
-        <div class="meta">概念 · 被引用 16 次</div>
+        <h1>银行业 (Banking)</h1>
+        <div class="meta"><span>巴菲特投资体系核心概念</span></div>
     </header>
     
     <div class="container">
@@ -41,23 +71,127 @@
             <a href="../index.html">🏠 首页</a>
             <a href="../index-pages/核心思想索引.html">💡 核心思想索引</a>
             <a href="../index-pages/公司索引.html">🏢 公司索引</a>
-            <a href="../index-pages/人物索引.html">👤 人物索引</a>
         </nav>
         
         <article class="content">
-            <h2>概念解析</h2>
-            <p>银行业是伯克希尔重要的投资领域，但巴菲特对银行股保持谨慎态度。</p>
+            <h2>定义与起源</h2>
+            <p><strong>银行业是经营货币信用的行业</strong>——通过吸收存款、发放贷款来赚取利差。巴菲特对银行的态度经历了从"高风险"到"优质长期投资"的转变："我最感兴趣的是那些能够持续产生高资本回报的银行。"</p>
+            <p>巴菲特从<strong>1987年</strong>投资富国银行开始，系统性地投资银行股，并在2008年金融危机中大举投资高盛和美国银行。</p>
             
-            <h2>相关概念</h2>
-            <div class="related">
-                <a href="内在价值.html">内在价值</a>
-                <a href="护城河.html">护城河</a>
+            <div class="insight">
+                银行看起来复杂，但好的银行其实很简单：低成本获取存款，高效率放贷，严格控制信贷风险。这就是全部。
             </div>
+            
+            <h2>核心要义</h2>
+            <ul>
+                <li><strong>银行业务的核心是风险管理</strong>：能在周期波动中控制坏账的银行，才能持续盈利。</li>
+                <li><strong>成本优势是关键</strong>：能够以更低成本获取存款的银行，拥有结构性的竞争优势。</li>
+                <li><strong>不要预测银行股</strong>：银行业的周期性强，尝试精确预测盈利往往是徒劳的。</li>
+                <li><strong>管理层至关重要</strong>：银行可以通过激进或保守的贷款政策来操纵短期盈利。</li>
+                <li><strong>警惕高杠杆</strong>：银行业务天然高杠杆，这意味着小错误可能导致大损失。</li>
+            </ul>
+            
+            <h2>思想演变</h2>
+            <div class="evolution-timeline">
+                <div class="evolution-point">
+                    <div class="evolution-year">早期谨慎（1980年代前）</div>
+                    <div class="evolution-desc">早期对银行持谨慎态度，认为高杠杆和周期性使其风险太大。</div>
+                </div>
+                <div class="evolution-point">
+                    <div class="evolution-year">理念转变（1987年后）</div>
+                    <div class="evolution-desc">1987年投资富国银行后，认识到优质银行的管理层能够控制风险，创造持续回报。</div>
+                </div>
+                <div class="evolution-point">
+                    <div class="evolution-year">金融危机检验（2008年）</div>
+                    <div class="evolution-desc">金融危机中投资高盛、美国银行，证明了他对优质银行的信任，但也认识到银行业的风险。</div>
+                </div>
+            </div>
+            
+            <h2>实战案例</h2>
+            <div class="case-card">
+                <div class="case-company">富国银行</div>
+                <div class="case-data">1987年开始投资；到2016年成为伯克希尔最大持仓之一；拥有强大的分销网络和成本优势</div>
+                <div class="case-lesson">富国银行证明了优质银行能够创造长期价值。关键在于其社区银行模式带来的客户粘性和成本控制。</div>
+            </div>
+            
+            <div class="case-card">
+                <div class="case-company">高盛</div>
+                <div class="case-data">2008年投资50亿美元优先股；附带认股权证；2011年巴菲特行使认股权证获利超10亿</div>
+                <div class="case-lesson">这笔投资是"危机投资"的经典案例：在市场最恐慌时，以优惠条款投资优质机构。</div>
+            </div>
+            
+            <div class="case-card">
+                <div class="case-company">美国银行</div>
+                <div class="case-data">2011年投资50亿美元；附带认股权证；2021年认股权证到期前和解，获得超70亿美元价值</div>
+                <div class="case-lesson">再次证明巴菲特投资银行的逻辑：通过优先股获得安全性，通过认股权证获得上行空间。</div>
+            </div>
+            
+            <h2>常见误解</h2>
+            <div class="misconception-block">
+                <h4>❌ 误解一：所有银行都一样</h4>
+                <p><strong>人们以为</strong>：银行业务模式基本相同，选哪家都一样。</p>
+                <p><strong>巴菲特说</strong>：银行之间的差异巨大。管理水平、网点覆盖、成本控制、风控文化的差异决定了好银行和坏银行的天壤之别。</p>
+            </div>
+            
+            <div class="misconception-block">
+                <h4>❌ 误解二：银行规模越大越安全</h4>
+                <p><strong>人们以为</strong>："大到不能倒"的银行更安全。</p>
+                <p><strong>巴菲特说</strong>：规模本身不是护城河。规模大的银行往往面临更复杂的监管和竞争，反而可能更难管理。</p>
+            </div>
+            
+            <div class="misconception-block">
+                <h4>❌ 误解三：银行盈利稳定</h4>
+                <p><strong>人们以为</strong>：银行盈利可以稳定预测。</p>
+                <p><strong>巴菲特说</strong>：银行业务具有强周期性。经济衰退时，贷款违约率上升，银行盈利可能大幅下降甚至亏损。</p>
+            </div>
+            
+            <h2>精华原话</h2>
+            <div class="quote-block">
+                <p>"投资银行股的关键不是宏观经济预测，而是找到那些在好年和坏年都能理性管理的银行。"</p>
+                <footer>—— 1990年致股东信</footer>
+            </div>
+            
+            <div class="quote-block">
+                <p>"银行业的'智力'在于评估信贷风险。那些能够持续识别好借款人的银行，才能长期盈利。"</p>
+                <footer>—— 2008年致股东信</footer>
+            </div>
+            
+            <div class="quote-block">
+                <p>"我对银行业的看法很简单：寻找那些能够低成本获取存款、高效率放贷的银行，并确保它们的管理层理性对待风险。"</p>
+                <footer>—— 1990年致股东信</footer>
+            </div>
+            
+            <div class="quote-block">
+                <p>"我们投资高盛不是因为我们喜欢银行业务，而是因为我们喜欢高盛这家公司。在我们看来，这是有区别的。"</p>
+                <footer>—— 2008年致股东信</footer>
+            </div>
+            
+            <h2>延伸阅读</h2>
+            <p>银行业概念在信件中的讨论分布，按论点组织：</p>
+            
+            <div class="topic-group">
+                <div class="topic-title">银行业的风险</div>
+                <div class="topic-desc">银行业的高杠杆和周期性风险</div>
+                <div class="topic-years">
+                    <a href="../letters/berkshire/1990.html">1990</a>
+                    <a href="../letters/berkshire/2008.html">2008</a>
+                </div>
+            </div>
+            
+            <div class="topic-group">
+                <div class="topic-title">银行投资案例</div>
+                <div class="topic-desc">富国银行等投资案例分析</div>
+                <div class="topic-years">
+                    <a href="../letters/berkshire/1990.html">1990</a>
+                    <a href="../letters/berkshire/2011.html">2011</a>
+                </div>
+            </div>
+            
         </article>
     </div>
     
     <footer>
-        <p><a href="../index.html">巴菲特知识库</a> | 数据来源：Berkshire Hathaway Letters</p>
+        <p>巴菲特知识库 | 数据来源：Berkshire Hathaway Letters to Shareholders</p>
     </footer>
 </body>
 </html>

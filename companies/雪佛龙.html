@@ -3,63 +3,259 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>雪佛龙 - 巴菲特知识库</title>
+    <title>雪佛龙 - 巴菲特投资案例</title>
     <style>
-        :root { --bg-color: #FFFEF9; --navy: #1B2A4A; --gold: #C9A227; --text: #2C3E50; --secondary: #5D6D7E; --border: #E5E0D8; }
+        :root { --navy: #1B2A4A; --gold: #C9A227; --cream: #F8F5EE; --secondary: #5D6D7E; --border: #E5E0D8; --light-gold: #F5ECD7; }
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: 'Noto Serif SC', Georgia, serif; background: var(--bg-color); color: var(--text); line-height: 1.8; }
+        body { font-family: 'Noto Serif SC', Georgia, serif; background: #FFFEF9; color: #2C3E50; line-height: 1.9; }
         .container { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
-        header { background: var(--navy); color: white; padding: 40px 30px; text-align: center; }
-        header h1 { font-size: 1.8em; margin-bottom: 10px; }
-        header .meta { color: var(--gold); font-size: 0.95em; margin-top: 10px; }
-        .nav { background: white; border: 1px solid var(--border); padding: 15px 20px; margin-bottom: 30px; border-radius: 8px; text-align: center; }
-        .nav a { color: var(--navy); text-decoration: none; margin: 0 12px; font-size: 0.95em; }
-        .nav a:hover { color: var(--gold); }
-        .content { background: white; border: 1px solid var(--border); border-radius: 12px; padding: 40px; }
-        .content h2 { color: var(--navy); font-size: 1.4em; margin: 35px 0 15px; padding-bottom: 8px; border-bottom: 2px solid var(--gold); }
-        .content h2:first-child { margin-top: 0; }
-        .content p { margin: 15px 0; text-align: justify; }
-        .quote { background: var(--navy); color: white; padding: 20px 25px; border-left: 4px solid var(--gold); margin: 25px 0; border-radius: 0 8px 8px 0; }
-        .quote p { margin: 0; font-style: italic; }
-        .quote .source { color: var(--gold); margin-top: 12px; font-size: 0.9em; }
-        .related { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px; }
-        .related a { background: white; border: 1px solid var(--border); padding: 8px 15px; border-radius: 20px; text-decoration: none; color: var(--navy); font-size: 0.9em; transition: all 0.2s; }
-        .related a:hover { background: var(--gold); color: white; border-color: var(--gold); }
-        footer { text-align: center; padding: 40px 20px; color: var(--secondary); border-top: 1px solid var(--border); margin-top: 40px; }
+        header { background: linear-gradient(135deg, var(--navy) 0%, #2a3f6a 100%); color: white; padding: 50px 30px; text-align: center; border-radius: 15px; margin-bottom: 30px; }
+        header h1 { font-size: 2.2em; margin-bottom: 8px; }
+        header h1::before { content: '⛽ '; }
+        .en-name { color: rgba(255,255,255,0.7); font-size: 1.1em; }
+        .meta { color: var(--gold); margin-top: 15px; }
+        .meta span { background: rgba(201, 162, 39, 0.2); padding: 5px 15px; border-radius: 20px; }
+        .nav { background: white; border: 1px solid var(--border); padding: 15px 25px; margin-bottom: 30px; border-radius: 10px; text-align: center; }
+        .nav a { color: var(--navy); text-decoration: none; margin: 0 15px; padding: 8px 15px; border-radius: 5px; transition: all 0.2s; }
+        .nav a:hover { background: var(--gold); color: white; }
+        .content { background: white; border: 1px solid var(--border); border-radius: 15px; padding: 40px; }
+        .section { margin-bottom: 40px; padding-bottom: 35px; border-bottom: 1px solid var(--border); }
+        .section:last-child { border-bottom: none; margin-bottom: 0; }
+        h2 { color: var(--navy); font-size: 1.4em; margin: 0 0 20px; padding-bottom: 10px; border-bottom: 3px solid var(--gold); display: inline-block; }
+        .overview-card { background: linear-gradient(135deg, var(--navy) 0%, #2C3E50 100%); color: white; padding: 25px; border-radius: 12px; margin: 20px 0; }
+        .overview-summary { font-size: 1.15em; margin-bottom: 15px; line-height: 1.6; }
+        .overview-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin-top: 15px; }
+        .stat-item { text-align: center; background: rgba(255,255,255,0.1); padding: 12px; border-radius: 8px; }
+        .stat-value { font-size: 1.4em; font-weight: 600; color: var(--gold); }
+        .stat-label { font-size: 0.8em; opacity: 0.8; }
+        .logic-point { display: flex; margin: 18px 0; padding: 18px; background: var(--cream); border-radius: 10px; }
+        .logic-number { font-size: 1.6em; font-weight: 700; color: var(--gold); margin-right: 18px; min-width: 35px; }
+        .logic-content { flex: 1; }
+        .logic-title { font-weight: 600; color: var(--navy); margin-bottom: 6px; font-size: 1.05em; }
+        .logic-desc { color: #555; font-size: 0.95em; }
+        .cognition-timeline { position: relative; padding-left: 35px; margin: 20px 0; }
+        .cognition-timeline::before { content: ''; position: absolute; left: 8px; top: 0; bottom: 0; width: 3px; background: var(--gold); }
+        .cognition-point { position: relative; margin-bottom: 28px; padding-left: 25px; }
+        .cognition-point::before { content: ''; position: absolute; left: -30px; top: 6px; width: 14px; height: 14px; border-radius: 50%; background: var(--gold); border: 3px solid white; box-shadow: 0 0 0 3px var(--gold); }
+        .cognition-year { font-weight: 700; color: var(--gold); font-size: 1.1em; }
+        .cognition-shift { background: var(--light-gold); padding: 8px 15px; border-radius: 6px; margin: 8px 0; font-size: 0.9em; }
+        .cognition-shift strong { color: var(--navy); }
+        .data-compare { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 20px 0; }
+        .data-card { background: var(--cream); padding: 20px; border-radius: 10px; }
+        .data-card h4 { color: var(--navy); margin-bottom: 12px; font-size: 1em; }
+        .data-row { display: flex; justify-content: space-between; padding: 6px 0; border-bottom: 1px dashed var(--border); }
+        .data-row:last-child { border-bottom: none; }
+        .data-label { color: var(--secondary); font-size: 0.9em; }
+        .data-value { font-weight: 600; color: var(--navy); }
+        .lesson-card { background: var(--cream); border-left: 5px solid var(--gold); padding: 22px; margin: 20px 0; border-radius: 0 10px 10px 0; }
+        .lesson-title { font-weight: 600; color: var(--navy); margin-bottom: 10px; font-size: 1.05em; }
+        .lesson-desc { color: #555; font-size: 0.95em; }
+        .quote { background: var(--navy); color: white; padding: 22px 28px; border-left: 5px solid var(--gold); margin: 20px 0; border-radius: 0 12px 12px 0; position: relative; }
+        .quote::before { content: '"'; position: absolute; top: 8px; left: 12px; font-size: 3.5em; color: var(--gold); opacity: 0.3; }
+        .quote p { margin: 0; font-style: italic; font-size: 1.02em; padding-left: 28px; }
+        .quote footer { color: var(--gold); margin-top: 12px; font-size: 0.9em; padding-left: 28px; font-style: normal; }
+        .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin: 15px 0; }
+        .related-item { background: var(--cream); padding: 14px; border-radius: 8px; text-decoration: none; color: var(--navy); transition: all 0.3s; text-align: center; font-size: 0.95em; }
+        .related-item:hover { background: var(--gold); color: white; transform: translateY(-2px); }
+        .topic-section { margin: 22px 0; padding: 18px; background: var(--cream); border-radius: 10px; }
+        .topic-title { font-weight: 600; color: var(--navy); margin-bottom: 10px; font-size: 1.05em; }
+        .topic-desc { color: #666; font-size: 0.9em; margin-bottom: 12px; }
+        .topic-years { display: flex; flex-wrap: wrap; gap: 8px; }
+        .topic-years a { background: white; padding: 5px 14px; border-radius: 15px; text-decoration: none; color: var(--secondary); font-size: 0.85em; border: 1px solid var(--border); }
+        .topic-years a:hover { background: var(--gold); color: white; border-color: var(--gold); }
+        .backlinks { margin-top: 35px; padding-top: 25px; border-top: 2px dashed var(--gold); }
+        .backlinks h3 { color: var(--navy); font-size: 1.2em; margin-bottom: 15px; }
+        .backlinks-intro { color: var(--secondary); margin-bottom: 15px; font-size: 0.9em; }
+        .backlinks-list { display: flex; flex-wrap: wrap; gap: 10px; }
+        .backlinks-list a { background: var(--cream); border: 1px solid var(--gold); padding: 6px 14px; border-radius: 18px; text-decoration: none; color: var(--navy); font-size: 0.85em; transition: all 0.3s; }
+        .backlinks-list a:hover { background: var(--gold); color: white; }
+        footer { text-align: center; padding: 35px 20px; color: var(--secondary); border-top: 1px solid var(--border); margin-top: 35px; }
         footer a { color: var(--navy); text-decoration: none; }
+        @media (max-width: 768px) { .container { padding: 20px 15px; } header { padding: 30px 20px; } header h1 { font-size: 1.7em; } .content { padding: 25px 18px; } .overview-stats { grid-template-columns: repeat(2, 1fr); } .data-compare { grid-template-columns: 1fr; } .nav a { margin: 5px 8px; display: inline-block; } }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <h1>🏢 雪佛龙</h1>
-        <div class="en-name">Chevron</div>
-        <div class="meta">公司 · 被引用 14 次</div>
-    </header>
-    
     <div class="container">
+        <header>
+            <h1>雪佛龙</h1>
+            <div class="en-name">Chevron Corporation (CVX)</div>
+            <div class="meta"><span>能源 · 传统能源持仓</span></div>
+        </header>
+        
         <nav class="nav">
             <a href="../index.html">🏠 首页</a>
-            <a href="../index-pages/核心思想索引.html">💡 核心思想索引</a>
             <a href="../index-pages/公司索引.html">🏢 公司索引</a>
-            <a href="../index-pages/人物索引.html">👤 人物索引</a>
+            <a href="../index-pages/核心思想索引.html">💡 核心思想</a>
         </nav>
         
         <article class="content">
-            <h2>公司概述</h2>
-            <p>全球能源巨头。</p>
+            <div class="overview-card">
+                <div class="overview-summary">
+                    <strong>"能源转型中的过渡机会"</strong>——巴菲特在2020-2022年大举买入雪佛龙，看重的是其稳定的现金流、高股息和能源安全背景下的战略价值。
+                </div>
+                <div class="overview-stats">
+                    <div class="stat-item">
+                        <div class="stat-value">2020</div>
+                        <div class="stat-label">开始建仓</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">~300亿</div>
+                        <div class="stat-label">峰值持仓(美元)</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">高</div>
+                        <div class="stat-label">股息收益率</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">2023</div>
+                        <div class="stat-label">开始减持</div>
+                    </div>
+                </div>
+            </div>
             
-            <h2>相关概念</h2>
-            <div class="related">
-                <a href="../concepts/护城河.html">护城河</a>
-                <a href="../concepts/管理层.html">管理层</a>
-                <a href="../concepts/伯克希尔哈撒韦.html">伯克希尔</a>
+            <div class="section">
+                <h2>投资逻辑</h2>
+                
+                <div class="logic-point">
+                    <div class="logic-number">1</div>
+                    <div class="logic-content">
+                        <div class="logic-title">"能源安全"的战略价值</div>
+                        <div class="logic-desc">
+                            2020年后，全球对能源安全的重视程度大幅提升。雪佛龙作为美国本土最大的石油公司之一，在地缘政治紧张的背景下具有战略价值。
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="logic-point">
+                    <div class="logic-number">2</div>
+                    <div class="logic-content">
+                        <div class="logic-title">高股息的"价值陷阱"反转</div>
+                        <div class="logic-desc">
+                            2020年疫情时油价暴跌，雪佛龙股价跌至低位，但股息率高达6-8%。巴菲特看到了"高股息+低估值"的双重机会——当油价回升时，股价和股息都会反弹。
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="logic-point">
+                    <div class="logic-number">3</div>
+                    <div class="logic-content">
+                        <div class="logic-title">稳健的资产负债表</div>
+                        <div class="logic-desc">
+                            相比一些高杠杆的能源公司，雪佛龙在行业低谷期仍能保持相对稳健的财务状况。这种韧性让它能在行业逆境中存活并等待复苏。
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="logic-point">
+                    <div class="logic-number">4</div>
+                    <div class="logic-content">
+                        <div class="logic-title">"旧经济"的逆袭</div>
+                        <div class="logic-desc">
+                            疫情后通胀飙升，传统能源股成为"抗通胀"配置。雪佛龙等石油巨头的股价在2021-2022年大幅上涨，巴菲特的买入时机堪称完美。
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="logic-point">
+                    <div class="logic-number">5</div>
+                    <div class="logic-content">
+                        <div class="logic-title">对冲"旧能源"的最后阵地</div>
+                        <div class="logic-desc">
+                            在全球推动新能源的背景下，巴菲特仍买入传统能源股。这体现了他"不教条"的投资哲学——即使看好长期能源转型，短期现金回报同样有价值。
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2>认知演进</h2>
+                <div class="cognition-timeline">
+                    <div class="cognition-point">
+                        <span class="cognition-year">2020：疫情冲击 → 逆势建仓</span>
+                        <div class="cognition-shift"><strong>从</strong> 能源行业观望 <strong>到</strong> 大举买入</div>
+                        <p>2020年疫情冲击能源行业，油价暴跌。但巴菲特看到了机会——高股息+低估值+能源安全战略价值。他开始建仓雪佛龙。</p>
+                    </div>
+                    
+                    <div class="cognition-point">
+                        <span class="cognition-year">2021-2022：通胀飙升 → 持仓增值</span>
+                        <div class="cognition-shift"><strong>从</strong> 小仓位 <strong>到</strong> 重仓持有</div>
+                        <p>受益于通胀和能源价格上涨，雪佛龙股价大幅上涨。伯克希尔持仓市值一度超过300亿美元，成为重要持仓之一。</p>
+                    </div>
+                    
+                    <div class="cognition-point">
+                        <span class="cognition-year">2023：估值高企 → 适度减持</span>
+                        <div class="cognition-shift"><strong>从</strong> 大幅增持 <strong>到</strong> 获利了结</div>
+                        <p>当能源股估值上升至较高水平后，巴菲特开始减持。这再次证明了他的原则：当好公司变得昂贵时，卖出也是合理决策。</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2>关键数据</h2>
+                <div class="data-compare">
+                    <div class="data-card">
+                        <h4>📊 买入时机(2020)</h4>
+                        <div class="data-row"><span class="data-label">股价</span><span class="data-value">约70-80美元</span></div>
+                        <div class="data-row"><span class="data-label">股息率</span><span class="data-value">6-8%</span></div>
+                        <div class="data-row"><span class="data-label">市场情绪</span><span class="data-value">极度悲观</span></div>
+                    </div>
+                    <div class="data-card">
+                        <h4>📈 峰值持仓(2022)</h4>
+                        <div class="data-row"><span class="data-label">股价</span><span class="data-value">约180美元</span></div>
+                        <div class="data-row"><span class="data-label">持仓市值</span><span class="data-value">约300亿美元</span></div>
+                        <div class="data-row"><span class="data-label">持仓占比</span><span class="data-value">约9%</span></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2>经验教训</h2>
+                
+                <div class="lesson-card">
+                    <div class="lesson-title">💡 "旧经济"也有投资机会</div>
+                    <div class="lesson-desc">
+                        在ESG投资大行其道的背景下，巴菲特逆势买入传统能源股。这提醒我们：投资不应该被"政治正确"绑架——现金流和估值才是核心。
+                    </div>
+                </div>
+                
+                <div class="lesson-card">
+                    <div class="lesson-title">💡 逆向投资的时机把握</div>
+                    <div class="lesson-desc">
+                        2020年买入雪佛龙时，市场对能源行业极度悲观。但巴菲特的时机把握——在别人恐惧时贪婪——再次证明了他的投资纪律。
+                    </div>
+                </div>
+                
+                <div class="lesson-card">
+                    <div class="lesson-title">💡 "卖出"不等于"看空"</div>
+                    <div class="lesson-desc">
+                        2023年巴菲特减持雪佛龙，不是因为看空能源行业，而是因为估值上升后投资价值下降。这种"动态平衡"是长期投资成功的关键。
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2>相关概念</h2>
+                <div class="related-grid">
+                    <a href="../concepts/逆向投资.html" class="related-item">🔄 逆向投资</a>
+                    <a href="../concepts/能源投资.html" class="related-item">⛽ 能源投资</a>
+                    <a href="../concepts/高股息策略.html" class="related-item">💰 高股息策略</a>
+                    <a href="../concepts/价值投资.html" class="related-item">📊 价值投资</a>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2>相关公司</h2>
+                <div class="related-grid">
+                    <a href="西方石油.html" class="related-item">西方石油<br><small>能源持仓对比</small></a>
+                    <a href="比亚迪.html" class="related-item">比亚迪<br><small>新能源对比</small></a>
+                </div>
             </div>
         </article>
+        
+        <footer>
+            <p><a href="../index.html">巴菲特知识库</a> | 数据来源：巴菲特致股东信 (2020-2024)</p>
+        </footer>
     </div>
-    
-    <footer>
-        <p><a href="../index.html">巴菲特知识库</a> | 数据来源：Berkshire Hathaway Letters</p>
-    </footer>
 </body>
 </html>
