@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>时间 (Time) - 巴菲特投资概念</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root { --bg-color: #FFFEF9; --navy: #1B2A4A; --gold: #C9A227; --text: #2C3E50; --secondary: #5D6D7E; --border: #E5E0D8; --light-gold: #F5ECD7; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Noto Serif SC', Georgia, serif; background: var(--bg-color); color: var(--text); line-height: 1.9; }
+        .container { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
+        header { background: linear-gradient(135deg, var(--navy) 0%, #2a3f6a 100%); color: white; padding: 50px 30px; text-align: center; }
+        header h1 { font-size: 2.2em; margin-bottom: 10px; }
+        header h1::before { content: '⏳'; margin-right: 15px; }
+        header .meta { color: var(--gold); font-size: 1em; margin-top: 15px; }
+        header .meta span { background: rgba(201, 162, 39, 0.2); padding: 5px 15px; border-radius: 20px; }
+        .nav { background: white; border: 1px solid var(--border); padding: 15px 25px; margin-bottom: 30px; border-radius: 10px; text-align: center; }
+        .nav a { color: var(--navy); text-decoration: none; margin: 0 15px; font-size: 0.95em; padding: 8px 15px; border-radius: 5px; transition: all 0.2s; }
+        .nav a:hover { background: var(--gold); color: white; }
+        .content { background: white; border: 1px solid var(--border); border-radius: 15px; padding: 45px; box-shadow: 0 5px 30px rgba(0,0,0,0.05); }
+        .content h2 { color: var(--navy); font-size: 1.4em; margin: 40px 0 20px; padding-bottom: 12px; border-bottom: 3px solid var(--gold); display: inline-block; }
+        .content h2:first-of-type { margin-top: 0; }
+        .content h3 { color: var(--navy); font-size: 1.15em; margin: 25px 0 12px; }
+        .content p { margin: 15px 0; text-align: justify; }
+        .content ul, .content ol { margin: 15px 0 15px 25px; }
+        .content li { margin: 10px 0; }
+        .content strong { color: var(--navy); font-weight: 700; }
+        .insight { background: linear-gradient(135deg, #f8f5ee 0%, #fff 100%); border-left: 4px solid #C9A227; padding: 18px 22px; margin: 25px 0; font-style: italic; font-size: 1.05em; }
+        .evolution-timeline { position: relative; padding-left: 35px; margin: 25px 0; }
+        .evolution-timeline::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: #C9A227; }
+        .evolution-point { position: relative; margin-bottom: 25px; }
+        .evolution-point::before { content: ''; position: absolute; left: -38px; top: 6px; width: 12px; height: 12px; border-radius: 50%; background: #C9A227; border: 3px solid white; box-shadow: 0 0 0 3px #C9A227; }
+        .evolution-year { font-weight: 600; color: var(--navy); font-size: 1.05em; }
+        .evolution-desc { color: var(--text); margin-top: 5px; }
+        .case-card { background: #F8F5EE; border-radius: 10px; padding: 25px; margin: 20px 0; border: 1px solid var(--border); }
+        .case-company { font-size: 1.15em; font-weight: 600; color: var(--navy); margin-bottom: 8px; }
+        .case-data { color: #5D6D7E; font-size: 0.95em; margin: 8px 0; }
+        .case-lesson { font-style: italic; margin-top: 15px; padding-top: 15px; border-top: 1px solid #E8E4DB; color: var(--text); }
+        .misconception-block { background: #fff5f5; padding: 20px 25px; border-radius: 10px; margin: 20px 0; border-left: 4px solid #e74c3c; }
+        .misconception-block h4 { color: #c0392b; margin-bottom: 12px; font-size: 1.05em; }
+        .misconception-block p { margin: 8px 0; }
+        .quote-block { background: var(--navy); color: white; padding: 25px 30px; border-left: 5px solid var(--gold); margin: 25px 0; border-radius: 0 12px 12px 0; }
+        .quote-block p { margin: 0; font-style: italic; font-size: 1.05em; line-height: 1.8; }
+        .quote-block footer { color: var(--gold); margin-top: 15px; font-size: 0.9em; font-style: normal; }
+        .topic-group { margin: 25px 0; padding: 20px; background: linear-gradient(135deg, var(--light-gold) 0%, #fff9e6 100%); border-radius: 10px; }
+        .topic-title { font-weight: 600; color: var(--navy); margin-bottom: 10px; font-size: 1.05em; }
+        .topic-desc { color: var(--text); margin-bottom: 12px; font-size: 0.95em; }
+        .topic-years { display: flex; flex-wrap: wrap; gap: 8px; }
+        .topic-years a { background: white; border: 1px solid var(--gold); padding: 5px 14px; border-radius: 18px; text-decoration: none; color: var(--navy); font-size: 0.85em; transition: all 0.2s; }
+        .topic-years a:hover { background: var(--gold); color: white; }
+        footer { text-align: center; padding: 40px 20px; color: var(--secondary); border-top: 1px solid var(--border); margin-top: 40px; }
+        @media (max-width: 768px) { .container { padding: 20px 15px; } header { padding: 30px 20px; } header h1 { font-size: 1.7em; } .content { padding: 25px 20px; } .nav a { margin: 5px 8px; display: inline-block; } }
+        .sidebar { position: fixed; left: 0; top: 0; height: 100vh; width: 60px; background: #1B2A4A; z-index: 1000; transition: width 0.3s ease; display: flex; flex-direction: column; overflow: hidden; }
+        .sidebar.expanded { width: 220px; }
+        .sidebar-toggle { display: flex; align-items: center; justify-content: center; width: 100%; height: 60px; background: transparent; border: none; color: #C9A227; font-size: 1.5em; cursor: pointer; transition: all 0.2s; flex-shrink: 0; }
+        .sidebar-toggle:hover { background: rgba(201, 162, 39, 0.2); }
+        .sidebar-nav { flex: 1; overflow-y: auto; overflow-x: hidden; padding: 10px 0; }
+        .sidebar-nav::-webkit-scrollbar { width: 3px; }
+        .sidebar-nav::-webkit-scrollbar-thumb { background: rgba(201, 162, 39, 0.3); }
+        .nav-item { display: flex; align-items: center; padding: 12px 15px; color: white; text-decoration: none; font-size: 0.95em; transition: all 0.2s; white-space: nowrap; overflow: hidden; }
+        .nav-item .icon { font-size: 1.3em; width: 30px; flex-shrink: 0; text-align: center; }
+        .nav-item .label { opacity: 0; margin-left: 12px; transition: opacity 0.2s; overflow: hidden; text-overflow: ellipsis; }
+        .sidebar.expanded .nav-item .label { opacity: 1; }
+        .nav-item:hover { background: rgba(201, 162, 39, 0.15); color: #C9A227; }
+        .nav-item:hover .icon { transform: scale(1.1); }
+        .wisdom-module { border-top: 1px solid rgba(201, 162, 39, 0.3); padding: 15px; background: rgba(0, 0, 0, 0.2); flex-shrink: 0; max-height: 200px; overflow: hidden; display: flex; flex-direction: column; }
+        .wisdom-title { color: #C9A227; font-size: 0.85em; font-weight: bold; margin-bottom: 10px; display: flex; align-items: center; gap: 6px; opacity: 0; transition: opacity 0.2s; }
+        .sidebar.expanded .wisdom-title { opacity: 1; }
+        .wisdom-content { flex: 1; overflow: hidden; }
+        .wisdom-quote { color: white; font-size: 0.85em; line-height: 1.6; margin-bottom: 8px; opacity: 0; transition: opacity 0.2s; font-style: italic; }
+        .sidebar.expanded .wisdom-quote { opacity: 1; }
+        .wisdom-source { color: #C9A227; font-size: 0.8em; text-decoration: none; opacity: 0; transition: opacity 0.2s; display: block; cursor: pointer; }
+        .sidebar.expanded .wisdom-source { opacity: 1; }
+        .wisdom-source:hover { text-decoration: underline; }
+        .wisdom-refresh { color: white; background: rgba(201, 162, 39, 0.2); border: 1px solid rgba(201, 162, 39, 0.4); padding: 6px 12px; border-radius: 15px; font-size: 0.75em; cursor: pointer; margin-top: 10px; opacity: 0; transition: all 0.2s; display: flex; align-items: center; justify-content: center; gap: 5px; }
+        .sidebar.expanded .wisdom-refresh { opacity: 1; }
+        .wisdom-refresh:hover { background: rgba(201, 162, 39, 0.4); }
+        .search-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 2000; justify-content: center; align-items: center; }
+        .search-box { background: white; padding: 30px; border-radius: 15px; max-width: 500px; width: 90%; text-align: center; }
+        .search-box input { width: 100%; padding: 15px; font-size: 1.1em; border: 2px solid var(--gold); border-radius: 8px; margin-bottom: 15px; }
+        .search-hint { color: var(--secondary); font-size: 0.9em; }
+        .sidebar-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 999; }
+        .mobile-menu-btn { display: none; position: fixed; top: 15px; left: 15px; z-index: 998; background: var(--navy); color: var(--gold); border: none; padding: 10px 15px; border-radius: 8px; font-size: 1.2em; cursor: pointer; }
+        @media (max-width: 768px) { .sidebar { transform: translateX(-100%); } .sidebar.open { transform: translateX(0); width: 220px; } .mobile-menu-btn { display: block; } .sidebar-overlay.active { display: block; } .main-wrapper { margin-left: 0 !important; } }
+        @media (min-width: 769px) { .main-wrapper { margin-left: 60px; transition: margin-left 0.3s; } }
+    </style>
+</head>
+<body>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+    <aside class="sidebar" id="sidebar">
+        <button class="sidebar-toggle" id="sidebarToggle" title="展开/收起菜单"><span id="toggleIcon">☰</span></button>
+        <nav class="sidebar-nav">
+            <a href="../index.html" class="nav-item">
+                <span class="icon">🏠</span>
+                <span class="label">首页</span>
+            </a>
+            <a href="../index-pages/巴菲特致股东信总览.html" class="nav-item"><span class="icon">📝</span><span class="label">信件总览</span></a>
+            <a href="../index-pages/核心思想索引.html" class="nav-item"><span class="icon">💡</span><span class="label">核心概念</span></a>
+            <a href="../index-pages/公司索引.html" class="nav-item"><span class="icon">🏢</span><span class="label">公司索引</span></a>
+            <a href="../index-pages/人物索引.html" class="nav-item"><span class="icon">👤</span><span class="label">人物与网络</span></a>
+            <a href="../index-pages/时间线.html" class="nav-item"><span class="icon">📅</span><span class="label">投资时间线</span></a>
+            <a href="../index-pages/概念关系图谱.html" class="nav-item"><span class="icon">🕸️</span><span class="label">概念图谱</span></a>
+            <a href="../index-pages/知识树.html" class="nav-item"><span class="icon">🌳</span><span class="label">知识树</span></a>
+            <a href="#" class="nav-item" id="searchBtn"><span class="icon">🔍</span><span class="label">搜索</span></a>
+        </nav>
+        <div class="wisdom-module">
+            <div class="wisdom-title">💭 随机智慧</div>
+            <div class="wisdom-content">
+                <p class="wisdom-quote" id="wisdomQuote">"时间是优秀企业的朋友，是平庸企业的敌人。"</p>
+                <a class="wisdom-source" id="wisdomSource" href="../concepts/复利.html">— 复利</a>
+            </div>
+            <button class="wisdom-refresh" id="wisdomRefresh"><span>🔄</span> 换一条</button>
+        </div>
+    </aside>
+    <div class="search-modal" id="searchModal"><div class="search-box"><input type="text" placeholder="搜索概念、公司、人物..." id="searchInput" autofocus><p class="search-hint">按 ESC 或点击外部区域关闭</p></div></div>
+    
+    <header>
+        <h1>时间 (Time)</h1>
+        <div class="meta"><span>巴菲特投资体系核心概念</span></div>
+    </header>
+    <div class="main-wrapper" id="mainWrapper">
+    <div class="container"><article class="content">
+        <h2>定义与起源</h2>
+        <p><strong>时间是价值投资的核心变量</strong>——它既是投资者最好的朋友，也是复利得以发挥威力的舞台。巴菲特常说："如果你不想持有一只股票十年，那就不要考虑持有它十分钟。"</p>
+        <p>时间的价值在于两个方面：<strong>第一</strong>，好企业需要时间来展现其价值；<strong>第二</strong>，复利效应需要时间来兑现。巴菲特的财富绝大部分是在50岁之后积累的，这正是时间力量的最好证明。</p>
+        
+        <div class="insight">
+            投资不是一场短跑，而是一场与时间为友的马拉松。大多数人高估了自己一年内能做的事，却低估了自己十年能积累的财富。
+        </div>
+        
+        <h2>核心要义</h2>
+        <ul>
+            <li><strong>复利的力量需要时间</strong>：巴菲特99%的财富是在50岁之后赚到的。他的年化收益约20%，但正是几十年如一日的坚持，才让这个数字滚出惊天财富。</li>
+            <li><strong>好企业需要时间证明</strong>：护城河的宽度、管理层的能力、商业模式的可持续性，都需要在时间中验证。短期业绩可能靠运气，长期表现才能说明实力。</li>
+            <li><strong>市场短期是投票机，长期是称重机</strong>：格雷厄姆的这句名言揭示了时间在投资中的核心作用——短期价格由情绪驱动，长期价格由价值决定。</li>
+            <li><strong>机会需要等待</strong>：好的投资机会不常有，需要耐心等待市场给出合理甚至低估的价格。时间是等待的资本。</li>
+            <li><strong>错误需要时间修复</strong>：买入错误的企业，如果及时发现并纠正，损失可控；如果坚持错误不放，时间只会让损失扩大。</li>
+        </ul>
+        
+        <h2>思想演变</h2>
+        <div class="evolution-timeline">
+            <div class="evolution-point">
+                <div class="evolution-year">早期认识（1960-1970年代）</div>
+                <div class="evolution-desc">这一时期巴菲特已经开始实践集中投资，但更关注的是企业质地和买入价格，对"时间"的系统论述较少。</div>
+            </div>
+            <div class="evolution-point">
+                <div class="evolution-year">复利觉醒（1980年代）</div>
+                <div class="evolution-desc">随着伯克希尔规模扩大和财富积累，巴菲特开始更多思考时间与复利的关系。他在多个场合强调："活得久是最大的优势"。</div>
+            </div>
+            <div class="evolution-point">
+                <div class="evolution-year">成熟期（1990年代至今）</div>
+                <div class="evolution-desc">巴菲特多次在股东信中详细计算复利的威力，用实际数据说明为什么时间是投资者最重要的资产。</div>
+            </div>
+        </div>
+        
+        <h2>实战案例</h2>
+        <div class="case-card">
+            <div class="case-company">可口可乐 (Coca-Cola)</div>
+            <div class="case-data">1988年买入，至今持有超过35年；初始投资约13亿美元；目前市值超过250亿美元；累计分红超过100亿美元</div>
+            <div class="case-lesson">长期持有优秀企业的回报，远超任何短期交易策略。时间让复利发挥作用，让股息再投资成为可能。</div>
+        </div>
+        
+        <div class="case-card">
+            <div class="case-company">华盛顿邮报 (Washington Post)</div>
+            <div class="case-data">1973年买入；1970年代账面表现不佳甚至亏损；1980年代开始价值兑现；最终获得超过100倍回报</div>
+            <div class="case-lesson">在账面亏损时期坚持持有，需要对时间的力量有深刻理解。真正的价值投资者相信，时间终将站在正确的一边。</div>
+        </div>
+        
+        <div class="case-card">
+            <div class="case-company">美国运通 (American Express)</div>
+            <div class="case-data">1964年开始买入；经历色拉油丑闻导致的股价暴跌；持有超过50年；为伯克希尔带来数百亿美元回报</div>
+            <div class="case-lesson">危机时刻正是考验时间信念的时刻。大多数人在恐慌中卖出，真正的价值投资者却在等待时间治愈伤口。</div>
+        </div>
+        
+        <h2>常见误解</h2>
+        <div class="misconception-block">
+            <h4>❌ 误解一：持有时间长就是价值投资</h4>
+            <p><strong>人们以为</strong>：只要长期持有就是价值投资，就能获得好回报。</p>
+            <p><strong>巴菲特说</strong>：时间放大的是正确决策的效果，也会放大错误决策的损失。"如果你持有一家糟糕的企业，时间越长，损失越大。"</p>
+        </div>
+        
+        <div class="misconception-block">
+            <h4>❌ 误解二：可以预测市场短期走势</h4>
+            <p><strong>人们以为</strong>：只要能准确预测短期涨跌，就能通过频繁交易致富。</p>
+            <p><strong>巴菲特说</strong>："从未有人因为预测股市短期走势而变得富有。"试图利用时间差赚钱，本质上是在与整个市场博弈。</p>
+        </div>
+        
+        <div class="misconception-block">
+            <h4>❌ 误解三：时间可以替代研究</h4>
+            <p><strong>人们以为</strong>：只要买入后持有足够长时间，差企业也会变好。</p>
+            <p><strong>巴菲特说</strong>："时间是平庸企业的敌人。"如果你买入的是一家没有护城河、无法持续创造价值的企业，时间只会让你的错误更加明显。</p>
+        </div>
+        
+        <h2>精华原话</h2>
+        <div class="quote-block">
+            <p>"时间是优秀企业的朋友，是平庸企业的敌人。在你买入平庸企业的那一刻开始，时间的钟表就开始倒计时了。"</p>
+            <footer>—— 1992年致股东信</footer>
+        </div>
+        
+        <div class="quote-block">
+            <p>"如果你不愿意持有一只股票十年，那就不要考虑持有它十分钟。出售股票的念头不应该因为'市场先生'的报价而轻易产生。"</p>
+            <footer>—— 1996年致股东信</footer>
+        </div>
+        
+        <div class="quote-block">
+            <p>"复利最神奇的地方在于：即使回报率看起来'一般'，只要时间足够长，最终的成果也会令人瞠目结舌。"</p>
+            <footer>—— 2014年致股东信</footer>
+        </div>
+        
+        <div class="quote-block">
+            <p>"活得久是我们最大的竞争优势。在投资游戏中，时间和健康是最后的赢家。"</p>
+            <footer>—— 2007年致股东信</footer>
+        </div>
+        
+        <h2>延伸阅读</h2>
+        <div class="topic-group">
+            <div class="topic-title">复利效应</div>
+            <div class="topic-desc">时间与复利的结合是如何创造惊人财富的，以及如何利用这一力量</div>
+            <div class="topic-years">
+                <a href="../letters/berkshire/1965.html">1965</a>
+                <a href="../letters/berkshire/1986.html">1986</a>
+                <a href="../letters/berkshire/2014.html">2014</a>
+            </div>
+        </div>
+        
+        <div class="topic-group">
+            <div class="topic-title">长期持有的哲学</div>
+            <div class="topic-desc">为何巴菲特愿意长期持有优秀企业，以及长期持有的前提条件</div>
+            <div class="topic-years">
+                <a href="../letters/berkshire/1988.html">1988</a>
+                <a href="../letters/berkshire/1996.html">1996</a>
+                <a href="../letters/berkshire/2014.html">2014</a>
+            </div>
+        </div>
+        
+        <div class="topic-group">
+            <div class="topic-title">市场先生的耐心</div>
+            <div class="topic-desc">如何利用市场先生的非理性报价，等待最佳买入和卖出时机</div>
+            <div class="topic-years">
+                <a href="../letters/berkshire/1987.html">1987</a>
+                <a href="../letters/berkshire/2008.html">2008</a>
+            </div>
+        </div>
+    </article>
+    
+    <footer>
+        <p>基于巴菲特致股东信原文提炼 | <a href="../index.html">返回首页</a></p>
+    </footer>
+    </div>
+
+    <script>
+    const wisdoms = [
+        { quote: "时间是优秀企业的朋友，是平庸企业的敌人。", source: "复利", link: "concepts/复利.html" },
+        { quote: "如果你不愿意持有一只股票十年，那就不要考虑持有它十分钟。", source: "长期持有", link: "concepts/长期持有.html" },
+        { quote: "复利最神奇的地方在于：即使回报率看起来'一般'，只要时间足够长，最终的成果也会令人瞠目结舌。", source: "复利", link: "concepts/复利.html" },
+        { quote: "活得久是我们最大的竞争优势。", source: "时间", link: "concepts/时间.html" },
+        { quote: "价格是你付出的，价值是你得到的。", source: "内在价值", link: "concepts/内在价值.html" },
+        { quote: "安全边际不是用来'猜对'的，而是用来应对'猜错'的。", source: "安全边际", link: "concepts/安全边际.html" },
+        { quote: "能力圈的核心是知道边界在哪里，而非范围有多大。", source: "能力圈", link: "concepts/能力圈.html" },
+        { quote: "护城河的本质是'我与别人不同'，而非'我比别人更好'。", source: "护城河", link: "concepts/护城河.html" },
+        { quote: "风险来自于你不知道自己在做什么。", source: "风险", link: "concepts/风险.html" },
+        { quote: "别人恐惧时我贪婪，别人贪婪时我恐惧。", source: "市场先生", link: "concepts/市场先生.html" }
+    ];
+    let currentWisdomIndex = 0;
+    function updateWisdom(index) { document.getElementById('wisdomQuote').textContent = '"' + wisdoms[index].quote + '"'; document.getElementById('wisdomSource').textContent = '— ' + wisdoms[index].source; document.getElementById('wisdomSource').href = '../' + wisdoms[index].link; }
+    document.getElementById('wisdomRefresh').addEventListener('click', function() { currentWisdomIndex = (currentWisdomIndex + 1) % wisdoms.length; updateWisdom(currentWisdomIndex); });
+    document.getElementById('sidebarToggle').addEventListener('click', function() { document.getElementById('sidebar').classList.toggle('expanded'); });
+    document.getElementById('mobileMenuBtn').addEventListener('click', function() { document.getElementById('sidebar').classList.toggle('open'); document.getElementById('sidebarOverlay').classList.toggle('active'); });
+    document.getElementById('sidebarOverlay').addEventListener('click', function() { document.getElementById('sidebar').classList.remove('open'); this.classList.remove('active'); });
+    </script>
+</body>
+</html>
