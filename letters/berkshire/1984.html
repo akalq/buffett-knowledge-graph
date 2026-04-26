@@ -172,6 +172,76 @@
         .nav-link:hover { background: var(--gold); }
         .nav-link.disabled { opacity: 0.4; pointer-events: none; }
         
+
+        /* Data Tables */
+        
+        /* Table Container */
+        .table-container {
+            margin: 24px 0;
+            overflow-x: auto;
+        }
+        .table-container table {
+            min-width: 500px;
+        }
+
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 14px;
+            font-family: 'Noto Sans SC', 'Segoe UI', sans-serif;
+        }
+        .data-table caption {
+            font-size: 1em;
+            font-weight: 600;
+            color: var(--navy);
+            text-align: left;
+            padding: 8px 0;
+            border-bottom: 2px solid var(--gold);
+            margin-bottom: 8px;
+        }
+        .data-table thead {
+            background: var(--navy);
+            color: white;
+        }
+        .data-table th {
+            padding: 12px 16px;
+            text-align: left;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+        .data-table th.num {
+            text-align: right;
+        }
+        .data-table td {
+            padding: 10px 16px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+        .data-table td.num {
+            text-align: right;
+            font-family: 'SF Mono', 'Consolas', monospace;
+        }
+        .data-table tbody tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+        .data-table tbody tr:hover {
+            background: #fff3cd;
+        }
+        .data-table .negative {
+            color: #c0392b;
+        }
+        .data-table .total-row {
+            font-weight: 700;
+            background: #e8e8e8 !important;
+            border-top: 2px solid var(--navy);
+        }
+        .data-table .subtotal-row {
+            font-weight: 600;
+            background: #f0f0f0 !important;
+        }
+
         @media (min-width: 768px) {
             .bilingual-block {
                 grid-template-columns: 1fr 1fr;
@@ -512,6 +582,101 @@
                 <div class="lang-block lang-en">
                     <span class="lang-label">English</span>
                     <blockquote>No. of Shares Cost Market ------------- ---------- ---------- (000s omitted) 690,975 Affiliated Publications, Inc. ....... $ 3,516 $ 32,908 740,400 American Broadcasting Companies, Inc. 44,416 46,738 3,895,710 Exxon Corporation ................... 173,401 175,307 4,047,191 General Foods Corporation ........... 149,870 226,137 6,850,000 GEICO Corporation ................... 45,713 397,300 2,379,200 Handy \u0026 Harman ...................... 27,318 38,662 818,872 Interpublic Group of Companies, Inc. 2,570 28,149 555,949 Northwest Industries 26,581 27,242 2,553,488 Time, Inc. .......................... 89,327 109,162 1,868,600 The Washington Post Company ......... 10,628 149,955 ---------- ---------- $573,340 $1,231,560 All Other Common Stockholdings 11,634 37,326 ---------- ---------- Total Common Stocks $584,974 $1,268,886 ========== ========== It’s been over ten years since it has been as difficult as now to find equity investments that meet both our qualitative standards and our quantitative standards of value versus price</blockquote>
+
+            <div class="table-container">
+            <table class="data-table">
+                <caption>Major Investments at Year-End 1984 (000s omitted)</caption>
+                <thead>
+                    <tr>
+                        <th>No. of Shares</th>
+                        <th>Company</th>
+                        <th>Cost ($000s)</th>
+                        <th>Market ($000s)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="">690,975</td>
+                        <td>Affiliated Publications, Inc.</td>
+                        <td class="num">3,516</td>
+                        <td class="num">32,908</td>
+                    </tr>
+                    <tr>
+                        <td class="">740,400</td>
+                        <td>American Broadcasting Co.</td>
+                        <td class="num">44,416</td>
+                        <td class="num">46,738</td>
+                    </tr>
+                    <tr>
+                        <td class=""></td>
+                        <td>Exxon Corporation</td>
+                        <td class="num">173,401</td>
+                        <td class="num">175,307</td>
+                    </tr>
+                    <tr>
+                        <td class=""></td>
+                        <td>General Foods Corp.</td>
+                        <td class="num">149,870</td>
+                        <td class="num">226,137</td>
+                    </tr>
+                    <tr>
+                        <td class=""></td>
+                        <td>GEICO Corporation</td>
+                        <td class="num">45,713</td>
+                        <td class="num">397,300</td>
+                    </tr>
+                    <tr>
+                        <td class=""></td>
+                        <td>Handy & Harman</td>
+                        <td class="num">27,318</td>
+                        <td class="num">38,662</td>
+                    </tr>
+                    <tr>
+                        <td class=""></td>
+                        <td>Interpublic Group</td>
+                        <td class="num">2,570</td>
+                        <td class="num">28,149</td>
+                    </tr>
+                    <tr>
+                        <td class=""></td>
+                        <td>Northwest Industries</td>
+                        <td class="num">26,581</td>
+                        <td class="num">27,242</td>
+                    </tr>
+                    <tr>
+                        <td class=""></td>
+                        <td>Time, Inc.</td>
+                        <td class="num">89,327</td>
+                        <td class="num">109,162</td>
+                    </tr>
+                    <tr>
+                        <td class=""></td>
+                        <td>The Washington Post Co.</td>
+                        <td class="num">10,628</td>
+                        <td class="num">149,955</td>
+                    </tr>
+                    <tr class="subtotal-row">
+                        <td></td>
+                        <td>Subtotal</td>
+                        <td class="num">569,340</td>
+                        <td class="num">1,231,560</td>
+                    </tr>
+                    <tr>
+                        <td class=""></td>
+                        <td>All Other Common Stock</td>
+                        <td class="num">11,634</td>
+                        <td class="num">37,326</td>
+                    </tr>
+                    <tr class="total-row">
+                        <td></td>
+                        <td>Total Common Stocks</td>
+                        <td class="num">584,974</td>
+                        <td class="num">1,268,886</td>
+                    </tr>
+                </tbody>
+            </table>
+            </div>
+
                 </div>
                 <div class="lang-block lang-cn">
                     <span class="lang-label">中文翻译</span>

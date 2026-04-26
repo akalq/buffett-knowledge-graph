@@ -172,6 +172,76 @@
         .nav-link:hover { background: var(--gold); }
         .nav-link.disabled { opacity: 0.4; pointer-events: none; }
         
+
+        /* Data Tables */
+        
+        /* Table Container */
+        .table-container {
+            margin: 24px 0;
+            overflow-x: auto;
+        }
+        .table-container table {
+            min-width: 500px;
+        }
+
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 14px;
+            font-family: 'Noto Sans SC', 'Segoe UI', sans-serif;
+        }
+        .data-table caption {
+            font-size: 1em;
+            font-weight: 600;
+            color: var(--navy);
+            text-align: left;
+            padding: 8px 0;
+            border-bottom: 2px solid var(--gold);
+            margin-bottom: 8px;
+        }
+        .data-table thead {
+            background: var(--navy);
+            color: white;
+        }
+        .data-table th {
+            padding: 12px 16px;
+            text-align: left;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+        .data-table th.num {
+            text-align: right;
+        }
+        .data-table td {
+            padding: 10px 16px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+        .data-table td.num {
+            text-align: right;
+            font-family: 'SF Mono', 'Consolas', monospace;
+        }
+        .data-table tbody tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+        .data-table tbody tr:hover {
+            background: #fff3cd;
+        }
+        .data-table .negative {
+            color: #c0392b;
+        }
+        .data-table .total-row {
+            font-weight: 700;
+            background: #e8e8e8 !important;
+            border-top: 2px solid var(--navy);
+        }
+        .data-table .subtotal-row {
+            font-weight: 600;
+            background: #f0f0f0 !important;
+        }
+
         @media (min-width: 768px) {
             .bilingual-block {
                 grid-template-columns: 1fr 1fr;
@@ -237,6 +307,113 @@
                 <div class="lang-block lang-en">
                     <span class="lang-label">English</span>
                     <blockquote>Operating Earnings When valuations are similar, we strongly prefer owning businesses to owning stocks. During most of our years of operation, however, stocks were much the cheaper choice. We therefore sharply tilted our asset allocation in those years toward equities, as illustrated by the percentages cited earlier. In recent years, however, we’ve found it hard to find significantly undervalued stocks, a difficulty greatly accentuated by the mushrooming of the funds we must deploy. Today, the number of stocks that can be purchased in large enough quantities to move the performance needle at Berkshire is a small fraction of the number that existed a decade ago. (Investment managers often profit far more from piling up assets than from handling those assets well. So when one tells you that increased funds won’t hurt his investment performance, step back: His nose is about to grow.) The shortage of attractively-priced stocks in which we can put large sums doesn’t bother us, providing we can find companies to purchase that (1) have favorable and enduring economic charac- teristics; (2) are run by talented and honest managers and (3) are available at a sensible price. We have purchased a number of such businesses in recent years, though not enough to fully employ the gusher of cash that has come our way. In buying businesses, I’ve made some terrible mistakes, both of commission and omission. Overall, however, our acquisitions have led to decent gains in per-share earnings. Below is a table that quantifies that point. But first we need to warn you that growth-rate presentations can be significantly distorted by a calculated selection of either initial or terminal dates. For example, if earnings are tiny in a beginning year, a long-term performance that was only mediocre can be made to appear sensational. That kind of distortion can come about because the company at issue was minuscule in the base year – which means that only a handful of insiders actually benefited from the touted performance – or because a larger company was then operating at just above breakeven. Picking a terminal year that is particularly buoyant will also favorably bias a calculation of growth. The Berkshire Hathaway that present management assumed control of in 1965 had long been sizable. But in 1964, it earned only $175,586 or 15 cents per share, so close to breakeven that any calculation of earnings growth from that base would be meaningless. At the time, however, even those meager earnings looked good: Over the decade following the 1955 merger of Berkshire Fine Spinning Associates and Hathaway Manufacturing, the combined operation had lost $10.1 million and many thousands of employees had been let go. It was not a marriage made in heaven. Against this background, we give you a picture of Berkshire’s earnings growth that begins in 1968, but also includes subsequent base years spaced five years apart. A series of calculations is presented so that you can decide for yourself which period is most meaningful. I’ve started with 1968 because it was the first full year we operated National Indemnity, the initial acquisition we made as we began to expand Berkshire’s business. I don’t believe that using 2003 as the terminal year distorts our calculations. It was a terrific year for our insurance business, but the big boost that gave to earnings was largely offset by the pathetically low interest rates we earned on our large holdings of cash equivalents (a condition that will not last). All figures shown below, it should be noted, exclude capital gains. Operating Earnings Operating Earnings Subsequent Compounded Year in $ millions Per Share in $ Growth Rate of Per-Share Earnings 1964 .2 .15 Not meaningful (1964-2003) 1968 2.7 2.69 22.8% (1968-2003) 1973 11.9 12.18 20.8% (1973-2003) 1978 30.0 29.15 21.1% (1978-2003) 1983 48.6 45.60 24.3% (1983-2003) 1988 313.4 273.37 18.6% (1988-2003) 1993 477.8 413.19 23.9% (1993-2003) 1998 1,277.0 1,020.49 28.2% (1998-2003) 2003 5,422.0 3,531.32 4</blockquote>
+
+            <div class="table-container">
+            <table class="data-table">
+                <caption>Berkshire's Corporate Performance vs. S&P 500</caption>
+                <thead>
+                    <tr>
+                        <th>Year</th>
+                        <th>Berkshire (%)</th>
+                        <th>S&P 500 (%)</th>
+                        <th>Relative (%)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="">1965</td>
+                        <td class="num">23.8</td>
+                        <td class="num">10.0</td>
+                        <td class="num">13.8</td>
+                    </tr>
+                    <tr>
+                        <td class="">1970</td>
+                        <td class="num">12.0</td>
+                        <td class="num">3.9</td>
+                        <td class="num">8.1</td>
+                    </tr>
+                    <tr>
+                        <td class="">1975</td>
+                        <td class="num">21.9</td>
+                        <td class="num">37.2</td>
+                        <td class="num">(15.3)</td>
+                    </tr>
+                    <tr>
+                        <td class="">1980</td>
+                        <td class="num">19.3</td>
+                        <td class="num">32.3</td>
+                        <td class="num">(13.0)</td>
+                    </tr>
+                    <tr>
+                        <td class="">1985</td>
+                        <td class="num">48.2</td>
+                        <td class="num">31.6</td>
+                        <td class="num">16.6</td>
+                    </tr>
+                    <tr>
+                        <td class="">1990</td>
+                        <td class="num">7.4</td>
+                        <td class="num">(3.1)</td>
+                        <td class="num">10.5</td>
+                    </tr>
+                    <tr>
+                        <td class="">1995</td>
+                        <td class="num">43.1</td>
+                        <td class="num">37.6</td>
+                        <td class="num">5.5</td>
+                    </tr>
+                    <tr>
+                        <td class="">1996</td>
+                        <td class="num">31.8</td>
+                        <td class="num">23.0</td>
+                        <td class="num">8.8</td>
+                    </tr>
+                    <tr>
+                        <td class="">1997</td>
+                        <td class="num">34.1</td>
+                        <td class="num">33.4</td>
+                        <td class="num">0.7</td>
+                    </tr>
+                    <tr>
+                        <td class="">1998</td>
+                        <td class="num">48.3</td>
+                        <td class="num">28.6</td>
+                        <td class="num">19.7</td>
+                    </tr>
+                    <tr>
+                        <td class="">1999</td>
+                        <td class="num">0.5</td>
+                        <td class="num">21.0</td>
+                        <td class="num">(20.5)</td>
+                    </tr>
+                    <tr>
+                        <td class="">2000</td>
+                        <td class="num">6.5</td>
+                        <td class="num">(9.1)</td>
+                        <td class="num">15.6</td>
+                    </tr>
+                    <tr>
+                        <td class="">2001</td>
+                        <td class="num">(11.3)</td>
+                        <td class="num">(11.9)</td>
+                        <td class="num">0.6</td>
+                    </tr>
+                    <tr>
+                        <td class="">2002</td>
+                        <td class="num">(3.8)</td>
+                        <td class="num">(22.1)</td>
+                        <td class="num">18.3</td>
+                    </tr>
+                    <tr>
+                        <td class="">2003</td>
+                        <td class="num">21.0</td>
+                        <td class="num">28.7</td>
+                        <td class="num">(7.7)</td>
+                    </tr>
+                </tbody>
+            </table>
+            </div>
+
                 </div>
                 <div class="lang-block lang-cn">
                     <span class="lang-label">中文翻译</span>

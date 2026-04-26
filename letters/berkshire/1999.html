@@ -172,6 +172,76 @@
         .nav-link:hover { background: var(--gold); }
         .nav-link.disabled { opacity: 0.4; pointer-events: none; }
         
+
+        /* Data Tables */
+        
+        /* Table Container */
+        .table-container {
+            margin: 24px 0;
+            overflow-x: auto;
+        }
+        .table-container table {
+            min-width: 500px;
+        }
+
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 14px;
+            font-family: 'Noto Sans SC', 'Segoe UI', sans-serif;
+        }
+        .data-table caption {
+            font-size: 1em;
+            font-weight: 600;
+            color: var(--navy);
+            text-align: left;
+            padding: 8px 0;
+            border-bottom: 2px solid var(--gold);
+            margin-bottom: 8px;
+        }
+        .data-table thead {
+            background: var(--navy);
+            color: white;
+        }
+        .data-table th {
+            padding: 12px 16px;
+            text-align: left;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+        .data-table th.num {
+            text-align: right;
+        }
+        .data-table td {
+            padding: 10px 16px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+        .data-table td.num {
+            text-align: right;
+            font-family: 'SF Mono', 'Consolas', monospace;
+        }
+        .data-table tbody tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+        .data-table tbody tr:hover {
+            background: #fff3cd;
+        }
+        .data-table .negative {
+            color: #c0392b;
+        }
+        .data-table .total-row {
+            font-weight: 700;
+            background: #e8e8e8 !important;
+            border-top: 2px solid var(--navy);
+        }
+        .data-table .subtotal-row {
+            font-weight: 600;
+            background: #f0f0f0 !important;
+        }
+
         @media (min-width: 768px) {
             .bilingual-block {
                 grid-template-columns: 1fr 1fr;
@@ -226,6 +296,70 @@
                 <div class="lang-block lang-en">
                     <span class="lang-label">English</span>
                     <blockquote>Guides to Intrinsic Value I often talk in these pages about intrinsic value, a key, though far from precise, measurement we utilize in our acquisitions of businesses and common stocks. (For an extensive discussion of this, and other investment and accounting terms and concepts, please refer to our Owner’s Manual on pages 55 - 62. Intrinsic value is discussed on page 60.) In our last four reports, we have furnished you a table that we regard as useful in estimating Berkshire’s intrinsic value. In the updated version of that table, which follows, we trace two key components of value. The first column lists our per-share ownership of investments (including cash and equivalents but excluding assets held in our financial products operation) and the second column shows our per-share earnings from Berkshire’s operating businesses before taxes and purchase-accounting adjustments (discussed on page 61), but after all interest and corporate expenses. The second column excludes all dividends, interest and capital gains that we realized from the investments presented in the first column. In effect, the columns show how Berkshire would look if it were split into two parts, with one entity holding our investments and the other operating all of our businesses and bearing all corporate costs. Pre-tax Earnings (Loss) Per Share Investments With All Income from Year Per Share Investments Excluded 1969 ............................................ $ 45 $ 4.39 1979 ............................................ 577 13.07 1989 ............................................ 7,200 108.86 1999 ............................................ 47,339 (458.55) Here are the growth rates of the two segments by decade: Pre-tax Earnings Per Share Investments With All Income from Decade Ending Per Share Investments Excluded 1979 ........................................... 29.0% 11.5% 1989 ........................................... 28.7% 23.6% 1999 ........................................... 20.7% N.A. Annual Growth Rate, 1969-1999 ...................... 25.4% N.A. In 1999, our per-share investments changed very little, but our operating earnings, affected by negatives that overwhelmed some strong positives, fell apart. Most of our operating managers deserve a grade of A for delivering fine results and for having widened the difference between the intrinsic value of their businesses and the value at which these are carried on our balance sheet. But, offsetting this, we had a huge — and, I believe, aberrational — underwriting loss at General Re. Additionally, GEICO’s underwriting profit fell, as we had predicted it would. GEICO’s overall performance, though, was terrific, outstripping my ambitious goals. We do not expect our underwriting earnings to improve in any dramatic way this year. Though GEICO’s intrinsic value should grow by a highly satisfying amount, its underwriting performance is almost certain to weaken. That’s because auto insurers, as a group, will do worse in 2000, and because we will materially increase our marketing expenditures. At General Re, we are raising rates and, if there is no mega-catastrophe in 2000, the company’s underwriting loss should fall considerably. It takes some time, however, for the full effect of rate increases to kick in, and General Re is therefore likely to have another unsatisfactory underwriting year. 4</blockquote>
+
+            <div class="table-container">
+            <table class="data-table">
+                <caption>Per-Share Book Value vs Market Value (1969-1999)</caption>
+                <thead>
+                    <tr>
+                        <th>Year</th>
+                        <th>Pre-tax Earnings Per Share</th>
+                        <th>Investments Per Share</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="">1969</td>
+                        <td class="num">$45</td>
+                        <td class="num">$4.39</td>
+                    </tr>
+                    <tr>
+                        <td class="">1979</td>
+                        <td class="num">$577</td>
+                        <td class="num">$13.07</td>
+                    </tr>
+                    <tr>
+                        <td class="">1989</td>
+                        <td class="num">$7,200</td>
+                        <td class="num">$108.86</td>
+                    </tr>
+                    <tr>
+                        <td class="">1999</td>
+                        <td class="num">$47,339</td>
+                        <td class="num">($458.55)</td>
+                    </tr>
+                </tbody>
+            </table>
+
+                        <table class="data-table">
+                <caption>Decade Growth Rates</caption>
+                <thead>
+                    <tr>
+                        <th>Decade Ending</th>
+                        <th>Pre-tax Earnings Growth</th>
+                        <th>Investments Growth</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="">1979</td>
+                        <td class="num">29.0%</td>
+                        <td class="num">11.5%</td>
+                    </tr>
+                    <tr>
+                        <td class="">1989</td>
+                        <td class="num">28.7%</td>
+                        <td class="num">23.6%</td>
+                    </tr>
+                    <tr>
+                        <td class="">1999</td>
+                        <td class="num">20.7%</td>
+                        <td class="num">N.A.</td>
+                    </tr>
+                </tbody>
+            </table>
+            </div>
+
                 </div>
                 <div class="lang-block lang-cn">
                     <span class="lang-label">中文翻译</span>

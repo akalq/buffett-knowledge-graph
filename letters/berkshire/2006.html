@@ -172,6 +172,76 @@
         .nav-link:hover { background: var(--gold); }
         .nav-link.disabled { opacity: 0.4; pointer-events: none; }
         
+
+        /* Data Tables */
+        
+        /* Table Container */
+        .table-container {
+            margin: 24px 0;
+            overflow-x: auto;
+        }
+        .table-container table {
+            min-width: 500px;
+        }
+
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 14px;
+            font-family: 'Noto Sans SC', 'Segoe UI', sans-serif;
+        }
+        .data-table caption {
+            font-size: 1em;
+            font-weight: 600;
+            color: var(--navy);
+            text-align: left;
+            padding: 8px 0;
+            border-bottom: 2px solid var(--gold);
+            margin-bottom: 8px;
+        }
+        .data-table thead {
+            background: var(--navy);
+            color: white;
+        }
+        .data-table th {
+            padding: 12px 16px;
+            text-align: left;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+        .data-table th.num {
+            text-align: right;
+        }
+        .data-table td {
+            padding: 10px 16px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+        .data-table td.num {
+            text-align: right;
+            font-family: 'SF Mono', 'Consolas', monospace;
+        }
+        .data-table tbody tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+        .data-table tbody tr:hover {
+            background: #fff3cd;
+        }
+        .data-table .negative {
+            color: #c0392b;
+        }
+        .data-table .total-row {
+            font-weight: 700;
+            background: #e8e8e8 !important;
+            border-top: 2px solid var(--navy);
+        }
+        .data-table .subtotal-row {
+            font-weight: 600;
+            background: #f0f0f0 !important;
+        }
+
         @media (min-width: 768px) {
             .bilingual-block {
                 grid-template-columns: 1fr 1fr;
@@ -268,6 +338,179 @@
                 <div class="lang-block lang-en">
                     <span class="lang-label">English</span>
                     <blockquote>Year Pre-Tax Earnings Per Share* 1965..................................................................... $ 4 1975..................................................................... 4 1985..................................................................... 52 1995..................................................................... 175 2006..................................................................... $3,625 Compound Growth Rate 1965-2006.................... 17.9% Compound Growth Rate 1995-2006.................... 31.7% *Excluding purchase-accounting adjustments and net of minority interests Last year we had a good increase in non-insurance earnings – 38%. Large gains from here on in, though, will come only if we are able to make major, and sensible, acquisitions. That will not be easy. We do, however, have one advantage: More and more, Berkshire has become “the buyer of choice” for business owners and managers. Initially, we were viewed that way only in the U.S. (and more often than not by private companies). We’ve long wanted, nonetheless, to extend Berkshire’s appeal beyond U.S. borders. And last year, our globe-trotting finally got underway. Acquisitions We began 2006 by completing the three acquisitions pending at yearend 2005, spending about $6 billion for PacifiCorp, Business Wire and Applied Underwriters. All are performing very well. The highlight of the year, however, was our July 5th acquisition of most of ISCAR, an Israeli company, and our new association with its chairman, Eitan Wertheimer, and CEO, Jacob Harpaz. The story here began on October 25, 2005, when I received a 1¼-page letter from Eitan, of whom I then knew nothing. The letter began, “I am writing to introduce you to ISCAR,” and proceeded to describe a cutting- tool business carried on in 61 countries. Then Eitan wrote, “We have for some time considered the issues of generational transfer and ownership that are typical for large family enterprises, and have given much thought to ISCAR’s future. Our conclusion is that Berkshire Hathaway would be the ideal home for ISCAR. We believe that ISCAR would continue to thrive as a part of your portfolio of businesses.” Overall, Eitan’s letter made the quality of the company and the character of its management leap off the page. It also made me want to learn more, and in November, Eitan, Jacob and ISCAR’s CFO, Danny Goldman, came to Omaha. A few hours with them convinced me that if we were to make a deal, we would be teaming up with extraordinarily talented managers who could be trusted to run the business after a sale with all of the energy and dedication that they had exhibited previously. However, having never bought a business based outside of the U.S. (though I had bought a number of foreign stocks), I needed to get educated on some tax and jurisdictional matters. With that task completed, Berkshire purchased 80% of ISCAR for $4 billion. The remaining 20% stays in the hands of the Wertheimer family, making it our valued partner. ISCAR’s products are small, consumable cutting tools that are used in conjunction with large and expensive machine tools. It’s a business without magic except for that imparted by the people who run it. But Eitan, Jacob and their associates are true managerial magicians who constantly develop tools that make their customers’ machines more productive. The result: ISCAR makes money because it enables its customers to make more money. There is no better recipe for continued success. 5</blockquote>
+
+            <div class="table-container">
+            <table class="data-table">
+                <caption>Berkshire's Corporate Performance vs. S&P 500</caption>
+                <thead>
+                    <tr>
+                        <th>Year</th>
+                        <th>Berkshire (%)</th>
+                        <th>S&P 500 (%)</th>
+                        <th>Relative (%)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="">1965</td>
+                        <td class="num">23.8</td>
+                        <td class="num">10.0</td>
+                        <td class="num">13.8</td>
+                    </tr>
+                    <tr>
+                        <td class="">1970</td>
+                        <td class="num">12.0</td>
+                        <td class="num">3.9</td>
+                        <td class="num">8.1</td>
+                    </tr>
+                    <tr>
+                        <td class="">1975</td>
+                        <td class="num">21.9</td>
+                        <td class="num">37.2</td>
+                        <td class="num">(15.3)</td>
+                    </tr>
+                    <tr>
+                        <td class="">1980</td>
+                        <td class="num">19.3</td>
+                        <td class="num">32.3</td>
+                        <td class="num">(13.0)</td>
+                    </tr>
+                    <tr>
+                        <td class="">1985</td>
+                        <td class="num">48.2</td>
+                        <td class="num">31.6</td>
+                        <td class="num">16.6</td>
+                    </tr>
+                    <tr>
+                        <td class="">1990</td>
+                        <td class="num">7.4</td>
+                        <td class="num">(3.1)</td>
+                        <td class="num">10.5</td>
+                    </tr>
+                    <tr>
+                        <td class="">1995</td>
+                        <td class="num">43.1</td>
+                        <td class="num">37.6</td>
+                        <td class="num">5.5</td>
+                    </tr>
+                    <tr>
+                        <td class="">2000</td>
+                        <td class="num">6.5</td>
+                        <td class="num">(9.1)</td>
+                        <td class="num">15.6</td>
+                    </tr>
+                    <tr>
+                        <td class="">2001</td>
+                        <td class="num">(11.3)</td>
+                        <td class="num">(11.9)</td>
+                        <td class="num">0.6</td>
+                    </tr>
+                    <tr>
+                        <td class="">2002</td>
+                        <td class="num">(3.8)</td>
+                        <td class="num">(22.1)</td>
+                        <td class="num">18.3</td>
+                    </tr>
+                    <tr>
+                        <td class="">2003</td>
+                        <td class="num">21.0</td>
+                        <td class="num">28.7</td>
+                        <td class="num">(7.7)</td>
+                    </tr>
+                    <tr>
+                        <td class="">2004</td>
+                        <td class="num">10.5</td>
+                        <td class="num">10.9</td>
+                        <td class="num">(0.4)</td>
+                    </tr>
+                    <tr>
+                        <td class="">2005</td>
+                        <td class="num">6.4</td>
+                        <td class="num">4.9</td>
+                        <td class="num">1.5</td>
+                    </tr>
+                    <tr>
+                        <td class="">2006</td>
+                        <td class="num">18.4</td>
+                        <td class="num">15.8</td>
+                        <td class="num">2.6</td>
+                    </tr>
+                </tbody>
+            </table>
+
+                        <table class="data-table">
+                <caption>Per-Share Investments (1965-2006)</caption>
+                <thead>
+                    <tr>
+                        <th>Year</th>
+                        <th>Per-Share Investments</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="">1965</td>
+                        <td class="num">$4</td>
+                    </tr>
+                    <tr>
+                        <td class="">1975</td>
+                        <td class="num">$159</td>
+                    </tr>
+                    <tr>
+                        <td class="">1985</td>
+                        <td class="num">$2,407</td>
+                    </tr>
+                    <tr>
+                        <td class="">1995</td>
+                        <td class="num">$21,817</td>
+                    </tr>
+                    <tr>
+                        <td class="">2006</td>
+                        <td class="num">$82,983</td>
+                    </tr>
+                    <tr class="total-row">
+                        <td>Compound Growth 1965-2006</td>
+                        <td class="num">26.6%</td>
+                    </tr>
+                </tbody>
+            </table>
+
+                        <table class="data-table">
+                <caption>Per-Share Earnings (1965-2006)</caption>
+                <thead>
+                    <tr>
+                        <th>Year</th>
+                        <th>Per-Share Earnings</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="">1965</td>
+                        <td class="num">$4</td>
+                    </tr>
+                    <tr>
+                        <td class="">1975</td>
+                        <td class="num">$4</td>
+                    </tr>
+                    <tr>
+                        <td class="">1985</td>
+                        <td class="num">$52</td>
+                    </tr>
+                    <tr>
+                        <td class="">1995</td>
+                        <td class="num">$175</td>
+                    </tr>
+                    <tr>
+                        <td class="">2006</td>
+                        <td class="num">$3,625</td>
+                    </tr>
+                    <tr class="total-row">
+                        <td>Compound Growth 1965-2006</td>
+                        <td class="num">17.9%</td>
+                    </tr>
+                </tbody>
+            </table>
+            </div>
+
                 </div>
                 <div class="lang-block lang-cn">
                     <span class="lang-label">中文翻译</span>
