@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>彼得·林奇 - 巴菲特知识库</title>
+    <title>彼得·林奇 - 巴菲特世界关键人物</title>
     <style>
-        :root { --bg-color: #FFFEF9; --navy: #1B2A4A; --gold: #C9A227; --text: #2C3E50; --secondary: #5D6D7E; --border: #E5E0D8; --light-gold: #FFF8E7; }
+        :root { --bg-color: #FFFEF9; --navy: #1B2A4A; --gold: #C9A227; --text: #2C3E50; --secondary: #5D6D7E; --border: #E5E0D8; --light-gold: #FFF8E7; --cream: #F8F5EE; }
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { font-family: 'Noto Serif SC', Georgia, serif; background: var(--bg-color); color: var(--text); line-height: 1.8; }
         .container { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
@@ -13,6 +13,7 @@
         header h1 { font-size: 2em; margin-bottom: 10px; }
         header .en-name { color: var(--gold); font-size: 1.1em; margin: 5px 0; }
         header .meta { color: var(--gold); font-size: 0.95em; margin-top: 10px; }
+        header .dates { color: rgba(255,255,255,0.7); font-size: 0.9em; margin-top: 5px; }
         .avatar-large { width: 120px; height: 120px; background: var(--gold); border-radius: 50%; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; font-size: 3em; }
         .nav { background: white; border: 1px solid var(--border); padding: 15px 20px; margin-bottom: 30px; border-radius: 8px; text-align: center; }
         .nav a { color: var(--navy); text-decoration: none; margin: 0 12px; font-size: 0.95em; }
@@ -21,32 +22,38 @@
         .content h2 { color: var(--navy); font-size: 1.4em; margin: 35px 0 15px; padding-bottom: 8px; border-bottom: 2px solid var(--gold); }
         .content h2:first-child { margin-top: 0; }
         .content p { margin: 15px 0; text-align: justify; }
-        .quote { background: var(--navy); color: white; padding: 20px 25px; border-left: 4px solid var(--gold); margin: 25px 0; border-radius: 0 8px 8px 0; }
-        .quote p { margin: 0; font-style: italic; }
-        .quote .source { color: var(--gold); margin-top: 12px; font-size: 0.9em; }
-        .related { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px; }
-        .related a { background: white; border: 1px solid var(--border); padding: 8px 15px; border-radius: 20px; text-decoration: none; color: var(--navy); font-size: 0.9em; transition: all 0.2s; }
-        .related a:hover { background: var(--gold); color: white; border-color: var(--gold); }
+        .role-card { background: linear-gradient(135deg, var(--navy) 0%, #2C3E50 100%); color: white; padding: 25px; border-radius: 12px; margin: 20px 0; }
+        .role-type { display: inline-block; background: var(--gold); color: var(--navy); padding: 4px 12px; border-radius: 12px; font-size: 0.85em; margin-bottom: 10px; font-weight: 600; }
+        .role-summary { font-size: 1.15em; line-height: 1.6; }
+        .impact-section { margin: 25px 0; }
+        .impact-point { display: flex; margin: 15px 0; padding: 18px; background: var(--cream); border-radius: 8px; border-left: 4px solid var(--gold); }
+        .impact-number { font-size: 1.8em; font-weight: 700; color: var(--gold); margin-right: 18px; min-width: 40px; line-height: 1; }
+        .impact-content strong { color: var(--navy); display: block; margin-bottom: 5px; }
+        .impact-content p { margin: 0; font-size: 0.95em; }
+        .quote-block { background: var(--cream); border-left: 4px solid var(--navy); padding: 20px 25px; margin: 20px 0; border-radius: 0 8px 8px 0; }
+        .quote-block.dark { background: var(--navy); color: white; border-left-color: var(--gold); }
+        .quote-block.dark .source { color: var(--gold); }
+        .quote-block blockquote { margin: 0; font-style: italic; font-size: 1.05em; line-height: 1.7; }
+        .quote-block .source { color: var(--secondary); margin-top: 12px; font-size: 0.9em; font-style: normal; }
+        .quote-block .source::before { content: '—— '; }
+        .network-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin: 15px 0; }
+        .network-item { background: var(--cream); padding: 15px; border-radius: 8px; text-decoration: none; color: var(--navy); transition: all 0.2s; }
+        .network-item:hover { background: var(--gold); color: white; transform: translateY(-2px); }
+        .network-item strong { display: block; margin-bottom: 3px; }
+        .relation-type { font-size: 0.8em; color: var(--secondary); margin-top: 5px; }
         footer { text-align: center; padding: 40px 20px; color: var(--secondary); border-top: 1px solid var(--border); margin-top: 40px; }
         footer a { color: var(--navy); text-decoration: none; }
-        .backlinks { margin-top: 40px; padding-top: 30px; border-top: 2px dashed var(--gold); }
-        .backlinks h2 { color: var(--navy); font-size: 1.3em; margin-bottom: 15px; }
-        .backlinks-intro { color: var(--secondary); margin-bottom: 15px; }
-        .backlinks-list { display: flex; flex-wrap: wrap; gap: 10px; }
-        .backlinks-list a { background: linear-gradient(135deg, var(--light-gold) 0%, #fff9e6 100%); border: 1px solid var(--gold); padding: 8px 16px; border-radius: 20px; text-decoration: none; color: var(--navy); font-size: 0.9em; transition: all 0.3s; }
-        .backlinks-list a:hover { background: var(--gold); color: white; transform: translateY(-2px); }
-        .backlinks-count { margin-top: 15px; color: var(--secondary); font-size: 0.9em; }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
-        <div class="avatar-large">🌟</div>
+        <div class="avatar-large">📈</div>
         <h1>彼得·林奇</h1>
         <div class="en-name">Peter Lynch</div>
-        <div class="meta">👤 关键人物 · 被引用 1 次</div>
+        <div class="dates">1944年1月19日 - 2023年8月</div>
+        <div class="meta">👤 投资大师</div>
     </header>
-    
     <div class="container">
         <nav class="nav">
             <a href="../index.html">🏠 首页</a>
@@ -54,54 +61,52 @@
             <a href="../index-pages/公司索引.html">🏢 公司</a>
             <a href="../index-pages/人物索引.html">👤 人物</a>
         </nav>
-        
         <article class="content">
-            <h2>人物简介</h2>
-            <p>彼得·林奇（1944-2021）是富达麦哲伦基金的传奇基金经理，在1977年至1990年任期内，将基金资产从2000万美元增长到140亿美元。</p>
-            
-            <h2>与巴菲特的关系</h2>
-            <p>虽然不是伯克希尔的管理者，但与巴菲特同时代被视为投资界的两大巨头。</p>
-            
-            <h2>核心贡献</h2>
-            <p>普及了投资你了解的公司理念，影响了无数个人投资者。</p>
-
-            <h2>经典语录</h2>
-            <div class="quote">
-                <p>"投资于你了解的行业和公司。"</p>
-                <div class="source">—— Peter Lynch</div>
+            <div class="role-card">
+                <div class="role-type">投资同行</div>
+                <div class="role-summary">富达麦哲伦基金前传奇基金经理，与巴菲特同处一个时代的投资大师。虽然两人投资风格不同（林奇偏好成长股，巴菲特偏好价值股），但都被视为20世纪最成功的投资者之一。</div>
             </div>
-            <div class="quote">
-                <p>"长期持有优质股票是最好的投资策略。"</p>
-                <div class="source">—— Peter Lynch</div>
+            <h2>🎯 核心影响</h2>
+            <div class="impact-section">
+                <div class="impact-point">
+                    <div class="impact-number">1</div>
+                    <div class="impact-content">
+                        <strong>投资行业的标杆</strong>
+                        <p>彼得·林奇在1977-1990年管理麦哲伦基金期间，年化回报率约29%，是当时共同基金行业最成功的记录之一。他的成功激励了一代投资者。</p>
+                    </div>
+                </div>
+                <div class="impact-point">
+                    <div class="impact-number">2</div>
+                    <div class="impact-content">
+                        <strong>平民投资理念</strong>
+                        <p>林奇倡导普通投资者投资自己熟悉的领域（"投资你了解的行业"），这与巴菲特的"能力圈"概念高度一致，尽管林奇更强调成长股投资。</p>
+                    </div>
+                </div>
+                <div class="impact-point">
+                    <div class="impact-number">3</div>
+                    <div class="impact-content">
+                        <strong>价值与成长的对话</strong>
+                        <p>虽然林奇和巴菲特的投资风格不同，但两人都强调深入研究、长期持有、理性投资。他们的对话为投资者提供了多元的投资视角。</p>
+                    </div>
+                </div>
             </div>
-
-            <h2>巴菲特评价</h2>
-            <div class="quote">
-                <p>"彼得·林奇是共同基金业最成功的基金经理。"</p>
-                <div class="source">—— 沃伦·巴菲特</div>
+            <h2>💬 巴菲特评价</h2>
+            <div class="quote-block dark">
+                <blockquote>"彼得·林奇是共同基金行业最成功的基金经理之一。他教会了无数人如何投资。"</blockquote>
+                <div class="source">多次公开场合</div>
             </div>
-            
-            <h2>相关公司</h2>
-            <div class="related">
-                <a href="../companies/富达投资.html">富达投资</a>
-                <a href="../companies/麦哲伦基金.html">麦哲伦基金</a>
-            </div><p class="backlinks-count">共被提及 1 次</p>
+            <h2>📚 体现的投资原则</h2>
+            <div class="network-grid">
+                <a href="../concepts/长期投资.html" class="concept-tag">长期投资</a>
+                <a href="../concepts/能力圈.html" class="concept-tag">能力圈</a>
+                <a href="../concepts/集中投资.html" class="concept-tag">集中投资</a>
+            </div>
+            <h2>👥 相关人物</h2>
+            <div class="network-grid">
+                <a href="巴菲特.html" class="network-item"><strong>沃伦·巴菲特</strong><div class="relation-type">同时代的投资大师</div></a>
             </div>
         </article>
     </div>
-    
-    <footer>
-        <p><a href="../index.html">巴菲特知识库</a> | 数据来源：Berkshire Hathaway Letters</p>
-    
-        <div class="backlinks">
-            <h2>📚 反向链接</h2>
-            <p class="backlinks-intro">以下年份的信件提到了此人物：</p>
-            <div class="backlinks-list">
-                <a href="../letters/berkshire/1988.html">1988年</a>
-            </div>
-            <p class="backlinks-count">共 1 处引用</p>
-        </div>
-    
-</footer>
+    <footer><p><a href="../index.html">巴菲特知识库</a> | 数据来源：Berkshire Hathaway Letters</p></footer>
 </body>
 </html>

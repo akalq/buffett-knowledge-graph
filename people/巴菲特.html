@@ -3,17 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>巴菲特 - 巴菲特知识库</title>
+    <title>沃伦·巴菲特 - 巴菲特世界关键人物</title>
     <style>
-        :root { --bg-color: #FFFEF9; --navy: #1B2A4A; --gold: #C9A227; --text: #2C3E50; --secondary: #5D6D7E; --border: #E5E0D8; --light-gold: #FFF8E7; }
+        :root { --bg-color: #FFFEF9; --navy: #1B2A4A; --gold: #C9A227; --text: #2C3E50; --secondary: #5D6D7E; --border: #E5E0D8; --light-gold: #FFF8E7; --cream: #F8F5EE; }
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { font-family: 'Noto Serif SC', Georgia, serif; background: var(--bg-color); color: var(--text); line-height: 1.8; }
         .container { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
-        header { background: var(--navy); color: white; padding: 40px 30px; text-align: center; }
+        header { background: linear-gradient(135deg, var(--navy) 0%, #2C3E50 100%); color: white; padding: 40px 30px; text-align: center; }
         header h1 { font-size: 2em; margin-bottom: 10px; }
         header .en-name { color: var(--gold); font-size: 1.1em; margin: 5px 0; }
         header .meta { color: var(--gold); font-size: 0.95em; margin-top: 10px; }
-        .avatar-large { width: 120px; height: 120px; background: var(--gold); border-radius: 50%; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; font-size: 3em; }
+        header .dates { color: rgba(255,255,255,0.7); font-size: 0.9em; margin-top: 5px; }
+        .avatar-large { width: 140px; height: 140px; background: var(--gold); border-radius: 50%; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; font-size: 4em; border: 4px solid white; box-shadow: 0 0 30px rgba(201, 162, 39, 0.5); }
         .nav { background: white; border: 1px solid var(--border); padding: 15px 20px; margin-bottom: 30px; border-radius: 8px; text-align: center; }
         .nav a { color: var(--navy); text-decoration: none; margin: 0 12px; font-size: 0.95em; }
         .nav a:hover { color: var(--gold); }
@@ -21,30 +22,50 @@
         .content h2 { color: var(--navy); font-size: 1.4em; margin: 35px 0 15px; padding-bottom: 8px; border-bottom: 2px solid var(--gold); }
         .content h2:first-child { margin-top: 0; }
         .content p { margin: 15px 0; text-align: justify; }
-        .quote { background: var(--navy); color: white; padding: 20px 25px; border-left: 4px solid var(--gold); margin: 25px 0; border-radius: 0 8px 8px 0; }
-        .quote p { margin: 0; font-style: italic; }
-        .quote .source { color: var(--gold); margin-top: 12px; font-size: 0.9em; }
-        .related { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px; }
-        .related a { background: white; border: 1px solid var(--border); padding: 8px 15px; border-radius: 20px; text-decoration: none; color: var(--navy); font-size: 0.9em; transition: all 0.2s; }
-        .related a:hover { background: var(--gold); color: white; border-color: var(--gold); }
+        .role-card { background: linear-gradient(135deg, var(--gold) 0%, #B8860B 100%); color: var(--navy); padding: 25px; border-radius: 12px; margin: 20px 0; }
+        .role-type { display: inline-block; background: var(--navy); color: white; padding: 4px 12px; border-radius: 12px; font-size: 0.85em; margin-bottom: 10px; font-weight: 600; }
+        .role-summary { font-size: 1.15em; line-height: 1.6; }
+        .impact-section { margin: 25px 0; }
+        .impact-point { display: flex; margin: 15px 0; padding: 18px; background: var(--cream); border-radius: 8px; border-left: 4px solid var(--gold); }
+        .impact-number { font-size: 1.8em; font-weight: 700; color: var(--gold); margin-right: 18px; min-width: 40px; line-height: 1; }
+        .impact-content strong { color: var(--navy); display: block; margin-bottom: 5px; }
+        .impact-content p { margin: 0; font-size: 0.95em; }
+        .relation-timeline { position: relative; padding-left: 30px; margin: 20px 0; }
+        .relation-timeline::before { content: ''; position: absolute; left: 8px; top: 0; bottom: 0; width: 2px; background: linear-gradient(to bottom, var(--gold), var(--navy)); }
+        .relation-point { position: relative; margin-bottom: 25px; padding-left: 20px; }
+        .relation-point::before { content: ''; position: absolute; left: -26px; top: 5px; width: 12px; height: 12px; border-radius: 50%; background: var(--gold); border: 2px solid white; box-shadow: 0 0 0 2px var(--gold); }
+        .relation-year { font-weight: 700; color: var(--gold); font-size: 1.1em; }
+        .relation-point p { margin: 5px 0 0; font-size: 0.95em; }
+        .quote-block { background: var(--cream); border-left: 4px solid var(--navy); padding: 20px 25px; margin: 20px 0; border-radius: 0 8px 8px 0; }
+        .quote-block.dark { background: var(--navy); color: white; border-left-color: var(--gold); }
+        .quote-block.dark .source { color: var(--gold); }
+        .quote-block blockquote { margin: 0; font-style: italic; font-size: 1.05em; line-height: 1.7; }
+        .quote-block .source { color: var(--secondary); margin-top: 12px; font-size: 0.9em; font-style: normal; }
+        .quote-block .source::before { content: '—— '; }
+        .network-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin: 15px 0; }
+        .network-item { background: var(--cream); padding: 15px; border-radius: 8px; text-decoration: none; color: var(--navy); transition: all 0.2s; }
+        .network-item:hover { background: var(--gold); color: white; transform: translateY(-2px); }
+        .network-item strong { display: block; margin-bottom: 3px; }
+        .relation-type { font-size: 0.8em; color: var(--secondary); margin-top: 5px; }
+        .concept-tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 15px 0; }
+        .concept-tag { background: white; border: 1px solid var(--border); padding: 6px 14px; border-radius: 20px; text-decoration: none; color: var(--navy); font-size: 0.9em; transition: all 0.2s; }
+        .concept-tag:hover { background: var(--navy); color: white; border-color: var(--navy); }
         footer { text-align: center; padding: 40px 20px; color: var(--secondary); border-top: 1px solid var(--border); margin-top: 40px; }
         footer a { color: var(--navy); text-decoration: none; }
-        .backlinks { margin-top: 40px; padding-top: 30px; border-top: 2px dashed var(--gold); }
-        .backlinks h2 { color: var(--navy); font-size: 1.3em; margin-bottom: 15px; }
-        .backlinks-intro { color: var(--secondary); margin-bottom: 15px; }
-        .backlinks-list { display: flex; flex-wrap: wrap; gap: 10px; }
-        .backlinks-list a { background: linear-gradient(135deg, var(--light-gold) 0%, #fff9e6 100%); border: 1px solid var(--gold); padding: 8px 16px; border-radius: 20px; text-decoration: none; color: var(--navy); font-size: 0.9em; transition: all 0.3s; }
-        .backlinks-list a:hover { background: var(--gold); color: white; transform: translateY(-2px); }
-        .backlinks-count { margin-top: 15px; color: var(--secondary); font-size: 0.9em; }
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; margin: 20px 0; }
+        .stat-card { background: var(--cream); padding: 20px; border-radius: 8px; text-align: center; }
+        .stat-number { font-size: 2em; font-weight: 700; color: var(--gold); }
+        .stat-label { font-size: 0.9em; color: var(--secondary); }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
-        <div class="avatar-large">🎯</div>
-        <h1>巴菲特</h1>
+        <div class="avatar-large">👑</div>
+        <h1>沃伦·巴菲特</h1>
         <div class="en-name">Warren Buffett</div>
-        <div class="meta">👤 关键人物 · 被引用 82 次</div>
+        <div class="dates">1930年8月30日出生</div>
+        <div class="meta">👑 伯克希尔·哈撒韦创始人兼CEO</div>
     </header>
     
     <div class="container">
@@ -56,51 +77,141 @@
         </nav>
         
         <article class="content">
-            <h2>人物简介</h2>
-            <p>沃伦·巴菲特（1930-）是全球最著名的投资家，伯克希尔·哈撒韦公司的董事长兼CEO。他通过价值投资理念，将一家濒临倒闭的纺织厂发展成为市值数千亿美元的综合性企业集团，被誉为奥马哈先知和股神。</p>
-            
-            <h2>与巴菲特的关系</h2>
-            <p>伯克希尔的创始人和精神领袖，1965年开始执掌公司至今。</p>
-            
-            <h2>核心贡献</h2>
-            <p>建立了独特的价值投资哲学体系，培养了众多杰出投资者，创建了全球最大的保险公司之一。</p>
-
-            <h2>经典语录</h2>
-            <div class="quote">
-                <p>"别人贪婪时恐惧，别人恐惧时贪婪。"</p>
-                <div class="source">—— Warren Buffett</div>
-            </div>
-            <div class="quote">
-                <p>"买入一只股票，期待它在市场上上下波动时，我是很愚蠢的。"</p>
-                <div class="source">—— Warren Buffett</div>
-            </div>
-
-            <h2>巴菲特评价</h2>
-            <div class="quote">
-                <p>"寻找一个志同道合的人，比找到一个好项目更难。"</p>
-                <div class="source">—— 沃伦·巴菲特</div>
+            <!-- 人物定位 -->
+            <div class="role-card">
+                <div class="role-type">核心人物</div>
+                <div class="role-summary">被称为"奥马哈先知"，是20世纪最成功的投资者之一。他创立的伯克希尔·哈撒韦公司从一家濒临破产的纺织厂发展成为市值超过8000亿美元的投资帝国，改变了全球投资行业的格局。</div>
             </div>
             
-            <h2>相关公司</h2>
-            <div class="related">
-                <a href="../companies/伯克希尔哈撒韦.html">伯克希尔哈撒韦</a>
-            </div><p class="backlinks-count">共被提及 82 次</p>
+            <!-- 核心数据 -->
+            <h2>📊 核心数据</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">23.6%</div>
+                    <div class="stat-label">年化收益率 (1965-2023)</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">4.4万倍</div>
+                    <div class="stat-label">账面价值增长 (1965-2023)</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">#3</div>
+                    <div class="stat-label">全球富豪榜排名</div>
+                </div>
+            </div>
+            
+            <!-- 核心影响 -->
+            <h2>🎯 核心影响</h2>
+            <div class="impact-section">
+                <div class="impact-point">
+                    <div class="impact-number">1</div>
+                    <div class="impact-content">
+                        <strong>价值投资的全球化推广</strong>
+                        <p>巴菲特将格雷厄姆的价值投资理念发展壮大，通过半个多世纪的实践证明了"以合理价格买入优质企业并长期持有"这一策略的可行性。他的成功激励了全球无数投资者。</p>
+                    </div>
+                </div>
+                <div class="impact-point">
+                    <div class="impact-number">2</div>
+                    <div class="impact-content">
+                        <strong>"机构投资者"模式的创新</strong>
+                        <p>巴菲特创造了独特的"保险+投资"商业模式：利用保险业务的浮存金进行投资，实现资金来源的内部化。这一模式成为全球金融行业的经典案例。</p>
+                    </div>
+                </div>
+                <div class="impact-point">
+                    <div class="impact-number">3</div>
+                    <div class="impact-content">
+                        <strong>公司治理的典范</strong>
+                        <p>巴菲特的"充分授权"管理模式证明了：股东可以通过给予管理层充分信任和自主权来实现双赢。他在伯克希尔实践的这一理念影响了全球公司治理的思考方式。</p>
+                    </div>
+                </div>
+                <div class="impact-point">
+                    <div class="impact-number">4</div>
+                    <div class="impact-content">
+                        <strong>慈善与分享</strong>
+                        <p>巴菲特承诺捐出99%的个人财富用于慈善事业，是"捐赠誓言"(The Giving Pledge)的发起人之一。他与比尔·盖茨共同推动全球慈善事业的发展。</p>
+                    </div>
+                </div>
+                <div class="impact-point">
+                    <div class="impact-number">5</div>
+                    <div class="impact-content">
+                        <strong>透明沟通的典范</strong>
+                        <p>巴菲特每年撰写的致股东信被誉为"投资者的圣经"，他的坦诚、幽默和智慧影响了无数企业家和投资者。他坚持用简单易懂的语言解释复杂的投资理念。</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 人生轨迹 -->
+            <h2>📅 人生轨迹</h2>
+            <div class="relation-timeline">
+                <div class="relation-point">
+                    <span class="relation-year">1930年</span>
+                    <p>出生于美国内布拉斯加州奥马哈市，从小展现出商业天赋，11岁时购买了第一张股票。</p>
+                </div>
+                <div class="relation-point">
+                    <span class="relation-year">1950-1954年</span>
+                    <p>在哥伦比亚大学师从本杰明·格雷厄姆学习投资，获得经济学硕士学位。</p>
+                </div>
+                <div class="relation-point">
+                    <span class="relation-year">1956年</span>
+                    <p>返回奥马哈，创立自己的投资合伙企业，开始了专业投资生涯。</p>
+                </div>
+                <div class="relation-point">
+                    <span class="relation-year">1965年</span>
+                    <p>收购伯克希尔·哈撒韦纺织公司，开启了打造商业帝国的征程。</p>
+                </div>
+                <div class="relation-point">
+                    <span class="relation-year">1970年代</span>
+                    <p>在查理·芒格的影响下，转向"优质企业"投资策略，收购喜诗糖果等优秀企业。</p>
+                </div>
+                <div class="relation-point">
+                    <span class="relation-year">1980-2000年代</span>
+                    <p>大举投资可口可乐、富国银行、吉列等标志性企业，伯克希尔进入快速发展期。</p>
+                </div>
+                <div class="relation-point">
+                    <span class="relation-year">2008年</span>
+                    <p>成为全球首富（短暂），被《福布斯》评为全球第二大富豪。</p>
+                </div>
+                <div class="relation-point">
+                    <span class="relation-year">2021年</span>
+                    <p>正式宣布格雷格·阿贝尔为接班人，开始伯克希尔的权力交接。</p>
+                </div>
+            </div>
+            
+            <!-- 投资原则 -->
+            <h2>📚 投资原则</h2>
+            <div class="concept-tags">
+                <a href="../concepts/内在价值.html" class="concept-tag">内在价值</a>
+                <a href="../concepts/安全边际.html" class="concept-tag">安全边际</a>
+                <a href="../concepts/护城河.html" class="concept-tag">经济护城河</a>
+                <a href="../concepts/能力圈.html" class="concept-tag">能力圈</a>
+                <a href="../concepts/集中投资.html" class="concept-tag">集中投资</a>
+                <a href="../concepts/长期投资.html" class="concept-tag">长期投资</a>
+                <a href="../concepts/浮存金.html" class="concept-tag">浮存金</a>
+            </div>
+            
+            <!-- 相关人物 -->
+            <h2>👥 关系网络</h2>
+            <div class="network-grid">
+                <a href="芒格.html" class="network-item"><strong>查理·芒格</strong><div class="relation-type">最重要合伙人（1959-2023）</div></a>
+                <a href="格雷厄姆.html" class="network-item"><strong>本杰明·格雷厄姆</strong><div class="relation-type">导师（1950年代）</div></a>
+                <a href="阿吉特·贾恩.html" class="network-item"><strong>阿吉特·贾恩</strong><div class="relation-type">保险业务掌门人（1985-）</div></a>
+                <a href="格雷格·阿贝尔.html" class="network-item"><strong>格雷格·阿贝尔</strong><div class="relation-type">接班人（2021-）</div></a>
+            </div>
+            
+            <!-- 相关公司 -->
+            <h2>🏢 相关公司</h2>
+            <div class="network-grid">
+                <a href="../companies/伯克希尔哈撒韦.html" class="network-item"><strong>伯克希尔·哈撒韦</strong><div class="relation-type">创始人兼CEO</div></a>
+                <a href="../companies/可口可乐.html" class="network-item"><strong>可口可乐</strong><div class="relation-type">最大持股之一</div></a>
+                <a href="../companies/富国银行.html" class="network-item"><strong>富国银行</strong><div class="relation-type">长期重仓股</div></a>
+                <a href="../companies/GEICO.html" class="network-item"><strong>GEICO</strong><div class="relation-type">全资子公司</div></a>
             </div>
         </article>
     </div>
     
     <footer>
         <p><a href="../index.html">巴菲特知识库</a> | 数据来源：Berkshire Hathaway Letters</p>
-    
-        <div class="backlinks">
-            <h2>📚 反向链接</h2>
-            <p class="backlinks-intro">以下年份的信件提到了此人物：</p>
-            <div class="backlinks-list">
-                <a href="../letters/berkshire/2024.html">2024年</a><a href="../letters/berkshire/2023.html">2023年</a><a href="../letters/berkshire/2022.html">2022年</a><a href="../letters/berkshire/2021.html">2021年</a><a href="../letters/berkshire/2020.html">2020年</a><a href="../letters/berkshire/2019.html">2019年</a><a href="../letters/berkshire/2018.html">2018年</a><a href="../letters/berkshire/2017.html">2017年</a><a href="../letters/berkshire/2016.html">2016年</a><a href="../letters/berkshire/2015.html">2015年</a><a href="../letters/berkshire/2014.html">2014年</a><a href="../letters/berkshire/2013.html">2013年</a><a href="../letters/berkshire/2012.html">2012年</a><a href="../letters/berkshire/2011.html">2011年</a><a href="../letters/berkshire/2010.html">2010年</a><a href="../letters/berkshire/2009.html">2009年</a><a href="../letters/berkshire/2008.html">2008年</a><a href="../letters/berkshire/2007.html">2007年</a><a href="../letters/berkshire/2006.html">2006年</a><a href="../letters/berkshire/2005.html">2005年</a><a href="../letters/berkshire/2004.html">2004年</a><a href="../letters/berkshire/2003.html">2003年</a><a href="../letters/berkshire/2002.html">2002年</a><a href="../letters/berkshire/2001.html">2001年</a><a href="../letters/berkshire/2000.html">2000年</a><a href="../letters/berkshire/1999.html">1999年</a><a href="../letters/berkshire/1998.html">1998年</a><a href="../letters/berkshire/1997.html">1997年</a><a href="../letters/berkshire/1996.html">1996年</a><a href="../letters/berkshire/1995.html">1995年</a><a href="../letters/berkshire/1994.html">1994年</a><a href="../letters/berkshire/1993.html">1993年</a><a href="../letters/berkshire/1992.html">1992年</a><a href="../letters/berkshire/1991.html">1991年</a><a href="../letters/berkshire/1990.html">1990年</a><a href="../letters/berkshire/1989.html">1989年</a><a href="../letters/berkshire/1988.html">1988年</a><a href="../letters/berkshire/1987.html">1987年</a><a href="../letters/berkshire/1986.html">1986年</a><a href="../letters/berkshire/1985.html">1985年</a><a href="../letters/berkshire/1984.html">1984年</a><a href="../letters/berkshire/1983.html">1983年</a><a href="../letters/berkshire/1982.html">1982年</a><a href="../letters/berkshire/1981.html">1981年</a><a href="../letters/berkshire/1980.html">1980年</a><a href="../letters/berkshire/1979.html">1979年</a><a href="../letters/berkshire/1978.html">1978年</a><a href="../letters/berkshire/1977.html">1977年</a><a href="../letters/berkshire/1976.html">1976年</a><a href="../letters/berkshire/1975.html">1975年</a><a href="../letters/berkshire/1974.html">1974年</a><a href="../letters/berkshire/1973.html">1973年</a><a href="../letters/berkshire/1972.html">1972年</a><a href="../letters/berkshire/1971.html">1971年</a><a href="../letters/berkshire/1970.html">1970年</a><a href="../letters/berkshire/1969.html">1969年</a><a href="../letters/berkshire/1968.html">1968年</a><a href="../letters/berkshire/1967.html">1967年</a><a href="../letters/berkshire/1966.html">1966年</a><a href="../letters/berkshire/1965.html">1965年</a>
-            </div>
-            <p class="backlinks-count">共 60 处引用</p>
-        </div>
-    
-</footer>
+        <p style="margin-top: 15px; font-size: 0.9em; color: var(--secondary);">沃伦·巴菲特是本知识库的核心人物，所有人物和公司关系都围绕他的投资生涯展开。</p>
+    </footer>
 </body>
 </html>
