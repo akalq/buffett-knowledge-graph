@@ -84,7 +84,13 @@
         .mobile-menu-btn { display: none; position: fixed; top: 15px; left: 15px; z-index: 998; background: var(--navy); color: var(--gold); border: none; padding: 10px 15px; border-radius: 8px; font-size: 1.2em; cursor: pointer; }
         @media (max-width: 768px) { .sidebar { transform: translateX(-100%); } .sidebar.open { transform: translateX(0); width: 220px; } .mobile-menu-btn { display: block; } .sidebar-overlay.active { display: block; } .main-wrapper { margin-left: 0 !important; } }
         @media (min-width: 769px) { .main-wrapper { margin-left: 60px; transition: margin-left 0.3s; } }
-    </style>
+    
+        header { background: var(--navy); color: white; padding: 15px 0; position: sticky; top: 0; z-index: 100; }
+        header .container { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.1em; font-weight: bold; color: var(--gold); text-decoration: none; }
+        nav a { color: white; text-decoration: none; margin-left: 20px; font-size: 0.9em; opacity: 0.9; transition: opacity 0.2s; }
+        nav a:hover { opacity: 1; color: var(--gold); }
+</style>
 </head>
 <body>
     <div class="sidebar-overlay" id="sidebarOverlay"></div>
@@ -112,9 +118,19 @@
     </aside>
     <div class="search-modal" id="searchModal"><div class="search-box"><input type="text" placeholder="搜索概念、公司、人物..." id="searchInput" autofocus><p class="search-hint">按 ESC 或点击外部区域关闭</p></div></div>
     
-    <header>
-        <h1>股东心态 (Owner Thinking)</h1>
-        <div class="meta"><span>巴菲特投资体系核心概念</span></div>
+        <header>
+        <div class="container">
+            <a href="../index.html" class="logo">📚 巴菲特知识库</a>
+            <nav>
+                <a href="../index-pages/巴菲特致股东信总览.html">📝 信件</a>
+                <a href="../index-pages/核心思想索引.html">💡 概念</a>
+                <a href="../index-pages/公司索引.html">🏢 公司</a>
+                <a href="../index-pages/人物索引.html">👤 人物</a>
+                <a href="../index-pages/时间线.html">📅 时间线</a>
+                <a href="../index-pages/概念关系图谱.html">🕸️ 图谱</a>
+                <a href="../index-pages/知识树.html">🌳 知识树</a>
+            </nav>
+        </div>
     </header>
     <div class="main-wrapper" id="mainWrapper">
     <div class="container"><article class="content">

@@ -357,7 +357,13 @@
                 opacity: 1;
             }
         }
-    </style>
+    
+        header { background: var(--navy); color: white; padding: 15px 0; position: sticky; top: 0; z-index: 100; }
+        header .container { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.1em; font-weight: bold; color: var(--gold); text-decoration: none; }
+        nav a { color: white; text-decoration: none; margin-left: 20px; font-size: 0.9em; opacity: 0.9; transition: opacity 0.2s; }
+        nav a:hover { opacity: 1; color: var(--gold); }
+</style>
 </head>
 <body>
     <!-- Sidebar Overlay (Mobile) -->
@@ -431,9 +437,19 @@
             <p class="search-hint">按 ESC 或点击外部区域关闭</p>
         </div>
     </div>
-    <header>
-        <h1>内在价值 (Intrinsic Value)</h1>
-        <div class="meta"><span>巴菲特投资体系核心锚点</span></div>
+        <header>
+        <div class="container">
+            <a href="../index.html" class="logo">📚 巴菲特知识库</a>
+            <nav>
+                <a href="../index-pages/巴菲特致股东信总览.html">📝 信件</a>
+                <a href="../index-pages/核心思想索引.html">💡 概念</a>
+                <a href="../index-pages/公司索引.html">🏢 公司</a>
+                <a href="../index-pages/人物索引.html">👤 人物</a>
+                <a href="../index-pages/时间线.html">📅 时间线</a>
+                <a href="../index-pages/概念关系图谱.html">🕸️ 图谱</a>
+                <a href="../index-pages/知识树.html">🌳 知识树</a>
+            </nav>
+        </div>
     </header>
     <div class="main-wrapper" id="mainWrapper">
     
