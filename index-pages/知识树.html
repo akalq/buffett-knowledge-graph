@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>知识树 | 巴菲特知识库</title>
+    <style>
+        :root {
+            --bg-color: #FFFEF9;
+            --navy: #1B2A4A;
+            --gold: #C9A227;
+            --text: #2C3E50;
+            --secondary: #5D6D7E;
+            --border: #E5E0D8;
+            --card-bg: #FFFFFF;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Noto Serif SC', 'Georgia', serif;
+            background: var(--bg-color);
+            color: var(--text);
+            line-height: 1.8;
+            min-height: 100vh;
+        }
+        
+        /* Sidebar */
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            height: 100vh;
+            width: 60px;
+            background: var(--navy);
+            z-index: 1000;
+            transition: width 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        
+        .sidebar.expanded {
+            width: 220px;
+        }
+        
+        .sidebar-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 60px;
+            background: transparent;
+            border: none;
+            color: var(--gold);
+            font-size: 1.5em;
+            cursor: pointer;
+            transition: all 0.2s;
+            flex-shrink: 0;
+        }
+        
+        .sidebar-toggle:hover {
+            background: rgba(201, 162, 39, 0.2);
+        }
+        
+        .sidebar-nav {
+            flex: 1;
+            overflow-y: auto;
+            padding: 10px 0;
+        }
+        
+        .nav-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 15px;
+            color: white;
+            text-decoration: none;
+            font-size: 0.95em;
+            transition: all 0.2s;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+        
+        .nav-item .icon {
+            font-size: 1.3em;
+            width: 30px;
+            flex-shrink: 0;
+            text-align: center;
+        }
+        
+        .nav-item .label {
+            opacity: 0;
+            margin-left: 12px;
+            transition: opacity 0.2s;
+        }
+        
+        .sidebar.expanded .nav-item .label {
+            opacity: 1;
+        }
+        
+        .nav-item:hover {
+            background: rgba(201, 162, 39, 0.15);
+            color: var(--gold);
+        }
+        
+        /* Main Content */
+        .main-content {
+            margin-left: 60px;
+            transition: margin-left 0.3s ease;
+            min-height: 100vh;
+        }
+        
+        /* Header */
+        .header {
+            background: var(--navy);
+            color: white;
+            padding: 20px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .header-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .header-title h1 {
+            font-size: 1.6em;
+            font-weight: 600;
+        }
+        
+        .header-title .icon {
+            font-size: 1.8em;
+            color: var(--gold);
+        }
+        
+        .header-actions {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .action-btn {
+            padding: 8px 20px;
+            border: 1px solid rgba(201, 162, 39, 0.5);
+            background: transparent;
+            color: white;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.9em;
+            font-family: inherit;
+            transition: all 0.2s;
+        }
+        
+        .action-btn:hover {
+            background: var(--gold);
+            color: var(--navy);
+            border-color: var(--gold);
+        }
+        
+        /* Tree Container */
+        .tree-container {
+            padding: 30px;
+        }
+        
+        .tree-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(27, 42, 74, 0.08);
+            overflow: hidden;
+        }
+        
+        .tree-header {
+            padding: 20px 25px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .tree-title {
+            font-size: 1.2em;
+            color: var(--navy);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .tree-stats {
+            display: flex;
+            gap: 20px;
+            font-size: 0.9em;
+            color: var(--secondary);
+        }
+        
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .stat-num {
+            font-weight: bold;
+            color: var(--gold);
+        }
+        
+        .tree-content {
+            padding: 30px;
+            overflow-x: auto;
+        }
+        
+        /* Tree Styles */
+        .knowledge-tree {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-width: fit-content;
+        }
+        
+        .tree-root {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .root-node {
+            background: linear-gradient(135deg, var(--gold) 0%, #d4af37 100%);
+            color: var(--navy);
+            padding: 20px 35px;
+            border-radius: 50px;
+            font-size: 1.3em;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(201, 162, 39, 0.4);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .tree-branches {
+            display: flex;
+            gap: 25px;
+            position: relative;
+            padding-top: 30px;
+        }
+        
+        .tree-branches::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            height: 2px;
+            background: var(--border);
+        }
+        
+        .branch {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+        }
+        
+        .branch::before {
+            content: '';
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            width: 2px;
+            height: 30px;
+            background: var(--border);
+        }
+        
+        .branch-node {
+            background: var(--navy);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 12px;
+            font-size: 1.1em;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 3px 10px rgba(27, 42, 74, 0.2);
+        }
+        
+        .branch-node:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(27, 42, 74, 0.3);
+        }
+        
+        .branch-node .toggle-icon {
+            font-size: 0.8em;
+            transition: transform 0.3s;
+        }
+        
+        .branch.collapsed .toggle-icon {
+            transform: rotate(-90deg);
+        }
+        
+        .branch-children {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            max-height: 2000px;
+            opacity: 1;
+        }
+        
+        .branch.collapsed .branch-children {
+            max-height: 0;
+            margin-top: 0;
+            opacity: 0;
+        }
+        
+        .branch-children::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            width: 2px;
+            height: 10px;
+            background: var(--border);
+        }
+        
+        .child-wrapper {
+            position: relative;
+            padding-top: 10px;
+        }
+        
+        .child-wrapper::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 2px;
+            height: 10px;
+            background: var(--border);
+        }
+        
+        .child-wrapper:first-child::before {
+            display: none;
+        }
+        
+        .child-wrapper:last-child::before {
+            height: 50%;
+        }
+        
+        .child-wrapper:only-child::before {
+            display: none;
+        }
+        
+        .child-node {
+            background: white;
+            border: 2px solid var(--border);
+            color: var(--text);
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 0.95em;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            min-width: 140px;
+            justify-content: center;
+        }
+        
+        .child-node:hover {
+            border-color: var(--gold);
+            background: rgba(201, 162, 39, 0.1);
+            transform: translateY(-2px);
+        }
+        
+        .child-node.has-children {
+            background: #f8f7f2;
+            font-weight: 500;
+        }
+        
+        .child-node.has-children .toggle-icon {
+            font-size: 0.8em;
+            transition: transform 0.3s;
+        }
+        
+        .child-wrapper.collapsed .toggle-icon {
+            transform: rotate(-90deg);
+        }
+        
+        .grandchildren {
+            margin-top: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            padding-left: 20px;
+            border-left: 2px solid var(--border);
+            overflow: hidden;
+            transition: all 0.3s ease;
+            max-height: 500px;
+        }
+        
+        .child-wrapper.collapsed .grandchildren {
+            max-height: 0;
+            margin-top: 0;
+            opacity: 0;
+        }
+        
+        .grandchild {
+            background: var(--bg-color);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 8px 15px;
+            border-radius: 6px;
+            font-size: 0.85em;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .grandchild:hover {
+            border-color: var(--gold);
+            background: rgba(201, 162, 39, 0.1);
+            transform: translateX(3px);
+        }
+        
+        .grandchild .tag {
+            background: var(--gold);
+            color: white;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 0.7em;
+            margin-left: auto;
+        }
+        
+        /* Legend */
+        .legend {
+            padding: 20px 25px;
+            border-top: 1px solid var(--border);
+            background: #faf9f5;
+        }
+        
+        .legend-title {
+            font-size: 0.9em;
+            color: var(--secondary);
+            margin-bottom: 12px;
+        }
+        
+        .legend-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .legend-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.85em;
+        }
+        
+        .legend-sample {
+            padding: 6px 15px;
+            border-radius: 8px;
+        }
+        
+        .legend-sample.root {
+            background: var(--gold);
+            color: var(--navy);
+        }
+        
+        .legend-sample.branch {
+            background: var(--navy);
+            color: white;
+        }
+        
+        .legend-sample.child {
+            background: white;
+            border: 2px solid var(--border);
+            color: var(--text);
+        }
+        
+        /* Instructions */
+        .instructions {
+            padding: 15px 25px;
+            background: rgba(201, 162, 39, 0.1);
+            border-top: 1px solid var(--border);
+            font-size: 0.85em;
+            color: var(--secondary);
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .instruction-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .instruction-key {
+            background: var(--navy);
+            color: white;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.8em;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 0;
+            }
+            
+            .sidebar.expanded {
+                width: 180px;
+            }
+            
+            .main-content {
+                margin-left: 0;
+            }
+            
+            .header {
+                padding: 15px 20px;
+            }
+            
+            .header-title h1 {
+                font-size: 1.3em;
+            }
+            
+            .tree-branches {
+                flex-direction: column;
+                gap: 30px;
+            }
+            
+            .tree-branches::before {
+                display: none;
+            }
+            
+            .tree-container {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar -->
+    <nav class="sidebar" id="sidebar">
+        <button class="sidebar-toggle" onclick="toggleSidebar()">☰</button>
+        <div class="sidebar-nav">
+            <a href="index.html" class="nav-item">
+                <span class="icon">🏠</span>
+                <span class="label">首页</span>
+            </a>
+            <a href="index-pages/核心思想索引.html" class="nav-item">
+                <span class="icon">💡</span>
+                <span class="label">核心思想</span>
+            </a>
+            <a href="index-pages/时间线.html" class="nav-item">
+                <span class="icon">📅</span>
+                <span class="label">时间线</span>
+            </a>
+            <a href="index-pages/公司索引.html" class="nav-item">
+                <span class="icon">🏢</span>
+                <span class="label">公司索引</span>
+            </a>
+            <a href="index-pages/人物索引.html" class="nav-item">
+                <span class="icon">👤</span>
+                <span class="label">人物索引</span>
+            </a>
+            <a href="index-pages/概念关系图谱.html" class="nav-item">
+                <span class="icon">🔗</span>
+                <span class="label">概念图谱</span>
+            </a>
+            <a href="index-pages/知识树.html" class="nav-item" style="background: rgba(201,162,39,0.2);">
+                <span class="icon">🌳</span>
+                <span class="label">知识树</span>
+            </a>
+            <a href="index-pages/巴菲特致股东信总览.html" class="nav-item">
+                <span class="icon">📧</span>
+                <span class="label">股东信</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-title">
+                <span class="icon">🌳</span>
+                <h1>巴菲特知识树</h1>
+            </div>
+            <div class="header-actions">
+                <button class="action-btn" onclick="expandAll()">展开全部</button>
+                <button class="action-btn" onclick="collapseAll()">收起全部</button>
+            </div>
+        </header>
+
+        <!-- Tree Container -->
+        <div class="tree-container">
+            <div class="tree-card">
+                <div class="tree-header">
+                    <div class="tree-title">
+                        <span>📚</span>
+                        <span>巴菲特投资智慧的知识图谱</span>
+                    </div>
+                    <div class="tree-stats">
+                        <div class="stat-item">
+                            <span>一级分类</span>
+                            <span class="stat-num">5</span>
+                        </div>
+                        <div class="stat-item">
+                            <span>二级分类</span>
+                            <span class="stat-num">9</span>
+                        </div>
+                        <div class="stat-item">
+                            <span>知识条目</span>
+                            <span class="stat-num">30+</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tree-content">
+                    <div class="knowledge-tree" id="knowledge-tree">
+                        <!-- Tree will be generated by JavaScript -->
+                    </div>
+                </div>
+                
+                <!-- Legend -->
+                <div class="legend">
+                    <div class="legend-title">图例说明</div>
+                    <div class="legend-items">
+                        <div class="legend-group">
+                            <span class="legend-sample root">📚</span>
+                            <span>知识根节点</span>
+                        </div>
+                        <div class="legend-group">
+                            <span class="legend-sample branch">🎯</span>
+                            <span>一级分类</span>
+                        </div>
+                        <div class="legend-group">
+                            <span class="legend-sample child">📖</span>
+                            <span>知识条目</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Instructions -->
+                <div class="instructions">
+                    <div class="instruction-item">
+                        <span class="instruction-key">点击</span>
+                        <span>展开/收起节点</span>
+                    </div>
+                    <div class="instruction-item">
+                        <span class="instruction-key">点击知识条目</span>
+                        <span>跳转详情页面</span>
+                    </div>
+                    <div class="instruction-item">
+                        <span class="instruction-key">展开全部</span>
+                        <span>显示所有内容</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Toggle Sidebar
+        function toggleSidebar() {
+            document.getElementById('sidebar').classList.toggle('expanded');
+        }
+        
+        // Knowledge Tree Data
+        const knowledgeTree = {
+            name: "巴菲特投资智慧",
+            icon: "📚",
+            children: [
+                {
+                    name: "投资哲学",
+                    icon: "🎯",
+                    children: [
+                        { name: "价值投资", icon: "💎", link: "concepts/价值投资.html" },
+                        { name: "长期主义", icon: "⏳", link: "concepts/长期持有.html" },
+                        { name: "股东心态", icon: "🤝", link: "concepts/股东心态.html" },
+                        { name: "逆向思维", icon: "🔄", link: "concepts/贪婪与恐惧.html" }
+                    ]
+                },
+                {
+                    name: "投资方法",
+                    icon: "🛠️",
+                    children: [
+                        { 
+                            name: "选股标准", 
+                            icon: "🔍",
+                            children: [
+                                { name: "护城河", icon: "🏰", link: "concepts/护城河.html" },
+                                { name: "能力圈", icon: "🎯", link: "concepts/能力圈.html" },
+                                { name: "管理层评估", icon: "👔", link: "concepts/管理层.html" }
+                            ]
+                        },
+                        { 
+                            name: "估值方法", 
+                            icon: "📊",
+                            children: [
+                                { name: "内在价值", icon: "💰", link: "concepts/内在价值.html" },
+                                { name: "安全边际", icon: "🛡️", link: "concepts/安全边际.html" },
+                                { name: "现金流折现", icon: "💵", link: "concepts/现金流.html" }
+                            ]
+                        },
+                        { 
+                            name: "买入时机", 
+                            icon: "⏰",
+                            children: [
+                                { name: "市场先生", icon: "📈", link: "concepts/市场先生.html" },
+                                { name: "贪婪与恐惧", icon: "😱", link: "concepts/贪婪与恐惧.html" }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    name: "投资智慧",
+                    icon: "💡",
+                    children: [
+                        { name: "复利的力量", icon: "🔢", link: "concepts/复利.html" },
+                        { name: "时间的朋友", icon: "👴", link: "concepts/时间.html" },
+                        { name: "耐心的价值", icon: "🧘", link: "concepts/耐心.html" },
+                        { name: "风险控制", icon: "⚖️", link: "concepts/风险.html" }
+                    ]
+                },
+                {
+                    name: "经典案例",
+                    icon: "🏢",
+                    children: [
+                        { name: "可口可乐", icon: "🥤", link: "companies/可口可乐.html", tag: "消费" },
+                        { name: "喜诗糖果", icon: "🍬", link: "companies/喜诗糖果.html", tag: "消费" },
+                        { name: "GEICO保险", icon: "🛡️", link: "companies/盖可保险.html", tag: "保险" },
+                        { name: "苹果", icon: "📱", link: "companies/苹果.html", tag: "科技" },
+                        { name: "美国运通", icon: "💳", link: "companies/美国运通.html", tag: "金融" }
+                    ]
+                },
+                {
+                    name: "关键人物",
+                    icon: "👤",
+                    children: [
+                        { name: "查理·芒格", icon: "🧠", link: "people/芒格.html", tag: "合伙人" },
+                        { name: "本杰明·格雷厄姆", icon: "📚", link: "people/格雷厄姆.html", tag: "导师" },
+                        { name: "阿吉特·贾恩", icon: "💼", link: "people/阿吉特·贾恩.html", tag: "投资团队" },
+                        { name: "B夫人", icon: "👩‍💼", link: "people/B夫人.html", tag: "企业家" }
+                    ]
+                }
+            ]
+        };
+        
+        // Render Tree
+        function renderTree() {
+            const container = document.getElementById('knowledge-tree');
+            container.innerHTML = '';
+            
+            // Root
+            const rootDiv = document.createElement('div');
+            rootDiv.className = 'tree-root';
+            rootDiv.innerHTML = `
+                <div class="root-node">
+                    <span>${knowledgeTree.icon}</span>
+                    <span>${knowledgeTree.name}</span>
+                </div>
+            `;
+            container.appendChild(rootDiv);
+            
+            // Branches
+            const branchesDiv = document.createElement('div');
+            branchesDiv.className = 'tree-branches';
+            
+            knowledgeTree.children.forEach((branch, index) => {
+                const branchDiv = createBranchElement(branch);
+                branchesDiv.appendChild(branchDiv);
+            });
+            
+            container.appendChild(branchesDiv);
+        }
+        
+        function createBranchElement(branch) {
+            const branchDiv = document.createElement('div');
+            branchDiv.className = 'branch';
+            
+            const hasChildren = branch.children && branch.children.length > 0;
+            
+            branchDiv.innerHTML = `
+                <div class="branch-node" onclick="toggleBranch(this)">
+                    <span>${branch.icon}</span>
+                    <span>${branch.name}</span>
+                    ${hasChildren ? '<span class="toggle-icon">▼</span>' : ''}
+                </div>
+                <div class="branch-children">
+                    ${branch.children ? branch.children.map(child => createChildHTML(child)).join('') : ''}
+                </div>
+            `;
+            
+            return branchDiv;
+        }
+        
+        function createChildHTML(child) {
+            const hasGrandchildren = child.children && child.children.length > 0;
+            const isLink = child.link && !hasGrandchildren;
+            
+            let html = '';
+            
+            if (hasGrandchildren) {
+                html = `
+                    <div class="child-wrapper">
+                        <div class="child-node has-children" onclick="toggleGrandchildren(this)">
+                            <span>${child.icon || '📁'}</span>
+                            <span>${child.name}</span>
+                            <span class="toggle-icon">▼</span>
+                        </div>
+                        <div class="grandchildren">
+                            ${child.children.map(gc => `
+                                <a href="${gc.link}" class="grandchild">
+                                    <span>${gc.icon || '📄'}</span>
+                                    <span>${gc.name}</span>
+                                    ${gc.tag ? `<span class="tag">${gc.tag}</span>` : ''}
+                                </a>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+            } else if (child.link) {
+                html = `
+                    <div class="child-wrapper">
+                        <a href="${child.link}" class="child-node">
+                            <span>${child.icon || '📄'}</span>
+                            <span>${child.name}</span>
+                            ${child.tag ? `<span class="tag">${child.tag}</span>` : ''}
+                        </a>
+                    </div>
+                `;
+            } else {
+                html = `
+                    <div class="child-wrapper">
+                        <div class="child-node">
+                            <span>${child.icon || '📄'}</span>
+                            <span>${child.name}</span>
+                        </div>
+                    </div>
+                `;
+            }
+            
+            return html;
+        }
+        
+        function toggleBranch(element) {
+            const branch = element.closest('.branch');
+            if (branch) {
+                branch.classList.toggle('collapsed');
+            }
+        }
+        
+        function toggleGrandchildren(element) {
+            const wrapper = element.closest('.child-wrapper');
+            if (wrapper) {
+                wrapper.classList.toggle('collapsed');
+            }
+        }
+        
+        function expandAll() {
+            document.querySelectorAll('.branch').forEach(b => b.classList.remove('collapsed'));
+            document.querySelectorAll('.child-wrapper').forEach(w => w.classList.remove('collapsed'));
+        }
+        
+        function collapseAll() {
+            document.querySelectorAll('.branch').forEach(b => b.classList.add('collapsed'));
+            document.querySelectorAll('.child-wrapper').forEach(w => w.classList.add('collapsed'));
+        }
+        
+        // Initialize
+        document.addEventListener('DOMContentLoaded', renderTree);
+    </script>
+</body>
+</html>
