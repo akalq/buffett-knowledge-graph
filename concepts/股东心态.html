@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>股东心态 (Owner Thinking) - 巴菲特投资概念</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root { --bg-color: #FFFEF9; --navy: #1B2A4A; --gold: #C9A227; --text: #2C3E50; --secondary: #5D6D7E; --border: #E5E0D8; --light-gold: #F5ECD7; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Noto Serif SC', Georgia, serif; background: var(--bg-color); color: var(--text); line-height: 1.9; }
+        .container { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
+        header { background: linear-gradient(135deg, var(--navy) 0%, #2a3f6a 100%); color: white; padding: 50px 30px; text-align: center; }
+        header h1 { font-size: 2.2em; margin-bottom: 10px; }
+        header h1::before { content: '🤝'; margin-right: 15px; }
+        header .meta { color: var(--gold); font-size: 1em; margin-top: 15px; }
+        header .meta span { background: rgba(201, 162, 39, 0.2); padding: 5px 15px; border-radius: 20px; }
+        .nav { background: white; border: 1px solid var(--border); padding: 15px 25px; margin-bottom: 30px; border-radius: 10px; text-align: center; }
+        .nav a { color: var(--navy); text-decoration: none; margin: 0 15px; font-size: 0.95em; padding: 8px 15px; border-radius: 5px; transition: all 0.2s; }
+        .nav a:hover { background: var(--gold); color: white; }
+        .content { background: white; border: 1px solid var(--border); border-radius: 15px; padding: 45px; box-shadow: 0 5px 30px rgba(0,0,0,0.05); }
+        .content h2 { color: var(--navy); font-size: 1.4em; margin: 40px 0 20px; padding-bottom: 12px; border-bottom: 3px solid var(--gold); display: inline-block; }
+        .content h2:first-of-type { margin-top: 0; }
+        .content h3 { color: var(--navy); font-size: 1.15em; margin: 25px 0 12px; }
+        .content p { margin: 15px 0; text-align: justify; }
+        .content ul, .content ol { margin: 15px 0 15px 25px; }
+        .content li { margin: 10px 0; }
+        .content strong { color: var(--navy); font-weight: 700; }
+        .insight { background: linear-gradient(135deg, #f8f5ee 0%, #fff 100%); border-left: 4px solid #C9A227; padding: 18px 22px; margin: 25px 0; font-style: italic; font-size: 1.05em; }
+        .evolution-timeline { position: relative; padding-left: 35px; margin: 25px 0; }
+        .evolution-timeline::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: #C9A227; }
+        .evolution-point { position: relative; margin-bottom: 25px; }
+        .evolution-point::before { content: ''; position: absolute; left: -38px; top: 6px; width: 12px; height: 12px; border-radius: 50%; background: #C9A227; border: 3px solid white; box-shadow: 0 0 0 3px #C9A227; }
+        .evolution-year { font-weight: 600; color: var(--navy); font-size: 1.05em; }
+        .evolution-desc { color: var(--text); margin-top: 5px; }
+        .case-card { background: #F8F5EE; border-radius: 10px; padding: 25px; margin: 20px 0; border: 1px solid var(--border); }
+        .case-company { font-size: 1.15em; font-weight: 600; color: var(--navy); margin-bottom: 8px; }
+        .case-data { color: #5D6D7E; font-size: 0.95em; margin: 8px 0; }
+        .case-lesson { font-style: italic; margin-top: 15px; padding-top: 15px; border-top: 1px solid #E8E4DB; color: var(--text); }
+        .misconception-block { background: #fff5f5; padding: 20px 25px; border-radius: 10px; margin: 20px 0; border-left: 4px solid #e74c3c; }
+        .misconception-block h4 { color: #c0392b; margin-bottom: 12px; font-size: 1.05em; }
+        .misconception-block p { margin: 8px 0; }
+        .quote-block { background: var(--navy); color: white; padding: 25px 30px; border-left: 5px solid var(--gold); margin: 25px 0; border-radius: 0 12px 12px 0; }
+        .quote-block p { margin: 0; font-style: italic; font-size: 1.05em; line-height: 1.8; }
+        .quote-block footer { color: var(--gold); margin-top: 15px; font-size: 0.9em; font-style: normal; }
+        .topic-group { margin: 25px 0; padding: 20px; background: linear-gradient(135deg, var(--light-gold) 0%, #fff9e6 100%); border-radius: 10px; }
+        .topic-title { font-weight: 600; color: var(--navy); margin-bottom: 10px; font-size: 1.05em; }
+        .topic-desc { color: var(--text); margin-bottom: 12px; font-size: 0.95em; }
+        .topic-years { display: flex; flex-wrap: wrap; gap: 8px; }
+        .topic-years a { background: white; border: 1px solid var(--gold); padding: 5px 14px; border-radius: 18px; text-decoration: none; color: var(--navy); font-size: 0.85em; transition: all 0.2s; }
+        .topic-years a:hover { background: var(--gold); color: white; }
+        footer { text-align: center; padding: 40px 20px; color: var(--secondary); border-top: 1px solid var(--border); margin-top: 40px; }
+        @media (max-width: 768px) { .container { padding: 20px 15px; } header { padding: 30px 20px; } header h1 { font-size: 1.7em; } .content { padding: 25px 20px; } .nav a { margin: 5px 8px; display: inline-block; } }
+        .sidebar { position: fixed; left: 0; top: 0; height: 100vh; width: 60px; background: #1B2A4A; z-index: 1000; transition: width 0.3s ease; display: flex; flex-direction: column; overflow: hidden; }
+        .sidebar.expanded { width: 220px; }
+        .sidebar-toggle { display: flex; align-items: center; justify-content: center; width: 100%; height: 60px; background: transparent; border: none; color: #C9A227; font-size: 1.5em; cursor: pointer; transition: all 0.2s; flex-shrink: 0; }
+        .sidebar-toggle:hover { background: rgba(201, 162, 39, 0.2); }
+        .sidebar-nav { flex: 1; overflow-y: auto; overflow-x: hidden; padding: 10px 0; }
+        .sidebar-nav::-webkit-scrollbar { width: 3px; }
+        .sidebar-nav::-webkit-scrollbar-thumb { background: rgba(201, 162, 39, 0.3); }
+        .nav-item { display: flex; align-items: center; padding: 12px 15px; color: white; text-decoration: none; font-size: 0.95em; transition: all 0.2s; white-space: nowrap; overflow: hidden; }
+        .nav-item .icon { font-size: 1.3em; width: 30px; flex-shrink: 0; text-align: center; }
+        .nav-item .label { opacity: 0; margin-left: 12px; transition: opacity 0.2s; overflow: hidden; text-overflow: ellipsis; }
+        .sidebar.expanded .nav-item .label { opacity: 1; }
+        .nav-item:hover { background: rgba(201, 162, 39, 0.15); color: #C9A227; }
+        .nav-item:hover .icon { transform: scale(1.1); }
+        .wisdom-module { border-top: 1px solid rgba(201, 162, 39, 0.3); padding: 15px; background: rgba(0, 0, 0, 0.2); flex-shrink: 0; max-height: 200px; overflow: hidden; display: flex; flex-direction: column; }
+        .wisdom-title { color: #C9A227; font-size: 0.85em; font-weight: bold; margin-bottom: 10px; display: flex; align-items: center; gap: 6px; opacity: 0; transition: opacity 0.2s; }
+        .sidebar.expanded .wisdom-title { opacity: 1; }
+        .wisdom-content { flex: 1; overflow: hidden; }
+        .wisdom-quote { color: white; font-size: 0.85em; line-height: 1.6; margin-bottom: 8px; opacity: 0; transition: opacity 0.2s; font-style: italic; }
+        .sidebar.expanded .wisdom-quote { opacity: 1; }
+        .wisdom-source { color: #C9A227; font-size: 0.8em; text-decoration: none; opacity: 0; transition: opacity 0.2s; display: block; cursor: pointer; }
+        .sidebar.expanded .wisdom-source { opacity: 1; }
+        .wisdom-source:hover { text-decoration: underline; }
+        .wisdom-refresh { color: white; background: rgba(201, 162, 39, 0.2); border: 1px solid rgba(201, 162, 39, 0.4); padding: 6px 12px; border-radius: 15px; font-size: 0.75em; cursor: pointer; margin-top: 10px; opacity: 0; transition: all 0.2s; display: flex; align-items: center; justify-content: center; gap: 5px; }
+        .sidebar.expanded .wisdom-refresh { opacity: 1; }
+        .wisdom-refresh:hover { background: rgba(201, 162, 39, 0.4); }
+        .search-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 2000; justify-content: center; align-items: center; }
+        .search-box { background: white; padding: 30px; border-radius: 15px; max-width: 500px; width: 90%; text-align: center; }
+        .search-box input { width: 100%; padding: 15px; font-size: 1.1em; border: 2px solid var(--gold); border-radius: 8px; margin-bottom: 15px; }
+        .search-hint { color: var(--secondary); font-size: 0.9em; }
+        .sidebar-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 999; }
+        .mobile-menu-btn { display: none; position: fixed; top: 15px; left: 15px; z-index: 998; background: var(--navy); color: var(--gold); border: none; padding: 10px 15px; border-radius: 8px; font-size: 1.2em; cursor: pointer; }
+        @media (max-width: 768px) { .sidebar { transform: translateX(-100%); } .sidebar.open { transform: translateX(0); width: 220px; } .mobile-menu-btn { display: block; } .sidebar-overlay.active { display: block; } .main-wrapper { margin-left: 0 !important; } }
+        @media (min-width: 769px) { .main-wrapper { margin-left: 60px; transition: margin-left 0.3s; } }
+    </style>
+</head>
+<body>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+    <aside class="sidebar" id="sidebar">
+        <button class="sidebar-toggle" id="sidebarToggle" title="展开/收起菜单"><span id="toggleIcon">☰</span></button>
+        <nav class="sidebar-nav">
+            <a href="../index-pages/巴菲特致股东信总览.html" class="nav-item"><span class="icon">📝</span><span class="label">信件总览</span></a>
+            <a href="../index-pages/核心思想索引.html" class="nav-item"><span class="icon">💡</span><span class="label">核心概念</span></a>
+            <a href="../index-pages/公司索引.html" class="nav-item"><span class="icon">🏢</span><span class="label">公司索引</span></a>
+            <a href="../index-pages/人物索引.html" class="nav-item"><span class="icon">👤</span><span class="label">人物与网络</span></a>
+            <a href="../index-pages/时间线.html" class="nav-item"><span class="icon">📅</span><span class="label">投资时间线</span></a>
+            <a href="../index-pages/概念关系图谱.html" class="nav-item"><span class="icon">🕸️</span><span class="label">概念图谱</span></a>
+            <a href="../index-pages/知识树.html" class="nav-item"><span class="icon">🌳</span><span class="label">知识树</span></a>
+            <a href="#" class="nav-item" id="searchBtn"><span class="icon">🔍</span><span class="label">搜索</span></a>
+        </nav>
+        <div class="wisdom-module">
+            <div class="wisdom-title">💭 随机智慧</div>
+            <div class="wisdom-content">
+                <p class="wisdom-quote" id="wisdomQuote">"当你买入一只股票时，你就是在购买这家企业的一部分生意。"</p>
+                <a class="wisdom-source" id="wisdomSource" href="../concepts/股东心态.html">— 股东心态</a>
+            </div>
+            <button class="wisdom-refresh" id="wisdomRefresh"><span>🔄</span> 换一条</button>
+        </div>
+    </aside>
+    <div class="search-modal" id="searchModal"><div class="search-box"><input type="text" placeholder="搜索概念、公司、人物..." id="searchInput" autofocus><p class="search-hint">按 ESC 或点击外部区域关闭</p></div></div>
+    
+    <header>
+        <h1>股东心态 (Owner Thinking)</h1>
+        <div class="meta"><span>巴菲特投资体系核心概念</span></div>
+    </header>
+    <div class="main-wrapper" id="mainWrapper">
+    <div class="container"><article class="content">
+        <h2>定义与起源</h2>
+        <p><strong>股东心态是将股票视为企业所有权而非交易筹码的思维方式</strong>——它要求投资者以企业所有者的身份思考，而非以股票交易者的身份思考。</p>
+        <p>巴菲特的核心理念是：<strong>"当你买入一只股票时，你就是在购买这家企业的一部分生意。"</strong>这一看似简单的认知，区分了投资者和投机者。</p>
+        <p>股东心态意味着：关注企业本身的价值创造，而非股价的短期波动；理解企业的商业模式和竞争优势，而非宏观经济预测；评估管理层的诚信和能力，而非K线图的形态。</p>
+        
+        <div class="insight">
+            股票市场存在的目的是为你服务，而非指导你。大多数人把顺序搞反了——他们盯着屏幕上的报价，忘记了背后是企业。企业才是实质，股票只是表象。
+        </div>
+        
+        <h2>核心要义</h2>
+        <ul>
+            <li><strong>所有者视角</strong>：买入股票就是成为企业合伙人，而非持有赌博筹码。思考问题时，问问自己：如果我是这家企业的唯一主人，我会怎么做？</li>
+            <li><strong>长期关注</strong>：企业价值创造需要时间。股东心态要求关注企业的长期竞争优势，而非短期股价表现。</li>
+            <li><strong>管理层同理心</strong>：真正把自己当作企业所有者，就会关心管理层是否诚实、是否有能力、是否以股东利益为先。</li>
+            <li><strong>资本配置视角</strong>：作为所有者，会关心企业如何配置每一分利润——是分红、回购、还是再投资？哪种方式最能创造价值？</li>
+            <li><strong>独立判断</strong>：股东心态要求独立思考，不随波逐流。因为大多数人在市场中是错的，否则他们早就成为所有者而非交易者了。</li>
+        </ul>
+        
+        <h2>思想演变</h2>
+        <div class="evolution-timeline">
+            <div class="evolution-point">
+                <div class="evolution-year">格雷厄姆启蒙（1950年代）</div>
+                <div class="evolution-desc">格雷厄姆强调"市场先生"的概念：股票市场是为你服务的工具，而非主人。巴菲特继承了这一理念，并不断发展。</div>
+            </div>
+            <div class="evolution-point">
+                <div class="evolution-year">费雪深化（1960-1970年代）</div>
+                <div class="evolution-desc">费雪强调与管理层的接触和信任。巴菲特开始不仅看财务报表，更关注企业领导者的品质和能力。</div>
+            </div>
+            <div class="evolution-point">
+                <div class="evolution-year">系统化（1980年代至今）</div>
+                <div class="evolution-desc">巴菲特系统地阐述了"所有者思维"——从如何选择投资标的，到如何评估管理层，到如何对待股价波动，都以股东心态为出发点。</div>
+            </div>
+        </div>
+        
+        <h2>实战案例</h2>
+        <div class="case-card">
+            <div class="case-company">伯克希尔·哈撒韦 (Berkshire Hathaway)</div>
+            <div class="case-data">1965年收购伯克希尔纺织厂；巴菲特以"企业所有者"的视角管理；逐步转型为保险和投资集团；最终成为传奇</div>
+            <div class="case-lesson">巴菲特从未把伯克希尔的股票当作交易工具，而是当作拥有众多企业的平台。这种所有者心态，是伯克希尔成功的文化基础。</div>
+        </div>
+        
+        <div class="case-card">
+            <div class="case-company">B夫人的Nebraska Furniture Mart</div>
+            <div class="case-data">1983年收购；B夫人在102岁高龄仍每天工作；她的诚信和能力让巴菲特敬佩；这笔收购后来成为零售业典范</div>
+            <div class="case-lesson">选择投资时，不仅要看企业，还要看企业背后的主人。所有者心态让巴菲特更关注管理层品质，而这往往决定投资的成败。</div>
+        </div>
+        
+        <div class="case-card">
+            <div class="case-company">可口可乐 (Coca-Cola)</div>
+            <div class="case-data">1988年买入；持有至今超过35年；从未因股价波动而交易；以"永远不卖"的心态持有</div>
+            <div class="case-lesson">真正的股东心态是：如果你打算永远拥有这家企业，你会如何评价它？这种视角让人更关注企业本质，而非短期价格。</div>
+        </div>
+        
+        <h2>常见误解</h2>
+        <div class="misconception-block">
+            <h4>❌ 误解一：股东心态就是长期持有</h4>
+            <p><strong>人们以为</strong>：股东心态就是买入后不卖，不管企业发生什么变化。</p>
+            <p><strong>巴菲特说</strong>：股东心态不是"永远持有"，而是"像所有者一样思考"。真正的所有者会在企业变质时止损，而非盲目坚持。</p>
+        </div>
+        
+        <div class="misconception-block">
+            <h4>❌ 误解二：股东应该参与企业管理</h4>
+            <p><strong>人们以为</strong>：作为股东，应该关心公司的每一个决策，甚至干预管理层。</p>
+            <p><strong>巴菲特说</strong>：作为小股东，更重要的是选择合适的管理层，然后充分授权。"只参与结果，不干预过程"才是好的所有者。</p>
+        </div>
+        
+        <div class="misconception-block">
+            <h4>❌ 误解三：股东心态排斥卖出</h4>
+            <p><strong>人们以为</strong>：股东心态意味着永远不卖。</p>
+            <p><strong>巴菲特说</strong>：当股价严重高于内在价值，或者发现了更好的机会时，卖出是理性的。所有者也会在价格极端时变现，而非机械持有。</p>
+        </div>
+        
+        <h2>精华原话</h2>
+        <div class="quote-block">
+            <p>"投资的基础应该是建立在理性之上的——你应该把股票当作企业的所有权，而非屏幕上跳动的价格代码。"</p>
+            <footer>—— 1996年致股东信</footer>
+        </div>
+        
+        <div class="quote-block">
+            <p>"当我投资于一家企业时，我的思维是：如果这家企业是私有的，我会怎么评估它？这种思维方式帮助我忽略短期的股价波动。"</p>
+            <footer>—— 1991年致股东信</footer>
+        </div>
+        
+        <div class="quote-block">
+            <p>"我们在投资时，把自己当作企业分析师，而不是市场分析师，不是宏观经济分析师，甚至不是证券分析师。"</p>
+            <footer>—— 1988年致股东信</footer>
+        </div>
+        
+        <div class="quote-block">
+            <p>"成功的投资生涯，最好的秘诀是找到并坚持那些你真正理解的企业。把自己当作企业分析师，而非股票分析师。"</p>
+            <footer>—— 1996年致股东信</footer>
+        </div>
+        
+        <h2>延伸阅读</h2>
+        <div class="topic-group">
+            <div class="topic-title">所有者视角</div>
+            <div class="topic-desc">如何像企业所有者一样评估投资机会，而非像交易者一样追逐价格波动</div>
+            <div class="topic-years">
+                <a href="../letters/berkshire/1988.html">1988</a>
+                <a href="../letters/berkshire/1991.html">1991</a>
+                <a href="../letters/berkshire/1996.html">1996</a>
+            </div>
+        </div>
+        
+        <div class="topic-group">
+            <div class="topic-title">管理层的选择</div>
+            <div class="topic-desc">为何选择优秀的管理层是投资的关键，以及如何评估管理层品质</div>
+            <div class="topic-years">
+                <a href="../letters/berkshire/1983.html">1983</a>
+                <a href="../letters/berkshire/1995.html">1995</a>
+            </div>
+        </div>
+        
+        <div class="topic-group">
+            <div class="topic-title">市场先生</div>
+            <div class="topic-desc">如何利用市场先生的非理性报价，而非被其左右——这是股东心态的核心应用</div>
+            <div class="topic-years">
+                <a href="../letters/berkshire/1987.html">1987</a>
+                <a href="../letters/berkshire/1996.html">1996</a>
+            </div>
+        </div>
+    </article>
+    
+    <footer>
+        <p>基于巴菲特致股东信原文提炼 | <a href="../index.html">返回首页</a></p>
+    </footer>
+    </div>
+
+    <script>
+    const wisdoms = [
+        { quote: "当你买入一只股票时，你就是在购买这家企业的一部分生意。", source: "股东心态", link: "concepts/股东心态.html" },
+        { quote: "把股票当作企业的所有权，而非屏幕上跳动的价格代码。", source: "股东心态", link: "concepts/股东心态.html" },
+        { quote: "我们在投资时，把自己当作企业分析师，而不是市场分析师。", source: "股东心态", link: "concepts/股东心态.html" },
+        { quote: "别人恐惧时我贪婪，别人贪婪时我恐惧。", source: "市场先生", link: "concepts/市场先生.html" },
+        { quote: "价格是你付出的，价值是你得到的。", source: "内在价值", link: "concepts/内在价值.html" },
+        { quote: "安全边际不是用来'猜对'的，而是用来应对'猜错'的。", source: "安全边际", link: "concepts/安全边际.html" },
+        { quote: "能力圈的核心是知道边界在哪里，而非范围有多大。", source: "能力圈", link: "concepts/能力圈.html" },
+        { quote: "护城河的本质是'我与别人不同'，而非'我比别人更好'。", source: "护城河", link: "concepts/护城河.html" },
+        { quote: "风险来自于你不知道自己在做什么。", source: "风险", link: "concepts/风险.html" },
+        { quote: "如果你不愿意持有一只股票十年，那就不要考虑持有它十分钟。", source: "长期持有", link: "concepts/长期持有.html" }
+    ];
+    let currentWisdomIndex = 0;
+    function updateWisdom(index) { document.getElementById('wisdomQuote').textContent = '"' + wisdoms[index].quote + '"'; document.getElementById('wisdomSource').textContent = '— ' + wisdoms[index].source; document.getElementById('wisdomSource').href = '../' + wisdoms[index].link; }
+    document.getElementById('wisdomRefresh').addEventListener('click', function() { currentWisdomIndex = (currentWisdomIndex + 1) % wisdoms.length; updateWisdom(currentWisdomIndex); });
+    document.getElementById('sidebarToggle').addEventListener('click', function() { document.getElementById('sidebar').classList.toggle('expanded'); });
+    document.getElementById('mobileMenuBtn').addEventListener('click', function() { document.getElementById('sidebar').classList.toggle('open'); document.getElementById('sidebarOverlay').classList.toggle('active'); });
+    document.getElementById('sidebarOverlay').addEventListener('click', function() { document.getElementById('sidebar').classList.remove('open'); this.classList.remove('active'); });
+    </script>
+</body>
+</html>
