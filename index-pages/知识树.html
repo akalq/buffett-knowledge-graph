@@ -564,7 +564,8 @@
             }
         }
     
-        header { background: var(--navy); color: white; padding: 15px 0; position: sticky; top: 0; z-index: 100; }
+        header { background: var(--navy); color: white; padding: 15px 0; position: sticky; top: 0; z-index: 100; margin-left: 60px; transition: margin-left 0.3s ease; }
+        .sidebar.expanded ~ header { margin-left: 220px; }
         header .container { display: flex; justify-content: space-between; align-items: center; }
         .logo { font-size: 1.1em; font-weight: bold; color: var(--gold); text-decoration: none; }
         nav a { color: white; text-decoration: none; margin-left: 20px; font-size: 0.9em; opacity: 0.9; transition: opacity 0.2s; }
