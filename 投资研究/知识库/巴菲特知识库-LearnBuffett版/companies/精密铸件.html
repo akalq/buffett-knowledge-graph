@@ -242,56 +242,7 @@
         .wisdom-refresh:hover {
             background: rgba(201, 162, 39, 0.4);
         }
-        
-        /* Search Modal */
-        .search-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.6);
-            z-index: 2000;
-            justify-content: center;
-            align-items: flex-start;
-            padding-top: 100px;
-        }
-        
-        .search-modal.active {
-            display: flex;
-        }
-        
-        .search-box {
-            background: white;
-            border-radius: 12px;
-            padding: 25px;
-            width: 90%;
-            max-width: 500px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-        }
-        
-        .search-box input {
-            width: 100%;
-            padding: 15px;
-            border: 2px solid #E5E0D8;
-            border-radius: 8px;
-            font-size: 1.1em;
-            font-family: inherit;
-            outline: none;
-            transition: border-color 0.2s;
-        }
-        
-        .search-box input:focus {
-            border-color: #C9A227;
-        }
-        
-        .search-hint {
-            color: #5D6D7E;
-            font-size: 0.85em;
-            margin-top: 12px;
-            text-align: center;
-        }
+
         
         /* Main Content Wrapper */
         .main-wrapper {
@@ -403,11 +354,7 @@
                 <span class="icon">🌳</span>
                 <span class="label">知识树</span>
             </a>
-            <a href="#" class="nav-item" id="searchBtn">
-                <span class="icon">🔍</span>
-                <span class="label">搜索</span>
-            </a>
-        </nav>
+</nav>
         
         <!-- Random Wisdom Module -->
         <div class="wisdom-module">
@@ -421,20 +368,27 @@
             </button>
         </div>
     </aside>
-    
-    <!-- Search Modal -->
-    <div class="search-modal" id="searchModal">
-        <div class="search-box">
-            <input type="text" placeholder="搜索概念、公司、人物..." id="searchInput" autofocus>
-            <p class="search-hint">按 ESC 或点击外部区域关闭</p>
-        </div>
-    </div>
-    <div class="container">
+<div class="container">
         <header>
             <h1>✈️ 精密铸件</h1>
             <div class="en-name">Precision Castparts</div>
             <div class="meta"><span>工业制造 · 航空</span></div>
-        </header>
+        </header>    <!-- Header -->
+    <header>
+        <div class="container">
+            <a href="../index.html" class="logo">📚 巴菲特知识库</a>
+            <nav>
+                <a href="../index-pages/巴菲特致股东信总览.html">📝 信件</a>
+                <a href="../index-pages/核心思想索引.html">💡 概念</a>
+                <a href="../index-pages/公司索引.html">🏢 公司</a>
+                <a href="../index-pages/人物索引.html">👤 人物</a>
+                <a href="../index-pages/时间线.html">📅 时间线</a>
+                <a href="../index-pages/知识树.html">🌳 知识树</a>
+            </nav>
+        </div>
+    </header>
+
+
     <div class="main-wrapper" id="mainWrapper"><article class="content">
             <div class="overview-card">
                 <div class="overview-summary"><strong>2015年以320亿美元收购的航空零部件制造商。巴菲特承认这是他犯的一个错误，对PCC的正常盈利潜力付出了过高的价格。</strong></div>
@@ -578,35 +532,7 @@
                     closeMobileMenu();
                 }
             });
-        });
-        
-        // Search Modal
-        const searchBtn = document.getElementById('searchBtn');
-        const searchModal = document.getElementById('searchModal');
-        const searchInput = document.getElementById('searchInput');
-        
-        searchBtn.addEventListener('click', function(e) {
-            e.preventDefault();
-            searchModal.classList.add('active');
-            setTimeout(function() {
-                searchInput.focus();
-            }, 100);
-        });
-        
-        searchModal.addEventListener('click', function(e) {
-            if (e.target === searchModal) {
-                searchModal.classList.remove('active');
-            }
-        });
-        
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                searchModal.classList.remove('active');
-                closeMobileMenu();
-            }
-        });
-        
-        // Handle window resize
+        });// Handle window resize
         window.addEventListener('resize', function() {
             if (window.innerWidth > 900) {
                 closeMobileMenu();

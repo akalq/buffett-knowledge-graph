@@ -564,6 +564,115 @@
         nav a { color: white; text-decoration: none; margin-left: 20px; font-size: 0.9em; opacity: 0.9; transition: opacity 0.2s; }
         nav a:hover { opacity: 1; color: var(--gold); }
 
+
+        /* Wisdom Module */
+        .wisdom-module {
+            border-top: 1px solid rgba(201, 162, 39, 0.3);
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.2);
+            flex-shrink: 0;
+            max-height: 200px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .wisdom-title {
+            color: #C9A227;
+            font-size: 0.85em;
+            font-weight: bold;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+        
+        .sidebar.expanded .wisdom-title {
+            opacity: 1;
+        }
+        
+        .wisdom-content {
+            flex: 1;
+            overflow: hidden;
+        }
+        
+        .wisdom-quote {
+            color: white;
+            font-size: 0.85em;
+            line-height: 1.6;
+            margin-bottom: 8px;
+            opacity: 0;
+            transition: opacity 0.2s;
+            font-style: italic;
+        }
+        
+        .sidebar.expanded .wisdom-quote {
+            opacity: 1;
+        }
+        
+        .wisdom-source {
+            color: #C9A227;
+            font-size: 0.8em;
+            text-decoration: none;
+            opacity: 0;
+            transition: opacity 0.2s;
+            display: block;
+            cursor: pointer;
+        }
+        
+        .sidebar.expanded .wisdom-source {
+            opacity: 1;
+        }
+        
+        .wisdom-source:hover {
+            text-decoration: underline;
+        }
+        
+        .wisdom-refresh {
+            color: white;
+            background: rgba(201, 162, 39, 0.2);
+            border: 1px solid rgba(201, 162, 39, 0.4);
+            padding: 6px 12px;
+            border-radius: 15px;
+            font-size: 0.75em;
+            cursor: pointer;
+            margin-top: 10px;
+            opacity: 0;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
+        
+        .sidebar.expanded .wisdom-refresh {
+            opacity: 1;
+        }
+        
+        .wisdom-refresh:hover {
+            background: rgba(201, 162, 39, 0.4);
+        }
+        
+        /* Mobile sidebar - 确保wisdom模块正确显示 */
+        @media (max-width: 900px) {
+            .sidebar {
+                transform: translateX(-100%);
+                width: 220px;
+                transition: transform 0.3s ease;
+            }
+            .sidebar.mobile-open {
+                transform: translateX(0);
+            }
+            .sidebar .nav-item .label,
+            .sidebar .wisdom-title,
+            .sidebar .wisdom-quote,
+            .sidebar .wisdom-source,
+            .sidebar .wisdom-refresh {
+                opacity: 1;
+            }
+        }
     </style>
 </head>
 <body>
@@ -602,10 +711,7 @@
                 <span class="icon">🌳</span>
                 <span class="label">知识树</span>
             </a>
-            <a href="#" class="nav-item" id="searchBtn">
-                <span class="icon">🔍</span>
-                <span class="label">搜索</span>
-            </a>
+            
         </nav>
         
         <!-- Random Wisdom Module -->
@@ -623,6 +729,11 @@
     <div class="sidebar-overlay" id="sidebarOverlay"></div>
     </aside>
     
+    
+    
+    
+
+    <!-- Main Content -->    <!-- Header -->
     <header>
         <div class="container">
             <a href="../index.html" class="logo">📚 巴菲特知识库</a>
@@ -632,19 +743,12 @@
                 <a href="公司索引.html">🏢 公司</a>
                 <a href="人物索引.html">👤 人物</a>
                 <a href="时间线.html">📅 时间线</a>
+                <a href="知识树.html">🌳 知识树</a>
             </nav>
         </div>
     </header>
-    
-    <!-- Search Modal -->
-    <div class="search-modal" id="searchModal">
-        <div class="search-box">
-            <input type="text" placeholder="搜索概念、公司、人物..." id="searchInput" autofocus>
-            <p class="search-hint">按 ESC 或点击外部区域关闭</p>
-        </div>
-    </div>
 
-    <!-- Main Content -->
+
     <div class="main-wrapper" id="mainWrapper">
 <main class="main-content">
         <!-- Header -->
@@ -1014,31 +1118,13 @@
             });
         });
         
-        // Search Modal
-        const searchBtn = document.getElementById('searchBtn');
-        const searchModal = document.getElementById('searchModal');
-        const searchInput = document.getElementById('searchInput');
         
-        searchBtn.addEventListener('click', function(e) {
-            e.preventDefault();
-            searchModal.classList.add('active');
-            setTimeout(function() {
-                searchInput.focus();
-            }, 100);
-        });
         
-        searchModal.addEventListener('click', function(e) {
-            if (e.target === searchModal) {
-                searchModal.classList.remove('active');
-            }
-        });
         
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                searchModal.classList.remove('active');
-                closeMobileMenu();
-            }
-        });
+        
+        
+        
+        
 </script>
 </body>
 </html>

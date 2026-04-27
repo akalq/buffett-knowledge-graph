@@ -84,7 +84,7 @@
         .wisdom-refresh { color: white; background: rgba(201, 162, 39, 0.2); border: 1px solid rgba(201, 162, 39, 0.4); padding: 6px 12px; border-radius: 15px; font-size: 0.75em; cursor: pointer; margin-top: 10px; opacity: 0; transition: all 0.2s; display: flex; align-items: center; justify-content: center; gap: 5px; }
         .sidebar.expanded .wisdom-refresh { opacity: 1; }
         .wisdom-refresh:hover { background: rgba(201, 162, 39, 0.4); }
-        .search-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 2000; justify-content: center; align-items: center; }
+        
         .search-box { background: white; padding: 30px; border-radius: 15px; max-width: 500px; width: 90%; text-align: center; }
         .search-box input { width: 100%; padding: 15px; font-size: 1.1em; border: 2px solid var(--gold); border-radius: 8px; margin-bottom: 15px; }
         .search-hint { color: var(--secondary); font-size: 0.9em; }
@@ -140,10 +140,7 @@
                 <span class="icon">🌳</span>
                 <span class="label">知识树</span>
             </a>
-            <a href="#" class="nav-item" id="searchBtn">
-                <span class="icon">🔍</span>
-                <span class="label">搜索</span>
-            </a>
+            
         </nav>
         <div class="wisdom-module">
             <div class="wisdom-title">💭 随机智慧</div>
@@ -157,14 +154,8 @@
         </div>
     </aside>
     
-    <div class="search-modal" id="searchModal">
-        <div class="search-box">
-            <input type="text" placeholder="搜索概念、公司、人物..." id="searchInput" autofocus>
-            <p class="search-hint">按 ESC 或点击外部区域关闭</p>
-        </div>
-    </div>
-    
-        <header>
+    </div>    <!-- Header -->
+    <header>
         <div class="container">
             <a href="../index.html" class="logo">📚 巴菲特知识库</a>
             <nav>
@@ -173,9 +164,14 @@
                 <a href="../index-pages/公司索引.html">🏢 公司</a>
                 <a href="../index-pages/人物索引.html">👤 人物</a>
                 <a href="../index-pages/时间线.html">📅 时间线</a>
+                <a href="../index-pages/知识树.html">🌳 知识树</a>
             </nav>
         </div>
     </header>
+
+
+    
+        
     <div class="main-wrapper" id="mainWrapper">
     <div class="container"><article class="content">
         <h2>定义与起源</h2>
