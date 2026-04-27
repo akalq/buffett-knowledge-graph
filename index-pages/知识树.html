@@ -127,55 +127,40 @@
             margin-left: 220px;
         }
         
-        /* Page Header */
-        .page-header {
-            background: var(--navy);
-            color: white;
-            padding: 20px 30px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 15px;
+        /* Page Title */
+        .page-title {
+            text-align: center;
+            font-size: 2em;
+            color: var(--navy);
+            margin-bottom: 10px;
         }
         
-        .page-header-title {
-            display: flex;
-            align-items: center;
-            gap: 12px;
+        .page-subtitle {
+            text-align: center;
+            color: var(--secondary);
+            margin-bottom: 30px;
         }
         
-        .page-header-title h1 {
-            font-size: 1.6em;
-            font-weight: 600;
-        }
-        
-        .page-header-title .icon {
-            font-size: 1.8em;
-            color: var(--gold);
-        }
-        
-        .page-header-actions {
-            display: flex;
-            gap: 10px;
+        .page-actions {
+            text-align: center;
+            margin-bottom: 30px;
         }
         
         .action-btn {
-            padding: 8px 20px;
-            border: 1px solid rgba(201, 162, 39, 0.5);
-            background: transparent;
+            background: var(--navy);
             color: white;
+            border: none;
+            padding: 8px 20px;
             border-radius: 20px;
             cursor: pointer;
             font-size: 0.9em;
+            margin: 0 5px;
             font-family: inherit;
             transition: all 0.2s;
         }
         
         .action-btn:hover {
             background: var(--gold);
-            color: var(--navy);
-            border-color: var(--gold);
         }
         
         /* Tree Container */
@@ -762,15 +747,11 @@
     <div class="main-wrapper" id="mainWrapper">
 <main class="main-content">
         <!-- Page Header -->
-        <div class="page-header">
-            <div class="page-header-title">
-                <span class="icon">🌳</span>
-                <h1>巴菲特知识树</h1>
-            </div>
-            <div class="page-header-actions">
-                <button class="action-btn" onclick="expandAll()">展开全部</button>
-                <button class="action-btn" onclick="collapseAll()">收起全部</button>
-            </div>
+        <h1 class="page-title">🌳 巴菲特知识树</h1>
+        <p class="page-subtitle">5个一级分类 · 9个二级分类 · 30+知识条目</p>
+        <div class="page-actions">
+            <button class="action-btn" onclick="expandAll()">展开全部</button>
+            <button class="action-btn" onclick="collapseAll()">收起全部</button>
         </div>
 
         <!-- Tree Container -->
