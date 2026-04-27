@@ -1319,11 +1319,7 @@
             
             // Prepare data
             const nodesData = concepts.map(d => ({...d}));
-            const linksData = links.map(d => ({
-                ...d,
-                source: concepts.find(c => c.id === d.source) || d.source,
-                target: concepts.find(c => c.id === d.target) || d.target
-            }));
+            const linksData = links.map(d => ({...d}));
             
             // Create simulation
             simulation = d3.forceSimulation(nodesData)
