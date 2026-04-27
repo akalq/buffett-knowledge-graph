@@ -124,8 +124,8 @@
             margin-left: 220px;
         }
         
-        /* Header */
-        .header {
+        /* Page Header */
+        .page-header {
             background: var(--navy);
             color: white;
             padding: 20px 30px;
@@ -136,23 +136,23 @@
             gap: 15px;
         }
         
-        .header-title {
+        .page-header-title {
             display: flex;
             align-items: center;
             gap: 12px;
         }
         
-        .header-title h1 {
+        .page-header-title h1 {
             font-size: 1.6em;
             font-weight: 600;
         }
         
-        .header-title .icon {
+        .page-header-title .icon {
             font-size: 1.8em;
             color: var(--gold);
         }
         
-        .header-actions {
+        .page-header-actions {
             display: flex;
             gap: 10px;
         }
@@ -758,17 +758,17 @@
 
     <div class="main-wrapper" id="mainWrapper">
 <main class="main-content">
-        <!-- Header -->
-        <header class="header">
-            <div class="header-title">
+        <!-- Page Header -->
+        <div class="page-header">
+            <div class="page-header-title">
                 <span class="icon">🌳</span>
                 <h1>巴菲特知识树</h1>
             </div>
-            <div class="header-actions">
+            <div class="page-header-actions">
                 <button class="action-btn" onclick="expandAll()">展开全部</button>
                 <button class="action-btn" onclick="collapseAll()">收起全部</button>
             </div>
-        </header>
+        </div>
 
         <!-- Tree Container -->
         <div class="tree-container">
