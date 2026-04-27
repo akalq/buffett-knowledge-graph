@@ -117,7 +117,13 @@
             text-overflow: ellipsis;
         }
         
-        .sidebar.expanded .nav-item .label {
+        /* 侧边栏收起时图标居中 */
+.sidebar:not(.expanded) .nav-item {
+    padding: 12px 0;
+    justify-content: center;
+}
+
+.sidebar.expanded .nav-item .label {
             opacity: 1;
         }
         

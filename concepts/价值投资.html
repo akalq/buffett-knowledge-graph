@@ -69,7 +69,13 @@
         .nav-item { display: flex; align-items: center; padding: 12px 15px; color: white; text-decoration: none; font-size: 0.95em; transition: all 0.2s; white-space: nowrap; overflow: hidden; }
         .nav-item .icon { font-size: 1.3em; width: 30px; flex-shrink: 0; text-align: center; }
         .nav-item .label { opacity: 0; margin-left: 12px; transition: opacity 0.2s; overflow: hidden; text-overflow: ellipsis; }
-        .sidebar.expanded .nav-item .label { opacity: 1; }
+        /* 侧边栏收起时图标居中 */
+.sidebar:not(.expanded) .nav-item {
+    padding: 12px 0;
+    justify-content: center;
+}
+
+.sidebar.expanded .nav-item .label { opacity: 1; }
         .nav-item:hover { background: rgba(201, 162, 39, 0.15); color: #C9A227; }
         .nav-item:hover .icon { transform: scale(1.1); }
         .wisdom-module { border-top: 1px solid rgba(201, 162, 39, 0.3); padding: 15px; background: rgba(0, 0, 0, 0.2); flex-shrink: 0; max-height: 200px; overflow: hidden; display: flex; flex-direction: column; }

@@ -23,6 +23,11 @@
         .letter-card:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(27,42,74,0.1); border-color: var(--gold); }
         .letter-year { font-size: 1.2em; font-weight: bold; color: var(--navy); }
         .letter-meta { font-size: 0.85em; color: var(--secondary); margin-top: 5px; }
+        .letter-card.disabled { opacity: 0.5; cursor: not-allowed; pointer-events: none; background: #f5f5f5; }
+        .letter-card.disabled:hover { transform: none; box-shadow: none; border-color: var(--border); }
+        .letter-card.disabled .letter-year { color: var(--secondary); }
+        .letter-card.disabled .letter-meta { color: #999; }
+        .letter-status { font-size: 0.75em; color: #999; margin-top: 3px; font-style: italic; }
         .back-link { display: inline-block; margin-bottom: 20px; color: var(--navy); text-decoration: none; }
         .back-link:hover { color: var(--gold); }
         footer { text-align: center; padding: 40px 20px; color: var(--secondary); border-top: 1px solid var(--border); margin-top: 40px; }
@@ -109,7 +114,13 @@
             text-overflow: ellipsis;
         }
         
-        .sidebar.expanded .nav-item .label {
+        /* 侧边栏收起时图标居中 */
+.sidebar:not(.expanded) .nav-item {
+    padding: 12px 0;
+    justify-content: center;
+}
+
+.sidebar.expanded .nav-item .label {
             opacity: 1;
         }
         
@@ -542,27 +553,4 @@
         
         // Close mobile menu when clicking nav items
         document.querySelectorAll('.nav-item').forEach(function(item) {
-            item.addEventListener('click', function() {
-                if (window.innerWidth <= 900) {
-                    closeMobileMenu();
-                }
-            });
-        });
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        // Handle window resize
-        window.addEventListener('resize', function() {
-            if (window.innerWidth > 900) {
-                closeMobileMenu();
-            }
-        });
-        </script>
-</body>
-</html>
+            item.addEventListener('click', function
